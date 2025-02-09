@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { UserGroupIcon, CurrencyDollarIcon, QuestionMarkCircleIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, DocumentMagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import ApplicationForm from './ApplicationForm';
+import { useTranslation } from 'react-i18next';
 
-const SHOW_BUTTONS = process.env.REACT_APP_SHOW_BUTTONS === 'true';
+const SHOW_BUTTONS = false;
 
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const { t } = useTranslation();
 
   const features = [
     {
@@ -92,7 +94,7 @@ const Home = () => {
                 [text-shadow:_2px_2px_12px_rgba(106,0,255,0.5),_0_0_4px_rgba(106,0,255,0.8)]
                 relative z-10"
             >
-              Bienvenido a UltraVioleta DAO
+              {t('home.title')}
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
@@ -105,9 +107,7 @@ const Home = () => {
               className="text-xl md:text-2xl text-text-primary mb-12 leading-relaxed
                 drop-shadow-md"
             >
-              La élite de Web3 en Latinoamérica, empoderando e iluminando el camino 
-              de comunidades online hacia un nuevo sistema financiero inclusivo, 
-              donde todos puedan participar y prosperar.
+              {t('home.subtitle')}
             </motion.p>
             
             {SHOW_BUTTONS && (
