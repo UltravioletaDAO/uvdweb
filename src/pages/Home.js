@@ -61,7 +61,7 @@ const Home = () => {
           <div 
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('https://pbs.twimg.com/profile_banners/1801046952143900672/1738130477/1500x500')`,
+              backgroundImage: `url('blob:https://imgur.com/d7d32447-bb38-442c-b9b0-4a499bb0e271')`,
             }}
           />
           {/* Overlay oscuro con gradiente */}
