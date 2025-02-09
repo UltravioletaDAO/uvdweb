@@ -92,4 +92,4 @@ Para contribuir al proyecto:
 
 ## 🌐 Enlaces
 
-- [Twitter](https://twitter.com/UltravioletaDAO)
+- [X](https://x.com/UltravioletaDAO)
