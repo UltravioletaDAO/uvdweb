@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import { UserGroupIcon, CurrencyDollarIcon, QuestionMarkCircleIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, DocumentMagnifyingGlassIcon } from '@heroicons/react/24/outline';
 import ApplicationForm from './ApplicationForm';
 
+const SHOW_BUTTONS = process.env.REACT_APP_SHOW_BUTTONS === 'true';
+
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
 
@@ -108,44 +110,45 @@ const Home = () => {
               donde todos puedan participar y prosperar.
             </motion.p>
             
-            {/* Nueva sección de botones */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.8,
-                delay: 0.7,
-                ease: "easeOut"
-              }}
-              className="flex flex-col sm:flex-row justify-center gap-4 mt-12"
-            >
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={() => setIsFormOpen(true)}
-                className="px-8 py-4 bg-ultraviolet-darker text-text-primary rounded-lg
-                  hover:bg-ultraviolet-dark transition-colors duration-200
-                  font-semibold text-lg shadow-lg shadow-ultraviolet-darker/20
-                  backdrop-blur-sm"
-              >
-                Aplicar Ahora
-              </motion.button>
-
+            {SHOW_BUTTONS && (
               <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.8,
+                  delay: 0.7,
+                  ease: "easeOut"
+                }}
+                className="flex flex-col sm:flex-row justify-center gap-4 mt-12"
               >
-                <Link
-                  to="/status"
-                  className="inline-block px-8 py-4 bg-ultraviolet-darker text-text-primary rounded-lg
+                <motion.button
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  onClick={() => setIsFormOpen(true)}
+                  className="px-8 py-4 bg-ultraviolet-darker text-text-primary rounded-lg
                     hover:bg-ultraviolet-dark transition-colors duration-200
                     font-semibold text-lg shadow-lg shadow-ultraviolet-darker/20
                     backdrop-blur-sm"
                 >
-                  Verificar Estado
-                </Link>
+                  Aplicar Ahora
+                </motion.button>
+
+                <motion.div
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  <Link
+                    to="/status"
+                    className="inline-block px-8 py-4 bg-ultraviolet-darker text-text-primary rounded-lg
+                      hover:bg-ultraviolet-dark transition-colors duration-200
+                      font-semibold text-lg shadow-lg shadow-ultraviolet-darker/20
+                      backdrop-blur-sm"
+                  >
+                    Verificar Estado
+                  </Link>
+                </motion.div>
               </motion.div>
-            </motion.div>
+            )}
           </motion.div>
         </div>
       </section>
