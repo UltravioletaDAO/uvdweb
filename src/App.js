@@ -14,8 +14,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/aplicar" element={<ApplicationForm />} />
-          {/* Comentamos temporalmente la ruta de links */}
-          {/* <Route path="/links" element={<SocialNetworks />} /> */}
+          <Route path="/links" element={<SocialNetworks />} />
           <Route path="/status" element={<ApplicationStatus />} />
         </Routes>
       </div>
