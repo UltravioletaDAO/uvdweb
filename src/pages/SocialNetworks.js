@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeftIcon
 } from '@heroicons/react/24/outline';
+import multifirma from '../assets/icons/multifirma.svg';
+import swapToken from '../assets/icons/swapToken.svg';
+import liquidityPool from '../assets/icons/liquidityPool.svg';
 
 const SocialNetworks = () => {
   const navigate = useNavigate();
@@ -31,19 +34,18 @@ const SocialNetworks = () => {
       name: 'Arena',
       url: 'https://arena.social/UltravioletaDAO',
       icon: (
-        <svg 
-          viewBox="0 0 24 24" 
-          className="w-6 h-6" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            d="M19 21L12 3L5 21M19 21H5M19 21L16 15M5 21L8 15M8 15L12 9L16 15M8 15H16" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          />
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" fill="none" class="h-[36px] text-brand-orange" className="w-6 h-6">
+          <g fill="white" clip-path="url(#a)">
+            <path d="M31.463 15.472V42h-.678V17.454c0-8.154-6.64-14.794-14.794-14.794-8.153 0-14.776 6.623-14.776 14.794V42H.537V15.472C.537 6.919 7.455 0 16.009 0c8.552 0 15.454 6.919 15.454 15.472Z"/>
+            <path d="M28.768 16.984v22.513h-.678V18.705c0-6.675-5.423-12.099-12.099-12.099-6.675 0-12.1 5.406-12.1 12.082v20.791h-.677V16.967c0-7.058 5.72-12.777 12.777-12.777 7.058 0 12.777 5.719 12.777 12.777v.017Z"/>
+            <path d="M26.091 18.497v18.479h-.678V19.939c0-5.197-4.224-9.422-9.422-9.422S6.57 14.742 6.57 19.94v17.037h-.678v-18.48c0-5.58 4.52-10.1 10.1-10.1s10.083 4.52 10.083 10.1h.017Z"/>
+            <path d="M23.396 20.01v14.463h-.678V21.19a6.733 6.733 0 0 0-6.727-6.727c-3.703 0-6.728 3.024-6.728 6.727v13.282h-.678V20.009a7.412 7.412 0 0 1 7.406-7.405 7.412 7.412 0 0 1 7.405 7.405Z"/>
+            <path d="M20.72 21.521V31.97h-.679v-9.526a4.055 4.055 0 0 0-4.05-4.05 4.043 4.043 0 0 0-4.05 4.05v9.526h-.679V21.521a4.733 4.733 0 0 1 4.729-4.728c2.608 0 4.711 2.12 4.711 4.729h.017Z"/>
+            <path d="M18.025 23.034v6.415h-.678v-5.772c0-.747-.608-1.356-1.356-1.356-.747 0-1.356.609-1.356 1.356v5.772h-.678v-6.415c0-1.13.922-2.034 2.034-2.034 1.113 0 2.034.921 2.034 2.034Z"/>
+          </g>
+            <defs>
+              <clipPath id="a"><rect width="30.9263" height="42" fill="white" transform="translate(0.536621)"/></clipPath>
+            </defs>
         </svg>
       ),
       customStyle: "group-hover:text-[#FF5CAA]"
@@ -52,31 +54,7 @@ const SocialNetworks = () => {
       name: 'Multifirma',
       url: 'https://app.safe.global/home?safe=avax:0x52110a2Cc8B6bBf846101265edAAe34E753f3389',
       icon: (
-        <svg 
-          viewBox="0 0 24 24" 
-          className="w-6 h-6" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            d="M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z" 
-            stroke="currentColor" 
-            strokeWidth="2"
-          />
-          <path 
-            d="M15 8H9C7.89543 8 7 8.89543 7 10V14C7 15.1046 7.89543 16 9 16H15C16.1046 16 17 15.1046 17 14V10C17 8.89543 16.1046 8 15 8Z" 
-            stroke="currentColor" 
-            strokeWidth="2"
-          />
-          <path 
-            d="M12 12C12.5523 12 13 11.5523 13 11C13 10.4477 12.5523 10 12 10C11.4477 10 11 10.4477 11 11C11 11.5523 11.4477 12 12 12Z" 
-            fill="currentColor"
-          />
-          <path 
-            d="M12 14C11.4477 14 11 13.5523 11 13V12H13V13C13 13.5523 12.5523 14 12 14Z" 
-            fill="currentColor"
-          />
-        </svg>
+        <img src={multifirma} alt="Multifirma Icon" className="w-6 h-6" />
       ),
       customStyle: "group-hover:text-emerald-400"
     },
@@ -84,23 +62,7 @@ const SocialNetworks = () => {
       name: 'Liquidity Pool UVT/Avax',
       url: 'https://lfj.gg/avalanche/pool/v22/0x281027c6a46142d6fc57f12665147221ce69af33/AVAX/100',
       icon: (
-        <svg 
-          viewBox="0 0 24 24" 
-          className="w-6 h-6" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            d="M12 4C7 4 2.73 7.11 1 11.5C2.73 15.89 7 19 12 19C17 19 21.27 15.89 23 11.5C21.27 7.11 17 4 12 4ZM12 16.5C9.24 16.5 7 14.26 7 11.5C7 8.74 9.24 6.5 12 6.5C14.76 6.5 17 8.74 17 11.5C17 14.26 14.76 16.5 12 16.5ZM12 8.5C10.34 8.5 9 9.84 9 11.5C9 13.16 10.34 14.5 12 14.5C13.66 14.5 15 13.16 15 11.5C15 9.84 13.66 8.5 12 8.5Z" 
-            fill="currentColor"
-          />
-          <path
-            d="M3 19L21 3M3 3L21 19"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-        </svg>
+        <img src={liquidityPool} alt="Liquidity Pool Icon" className="w-6 h-6" />
       ),
       customStyle: "group-hover:text-blue-400"
     },
@@ -108,33 +70,7 @@ const SocialNetworks = () => {
       name: 'Swap Token',
       url: 'https://lfj.gg/avalanche/swap?outputCurrency=AVAX&inputCurrency=0x281027C6a46142D6FC57f12665147221CE69Af33',
       icon: (
-        <svg 
-          viewBox="0 0 24 24" 
-          className="w-6 h-6" 
-          fill="none" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            d="M7 10L3 14L7 18" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          />
-          <path 
-            d="M17 14L21 10L17 6" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round" 
-            strokeLinejoin="round"
-          />
-          <path 
-            d="M3 14H21" 
-            stroke="currentColor" 
-            strokeWidth="2" 
-            strokeLinecap="round"
-          />
-        </svg>
+        <img src={swapToken} alt="SwapToken Icon" className="w-6 h-6" />
       ),
       customStyle: "group-hover:text-purple-400"
     }
