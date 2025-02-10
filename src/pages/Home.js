@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { UserGroupIcon, CurrencyDollarIcon, QuestionMarkCircleIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, DocumentMagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { UserGroupIcon, CurrencyDollarIcon, QuestionMarkCircleIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, DocumentMagnifyingGlassIcon, GiftIcon } from '@heroicons/react/24/outline';
 import ApplicationForm from './ApplicationForm';
 import { useTranslation } from 'react-i18next';
 
@@ -27,9 +27,9 @@ const Home = () => {
       buttonText: "Ver Token"
     },
     {
-      title: "Por definir",
-      description: "Próximamente nuevas características y beneficios para nuestra comunidad.",
-      icon: QuestionMarkCircleIcon,
+      title: "Sorteos Periódicos",
+      description: "Participa en nuestros sorteos exclusivos para holders de UVT y miembros de la comunidad.",
+      icon: GiftIcon,
       isComingSoon: true
     }
   ];
