@@ -1,40 +1,43 @@
 {
   "home": {
-    "title": "Bienvenido a UltraVioleta DAO",
-    "subtitle": "La élite de Web3 en Latinoamérica, empoderando e iluminando el camino de comunidades online hacia un nuevo sistema financiero inclusivo, donde todos puedan participar y prosperar.",
-    "buttons": {
-      "apply": "Aplicar Ahora",
-      "checkStatus": "Verificar Estado"
-    }
+    "title": "Ultravioleta DAO",
+    "subtitle": "La comunidad Web3 más activa de Latinoamérica"
+  },
+  "auth": {
+    "register": "Registrarse",
+    "register_en": "Sign up",
+    "login": "Iniciar Sesión",
+    "login_en": "Login"
   },
   "features": {
     "community": {
       "title": "Comunidad Activa",
-      "description": "Somos una de las comunidades más activas de Web3 en Latinoamérica.",
+      "description": "Somos una de las comunidades más activas de Web3 en Latinoamérica",
       "button": "Conócenos"
     },
     "token": {
       "title": "$UVT: nuestro token de gobernanza",
-      "description": "Participa en el crecimiento y la toma de decisiones con nuestro token de gobernanza UVT.",
+      "description": "Participa en el crecimiento y la toma de decisiones con nuestro token de gobernanza UVT",
       "button": "Ver Token"
     },
-    "comingSoon": {
-      "title": "Por definir",
-      "description": "Próximamente nuevas características y beneficios para nuestra comunidad."
+    "raffles": {
+      "title": "Sorteos Periódicos",
+      "description": "Participa en nuestros sorteos exclusivos para holders de UVT y miembros de la comunidad"
     }
   },
   "benefits": {
-    "privateGroup": {
+    "title": "Beneficios de Unirte",
+    "experts": {
       "title": "Grupo privado de expertos",
-      "description": "Acceso a un grupo privado en Telegram con expertos en múltiples áreas."
+      "description": "Acceso a un grupo privado en Telegram con expertos en múltiples áreas"
     },
     "networking": {
       "title": "Nuevas relaciones y oportunidades",
-      "description": "Conoce y colabora con líderes y desarrolladores clave del ecosistema Web3."
+      "description": "Conoce y colabora con líderes y desarrolladores clave del ecosistema Web3"
     },
     "alphas": {
       "title": "Los mejores alphas",
-      "description": "Obtén acceso exclusivo a información y oportunidades estratégicas en Web3."
+      "description": "Obtén acceso exclusivo a información y oportunidades estratégicas en Web3"
     }
   },
   "form": {

@@ -1,40 +1,41 @@
 {
   "home": {
-    "title": "Welcome to UltraVioleta DAO",
-    "subtitle": "The Web3 elite in Latin America, empowering and illuminating the path of online communities towards a new inclusive financial system, where everyone can participate and thrive.",
-    "buttons": {
-      "apply": "Apply Now",
-      "checkStatus": "Check Status"
-    }
+    "title": "Ultravioleta DAO",
+    "subtitle": "The most active Web3 community in Latin America"
+  },
+  "auth": {
+    "register": "Sign up",
+    "login": "Login"
   },
   "features": {
     "community": {
       "title": "Active Community",
-      "description": "We are one of the most active Web3 communities in Latin America.",
-      "button": "Meet Us"
+      "description": "We are one of the most active Web3 communities in Latin America",
+      "button": "Join Us"
     },
     "token": {
       "title": "$UVT: our governance token",
-      "description": "Participate in growth and decision-making with our UVT governance token.",
+      "description": "Participate in growth and decision-making with our UVT governance token",
       "button": "View Token"
     },
-    "comingSoon": {
-      "title": "To be defined",
-      "description": "New features and benefits for our community coming soon."
+    "raffles": {
+      "title": "Periodic Raffles",
+      "description": "Participate in our exclusive raffles for UVT holders and community members"
     }
   },
   "benefits": {
-    "privateGroup": {
+    "title": "Benefits of Joining",
+    "experts": {
       "title": "Private Expert Group",
-      "description": "Access to a private Telegram group with experts in multiple areas."
+      "description": "Access to a private Telegram group with experts in multiple areas"
     },
     "networking": {
       "title": "New Relationships and Opportunities",
-      "description": "Meet and collaborate with key leaders and developers in the Web3 ecosystem."
+      "description": "Meet and collaborate with key leaders and developers in the Web3 ecosystem"
     },
     "alphas": {
       "title": "Best Alphas",
-      "description": "Get exclusive access to strategic information and opportunities in Web3."
+      "description": "Get exclusive access to strategic information and opportunities in Web3"
     }
   },
   "form": {
