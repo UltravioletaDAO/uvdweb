@@ -5,6 +5,7 @@ import ApplicationForm from './pages/ApplicationForm';
 import SocialNetworks from './pages/SocialNetworks';
 import ApplicationStatus from './pages/ApplicationStatus';
 import HamburgerMenu from './components/HamburgerMenu';
+import Courses from './pages/Courses';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/aplicar" element={<ApplicationForm />} />
           <Route path="/links" element={<SocialNetworks />} />
           <Route path="/status" element={<ApplicationStatus />} />
+          <Route path="/courses" element={<Courses />} />
         </Routes>
       </div>
     </Router>

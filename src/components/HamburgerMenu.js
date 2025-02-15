@@ -5,7 +5,8 @@ import {
   Bars3Icon, 
   XMarkIcon, 
   HomeIcon,
-  LinkIcon
+  LinkIcon,
+  AcademicCapIcon
 } from '@heroicons/react/24/outline';
 
 const HamburgerMenu = () => {
@@ -38,6 +39,12 @@ const HamburgerMenu = () => {
       name: 'Links',
       icon: LinkIcon,
       path: '/links',
+      isExternal: false
+    },
+    {
+      name: 'Cursos',
+      icon: AcademicCapIcon,
+      path: '/courses',
       isExternal: false
     }
   ];
