@@ -2,9 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import CourseCard from "../components/CourseCard";
+import { useEffect, useState } from "react";
+import { getCourses } from "../services/courses/Courses";
 
 const Courses = () => {
   const navigate = useNavigate();
+  const [courses, setCourses] = useState([]);
 
   const handleReturn = () => {
     // Animamos la salida usando framer-motion
@@ -12,18 +15,9 @@ const Courses = () => {
     navigate("/", { replace: true });
   };
 
-  const courses = [
-    {
-      title: "COMO CREAR UNA BILLETERA PARA CRIPTOMONEDAS",
-      description:
-        "Crear una billetera para criptomonedas implica desarrollar una aplicación que permita a los usuarios almacenar, enviar y recibir activos digitales de manera segura.",
-      link: "https://youtu.be/5eW5D9BteEs?si=kiHcWBjFgNHkbeIe",
-      category: ["youtube"],
-      thumbnail: getYoutubeThumbnail(
-        "https://youtu.be/5eW5D9BteEs?si=kiHcWBjFgNHkbeIe"
-      ),
-    },
-  ];
+  useEffect(() => {
+    getCourses().then(setCourses);
+  }, []);
 
   return (
     <motion.div
@@ -56,7 +50,10 @@ const Courses = () => {
 
       <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {courses.map((course, index) => (
-          <CourseCard key={index} course={course} />
+          <CourseCard
+            key={index}
+            course={{ thumbnail: getYoutubeThumbnail(course.link), ...course }}
+          />
         ))}
       </motion.div>
     </motion.div>
