@@ -39,7 +39,7 @@ const CourseCard = ({ course }) => {
           className="inline-block px-4 py-2 bg-ultraviolet-darker text-text-primary rounded-lg
               hover:bg-ultraviolet-dark transition-colors duration-200 w-full text-center"
         >
-          Ver curso
+          Ver video
         </a>
       </div>
     </motion.div>
