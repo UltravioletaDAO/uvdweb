@@ -5,7 +5,8 @@ import {
   Bars3Icon, 
   XMarkIcon, 
   HomeIcon,
-  LinkIcon
+  LinkIcon,
+  AcademicCapIcon
 } from '@heroicons/react/24/outline';
 
 const HamburgerMenu = () => {
@@ -33,15 +34,19 @@ const HamburgerMenu = () => {
       path: 'https://snapshot.org/#/s:ultravioletadao.eth',
       isExternal: true,
       customStyle: 'text-[#FFAC33] group-hover:text-[#FFB74D]'
-    }
-    // Comentamos temporalmente el enlace a links
-    /*,
+    },
     {
       name: 'Links',
       icon: LinkIcon,
       path: '/links',
       isExternal: false
-    }*/
+    },
+    {
+      name: 'Cursos',
+      icon: AcademicCapIcon,
+      path: '/courses',
+      isExternal: false
+    }
   ];
 
   const menuVariants = {
