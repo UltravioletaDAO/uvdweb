@@ -6,6 +6,7 @@ import SocialNetworks from "./pages/SocialNetworks";
 import ApplicationStatus from "./pages/ApplicationStatus";
 import HamburgerMenu from "./components/HamburgerMenu";
 import Purge from "./pages/Purge";
+import Courses from "./pages/Courses";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/aplicar" element={<ApplicationForm />} />
           <Route path="/links" element={<SocialNetworks />} />
           <Route path="/status" element={<ApplicationStatus />} />
+          <Route path="/courses" element={<Courses />} />
           <Route path="/purge" element={<Purge />} />
         </Routes>
       </div>
