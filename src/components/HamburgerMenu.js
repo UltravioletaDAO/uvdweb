@@ -5,7 +5,8 @@ import {
   Bars3Icon, 
   XMarkIcon, 
   HomeIcon,
-  LinkIcon
+  LinkIcon,
+  UserMinusIcon
 } from '@heroicons/react/24/outline';
 
 const HamburgerMenu = () => {
@@ -39,7 +40,13 @@ const HamburgerMenu = () => {
       icon: LinkIcon,
       path: '/links',
       isExternal: false
-    }
+    },
+    {
+      name: "Purga",
+      icon: UserMinusIcon,
+      path: "/purge",
+      isExternal: false,
+    },
   ];
 
   const menuVariants = {
