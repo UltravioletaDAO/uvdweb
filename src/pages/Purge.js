@@ -12,7 +12,7 @@ const Purge = () => {
     navigate("/", { replace: true });
   };
 
-  const headers = ["Nombre", "Billetera", "Balance actual", "Estado", "Razon"];
+  const headers = ["Username", "Billetera", "Balance actual", "Estado", "Razon"];
 
   useEffect(() => {
     getInactiveUsers().then(setInactiveUsers);
@@ -69,7 +69,7 @@ const Purge = () => {
                 key={index}
                 className="transition hover:bg-[rgb(90_0_204_/1)] hover:shadow text-left"
               >
-                <td className="p-3 border">{item.nombre}</td>
+                <td className="p-3 border">{item.username}</td>
                 <td className="p-3 border w-[200px]">{item.wallet}</td>
                 <td className="p-3 border max-w-xs whitespace-pre-wrap break-words">
                   {item.current}
