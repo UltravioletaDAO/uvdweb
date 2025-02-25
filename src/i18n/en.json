@@ -5,7 +5,16 @@
   },
   "auth": {
     "register": "Sign up",
-    "login": "Login"
+    "register_en": "Sign up",
+    "login": "Login",
+    "login_en": "Login"
+  },
+  "navigation": {
+    "home": "Home",
+    "snapshot": "Snapshot",
+    "links": "Links",
+    "courses": "Courses",
+    "purge": "Purge"
   },
   "features": {
     "community": {
@@ -41,15 +50,81 @@
   "form": {
     "title": "Application Form",
     "subtitle": "Join our community and be part of the Web3 future",
+    "optional": "optional",
     "steps": {
       "personal": "Personal Information",
       "social": "Social Networks",
       "experience": "Experience and Wallet"
     },
+    "fields": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "twitter": "Twitter",
+      "telegram": "Telegram",
+      "twitch": "Twitch (optional)",
+      "walletAddress": "Wallet Address",
+      "experience": "Previous Experience and Why You Should Be Accepted",
+      "references": "References (optional)"
+    },
+    "placeholders": {
+      "fullName": "Your full name",
+      "email": "example@email.com",
+      "twitter": "@username",
+      "telegram": "@username",
+      "twitch": "username",
+      "walletAddress": "0x...",
+      "experience": "Tell us about your experience and why you want to join...",
+      "references": "Did someone recommend you?"
+    },
+    "validation": {
+      "email_required": "Email is required",
+      "email_format": "Email must have a valid format",
+      "social_required": "{{social}} username is required",
+      "social_format": "{{social}} username must start with @",
+      "wallet_required": "Wallet address is required",
+      "wallet_format": "Wallet address must be valid",
+      "experience_required": "Experience is required",
+      "experience_length": "Minimum 55 characters (current: {{current}})"
+    },
     "buttons": {
       "next": "Next",
       "prev": "Previous",
-      "submit": "Submit Application"
+      "submit": "Submit Application",
+      "submitting": "Submitting..."
+    },
+    "errors": {
+      "api_url_missing": "Server URL is not configured",
+      "endpoint_not_found": "Server endpoint not found",
+      "server_error": "Internal server error",
+      "data_error": "Error in the submitted data",
+      "unexpected_response": "Unexpected server response",
+      "processing_error": "Error processing the request",
+      "submit_error": "Error submitting the form. ",
+      "network_error": "Network connection error. Please check your internet connection."
+    }
+  },
+  "success": {
+    "title": "Application Submitted Successfully!",
+    "message": "Your application has been received and is under review.",
+    "waitlist": "If the application process is complete, you will be placed on our priority waitlist for future opportunities.",
+    "thanks": "Thank you for your interest in joining our community!",
+    "back_home": "Back to Home",
+    "check_status": "Check Application Status"
+  },
+  "courses": {
+    "title": "Our Courses"
+  },
+  "links": {
+    "title": "Our Links"
+  },
+  "purge": {
+    "title": "Purge",
+    "headers": {
+      "username": "Username",
+      "wallet": "Wallet",
+      "balance": "Current Balance",
+      "status": "Status",
+      "reason": "Reason"
     }
   },
   "status": {

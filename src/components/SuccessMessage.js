@@ -2,9 +2,11 @@ import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const SuccessMessage = ({ onClose }) => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleReturn = () => {
     // Primero cerramos el modal
@@ -47,7 +49,7 @@ const SuccessMessage = ({ onClose }) => {
             className="text-3xl font-bold text-text-primary text-center
               [text-shadow:_0_0_10px_rgba(106,0,255,0.2)]"
           >
-            ¡Solicitud enviada con éxito!
+            {t('success.title')}
           </motion.h1>
           
           <motion.div 
@@ -57,14 +59,13 @@ const SuccessMessage = ({ onClose }) => {
             className="space-y-4 text-center"
           >
             <p className="text-text-primary text-lg">
-              Tu solicitud ha sido recibida y está en proceso de revisión.
+              {t('success.message')}
             </p>
             <p className="text-text-secondary">
-              Si el proceso de aplicación está completo, serás colocado en nuestra 
-              lista de espera con prioridad para futuras oportunidades.
+              {t('success.waitlist')}
             </p>
             <p className="text-ultraviolet font-medium">
-              ¡Gracias por tu interés en formar parte de nuestra comunidad!
+              {t('success.thanks')}
             </p>
           </motion.div>
 
@@ -80,13 +81,13 @@ const SuccessMessage = ({ onClose }) => {
                 hover:bg-ultraviolet-dark transition-all duration-200
                 shadow-lg shadow-ultraviolet-darker/20"
             >
-              Volver al inicio
+              {t('success.back_home')}
             </Link>
             <Link
               to="/status"
               className="text-ultraviolet hover:text-ultraviolet-light transition-colors duration-200"
             >
-              Verificar estado de mi aplicación
+              {t('success.check_status')}
             </Link>
           </motion.div>
         </div>

@@ -9,6 +9,13 @@
     "login": "Iniciar Sesión",
     "login_en": "Login"
   },
+  "navigation": {
+    "home": "Inicio",
+    "snapshot": "Snapshot",
+    "links": "Links",
+    "courses": "Cursos",
+    "purge": "Purga"
+  },
   "features": {
     "community": {
       "title": "Comunidad Activa",
@@ -43,15 +50,81 @@
   "form": {
     "title": "Formulario de Postulación",
     "subtitle": "Únete a nuestra comunidad y sé parte del futuro de Web3",
+    "optional": "opcional",
     "steps": {
       "personal": "Datos Personales",
       "social": "Redes Sociales",
       "experience": "Experiencia y Wallet"
     },
+    "fields": {
+      "fullName": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "twitter": "Twitter",
+      "telegram": "Telegram",
+      "twitch": "Twitch (opcional)",
+      "walletAddress": "Dirección de Wallet",
+      "experience": "Experiencia Previa y ¿Por qué deberías ser aceptado?",
+      "references": "Referencias (opcional)"
+    },
+    "placeholders": {
+      "fullName": "Tu nombre completo",
+      "email": "ejemplo@correo.com",
+      "twitter": "@usuario",
+      "telegram": "@usuario",
+      "twitch": "usuario",
+      "walletAddress": "0x...",
+      "experience": "Cuéntanos sobre tu experiencia y por qué quieres unirte...",
+      "references": "¿Alguien te recomendó?"
+    },
+    "validation": {
+      "email_required": "El email es requerido",
+      "email_format": "El email debe tener un formato válido",
+      "social_required": "El usuario de {{social}} es requerido",
+      "social_format": "El usuario de {{social}} debe comenzar con @",
+      "wallet_required": "La dirección de wallet es requerida",
+      "wallet_format": "La dirección de wallet debe ser válida",
+      "experience_required": "La experiencia es requerida",
+      "experience_length": "Mínimo 55 caracteres (actual: {{current}})"
+    },
     "buttons": {
       "next": "Siguiente",
       "prev": "Anterior",
-      "submit": "Enviar Aplicación"
+      "submit": "Enviar Aplicación",
+      "submitting": "Enviando..."
+    },
+    "errors": {
+      "api_url_missing": "La URL del servidor no está configurada",
+      "endpoint_not_found": "No se encontró el endpoint del servidor",
+      "server_error": "Error interno del servidor",
+      "data_error": "Error en los datos enviados",
+      "unexpected_response": "Respuesta inesperada del servidor",
+      "processing_error": "Error al procesar la solicitud",
+      "submit_error": "Error al enviar el formulario. ",
+      "network_error": "Error de conexión de red. Por favor, verifica tu conexión a internet."
+    }
+  },
+  "success": {
+    "title": "¡Solicitud enviada con éxito!",
+    "message": "Tu solicitud ha sido recibida y está en proceso de revisión.",
+    "waitlist": "Si el proceso de aplicación está completo, serás colocado en nuestra lista de espera con prioridad para futuras oportunidades.",
+    "thanks": "¡Gracias por tu interés en formar parte de nuestra comunidad!",
+    "back_home": "Volver al inicio",
+    "check_status": "Verificar estado de mi aplicación"
+  },
+  "courses": {
+    "title": "Nuestros Cursos"
+  },
+  "links": {
+    "title": "Nuestros Links"
+  },
+  "purge": {
+    "title": "Purga",
+    "headers": {
+      "username": "Username",
+      "wallet": "Billetera",
+      "balance": "Balance actual",
+      "status": "Estado",
+      "reason": "Razón"
     }
   },
   "status": {

@@ -7,9 +7,11 @@ import {
 import multifirma from '../assets/icons/multifirma.svg';
 import swapToken from '../assets/icons/swapToken.svg';
 import liquidityPool from '../assets/icons/liquidityPool.svg';
+import { useTranslation } from 'react-i18next';
 
 const SocialNetworks = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleReturn = () => {
     // Animamos la salida usando framer-motion
@@ -93,7 +95,7 @@ const SocialNetworks = () => {
           whileTap={{ scale: 0.95 }}
         >
           <ArrowLeftIcon className="w-5 h-5" />
-          <span>Volver al inicio</span>
+          <span>{t('success.back_home')}</span>
         </motion.button>
 
         <motion.h1
@@ -103,7 +105,7 @@ const SocialNetworks = () => {
           className="text-4xl font-bold text-text-primary mb-8
             text-center"
         >
-          Nuestros Links
+          {t('links.title')}
         </motion.h1>
 
         <div className="space-y-4">

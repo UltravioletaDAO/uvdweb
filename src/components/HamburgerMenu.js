@@ -9,19 +9,21 @@ import {
   AcademicCapIcon,
   UserMinusIcon,
 } from "@heroicons/react/24/outline";
+import { useTranslation } from "react-i18next";
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useTranslation();
 
   const menuItems = [
     {
-      name: "Inicio",
+      name: t('navigation.home'),
       icon: HomeIcon,
       path: "/",
       isExternal: false,
     },
     {
-      name: "Snapshot",
+      name: t('navigation.snapshot'),
       icon: () => (
         <svg
           width="20"
@@ -37,19 +39,19 @@ const HamburgerMenu = () => {
       customStyle: "text-[#FFAC33] group-hover:text-[#FFB74D]",
     },
     {
-      name: "Links",
+      name: t('navigation.links'),
       icon: LinkIcon,
       path: "/links",
       isExternal: false,
     },
     {
-      name: "Cursos",
+      name: t('navigation.courses'),
       icon: AcademicCapIcon,
       path: "/courses",
       isExternal: false,
     },
     {
-      name: "Purga",
+      name: t('navigation.purge'),
       icon: UserMinusIcon,
       path: "/purge",
       isExternal: false,

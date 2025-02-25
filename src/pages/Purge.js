@@ -3,16 +3,24 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getInactiveUsers } from "../services/purge/Purge";
+import { useTranslation } from "react-i18next";
 
 const Purge = () => {
   const navigate = useNavigate();
   const [inactiveUsers, setInactiveUsers] = useState([]);
+  const { t } = useTranslation();
 
   const handleReturn = () => {
     navigate("/", { replace: true });
   };
 
-  const headers = ["Username", "Billetera", "Balance actual", "Estado", "Razon"];
+  const headers = [
+    t('purge.headers.username'),
+    t('purge.headers.wallet'),
+    t('purge.headers.balance'),
+    t('purge.headers.status'),
+    t('purge.headers.reason')
+  ];
 
   useEffect(() => {
     getInactiveUsers().then(setInactiveUsers);
@@ -34,7 +42,7 @@ const Purge = () => {
         whileTap={{ scale: 0.95 }}
       >
         <ArrowLeftIcon className="w-5 h-5" />
-        <span>Volver al inicio</span>
+        <span>{t('success.back_home')}</span>
       </motion.button>
 
       <motion.h1
@@ -44,7 +52,7 @@ const Purge = () => {
         className="text-4xl font-bold text-text-primary mb-8
 									text-center"
       >
-        Purga
+        {t('purge.title')}
       </motion.h1>
 
       <div className="overflow-x-auto">

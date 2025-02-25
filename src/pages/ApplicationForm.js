@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Modal from '../components/Modal';
 import FormField from '../components/FormField';
 import SuccessMessage from '../components/SuccessMessage';
+import { useTranslation } from 'react-i18next';
 
 const ApplicationForm = ({ isOpen, onClose }) => {
   // Estado para manejar los pasos del formulario
@@ -22,6 +23,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState(null);
+  const { t } = useTranslation();
 
   // Variantes de animación para los pasos
   const pageVariants = {
@@ -81,34 +83,34 @@ const ApplicationForm = ({ isOpen, onClose }) => {
     switch (name) {
       case 'email':
         if (!value) {
-          error = 'El email es requerido';
+          error = t('form.validation.email_required');
         } else if (!/\S+@\S+\.\S+/.test(value)) {
-          error = 'El email debe tener un formato válido';
+          error = t('form.validation.email_format');
         }
         break;
       
       case 'twitter':
       case 'telegram':
         if (!value) {
-          error = `El usuario de ${name} es requerido`;
+          error = t('form.validation.social_required', { social: name });
         } else if (!value.startsWith('@')) {
-          error = `El usuario de ${name} debe comenzar con @`;
+          error = t('form.validation.social_format', { social: name });
         }
         break;
       
       case 'walletAddress':
         if (!value) {
-          error = 'La dirección de wallet es requerida';
+          error = t('form.validation.wallet_required');
         } else if (!/^0x[a-fA-F0-9]{40}$/.test(value)) {
-          error = 'La dirección de wallet debe ser válida';
+          error = t('form.validation.wallet_format');
         }
         break;
       
       case 'experience':
         if (!value.trim()) {
-          error = 'La experiencia es requerida';
+          error = t('form.validation.experience_required');
         } else if (value.length < 55) {
-          error = `Mínimo 55 caracteres (actual: ${value.length})`;
+          error = t('form.validation.experience_length', { current: value.length });
         }
         break;
       
@@ -181,7 +183,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
       // Verificar que la URL del API esté configurada
       const apiUrl = process.env.REACT_APP_API_URL;
       if (!apiUrl) {
-        throw new Error('La URL del servidor no está configurada');
+        throw new Error(t('form.errors.api_url_missing'));
       }
 
       console.log('Enviando datos al servidor:', `${apiUrl}/apply`); // Debug
@@ -205,14 +207,14 @@ const ApplicationForm = ({ isOpen, onClose }) => {
       // Manejar errores HTTP
       if (!response.ok) {
         if (response.status === 404) {
-          throw new Error('No se encontró el endpoint del servidor');
+          throw new Error(t('form.errors.endpoint_not_found'));
         }
         if (response.status === 500) {
-          throw new Error('Error interno del servidor');
+          throw new Error(t('form.errors.server_error'));
         }
         if (response.status === 400) {
           const data = await response.json();
-          throw new Error(data.message || 'Error en los datos enviados');
+          throw new Error(data.message || t('form.errors.data_error'));
         }
       }
 
@@ -220,7 +222,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
       const contentType = response.headers.get("content-type");
       if (!contentType || !contentType.includes("application/json")) {
         console.error('Tipo de contenido inesperado:', contentType); // Debug
-        throw new Error('Respuesta inesperada del servidor');
+        throw new Error(t('form.errors.unexpected_response'));
       }
 
       const data = await response.json();
@@ -239,66 +241,58 @@ const ApplicationForm = ({ isOpen, onClose }) => {
         });
         setCurrentStep(1);
       } else {
-        throw new Error(data.message || 'Error al procesar la solicitud');
+        throw new Error(data.message || t('form.errors.processing_error'));
       }
       
     } catch (error) {
       console.error('Error detallado:', error); // Debug
 
       // Mensajes de error más específicos
-      let errorMessage = 'Error al enviar el formulario. ';
+      let errorMessage = t('form.errors.submit_error');
       
-      if (!navigator.onLine) {
-        errorMessage = 'No hay conexión a internet. Por favor, verifica tu conexión.';
-      } else if (error.message.includes('Failed to fetch')) {
-        errorMessage = 'No se pudo conectar con el servidor. Verifica que el servidor esté en funcionamiento.';
-      } else if (error.message === 'La URL del servidor no está configurada') {
-        errorMessage = 'Error de configuración del servidor. Contacta al administrador.';
+      // Errores de red
+      if (error.message === 'Failed to fetch') {
+        errorMessage += t('form.errors.network_error');
       } else {
         errorMessage += error.message;
       }
-
+      
       setSubmitError(errorMessage);
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  // Renderizado del botón de envío
+  // Renderizado del botón de envío con estado de carga
   const renderSubmitButton = () => (
-    <motion.button
+    <button
       type="submit"
       disabled={isSubmitting}
-      className={`w-full py-3 px-6 rounded-lg text-white font-medium
-        transition-all duration-200 ${
-          isSubmitting 
-            ? 'bg-ultraviolet-darker/50 cursor-not-allowed'
-            : 'bg-ultraviolet hover:bg-ultraviolet-darker'
+      className={`w-full py-3 rounded-lg font-semibold text-white transition-all duration-300
+        ${isSubmitting 
+          ? 'bg-ultraviolet-dark cursor-not-allowed' 
+          : 'bg-ultraviolet-darker hover:bg-ultraviolet-dark'
         }`}
-      whileHover={!isSubmitting ? { scale: 1.02 } : {}}
-      whileTap={!isSubmitting ? { scale: 0.98 } : {}}
     >
       {isSubmitting ? (
         <div className="flex items-center justify-center">
-          <div className="w-5 h-5 border-2 border-white/30 border-t-white
-            rounded-full animate-spin mr-2" />
-          Enviando...
+          <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+          </svg>
+          {t('form.buttons.submitting')}
         </div>
       ) : (
-        'Enviar solicitud'
+        t('form.buttons.submit')
       )}
-    </motion.button>
+    </button>
   );
 
-  // Mensaje de error del envío
+  // Renderizado del mensaje de error
   const renderSubmitError = () => submitError && (
-    <motion.div
-      initial={{ opacity: 0, y: -10 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="text-red-500 text-sm mt-2 text-center"
-    >
-      {submitError}
-    </motion.div>
+    <div className="mt-4 p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-500 text-sm">
+      <p>{submitError}</p>
+    </div>
   );
 
   // Efecto para manejar el scroll del body
@@ -331,235 +325,177 @@ const ApplicationForm = ({ isOpen, onClose }) => {
     };
   }, [isOpen]);
 
-  // Renderizado condicional basado en el estado de éxito
-  if (showSuccess) {
-    return (
-      <Modal isOpen={isOpen} onClose={onClose}>
-        <SuccessMessage onClose={onClose} />
-      </Modal>
-    );
-  }
-
-  // Renderizado del paso actual con animaciones
+  // Renderizado del contenido del formulario según el paso actual
   const renderStep = () => (
     <AnimatePresence mode="wait">
       <motion.div
         key={currentStep}
-        variants={pageVariants}
         initial="initial"
         animate="animate"
         exit="exit"
+        variants={pageVariants}
         transition={{ duration: 0.3 }}
-        className="space-y-6"
+        className="w-full"
       >
         {currentStep === 1 && (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-text-primary mb-6">Datos Personales</h2>
-            
-            <FormField
-              label="Nombre Completo"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.fullName}
-              touched={touched.fullName}
-              placeholder="Tu nombre completo"
-            />
-
-            <FormField
-              label="Correo Electrónico"
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.email}
-              touched={touched.email}
-              required
-              placeholder="ejemplo@correo.com"
-            />
-          </div>
-        )}
-
-        {currentStep === 2 && (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-text-primary mb-6">Redes Sociales</h2>
-            
-            <FormField
-              label="Twitter"
-              name="twitter"
-              value={formData.twitter}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.twitter}
-              touched={touched.twitter}
-              required
-              placeholder="@usuario"
-            />
-
-            <FormField
-              label="Telegram"
-              name="telegram"
-              value={formData.telegram}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.telegram}
-              touched={touched.telegram}
-              required
-              placeholder="@usuario"
-            />
-
-            <FormField
-              label="Twitch (opcional)"
-              name="twitch"
-              value={formData.twitch}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.twitch}
-              touched={touched.twitch}
-              placeholder="usuario"
-            />
-          </div>
-        )}
-
-        {currentStep === 3 && (
-          <div className="space-y-6">
-            <h2 className="text-2xl font-semibold text-text-primary mb-6">Experiencia y Wallet</h2>
-            
-            <FormField
-              label="Dirección de Wallet"
-              name="walletAddress"
-              value={formData.walletAddress}
-              onChange={handleChange}
-              onBlur={handleBlur}
-              error={errors.walletAddress}
-              touched={touched.walletAddress}
-              required
-              placeholder="0x..."
-            />
-
-            <div className="space-y-1">
-              <label htmlFor="experience" className="block text-sm font-medium text-text-primary">
-                Experiencia Previa y ¿Por qué deberías ser aceptado? <span className="text-error">*</span>
-              </label>
-              <div className="relative">
-                <textarea
-                  id="experience"
-                  name="experience"
-                  value={formData.experience}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  rows="4"
-                  className={`
-                    w-full px-4 py-3 bg-background-input border rounded-lg
-                    focus:ring-2 focus:ring-ultraviolet focus:border-transparent
-                    ${errors.experience ? 'border-error' : 'border-ultraviolet-darker'}
-                    text-text-primary placeholder-text-secondary
-                    resize-none
-                  `}
-                  placeholder="Cuéntanos sobre tu experiencia y por qué quieres unirte..."
-                  required
-                />
-              </div>
-              {(errors.experience || (formData.experience && formData.experience.length < 55)) && (
-                <p className="text-sm text-error mt-1">
-                  {errors.experience || `Mínimo 55 caracteres (actual: ${formData.experience.length})`}
-                </p>
-              )}
-            </div>
-
-            <div className="space-y-1">
-              <label htmlFor="references" className="block text-sm font-medium text-text-primary">
-                Referencias <span className="text-text-secondary">(opcional)</span>
-              </label>
-              <textarea
-                id="references"
-                name="references"
-                value={formData.references}
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-text-primary">
+              {t('form.steps.personal')}
+            </h3>
+            <div className="space-y-4">
+              <FormField
+                label={t('form.fields.fullName')}
+                name="fullName"
+                type="text"
+                value={formData.fullName}
                 onChange={handleChange}
-                rows="3"
-                className={`
-                  w-full px-4 py-3 bg-background-input border rounded-lg
-                  focus:ring-2 focus:ring-ultraviolet focus:border-transparent
-                  border-ultraviolet-darker
-                  text-text-primary placeholder-text-secondary
-                  resize-none
-                `}
-                placeholder="¿Alguien te recomendó?"
+                onBlur={handleBlur}
+                error={touched.fullName && errors.fullName}
+                placeholder={t('form.placeholders.fullName')}
+              />
+              <FormField
+                label={t('form.fields.email')}
+                name="email"
+                type="email"
+                value={formData.email}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.email && errors.email}
+                placeholder={t('form.placeholders.email')}
               />
             </div>
           </div>
         )}
+
+        {currentStep === 2 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-text-primary">
+              {t('form.steps.social')}
+            </h3>
+            <div className="space-y-4">
+              <FormField
+                label={t('form.fields.twitter')}
+                name="twitter"
+                type="text"
+                value={formData.twitter}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.twitter && errors.twitter}
+                placeholder={t('form.placeholders.twitter')}
+              />
+              <FormField
+                label={t('form.fields.telegram')}
+                name="telegram"
+                type="text"
+                value={formData.telegram}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.telegram && errors.telegram}
+                placeholder={t('form.placeholders.telegram')}
+              />
+              <FormField
+                label={t('form.fields.twitch')}
+                name="twitch"
+                type="text"
+                value={formData.twitch}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.twitch && errors.twitch}
+                placeholder={t('form.placeholders.twitch')}
+                optional={true}
+              />
+            </div>
+          </div>
+        )}
+
+        {currentStep === 3 && (
+          <div>
+            <h3 className="text-xl font-semibold mb-6 text-text-primary">
+              {t('form.steps.experience')}
+            </h3>
+            <div className="space-y-4">
+              <FormField
+                label={t('form.fields.walletAddress')}
+                name="walletAddress"
+                type="text"
+                value={formData.walletAddress}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.walletAddress && errors.walletAddress}
+                placeholder={t('form.placeholders.walletAddress')}
+              />
+              <FormField
+                label={t('form.fields.experience')}
+                name="experience"
+                type="textarea"
+                value={formData.experience}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.experience && errors.experience}
+                placeholder={t('form.placeholders.experience')}
+                rows={4}
+              />
+              <FormField
+                label={t('form.fields.references')}
+                name="references"
+                type="text"
+                value={formData.references}
+                onChange={handleChange}
+                placeholder={t('form.placeholders.references')}
+                optional={true}
+              />
+            </div>
+          </div>
+        )}
+
+        <div className="mt-8 flex justify-between">
+          {currentStep > 1 ? (
+            <button
+              type="button"
+              onClick={prevStep}
+              className="px-6 py-2 border border-ultraviolet-darker/50 rounded-lg
+                text-text-primary hover:bg-ultraviolet-darker/10 transition-colors"
+            >
+              {t('form.buttons.prev')}
+            </button>
+          ) : (
+            <div></div> // Espacio vacío para mantener la alineación
+          )}
+          
+          {currentStep < 3 ? (
+            <button
+              type="button"
+              onClick={nextStep}
+              className="px-6 py-2 bg-ultraviolet-darker text-text-primary rounded-lg
+                hover:bg-ultraviolet-dark transition-colors"
+            >
+              {t('form.buttons.next')}
+            </button>
+          ) : (
+            renderSubmitButton()
+          )}
+        </div>
+        
+        {currentStep === 3 && renderSubmitError()}
       </motion.div>
     </AnimatePresence>
   );
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
-      <div className="bg-background-lighter shadow-2xl shadow-black/50">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ 
-            delay: 0.2,
-            duration: 0.4,
-            ease: "easeOut"
-          }}
-          className="p-6 md:p-8"
-        >
-          <h1 className="text-3xl font-bold text-text-primary mb-2
-            [text-shadow:_0_0_10px_rgba(106,0,255,0.2)]"
-          >
-            Formulario de Postulación
-          </h1>
-          <p className="text-text-secondary mb-8">
-            Únete a nuestra comunidad y sé parte del futuro de Web3
-          </p>
-
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      title={t('form.title')}
+      subtitle={t('form.subtitle')}
+    >
+      {showSuccess ? (
+        <SuccessMessage onClose={onClose} />
+      ) : (
+        <form onSubmit={handleSubmit} className="w-full">
           <ProgressBar />
-
-          <form onSubmit={handleSubmit} className="space-y-8">
-            {renderStep()}
-            
-            <div className="flex justify-between pt-6 border-t border-ultraviolet-darker/20">
-              {currentStep > 1 && (
-                <motion.button
-                  type="button"
-                  onClick={prevStep}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="px-6 py-2 border border-ultraviolet-darker rounded-lg 
-                    text-text-primary bg-background/30
-                    hover:bg-background/50 hover:border-ultraviolet
-                    transition-all duration-200"
-                >
-                  Anterior
-                </motion.button>
-              )}
-              
-              {currentStep < 3 ? (
-                <motion.button
-                  type="button"
-                  onClick={nextStep}
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                  className="ml-auto px-6 py-2 bg-ultraviolet-darker text-text-primary 
-                    rounded-lg hover:bg-ultraviolet-dark transition-all duration-200
-                    shadow-lg shadow-ultraviolet-darker/20"
-                >
-                  Siguiente
-                </motion.button>
-              ) : (
-                <div className="ml-auto space-y-4">
-                  {renderSubmitButton()}
-                  {renderSubmitError()}
-                </div>
-              )}
-            </div>
-          </form>
-        </motion.div>
-      </div>
+          {renderStep()}
+        </form>
+      )}
     </Modal>
   );
 };
