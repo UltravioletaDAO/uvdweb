@@ -14,7 +14,13 @@
     "snapshot": "Snapshot",
     "links": "Links",
     "courses": "Courses",
-    "purge": "Purge"
+    "purge": "Purge",
+    "multisig": "Multisig",
+    "categories": {
+      "main": "Main",
+      "governance": "Governance",
+      "admin": "Administration"
+    }
   },
   "features": {
     "community": {

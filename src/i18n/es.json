@@ -14,7 +14,13 @@
     "snapshot": "Snapshot",
     "links": "Links",
     "courses": "Cursos",
-    "purge": "Purga"
+    "purge": "Purga",
+    "multisig": "Multifirma",
+    "categories": {
+      "main": "Principal",
+      "governance": "Gobernanza",
+      "admin": "Administración"
+    }
   },
   "features": {
     "community": {

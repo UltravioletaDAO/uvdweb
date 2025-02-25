@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Bars3Icon,
@@ -8,20 +8,47 @@ import {
   LinkIcon,
   AcademicCapIcon,
   UserMinusIcon,
+  ShieldCheckIcon,
+  ArrowTopRightOnSquareIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useTranslation();
+  const location = useLocation();
+  
+  // Cerrar el menú cuando cambia la ruta
+  useEffect(() => {
+    setIsOpen(false);
+  }, [location.pathname]);
 
-  const menuItems = [
+  // Reorganizar los elementos del menú en categorías
+  const mainMenuItems = [
     {
       name: t('navigation.home'),
       icon: HomeIcon,
       path: "/",
       isExternal: false,
+      description: "Dashboard principal de Ultravioleta DAO",
     },
+    {
+      name: t('navigation.links'),
+      icon: LinkIcon,
+      path: "/links",
+      isExternal: false,
+      description: "Enlaces importantes de la comunidad",
+    },
+    {
+      name: t('navigation.courses'),
+      icon: AcademicCapIcon,
+      path: "/courses",
+      isExternal: false,
+      description: "Cursos y material educativo",
+    },
+  ];
+
+  const governanceItems = [
     {
       name: t('navigation.snapshot'),
       icon: () => (
@@ -37,24 +64,25 @@ const HamburgerMenu = () => {
       path: "https://snapshot.org/#/s:ultravioletadao.eth",
       isExternal: true,
       customStyle: "text-[#FFAC33] group-hover:text-[#FFB74D]",
+      description: "Votaciones y propuestas de gobernanza",
     },
     {
-      name: t('navigation.links'),
-      icon: LinkIcon,
-      path: "/links",
-      isExternal: false,
+      name: t('navigation.multisig'),
+      icon: ShieldCheckIcon,
+      path: "https://app.safe.global/home?safe=avax:0x52110a2Cc8B6bBf846101265edAAe34E753f3389",
+      isExternal: true,
+      customStyle: "text-emerald-400 group-hover:text-emerald-300",
+      description: "Multifirma para gestión de fondos",
     },
-    {
-      name: t('navigation.courses'),
-      icon: AcademicCapIcon,
-      path: "/courses",
-      isExternal: false,
-    },
+  ];
+
+  const adminItems = [
     {
       name: t('navigation.purge'),
       icon: UserMinusIcon,
       path: "/purge",
       isExternal: false,
+      description: "Gestión de usuarios inactivos",
     },
   ];
 
@@ -82,15 +110,134 @@ const HamburgerMenu = () => {
     open: { x: 0, opacity: 1 },
   };
 
+  // Función para renderizar un grupo de elementos del menú
+  const renderMenuGroup = (items, title, delay = 0) => (
+    <div className="mb-8">
+      {title && (
+        <motion.div
+          variants={itemVariants}
+          initial="closed"
+          animate="open"
+          exit="closed"
+          transition={{ delay }}
+          className="mb-3"
+        >
+          <h3 className="text-xs uppercase text-text-secondary font-semibold tracking-wider px-4 mb-2">
+            {title}
+          </h3>
+          <div className="h-px bg-gradient-to-r from-ultraviolet-darker/5 via-ultraviolet-darker/20 to-ultraviolet-darker/5 mb-3"></div>
+        </motion.div>
+      )}
+      <div className="space-y-1">
+        {items.map((item, index) => (
+          <motion.div
+            key={item.name}
+            variants={itemVariants}
+            initial="closed"
+            animate="open"
+            exit="closed"
+            transition={{ delay: delay + index * 0.1 }}
+            className="relative"
+          >
+            {item.isExternal ? (
+              <a
+                href={item.path}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center px-4 py-3 rounded-lg
+                  group hover:bg-background/40 transition-all duration-200
+                  ${location.pathname === item.path ? 'bg-background/30' : ''}
+                  ${item.customStyle || ""}`}
+                onClick={() => setIsOpen(false)}
+                aria-label={item.name}
+                title={item.description}
+              >
+                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center 
+                  bg-background/30 rounded-lg mr-3 group-hover:bg-background/50
+                  transition-all duration-200">
+                  <item.icon
+                    className={`w-5 h-5 transition-colors duration-200
+                    ${item.customStyle || "text-ultraviolet group-hover:text-ultraviolet-light"}`}
+                  />
+                </div>
+                <div className="flex-grow">
+                  <div className="flex items-center">
+                    <span className="font-medium text-text-primary">{item.name}</span>
+                    <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 ml-1.5 text-text-secondary" />
+                  </div>
+                  <p className="text-xs text-text-secondary mt-0.5 line-clamp-1">
+                    {item.description}
+                  </p>
+                </div>
+              </a>
+            ) : (
+              <Link
+                to={item.path}
+                className={`flex items-center px-4 py-3 rounded-lg
+                  group hover:bg-background/40 transition-all duration-200
+                  ${location.pathname === item.path ? 'bg-background/30' : ''}`}
+                onClick={() => setIsOpen(false)}
+                aria-label={item.name}
+                title={item.description}
+              >
+                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center 
+                  bg-background/30 rounded-lg mr-3 group-hover:bg-background/50
+                  transition-all duration-200">
+                  <item.icon
+                    className="w-5 h-5 text-ultraviolet group-hover:text-ultraviolet-light
+                    transition-colors duration-200"
+                  />
+                </div>
+                <div className="flex-grow">
+                  <span className="font-medium text-text-primary">{item.name}</span>
+                  <p className="text-xs text-text-secondary mt-0.5 line-clamp-1">
+                    {item.description}
+                  </p>
+                </div>
+              </Link>
+            )}
+            
+            {/* Indicador de elemento activo */}
+            {location.pathname === item.path && !item.isExternal && (
+              <motion.div 
+                layoutId="activeIndicator"
+                className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-ultraviolet rounded-r-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.2 }}
+              />
+            )}
+          </motion.div>
+        ))}
+      </div>
+    </div>
+  );
+
+  // Efecto para bloquear el scroll cuando el menú está abierto
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <>
-      {/* Botón del menú */}
-      <button
+      {/* Botón del menú con efecto de hover mejorado */}
+      <motion.button
         id="hamburger-button"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-50 p-2 rounded-full
-          bg-background-lighter hover:bg-background
-          transition-colors duration-200"
+        className="fixed top-4 right-4 z-50 p-3 rounded-full
+          bg-background-lighter hover:bg-ultraviolet-darker/20
+          transition-colors duration-200 shadow-lg"
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+        aria-expanded={isOpen}
       >
         <motion.div
           initial={false}
@@ -103,9 +250,9 @@ const HamburgerMenu = () => {
             <Bars3Icon className="w-6 h-6 text-text-primary" />
           )}
         </motion.div>
-      </button>
+      </motion.button>
 
-      {/* Overlay */}
+      {/* Overlay con efecto de blur mejorado */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -113,13 +260,14 @@ const HamburgerMenu = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            className="fixed inset-0 bg-black/60 backdrop-blur-md z-40"
             onClick={() => setIsOpen(false)}
+            aria-hidden="true"
           />
         )}
       </AnimatePresence>
 
-      {/* Menú */}
+      {/* Menú con diseño mejorado */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -127,52 +275,47 @@ const HamburgerMenu = () => {
             initial="closed"
             animate="open"
             exit="closed"
-            className="fixed right-0 top-0 h-full w-64 bg-background-lighter
-              shadow-lg z-[90] p-8"
+            className="fixed right-0 top-0 h-full w-80 bg-background-lighter
+              shadow-2xl z-[90] overflow-y-auto
+              border-l border-ultraviolet-darker/20"
+            role="navigation"
+            aria-label="Menú principal"
           >
-            <div className="space-y-6 mt-16">
-              {menuItems.map((item, index) => (
-                <motion.div
-                  key={item.name}
-                  variants={itemVariants}
-                  initial="closed"
-                  animate="open"
-                  exit="closed"
-                  transition={{ delay: index * 0.1 }}
-                >
-                  {item.isExternal ? (
-                    <a
-                      href={item.path}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`flex items-center space-x-3 text-text-primary
-                        hover:text-ultraviolet transition-colors duration-200
-                        group ${item.customStyle || ""}`}
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <item.icon
-                        className={`w-5 h-5 transition-colors duration-200
-                        ${item.customStyle || "group-hover:text-ultraviolet"}`}
-                      />
-                      <span>{item.name}</span>
-                    </a>
-                  ) : (
-                    <Link
-                      to={item.path}
-                      className="flex items-center space-x-3 text-text-primary
-                        hover:text-ultraviolet transition-colors duration-200
-                        group"
-                      onClick={() => setIsOpen(false)}
-                    >
-                      <item.icon
-                        className="w-5 h-5 group-hover:text-ultraviolet
-                        transition-colors duration-200"
-                      />
-                      <span>{item.name}</span>
-                    </Link>
-                  )}
-                </motion.div>
-              ))}
+            {/* Encabezado del menú */}
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.3 }}
+              className="pt-16 pb-4 px-4"
+            >
+              <h2 className="text-2xl font-bold text-text-primary mb-1">
+                Ultravioleta DAO
+              </h2>
+              <p className="text-sm text-text-secondary">
+                {t('home.subtitle')}
+              </p>
+              
+              {/* Separador con gradiente */}
+              <div className="h-px bg-gradient-to-r from-ultraviolet-darker/10 via-ultraviolet-darker/30 to-ultraviolet-darker/10 my-4"></div>
+            </motion.div>
+            
+            {/* Contenido del menú */}
+            <div className="px-2 pb-8">
+              {renderMenuGroup(mainMenuItems, t('navigation.categories.main'), 0.3)}
+              {renderMenuGroup(governanceItems, t('navigation.categories.governance'), 0.5)}
+              {renderMenuGroup(adminItems, t('navigation.categories.admin'), 0.7)}
+              
+              {/* Footer del menú */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.9 }}
+                className="mt-12 px-4 py-4 bg-background/30 rounded-lg border border-ultraviolet-darker/10"
+              >
+                <p className="text-xs text-text-secondary text-center">
+                  © 2023 Ultravioleta DAO
+                </p>
+              </motion.div>
             </div>
           </motion.div>
         )}
