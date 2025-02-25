@@ -7,6 +7,7 @@ import ApplicationStatus from "./pages/ApplicationStatus";
 import HamburgerMenu from "./components/HamburgerMenu";
 import Purge from "./pages/Purge";
 import Courses from "./pages/Courses";
+import Token from "./pages/Token";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/status" element={<ApplicationStatus />} />
           <Route path="/courses" element={<Courses />} />
           <Route path="/purge" element={<Purge />} />
+          <Route path="/token" element={<Token />} />
         </Routes>
       </div>
     </Router>

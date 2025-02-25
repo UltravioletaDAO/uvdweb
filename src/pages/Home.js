@@ -23,8 +23,9 @@ const Home = () => {
     {
       title: t('features.token.title'),
       description: t('features.token.description'),
+      isInternal: true,
       icon: CurrencyDollarIcon,
-      link: "https://dexscreener.com/avalanche/0x281027C6a46142D6FC57f12665147221CE69Af33",
+      path: "/token",
       buttonText: t('features.token.button')
     },
     {
