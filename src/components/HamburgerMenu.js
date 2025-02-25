@@ -313,7 +313,7 @@ const HamburgerMenu = () => {
                 className="mt-12 px-4 py-4 bg-background/30 rounded-lg border border-ultraviolet-darker/10"
               >
                 <p className="text-xs text-text-secondary text-center">
-                  © 2023 Ultravioleta DAO
+                  © {new Date().getFullYear()} Ultravioleta DAO
                 </p>
               </motion.div>
             </div>
