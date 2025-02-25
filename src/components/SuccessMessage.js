@@ -8,13 +8,6 @@ const SuccessMessage = ({ onClose }) => {
   const navigate = useNavigate();
   const { t } = useTranslation();
 
-  const handleReturn = () => {
-    // Primero cerramos el modal
-    onClose();
-    // Luego navegamos a la página principal
-    navigate('/');
-  };
-
   return (
     <div className="min-h-[80vh] flex items-center justify-center p-4">
       <motion.div 

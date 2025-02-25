@@ -11,29 +11,36 @@ const FormField = ({
   error,
   placeholder,
   rows = 3,
-  optional = false
+  optional = false,
+  maxLength
 }) => {
   const { t } = useTranslation();
   
   const renderField = () => {
     if (type === 'textarea') {
       return (
-        <textarea
-          id={name}
-          name={name}
-          value={value}
-          onChange={onChange}
-          onBlur={onBlur}
-          rows={rows}
-          placeholder={placeholder}
-          className={`
-            w-full px-4 py-3 bg-background-input border rounded-lg
-            focus:ring-2 focus:ring-ultraviolet focus:border-transparent
-            ${error ? 'border-error' : 'border-ultraviolet-darker'}
-            text-text-primary placeholder-text-secondary
-            resize-none
-          `}
-        />
+        <div>
+          <textarea
+            id={name}
+            name={name}
+            value={value}
+            onChange={onChange}
+            onBlur={onBlur}
+            rows={rows}
+            placeholder={placeholder}
+            maxLength={maxLength}
+            className={`
+              w-full px-4 py-3 bg-background-input border rounded-lg
+              focus:ring-2 focus:ring-ultraviolet focus:border-transparent
+              ${error ? 'border-error' : 'border-ultraviolet-darker'}
+              text-text-primary placeholder-text-secondary
+              resize-none
+            `}
+          />
+          <div className="flex justify-end mt-1 text-sm text-text-secondary">
+            <span>{value.length} {maxLength && `/ ${maxLength}`} caracteres</span>
+          </div>
+        </div>
       );
     }
     
@@ -46,6 +53,7 @@ const FormField = ({
         onChange={onChange}
         onBlur={onBlur}
         placeholder={placeholder}
+        maxLength={maxLength}
         className={`
           w-full px-4 py-3 bg-background-input border rounded-lg
           focus:ring-2 focus:ring-ultraviolet focus:border-transparent

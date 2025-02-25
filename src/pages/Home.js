@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { UserGroupIcon, CurrencyDollarIcon, QuestionMarkCircleIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, DocumentMagnifyingGlassIcon, GiftIcon } from '@heroicons/react/24/outline';
+import { UserGroupIcon, CurrencyDollarIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, GiftIcon } from '@heroicons/react/24/outline';
 import ApplicationForm from './ApplicationForm';
 import { useTranslation } from 'react-i18next';
-
-const SHOW_BUTTONS = false;
 
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -138,7 +136,7 @@ const Home = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Link
+                  {/* <Link
                     to="/status"
                     className="inline-block px-8 py-4 bg-ultraviolet-darker text-text-primary rounded-lg
                       hover:bg-ultraviolet-dark transition-colors duration-200
@@ -146,7 +144,7 @@ const Home = () => {
                       backdrop-blur-sm"
                   >
                     {t('auth.login')} / {t('auth.login_en')}
-                  </Link>
+                  </Link> */}
                 </motion.div>
               </motion.div>
             )}

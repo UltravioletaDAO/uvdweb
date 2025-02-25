@@ -84,7 +84,8 @@
       "wallet_required": "La dirección de wallet es requerida",
       "wallet_format": "La dirección de wallet debe ser válida",
       "experience_required": "La experiencia es requerida",
-      "experience_length": "Mínimo 55 caracteres (actual: {{current}})"
+      "experience_length": "Mínimo 55 caracteres (actual: {{current}})",
+      "experience_too_long": "Máximo {{max}} caracteres (actual: {{current}})"
     },
     "buttons": {
       "next": "Siguiente",

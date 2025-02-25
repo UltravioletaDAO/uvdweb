@@ -111,6 +111,8 @@ const ApplicationForm = ({ isOpen, onClose }) => {
           error = t('form.validation.experience_required');
         } else if (value.length < 55) {
           error = t('form.validation.experience_length', { current: value.length });
+        } else if (value.length > 2584) {
+          error = t('form.validation.experience_too_long', { max: 2584, current: value.length });
         }
         break;
       
@@ -325,6 +327,10 @@ const ApplicationForm = ({ isOpen, onClose }) => {
     };
   }, [isOpen]);
 
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); // Eliminar currentStep de las dependencias
+
   // Renderizado del contenido del formulario según el paso actual
   const renderStep = () => (
     <AnimatePresence mode="wait">
@@ -434,6 +440,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
                 error={touched.experience && errors.experience}
                 placeholder={t('form.placeholders.experience')}
                 rows={4}
+                maxLength={2584}
               />
               <FormField
                 label={t('form.fields.references')}
