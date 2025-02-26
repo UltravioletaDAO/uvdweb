@@ -4,10 +4,12 @@ import { ArrowLeftIcon } from "@heroicons/react/24/outline";
 import CourseCard from "../components/CourseCard";
 import { useEffect, useState } from "react";
 import { getCourses } from "../services/courses/Courses";
+import { useTranslation } from "react-i18next";
 
 const Courses = () => {
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
+  const { t } = useTranslation();
 
   const handleReturn = () => {
     // Animamos la salida usando framer-motion
@@ -35,7 +37,7 @@ const Courses = () => {
         whileTap={{ scale: 0.95 }}
       >
         <ArrowLeftIcon className="w-5 h-5" />
-        <span>Volver al inicio</span>
+        <span>{t('success.back_home')}</span>
       </motion.button>
 
       <motion.h1
@@ -45,7 +47,7 @@ const Courses = () => {
         className="text-4xl font-bold text-text-primary mb-8
 									text-center"
       >
-        Nuestros Cursos
+        {t('courses.title')}
       </motion.h1>
 
       <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

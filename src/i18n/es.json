@@ -1,54 +1,162 @@
 {
   "home": {
-    "title": "Bienvenido a UltraVioleta DAO",
-    "subtitle": "La élite de Web3 en Latinoamérica, empoderando e iluminando el camino de comunidades online hacia un nuevo sistema financiero inclusivo, donde todos puedan participar y prosperar.",
-    "buttons": {
-      "apply": "Aplicar Ahora",
-      "checkStatus": "Verificar Estado"
+    "title": "Ultravioleta DAO",
+    "subtitle": "La comunidad Web3 más activa de Latinoamérica"
+  },
+  "auth": {
+    "register": "Registrarse",
+    "register_en": "Sign up",
+    "login": "Iniciar Sesión",
+    "login_en": "Login"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "snapshot": "Snapshot",
+    "links": "Links",
+    "courses": "Cursos",
+    "purge": "Purga",
+    "multisig": "Multifirma",
+    "categories": {
+      "main": "Principal",
+      "governance": "Gobernanza",
+      "admin": "Administración"
+    },
+    "descriptions": {
+      "home": "Dashboard principal de Ultravioleta DAO",
+      "links": "Enlaces importantes de la comunidad",
+      "courses": "Cursos y material educativo",
+      "snapshot": "Votaciones y propuestas de gobernanza",
+      "multisig": "Multifirma para gestión de fondos",
+      "purge": "Gestión de usuarios inactivos"
+    },
+    "aria": {
+      "open_menu": "Abrir menú",
+      "close_menu": "Cerrar menú",
+      "main_menu": "Menú principal"
     }
   },
   "features": {
     "community": {
       "title": "Comunidad Activa",
-      "description": "Somos una de las comunidades más activas de Web3 en Latinoamérica.",
+      "description": "Somos una de las comunidades más activas de Web3 en Latinoamérica",
       "button": "Conócenos"
     },
     "token": {
       "title": "$UVT: nuestro token de gobernanza",
-      "description": "Participa en el crecimiento y la toma de decisiones con nuestro token de gobernanza UVT.",
+      "description": "Participa en el crecimiento y la toma de decisiones con nuestro token de gobernanza UVT",
       "button": "Ver Token"
     },
-    "comingSoon": {
-      "title": "Por definir",
-      "description": "Próximamente nuevas características y beneficios para nuestra comunidad."
+    "raffles": {
+      "title": "Sorteos Periódicos",
+      "description": "Participa en nuestros sorteos exclusivos para holders de UVT y miembros de la comunidad"
+    }
+  },
+  "token": {
+    "title": "Ultravioleta Token",
+    "description_1": "$UVT es el token de gobernanza y utilidad de UltraVioleta DAO, que faculta a los titulares a participar en la toma de decisiones descentralizada y la gestión de tesorería. Se utiliza para votar propuestas, asignar fondos comunitarios y apoyar iniciativas de los miembros.",
+    "description_2": "A través de $UVT, la DAO mantiene una estructura transparente y democrática, asegurando que sus recursos se dirigen en base a la gobernanza colectiva.",
+    "chart_title": "Gráfico $UVT en Dexscreener",
+    "buttons": {
+      "swap": "Intercambiar Token",
+      "swap_alt": "Icono de Intercambio",
+      "liquidity": "Pool de Liquidez UVT/Avax",
+      "liquidity_alt": "Icono de Pool de Liquidez"
     }
   },
   "benefits": {
-    "privateGroup": {
+    "title": "Beneficios de Unirte",
+    "experts": {
       "title": "Grupo privado de expertos",
-      "description": "Acceso a un grupo privado en Telegram con expertos en múltiples áreas."
+      "description": "Acceso a un grupo privado en Telegram con expertos en múltiples áreas"
     },
     "networking": {
       "title": "Nuevas relaciones y oportunidades",
-      "description": "Conoce y colabora con líderes y desarrolladores clave del ecosistema Web3."
+      "description": "Conoce y colabora con líderes y desarrolladores clave del ecosistema Web3"
     },
     "alphas": {
       "title": "Los mejores alphas",
-      "description": "Obtén acceso exclusivo a información y oportunidades estratégicas en Web3."
+      "description": "Obtén acceso exclusivo a información y oportunidades estratégicas en Web3"
     }
   },
   "form": {
     "title": "Formulario de Postulación",
     "subtitle": "Únete a nuestra comunidad y sé parte del futuro de Web3",
+    "optional": "opcional",
     "steps": {
       "personal": "Datos Personales",
       "social": "Redes Sociales",
       "experience": "Experiencia y Wallet"
     },
+    "fields": {
+      "fullName": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "twitter": "Twitter",
+      "telegram": "Telegram",
+      "twitch": "Twitch (opcional)",
+      "walletAddress": "Dirección de Wallet",
+      "experience": "Experiencia Previa y ¿Por qué deberías ser aceptado?",
+      "references": "Referencias (opcional)"
+    },
+    "placeholders": {
+      "fullName": "Tu nombre completo",
+      "email": "ejemplo@correo.com",
+      "twitter": "@usuario",
+      "telegram": "@usuario",
+      "twitch": "usuario",
+      "walletAddress": "0x...",
+      "experience": "Cuéntanos sobre tu experiencia y por qué quieres unirte...",
+      "references": "¿Alguien te recomendó?"
+    },
+    "validation": {
+      "email_required": "El email es requerido",
+      "email_format": "El email debe tener un formato válido",
+      "social_required": "El usuario de {{social}} es requerido",
+      "social_format": "El usuario de {{social}} debe comenzar con @",
+      "wallet_required": "La dirección de wallet es requerida",
+      "wallet_format": "La dirección de wallet debe ser válida",
+      "experience_required": "La experiencia es requerida",
+      "experience_length": "Mínimo 55 caracteres (actual: {{current}})",
+      "experience_too_long": "Máximo {{max}} caracteres (actual: {{current}})"
+    },
     "buttons": {
       "next": "Siguiente",
       "prev": "Anterior",
-      "submit": "Enviar Aplicación"
+      "submit": "Enviar Aplicación",
+      "submitting": "Enviando..."
+    },
+    "errors": {
+      "api_url_missing": "La URL del servidor no está configurada",
+      "endpoint_not_found": "No se encontró el endpoint del servidor",
+      "server_error": "Error interno del servidor",
+      "data_error": "Error en los datos enviados",
+      "unexpected_response": "Respuesta inesperada del servidor",
+      "processing_error": "Error al procesar la solicitud",
+      "submit_error": "Error al enviar el formulario. ",
+      "network_error": "Error de conexión de red. Por favor, verifica tu conexión a internet."
+    }
+  },
+  "success": {
+    "title": "¡Solicitud enviada con éxito!",
+    "message": "Tu solicitud ha sido recibida y está en proceso de revisión.",
+    "waitlist": "Si el proceso de aplicación está completo, serás colocado en nuestra lista de espera con prioridad para futuras oportunidades.",
+    "thanks": "¡Gracias por tu interés en formar parte de nuestra comunidad!",
+    "back_home": "Volver al inicio",
+    "check_status": "Verificar estado de mi aplicación"
+  },
+  "courses": {
+    "title": "Nuestros Cursos"
+  },
+  "links": {
+    "title": "Nuestros Links"
+  },
+  "purge": {
+    "title": "Purga",
+    "headers": {
+      "username": "Username",
+      "wallet": "Billetera",
+      "balance": "Balance actual",
+      "status": "Estado",
+      "reason": "Razón"
     }
   },
   "status": {

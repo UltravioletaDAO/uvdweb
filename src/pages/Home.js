@@ -1,34 +1,34 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { UserGroupIcon, CurrencyDollarIcon, QuestionMarkCircleIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, DocumentMagnifyingGlassIcon, GiftIcon } from '@heroicons/react/24/outline';
+import { UserGroupIcon, CurrencyDollarIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, GiftIcon } from '@heroicons/react/24/outline';
 import ApplicationForm from './ApplicationForm';
 import { useTranslation } from 'react-i18next';
-
-const SHOW_BUTTONS = false;
 
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const { t } = useTranslation();
+  const showButtons = process.env.REACT_APP_SHOW_SIGNUP_BUTTONS === 'true';
 
   const features = [
     {
-      title: "Comunidad Activa",
-      description: "Somos una de las comunidades más activas de Web3 en Latinoamérica.",
+      title: t('features.community.title'),
+      description: t('features.community.description'),
       icon: UserGroupIcon,
       link: "https://linktr.ee/UltravioletaDAO",
-      buttonText: "Conócenos"
+      buttonText: t('features.community.button')
     },
     {
-      title: "$UVT: nuestro token de gobernanza",
-      description: "Participa en el crecimiento y la toma de decisiones con nuestro token de gobernanza UVT.",
+      title: t('features.token.title'),
+      description: t('features.token.description'),
+      isInternal: true,
       icon: CurrencyDollarIcon,
-      link: "https://dexscreener.com/avalanche/0x281027C6a46142D6FC57f12665147221CE69Af33",
-      buttonText: "Ver Token"
+      path: "/token",
+      buttonText: t('features.token.button')
     },
     {
-      title: "Sorteos Periódicos",
-      description: "Participa en nuestros sorteos exclusivos para holders de UVT y miembros de la comunidad.",
+      title: t('features.raffles.title'),
+      description: t('features.raffles.description'),
       icon: GiftIcon,
       isComingSoon: true
     }
@@ -36,18 +36,18 @@ const Home = () => {
 
   const benefits = [
     {
-      title: "Grupo privado de expertos",
-      description: "Acceso a un grupo privado en Telegram con expertos en múltiples áreas.",
+      title: t('benefits.experts.title'),
+      description: t('benefits.experts.description'),
       icon: GroupIcon
     },
     {
-      title: "Nuevas relaciones y oportunidades",
-      description: "Conoce y colabora con líderes y desarrolladores clave del ecosistema Web3.",
+      title: t('benefits.networking.title'),
+      description: t('benefits.networking.description'),
       icon: SparklesIcon
     },
     {
-      title: "Los mejores alphas",
-      description: "Obtén acceso exclusivo a información y oportunidades estratégicas en Web3.",
+      title: t('benefits.alphas.title'),
+      description: t('benefits.alphas.description'),
       icon: LightBulbIcon
     }
   ];
@@ -110,7 +110,7 @@ const Home = () => {
               {t('home.subtitle')}
             </motion.p>
             
-            {SHOW_BUTTONS && (
+            {showButtons && (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -130,22 +130,22 @@ const Home = () => {
                     font-semibold text-lg shadow-lg shadow-ultraviolet-darker/20
                     backdrop-blur-sm"
                 >
-                  Aplicar Ahora
+                  {t('auth.register')} / {t('auth.register_en')}
                 </motion.button>
 
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  <Link
+                  {/* <Link
                     to="/status"
                     className="inline-block px-8 py-4 bg-ultraviolet-darker text-text-primary rounded-lg
                       hover:bg-ultraviolet-dark transition-colors duration-200
                       font-semibold text-lg shadow-lg shadow-ultraviolet-darker/20
                       backdrop-blur-sm"
                   >
-                    Verificar Estado
-                  </Link>
+                    {t('auth.login')} / {t('auth.login_en')}
+                  </Link> */}
                 </motion.div>
               </motion.div>
             )}
@@ -226,7 +226,7 @@ const Home = () => {
             }}
             className="text-3xl font-bold text-text-primary text-center mb-12"
           >
-            Beneficios de Unirte
+            {t('benefits.title')}
           </motion.h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {benefits.map((benefit, index) => (
