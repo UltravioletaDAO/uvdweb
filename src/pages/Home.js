@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const { t } = useTranslation();
-  const showButtons = process.env.REACT_APP_SHOW_SIGNUP_BUTTONS === 'true';
+  const showButtons = false; //process.env.REACT_APP_SHOW_SIGNUP_BUTTONS === 'true';
 
   const features = [
     {
