@@ -1,15 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { UserGroupIcon, CurrencyDollarIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, GiftIcon } from '@heroicons/react/24/outline';
+import { UserGroupIcon, CurrencyDollarIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, GiftIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import ApplicationForm from './ApplicationForm';
 import { useTranslation } from 'react-i18next';
+import { getEvents } from '../services/events/Events';
 
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [events, setEvents] = useState([]);
+  const [showEventsSection, setShowEventsSection] = useState(true);
+  
   const { t } = useTranslation();
   const showButtons = false; //process.env.REACT_APP_SHOW_SIGNUP_BUTTONS === 'true';
 
+  useEffect(() => {
+    getEvents().then(fetchedEvents => {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      // Filtrar los eventos con fecha futura
+      const filteredEvents = fetchedEvents.filter(eventGroup => {
+        const [eventDay, eventMonth] = eventGroup.date.split("/").map(Number);
+        const eventDate = new Date(today.getFullYear(), eventMonth - 1, eventDay);
+        return eventDate >= today; // El evento debe ser hoy o en el futuro
+      });
+
+      setEvents(filteredEvents);
+
+      // Si no hay eventos futuros, ocultar la sección
+      if (filteredEvents.length === 0) {
+        setShowEventsSection(false);
+      } else {
+        setShowEventsSection(true);
+      }
+    });
+  }, []);
+  
   const features = [
     {
       title: t('features.community.title'),
@@ -261,6 +287,101 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Próximos eventos */}
+      {showEventsSection && (
+        <section className="py-16 bg-background-lighter">
+          <div className="container mx-auto px-4">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                ease: "easeOut"
+              }}
+              className="text-3xl font-bold text-text-primary mb-5"
+            >
+              {t('events.title')}
+            </motion.h2>
+
+            <p className="text-text-secondary mb-10">
+              {t('events.description')}
+            </p>
+
+            <div className="space-y-8">
+              {events.map((eventGroup) => (
+                <div key={eventGroup.date} className="mb-8">
+                  <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{
+                      duration: 0.6,
+                      delay: 0.1,
+                      ease: "easeOut"
+                    }}
+                    className="flex items-center mb-4 text-text-primary"
+                  >
+                    <div className="w-4 h-4 bg-ultraviolet-darker rounded-full mr-3"></div>
+                    <span className="font-bold mr-2">{eventGroup.date}</span>
+                  </motion.div>
+
+                  <div className="space-y-6">
+                    {eventGroup.events.map((event, eventIndex) => (
+                      <motion.div
+                        key={`${eventGroup.date}-${event.title}`}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{
+                          duration: 0.8,
+                          delay: 0.2 + eventIndex * 0.1,
+                          ease: "easeOut"
+                        }}
+                        className="rounded-xl overflow-hidden bg-background border border-ultraviolet-darker/20
+                        hover:border-ultraviolet-darker transition-all duration-300
+                        hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]"
+                      >
+                        <a
+                          href={event.register}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <div className="flex flex-col md:flex-row">
+                            <div className="p-6 flex-grow">
+                              <h3 className="text-xl font-bold text-text-primary mb-3">{event.title}</h3>
+                              <div className="flex items-center mb-3 text-text-secondary">
+                                <MapPinIcon className="w-5 h-5 mr-2 text-ultraviolet-light" />
+                                <span>{event.location}</span>
+                              </div>
+                              <div className="flex items-center mb-3 text-text-secondary">
+                                <ClockIcon className="w-5 h-5 mr-2 text-ultraviolet-light" />
+                                <span>{event.time}</span>
+                              </div>
+                            </div>
+                            <div className="md:w-1/6 h-auto flex items-center justify-center">
+                              <img
+                                src={event.image}
+                                alt={event.title}
+                                className="w-32 h-32 object-cover rounded-lg"
+                                onError={(e) => {
+                                  e.target.src = "/api/placeholder/300/200";
+                                  e.target.alt = "Event placeholder";
+                                }}
+                              />
+                            </div>
+                          </div>
+                        </a>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       <ApplicationForm 
         isOpen={isFormOpen} 
         onClose={() => setIsFormOpen(false)} 
@@ -269,4 +390,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;

@@ -184,5 +184,9 @@
         "description": "Sorry, your application has not been approved at this time."
       }
     }
+  },
+  "events": {
+    "title": "Upcoming events",
+    "description": "Suggested events of interest for the community, don't miss them!"
   }
 } 
