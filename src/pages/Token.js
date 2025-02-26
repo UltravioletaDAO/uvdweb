@@ -6,9 +6,11 @@ import {
 } from '@heroicons/react/24/outline';
 import swapToken from '../assets/icons/swapToken.svg';
 import liquidityPool from '../assets/icons/liquidityPool.svg';
+import { useTranslation } from 'react-i18next';
 
 const Token = () => {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -20,18 +22,18 @@ const Token = () => {
 
   const tokenButtons = [
     {
-      name: 'Swap Token',
+      name: t('token.buttons.swap'),
       url: 'https://lfj.gg/avalanche/swap?outputCurrency=AVAX&inputCurrency=0x281027C6a46142D6FC57f12665147221CE69Af33',
       icon: (
-        <img src={swapToken} alt="SwapToken Icon" className="w-6 h-6" />
+        <img src={swapToken} alt={t('token.buttons.swap_alt')} className="w-6 h-6" />
       ),
       customStyle: "group-hover:text-purple-400"
     },
     {
-      name: 'Liquidity Pool UVT/Avax',
+      name: t('token.buttons.liquidity'),
       url: 'https://lfj.gg/avalanche/pool/v22/0x281027c6a46142d6fc57f12665147221ce69af33/AVAX/100',
       icon: (
-        <img src={liquidityPool} alt="Liquidity Pool Icon" className="w-6 h-6" />
+        <img src={liquidityPool} alt={t('token.buttons.liquidity_alt')} className="w-6 h-6" />
       ),
       customStyle: "group-hover:text-blue-400"
     }
@@ -54,7 +56,7 @@ const Token = () => {
           whileTap={{ scale: 0.95 }}
         >
           <ArrowLeftIcon className="w-5 h-5" />
-          <span>Volver al inicio</span>
+          <span>{t('success.back_home')}</span>
         </motion.button>
 
         <motion.h1
@@ -63,7 +65,7 @@ const Token = () => {
           transition={{ delay: 0.1 }}
           className="text-4xl font-bold text-text-primary mb-8 text-center"
         >
-          Ultravioleta Token
+          {t('token.title')}
         </motion.h1>
 
         <motion.p
@@ -72,7 +74,7 @@ const Token = () => {
           transition={{ delay: 0.1 }}
           className="text-1xl font-bold text-text-primary mb-1 text-justify"
         >
-          $UVT es el token de gobernanza y utilidad de UltraVioleta DAO, que faculta a los titulares a participar en la toma de decisiones descentralizada y la gestión de tesorería. Se utiliza para votar propuestas, asignar fondos comunitarios y apoyar iniciativas de los miembros.
+          {t('token.description_1')}
         </motion.p>
 
         <motion.p
@@ -81,7 +83,7 @@ const Token = () => {
           transition={{ delay: 0.1 }}
           className="text-1xl font-bold text-text-primary mb-5 text-justify"
         >
-          A través de $UVT, la DAO mantiene una estructura transparente y democrática, asegurando que sus recursos se dirigen en base a la gobernanza colectiva.
+          {t('token.description_2')}
         </motion.p>
 
         {/* Dexscreener Embed */}
@@ -119,7 +121,7 @@ const Token = () => {
           <div id="dexscreener-embed">
             <iframe 
               src="https://dexscreener.com/avalanche/0xedF7A33d1Cd54960e5EaeE37BC7a9E2a46B78af7?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=price&interval=60"
-              title="Dexscreener $UVT Chart"
+              title={t('token.chart_title')}
             ></iframe>
           </div>
         </motion.div>

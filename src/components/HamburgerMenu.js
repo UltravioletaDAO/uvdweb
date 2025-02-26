@@ -30,21 +30,21 @@ const HamburgerMenu = () => {
       icon: HomeIcon,
       path: "/",
       isExternal: false,
-      description: "Dashboard principal de Ultravioleta DAO",
+      description: t('navigation.descriptions.home'),
     },
     {
       name: t('navigation.links'),
       icon: LinkIcon,
       path: "/links",
       isExternal: false,
-      description: "Enlaces importantes de la comunidad",
+      description: t('navigation.descriptions.links'),
     },
     {
       name: t('navigation.courses'),
       icon: AcademicCapIcon,
       path: "/courses",
       isExternal: false,
-      description: "Cursos y material educativo",
+      description: t('navigation.descriptions.courses'),
     },
   ];
 
@@ -64,7 +64,7 @@ const HamburgerMenu = () => {
       path: "https://snapshot.org/#/s:ultravioletadao.eth",
       isExternal: true,
       customStyle: "text-[#FFAC33] group-hover:text-[#FFB74D]",
-      description: "Votaciones y propuestas de gobernanza",
+      description: t('navigation.descriptions.snapshot'),
     },
     {
       name: t('navigation.multisig'),
@@ -72,7 +72,7 @@ const HamburgerMenu = () => {
       path: "https://app.safe.global/home?safe=avax:0x52110a2Cc8B6bBf846101265edAAe34E753f3389",
       isExternal: true,
       customStyle: "text-emerald-400 group-hover:text-emerald-300",
-      description: "Multifirma para gestión de fondos",
+      description: t('navigation.descriptions.multisig'),
     },
   ];
 
@@ -82,7 +82,7 @@ const HamburgerMenu = () => {
       icon: UserMinusIcon,
       path: "/purge",
       isExternal: false,
-      description: "Gestión de usuarios inactivos",
+      description: t('navigation.descriptions.purge'),
     },
   ];
 
@@ -236,7 +236,7 @@ const HamburgerMenu = () => {
           transition-colors duration-200 shadow-lg"
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
+        aria-label={isOpen ? t('navigation.aria.close_menu') : t('navigation.aria.open_menu')}
         aria-expanded={isOpen}
       >
         <motion.div
@@ -279,7 +279,7 @@ const HamburgerMenu = () => {
               shadow-2xl z-[90] overflow-y-auto
               border-l border-ultraviolet-darker/20"
             role="navigation"
-            aria-label="Menú principal"
+            aria-label={t('navigation.aria.main_menu')}
           >
             {/* Encabezado del menú */}
             <motion.div 

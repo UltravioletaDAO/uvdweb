@@ -20,6 +20,19 @@
       "main": "Main",
       "governance": "Governance",
       "admin": "Administration"
+    },
+    "descriptions": {
+      "home": "Ultravioleta DAO main dashboard",
+      "links": "Important community links",
+      "courses": "Courses and educational material",
+      "snapshot": "Governance votes and proposals",
+      "multisig": "Multisig for fund management",
+      "purge": "Inactive users management"
+    },
+    "aria": {
+      "open_menu": "Open menu",
+      "close_menu": "Close menu",
+      "main_menu": "Main menu"
     }
   },
   "features": {
@@ -36,6 +49,18 @@
     "raffles": {
       "title": "Periodic Raffles",
       "description": "Participate in our exclusive raffles for UVT holders and community members"
+    }
+  },
+  "token": {
+    "title": "Ultravioleta Token",
+    "description_1": "$UVT is the governance and utility token of UltraVioleta DAO, which empowers holders to participate in decentralized decision-making and treasury management. It is used to vote on proposals, allocate community funds, and support member initiatives.",
+    "description_2": "Through $UVT, the DAO maintains a transparent and democratic structure, ensuring that its resources are directed based on collective governance.",
+    "chart_title": "Dexscreener $UVT Chart",
+    "buttons": {
+      "swap": "Swap Token",
+      "swap_alt": "SwapToken Icon",
+      "liquidity": "Liquidity Pool UVT/Avax",
+      "liquidity_alt": "Liquidity Pool Icon"
     }
   },
   "benefits": {
