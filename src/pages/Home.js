@@ -12,7 +12,7 @@ const Home = () => {
   const [showEventsSection, setShowEventsSection] = useState(true);
   
   const { t } = useTranslation();
-  const showButtons = false; //process.env.REACT_APP_SHOW_SIGNUP_BUTTONS === 'true';
+  const showButtons = process.env.REACT_APP_SHOW_SIGNUP_BUTTONS === 'true';
 
   useEffect(() => {
     getEvents().then(fetchedEvents => {
@@ -156,7 +156,7 @@ const Home = () => {
                     font-semibold text-lg shadow-lg shadow-ultraviolet-darker/20
                     backdrop-blur-sm"
                 >
-                  {t('auth.register')} / {t('auth.register_en')}
+                  {t('auth.register')}
                 </motion.button>
 
                 <motion.div
