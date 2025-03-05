@@ -212,13 +212,21 @@ const ApplicationForm = ({ isOpen, onClose }) => {
 
       console.log('Enviando datos al servidor:', `${apiUrl}/apply`); // Debug
 
+      // Añadir timestamp al formData
+      const now = new Date();
+      const dataToSend = {
+        ...formData,
+        timestamp: Math.floor(now.getTime() / 1000), // Unix timestamp en segundos
+        date_utc: now.toISOString() // Fecha legible en UTC (formato ISO)
+      };
+
       const response = await fetch(`${apiUrl}/apply`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
           'Accept': 'application/json'
         },
-        body: JSON.stringify(formData)
+        body: JSON.stringify(dataToSend)
       });
 
       // Log de la respuesta para debug

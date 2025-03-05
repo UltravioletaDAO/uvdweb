@@ -156,7 +156,7 @@ const Home = () => {
                     font-semibold text-lg shadow-lg shadow-ultraviolet-darker/20
                     backdrop-blur-sm"
                 >
-                  {t('auth.register')} / {t('auth.register_en')}
+                  {t('auth.register')}
                 </motion.button>
 
                 <motion.div
