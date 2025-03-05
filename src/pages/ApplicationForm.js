@@ -15,7 +15,8 @@ const ApplicationForm = ({ isOpen, onClose }) => {
     telegram: '',
     twitch: '',
     walletAddress: '',
-    experience: '',
+    story: '',
+    purpose: '',
     references: ''
   });
   const [errors, setErrors] = useState({});
@@ -59,10 +60,21 @@ const ApplicationForm = ({ isOpen, onClose }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
+    
+    // Si es twitter o telegram, asegurarse que tenga @
+    if ((name === 'twitter' || name === 'telegram') && value.trim() !== '') {
+      const formattedValue = value.startsWith('@') ? value : `@${value}`;
+      setFormData(prev => ({
+        ...prev,
+        [name]: formattedValue
+      }));
+    } else {
+      setFormData(prev => ({
+        ...prev,
+        [name]: value
+      }));
+    }
+
     // Limpiar el error cuando el usuario empieza a escribir
     if (errors[name]) {
       setErrors(prev => ({
@@ -90,11 +102,20 @@ const ApplicationForm = ({ isOpen, onClose }) => {
         break;
       
       case 'twitter':
+        if (!value) {
+          error = t('form.validation.social_required', { social: name });
+        }
+        break;
+      
       case 'telegram':
         if (!value) {
           error = t('form.validation.social_required', { social: name });
-        } else if (!value.startsWith('@')) {
-          error = t('form.validation.social_format', { social: name });
+        } else {
+          // Remover el @ si existe para validar el primer carácter
+          const username = value.startsWith('@') ? value.substring(1) : value;
+          if (/^\d/.test(username)) {
+            error = t('form.validation.telegram_format');
+          }
         }
         break;
       
@@ -106,13 +127,14 @@ const ApplicationForm = ({ isOpen, onClose }) => {
         }
         break;
       
-      case 'experience':
+      case 'story':
+      case 'purpose':
         if (!value.trim()) {
-          error = t('form.validation.experience_required');
+          error = t(`form.validation.${name}_required`);
         } else if (value.length < 55) {
-          error = t('form.validation.experience_length', { current: value.length });
+          error = t(`form.validation.${name}_length`, { current: value.length });
         } else if (value.length > 2584) {
-          error = t('form.validation.experience_too_long', { max: 2584, current: value.length });
+          error = t(`form.validation.${name}_too_long`, { max: 2584, current: value.length });
         }
         break;
       
@@ -133,7 +155,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
     const fieldsToValidate = {
       1: ['fullName', 'email'],
       2: ['twitter', 'telegram', 'twitch'],
-      3: ['walletAddress', 'experience']
+      3: ['walletAddress', 'story', 'purpose']
     }[step];
 
     let isValid = true;
@@ -238,7 +260,8 @@ const ApplicationForm = ({ isOpen, onClose }) => {
           telegram: '',
           twitch: '',
           walletAddress: '',
-          experience: '',
+          story: '',
+          purpose: '',
           references: ''
         });
         setCurrentStep(1);
@@ -331,6 +354,18 @@ const ApplicationForm = ({ isOpen, onClose }) => {
     window.scrollTo(0, 0);
   }, []); // Eliminar currentStep de las dependencias
 
+  const handleKeyDown = (e) => {
+    // Si presiona Enter y no es un textarea
+    if (e.key === 'Enter' && e.target.tagName !== 'TEXTAREA') {
+      e.preventDefault();
+      if (currentStep < 3) {
+        nextStep();
+      } else if (!isSubmitting) {
+        handleSubmit(e);
+      }
+    }
+  };
+
   // Renderizado del contenido del formulario según el paso actual
   const renderStep = () => (
     <AnimatePresence mode="wait">
@@ -348,7 +383,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold mb-6 text-text-primary">
               {t('form.steps.personal')}
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-4" onKeyDown={handleKeyDown}>
               <FormField
                 label={t('form.fields.fullName')}
                 name="fullName"
@@ -358,6 +393,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
                 onBlur={handleBlur}
                 error={touched.fullName && errors.fullName}
                 placeholder={t('form.placeholders.fullName')}
+                tabIndex={1}
               />
               <FormField
                 label={t('form.fields.email')}
@@ -368,6 +404,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
                 onBlur={handleBlur}
                 error={touched.email && errors.email}
                 placeholder={t('form.placeholders.email')}
+                tabIndex={2}
               />
             </div>
           </div>
@@ -378,7 +415,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold mb-6 text-text-primary">
               {t('form.steps.social')}
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-4" onKeyDown={handleKeyDown}>
               <FormField
                 label={t('form.fields.twitter')}
                 name="twitter"
@@ -388,6 +425,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
                 onBlur={handleBlur}
                 error={touched.twitter && errors.twitter}
                 placeholder={t('form.placeholders.twitter')}
+                tabIndex={1}
               />
               <FormField
                 label={t('form.fields.telegram')}
@@ -398,6 +436,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
                 onBlur={handleBlur}
                 error={touched.telegram && errors.telegram}
                 placeholder={t('form.placeholders.telegram')}
+                tabIndex={2}
               />
               <FormField
                 label={t('form.fields.twitch')}
@@ -409,6 +448,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
                 error={touched.twitch && errors.twitch}
                 placeholder={t('form.placeholders.twitch')}
                 optional={true}
+                tabIndex={3}
               />
             </div>
           </div>
@@ -419,7 +459,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
             <h3 className="text-xl font-semibold mb-6 text-text-primary">
               {t('form.steps.experience')}
             </h3>
-            <div className="space-y-4">
+            <div className="space-y-4" onKeyDown={handleKeyDown}>
               <FormField
                 label={t('form.fields.walletAddress')}
                 name="walletAddress"
@@ -429,18 +469,33 @@ const ApplicationForm = ({ isOpen, onClose }) => {
                 onBlur={handleBlur}
                 error={touched.walletAddress && errors.walletAddress}
                 placeholder={t('form.placeholders.walletAddress')}
+                tabIndex={1}
               />
               <FormField
-                label={t('form.fields.experience')}
-                name="experience"
+                label={t('form.fields.story')}
+                name="story"
                 type="textarea"
-                value={formData.experience}
+                value={formData.story}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                error={touched.experience && errors.experience}
-                placeholder={t('form.placeholders.experience')}
+                error={touched.story && errors.story}
+                placeholder={t('form.placeholders.story')}
                 rows={4}
                 maxLength={2584}
+                tabIndex={2}
+              />
+              <FormField
+                label={t('form.fields.purpose')}
+                name="purpose"
+                type="textarea"
+                value={formData.purpose}
+                onChange={handleChange}
+                onBlur={handleBlur}
+                error={touched.purpose && errors.purpose}
+                placeholder={t('form.placeholders.purpose')}
+                rows={4}
+                maxLength={2584}
+                tabIndex={3}
               />
               <FormField
                 label={t('form.fields.references')}
@@ -450,6 +505,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
                 onChange={handleChange}
                 placeholder={t('form.placeholders.references')}
                 optional={true}
+                tabIndex={4}
               />
             </div>
           </div>
@@ -462,11 +518,12 @@ const ApplicationForm = ({ isOpen, onClose }) => {
               onClick={prevStep}
               className="px-6 py-2 border border-ultraviolet-darker/50 rounded-lg
                 text-text-primary hover:bg-ultraviolet-darker/10 transition-colors"
+              tabIndex={currentStep === 1 ? 3 : currentStep === 2 ? 4 : 5}
             >
               {t('form.buttons.prev')}
             </button>
           ) : (
-            <div></div> // Espacio vacío para mantener la alineación
+            <div></div>
           )}
           
           {currentStep < 3 ? (
@@ -475,11 +532,33 @@ const ApplicationForm = ({ isOpen, onClose }) => {
               onClick={nextStep}
               className="px-6 py-2 bg-ultraviolet-darker text-text-primary rounded-lg
                 hover:bg-ultraviolet-dark transition-colors"
+              tabIndex={currentStep === 1 ? 3 : 4}
             >
               {t('form.buttons.next')}
             </button>
           ) : (
-            renderSubmitButton()
+            <button
+              type="submit"
+              disabled={isSubmitting}
+              className={`w-full py-3 rounded-lg font-semibold text-white transition-all duration-300
+                ${isSubmitting 
+                  ? 'bg-ultraviolet-dark cursor-not-allowed' 
+                  : 'bg-ultraviolet-darker hover:bg-ultraviolet-dark'
+                }`}
+              tabIndex={5}
+            >
+              {isSubmitting ? (
+                <div className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  {t('form.buttons.submitting')}
+                </div>
+              ) : (
+                t('form.buttons.submit')
+              )}
+            </button>
           )}
         </div>
         

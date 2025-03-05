@@ -12,7 +12,7 @@ const Home = () => {
   const [showEventsSection, setShowEventsSection] = useState(true);
   
   const { t } = useTranslation();
-  const showButtons = false; //process.env.REACT_APP_SHOW_SIGNUP_BUTTONS === 'true';
+  const showButtons = process.env.REACT_APP_SHOW_SIGNUP_BUTTONS === 'true';
 
   useEffect(() => {
     getEvents().then(fetchedEvents => {

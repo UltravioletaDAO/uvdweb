@@ -94,7 +94,8 @@
       "telegram": "Telegram",
       "twitch": "Twitch (opcional)",
       "walletAddress": "Dirección de Wallet",
-      "experience": "Experiencia Previa y ¿Por qué deberías ser aceptado?",
+      "story": "¿Cuál es tu historia?",
+      "purpose": "¿Cuál es tu propósito?",
       "references": "Referencias (opcional)"
     },
     "placeholders": {
@@ -104,7 +105,8 @@
       "telegram": "@usuario",
       "twitch": "usuario",
       "walletAddress": "0x...",
-      "experience": "Cuéntanos sobre tu experiencia y por qué quieres unirte...",
+      "story": "Cuéntanos tu historia...",
+      "purpose": "Cuéntanos tu propósito...",
       "references": "¿Alguien te recomendó?"
     },
     "validation": {
@@ -112,11 +114,15 @@
       "email_format": "El email debe tener un formato válido",
       "social_required": "El usuario de {{social}} es requerido",
       "social_format": "El usuario de {{social}} debe comenzar con @",
+      "telegram_format": "El usuario de Telegram no puede empezar con un número",
       "wallet_required": "La dirección de wallet es requerida",
       "wallet_format": "La dirección de wallet debe ser válida",
-      "experience_required": "La experiencia es requerida",
-      "experience_length": "Mínimo 55 caracteres (actual: {{current}})",
-      "experience_too_long": "Máximo {{max}} caracteres (actual: {{current}})"
+      "story_required": "Tu historia es requerida",
+      "story_length": "Mínimo 55 caracteres (actual: {{current}})",
+      "story_too_long": "Máximo {{max}} caracteres (actual: {{current}})",
+      "purpose_required": "Tu propósito es requerido",
+      "purpose_length": "Mínimo 55 caracteres (actual: {{current}})",
+      "purpose_too_long": "Máximo {{max}} caracteres (actual: {{current}})"
     },
     "buttons": {
       "next": "Siguiente",
