@@ -216,8 +216,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
       const now = new Date();
       const dataToSend = {
         ...formData,
-        timestamp: Math.floor(now.getTime() / 1000), // Unix timestamp en segundos
-        date_utc: now.toISOString() // Fecha legible en UTC (formato ISO)
+        timestamp: Math.floor(now.getTime() / 1000) // Unix timestamp en segundos
       };
 
       const response = await fetch(`${apiUrl}/apply`, {

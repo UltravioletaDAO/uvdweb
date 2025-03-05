@@ -145,8 +145,7 @@
     "message": "Your application has been received and is under review.",
     "waitlist": "If the application process is complete, you will be placed on our priority waitlist for future opportunities.",
     "thanks": "Thank you for your interest in joining our community!",
-    "back_home": "Back to Home",
-    "check_status": "Check Application Status"
+    "back_home": "Back to Home"
   },
   "courses": {
     "title": "Our Courses"
@@ -159,39 +158,13 @@
     "headers": {
       "username": "Username",
       "wallet": "Wallet",
-      "balance": "Current Balance",
+      "balance": "Current balance",
       "status": "Status",
       "reason": "Reason"
     }
   },
-  "status": {
-    "title": "Application Status",
-    "subtitle": "Enter the email you applied with to check your status",
-    "states": {
-      "pending": {
-        "title": "Application Pending",
-        "description": "Your application has been received and is pending review."
-      },
-      "review": {
-        "title": "Under Review",
-        "description": "Your application is being evaluated by our team."
-      },
-      "approved": {
-        "title": "Approved!",
-        "description": "Congratulations! Your application has been approved."
-      },
-      "waitlist": {
-        "title": "On Waitlist",
-        "description": "You have been placed on our priority waitlist."
-      },
-      "rejected": {
-        "title": "Not Approved",
-        "description": "Sorry, your application has not been approved at this time."
-      }
-    }
-  },
   "events": {
     "title": "Upcoming events",
-    "description": "Suggested events of interest for the community, don't miss them!"
+    "description": "Community events of interest that are recommended to attend. Don't miss them!"
   }
 } 

@@ -145,8 +145,7 @@
     "message": "Tu solicitud ha sido recibida y está en proceso de revisión.",
     "waitlist": "Si el proceso de aplicación está completo, serás colocado en nuestra lista de espera con prioridad para futuras oportunidades.",
     "thanks": "¡Gracias por tu interés en formar parte de nuestra comunidad!",
-    "back_home": "Volver al inicio",
-    "check_status": "Verificar estado de mi aplicación"
+    "back_home": "Volver al inicio"
   },
   "courses": {
     "title": "Nuestros Cursos"
@@ -162,32 +161,6 @@
       "balance": "Balance actual",
       "status": "Estado",
       "reason": "Razón"
-    }
-  },
-  "status": {
-    "title": "Estado de tu Aplicación",
-    "subtitle": "Ingresa el email con el que aplicaste para verificar el estado",
-    "states": {
-      "pending": {
-        "title": "Aplicación en Espera",
-        "description": "Tu aplicación ha sido recibida y está pendiente de revisión."
-      },
-      "review": {
-        "title": "En Revisión",
-        "description": "Tu aplicación está siendo evaluada por nuestro equipo."
-      },
-      "approved": {
-        "title": "¡Aprobado!",
-        "description": "¡Felicidades! Tu aplicación ha sido aprobada."
-      },
-      "waitlist": {
-        "title": "En Lista de Espera",
-        "description": "Has sido colocado en nuestra lista de espera prioritaria."
-      },
-      "rejected": {
-        "title": "No Aprobado",
-        "description": "Lo sentimos, tu aplicación no ha sido aprobada en este momento."
-      }
     }
   },
   "events": {
