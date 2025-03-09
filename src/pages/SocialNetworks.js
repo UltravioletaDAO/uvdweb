@@ -62,7 +62,7 @@ const SocialNetworks = () => {
     },
     {
       name: 'Liquidity Pool UVT/Avax',
-      url: 'https://lfj.gg/avalanche/pool/v22/0x281027c6a46142d6fc57f12665147221ce69af33/AVAX/100',
+      url: 'https://lfj.gg/avalanche/pool/v1/0x281027c6a46142d6fc57f12665147221ce69af33/AVAX',
       icon: (
         <img src={liquidityPool} alt="Liquidity Pool Icon" className="w-6 h-6" />
       ),
