@@ -8,6 +8,7 @@ import HamburgerMenu from "./components/HamburgerMenu";
 import Purge from "./pages/Purge";
 import Courses from "./pages/Courses";
 import Token from "./pages/Token";
+import Snapshot from "./pages/Snapshot";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/purge" element={<Purge />} />
           <Route path="/token" element={<Token />} />
+          <Route path="/snapshot" element={<Snapshot />} />
         </Routes>
       </div>
     </Router>
