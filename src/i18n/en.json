@@ -177,7 +177,9 @@
     "states": {
       "active": "Active",
       "closed": "Closed",
-      "passed": "Passed"
+      "passed": "Passed",
+      "rejected": "Rejected",
+      "pending": "Pending"
     },
     "no_proposals": "No active proposals at this time",
     "connect_wallet": "Connect Wallet",
