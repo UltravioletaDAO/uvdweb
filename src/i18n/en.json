@@ -13,6 +13,7 @@
     "snapshot": "Snapshot",
     "links": "Links",
     "courses": "Courses",
+    "blog": "Blog",
     "purge": "Purge",
     "multisig": "Multisig",
     "categories": {
@@ -24,6 +25,7 @@
       "home": "Ultravioleta DAO main dashboard",
       "links": "Important community links",
       "courses": "Courses and educational material",
+      "blog": "Paila News",
       "snapshot": "Governance votes and proposals",
       "multisig": "Multisig for fund management",
       "purge": "Inactive users management"
@@ -166,5 +168,50 @@
   "events": {
     "title": "Upcoming events",
     "description": "Community events of interest that are recommended to attend. Don't miss them!"
+  },
+  "snapshot": {
+    "title": "Ultravioleta DAO Governance Proposals",
+    "view_votes": "View votes",
+    "new_proposal": "New proposal",
+    "author": "by",
+    "votes_count": "{{count}} votes",
+    "quorum": "{{percentage}}% quorum",
+    "states": {
+      "active": "Active",
+      "closed": "Closed",
+      "passed": "Passed",
+      "rejected": "Rejected",
+      "pending": "Pending"
+    },
+    "no_proposals": "No active proposals at this time",
+    "connect_wallet": "Connect Wallet",
+    "voting_power": "Voting power",
+    "vote": "Vote",
+    "choices": "Choices",
+    "voted": "You voted",
+    "vote_cancelled": "Vote cancelled",
+    "errors": {
+      "no_metamask": "Please install MetaMask or another Ethereum provider",
+      "connect_wallet": "Please connect your wallet to vote",
+      "connect_wallet_proposal": "Please connect your wallet to create a new proposal",
+      "vote_failed": "Error casting vote, please try again",
+      "insufficient_power": "Insufficient voting power",
+      "user_rejected_connection": "You rejected the wallet connection",
+      "user_rejected_vote": "You rejected the vote signature",
+      "provider_error": "Error connecting to Ethereum provider"
+    },
+    "vote_reason_title": "Vote Reason",
+    "vote_reason_placeholder": "Write an optional reason for your vote...",
+    "vote_submitted": "Vote submitted successfully!",
+    "voter": "Voter",
+    "choice": "Choice",
+    "date": "Date",
+    "results": "Results",
+    "votes": "votes",
+    "view_more": "See more"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "disconnect": "Disconnect"
   }
 } 

@@ -50,6 +50,9 @@ module.exports = {
       boxShadow: {
         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       },
+      backgroundImage: {
+        'card-image-gradient': "linear-gradient(180deg, rgba(0,0,0,0.13) 0%, rgba(0,0,0,0.13) 99%)"
+      }
     },
   },
   plugins: [],
