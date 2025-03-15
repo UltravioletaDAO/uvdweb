@@ -120,7 +120,7 @@ const Token = () => {
           </style>
           <div id="dexscreener-embed">
             <iframe 
-              src="https://dexscreener.com/avalanche/0xedF7A33d1Cd54960e5EaeE37BC7a9E2a46B78af7?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=price&interval=60"
+              src="https://dexscreener.com/avalanche/0x3b6c7647e833cf1337a8713e15cf6261312b352a?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=price&interval=60"
               title={t('token.chart_title')}
             ></iframe>
           </div>
