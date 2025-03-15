@@ -7,6 +7,7 @@ import {
   HomeIcon,
   LinkIcon,
   AcademicCapIcon,
+  RectangleStackIcon,
   UserMinusIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
@@ -46,6 +47,13 @@ const HamburgerMenu = () => {
       isExternal: false,
       description: t('navigation.descriptions.courses'),
     },
+    {
+      name: t('navigation.blog'),
+      icon: RectangleStackIcon,
+      path: "/blog",
+      isExternal: false,
+      description: t('navigation.descriptions.blog'),
+    }
   ];
 
   const governanceItems = [

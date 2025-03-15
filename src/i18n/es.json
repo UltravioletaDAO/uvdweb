@@ -13,6 +13,7 @@
     "snapshot": "Snapshot",
     "links": "Links",
     "courses": "Cursos",
+    "blog": "Blog",
     "purge": "Purga",
     "multisig": "Multifirma",
     "categories": {
@@ -24,6 +25,7 @@
       "home": "Dashboard principal de Ultravioleta DAO",
       "links": "Enlaces importantes de la comunidad",
       "courses": "Cursos y material educativo",
+      "blog": "Paila News",
       "snapshot": "Votaciones y propuestas de gobernanza",
       "multisig": "Multifirma para gestión de fondos",
       "purge": "Gestión de usuarios inactivos"
