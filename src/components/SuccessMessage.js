@@ -76,12 +76,12 @@ const SuccessMessage = ({ onClose }) => {
             >
               {t('success.back_home')}
             </Link>
-            <Link
+            {/* <Link
               to="/status"
               className="text-ultraviolet hover:text-ultraviolet-light transition-colors duration-200"
             >
               {t('success.check_status')}
-            </Link>
+            </Link> */}
           </motion.div>
         </div>
       </motion.div>

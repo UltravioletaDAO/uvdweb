@@ -168,5 +168,50 @@
   "events": {
     "title": "Próximos eventos",
     "description": "Eventos de interés para la comunidad a los que se recomienda asistir. ¡No te los pierdas!"
+  },
+  "snapshot": {
+    "title": "Propuestas Gobernanza Ultravioleta DAO",
+    "view_votes": "Ver votos",
+    "new_proposal": "Nueva propuesta",
+    "author": "por",
+    "votes_count": "{{count}} votos",
+    "quorum": "{{percentage}}% quorum",
+    "states": {
+      "active": "Activa",
+      "closed": "Cerrada",
+      "passed": "Aprobada",
+      "rejected": "Rechazada",
+      "pending": "Pendiente"
+    },
+    "no_proposals": "No hay propuestas activas en este momento",
+    "connect_wallet": "Conectar Wallet",
+    "voting_power": "Poder de voto",
+    "vote": "Votar",
+    "choices": "Opciones",
+    "voted": "Votaste",
+    "vote_cancelled": "Voto cancelado",
+    "vote_submitted": "¡Voto enviado con éxito!",
+    "errors": {
+      "no_metamask": "Por favor instala MetaMask u otro proveedor de Ethereum",
+      "connect_wallet": "Por favor conecta tu wallet para poder votar",
+      "connect_wallet_proposal": "Por favor conecta tu wallet para poder crear una nueva propuesta",
+      "vote_failed": "Error al votar, por favor intenta nuevamente",
+      "insufficient_power": "No tienes suficiente poder de voto",
+      "user_rejected_connection": "Has rechazado la conexión de la wallet",
+      "user_rejected_vote": "Has rechazado la firma del voto",
+      "provider_error": "Error al conectar con el proveedor de Ethereum"
+    },
+    "vote_reason_title": "Razón del voto",
+    "vote_reason_placeholder": "Escribe una razón opcional para tu voto...",
+    "voter": "Votante",
+    "choice": "Elección",
+    "date": "Fecha",
+    "results": "Resultados",
+    "votes": "votos",
+    "view_more": "Ver más"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "disconnect": "Desconectar"
   }
 } 

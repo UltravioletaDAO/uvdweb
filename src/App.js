@@ -11,6 +11,7 @@ import Token from "./pages/Token";
 import Blog from "./pages/BlogList"
 import BlogPost from "./pages/BlogPost"
 import NotFound from "./pages/NotFound"
+import Snapshot from "./pages/Snapshot";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/snapshot" element={<Snapshot />} />
         </Routes>
       </div>
     </Router>

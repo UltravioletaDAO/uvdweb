@@ -31,7 +31,7 @@ const Token = () => {
     },
     {
       name: t('token.buttons.liquidity'),
-      url: 'https://lfj.gg/avalanche/pool/v22/0x281027c6a46142d6fc57f12665147221ce69af33/AVAX/100',
+      url: 'https://lfj.gg/avalanche/pool/v1/0x281027c6a46142d6fc57f12665147221ce69af33/AVAX',
       icon: (
         <img src={liquidityPool} alt={t('token.buttons.liquidity_alt')} className="w-6 h-6" />
       ),
@@ -120,7 +120,7 @@ const Token = () => {
           </style>
           <div id="dexscreener-embed">
             <iframe 
-              src="https://dexscreener.com/avalanche/0xedF7A33d1Cd54960e5EaeE37BC7a9E2a46B78af7?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=price&interval=60"
+              src="https://dexscreener.com/avalanche/0x3b6c7647e833cf1337a8713e15cf6261312b352a?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=price&interval=60"
               title={t('token.chart_title')}
             ></iframe>
           </div>
