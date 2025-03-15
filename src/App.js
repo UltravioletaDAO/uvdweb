@@ -8,6 +8,9 @@ import HamburgerMenu from "./components/HamburgerMenu";
 import Purge from "./pages/Purge";
 import Courses from "./pages/Courses";
 import Token from "./pages/Token";
+import Blog from "./pages/BlogList"
+import BlogPost from "./pages/BlogPost"
+import NotFound from "./pages/NotFound"
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           <Route path="/courses" element={<Courses />} />
           <Route path="/purge" element={<Purge />} />
           <Route path="/token" element={<Token />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
