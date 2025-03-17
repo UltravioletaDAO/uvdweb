@@ -11,6 +11,7 @@ import {
   UserMinusIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
+  GiftIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 
@@ -91,6 +92,13 @@ const HamburgerMenu = () => {
       path: "/purge",
       isExternal: false,
       description: t('navigation.descriptions.purge'),
+    },
+    {
+      name: t('navigation.wheel'),
+      icon: GiftIcon,
+      path: "/wheel",
+      isExternal: false,
+      description: t('navigation.descriptions.wheel'),
     },
   ];
 
