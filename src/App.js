@@ -9,6 +9,8 @@ import Purge from "./pages/Purge";
 import Courses from "./pages/Courses";
 import Token from "./pages/Token";
 import Snapshot from "./pages/Snapshot";
+import UvdWheel from "./pages/UvdWheelPage";
+import TwitchCallback from './pages/TwitchCallback';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/purge" element={<Purge />} />
           <Route path="/token" element={<Token />} />
           <Route path="/snapshot" element={<Snapshot />} />
+          <Route path="/wheel" element={<UvdWheel />} />
+          <Route path="/twitch-callback" element={<TwitchCallback />} />
         </Routes>
       </div>
     </Router>

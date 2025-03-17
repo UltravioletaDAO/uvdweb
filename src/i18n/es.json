@@ -15,6 +15,7 @@
     "courses": "Cursos",
     "purge": "Purga",
     "multisig": "Multifirma",
+    "wheel": "Ruleta",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -26,7 +27,8 @@
       "courses": "Cursos y material educativo",
       "snapshot": "Votaciones y propuestas de gobernanza",
       "multisig": "Multifirma para gestión de fondos",
-      "purge": "Gestión de usuarios inactivos"
+      "purge": "Gestión de usuarios inactivos",
+      "wheel": "Ruleta de premios UVD"
     },
     "aria": {
       "open_menu": "Abrir menú",
@@ -211,5 +213,91 @@
   "common": {
     "cancel": "Cancelar",
     "disconnect": "Desconectar"
+  },
+  "wheel": {
+    "customize_button": {
+      "show": "Personalizar Ruleta",
+      "hide": "Ocultar opciones"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Dirección del contrato"
+    },
+    "segments": {
+      "add": {
+        "title": "Agregar nuevo valor",
+        "value_placeholder": "Valor",
+        "probability_placeholder": "Probabilidad %",
+        "button": "Agregar"
+      },
+      "current": {
+        "title": "Valores actuales",
+        "probability_suffix": "%",
+        "min_segments_error": "La ruleta necesita al menos 2 valores"
+      }
+    },
+    "buttons": {
+      "equalize": "Igualar probabilidades",
+      "reset": "Restablecer valores por defecto"
+    },
+    "participants": {
+      "panel": {
+        "show": "Agregar participante",
+        "hide": "Ocultar participantes",
+        "clear": "Limpiar"
+      },
+      "add": {
+        "title": "Nuevo participante",
+        "wallet_placeholder": "Wallet (obligatoria)",
+        "username_placeholder": "Usuario (opcional)",
+        "button": "Agregar",
+        "wallet_required": "La wallet es obligatoria"
+      },
+      "list": {
+        "title": "Participantes y Resultados",
+        "headers": {
+          "user": "Usuario",
+          "wallet": "Wallet",
+          "result": "Resultado"
+        },
+        "anonymous": "Anónimo",
+        "current_turn": "Turno actual",
+        "pending": "Pendiente",
+        "remove": "Eliminar participante"
+      }
+    },
+    "results": {
+      "title": "Resultado",
+      "current_participant": "Participante actual",
+      "no_more_participants": "No hay más participantes. Agrega más para continuar",
+      "export": {
+        "button": "Exportar resultados",
+        "no_results": "No hay resultados para exportar"
+      },
+      "copy": {
+        "button": "Copiar resultados",
+        "error": "Error al copiar los resultados"
+      }
+    },
+    "spin_button": {
+      "spinning": "Girando...",
+      "disabled": "No disponible",
+      "ready": "Click para girar"
+    },
+    "twitch": {
+      "load": "Cargar de Twitch",
+      "loading": "Cargando recompensas...",
+      "load_error": "Error al cargar las recompensas de Twitch",
+      "auth_error": "Error de autenticación. Por favor, conéctate de nuevo",
+      "complete_error": "Error al completar la recompensa",
+      "no_rewards": "No hay recompensas pendientes por cargar",
+      "invalid_wallet": "Wallet inválida detectada",
+      "auth_required": "Necesitas autenticarte con Twitch",
+      "auth_button": "Conectar con Twitch",
+      "redirecting": "Redireccionando...",
+      "create_reward_error": "Error al crear la recompensa. Asegúrate de ser afiliado o partner de Twitch",
+      "client_id_mismatch": "La recompensa fue creada con otra aplicación. Por favor, crea una nueva recompensa desde esta aplicación",
+      "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo"
+    }
   }
 } 
