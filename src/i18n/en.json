@@ -16,6 +16,7 @@
     "blog": "Blog",
     "purge": "Purge",
     "multisig": "Multisig",
+    "wheel": "Wheel decide",
     "categories": {
       "main": "Main",
       "governance": "Governance",
@@ -28,7 +29,8 @@
       "blog": "Paila News",
       "snapshot": "Governance votes and proposals",
       "multisig": "Multisig for fund management",
-      "purge": "Inactive users management"
+      "purge": "Inactive users management",
+      "wheel": "Prize wheel UVD"
     },
     "aria": {
       "open_menu": "Open menu",
@@ -213,5 +215,91 @@
   "common": {
     "cancel": "Cancel",
     "disconnect": "Disconnect"
+  },
+  "wheel": {
+    "customize_button": {
+      "show": "Customize Wheel",
+      "hide": "Hide Options"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Contract address"
+    },
+    "segments": {
+      "add": {
+        "title": "Add new value",
+        "value_placeholder": "Value",
+        "probability_placeholder": "Probability %",
+        "button": "Add"
+      },
+      "current": {
+        "title": "Current values",
+        "probability_suffix": "%",
+        "min_segments_error": "The wheel needs at least 2 values"
+      }
+    },
+    "buttons": {
+      "equalize": "Equalize probabilities",
+      "reset": "Reset to default values"
+    },
+    "participants": {
+      "panel": {
+        "show": "Add participant",
+        "hide": "Hide participants",
+        "clear": "Clear"
+      },
+      "add": {
+        "title": "New participant",
+        "wallet_placeholder": "Wallet (required)",
+        "username_placeholder": "Username (optional)",
+        "button": "Add",
+        "wallet_required": "Wallet is required"
+      },
+      "list": {
+        "title": "Participants and Results",
+        "headers": {
+          "user": "User",
+          "wallet": "Wallet",
+          "result": "Result"
+        },
+        "anonymous": "Anonymous",
+        "current_turn": "Current turn",
+        "pending": "Pending",
+        "remove": "Remove participant"
+      }
+    },
+    "results": {
+      "title": "Result",
+      "current_participant": "Current participant",
+      "no_more_participants": "No more participants. Add more to continue",
+      "export": {
+        "button": "Export results",
+        "no_results": "No results to export"
+      },
+      "copy": {
+        "button": "Copy results",
+        "error": "Error copying results"
+      }
+    },
+    "spin_button": {
+      "spinning": "Spinning...",
+      "disabled": "Not available",
+      "ready": "Click to spin"
+    },
+    "twitch": {
+      "load": "Load from Twitch",
+      "loading": "Loading rewards...",
+      "load_error": "Error loading Twitch rewards",
+      "auth_error": "Authentication error. Please connect again",
+      "complete_error": "Error completing reward",
+      "no_rewards": "No pending rewards to load",
+      "invalid_wallet": "Invalid wallet detected",
+      "auth_required": "Twitch authentication required",
+      "auth_button": "Connect with Twitch",
+      "redirecting": "Redirecting...",
+      "create_reward_error": "Error creating reward. Make sure you are a Twitch affiliate or partner",
+      "client_id_mismatch": "The reward was created with another application. Please create a new reward from this application",
+      "redemption_error": "Error getting redemptions. Please try again"
+    }
   }
 } 
