@@ -12,6 +12,7 @@ import {
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
   GiftIcon,
+  CubeTransparentIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 
@@ -54,6 +55,13 @@ const HamburgerMenu = () => {
       path: "/blog",
       isExternal: false,
       description: t('navigation.descriptions.blog'),
+    },
+    {
+      name: t('navigation.delegations'),
+      icon: CubeTransparentIcon,
+      path: "/delegations",
+      isExternal: false,
+      description: t('navigation.descriptions.delegations'),
     }
   ];
 

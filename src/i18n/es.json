@@ -17,6 +17,7 @@
     "purge": "Purga",
     "multisig": "Multifirma",
     "wheel": "Ruleta",
+    "delegations": "Delegaciones",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -30,7 +31,8 @@
       "snapshot": "Votaciones y propuestas de gobernanza",
       "multisig": "Multifirma para gestión de fondos",
       "purge": "Gestión de usuarios inactivos",
-      "wheel": "Ruleta de premios UVD"
+      "wheel": "Ruleta de premios UVD",
+      "delegations": "Stakea y delegar tus tokens"
     },
     "aria": {
       "open_menu": "Abrir menú",
@@ -300,6 +302,26 @@
       "create_reward_error": "Error al crear la recompensa. Asegúrate de ser afiliado o partner de Twitch",
       "client_id_mismatch": "La recompensa fue creada con otra aplicación. Por favor, crea una nueva recompensa desde esta aplicación",
       "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo"
+    }
+  },
+  "delegations": {
+    "title": "Delegaciones",
+    "beam_validator": {
+      "title": "🔒 Validador de Beam Network",
+      "join_message": "🚀 ÚNETE al nodo más firme, resiliente y lleno de pura candela LATAM: @UltravioletaDAO",
+      "launch_message": "Ya lanzamos, y ya estamos validando en la L1 de Beam como tiene que ser.",
+      "infrastructure": "🎯 Este nodo no fue montado con palitos y cinta:",
+      "deployment": "Fue desplegado con infraestructura pro, full Terraform sobre AWS, hecho con amor y precisión por @0xultravioleta durante sus transmisiones de twitch.",
+      "reliability": "Esto no se cae, parce. Esto respira comunidad y uptime.",
+      "backed": "🌞 Respaldado por la comunidad Web3 más leal y activa de LATAM",
+      "commitment": "🌎 Comprometidos con la descentralización, transparencia y alto rendimiento",
+      "infrastructure_code": "🛠️ 100% Infra-as-Code, listo para operar en múltiples regiones",
+      "join_movement": "🎯 Quieres ser parte del movimiento?",
+      "delegate": "Delegá hoy mismo y caminá con nosotros hacia una red más libre, abierta y poderosa:",
+      "node_id": "NodeID-83Dx5mVdBzehEn8xomdeMQPLBM9xY2XkZ"
+    },
+    "tutorial": {
+      "title": "Cómo hacer Stake de BEAM"
     }
   }
 } 

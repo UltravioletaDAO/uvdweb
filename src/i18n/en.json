@@ -17,6 +17,7 @@
     "purge": "Purge",
     "multisig": "Multisig",
     "wheel": "Wheel decide",
+    "delegations": "Delegations",
     "categories": {
       "main": "Main",
       "governance": "Governance",
@@ -30,7 +31,8 @@
       "snapshot": "Governance votes and proposals",
       "multisig": "Multisig for fund management",
       "purge": "Inactive users management",
-      "wheel": "Prize wheel UVD"
+      "wheel": "Prize wheel UVD",
+      "delegations": "Stake and delegate your tokens"
     },
     "aria": {
       "open_menu": "Open menu",
@@ -300,6 +302,27 @@
       "create_reward_error": "Error creating reward. Make sure you are a Twitch affiliate or partner",
       "client_id_mismatch": "The reward was created with another application. Please create a new reward from this application",
       "redemption_error": "Error getting redemptions. Please try again"
+    }
+  },
+  "delegations": {
+    "title": "Delegations",
+    "beam_validator": {
+      "title": "🔒 Beam Network Validator",
+      "join_message": "🚀 JOIN the most solid, resilient and full of pure fire LATAM node: @UltravioletaDAO",
+      "launch_message": "We've launched and we're already validating on Beam's L1 as it should be.",
+      "infrastructure": "🎯 This node wasn't built with sticks and tape:",
+      "deployment": "We've deployed it with pro infrastructure, full Terraform on AWS, made with love and precision by 0xultravioleta during Twitch streams.",
+      "reliability": "This won't fall, mate. This breathes community and uptime.",
+      "backed": "🌞 Backed by the most loyal and active Web3 community in LATAM",
+      "commitment": "🌎 Committed to decentralization, transparency and high performance",
+      "infrastructure_code": "🛠️ 100% Infra-as-Code, ready to operate in multiple regions",
+      "join_movement": "🎯 Want to be part of the movement?",
+      "delegate": "Delegate today and walk with us towards a freer, more open and powerful network:",
+      "node_id": "NodeID-83Dx5mVdBzehEn8xomdeMQPLBM9xY2XkZ"
+    },
+    "tutorial": {
+      "title": "How to Stake BEAM",
+      "video_title": "Tutorial: Staking BEAM Tokens"
     }
   }
 } 
