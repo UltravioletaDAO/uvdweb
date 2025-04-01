@@ -10,5 +10,17 @@
           "register": "https://lu.ma/ao0c4o9l"
         }
       ]
+    },
+    {
+      "date": "10/04",
+      "events": [
+        {
+          "title": "Workshop: L1s Personalizadas en Avalanche",
+          "location": "Hash House Club, Medellín - Colombia",
+          "time": "18:30 - 20:30",
+          "image": "https://medellinblockchainweek.space4build.xyz/images/avax.jpeg",
+          "register": "https://medellinblockchainweek.space4build.xyz/avalanche-workshop.html"
+        }
+      ]
     }
 ]
