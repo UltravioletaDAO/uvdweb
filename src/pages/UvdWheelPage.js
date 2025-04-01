@@ -8,7 +8,7 @@ import TwitchAuth from '../components/TwitchAuth';
 const UvdWheelPage = () => {
   const { t } = useTranslation();
   
-  const defaultSegments = ['1', '89', '144', '233', '377', '610', '987', '1597', '4181'];
+  const defaultSegments = ['1', '34', '55', '89', '144', '1', '233', '377', '987'];
   const defaultToken = '0x281027C6a46142D6FC57f12665147221CE69Af33'; // Default UVT token
   
   // Inicializar las probabilidades iguales para todos los segmentos
@@ -101,8 +101,8 @@ const UvdWheelPage = () => {
             },
             body: JSON.stringify({
               title: "ruleta de $UVT",
-              cost: 21000,
-              prompt: "Ingresa tu wallet de Avalanche C-Chain (debe comenzar con 0x)",
+              cost: 17711,
+              prompt: "Ingresa la direccion de tu wallet EVM",
               is_user_input_required: true,
               should_redemptions_skip_request_queue: false,
               is_enabled: true,
