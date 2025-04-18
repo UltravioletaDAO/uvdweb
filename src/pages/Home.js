@@ -363,7 +363,7 @@ const Home = () => {
                               <img
                                 src={event.image}
                                 alt={event.title}
-                                className="w-32 h-32 object-cover rounded-lg"
+                                className="w-full aspect-[16/9] object-cover rounded-lg"
                                 onError={(e) => {
                                   e.target.src = "/api/placeholder/300/200";
                                   e.target.alt = "Event placeholder";

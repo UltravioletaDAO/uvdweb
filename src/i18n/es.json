@@ -16,6 +16,8 @@
     "blog": "Blog",
     "purge": "Purga",
     "multisig": "Multifirma",
+    "wheel": "Ruleta",
+    "delegations": "Delegaciones",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -28,7 +30,9 @@
       "blog": "Paila News",
       "snapshot": "Votaciones y propuestas de gobernanza",
       "multisig": "Multifirma para gestión de fondos",
-      "purge": "Gestión de usuarios inactivos"
+      "purge": "Gestión de usuarios inactivos",
+      "wheel": "Ruleta de premios UVD",
+      "delegations": "Stakea y delegar tus tokens"
     },
     "aria": {
       "open_menu": "Abrir menú",
@@ -213,5 +217,111 @@
   "common": {
     "cancel": "Cancelar",
     "disconnect": "Desconectar"
+  },
+  "wheel": {
+    "customize_button": {
+      "show": "Personalizar Ruleta",
+      "hide": "Ocultar opciones"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Dirección del contrato"
+    },
+    "segments": {
+      "add": {
+        "title": "Agregar nuevo valor",
+        "value_placeholder": "Valor",
+        "probability_placeholder": "Probabilidad %",
+        "button": "Agregar"
+      },
+      "current": {
+        "title": "Valores actuales",
+        "probability_suffix": "%",
+        "min_segments_error": "La ruleta necesita al menos 2 valores"
+      }
+    },
+    "buttons": {
+      "equalize": "Igualar probabilidades",
+      "reset": "Restablecer valores por defecto"
+    },
+    "participants": {
+      "panel": {
+        "show": "Agregar participante",
+        "hide": "Ocultar participantes",
+        "clear": "Limpiar"
+      },
+      "add": {
+        "title": "Nuevo participante",
+        "wallet_placeholder": "Wallet (obligatoria)",
+        "username_placeholder": "Usuario (opcional)",
+        "button": "Agregar",
+        "wallet_required": "La wallet es obligatoria"
+      },
+      "list": {
+        "title": "Participantes y Resultados",
+        "headers": {
+          "user": "Usuario",
+          "wallet": "Wallet",
+          "result": "Resultado"
+        },
+        "anonymous": "Anónimo",
+        "current_turn": "Turno actual",
+        "pending": "Pendiente",
+        "remove": "Eliminar participante"
+      }
+    },
+    "results": {
+      "title": "Resultado",
+      "current_participant": "Participante actual",
+      "no_more_participants": "No hay más participantes. Agrega más para continuar",
+      "export": {
+        "button": "Exportar resultados",
+        "no_results": "No hay resultados para exportar"
+      },
+      "copy": {
+        "button": "Copiar resultados",
+        "error": "Error al copiar los resultados"
+      }
+    },
+    "spin_button": {
+      "spinning": "Girando...",
+      "disabled": "No disponible",
+      "ready": "Click para girar"
+    },
+    "twitch": {
+      "load": "Cargar de Twitch",
+      "loading": "Cargando recompensas...",
+      "load_error": "Error al cargar las recompensas de Twitch",
+      "auth_error": "Error de autenticación. Por favor, conéctate de nuevo",
+      "complete_error": "Error al completar la recompensa",
+      "no_rewards": "No hay recompensas pendientes por cargar",
+      "invalid_wallet": "Wallet inválida detectada",
+      "auth_required": "Necesitas autenticarte con Twitch",
+      "auth_button": "Conectar con Twitch",
+      "redirecting": "Redireccionando...",
+      "create_reward_error": "Error al crear la recompensa. Asegúrate de ser afiliado o partner de Twitch",
+      "client_id_mismatch": "La recompensa fue creada con otra aplicación. Por favor, crea una nueva recompensa desde esta aplicación",
+      "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo"
+    }
+  },
+  "delegations": {
+    "title": "Delegaciones",
+    "beam_validator": {
+      "title": "🔒 Validador de Beam Network",
+      "join_message": "🚀 ÚNETE al nodo más firme, resiliente y lleno de pura candela LATAM: @UltravioletaDAO",
+      "launch_message": "Ya lanzamos, y ya estamos validando en la L1 de Beam como tiene que ser.",
+      "infrastructure": "🎯 Este nodo no fue montado con palitos y cinta:",
+      "deployment": "Fue desplegado con infraestructura pro, full Terraform sobre AWS, hecho con amor y precisión por @0xultravioleta durante sus transmisiones de twitch.",
+      "reliability": "Esto no se cae, parce. Esto respira comunidad y uptime.",
+      "backed": "🌞 Respaldado por la comunidad Web3 más leal y activa de LATAM",
+      "commitment": "🌎 Comprometidos con la descentralización, transparencia y alto rendimiento",
+      "infrastructure_code": "🛠️ 100% Infra-as-Code, listo para operar en múltiples regiones",
+      "join_movement": "🎯 Quieres ser parte del movimiento?",
+      "delegate": "Delegá hoy mismo y caminá con nosotros hacia una red más libre, abierta y poderosa:",
+      "node_id": "NodeID-83Dx5mVdBzehEn8xomdeMQPLBM9xY2XkZ"
+    },
+    "tutorial": {
+      "title": "Cómo hacer Stake de BEAM"
+    }
   }
 } 
