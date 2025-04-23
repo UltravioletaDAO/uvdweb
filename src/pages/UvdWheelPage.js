@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UvdWheel from '../components/UvdWheel';
 import PageTransition from '../components/PageTransition';
 import { useTranslation } from 'react-i18next';
-import { ethers } from 'ethers';
+import { isAddress } from '@ethersproject/address';
 import TwitchAuth from '../components/TwitchAuth';
 
 const UvdWheelPage = () => {
@@ -38,7 +38,7 @@ const UvdWheelPage = () => {
   // Validar dirección Ethereum
   const isValidEthereumAddress = (address) => {
     try {
-      return ethers.isAddress(address);
+      return isAddress(address);
     } catch (error) {
       return false;
     }
