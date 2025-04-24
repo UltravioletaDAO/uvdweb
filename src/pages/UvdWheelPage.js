@@ -108,7 +108,7 @@ const UvdWheelPage = () => {
               is_enabled: true,
               background_color: "#9146FF",
               is_max_per_user_per_stream_enabled: true,
-              max_per_user_per_stream: 2
+              max_per_user_per_stream: 1
             })
           });
 
