@@ -857,6 +857,13 @@ const UvdWheelPage = () => {
     setProbabilities(segments.map(() => equalProbability));
   };
 
+  // Función para desconectar wallet
+  const disconnectWallet = () => {
+    setWalletAddress(null);
+    setWalletBalance(null);
+    setHasTokenApproval(false);
+  };
+
   // Función para desconectar Twitch
   const disconnectTwitch = () => {
     localStorage.removeItem('twitchAccessToken');
@@ -871,11 +878,11 @@ const UvdWheelPage = () => {
     }
 
     try {
+      // Primero verificar si ya estamos en la red correcta antes de pedir cuentas
+      await switchToAvalancheNetwork();
+      
       // Solicitar cuentas al usuario
       const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      
-      // Verificar si estamos en la red correcta
-      await switchToAvalancheNetwork();
       
       if (accounts.length > 0) {
         setWalletAddress(accounts[0]);
@@ -906,6 +913,7 @@ const UvdWheelPage = () => {
         method: 'wallet_switchEthereumChain',
         params: [{ chainId: AVALANCHE_NETWORK.chainId }]
       });
+      return true;
     } catch (switchError) {
       // Si la red no está agregada, agregarla
       if (switchError.code === 4902) {
@@ -914,13 +922,16 @@ const UvdWheelPage = () => {
             method: 'wallet_addEthereumChain',
             params: [AVALANCHE_NETWORK]
           });
+          return true;
         } catch (addError) {
           console.error('Error adding Avalanche network:', addError);
           showToast.error(t('wheel.wallet.network_add_error'));
+          return false;
         }
       } else {
         console.error('Error switching network:', switchError);
         showToast.error(t('wheel.wallet.network_switch_error'));
+        return false;
       }
     }
   };
@@ -1086,16 +1097,28 @@ const UvdWheelPage = () => {
           setWalletAddress(accounts[0]);
         } else {
           setWalletAddress(null);
+          setHasTokenApproval(false);
+          setWalletBalance(null);
         }
       };
 
       const handleChainChanged = () => {
-        // Recargar la página cuando cambia la cadena
-        window.location.reload();
+        if (walletAddress) {
+          // Comprobar si estamos en la red correcta y establecer el balance
+          getTokenBalance(walletAddress, token);
+          checkTokenApproval();
+        }
       };
 
       window.ethereum.on('accountsChanged', handleAccountsChanged);
       window.ethereum.on('chainChanged', handleChainChanged);
+
+      // Auto-detectar y conectar si la wallet ya está conectada
+      if (window.ethereum.selectedAddress) {
+        setWalletAddress(window.ethereum.selectedAddress);
+        getTokenBalance(window.ethereum.selectedAddress, token);
+        checkTokenApproval();
+      }
 
       return () => {
         window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
@@ -1133,6 +1156,34 @@ const UvdWheelPage = () => {
               </svg>
               {t('success.back_home')}
             </button>
+          </div>
+          
+          {/* Botón de conectar wallet siempre visible en la parte superior */}
+          <div>
+            {!walletAddress ? (
+              <button
+                onClick={connectWallet}
+                className="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition-colors flex items-center gap-2"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V5zm11 1H6v8h8V6z" clipRule="evenodd" />
+                </svg>
+                {t('wheel.wallet.connect_button')}
+              </button>
+            ) : (
+              <div 
+                onClick={disconnectWallet}
+                className="flex items-center gap-2 bg-purple-600 py-1 px-3 rounded cursor-pointer hover:bg-purple-700 transition-colors group relative"
+              >
+                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                <span className="text-sm font-medium text-white">{`${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`}</span>
+                
+                {/* Icono y tooltip para desconectar */}
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-white opacity-70 group-hover:opacity-100" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
+                </svg>
+              </div>
+            )}
           </div>
         </div>
 
@@ -1514,14 +1565,16 @@ const UvdWheelPage = () => {
                           
                           {/* Botones de acción */}
                           <div className="flex flex-col gap-2">
-                            {!walletAddress ? (
+                            {!walletAddress && (
                               <button
                                 onClick={connectWallet}
                                 className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition-colors"
                               >
                                 {t('wheel.wallet.connect_button')}
                               </button>
-                            ) : (
+                            )}
+                            
+                            {walletAddress && (
                               <>
                                 {/* Solo mostrar el botón de aprobar si no hay aprobación */}
                                 {!hasTokenApproval && (
