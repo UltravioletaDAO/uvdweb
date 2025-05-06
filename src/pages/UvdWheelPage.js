@@ -1,9 +1,89 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import UvdWheel from '../components/UvdWheel';
 import PageTransition from '../components/PageTransition';
 import { useTranslation } from 'react-i18next';
 import { isAddress } from '@ethersproject/address';
 import TwitchAuth from '../components/TwitchAuth';
+import { ethers } from 'ethers';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+// ABI mínimo para interactuar con tokens ERC20
+const ERC20_ABI = [
+  "function balanceOf(address owner) view returns (uint256)",
+  "function decimals() view returns (uint8)",
+  "function approve(address spender, uint256 amount) returns (bool)",
+  "function allowance(address owner, address spender) view returns (uint256)"
+];
+
+// ABI para el contrato de Airdrop
+const AIRDROP_ABI = [
+  "function erc20Airdrop(address token, address[] calldata recipients, uint256[] calldata amounts) external"
+];
+
+// Dirección del contrato de Airdrop en Avalanche C-Chain
+const AIRDROP_CONTRACT_ADDRESS = "0x23E5c4Dee08e1Ff9b3338e3729E83b8aA6d30342";
+
+// Configuración de la red Avalanche C-Chain
+const AVALANCHE_NETWORK = {
+  chainId: "0xA86A",  // Hex de 43114
+  chainName: "Avalanche C-Chain",
+  nativeCurrency: {
+    name: "AVAX",
+    symbol: "AVAX",
+    decimals: 18
+  },
+  rpcUrls: ["https://api.avax.network/ext/bc/C/rpc"],
+  blockExplorerUrls: ["https://snowtrace.io/"]
+};
+
+// Componente para mostrar notificaciones toast
+const showToast = {
+  success: (message) => {
+    toast.success(message, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "light",
+    });
+  },
+  error: (message) => {
+    toast.error(message, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "light",
+    });
+  },
+  info: (message) => {
+    toast.info(message, {
+      position: "top-center",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "light",
+    });
+  },
+  warning: (message) => {
+    toast.warning(message, {
+      position: "top-center",
+      autoClose: 4000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "light",
+    });
+  }
+};
 
 const UvdWheelPage = () => {
   const { t } = useTranslation();
@@ -31,9 +111,22 @@ const UvdWheelPage = () => {
   const [newParticipant, setNewParticipant] = useState({ wallet: '', username: '' });
   const [isLoadingTwitch, setIsLoadingTwitch] = useState(false);
   const [isAutoSpinning, setIsAutoSpinning] = useState(false);
+  const [autoUpdateTwitch, setAutoUpdateTwitch] = useState(false);
+  const [completedParticipants, setCompletedParticipants] = useState([]);
   const [twitchAccessToken, setTwitchAccessToken] = useState(() => {
     return localStorage.getItem('twitchAccessToken');
   });
+  const [isProcessingResult, setIsProcessingResult] = useState(false);
+  const [walletAddress, setWalletAddress] = useState(null);
+  const [walletBalance, setWalletBalance] = useState(null);
+  const [isApproving, setIsApproving] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [lastTxHash, setLastTxHash] = useState(null);
+  const [tokenDecimals, setTokenDecimals] = useState(18); // Por defecto 18 decimales
+  const [hasTokenApproval, setHasTokenApproval] = useState(false);
+
+  // Referencia para mantener el intervalo de verificación
+  const checkIntervalRef = useRef(null);
 
   // Validar dirección Ethereum
   const isValidEthereumAddress = (address) => {
@@ -45,10 +138,29 @@ const UvdWheelPage = () => {
   };
 
   // Cargar recompensas de Twitch
-  const loadTwitchRewards = async () => {
+  const loadTwitchRewards = async (preserveResults = true) => {
     setIsLoadingTwitch(true);
     try {
-      // Limpiar la lista actual de participantes
+      // Guardar los participantes completados si preserveResults es true
+      if (preserveResults && participantResults.length > 0) {
+        // Filtrar solo los resultados que aún no están en completedParticipants
+        const existingWallets = new Set(completedParticipants.map(p => p.wallet + '-' + p.result));
+        const newCompleted = participantResults.filter(result => 
+          !existingWallets.has(result.wallet + '-' + result.result)
+        ).map(result => ({
+          ...result,
+          isCompleted: true
+        }));
+        
+        if (newCompleted.length > 0) {
+          setCompletedParticipants(prevCompleted => [...prevCompleted, ...newCompleted]);
+        }
+      } else if (!preserveResults) {
+        // Si no preservamos resultados, limpiar todo
+        setCompletedParticipants([]);
+      }
+      
+      // Limpiar la lista actual de participantes pendientes
       setParticipants([]);
       setParticipantResults([]);
       setCurrentParticipantIndex(0);
@@ -271,7 +383,8 @@ const UvdWheelPage = () => {
         if (validParticipants.length > 0) {
           setParticipants(validParticipants);
           setIsAutoSpinning(true);
-        } else {
+        } else if (!autoUpdateTwitch) {
+          // Solo mostrar la alerta si no está en modo auto-update
           alert(t('wheel.twitch.no_rewards'));
         }
 
@@ -298,6 +411,56 @@ const UvdWheelPage = () => {
     }
   };
 
+  // Configurar el intervalo de actualización cuando se activa el switch
+  useEffect(() => {
+    // Limpiar cualquier intervalo existente
+    const clearCheckInterval = () => {
+      if (checkIntervalRef.current) {
+        clearInterval(checkIntervalRef.current);
+        checkIntervalRef.current = null;
+      }
+    };
+
+    if (autoUpdateTwitch && twitchAccessToken) {
+      // Carga inicial de participantes
+      loadTwitchRewards(true);
+      
+      return () => {
+        clearCheckInterval();
+      };
+    } else {
+      clearCheckInterval();
+    }
+  }, [autoUpdateTwitch, twitchAccessToken]);
+
+  // Efecto separado para manejar la verificación periódica cuando la lista está vacía
+  useEffect(() => {
+    // Solo configurar el intervalo si está activada la actualización automática
+    // y la lista de participantes está vacía
+    if (autoUpdateTwitch && twitchAccessToken && participants.length === 0) {
+      // Limpiar el intervalo anterior si existe
+      if (checkIntervalRef.current) {
+        clearInterval(checkIntervalRef.current);
+      }
+
+      // Crear nuevo intervalo
+      checkIntervalRef.current = setInterval(() => {
+        loadTwitchRewards(true);
+      }, 10000); // Verificar cada 10 segundos
+      
+      return () => {
+        if (checkIntervalRef.current) {
+          clearInterval(checkIntervalRef.current);
+          checkIntervalRef.current = null;
+        }
+      };
+    } else if (participants.length > 0 && checkIntervalRef.current) {
+      // Si hay participantes, limpiar el intervalo
+      clearInterval(checkIntervalRef.current);
+      checkIntervalRef.current = null;
+    }
+  }, [autoUpdateTwitch, twitchAccessToken, participants.length]);
+
   // Manejar el auto-spin
   useEffect(() => {
     let timeoutId;
@@ -312,87 +475,105 @@ const UvdWheelPage = () => {
     return () => clearTimeout(timeoutId);
   }, [isAutoSpinning, currentParticipantIndex, participants.length, participantResults]);
 
+  // Permitir girar la ruleta solo cuando no se están cargando participantes o procesando un resultado
+  const canSpin = !isLoadingTwitch && !isProcessingResult;
+
   // Completar recompensa de Twitch después del giro
   const handleSpinEnd = async (result) => {
     setSpinResult(result);
-    if (participants.length > 0) {
-      const currentParticipant = participants[currentParticipantIndex];
-      
-      // Guardar el resultado actual
-      setParticipantResults([
-        ...participantResults,
-        {
+    setIsProcessingResult(true); // Bloquear el botón mientras se procesa el resultado
+    
+    try {
+      if (participants.length > 0) {
+        const currentParticipant = participants[currentParticipantIndex];
+        
+        // Guardar el resultado actual
+        const newResult = {
           wallet: currentParticipant.wallet,
           username: currentParticipant.username,
           result: result
-        }
-      ]);
+        };
+        
+        // También agregarlo a los completados para el CSV final
+        setCompletedParticipants([
+          ...completedParticipants,
+          newResult
+        ]);
 
-      // Si es una recompensa de Twitch, marcarla como completada
-      if (currentParticipant.redemptionId && currentParticipant.rewardId && twitchAccessToken) {
-        try {
-          const userResponse = await fetch('https://api.twitch.tv/helix/users', {
-            headers: {
-              'Authorization': `Bearer ${twitchAccessToken}`,
-              'Client-Id': process.env.REACT_APP_TWITCH_CLIENT_ID
-            }
-          });
-
-          const userData = await userResponse.json();
-          if (!userData.data || !userData.data[0]) {
-            throw new Error('No se pudo obtener la información del usuario');
-          }
-
-          const broadcasterId = userData.data[0].id;
-
-          // Marcar la recompensa como completada
-          await fetch(
-            `https://api.twitch.tv/helix/channel_points/custom_rewards/redemptions?id=${currentParticipant.redemptionId}&broadcaster_id=${broadcasterId}&reward_id=${currentParticipant.rewardId}`,
-            {
-              method: 'PATCH',
-              headers: {
-                'Authorization': `Bearer ${twitchAccessToken}`,
-                'Client-Id': process.env.REACT_APP_TWITCH_CLIENT_ID,
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                status: 'FULFILLED'
-              })
-            }
-          );
-
-          // Enviar mensaje al chat con el resultado
+        // Eliminar el participante actual de la lista principal
+        const updatedParticipants = participants.filter((_, index) => index !== currentParticipantIndex);
+        setParticipants(updatedParticipants);
+        
+        // Limpiar los resultados intermedios para que no aparezca el resultado
+        // del participante anterior en el próximo participante
+        setParticipantResults([]);
+        
+        // Si es una recompensa de Twitch, marcarla como completada
+        if (currentParticipant.redemptionId && currentParticipant.rewardId && twitchAccessToken) {
           try {
-            await fetch(`https://api.twitch.tv/helix/chat/messages?broadcaster_id=${broadcasterId}&sender_id=${broadcasterId}`, {
-              method: 'POST',
+            const userResponse = await fetch('https://api.twitch.tv/helix/users', {
               headers: {
                 'Authorization': `Bearer ${twitchAccessToken}`,
-                'Client-Id': process.env.REACT_APP_TWITCH_CLIENT_ID,
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify({
-                message: `@${currentParticipant.username} ¡Felicidades! Has ganado ${result} $UVT en la ruleta. Los tokens serán enviados pronto.`,
-                reply_to_message_id: null
-              })
+                'Client-Id': process.env.REACT_APP_TWITCH_CLIENT_ID
+              }
             });
-          } catch (error) {
-            console.error('Error sending winner message to chat:', error);
-          }
 
-        } catch (error) {
-          console.error('Error completing Twitch reward:', error);
-          alert(t('wheel.twitch.complete_error'));
+            const userData = await userResponse.json();
+            if (!userData.data || !userData.data[0]) {
+              throw new Error('No se pudo obtener la información del usuario');
+            }
+
+            const broadcasterId = userData.data[0].id;
+
+            // Marcar la recompensa como completada
+            await fetch(
+              `https://api.twitch.tv/helix/channel_points/custom_rewards/redemptions?id=${currentParticipant.redemptionId}&broadcaster_id=${broadcasterId}&reward_id=${currentParticipant.rewardId}`,
+              {
+                method: 'PATCH',
+                headers: {
+                  'Authorization': `Bearer ${twitchAccessToken}`,
+                  'Client-Id': process.env.REACT_APP_TWITCH_CLIENT_ID,
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  status: 'FULFILLED'
+                })
+              }
+            );
+
+            // Enviar mensaje al chat con el resultado
+            try {
+              await fetch(`https://api.twitch.tv/helix/chat/messages?broadcaster_id=${broadcasterId}&sender_id=${broadcasterId}`, {
+                method: 'POST',
+                headers: {
+                  'Authorization': `Bearer ${twitchAccessToken}`,
+                  'Client-Id': process.env.REACT_APP_TWITCH_CLIENT_ID,
+                  'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                  message: `@${currentParticipant.username} ¡Felicidades! Has ganado ${result} $UVT en la ruleta. Los tokens serán enviados pronto.`,
+                  reply_to_message_id: null
+                })
+              });
+            } catch (error) {
+              console.error('Error sending winner message to chat:', error);
+            }
+          } catch (error) {
+            console.error('Error completing Twitch reward:', error);
+            alert(t('wheel.twitch.complete_error'));
+          }
+        }
+        
+        // Si está habilitada la actualización automática de Twitch, cargar nuevos participantes
+        if (autoUpdateTwitch && twitchAccessToken) {
+          loadTwitchRewards(true);
         }
       }
-
-      // Avanzar al siguiente participante
-      const nextIndex = currentParticipantIndex + 1;
-      setCurrentParticipantIndex(nextIndex);
-
-      // Detener el auto-spin si llegamos al final
-      if (nextIndex >= participants.length) {
-        setIsAutoSpinning(false);
-      }
+    } finally {
+      // Esperar un momento antes de desbloquear el botón para evitar clics accidentales
+      setTimeout(() => {
+        setIsProcessingResult(false);
+      }, 1500); // 1.5 segundos de seguridad
     }
   };
 
@@ -480,7 +661,8 @@ const UvdWheelPage = () => {
   // Función para generar el contenido del CSV
   const generateCSVContent = () => {
     const header = 'token_type,token_address,receiver,amount,id';
-    const content = participantResults.map(result => 
+    // Usar completedParticipants para incluir todos los resultados históricos
+    const content = completedParticipants.map(result => 
       `erc20,${token},${result.wallet},${result.result}`
     ).join(',\n');
     return `${header}\n${content},`;
@@ -488,7 +670,7 @@ const UvdWheelPage = () => {
 
   // Exportar resultados a CSV
   const exportToCSV = () => {
-    if (participantResults.length === 0) {
+    if (completedParticipants.length === 0) {
       alert(t('wheel.results.export.no_results'));
       return;
     }
@@ -498,11 +680,12 @@ const UvdWheelPage = () => {
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
     
-    // Obtener la fecha actual en formato DDMM
+    // Obtener la fecha actual en formato YYMMDD
     const today = new Date();
-    const dd = String(today.getDate()).padStart(2, '0');
+    const yy = String(today.getFullYear());
     const mm = String(today.getMonth() + 1).padStart(2, '0');
-    const dateStr = `${dd}${mm}`;
+    const dd = String(today.getDate()).padStart(2, '0');
+    const dateStr = `${yy}${mm}${dd}`;
     
     link.download = `ruleta_${dateStr}.csv`;
     link.click();
@@ -510,7 +693,7 @@ const UvdWheelPage = () => {
 
   // Copiar resultados al portapapeles
   const copyToClipboard = async () => {
-    if (participantResults.length === 0) {
+    if (completedParticipants.length === 0) {
       alert(t('wheel.results.export.no_results'));
       return;
     }
@@ -674,18 +857,271 @@ const UvdWheelPage = () => {
     setProbabilities(segments.map(() => equalProbability));
   };
 
-  // Modificar el componente UvdWheel para deshabilitar el giro cuando no hay más participantes
-  const canSpin = participants.length > 0 ? currentParticipantIndex < participants.length : true;
-
   // Función para desconectar Twitch
   const disconnectTwitch = () => {
     localStorage.removeItem('twitchAccessToken');
     setTwitchAccessToken(null);
   };
 
+  // Conectar wallet
+  const connectWallet = async () => {
+    if (!window.ethereum) {
+      showToast.error(t('wheel.wallet.no_provider'));
+      return;
+    }
+
+    try {
+      // Solicitar cuentas al usuario
+      const accounts = await window.ethereum.request({ method: 'eth_requestAccounts' });
+      
+      // Verificar si estamos en la red correcta
+      await switchToAvalancheNetwork();
+      
+      if (accounts.length > 0) {
+        setWalletAddress(accounts[0]);
+        showToast.success(t('wheel.wallet.connected_success'));
+        
+        // Obtener balance si hay un token seleccionado
+        if (isAddress(token)) {
+          await getTokenBalance(accounts[0], token);
+        }
+      }
+    } catch (error) {
+      console.error('Error connecting wallet:', error);
+      if (error.code === 4001) {
+        showToast.info(t('wheel.wallet.user_rejected'));
+      } else {
+        showToast.error(t('wheel.wallet.connection_error'));
+      }
+    }
+  };
+
+  // Cambiar a la red de Avalanche C-Chain
+  const switchToAvalancheNetwork = async () => {
+    if (!window.ethereum) return;
+
+    try {
+      // Intentar cambiar a la red de Avalanche
+      await window.ethereum.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: AVALANCHE_NETWORK.chainId }]
+      });
+    } catch (switchError) {
+      // Si la red no está agregada, agregarla
+      if (switchError.code === 4902) {
+        try {
+          await window.ethereum.request({
+            method: 'wallet_addEthereumChain',
+            params: [AVALANCHE_NETWORK]
+          });
+        } catch (addError) {
+          console.error('Error adding Avalanche network:', addError);
+          showToast.error(t('wheel.wallet.network_add_error'));
+        }
+      } else {
+        console.error('Error switching network:', switchError);
+        showToast.error(t('wheel.wallet.network_switch_error'));
+      }
+    }
+  };
+
+  // Obtener el balance de tokens
+  const getTokenBalance = async (address, tokenAddress) => {
+    if (!window.ethereum || !isAddress(tokenAddress)) return;
+
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const tokenContract = new ethers.Contract(tokenAddress, ERC20_ABI, provider);
+      
+      // Obtener decimales del token
+      try {
+        const decimals = await tokenContract.decimals();
+        setTokenDecimals(decimals);
+      } catch (error) {
+        console.warn('Error getting token decimals, using default (18):', error);
+        setTokenDecimals(18);
+      }
+      
+      // Obtener balance
+      const balance = await tokenContract.balanceOf(address);
+      setWalletBalance(balance);
+    } catch (error) {
+      console.error('Error getting token balance:', error);
+      setWalletBalance(null);
+    }
+  };
+
+  // Verificar aprobación existente cada vez que se conecta la wallet o cambia el token
+  const checkTokenApproval = async () => {
+    if (!window.ethereum || !walletAddress || !isAddress(token)) return;
+    
+    try {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const tokenContract = new ethers.Contract(token, ERC20_ABI, provider);
+      
+      const currentAllowance = await tokenContract.allowance(walletAddress, AIRDROP_CONTRACT_ADDRESS);
+      
+      // Si la aprobación es mayor que la mitad del valor máximo, considerarla ilimitada
+      setHasTokenApproval(
+        currentAllowance.gt(ethers.constants.Zero) && 
+        currentAllowance.gte(ethers.constants.MaxUint256.div(2))
+      );
+    } catch (error) {
+      console.error('Error checking token approval:', error);
+      setHasTokenApproval(false);
+    }
+  };
+
+  // Aprobar tokens para el contrato de airdrop
+  const approveTokens = async () => {
+    if (!window.ethereum || !walletAddress || !isAddress(token) || completedParticipants.length === 0) {
+      showToast.error(t('wheel.wallet.invalid_state'));
+      return;
+    }
+
+    try {
+      setIsApproving(true);
+      
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const tokenContract = new ethers.Contract(token, ERC20_ABI, signer);
+      
+      // Aprobar el contrato para gastar tokens (aprobación ilimitada)
+      const tx = await tokenContract.approve(
+        AIRDROP_CONTRACT_ADDRESS, 
+        ethers.constants.MaxUint256 // Valor máximo posible para permitir transferencias ilimitadas
+      );
+      
+      // Mostrar notificación de transacción pendiente
+      showToast.info(t('wheel.wallet.approving_transaction'));
+      
+      await tx.wait();
+      
+      setHasTokenApproval(true);
+      showToast.success(t('wheel.wallet.approval_success'));
+    } catch (error) {
+      console.error('Error approving tokens:', error);
+      if (error.code === 4001) {
+        showToast.info(t('wheel.wallet.user_rejected'));
+      } else {
+        showToast.error(t('wheel.wallet.approval_error'));
+      }
+    } finally {
+      setIsApproving(false);
+    }
+  };
+
+  // Enviar los premios
+  const sendRewards = async () => {
+    if (!window.ethereum || !walletAddress || !isAddress(token) || completedParticipants.length === 0) {
+      showToast.error(t('wheel.wallet.invalid_state'));
+      return;
+    }
+
+    try {
+      setIsSending(true);
+      
+      // Verificar que estamos en la red correcta
+      await switchToAvalancheNetwork();
+      
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer = provider.getSigner();
+      const airdropContract = new ethers.Contract(AIRDROP_CONTRACT_ADDRESS, AIRDROP_ABI, signer);
+      
+      // Preparar los arrays para el airdrop
+      const recipients = completedParticipants.map(p => p.wallet);
+      const amounts = completedParticipants.map(p => 
+        ethers.utils.parseUnits(p.result, tokenDecimals)
+      );
+      
+      // Mostrar notificación de transacción pendiente
+      showToast.info(t('wheel.wallet.sending_transaction'));
+      
+      // Enviar el airdrop
+      const tx = await airdropContract.erc20Airdrop(token, recipients, amounts);
+      const receipt = await tx.wait();
+      
+      setLastTxHash(receipt.transactionHash);
+      showToast.success(t('wheel.wallet.send_success'));
+      
+      // Ya no limpiamos la lista de completados para mantener el historial visible
+      // setCompletedParticipants([]);
+    } catch (error) {
+      console.error('Error sending rewards:', error);
+      if (error.code === 4001) {
+        showToast.info(t('wheel.wallet.user_rejected'));
+      } else {
+        showToast.error(t('wheel.wallet.send_error'));
+      }
+    } finally {
+      setIsSending(false);
+    }
+  };
+
+  // Formatear el balance para mostrarlo
+  const formatBalance = (balance) => {
+    if (!balance) return "0";
+    return ethers.utils.formatUnits(balance, tokenDecimals);
+  };
+
+  // Abrir la transacción en el explorador de bloques
+  const openTxInExplorer = () => {
+    if (!lastTxHash) return;
+    window.open(`${AVALANCHE_NETWORK.blockExplorerUrls[0]}tx/${lastTxHash}`, '_blank');
+  };
+
+  // Actualizar el balance cuando cambia la dirección o el token
+  useEffect(() => {
+    if (walletAddress && isAddress(token)) {
+      getTokenBalance(walletAddress, token);
+      checkTokenApproval();
+    }
+  }, [walletAddress, token]);
+
+  // Escuchar cambios de cuenta
+  useEffect(() => {
+    if (window.ethereum) {
+      const handleAccountsChanged = (accounts) => {
+        if (accounts.length > 0) {
+          setWalletAddress(accounts[0]);
+        } else {
+          setWalletAddress(null);
+        }
+      };
+
+      const handleChainChanged = () => {
+        // Recargar la página cuando cambia la cadena
+        window.location.reload();
+      };
+
+      window.ethereum.on('accountsChanged', handleAccountsChanged);
+      window.ethereum.on('chainChanged', handleChainChanged);
+
+      return () => {
+        window.ethereum.removeListener('accountsChanged', handleAccountsChanged);
+        window.ethereum.removeListener('chainChanged', handleChainChanged);
+      };
+    }
+  }, []);
+
   return (
     <PageTransition>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
+        {/* Contenedor para las notificaciones */}
+        <ToastContainer
+          position="top-center"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          limit={3}
+        />
+        
         <div className="flex justify-between items-center mb-10">
           <div className="flex items-center gap-4">
             <button
@@ -877,34 +1313,60 @@ const UvdWheelPage = () => {
                       {!twitchAccessToken ? (
                         <TwitchAuth />
                       ) : (
-                        <div className="flex items-center gap-2">
-                          <button
-                            onClick={loadTwitchRewards}
-                            disabled={isLoadingTwitch}
-                            className="flex-1 flex items-center justify-center gap-2 bg-[#9146FF] hover:bg-[#7C2BFF] text-white font-bold py-2 px-4 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                          >
-                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                              <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
-                            </svg>
-                            {isLoadingTwitch ? t('wheel.twitch.loading') : t('wheel.twitch.load')}
-                          </button>
-                          <button
-                            onClick={disconnectTwitch}
-                            className="text-red-500 hover:text-red-700 transition-colors"
-                            title={t('common.disconnect')}
-                          >
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                              <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
-                            </svg>
-                          </button>
+                        <div className="flex flex-col gap-2">
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => loadTwitchRewards(true)}
+                              disabled={isLoadingTwitch}
+                              className="flex-1 flex items-center justify-center gap-2 bg-[#9146FF] hover:bg-[#7C2BFF] text-white font-bold py-2 px-4 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            >
+                              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+                              </svg>
+                              {isLoadingTwitch ? t('wheel.twitch.loading') : t('wheel.twitch.load')}
+                            </button>
+                            <button
+                              onClick={disconnectTwitch}
+                              className="text-red-500 hover:text-red-700 transition-colors"
+                              title={t('common.disconnect')}
+                            >
+                              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z" clipRule="evenodd" />
+                              </svg>
+                            </button>
+                          </div>
+                          <div className="flex items-center justify-between bg-gray-100 p-2 rounded">
+                            <span className="text-sm font-medium text-gray-700">
+                              {t('wheel.twitch.auto_update')}
+                            </span>
+                            <div 
+                              onClick={() => setAutoUpdateTwitch(!autoUpdateTwitch)}
+                              className={`relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full cursor-pointer ${autoUpdateTwitch ? 'bg-[#9146FF]' : 'bg-gray-300'}`}
+                            >
+                              <span
+                                className={`absolute left-1 top-1 w-4 h-4 transition duration-100 ease-in-out transform bg-white rounded-full ${autoUpdateTwitch ? 'translate-x-6' : 'translate-x-0'}`}
+                              />
+                            </div>
+                          </div>
                         </div>
                       )}
                     </div>
 
                     {/* Lista de participantes */}
-                    {participants.length > 0 && (
+                    {(participants.length > 0 || completedParticipants.length > 0) && (
                       <div className="mt-4">
                         <h3 className="text-lg font-semibold mb-2 text-purple-800">{t('wheel.participants.list.title')}</h3>
+                        
+                        {/* Indicadores de cantidad de participantes */}
+                        <div className="flex justify-between text-m mb-2 px-2">
+                          <span className="text-purple-700">
+                            <strong>{t('wheel.participants.list.pending')}:</strong> {participants.length}
+                          </span>
+                          <span className="text-purple-700">
+                            <strong>{t('wheel.participants.list.total')}:</strong> {participants.length + completedParticipants.length}
+                          </span>
+                        </div>
+                        
                         <div className="max-h-[400px] overflow-y-auto">
                           <table className="min-w-full">
                             <thead className="bg-purple-50">
@@ -916,6 +1378,7 @@ const UvdWheelPage = () => {
                               </tr>
                             </thead>
                             <tbody>
+                              {/* Mostrar primero los participantes pendientes */}
                               {participants.map((participant, index) => {
                                 const result = participantResults.find(
                                   (r, rIndex) => r.wallet === participant.wallet && rIndex === index
@@ -924,7 +1387,7 @@ const UvdWheelPage = () => {
                                 return (
                                   <tr key={`${participant.wallet}-${index}`} className="border-b border-gray-200">
                                     <td className="px-4 py-3">
-                                      <span className="font-medium">
+                                      <span className="font-medium opacity-85 text-purple-800">
                                         {participant.username || t('wheel.participants.list.anonymous')}
                                       </span>
                                     </td>
@@ -939,7 +1402,7 @@ const UvdWheelPage = () => {
                                           {result.result}
                                         </span>
                                       ) : index === currentParticipantIndex ? (
-                                        <span className="text-sm text-purple-600 animate-pulse">
+                                        <span className="text-sm text-purple-800 animate-pulse">
                                           {t('wheel.participants.list.current_turn')}
                                         </span>
                                       ) : index > currentParticipantIndex ? (
@@ -966,6 +1429,41 @@ const UvdWheelPage = () => {
                                   </tr>
                                 );
                               })}
+                              
+                              {/* Mostrar los resultados históricos */}
+                              {completedParticipants.length > 0 && (
+                                <>
+                                  <tr>
+                                    <td colSpan="4" className="px-4 py-2 bg-gray-100">
+                                      <h4 className="text-sm font-semibold text-green-800">
+                                        {t('wheel.participants.list.completed')}
+                                      </h4>
+                                    </td>
+                                  </tr>
+                                  {completedParticipants.map((completed, index) => (
+                                    <tr key={`completed-${index}`} className="border-b border-gray-200 bg-gray-50">
+                                      <td className="px-4 py-3">
+                                        <span className="font-medium opacity-85 text-green-800">
+                                          {completed.username || t('wheel.participants.list.anonymous')}
+                                        </span>
+                                      </td>
+                                      <td className="px-4 py-3">
+                                        <span className="text-sm text-gray-600 font-mono">
+                                          {`${completed.wallet.slice(0, 6)}...${completed.wallet.slice(-4)}`}
+                                        </span>
+                                      </td>
+                                      <td className="px-4 py-3">
+                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                          {completed.result}
+                                        </span>
+                                      </td>
+                                      <td className="px-4 py-3">
+                                        {/* No hay botón de eliminar para completados */}
+                                      </td>
+                                    </tr>
+                                  ))}
+                                </>
+                              )}
                             </tbody>
                           </table>
                         </div>
@@ -973,20 +1471,101 @@ const UvdWheelPage = () => {
                     )}
 
                     {/* Botones de exportar y copiar */}
-                    {participantResults.length > 0 && (
-                      <div className="flex gap-2 mt-4">
-                        <button
-                          onClick={copyToClipboard}
-                          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors"
-                        >
-                          {t('wheel.results.copy.button')}
-                        </button>
-                        <button
-                          onClick={exportToCSV}
-                          className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors"
-                        >
-                          {t('wheel.results.export.button')}
-                        </button>
+                    {(participantResults.length > 0 || completedParticipants.length > 0) && (
+                      <div className="flex flex-col gap-2 mt-4">
+                        <div className="flex gap-2">
+                          <button
+                            onClick={copyToClipboard}
+                            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors"
+                          >
+                            {t('wheel.results.copy.button')}
+                          </button>
+                          <button
+                            onClick={exportToCSV}
+                            className="flex-1 bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded transition-colors"
+                          >
+                            {t('wheel.results.export.button')}
+                          </button>
+                        </div>
+                        
+                        {/* Sección para enviar premios directamente */}
+                        <div className="mt-2 p-4 bg-purple-50 rounded-lg border border-purple-200">
+                          <h4 className="text-lg font-semibold text-purple-800 mb-2">
+                            {t('wheel.wallet.send_rewards')}
+                          </h4>
+                          
+                          {/* Mostrar información de la wallet si está conectada */}
+                          {walletAddress ? (
+                            <div className="mb-3">
+                              <p className="text-sm text-gray-700 mb-1">
+                                <span className="font-semibold">{t('wheel.wallet.connected')}:</span> {`${walletAddress.slice(0, 6)}...${walletAddress.slice(-4)}`}
+                              </p>
+                              {walletBalance && (
+                                <p className="text-sm text-gray-700">
+                                  <span className="font-semibold">{t('wheel.wallet.balance')}:</span> {formatBalance(walletBalance)} {token === defaultToken ? 'UVT' : ''}
+                                </p>
+                              )}
+                            </div>
+                          ) : (
+                            <p className="text-sm text-gray-700 mb-3">
+                              {t('wheel.wallet.connect_required')}
+                            </p>
+                          )}
+                          
+                          {/* Botones de acción */}
+                          <div className="flex flex-col gap-2">
+                            {!walletAddress ? (
+                              <button
+                                onClick={connectWallet}
+                                className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition-colors"
+                              >
+                                {t('wheel.wallet.connect_button')}
+                              </button>
+                            ) : (
+                              <>
+                                {/* Solo mostrar el botón de aprobar si no hay aprobación */}
+                                {!hasTokenApproval && (
+                                  <button
+                                    onClick={approveTokens}
+                                    disabled={isApproving || isSending || completedParticipants.length === 0}
+                                    className={`w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition-colors
+                                      ${(isApproving || isSending || completedParticipants.length === 0) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                  >
+                                    {isApproving 
+                                      ? t('wheel.wallet.approving') 
+                                      : t('wheel.wallet.approve_button')}
+                                  </button>
+                                )}
+                                
+                                <button
+                                  onClick={sendRewards}
+                                  disabled={isSending || completedParticipants.length === 0 || !hasTokenApproval}
+                                  className={`w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition-colors
+                                    ${(isSending || completedParticipants.length === 0 || !hasTokenApproval) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                                >
+                                  {isSending 
+                                    ? t('wheel.wallet.sending') 
+                                    : t('wheel.wallet.send_button')}
+                                </button>
+                              </>
+                            )}
+                            
+                            {/* Mostrar enlace a la transacción si existe */}
+                            {lastTxHash && (
+                              <button
+                                onClick={openTxInExplorer}
+                                className="w-full bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition-colors"
+                              >
+                                {t('wheel.wallet.view_transaction')}
+                              </button>
+                            )}
+                          </div>
+                          
+                          {/* Mensaje informativo */}
+                          <p className="text-xs text-gray-500 mt-2">
+                            {t('wheel.wallet.info')}
+                          </p>
+                        </div>
                       </div>
                     )}
                   </div>

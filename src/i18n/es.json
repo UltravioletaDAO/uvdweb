@@ -266,8 +266,10 @@
         },
         "anonymous": "Anónimo",
         "current_turn": "Turno actual",
-        "pending": "Pendiente",
-        "remove": "Eliminar participante"
+        "pending": "Pendientes",
+        "total": "Total",
+        "remove": "Eliminar participante",
+        "completed": "Resultados"
       }
     },
     "results": {
@@ -281,11 +283,43 @@
       "copy": {
         "button": "Copiar resultados",
         "error": "Error al copiar los resultados"
+      },
+      "send": {
+        "button": "Enviar premios"
       }
+    },
+    "wallet": {
+      "send_rewards": "Airdrop de Premios",
+      "connect_required": "Conecta tu wallet para enviar premios",
+      "connected": "Wallet conectada",
+      "connected_success": "¡Wallet conectada exitosamente!",
+      "balance": "Balance",
+      "connect_button": "Conectar Wallet",
+      "approve_button": "Aprobar Tokens",
+      "send_button": "Enviar Premios",
+      "view_transaction": "Ver Transacción",
+      "approving": "Aprobando...",
+      "sending": "Enviando...",
+      "approving_transaction": "Aprobando transacción...",
+      "sending_transaction": "Procesando transacción...",
+      "no_provider": "No se detectó wallet EVM. Por favor instala una wallet compatible.",
+      "user_rejected": "Solicitud rechazada por el usuario",
+      "connection_error": "Error al conectar con la wallet",
+      "network_add_error": "Error al agregar la red Avalanche",
+      "network_switch_error": "Error al cambiar a la red Avalanche",
+      "invalid_state": "Estado inválido. Verifica la conexión y el token",
+      "already_approved": "Tokens ya aprobados",
+      "approval_success": "¡Tokens aprobados con éxito!",
+      "approval_error": "Error al aprobar tokens",
+      "insufficient_allowance": "Permiso de token insuficiente. Por favor aprueba primero",
+      "send_success": "¡Premios enviados con éxito!",
+      "send_error": "Error al enviar premios",
+      "info": "Los premios se enviarán directamente desde tu wallet usando la red Avalanche C-Chain."
     },
     "spin_button": {
       "spinning": "Girando...",
       "disabled": "No disponible",
+      "loading": "Cargando participantes...",
       "ready": "Click para girar"
     },
     "twitch": {
@@ -301,7 +335,8 @@
       "redirecting": "Redireccionando...",
       "create_reward_error": "Error al crear la recompensa. Asegúrate de ser afiliado o partner de Twitch",
       "client_id_mismatch": "La recompensa fue creada con otra aplicación. Por favor, crea una nueva recompensa desde esta aplicación",
-      "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo"
+      "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo",
+      "auto_update": "Actualización automática"
     }
   },
   "delegations": {

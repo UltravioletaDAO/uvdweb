@@ -267,7 +267,9 @@
         "anonymous": "Anonymous",
         "current_turn": "Current turn",
         "pending": "Pending",
-        "remove": "Remove participant"
+        "total": "Total",
+        "remove": "Remove participant",
+        "completed": "Results"
       }
     },
     "results": {
@@ -281,11 +283,15 @@
       "copy": {
         "button": "Copy results",
         "error": "Error copying results"
+      },
+      "send": {
+        "button": "Send rewards"
       }
     },
     "spin_button": {
       "spinning": "Spinning...",
       "disabled": "Not available",
+      "loading": "Loading participants...",
       "ready": "Click to spin"
     },
     "twitch": {
@@ -301,7 +307,8 @@
       "redirecting": "Redirecting...",
       "create_reward_error": "Error creating reward. Make sure you are a Twitch affiliate or partner",
       "client_id_mismatch": "The reward was created with another application. Please create a new reward from this application",
-      "redemption_error": "Error getting redemptions. Please try again"
+      "redemption_error": "Error getting redemptions. Please try again",
+      "auto_update": "Auto-update"
     }
   },
   "delegations": {
@@ -324,5 +331,33 @@
       "title": "How to Stake BEAM",
       "video_title": "Tutorial: Staking BEAM Tokens"
     }
+  },
+  "wallet": {
+    "send_rewards": "Rewards Airdrop",
+    "connect_required": "Connect your wallet to send rewards",
+    "connected": "Connected wallet",
+    "connected_success": "Wallet connected successfully!",
+    "balance": "Balance",
+    "connect_button": "Connect Wallet",
+    "approve_button": "Approve Tokens",
+    "send_button": "Send Rewards",
+    "view_transaction": "View Transaction",
+    "approving": "Approving...",
+    "sending": "Sending...",
+    "approving_transaction": "Approving transaction...",
+    "sending_transaction": "Processing transaction...",
+    "no_provider": "No EVM wallet detected. Please install a compatible wallet.",
+    "user_rejected": "Request rejected by user",
+    "connection_error": "Error connecting to wallet",
+    "network_add_error": "Error adding Avalanche network",
+    "network_switch_error": "Error switching to Avalanche network",
+    "invalid_state": "Invalid state. Please check connection and token",
+    "already_approved": "Tokens already approved",
+    "approval_success": "Tokens approved successfully!",
+    "approval_error": "Error approving tokens",
+    "insufficient_allowance": "Insufficient token allowance. Please approve first",
+    "send_success": "Rewards sent successfully!",
+    "send_error": "Error sending rewards",
+    "info": "Rewards will be sent directly from your wallet using the Avalanche C-Chain network."
   }
 } 

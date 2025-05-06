@@ -375,7 +375,7 @@ const UvdWheel = ({ segments, probabilities = [], onSpinEnd, disabled = false })
                 style={{ fontFamily: 'Arial, sans-serif' }}
               >
                 {isSpinning ? t('wheel.spin_button.spinning') : 
-                 disabled ? t('wheel.spin_button.disabled') : 
+                 disabled ? t('wheel.spin_button.loading') : 
                  t('wheel.spin_button.ready')}
               </text>
             </g>
