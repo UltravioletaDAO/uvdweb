@@ -18,6 +18,7 @@
     "multisig": "Multifirma",
     "wheel": "Ruleta",
     "delegations": "Delegaciones",
+    "safestats": "Multifirmantes",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -32,7 +33,8 @@
       "multisig": "Multifirma para gestión de fondos",
       "purge": "Gestión de usuarios inactivos",
       "wheel": "Ruleta de premios UVD",
-      "delegations": "Stakea y delegar tus tokens"
+      "delegations": "Stakea y delegar tus tokens",
+      "safestats": "Estadísticas de multifirmantes"
     },
     "aria": {
       "open_menu": "Abrir menú",
@@ -358,5 +360,33 @@
     "tutorial": {
       "title": "Cómo hacer Stake de BEAM"
     }
+  },
+  "safestats": {
+    "title": "Multifirmantes UltravioletaDAO",
+    "filter": {
+      "title": "Opciones de filtrado",
+      "by_date": "Filtrar por fechas",
+      "start_date": "Fecha Inicio",
+      "end_date": "Fecha Fin"
+    },
+    "loading": "Cargando...",
+    "apply_filter": "Filtrar",
+    "statistics_date": "Estadísticas de firmas ({{start}} a {{end}}, {{count}} transacciones)",
+    "all_time": "Todo el tiempo",
+    "no_transactions": "No se encontraron transacciones en el rango de fechas seleccionado",
+    "table": {
+      "ranking": "Ranking",
+      "address": "Dirección del Firmante",
+      "signatures": "Firmas",
+      "percentage": "Porcentaje de Actividad"
+    },
+    "errors": {
+      "loading_data": "Error al cargar datos de Safe. Por favor, intenta de nuevo.",
+      "invalid_data": "Respuesta inválida de la API de Safe.",
+      "invalid_limit": "Por favor ingresa un número válido entre 1 y 100.",
+      "date_required": "Por favor ingresa al menos una fecha para filtrar."
+    },
+    "copy": "Copiar dirección",
+    "copied": "¡Dirección copiada!"
   }
 } 

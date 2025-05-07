@@ -18,6 +18,7 @@
     "multisig": "Multisig",
     "wheel": "Wheel decide",
     "delegations": "Delegations",
+    "safestats": "Multisigners",
     "categories": {
       "main": "Main",
       "governance": "Governance",
@@ -32,7 +33,8 @@
       "multisig": "Multisig for fund management",
       "purge": "Inactive users management",
       "wheel": "Prize wheel UVD",
-      "delegations": "Stake and delegate your tokens"
+      "delegations": "Stake and delegate your tokens",
+      "safestats": "Multisigners statistics"
     },
     "aria": {
       "open_menu": "Open menu",
@@ -359,5 +361,33 @@
     "send_success": "Rewards sent successfully!",
     "send_error": "Error sending rewards",
     "info": "Rewards will be sent directly from your wallet using the Avalanche C-Chain network."
+  },
+  "safestats": {
+    "title": "UltravioletaDAO Multisigners",
+    "filter": {
+      "title": "Filter Options",
+      "by_date": "Filter by Date Range",
+      "start_date": "Start Date",
+      "end_date": "End Date"
+    },
+    "loading": "Loading...",
+    "apply_filter": "Filter",
+    "statistics_date": "Signature statistics ({{start}} to {{end}}, {{count}} transactions)",
+    "all_time": "All Time",
+    "no_transactions": "No transactions found in the selected date range",
+    "table": {
+      "ranking": "Ranking",
+      "address": "Signer Address",
+      "signatures": "Signatures",
+      "percentage": "Activity Percentage"
+    },
+    "errors": {
+      "loading_data": "Error loading Safe data. Please try again.",
+      "invalid_data": "Invalid response from Safe API.",
+      "invalid_limit": "Please enter a valid number between 1 and 100.",
+      "date_required": "Please enter at least one date for filtering."
+    },
+    "copy": "Copy address",
+    "copied": "Address copied!"
   }
 } 
