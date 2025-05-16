@@ -12,6 +12,10 @@ import Blog from "./pages/BlogList"
 import BlogPost from "./pages/BlogPost"
 import NotFound from "./pages/NotFound"
 import Snapshot from "./pages/Snapshot";
+import UvdWheel from "./pages/UvdWheelPage";
+import TwitchCallback from './pages/TwitchCallback';
+import Delegations from "./pages/Delegations";
+import SafeStats from "./pages/SafeStats";
 
 function App() {
   return (
@@ -30,6 +34,10 @@ function App() {
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/snapshot" element={<Snapshot />} />
+          <Route path="/wheel" element={<UvdWheel />} />
+          <Route path="/twitch-callback" element={<TwitchCallback />} />
+          <Route path="/delegations" element={<Delegations />} />
+          <Route path="/safestats" element={<SafeStats />} />
         </Routes>
       </div>
     </Router>

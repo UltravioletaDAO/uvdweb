@@ -16,6 +16,9 @@
     "blog": "Blog",
     "purge": "Purga",
     "multisig": "Multifirma",
+    "wheel": "Ruleta",
+    "delegations": "Delegaciones",
+    "safestats": "Multifirmantes",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -28,7 +31,10 @@
       "blog": "Paila News",
       "snapshot": "Votaciones y propuestas de gobernanza",
       "multisig": "Multifirma para gestión de fondos",
-      "purge": "Gestión de usuarios inactivos"
+      "purge": "Gestión de usuarios inactivos",
+      "wheel": "Ruleta de premios UVD",
+      "delegations": "Stakea y delegar tus tokens",
+      "safestats": "Estadísticas de multifirmantes"
     },
     "aria": {
       "open_menu": "Abrir menú",
@@ -213,5 +219,174 @@
   "common": {
     "cancel": "Cancelar",
     "disconnect": "Desconectar"
+  },
+  "wheel": {
+    "customize_button": {
+      "show": "Personalizar Ruleta",
+      "hide": "Ocultar opciones"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Dirección del contrato"
+    },
+    "segments": {
+      "add": {
+        "title": "Agregar nuevo valor",
+        "value_placeholder": "Valor",
+        "probability_placeholder": "Probabilidad %",
+        "button": "Agregar"
+      },
+      "current": {
+        "title": "Valores actuales",
+        "probability_suffix": "%",
+        "min_segments_error": "La ruleta necesita al menos 2 valores"
+      }
+    },
+    "buttons": {
+      "equalize": "Igualar probabilidades",
+      "reset": "Restablecer valores por defecto"
+    },
+    "participants": {
+      "panel": {
+        "show": "Agregar participante",
+        "hide": "Ocultar participantes",
+        "clear": "Limpiar"
+      },
+      "add": {
+        "title": "Nuevo participante",
+        "wallet_placeholder": "Wallet (obligatoria)",
+        "username_placeholder": "Usuario (opcional)",
+        "button": "Agregar",
+        "wallet_required": "La wallet es obligatoria"
+      },
+      "list": {
+        "title": "Participantes y Resultados",
+        "headers": {
+          "user": "Usuario",
+          "wallet": "Wallet",
+          "result": "Resultado"
+        },
+        "anonymous": "Anónimo",
+        "current_turn": "Turno actual",
+        "pending": "Pendiente",
+        "total": "Total",
+        "remove": "Eliminar participante",
+        "completed": "Resultados"
+      }
+    },
+    "results": {
+      "title": "Resultado",
+      "current_participant": "Participante actual",
+      "no_more_participants": "No hay más participantes. Agrega más para continuar",
+      "export": {
+        "button": "Exportar resultados",
+        "no_results": "No hay resultados para exportar"
+      },
+      "copy": {
+        "button": "Copiar resultados",
+        "error": "Error al copiar los resultados"
+      },
+      "send": {
+        "button": "Enviar premios"
+      }
+    },
+    "wallet": {
+      "send_rewards": "Airdrop de Premios",
+      "connect_required": "Conecta tu wallet para enviar premios",
+      "connected": "Wallet conectada",
+      "connected_success": "¡Wallet conectada exitosamente!",
+      "balance": "Balance",
+      "connect_button": "Conectar Wallet",
+      "approve_button": "Aprobar Tokens",
+      "send_button": "Enviar Premios",
+      "view_transaction": "Ver Transacción",
+      "approving": "Aprobando...",
+      "sending": "Enviando...",
+      "approving_transaction": "Aprobando transacción...",
+      "sending_transaction": "Procesando transacción...",
+      "no_provider": "No se detectó wallet EVM. Por favor instala una wallet compatible.",
+      "user_rejected": "Solicitud rechazada por el usuario",
+      "connection_error": "Error al conectar con la wallet",
+      "network_add_error": "Error al agregar la red Avalanche",
+      "network_switch_error": "Error al cambiar a la red Avalanche",
+      "invalid_state": "Estado inválido. Verifica la conexión y el token",
+      "already_approved": "Tokens ya aprobados",
+      "approval_success": "¡Tokens aprobados con éxito!",
+      "approval_error": "Error al aprobar tokens",
+      "insufficient_allowance": "Permiso de token insuficiente. Por favor aprueba primero",
+      "send_success": "¡Premios enviados con éxito!",
+      "send_error": "Error al enviar premios",
+      "info": "Los premios se enviarán directamente desde tu wallet usando la red Avalanche C-Chain."
+    },
+    "spin_button": {
+      "spinning": "Girando...",
+      "disabled": "No disponible",
+      "loading": "Cargando participantes...",
+      "ready": "Click para girar"
+    },
+    "twitch": {
+      "load": "Cargar de Twitch",
+      "loading": "Cargando recompensas...",
+      "load_error": "Error al cargar las recompensas de Twitch",
+      "auth_error": "Error de autenticación. Por favor, conéctate de nuevo",
+      "complete_error": "Error al completar la recompensa",
+      "no_rewards": "No hay recompensas pendientes por cargar",
+      "invalid_wallet": "Wallet inválida detectada",
+      "auth_required": "Necesitas autenticarte con Twitch",
+      "auth_button": "Conectar con Twitch",
+      "redirecting": "Redireccionando...",
+      "create_reward_error": "Error al crear la recompensa. Asegúrate de ser afiliado o partner de Twitch",
+      "client_id_mismatch": "La recompensa fue creada con otra aplicación. Por favor, crea una nueva recompensa desde esta aplicación",
+      "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo",
+      "auto_update": "Actualización automática"
+    }
+  },
+  "delegations": {
+    "title": "Delegaciones",
+    "beam_validator": {
+      "title": "🔒 Validador de Beam Network",
+      "join_message": "🚀 ÚNETE al nodo más firme, resiliente y lleno de pura candela LATAM: @UltravioletaDAO",
+      "launch_message": "Ya lanzamos, y ya estamos validando en la L1 de Beam como tiene que ser.",
+      "infrastructure": "🎯 Este nodo no fue montado con palitos y cinta:",
+      "deployment": "Fue desplegado con infraestructura pro, full Terraform sobre AWS, hecho con amor y precisión por @0xultravioleta durante sus transmisiones de twitch.",
+      "reliability": "Esto no se cae, parce. Esto respira comunidad y uptime.",
+      "backed": "🌞 Respaldado por la comunidad Web3 más leal y activa de LATAM",
+      "commitment": "🌎 Comprometidos con la descentralización, transparencia y alto rendimiento",
+      "infrastructure_code": "🛠️ 100% Infra-as-Code, listo para operar en múltiples regiones",
+      "join_movement": "🎯 Quieres ser parte del movimiento?",
+      "delegate": "Delegá hoy mismo y caminá con nosotros hacia una red más libre, abierta y poderosa:",
+      "node_id": "NodeID-83Dx5mVdBzehEn8xomdeMQPLBM9xY2XkZ"
+    },
+    "tutorial": {
+      "title": "Cómo hacer Stake de BEAM"
+    }
+  },
+  "safestats": {
+    "title": "Multifirmantes UltravioletaDAO",
+    "filter": {
+      "title": "Opciones de filtrado",
+      "by_date": "Filtrar por fechas",
+      "start_date": "Fecha Inicio",
+      "end_date": "Fecha Fin"
+    },
+    "loading": "Cargando...",
+    "apply_filter": "Filtrar",
+    "statistics_date": "Estadísticas de firmas ({{start}} a {{end}}, {{count}} transacciones)",
+    "all_time": "Todo el tiempo",
+    "no_transactions": "No se encontraron transacciones en el rango de fechas seleccionado",
+    "table": {
+      "ranking": "Ranking",
+      "address": "Dirección del Firmante",
+      "signatures": "Firmas",
+      "percentage": "Porcentaje de Actividad"
+    },
+    "errors": {
+      "loading_data": "Error al cargar datos de Safe. Por favor, intenta de nuevo.",
+      "invalid_data": "Respuesta inválida de la API de Safe.",
+      "invalid_limit": "Por favor ingresa un número válido entre 1 y 100.",
+      "date_required": "Por favor ingresa al menos una fecha para filtrar."
+    },
+    "copy": "Copiar dirección",
+    "copied": "¡Dirección copiada!"
   }
 } 

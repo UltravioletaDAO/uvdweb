@@ -16,6 +16,9 @@
     "blog": "Blog",
     "purge": "Purge",
     "multisig": "Multisig",
+    "wheel": "Wheel decide",
+    "delegations": "Delegations",
+    "safestats": "Multisigners",
     "categories": {
       "main": "Main",
       "governance": "Governance",
@@ -28,7 +31,10 @@
       "blog": "Paila News",
       "snapshot": "Governance votes and proposals",
       "multisig": "Multisig for fund management",
-      "purge": "Inactive users management"
+      "purge": "Inactive users management",
+      "wheel": "Prize wheel UVD",
+      "delegations": "Stake and delegate your tokens",
+      "safestats": "Multisigners statistics"
     },
     "aria": {
       "open_menu": "Open menu",
@@ -213,5 +219,175 @@
   "common": {
     "cancel": "Cancel",
     "disconnect": "Disconnect"
+  },
+  "wheel": {
+    "customize_button": {
+      "show": "Customize Wheel",
+      "hide": "Hide Options"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Contract address"
+    },
+    "segments": {
+      "add": {
+        "title": "Add new value",
+        "value_placeholder": "Value",
+        "probability_placeholder": "Probability %",
+        "button": "Add"
+      },
+      "current": {
+        "title": "Current values",
+        "probability_suffix": "%",
+        "min_segments_error": "The wheel needs at least 2 values"
+      }
+    },
+    "buttons": {
+      "equalize": "Equalize probabilities",
+      "reset": "Reset to default values"
+    },
+    "participants": {
+      "panel": {
+        "show": "Add participant",
+        "hide": "Hide participants",
+        "clear": "Clear"
+      },
+      "add": {
+        "title": "New participant",
+        "wallet_placeholder": "Wallet (required)",
+        "username_placeholder": "Username (optional)",
+        "button": "Add",
+        "wallet_required": "Wallet is required"
+      },
+      "list": {
+        "title": "Participants and Results",
+        "headers": {
+          "user": "User",
+          "wallet": "Wallet",
+          "result": "Result"
+        },
+        "anonymous": "Anonymous",
+        "current_turn": "Current turn",
+        "pending": "Pending",
+        "total": "Total",
+        "remove": "Remove participant",
+        "completed": "Results"
+      }
+    },
+    "results": {
+      "title": "Result",
+      "current_participant": "Current participant",
+      "no_more_participants": "No more participants. Add more to continue",
+      "export": {
+        "button": "Export results",
+        "no_results": "No results to export"
+      },
+      "copy": {
+        "button": "Copy results",
+        "error": "Error copying results"
+      },
+      "send": {
+        "button": "Send rewards"
+      }
+    },
+    "spin_button": {
+      "spinning": "Spinning...",
+      "disabled": "Not available",
+      "loading": "Loading participants...",
+      "ready": "Click to spin"
+    },
+    "twitch": {
+      "load": "Load from Twitch",
+      "loading": "Loading rewards...",
+      "load_error": "Error loading Twitch rewards",
+      "auth_error": "Authentication error. Please connect again",
+      "complete_error": "Error completing reward",
+      "no_rewards": "No pending rewards to load",
+      "invalid_wallet": "Invalid wallet detected",
+      "auth_required": "Twitch authentication required",
+      "auth_button": "Connect with Twitch",
+      "redirecting": "Redirecting...",
+      "create_reward_error": "Error creating reward. Make sure you are a Twitch affiliate or partner",
+      "client_id_mismatch": "The reward was created with another application. Please create a new reward from this application",
+      "redemption_error": "Error getting redemptions. Please try again",
+      "auto_update": "Auto-update"
+    }
+  },
+  "delegations": {
+    "title": "Delegations",
+    "beam_validator": {
+      "title": "🔒 Beam Network Validator",
+      "join_message": "🚀 JOIN the most solid, resilient and full of pure fire LATAM node: @UltravioletaDAO",
+      "launch_message": "We've launched and we're already validating on Beam's L1 as it should be.",
+      "infrastructure": "🎯 This node wasn't built with sticks and tape:",
+      "deployment": "We've deployed it with pro infrastructure, full Terraform on AWS, made with love and precision by @0xultravioleta during Twitch streams.",
+      "reliability": "This won't fall, mate. This breathes community and uptime.",
+      "backed": "🌞 Backed by the most loyal and active Web3 community in LATAM",
+      "commitment": "🌎 Committed to decentralization, transparency and high performance",
+      "infrastructure_code": "🛠️ 100% Infra-as-Code, ready to operate in multiple regions",
+      "join_movement": "🎯 Want to be part of the movement?",
+      "delegate": "Delegate today and walk with us towards a freer, more open and powerful network:",
+      "node_id": "NodeID-83Dx5mVdBzehEn8xomdeMQPLBM9xY2XkZ"
+    },
+    "tutorial": {
+      "title": "How to Stake BEAM",
+      "video_title": "Tutorial: Staking BEAM Tokens"
+    }
+  },
+  "wallet": {
+    "send_rewards": "Rewards Airdrop",
+    "connect_required": "Connect your wallet to send rewards",
+    "connected": "Connected wallet",
+    "connected_success": "Wallet connected successfully!",
+    "balance": "Balance",
+    "connect_button": "Connect Wallet",
+    "approve_button": "Approve Tokens",
+    "send_button": "Send Rewards",
+    "view_transaction": "View Transaction",
+    "approving": "Approving...",
+    "sending": "Sending...",
+    "approving_transaction": "Approving transaction...",
+    "sending_transaction": "Processing transaction...",
+    "no_provider": "No EVM wallet detected. Please install a compatible wallet.",
+    "user_rejected": "Request rejected by user",
+    "connection_error": "Error connecting to wallet",
+    "network_add_error": "Error adding Avalanche network",
+    "network_switch_error": "Error switching to Avalanche network",
+    "invalid_state": "Invalid state. Please check connection and token",
+    "already_approved": "Tokens already approved",
+    "approval_success": "Tokens approved successfully!",
+    "approval_error": "Error approving tokens",
+    "insufficient_allowance": "Insufficient token allowance. Please approve first",
+    "send_success": "Rewards sent successfully!",
+    "send_error": "Error sending rewards",
+    "info": "Rewards will be sent directly from your wallet using the Avalanche C-Chain network."
+  },
+  "safestats": {
+    "title": "UltravioletaDAO Multisigners",
+    "filter": {
+      "title": "Filter Options",
+      "by_date": "Filter by Date Range",
+      "start_date": "Start Date",
+      "end_date": "End Date"
+    },
+    "loading": "Loading...",
+    "apply_filter": "Filter",
+    "statistics_date": "Signature statistics ({{start}} to {{end}}, {{count}} transactions)",
+    "all_time": "All Time",
+    "no_transactions": "No transactions found in the selected date range",
+    "table": {
+      "ranking": "Ranking",
+      "address": "Signer Address",
+      "signatures": "Signatures",
+      "percentage": "Activity Percentage"
+    },
+    "errors": {
+      "loading_data": "Error loading Safe data. Please try again.",
+      "invalid_data": "Invalid response from Safe API.",
+      "invalid_limit": "Please enter a valid number between 1 and 100.",
+      "date_required": "Please enter at least one date for filtering."
+    },
+    "copy": "Copy address",
+    "copied": "Address copied!"
   }
 } 

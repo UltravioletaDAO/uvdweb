@@ -11,6 +11,9 @@ import {
   UserMinusIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
+  GiftIcon,
+  CubeTransparentIcon,
+  ChartBarIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 
@@ -53,6 +56,13 @@ const HamburgerMenu = () => {
       path: "/blog",
       isExternal: false,
       description: t('navigation.descriptions.blog'),
+    },
+    {
+      name: t('navigation.delegations'),
+      icon: CubeTransparentIcon,
+      path: "/delegations",
+      isExternal: false,
+      description: t('navigation.descriptions.delegations'),
     }
   ];
 
@@ -81,7 +91,7 @@ const HamburgerMenu = () => {
       isExternal: true,
       customStyle: "text-emerald-400 group-hover:text-emerald-300",
       description: t('navigation.descriptions.multisig'),
-    },
+    }
   ];
 
   const adminItems = [
@@ -91,6 +101,21 @@ const HamburgerMenu = () => {
       path: "/purge",
       isExternal: false,
       description: t('navigation.descriptions.purge'),
+    },
+    {
+      name: t('navigation.safestats'),
+      icon: ChartBarIcon,
+      path: "/safestats",
+      isExternal: false,
+      customStyle: "text-blue-400 group-hover:text-blue-300",
+      description: t('navigation.descriptions.safestats'),
+    },
+    {
+      name: t('navigation.wheel'),
+      icon: GiftIcon,
+      path: "/wheel",
+      isExternal: false,
+      description: t('navigation.descriptions.wheel'),
     },
   ];
 
