@@ -997,10 +997,11 @@ const UvdWheelPage = () => {
       const signer = provider.getSigner();
       const tokenContract = new ethers.Contract(token, ERC20_ABI, signer);
       
-      // Aprobar el contrato para gastar tokens (aprobación ilimitada)
+      // Aprobar el contrato para gastar tokens (aprobar solo lo necesario)
+      const amounts = ethers.utils.parseUnits(completedParticipants.reduce((sum, p) => sum + Number(p.result), 0).toString(), tokenDecimals);
       const tx = await tokenContract.approve(
         AIRDROP_CONTRACT_ADDRESS, 
-        ethers.constants.MaxUint256 // Valor máximo posible para permitir transferencias ilimitadas
+        amounts
       );
       
       // Mostrar notificación de transacción pendiente
@@ -1092,8 +1093,10 @@ const UvdWheelPage = () => {
   // Escuchar cambios de cuenta
   useEffect(() => {
     if (window.ethereum) {
-      const handleAccountsChanged = (accounts) => {
+      const handleAccountsChanged = async (accounts) => {
         if (accounts.length > 0) {
+          // Intentar cambiar a Avalanche C-Chain antes de establecer la cuenta
+          await switchToAvalancheNetwork();
           setWalletAddress(accounts[0]);
         } else {
           setWalletAddress(null);
@@ -1102,8 +1105,10 @@ const UvdWheelPage = () => {
         }
       };
 
-      const handleChainChanged = () => {
+      const handleChainChanged = async () => {
         if (walletAddress) {
+          // Intentar cambiar a Avalanche C-Chain
+          await switchToAvalancheNetwork();
           // Comprobar si estamos en la red correcta y establecer el balance
           getTokenBalance(walletAddress, token);
           checkTokenApproval();
@@ -1115,9 +1120,12 @@ const UvdWheelPage = () => {
 
       // Auto-detectar y conectar si la wallet ya está conectada
       if (window.ethereum.selectedAddress) {
-        setWalletAddress(window.ethereum.selectedAddress);
-        getTokenBalance(window.ethereum.selectedAddress, token);
-        checkTokenApproval();
+        // Intentar cambiar a Avalanche C-Chain antes de establecer la cuenta
+        switchToAvalancheNetwork().then(() => {
+          setWalletAddress(window.ethereum.selectedAddress);
+          getTokenBalance(window.ethereum.selectedAddress, token);
+          checkTokenApproval();
+        });
       }
 
       return () => {
@@ -1556,6 +1564,9 @@ const UvdWheelPage = () => {
                                   <span className="font-semibold">{t('wheel.wallet.balance')}:</span> {formatBalance(walletBalance)} {token === defaultToken ? 'UVT' : ''}
                                 </p>
                               )}
+                              <p className="text-sm text-gray-700">
+                                  <span className="font-semibold">{t('wheel.wallet.total_rewards')}:</span> {completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} {token === defaultToken ? 'UVT' : ''}
+                                </p>
                             </div>
                           ) : (
                             <p className="text-sm text-gray-700 mb-3">
@@ -1585,8 +1596,8 @@ const UvdWheelPage = () => {
                                       ${(isApproving || isSending || completedParticipants.length === 0) ? 'opacity-50 cursor-not-allowed' : ''}`}
                                   >
                                     {isApproving 
-                                      ? t('wheel.wallet.approving') 
-                                      : t('wheel.wallet.approve_button')}
+                                      ? `${t('wheel.wallet.approving')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVT' : ''} ...` 
+                                      : `${t('wheel.wallet.approve_button')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVT' : ''}`}
                                   </button>
                                 )}
                                 
