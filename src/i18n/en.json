@@ -341,10 +341,10 @@
     "connected_success": "Wallet connected successfully!",
     "balance": "Balance",
     "connect_button": "Connect Wallet",
-    "approve_button": "Approve Tokens",
+    "approve_button": "Approve",
     "send_button": "Send Rewards",
     "view_transaction": "View Transaction",
-    "approving": "Approving...",
+    "approving": "Approving",
     "sending": "Sending...",
     "approving_transaction": "Approving transaction...",
     "sending_transaction": "Processing transaction...",
@@ -360,7 +360,8 @@
     "insufficient_allowance": "Insufficient token allowance. Please approve first",
     "send_success": "Rewards sent successfully!",
     "send_error": "Error sending rewards",
-    "info": "Rewards will be sent directly from your wallet using the Avalanche C-Chain network."
+    "info": "Rewards will be sent directly from your wallet using the Avalanche C-Chain network.",
+    "total_rewards": "Total rewards"
   },
   "safestats": {
     "title": "UltravioletaDAO Multisigners",

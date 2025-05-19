@@ -297,10 +297,10 @@
       "connected_success": "¡Wallet conectada exitosamente!",
       "balance": "Balance",
       "connect_button": "Conectar Wallet",
-      "approve_button": "Aprobar Tokens",
+      "approve_button": "Aprobar",
       "send_button": "Enviar Premios",
       "view_transaction": "Ver Transacción",
-      "approving": "Aprobando...",
+      "approving": "Aprobando",
       "sending": "Enviando...",
       "approving_transaction": "Aprobando transacción...",
       "sending_transaction": "Procesando transacción...",
@@ -316,7 +316,8 @@
       "insufficient_allowance": "Permiso de token insuficiente. Por favor aprueba primero",
       "send_success": "¡Premios enviados con éxito!",
       "send_error": "Error al enviar premios",
-      "info": "Los premios se enviarán directamente desde tu wallet usando la red Avalanche C-Chain."
+      "info": "Los premios se enviarán directamente desde tu wallet usando la red Avalanche C-Chain.",
+      "total_rewards": "Total de premios"
     },
     "spin_button": {
       "spinning": "Girando...",
