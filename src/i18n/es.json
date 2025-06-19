@@ -49,24 +49,24 @@
       "button": "Conócenos"
     },
     "token": {
-      "title": "$UVT: nuestro token de gobernanza",
-      "description": "Participa en el crecimiento y la toma de decisiones con nuestro token de gobernanza UVT",
+      "title": "$UVD: nuestro token de gobernanza",
+      "description": "Participa en el crecimiento y la toma de decisiones con nuestro token de gobernanza UVD",
       "button": "Ver Token"
     },
     "raffles": {
       "title": "Sorteos Periódicos",
-      "description": "Participa en nuestros sorteos exclusivos para holders de UVT y miembros de la comunidad"
+      "description": "Participa en nuestros sorteos exclusivos para holders de UVD y miembros de la comunidad"
     }
   },
   "token": {
     "title": "Ultravioleta Token",
-    "description_1": "$UVT es el token de gobernanza y utilidad de UltraVioleta DAO, que faculta a los titulares a participar en la toma de decisiones descentralizada y la gestión de tesorería. Se utiliza para votar propuestas, asignar fondos comunitarios y apoyar iniciativas de los miembros.",
-    "description_2": "A través de $UVT, la DAO mantiene una estructura transparente y democrática, asegurando que sus recursos se dirigen en base a la gobernanza colectiva.",
-    "chart_title": "Gráfico $UVT en Dexscreener",
+    "description_1": "$UVD es el token de gobernanza y utilidad de UltraVioleta DAO, que faculta a los titulares a participar en la toma de decisiones descentralizada y la gestión de tesorería. Se utiliza para votar propuestas, asignar fondos comunitarios y apoyar iniciativas de los miembros.",
+    "description_2": "A través de $UVD, la DAO mantiene una estructura transparente y democrática, asegurando que sus recursos se dirigen en base a la gobernanza colectiva.",
+    "chart_title": "Gráfico $UVD en Dexscreener",
     "buttons": {
       "swap": "Intercambiar Token",
       "swap_alt": "Icono de Intercambio",
-      "liquidity": "Pool de Liquidez UVT/Avax",
+      "liquidity": "Pool de Liquidez UVD",
       "liquidity_alt": "Icono de Pool de Liquidez"
     }
   },
