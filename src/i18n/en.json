@@ -49,24 +49,24 @@
       "button": "Join Us"
     },
     "token": {
-      "title": "$UVT: our governance token",
-      "description": "Participate in growth and decision-making with our UVT governance token",
+      "title": "$UVD: our governance token",
+      "description": "Participate in growth and decision-making with our UVD governance token",
       "button": "View Token"
     },
     "raffles": {
       "title": "Periodic Raffles",
-      "description": "Participate in our exclusive raffles for UVT holders and community members"
+      "description": "Participate in our exclusive raffles for UVD holders and community members"
     }
   },
   "token": {
-    "title": "Ultravioleta Token",
-    "description_1": "$UVT is the governance and utility token of UltraVioleta DAO, which empowers holders to participate in decentralized decision-making and treasury management. It is used to vote on proposals, allocate community funds, and support member initiatives.",
-    "description_2": "Through $UVT, the DAO maintains a transparent and democratic structure, ensuring that its resources are directed based on collective governance.",
-    "chart_title": "Dexscreener $UVT Chart",
+    "title": "UltravioletaDAO Token",
+    "description_1": "$UVD is the governance and utility token of UltraVioleta DAO, which empowers holders to participate in decentralized decision-making and treasury management. It is used to vote on proposals, allocate community funds, and support member initiatives.",
+    "description_2": "Through $UVD, the DAO maintains a transparent and democratic structure, ensuring that its resources are directed based on collective governance.",
+    "chart_title": "Dexscreener $UVD Chart",
     "buttons": {
       "swap": "Swap Token",
       "swap_alt": "SwapToken Icon",
-      "liquidity": "Liquidity Pool UVT/Avax",
+      "liquidity": "Liquidity Pool UVD",
       "liquidity_alt": "Liquidity Pool Icon"
     }
   },
