@@ -23,7 +23,7 @@ const Token = () => {
   const tokenButtons = [
     {
       name: t('token.buttons.swap'),
-      url: 'https://lfj.gg/avalanche/swap?outputCurrency=AVAX&inputCurrency=0x281027C6a46142D6FC57f12665147221CE69Af33',
+      url: 'https://lfj.gg/avalanche/swap?outputCurrency=AVAX&inputCurrency=0x4Ffe7e01832243e03668E090706F17726c26d6B2',
       icon: (
         <img src={swapToken} alt={t('token.buttons.swap_alt')} className="w-6 h-6" />
       ),
@@ -31,7 +31,7 @@ const Token = () => {
     },
     {
       name: t('token.buttons.liquidity'),
-      url: 'https://lfj.gg/avalanche/pool/v1/0x281027c6a46142d6fc57f12665147221ce69af33/AVAX',
+      url: 'https://snowscan.xyz/address/0xBFf3e2238e545C76f705560BD1677BD9c0E9dAB4',
       icon: (
         <img src={liquidityPool} alt={t('token.buttons.liquidity_alt')} className="w-6 h-6" />
       ),
@@ -120,7 +120,7 @@ const Token = () => {
           </style>
           <div id="dexscreener-embed">
             <iframe 
-              src="https://dexscreener.com/avalanche/0x3b6c7647e833cf1337a8713e15cf6261312b352a?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=price&interval=60"
+              src="https://dexscreener.com/avalanche/0x4Ffe7e01832243e03668E090706F17726c26d6B2?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=price&interval=60"
               title={t('token.chart_title')}
             ></iframe>
           </div>
