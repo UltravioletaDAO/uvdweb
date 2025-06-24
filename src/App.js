@@ -14,7 +14,7 @@ import NotFound from "./pages/NotFound"
 import Snapshot from "./pages/Snapshot";
 import UvdWheel from "./pages/UvdWheelPage";
 import TwitchCallback from './pages/TwitchCallback';
-import Delegations from "./pages/Delegations";
+//import Delegations from "./pages/Delegations";
 import SafeStats from "./pages/SafeStats";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThirdwebProvider } from "thirdweb/react";
@@ -44,7 +44,6 @@ function App() {
               <Route path="/snapshot" element={<Snapshot />} />
               <Route path="/wheel" element={<UvdWheel />} />
               <Route path="/twitch-callback" element={<TwitchCallback />} />
-              <Route path="/delegations" element={<Delegations />} />
               <Route path="/safestats" element={<SafeStats />} />
             </Routes>
           </div>

@@ -56,14 +56,15 @@ const HamburgerMenu = () => {
       path: "/blog",
       isExternal: false,
       description: t('navigation.descriptions.blog'),
-    },
+    }/* Delegations disabled for now (Beam validator was shut down)
+    ,
     {
       name: t('navigation.delegations'),
       icon: CubeTransparentIcon,
       path: "/delegations",
       isExternal: false,
       description: t('navigation.descriptions.delegations'),
-    }
+    }*/
   ];
 
   const governanceItems = [
