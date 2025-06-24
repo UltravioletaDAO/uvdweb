@@ -59,7 +59,7 @@
     }
   },
   "token": {
-    "title": "Ultravioleta Token",
+    "title": "UltravioletaDAO Token",
     "description_1": "$UVD es el token de gobernanza y utilidad de UltraVioleta DAO, que faculta a los titulares a participar en la toma de decisiones descentralizada y la gestión de tesorería. Se utiliza para votar propuestas, asignar fondos comunitarios y apoyar iniciativas de los miembros.",
     "description_2": "A través de $UVD, la DAO mantiene una estructura transparente y democrática, asegurando que sus recursos se dirigen en base a la gobernanza colectiva.",
     "chart_title": "Gráfico $UVD en Dexscreener",
@@ -218,7 +218,8 @@
   },
   "common": {
     "cancel": "Cancelar",
-    "disconnect": "Desconectar"
+    "disconnect": "Desconectar",
+    "locale": "es_ES"
   },
   "wheel": {
     "customize_button": {
@@ -389,5 +390,42 @@
     },
     "copy": "Copiar dirección",
     "copied": "¡Dirección copiada!"
+  },
+  "swap": {
+    "title": "Swap",
+    "from": "Desde",
+    "to": "Hacia",
+    "balance": "Balance",
+    "allowance": "Permiso",
+    "slippage_tolerance": "Slippage",
+    "custom_slippage": "Personalizado",
+    "rate": "Tasa",
+    "minimum_received": "Mínimo a recibir",
+    "connect_wallet": "Conecta tu wallet para habilitar swap",
+    "enter_amount": "Ingresa cantidad",
+    "insufficient_balance": "Balance insuficiente",
+    "swapping": "Intercambiando...",
+    "swap": "Swap",
+    "approve_uvd": "Aprobar UVD",
+    "approving": "Aprobando...",
+    "approve_required": "Aprobación requerida",
+    "approval_required": "Por favor aprueba los tokens primero",
+    "approving_tokens": "Aprobando tokens UVD...",
+    "processing_swap": "Procesando transacción de swap...",
+    "approval_submitted": "Aprobación enviada",
+    "swap_submitted": "Swap enviado", 
+    "approval_pending": "Esperando confirmación de aprobación...",
+    "swap_pending": "Esperando confirmación de swap...",
+    "approval_confirmed": "¡Aprobación confirmada!",
+    "swap_confirmed": "Swap completado!",
+    "approval_failed": "Aprobación fallida",
+    "swap_failed": "Swap fallido",
+    "approval_cancelled": "Aprobación cancelada por el usuario",
+    "swap_cancelled": "Swap cancelado por el usuario",
+    "view_transaction": "Ver en Snowtrace",
+    "settings": "Configuración",
+    "refresh_quote": "Actualizar cuotas",
+    "auto_refresh": "Actualización automática cada 5s",
+    "updating": "Actualizando"
   }
 } 
