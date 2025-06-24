@@ -218,7 +218,8 @@
   },
   "common": {
     "cancel": "Cancel",
-    "disconnect": "Disconnect"
+    "disconnect": "Disconnect",
+    "locale": "en_US"
   },
   "wheel": {
     "customize_button": {
@@ -390,5 +391,42 @@
     },
     "copy": "Copy address",
     "copied": "Address copied!"
+  },
+  "swap": {
+    "title": "Swap",
+    "from": "From",
+    "to": "To",
+    "balance": "Balance",
+    "allowance": "Allowance",
+    "slippage_tolerance": "Slippage Tolerance",
+    "custom_slippage": "Custom",
+    "rate": "Rate",
+    "minimum_received": "Minimum Received",
+    "connect_wallet": "Connect your wallet to enable swap",
+    "enter_amount": "Enter amount",
+    "insufficient_balance": "Insufficient balance",
+    "swapping": "Swapping...",
+    "swap": "Swap",
+    "approve_uvd": "Approve UVD",
+    "approving": "Approving...",
+    "approve_required": "Approval required",
+    "approval_required": "Please approve tokens first",
+    "approving_tokens": "Approving UVD tokens...",
+    "processing_swap": "Processing swap transaction...",
+    "approval_submitted": "Approval submitted",
+    "swap_submitted": "Swap submitted",
+    "approval_pending": "Waiting for approval confirmation...",
+    "swap_pending": "Waiting for swap confirmation...",
+    "approval_confirmed": "Approval confirmed!",
+    "swap_confirmed": "Swap completed!",
+    "approval_failed": "Approval failed",
+    "swap_failed": "Swap failed",
+    "approval_cancelled": "Approval was cancelled by user",
+    "swap_cancelled": "Swap was cancelled by user",
+    "view_transaction": "View on Snowtrace",
+    "settings": "Settings",
+    "refresh_quote": "Update quote",
+    "auto_refresh": "Auto-refresh every 5s",
+    "updating": "Updating"
   }
 } 
