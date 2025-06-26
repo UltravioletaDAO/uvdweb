@@ -6,6 +6,7 @@ import {
 } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import SwapWidget from '../components/SwapWidget';
+import WrapWidget from '../components/WrapWidget';
 import { createThirdwebClient } from "thirdweb";
 import { ConnectButton } from "thirdweb/react";
 import { darkTheme } from "thirdweb/react";
@@ -113,14 +114,15 @@ const Token = () => {
         >
           {t('token.description_2')}
         </motion.p>
-        {/* Swap Widget */}
+        {/* Swap and Wrap Widgets */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="mb-8 flex justify-center"
+          className="mb-8 flex flex-col lg:flex-row justify-center gap-6"
         >
           <SwapWidget />
+          <WrapWidget />
         </motion.div>
         {/* Dexscreener Embed */}
         <motion.div
