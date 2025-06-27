@@ -104,20 +104,17 @@ const TokenImage = ({ token, className }) => {
 const WrapWidget = () => {
   const { t } = useTranslation();
   const activeAccount = useActiveAccount();
-  const [fromToken, setFromToken] = useState('UVD');
-  const [toToken, setToToken] = useState('UVDx');
+  const [fromToken] = useState('UVDx'); // Fixed to UVDx
+  const [toToken] = useState('UVD'); // Fixed to UVD
   const [amount, setAmount] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [uvdBalance, setUvdBalance] = useState('0');
   const [uvdxBalance, setUvdxBalance] = useState('0');
   
-  // States for allowance and transaction tracking
-  const [uvdAllowance, setUvdAllowance] = useState('0');
-  const [isApproving, setIsApproving] = useState(false);
+  // Remove approval-related states since unwrap doesn't need approval
   const [transactionStatus, setTransactionStatus] = useState(null);
-  const [needsApproval, setNeedsApproval] = useState(false);
-  const [currentTransactionType, setCurrentTransactionType] = useState(null); // 'approval' | 'wrap' | 'unwrap'
+  const [currentTransactionType, setCurrentTransactionType] = useState(null); // Only 'unwrap'
 
   const uvdContract = getContract({
     client,
@@ -171,17 +168,6 @@ const WrapWidget = () => {
     queryOptions: { enabled: !!activeAccount }
   });
 
-  // Get UVD allowance for UVDx contract
-  const { data: uvdAllowanceData } = useReadContract({
-    contract: uvdContract,
-    method: "allowance",
-    params: [
-      activeAccount?.address || "0x0000000000000000000000000000000000000000",
-      UVDX_ADDRESS
-    ],
-    queryOptions: { enabled: !!activeAccount }
-  });
-
   // Function to update balances
   const updateBalances = async () => {
     if (!activeAccount?.address) {
@@ -206,14 +192,6 @@ const WrapWidget = () => {
         params: [activeAccount.address]
       });
       setUvdxBalance(toEther(uvdxBalance));
-
-      // Update UVD allowance
-      const uvdAllowance = await readContract({
-        contract: uvdContract,
-        method: "allowance",
-        params: [activeAccount.address, UVDX_ADDRESS]
-      });
-      setUvdAllowance(toEther(uvdAllowance));
     } catch (error) {
       console.error('Error updating balances:', error);
     }
@@ -245,80 +223,39 @@ const WrapWidget = () => {
     }
   }, [uvdxBalanceData]);
 
-  // Handle UVD allowance
-  useEffect(() => {
-    if (uvdAllowanceData) {
-      try {
-        const allowanceInEther = toEther(uvdAllowanceData);
-        setUvdAllowance(allowanceInEther);
-      } catch (error) {
-        console.error('Error converting UVD allowance:', error);
-        setUvdAllowance('0.0');
-      }
-    } else {
-      setUvdAllowance('0.0');
-    }
-  }, [uvdAllowanceData]);
-
-  // Check if approval is needed for UVD to UVDx wrap
-  useEffect(() => {
-    if (fromToken === 'UVD' && amount && parseFloat(amount) > 0) {
-      const needsApprovalCheck = parseFloat(amount) > parseFloat(uvdAllowance);
-      setNeedsApproval(needsApprovalCheck);
-    } else {
-      setNeedsApproval(false);
-    }
-  }, [fromToken, amount, uvdAllowance]);
-
   // Handle transaction status updates automatically
   useEffect(() => {
     if (isTransactionLoading && transactionResult?.transactionHash) {
       // Transaction was submitted to blockchain
       setTransactionStatus({
         type: 'submitted',
-        message: currentTransactionType === 'approval' 
-          ? t('wrap.approval_submitted') 
-          : currentTransactionType === 'wrap'
-          ? t('wrap.wrap_submitted')
-          : t('wrap.unwrap_submitted'),
+        message: currentTransactionType === 'unwrap' ? t('wrap.unwrap_submitted') : null,
         hash: transactionResult.transactionHash
       });
     } else if (isReceiptLoading && transactionResult?.transactionHash) {
       // Transaction is being mined
       setTransactionStatus({
         type: 'pending',
-        message: currentTransactionType === 'approval' 
-          ? t('wrap.approval_pending') 
-          : currentTransactionType === 'wrap'
-          ? t('wrap.wrap_pending')
-          : t('wrap.unwrap_pending'),
+        message: currentTransactionType === 'unwrap' ? t('wrap.unwrap_pending') : null,
         hash: transactionResult.transactionHash
       });
     } else if (isReceiptSuccess && transactionReceipt) {
       // Transaction confirmed successfully
       setTransactionStatus({
         type: 'success',
-        message: currentTransactionType === 'approval' 
-          ? t('wrap.approval_confirmed') 
-          : currentTransactionType === 'wrap'
-          ? t('wrap.wrap_confirmed')
-          : t('wrap.unwrap_confirmed'),
+        message: currentTransactionType === 'unwrap' ? t('wrap.unwrap_confirmed') : null,
         hash: transactionReceipt.transactionHash
       });
       
       // Clear form and update balances after successful transaction
-      if (currentTransactionType === 'wrap' || currentTransactionType === 'unwrap') {
+      if (currentTransactionType === 'unwrap') {
         setAmount('');
         // Update balances after successful transaction
-        updateBalances();
-      } else if (currentTransactionType === 'approval') {
-        // Update balances and allowance after successful approval
         updateBalances();
       }
       
       // Reset transaction type but keep status visible
       setCurrentTransactionType(null);
-      setIsApproving(false);
       setIsLoading(false);
       resetTransaction();
     } else if (isReceiptError || isTransactionError) {
@@ -332,23 +269,12 @@ const WrapWidget = () => {
       
       setTransactionStatus({
         type: 'error',
-        message: isUserRejection 
-          ? (currentTransactionType === 'approval' 
-              ? t('wrap.approval_cancelled') 
-              : currentTransactionType === 'wrap'
-              ? t('wrap.wrap_cancelled')
-              : t('wrap.unwrap_cancelled'))
-          : `${currentTransactionType === 'approval' 
-              ? t('wrap.approval_failed') 
-              : currentTransactionType === 'wrap'
-              ? t('wrap.wrap_failed')
-              : t('wrap.unwrap_failed')}: ${error.message || 'Please try again.'}`,
+        message: isUserRejection ? t('wrap.unwrap_cancelled') : `${t('wrap.unwrap_failed')}: ${error.message || 'Please try again.'}`,
         hash: transactionResult?.transactionHash || null
       });
       
       // Reset transaction type but keep status visible
       setCurrentTransactionType(null);
-      setIsApproving(false);
       setIsLoading(false);
       resetTransaction();
     }
@@ -388,81 +314,34 @@ const WrapWidget = () => {
     }
   }, [activeAccount]);
 
-  // Swap tokens (UVD <-> UVDx)
-  const handleSwapTokens = () => {
-    const tempToken = fromToken;
-    setFromToken(toToken);
-    setToToken(tempToken);
-    // Since it's 1:1 for wrap/unwrap, amount stays the same
-  };
-
-  // Handle token approval
-  const handleApprove = async () => {
-    if (!activeAccount || !amount || parseFloat(amount) === 0) return;
-
-    // Clear previous transaction status
-    setTransactionStatus(null);
-    setIsApproving(true);
-    setCurrentTransactionType('approval');
-    
-    try {
-      const amountToApprove = toWei(amount);
-      
-      const transaction = prepareContractCall({
-        contract: uvdContract,
-        method: "approve",
-        params: [UVDX_ADDRESS, amountToApprove]
-      });
-
-      sendTransaction(transaction);
-      // Transaction status will be handled automatically by useEffect
-    } catch (error) {
-      console.error('Approval failed:', error);
-      setIsApproving(false);
-      setCurrentTransactionType(null);
-    }
-  };
-
-  // Execute wrap/unwrap
-  const handleWrapUnwrap = async () => {
+  // Execute unwrap
+  const handleUnwrap = async () => {
     if (!activeAccount || !amount || parseFloat(amount) === 0) return;
 
     // Clear previous transaction status
     setTransactionStatus(null);
     setIsLoading(true);
-    setCurrentTransactionType(fromToken === 'UVD' ? 'wrap' : 'unwrap');
+    setCurrentTransactionType('unwrap');
 
     try {
       const amountInWei = toWei(amount);
 
-      let transaction;
-      
-      if (fromToken === 'UVD') {
-        // Wrap: UVD to UVDx (upgrade)
-        transaction = prepareContractCall({
-          contract: uvdxContract,
-          method: "upgrade",
-          params: [amountInWei]
-        });
-      } else {
-        // Unwrap: UVDx to UVD (downgrade)
-        transaction = prepareContractCall({
-          contract: uvdxContract,
-          method: "downgrade",
-          params: [amountInWei]
-        });
-      }
+      const transaction = prepareContractCall({
+        contract: uvdxContract,
+        method: "downgrade",
+        params: [amountInWei]
+      });
 
       sendTransaction(transaction);
       // Transaction status will be handled automatically by useEffect
     } catch (error) {
-      console.error('Wrap/Unwrap failed:', error);
+      console.error('Unwrap failed:', error);
       setIsLoading(false);
       setCurrentTransactionType(null);
     }
   };
 
-  const currentBalance = fromToken === 'UVD' ? uvdBalance : uvdxBalance;
+  const currentBalance = uvdxBalance; // Always use UVDx balance since we're unwrapping
 
   // Transaction Status Component
   const TransactionStatus = () => {
@@ -560,7 +439,7 @@ const WrapWidget = () => {
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-xl font-bold text-text-primary flex items-center gap-2">
           <ArrowsUpDownIcon className="w-6 h-6 text-ultraviolet" />
-          {t('wrap.title')}
+          Super UltravioletaDAO {t('wrap.unwrap')} 
         </h2>
         <div className="flex items-center gap-2">
           <motion.button
@@ -682,15 +561,7 @@ const WrapWidget = () => {
         </div>
       </div>
 
-      {/* Swap Button */}
-      <div className="flex justify-center my-2">
-        <button
-          onClick={handleSwapTokens}
-          className="p-2 bg-background-input hover:bg-ultraviolet-darker/20 border border-ultraviolet-darker/20 rounded-xl transition-colors"
-        >
-          <ArrowsUpDownIcon className="w-5 h-5 text-white" />
-        </button>
-      </div>
+      
 
       {/* To Token */}
       <div className="mb-6">
@@ -739,76 +610,45 @@ const WrapWidget = () => {
           <div className="flex justify-between items-center text-sm mt-1">
             <span className="text-text-secondary">{t('wrap.operation')}</span>
             <span className="text-ultraviolet">
-              {fromToken === 'UVD' ? t('wrap.wrapping') : t('wrap.unwrapping')}
+              {t('wrap.unwrapping')}
             </span>
           </div>
-          {/* Show allowance info for UVD wraps */}
-          {fromToken === 'UVD' && (
-            <div className="flex justify-between items-center text-sm mt-1 pt-2 border-t border-ultraviolet-darker/10">
-              <span className="text-text-secondary">{t('wrap.allowance')}</span>
-              <span className="text-text-primary">
-                {parseFloat(uvdAllowance).toFixed(6)} UVD
-              </span>
-            </div>
-          )}
         </div>
       )}
 
-      {/* Connect/Approve/Wrap Button */}
+      {/* Connect/Wrap Button */}
       {!activeAccount ? (
         <div className="text-center text-text-secondary">
           {t('wrap.connect_wallet')}
         </div>
       ) : (
         <div className="space-y-3">
-          {/* Show approval button if needed for UVD to UVDx wrap */}
-          {fromToken === 'UVD' && needsApproval && amount && parseFloat(amount) > 0 && parseFloat(amount) <= parseFloat(currentBalance) && (
-            <button
-              onClick={handleApprove}
-              disabled={isApproving || isTransactionLoading || isReceiptLoading}
-              className={`w-full py-4 rounded-xl font-semibold transition-all ${
-                (isApproving || isTransactionLoading || isReceiptLoading)
-                  ? 'bg-background-input text-text-secondary cursor-not-allowed'
-                  : 'bg-gradient-to-r from-yellow-500 to-orange-500 text-white hover:shadow-lg hover:shadow-yellow-500/25'
-              }`}
-            >
-              {(isApproving || (isTransactionLoading && currentTransactionType === 'approval') || (isReceiptLoading && currentTransactionType === 'approval')) ? t('wrap.approving') : t('wrap.approve_uvd')}
-            </button>
-          )}
-          
-          {/* Main wrap/unwrap button */}
           <button
-            onClick={handleWrapUnwrap}
+            onClick={handleUnwrap}
             disabled={
               !amount || 
               parseFloat(amount) === 0 || 
               isLoading || 
-              isApproving ||
               isTransactionLoading ||
               isReceiptLoading ||
-              parseFloat(amount) > parseFloat(currentBalance) ||
-              (fromToken === 'UVD' && needsApproval)
+              parseFloat(amount) > parseFloat(currentBalance)
             }
             className={`w-full py-4 rounded-xl font-semibold transition-all ${
               !amount || 
               parseFloat(amount) === 0 || 
               isLoading || 
-              isApproving ||
               isTransactionLoading ||
               isReceiptLoading ||
-              parseFloat(amount) > parseFloat(currentBalance) ||
-              (fromToken === 'UVD' && needsApproval)
+              parseFloat(amount) > parseFloat(currentBalance)
                 ? 'bg-background-input text-text-secondary cursor-not-allowed'
                 : 'bg-gradient-to-r from-ultraviolet to-ultraviolet-light text-white hover:shadow-lg hover:shadow-ultraviolet/25'
             }`}
           >
-            {(isLoading || isTransactionLoading || isReceiptLoading) ? 
-             (fromToken === 'UVD' ? t('wrap.wrapping') : t('wrap.unwrapping')) : 
-             isApproving ? t('wrap.approval_required') :
-             parseFloat(amount) > parseFloat(currentBalance) ? t('wrap.insufficient_balance') :
-             !amount || parseFloat(amount) === 0 ? t('wrap.enter_amount') : 
-             (fromToken === 'UVD' && needsApproval) ? t('wrap.approve_required') :
-             fromToken === 'UVD' ? t('wrap.wrap') : t('wrap.unwrap')}
+                         {(isLoading || isTransactionLoading || isReceiptLoading) ? 
+              t('wrap.unwrapping') : 
+              parseFloat(amount) > parseFloat(currentBalance) ? t('wrap.insufficient_balance') :
+              !amount || parseFloat(amount) === 0 ? t('wrap.enter_amount') :
+              t('wrap.unwrap')}
           </button>
         </div>
       )}

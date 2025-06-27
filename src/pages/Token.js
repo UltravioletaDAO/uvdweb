@@ -121,8 +121,9 @@ const Token = () => {
           transition={{ delay: 0.2 }}
           className="mb-8 flex flex-col lg:flex-row justify-center gap-6"
         >
-          <SwapWidget />
+          
           <WrapWidget />
+          <SwapWidget />
         </motion.div>
         {/* Dexscreener Embed */}
         <motion.div
