@@ -429,7 +429,7 @@
     "updating": "Actualizando"
   },
   "wrap": {
-    "title": "Wrap/Unwrap",
+    "title": "Unwrap",
     "from": "Desde",
     "to": "Hacia",
     "balance": "Balance",
@@ -438,7 +438,7 @@
     "operation": "Operación",
     "wrapping": "Envolviendo",
     "unwrapping": "Desenvolviendo",
-    "connect_wallet": "Conecta tu wallet para habilitar wrap",
+    "connect_wallet": "Conecta tu wallet para habilitar unwrap",
     "enter_amount": "Ingresa cantidad",
     "insufficient_balance": "Balance insuficiente",
     "wrap": "Wrap",
