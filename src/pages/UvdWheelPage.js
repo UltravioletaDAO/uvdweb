@@ -88,7 +88,7 @@ const showToast = {
 const UvdWheelPage = () => {
   const { t } = useTranslation();
   
-  const defaultSegments = ['1', '34', '55', '89', '144', '1', '233', '377', '987'];
+  const defaultSegments = ['1 UVD', '17711 UVD', '121393 UVD', '196418 UVD', '317811 UVD', '514229 UVD', '832040 UVD', '1346269 UVD'];
   const defaultToken = '0x281027C6a46142D6FC57f12665147221CE69Af33'; // Default UVT token
   
   // Inicializar las probabilidades iguales para todos los segmentos
