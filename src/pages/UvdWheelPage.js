@@ -88,7 +88,7 @@ const showToast = {
 const UvdWheelPage = () => {
   const { t } = useTranslation();
   
-  const defaultSegments = ['1', '17711', '121393', '196418', '317811', '514229', '832040', '1346269'];
+  const defaultSegments = ['1', '10946', '121393', '196418', '317811', '514229', '832040', '1346269'];
   const defaultToken = '0x4ffe7e01832243e03668e090706f17726c26d6b2'; // Default token
   
   // Inicializar las probabilidades iguales para todos los segmentos
@@ -213,7 +213,7 @@ const UvdWheelPage = () => {
             },
             body: JSON.stringify({
               title: "ruleta de $UVD",
-              cost: 17711,
+              cost: 10946,
               prompt: "Ingresa la direccion de tu wallet EVM",
               is_user_input_required: true,
               should_redemptions_skip_request_queue: false,
