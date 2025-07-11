@@ -160,7 +160,7 @@ const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
                   <div className="flex justify-between items-center">
                     <span>{choice}</span>
                     <span className="text-text-tertiary">
-                    {formatVotingPower(Number(voteCount))} $UVT ({votePercentage.toFixed(1)}%)
+                    {formatVotingPower(Number(voteCount))} $UVD ({votePercentage.toFixed(1)}%)
                     </span>
                   </div>
                 </div>
@@ -436,7 +436,7 @@ const VotesModal = ({ proposal, onClose }) => {
                     <div className="flex justify-between mb-1">
                       <span className="text-text-primary">{result.choice}</span>
                       <span className="text-text-secondary">
-                        {result.votes} {t('snapshot.votes')} · {formatVotingPower(Math.trunc(Number(result.power)))} UVT · {result.percentage.toFixed(2)}%
+                        {result.votes} {t('snapshot.votes')} · {formatVotingPower(Math.trunc(Number(result.power)))} UVD · {result.percentage.toFixed(2)}%
                       </span>
                     </div>
                     <div className="h-2 bg-background rounded-full overflow-hidden">
@@ -516,7 +516,7 @@ const VotesModal = ({ proposal, onClose }) => {
                         {formatDate(vote.created)}
                       </div>
                       <div className="text-text-primary font-medium">
-                        {formatVotingPower(Number(vote.vp))} UVT
+                        {formatVotingPower(Number(vote.vp))} UVD
                       </div>
                     </div>
                   );
@@ -1042,7 +1042,7 @@ const Snapshot = () => {
                   {userProfile?.name || `${account.slice(0, 6)}...${account.slice(-4)}`}
                 </h2>
                 <div className="text-sm sm:text-base text-text-secondary">
-                  {t('snapshot.voting_power')}: {formatVotingPower(Number(votingPower))} $UVT
+                  {t('snapshot.voting_power')}: {formatVotingPower(Number(votingPower))} $UVD
                 </div>
               </div>
             </div>
