@@ -213,7 +213,7 @@ const UvdWheelPage = () => {
             },
             body: JSON.stringify({
               title: "ruleta de $UVD",
-              cost: 17711,
+              cost: 10946,
               prompt: "Ingresa la direccion de tu wallet EVM",
               is_user_input_required: true,
               should_redemptions_skip_request_queue: false,
