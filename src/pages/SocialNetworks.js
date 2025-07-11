@@ -61,7 +61,7 @@ const SocialNetworks = () => {
       customStyle: "group-hover:text-emerald-400"
     },
     {
-      name: 'Liquidity Pool UVT/Avax',
+      name: 'Liquidity Pool UVD/Avax',
       url: 'https://lfj.gg/avalanche/pool/v1/0x281027c6a46142d6fc57f12665147221ce69af33/AVAX',
       icon: (
         <img src={liquidityPool} alt="Liquidity Pool Icon" className="w-6 h-6" />

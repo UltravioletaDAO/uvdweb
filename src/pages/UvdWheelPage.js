@@ -88,8 +88,8 @@ const showToast = {
 const UvdWheelPage = () => {
   const { t } = useTranslation();
   
-  const defaultSegments = ['1', '34', '55', '89', '144', '1', '233', '377', '987'];
-  const defaultToken = '0x281027C6a46142D6FC57f12665147221CE69Af33'; // Default UVT token
+  const defaultSegments = ['1', '17711', '121393', '196418', '317811', '514229', '832040', '1346269'];
+  const defaultToken = '0x4ffe7e01832243e03668e090706f17726c26d6b2'; // Default token
   
   // Inicializar las probabilidades iguales para todos los segmentos
   const initProbabilities = () => {
@@ -195,9 +195,9 @@ const UvdWheelPage = () => {
       const rewardsData = await rewardsResponse.json();
       //console.log('Twitch Rewards:', rewardsData);
 
-      // Buscar la recompensa "ruleta de $UVT"
+      // Buscar la recompensa "ruleta de $UVD"
       let wheelReward = rewardsData.data?.find(reward => 
-        reward.title.toLowerCase() === "ruleta de $uvt"
+        reward.title.toLowerCase() === "ruleta de $UVD"
       );
 
       // Si no encontramos la recompensa, intentamos crearla
@@ -212,7 +212,7 @@ const UvdWheelPage = () => {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              title: "ruleta de $UVT",
+              title: "ruleta de $UVD",
               cost: 17711,
               prompt: "Ingresa la direccion de tu wallet EVM",
               is_user_input_required: true,
@@ -551,7 +551,7 @@ const UvdWheelPage = () => {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                  message: `@${currentParticipant.username} ¡Felicidades! Has ganado ${result} $UVT en la ruleta. Los tokens serán enviados pronto.`,
+                  message: `@${currentParticipant.username} ¡Felicidades! Has ganado ${result} $UVD en la ruleta. Los tokens serán enviados pronto.`,
                   reply_to_message_id: null
                 })
               });
@@ -1561,11 +1561,11 @@ const UvdWheelPage = () => {
                               </p>
                               {walletBalance && (
                                 <p className="text-sm text-gray-700">
-                                  <span className="font-semibold">{t('wheel.wallet.balance')}:</span> {formatBalance(walletBalance)} {token === defaultToken ? 'UVT' : ''}
+                                  <span className="font-semibold">{t('wheel.wallet.balance')}:</span> {formatBalance(walletBalance)} {token === defaultToken ? 'UVD' : ''}
                                 </p>
                               )}
                               <p className="text-sm text-gray-700">
-                                  <span className="font-semibold">{t('wheel.wallet.total_rewards')}:</span> {completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} {token === defaultToken ? 'UVT' : ''}
+                                  <span className="font-semibold">{t('wheel.wallet.total_rewards')}:</span> {completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} {token === defaultToken ? 'UVD' : ''}
                                 </p>
                             </div>
                           ) : (
@@ -1596,8 +1596,8 @@ const UvdWheelPage = () => {
                                       ${(isApproving || isSending || completedParticipants.length === 0) ? 'opacity-50 cursor-not-allowed' : ''}`}
                                   >
                                     {isApproving 
-                                      ? `${t('wheel.wallet.approving')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVT' : ''} ...` 
-                                      : `${t('wheel.wallet.approve_button')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVT' : ''}`}
+                                      ? `${t('wheel.wallet.approving')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVD' : ''} ...` 
+                                      : `${t('wheel.wallet.approve_button')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVD' : ''}`}
                                   </button>
                                 )}
                                 
