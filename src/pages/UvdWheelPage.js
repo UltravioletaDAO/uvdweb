@@ -196,7 +196,6 @@ const UvdWheelPage = () => {
       //console.log('Twitch Rewards:', rewardsData);
 
       // Buscar la recompensa "ruleta de $UVD"
-      // Buscar la recompensa "ruleta de $UVD"
       let wheelReward = rewardsData.data?.find(reward => 
         reward.title.toLowerCase() === "ruleta de $uvd"
       );
@@ -213,8 +212,6 @@ const UvdWheelPage = () => {
               'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-              title: "ruleta de $UVD",
-              cost: 10946,
               title: "ruleta de $UVD",
               cost: 10946,
               prompt: "Ingresa la direccion de tu wallet EVM",
@@ -1565,11 +1562,9 @@ const UvdWheelPage = () => {
                               {walletBalance && (
                                 <p className="text-sm text-gray-700">
                                   <span className="font-semibold">{t('wheel.wallet.balance')}:</span> {formatBalance(walletBalance)} {token === defaultToken ? 'UVD' : ''}
-                                  <span className="font-semibold">{t('wheel.wallet.balance')}:</span> {formatBalance(walletBalance)} {token === defaultToken ? 'UVD' : ''}
                                 </p>
                               )}
                               <p className="text-sm text-gray-700">
-                                  <span className="font-semibold">{t('wheel.wallet.total_rewards')}:</span> {completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} {token === defaultToken ? 'UVD' : ''}
                                   <span className="font-semibold">{t('wheel.wallet.total_rewards')}:</span> {completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} {token === defaultToken ? 'UVD' : ''}
                                 </p>
                             </div>
@@ -1601,8 +1596,6 @@ const UvdWheelPage = () => {
                                       ${(isApproving || isSending || completedParticipants.length === 0) ? 'opacity-50 cursor-not-allowed' : ''}`}
                                   >
                                     {isApproving 
-                                      ? `${t('wheel.wallet.approving')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVD' : ''} ...` 
-                                      : `${t('wheel.wallet.approve_button')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVD' : ''}`}
                                       ? `${t('wheel.wallet.approving')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVD' : ''} ...` 
                                       : `${t('wheel.wallet.approve_button')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVD' : ''}`}
                                   </button>
