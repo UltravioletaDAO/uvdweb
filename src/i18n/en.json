@@ -6,19 +6,24 @@
   "auth": {
     "register": "Apply to UltravioletaDAO",
     "login": "Login",
-    "login_en": "Login"
+    "login_en": "Login",
+    "access_button": "Access",
+    "logout_button": "Logout"
   },
   "navigation": {
     "home": "Home",
-    "snapshot": "Snapshot",
+    "apply": "Apply",
     "links": "Links",
+    "status": "Status",
     "courses": "Courses",
-    "blog": "Blog",
     "purge": "Purge",
-    "multisig": "Multisig",
-    "wheel": "Wheel decide",
+    "token": "Token",
+    "blog": "Blog",
+    "snapshot": "Snapshot",
+    "wheel": "UVT Wheel",
     "delegations": "Delegations",
-    "safestats": "Multisigners",
+    "safestats": "Safe Stats",
+    "bounties": "Bounties",
     "categories": {
       "main": "Main",
       "governance": "Governance",
@@ -34,13 +39,18 @@
       "purge": "Inactive users management",
       "wheel": "Prize wheel UVD",
       "delegations": "Stake and delegate your tokens",
-      "safestats": "Multisigners statistics"
+      "safestats": "Multisigners statistics",
+      "bounties": "Community tasks and rewards",
+      "todo": "Bounties ready to be taken by contributors",
+      "in_voting": "Bounties that are in progress or under review",
+      "finished": "Completed bounties with distributed rewards"
     },
     "aria": {
       "open_menu": "Open menu",
       "close_menu": "Close menu",
       "main_menu": "Main menu"
-    }
+    },
+    "bounties": "Bounties"
   },
   "features": {
     "community": {
@@ -361,7 +371,18 @@
     "send_success": "Rewards sent successfully!",
     "send_error": "Error sending rewards",
     "info": "Rewards will be sent directly from your wallet using the Avalanche C-Chain network.",
-    "total_rewards": "Total rewards"
+    "total_rewards": "Total rewards",
+    "voting_panel": "Voting Panel",
+    "connect_wallet": "Connect Wallet",
+    "connecting": "Connecting...",
+    "connected": "Connected",
+    "network": "Network",
+    "governance_tokens": "Governance Tokens",
+    "disconnect": "Disconnect",
+    "vote": "Vote",
+    "supported_wallets": "MetaMask, Rabby and other Web3 wallets",
+    "no_ethereum_provider": "No Ethereum provider detected. Install MetaMask or Rabby.",
+    "unsupported_network": "Unsupported network. Switch to a supported network."
   },
   "safestats": {
     "title": "UltravioletaDAO Multisigners",
@@ -390,5 +411,92 @@
     },
     "copy": "Copy address",
     "copied": "Address copied!"
+  },
+  "bounties": {
+    "title": "Community tasks and rewards"
+  },
+  "bountyForm": {
+    "title_label": "Bounty Name",
+    "description_label": "Task Description",
+    "reward_label": "Reward",
+    "endDate_label": "Expiration Date",
+    "create_button": "Create Bounty",
+    "creating_button": "Creating...",
+    "success_message": "Bounty \"{{title}}\" created successfully!",
+    "error_creating_bounty": "Error creating bounty. Please log in."
+  },
+  "adminPanel": {
+    "title": "Bounties Administration Panel",
+    "description": "Here you can create new bounties and manage existing ones."
+  },
+  "bountyColumns": {
+    "empty_message": "Empty for now."
+  },
+  "bountyDetails": {
+    "reward_label": "Reward",
+    "expires_label": "Expires",
+    "status_label": "Status",
+    "status_values": {
+      "todo": "To Do",
+      "in_progress": "In Progress",
+      "in_review": "In Voting",
+      "done": "Done"
+    },
+    "priority_label": "Priority",
+    "priority_values": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "requirements_label": "Requirements",
+    "deliverables_label": "Deliverables",
+    "created_by": "Created by",
+    "submit_task_title": "Submit Task",
+    "submitter_name_label": "Your name or email",
+    "submitter_name_placeholder": "Enter your name or email",
+    "submission_content_label": "Your submission description",
+    "submission_placeholder": "Describe your work, include links, files, etc.",
+    "submitting_button": "Submitting...",
+    "submit_button": "Submit Task",
+    "submissions": "Submissions",
+    "submissions_count": "submissions",
+    "submit_task": "Submit Task",
+    "your_name": "Your name",
+    "name_placeholder": "Enter your name",
+    "submission_description": "Submission description",
+    "submitting": "Submitting...",
+    "submit": "Submit",
+    "error_bounty_not_selected": "No bounty selected",
+    "error_submitting_task": "Error submitting task",
+    "submission_success_message": "Task submitted successfully!"
+  },
+  "submissionList": {
+    "loading": "Loading submissions...",
+    "error_fetching_submissions": "Error fetching submissions.",
+    "no_submissions": "No submissions yet.",
+    "submissions_title": "Submissions",
+    "submitted_by": "Submitted by",
+    "view_link": "View Link"
+  },
+  "voting": {
+    "voting_section": "Voting System",
+    "vote_for_winner": "Vote for Winner",
+    "select_submission": "Select Submission",
+    "choose_submission": "Choose a submission to vote for",
+    "vote_amount": "Vote Amount",
+    "max": "Max",
+    "available_tokens": "Available tokens",
+    "submit_vote": "Submit Vote",
+    "submitting_vote": "Submitting vote...",
+    "current_results": "Current Results",
+    "voters": "voters",
+    "missing_requirements": "Missing requirements to vote",
+    "invalid_amount": "Invalid vote amount",
+    "vote_success": "Vote submitted successfully!",
+    "vote_error": "Error submitting vote",
+    "loading_submissions": "Loading submissions...",
+    "no_submissions_to_vote": "No submissions to vote on",
+    "connect_wallet_to_vote": "Connect Wallet to Vote",
+    "wallet_required_message": "You need to connect your wallet to participate in decentralized voting."
   }
 } 

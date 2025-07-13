@@ -6,19 +6,24 @@
   "auth": {
     "register": "Aplicar a UltravioletaDAO",
     "login": "Iniciar Sesión",
-    "login_en": "Login"
+    "login_en": "Login",
+    "access_button": "Acceder",
+    "logout_button": "Cerrar sesión"
   },
   "navigation": {
     "home": "Inicio",
-    "snapshot": "Snapshot",
+    "apply": "Aplicar",
     "links": "Links",
+    "status": "Estado de Aplicación",
     "courses": "Cursos",
-    "blog": "Blog",
     "purge": "Purga",
-    "multisig": "Multifirma",
-    "wheel": "Ruleta",
+    "token": "Token",
+    "blog": "Blog",
+    "snapshot": "Snapshot",
+    "wheel": "Ruleta UVT",
     "delegations": "Delegaciones",
-    "safestats": "Multifirmantes",
+    "safestats": "Estadísticas Safe",
+    "bounties": "Bounties",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -34,7 +39,11 @@
       "purge": "Gestión de usuarios inactivos",
       "wheel": "Ruleta de premios UVD",
       "delegations": "Stakea y delegar tus tokens",
-      "safestats": "Estadísticas de multifirmantes"
+      "safestats": "Estadísticas de multifirmantes",
+      "bounties": "Tareas y recompensas para la comunidad",
+      "todo": "Bounties listas para ser tomadas por los colaboradores",
+      "in_voting": "Bounties que están en progreso o bajo revisión",
+      "finished": "Bounties completadas con recompensas distribuidas"
     },
     "aria": {
       "open_menu": "Abrir menú",
@@ -173,7 +182,7 @@
   },
   "events": {
     "title": "Próximos eventos",
-    "description": "Eventos de interés para la comunidad a los que se recomienda asistir. ¡No te los pierdas!"
+    "description": "Eventos de interés de la comunidad que se recomienda asistir. ¡No te los pierdas!"
   },
   "snapshot": {
     "title": "Propuestas Gobernanza Ultravioleta DAO",
@@ -389,5 +398,102 @@
     },
     "copy": "Copiar dirección",
     "copied": "¡Dirección copiada!"
+  },
+  "bountyForm": {
+    "title_label": "Nombre del Bounty",
+    "description_label": "Descripción de la Tarea",
+    "reward_label": "Recompensa",
+    "endDate_label": "Fecha de Expiración",
+    "create_button": "Crear Bounty",
+    "creating_button": "Creando...",
+    "success_message": "¡Bounty \"{{title}}\" creado exitosamente!",
+    "error_creating_bounty": "Error al crear bounty. Por favor, inicia sesión."
+  },
+  "adminPanel": {
+    "title": "Panel de administración de Bounties",
+    "description": "Aquí puedes crear nuevas bounties y gestionar las existentes."
+  },
+  "bountyColumns": {
+    "empty_message": "Vacío por ahora."
+  },
+  "bountyDetails": {
+    "reward_label": "Recompensa",
+    "expires_label": "Expira",
+    "status_label": "Estado",
+    "status_values": {
+      "todo": "Por hacer",
+      "in_progress": "En progreso",
+      "in_review": "En votación",
+      "done": "Terminada"
+    },
+    "priority_label": "Prioridad",
+    "priority_values": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta"
+    },
+    "requirements_label": "Requisitos",
+    "deliverables_label": "Entregables",
+    "created_by": "Creado por",
+    "submit_task_title": "Subir Tarea",
+    "submitter_name_label": "Tu nombre o email",
+    "submitter_name_placeholder": "Ingresa tu nombre o email",
+    "submission_content_label": "Descripción de tu entrega",
+    "submission_placeholder": "Describe tu trabajo, incluye enlaces, archivos, etc.",
+    "submitting_button": "Enviando...",
+    "submit_button": "Enviar Tarea",
+    "submissions": "Entregas",
+    "submissions_count": "entregas",
+    "submit_task": "Subir Tarea",
+    "your_name": "Tu nombre",
+    "name_placeholder": "Ingresa tu nombre",
+    "submission_description": "Descripción de tu entrega",
+    "submitting": "Enviando...",
+    "submit": "Enviar",
+    "error_bounty_not_selected": "No se ha seleccionado una bounty",
+    "error_submitting_task": "Error al enviar la tarea",
+    "submission_success_message": "¡Tarea enviada exitosamente!"
+  },
+  "submissionList": {
+    "loading": "Cargando entregas...",
+    "error_fetching_submissions": "Error al cargar las entregas.",
+    "no_submissions": "Aún no hay entregas.",
+    "submissions_title": "Entregas",
+    "submitted_by": "Enviado por",
+    "view_link": "Ver Enlace"
+  },
+  "wallet": {
+    "voting_panel": "Panel de Votación",
+    "connect_wallet": "Conectar Wallet",
+    "connecting": "Conectando...",
+    "connected": "Conectado",
+    "network": "Red",
+    "governance_tokens": "Tokens de Gobernanza",
+    "disconnect": "Desconectar",
+    "vote": "Votar",
+    "supported_wallets": "MetaMask, Rabby y otras wallets Web3",
+    "no_ethereum_provider": "No se detectó un proveedor de Ethereum. Instala MetaMask o Rabby.",
+    "unsupported_network": "Red no soportada. Cambia a una red soportada."
+  },
+  "voting": {
+    "voting_section": "Sistema de Votación",
+    "vote_for_winner": "Votar por el Ganador",
+    "select_submission": "Seleccionar Entrega",
+    "choose_submission": "Elige una entrega para votar",
+    "vote_amount": "Cantidad de Votos",
+    "max": "Máx",
+    "available_tokens": "Tokens disponibles",
+    "submit_vote": "Enviar Voto",
+    "submitting_vote": "Enviando voto...",
+    "current_results": "Resultados Actuales",
+    "voters": "votantes",
+    "missing_requirements": "Faltan requisitos para votar",
+    "invalid_amount": "Cantidad de votos inválida",
+    "vote_success": "¡Voto enviado exitosamente!",
+    "vote_error": "Error al enviar el voto",
+    "loading_submissions": "Cargando entregas...",
+    "no_submissions_to_vote": "No hay entregas para votar",
+    "connect_wallet_to_vote": "Conectar Wallet para Votar",
+    "wallet_required_message": "Necesitas conectar tu wallet para participar en la votación descentralizada."
   }
 } 

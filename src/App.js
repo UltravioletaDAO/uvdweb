@@ -16,6 +16,7 @@ import UvdWheel from "./pages/UvdWheelPage";
 import TwitchCallback from './pages/TwitchCallback';
 import Delegations from "./pages/Delegations";
 import SafeStats from "./pages/SafeStats";
+import Bounties from "./pages/Bounties";
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
           <Route path="/twitch-callback" element={<TwitchCallback />} />
           <Route path="/delegations" element={<Delegations />} />
           <Route path="/safestats" element={<SafeStats />} />
+          <Route path="/bounties" element={<Bounties />} />
         </Routes>
       </div>
     </Router>

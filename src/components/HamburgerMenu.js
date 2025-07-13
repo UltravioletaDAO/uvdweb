@@ -63,7 +63,14 @@ const HamburgerMenu = () => {
       path: "/delegations",
       isExternal: false,
       description: t('navigation.descriptions.delegations'),
-    }
+    },
+    {
+      name: t('navigation.bounties'),
+      icon: GiftIcon,
+      path: "/bounties",
+      isExternal: false,
+      description: t('navigation.descriptions.bounties'),
+    },
   ];
 
   const governanceItems = [
