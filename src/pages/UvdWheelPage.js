@@ -89,7 +89,7 @@ const UvdWheelPage = () => {
   const { t } = useTranslation();
   
   const defaultSegments = ['1', '17711', '121393', '196418', '317811', '514229', '832040', '1346269'];
-  const defaultToken = '0x4ffe7e01832243e03668e090706f17726c26d6b2'; // Default token
+  const defaultToken = '0x4Ffe7e01832243e03668E090706F17726c26d6B2'; // Default UVD token
   
   // Inicializar las probabilidades iguales para todos los segmentos
   const initProbabilities = () => {
@@ -197,7 +197,7 @@ const UvdWheelPage = () => {
 
       // Buscar la recompensa "ruleta de $UVD"
       let wheelReward = rewardsData.data?.find(reward => 
-        reward.title.toLowerCase() === "ruleta de $UVD"
+        reward.title.toLowerCase() === "ruleta de $uvd"
       );
 
       // Si no encontramos la recompensa, intentamos crearla
@@ -551,7 +551,7 @@ const UvdWheelPage = () => {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                  message: `@${currentParticipant.username} ¡Felicidades! Has ganado ${result} $UVD en la ruleta. Los tokens serán enviados pronto.`,
+                  message: `@${currentParticipant.username} Ganaste ${result} $UVD en la ruleta. Los tokens serán enviados pronto.`,
                   reply_to_message_id: null
                 })
               });
