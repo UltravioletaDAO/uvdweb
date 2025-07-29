@@ -25,7 +25,69 @@ module.exports = {
         error: {
           DEFAULT: '#d32f2f',
           light: '#ef5350',
+        },
+
+        /* Custom dashboard */
+        primary: {
+          DEFAULT: "#18794e",
+          foreground: "#fff1f2",
+        },
+        secondary: {
+          DEFAULT: '#27272f',
+          foreground: '#fafafa',
+        },
+        destructive: {
+          DEFAULT: '#ef4444',
+          foreground: '#fafafa',
+        },
+        muted: {
+          DEFAULT: '#27272f',
+          foreground: '#8c8fa1',
+        },
+        accent: {
+          DEFAULT: '#27272f',
+          foreground: '#fafafa',
+        },
+        popover: {
+          DEFAULT: '#1a1a1f',
+          foreground: '"#fafafa',
+        },
+        border: '#27272f',
+        input: '#27272f',
+        ring: '#18794e',
+
+        snapshot: {
+          DEFAULT: '#2a69d8',
+          foreground: '#fafafa',
+        },
+        token: {
+          DEFAULT: '#7c1fff',
+          foreground: '#fafafa',
+        },
+        funds: {
+          DEFAULT: '#f59e0b',
+          foreground: '#fafafa',
+        },
+        community: {
+          DEFAULT: '#ef4444',
+          foreground: '#fafafa',
+        },
+        rewards: {
+          DEFAULT: '#facc15',
+          foreground: '#fafafa',
+        },
+        chart: {
+          "1": "hsl(var(--chart-1))",
+          "2": "hsl(var(--chart-2))",
+          "3": "hsl(var(--chart-3))",
+          "4": "hsl(var(--chart-4))",
+          "5": "hsl(var(--chart-5))",
         }
+      },
+      borderRadius: {
+        lg: '12px',
+        md: '10px',
+        sm: '8px',
       },
       borderColor: {
         DEFAULT: '#2a2a2a',

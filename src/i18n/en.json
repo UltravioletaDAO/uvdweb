@@ -19,6 +19,7 @@
     "wheel": "Wheel decide",
     "delegations": "Delegations",
     "safestats": "Multisigners",
+    "metrics": "Metrics",
     "categories": {
       "main": "Main",
       "governance": "Governance",
@@ -34,7 +35,8 @@
       "purge": "Inactive users management",
       "wheel": "Prize wheel UVD",
       "delegations": "Stake and delegate your tokens",
-      "safestats": "Multisigners statistics"
+      "safestats": "Multisigners statistics",
+      "metrics": "Metrics Dashboard"
     },
     "aria": {
       "open_menu": "Open menu",
