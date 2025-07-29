@@ -19,6 +19,7 @@
     "wheel": "Ruleta",
     "delegations": "Delegaciones",
     "safestats": "Multifirmantes",
+    "metrics": "Métricas",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -34,7 +35,8 @@
       "purge": "Gestión de usuarios inactivos",
       "wheel": "Ruleta de premios UVD",
       "delegations": "Stakea y delegar tus tokens",
-      "safestats": "Estadísticas de multifirmantes"
+      "safestats": "Estadísticas de multifirmantes",
+      "metrics": "Dashboard de métricas"
     },
     "aria": {
       "open_menu": "Abrir menú",
