@@ -29,8 +29,8 @@ const TokenSection = () => {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          title="Precio UVD (AVAX)"
-          value={`${data.priceNative}`}
+          title="1 AVAX ="
+          value={`${data.priceNative ? Math.floor(1 / parseFloat(data.priceNative)).toLocaleString() : '0'} UVD`}
           change={`${data.priceChange24h > 0 ? "+" : ""}${
             data.priceChange24h
           }% 24h`}
@@ -45,8 +45,8 @@ const TokenSection = () => {
           icon={<TrendingUp className="h-4 w-4" />}
         />
         <MetricCard
-          title="Precio UVD (USDC)"
-          value={`$${data.priceUsd}`}
+          title="1 USD ="
+          value={`${data.priceUsd ? Math.floor(1 / parseFloat(data.priceUsd)).toLocaleString() : '0'} UVD`}
           change={`${data.priceChange24h > 0 ? "+" : ""}${
             data.priceChange24h
           }% 24h`}

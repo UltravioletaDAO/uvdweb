@@ -4,8 +4,11 @@ import {FundsSection} from "../components/metricDashboard/FundsSection";
 import {CommunitySection} from "../components/metricDashboard/CommunitySection";
 import {RewardsSection} from "../components/metricDashboard/RewardsSection";
 import { Activity } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 const MetricsDashboard = () =>{ 
+  const { t } = useTranslation();
+  
   return (
     <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-8 max-w-7xl">
@@ -16,10 +19,10 @@ const MetricsDashboard = () =>{
                 <div className="p-3 rounded-xl bg-primary/20">
                   <Activity className="h-8 w-8 text-primary" />
                 </div>
-                Dashboard de Métricas	
+                {t('metricsDashboard.title')}
               </h1>
               <p className="text-xl text-muted-foreground mt-2">
-                Panel de métricas con la actividad, recompensas y crecimiento de la UltravioletaDAO 
+                {t('metricsDashboard.subtitle')}
               </p>
             </div>
           </div>

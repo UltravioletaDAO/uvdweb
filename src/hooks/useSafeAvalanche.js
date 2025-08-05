@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getSafeInfo, getSafeBalances } from "../services/metrics/funds/safeService";
 
 const SAFE_ADDRESS = "0x52110a2Cc8B6bBf846101265edAAe34E753f3389";
-const REFRESH_INTERVAL = 1000;
+const REFRESH_INTERVAL = 2000; // Duplicado: de 1000ms a 2000ms
 
 export function useSafeAvalanche() {
   const [owners, setOwners] = useState([]);
@@ -20,7 +20,7 @@ export function useSafeAvalanche() {
       setThreshold(data.threshold);
 
       const fiatData = await getSafeBalances(SAFE_ADDRESS);
-      setFiatTotal(Number(fiatData.fiatTotal));
+      setFiatTotal(Math.floor(Number(fiatData.fiatTotal))); // Sin decimales para evitar movimiento visual
       setTokens(fiatData.items || []);
       setError(null);
     } catch (err) {

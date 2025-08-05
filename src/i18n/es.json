@@ -1,7 +1,48 @@
 {
   "home": {
     "title": "Ultravioleta DAO",
-    "subtitle": "La comunidad Web3 más activa de Latinoamérica"
+    "subtitle": "La comunidad Web3 más activa de Latinoamérica",
+    "metrics": {
+      "snapshot": {
+        "title": "Snapshot Governance",
+        "proposals": "Propuestas",
+        "votes": "Votos",
+        "followers": "Followers"
+      },
+      "token": {
+        "title": "Token UVD",
+        "holders": "Holders",
+        "transactions": "Transacciones",
+        "usd_conversion": "{{uvd}} UVD = {{amount}} USD"
+      },
+      "funds": {
+        "title": "Fondos y Finanzas",
+        "multisig": "Multisig Avalanche",
+        "signers": "Multifirmantes disponibles"
+      },
+      "see_more": "Ver más métricas",
+      "generating_story": "Generando resumen...",
+      "story_title": "¿Cómo Vamos?"
+    }
+  },
+  "metricsDashboard": {
+    "title": "Dashboard de Métricas",
+    "subtitle": "Panel de métricas con la actividad, recompensas y crecimiento de la UltravioletaDAO",
+    "snapshot": {
+      "subtitle": "Propuestas y votaciones de la comunidad",
+      "error_loading": "Error al cargar datos",
+      "retry": "Reintentar",
+      "total_historic": "Total histórico",
+      "latest_proposal": "Última propuesta",
+      "last_proposal": "Última Propuesta",
+      "no_active_proposals": "Sin Propuestas Activas",
+      "top_voters": "Top votantes de la comunidad",
+      "see_all": "Ver Todo"
+    },
+    "funds": {
+      "subtitle": "Actividad de la gestión del tesoro comunitario",
+      "multisig_avalanche": "Multisig Avalanche"
+    }
   },
   "auth": {
     "register": "Aplicar a UltravioletaDAO",
