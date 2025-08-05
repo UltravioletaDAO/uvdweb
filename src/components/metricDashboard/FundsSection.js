@@ -53,8 +53,8 @@ export function FundsSection() {
         />
         <MetricCard
           title="Multifirmantes (Solana)"
-          value="0"
-          change="0 firmas requeridas"
+          value="10"
+          change="6 firmas requeridas"
           changeType="positive"
           variant="funds"
           icon={<Users className="h-4 w-4" />}

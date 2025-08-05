@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { getSafeInfo, getSafeBalances } from "../services/metrics/funds/safeService";
 
 const SAFE_ADDRESS = "0x52110a2Cc8B6bBf846101265edAAe34E753f3389";
-const REFRESH_INTERVAL = 1000;
+const REFRESH_INTERVAL = 2000;
 
 export function useSafeAvalanche() {
   const [owners, setOwners] = useState([]);

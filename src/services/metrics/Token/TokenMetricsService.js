@@ -27,5 +27,6 @@ export async function getTokenData() {
     totalSupply: details.su?.totalSupply || "N/A",
     circulatingSupply: details.su?.circulatingSupply || "N/A",
     totalTransactions: transactionsData.count || "N/A",
+    burnedSupply: details.ds.supplies?.burnedSupply || "N/A",
   };
 } 
