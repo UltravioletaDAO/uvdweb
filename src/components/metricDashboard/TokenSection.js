@@ -7,6 +7,7 @@ import { usePriceHistory } from "../../hooks/usePriceEvolution";
 
 const TokenSection = () => {
   const data = useTokenMetrics();
+  const { uvdPerAvax, uvdPerUsdc } = useTokenMetrics();
   const { history: priceHistory, priceChange30d } = usePriceHistory();
 
   if (data.error) return <div>Error: {data.error}</div>;
@@ -30,33 +31,13 @@ const TokenSection = () => {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
           title="1 AVAX ="
-          value={`${data.priceNative ? Math.floor(1 / parseFloat(data.priceNative)).toLocaleString() : '0'} UVD`}
-          change={`${data.priceChange24h > 0 ? "+" : ""}${
-            data.priceChange24h
-          }% 24h`}
-          changeType={
-            parseFloat(data.priceChange24h) > 0
-              ? "positive"
-              : parseFloat(data.priceChange24h) < 0
-              ? "negative"
-              : "neutral"
-          }
+          value={`${parseFloat(uvdPerAvax).toLocaleString()} UVD`}
           variant="token"
           icon={<TrendingUp className="h-4 w-4" />}
         />
         <MetricCard
           title="1 USD ="
-          value={`${data.priceUsd ? Math.floor(1 / parseFloat(data.priceUsd)).toLocaleString() : '0'} UVD`}
-          change={`${data.priceChange24h > 0 ? "+" : ""}${
-            data.priceChange24h
-          }% 24h`}
-          changeType={
-            parseFloat(data.priceChange24h) > 0
-              ? "positive"
-              : parseFloat(data.priceChange24h) < 0
-              ? "negative"
-              : "neutral"
-          }
+          value={`${parseFloat(uvdPerUsdc).toLocaleString()} UVD`}
           variant="token"
           icon={<TrendingUp className="h-4 w-4" />}
         />
@@ -140,6 +121,12 @@ const TokenSection = () => {
                   <span className="text-sm">Supply Circulando</span>
                   <span className="text-sm font-medium">
                     {data.circulatingSupply.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-sm">Supply Quemado</span>
+                  <span className="text-sm font-medium">
+                    {data.burnedSupply.toLocaleString()}
                   </span>
                 </div>
                 <div className="flex justify-between">

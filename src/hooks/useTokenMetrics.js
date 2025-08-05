@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTokenData } from "../services/metrics/Token/TokenMetricsService";
 
-const REFRESH_INTERVAL = 1000;
+const REFRESH_INTERVAL = 5000;
 
 export function useTokenMetrics() {
   const [data, setData] = useState({
@@ -16,6 +16,7 @@ export function useTokenMetrics() {
     totalTransactions: "0",
     loading: true,
     error: null,
+    burnedSupply: "0",
   });
 
   const fetchData = async () => {
@@ -38,5 +39,9 @@ export function useTokenMetrics() {
     return () => clearInterval(interval);
   }, []);
 
-  return data;
-} 
+  // Calculo de cuántos UVD se obtiene por 1 AVAX y 1 USDC
+  const uvdPerAvax = data.priceNative !== "0.00" ? (1 / parseFloat(data.priceNative)).toFixed(2) : "N/A";
+  const uvdPerUsdc = data.priceUsd !== "0.00" ? (1 / parseFloat(data.priceUsd)).toFixed(2): "N/A";
+
+  return { ...data, uvdPerAvax, uvdPerUsdc };
+}
