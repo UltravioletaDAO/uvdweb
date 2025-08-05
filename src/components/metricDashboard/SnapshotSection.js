@@ -4,8 +4,10 @@ import { Progress } from "../Progress";
 import { ExternalLink, Vote, FileText, Users } from "lucide-react";
 import { SNAPSHOT_SPACES } from "../../lib/snapshotSpaces";
 import { useSnapshotData } from "../../hooks/useSnapshotData";
+import { useTranslation } from 'react-i18next';
 
 const SnapshotSection = () => {
+  const { t } = useTranslation();
   const {
     currentSpace,
     error,
@@ -29,12 +31,12 @@ const SnapshotSection = () => {
               Snapshot Governance
             </h2>
             <p className="text-muted-foreground mt-1">
-              Error al cargar datos: {error}
+              {t('metricsDashboard.snapshot.error_loading')}: {error}
             </p>
           </div>
         </div>
         <Button onClick={() => loadSpaceData(currentSpace)} variant="outline">
-          Reintentar
+          {t('metricsDashboard.snapshot.retry')}
         </Button>
       </div>
     );
@@ -51,7 +53,7 @@ const SnapshotSection = () => {
             Snapshot Governance
           </h2>
           <p className="text-muted-foreground mt-1">
-            Propuestas y votaciones de la comunidad
+            {t('metricsDashboard.snapshot.subtitle')}
           </p>
         </div>
         
@@ -92,7 +94,7 @@ const SnapshotSection = () => {
             <MetricCard
               title="Propuestas"
               value={metrics.proposals}
-              change="Total histórico"
+              change={t('metricsDashboard.snapshot.total_historic')}
               changeType="positive"
               variant="snapshot"
               icon={<FileText className="h-4 w-4" />}
@@ -106,7 +108,7 @@ const SnapshotSection = () => {
             <MetricCard
               title="Quórum requerido"
               value={latestProposal && latestProposal.quorum ? latestProposal.quorum.toLocaleString() : "N/A"}
-              change="Última propuesta"
+              change={t('metricsDashboard.snapshot.latest_proposal')}
               changeType="positive"
               variant="snapshot"
               icon={<Users className="h-4 w-4" />}
@@ -116,7 +118,7 @@ const SnapshotSection = () => {
           <div className="grid gap-6 lg:grid-cols-2">
             <div className="space-y-4">
               <h3 className="text-lg font-semibold">
-                {latestProposal ? 'Última Propuesta' : 'Sin Propuestas Activas'}
+                {latestProposal ? t('metricsDashboard.snapshot.last_proposal') : t('metricsDashboard.snapshot.no_active_proposals')}
               </h3>
               {latestProposal ? (
                 <div className="p-6 rounded-lg border border-snapshot/20 bg-gradient-to-br from-snapshot/5 to-transparent">
@@ -178,7 +180,7 @@ const SnapshotSection = () => {
             </div>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">Top votantes de la comunidad</h3>
+                <h3 className="text-lg font-semibold">{t('metricsDashboard.snapshot.top_voters')}</h3>
                 <Button
                   variant="outline"
                   size="sm"
@@ -190,7 +192,7 @@ const SnapshotSection = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Ver Todo
+                    {t('metricsDashboard.snapshot.see_all')}
                     <ExternalLink className="ml-2 h-3 w-3" />
                   </a>
                 </Button>

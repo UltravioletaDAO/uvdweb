@@ -1,6 +1,7 @@
 import { MetricCard } from "../MetricCard";
 import { Button } from "../Button";
 import { useSafeAvalanche } from "../../hooks/useSafeAvalanche";
+import { useTranslation } from 'react-i18next';
 
 import {
   Wallet,
@@ -10,6 +11,7 @@ import {
 } from "lucide-react";
 
 export function FundsSection() {
+  const { t } = useTranslation();
   const { owners, threshold, fiatTotal, tokens, error } = useSafeAvalanche();
 
   if (error) return <div>Error: {error}</div>;
@@ -25,14 +27,14 @@ export function FundsSection() {
             Fondos y Finanzas
           </h2>
           <p className="text-muted-foreground mt-1">
-            Actividad de la gestión del tesoro comunitario
+            {t('metricsDashboard.funds.subtitle')}
           </p>
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          title="Multisig Avalanche"
+          title={t('metricsDashboard.funds.multisig_avalanche')}
           value={`$${fiatTotal.toLocaleString(undefined, { maximumFractionDigits: 2 })}`}
           variant="funds"
           icon={<Shield className="h-4 w-4" />}
@@ -63,7 +65,7 @@ export function FundsSection() {
 
       <div className="grid gap-6 lg:grid-cols-2">
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Multisig Avalanche</h3>
+                      <h3 className="text-lg font-semibold">{t('metricsDashboard.funds.multisig_avalanche')}</h3>
           <div className="p-6 rounded-lg border border-funds/20 bg-gradient-to-br from-funds/5 to-transparent">
             <div className="space-y-4">
               <div className="flex justify-between items-center">

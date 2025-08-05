@@ -20,7 +20,7 @@ export function useSafeAvalanche() {
       setThreshold(data.threshold);
 
       const fiatData = await getSafeBalances(SAFE_ADDRESS);
-      setFiatTotal(Number(fiatData.fiatTotal));
+      setFiatTotal(Math.floor(Number(fiatData.fiatTotal))); // Sin decimales para evitar movimiento visual
       setTokens(fiatData.items || []);
       setError(null);
     } catch (err) {

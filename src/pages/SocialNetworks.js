@@ -6,7 +6,6 @@ import {
 } from '@heroicons/react/24/outline';
 import multifirma from '../assets/icons/multifirma.svg';
 import swapToken from '../assets/icons/swapToken.svg';
-import liquidityPool from '../assets/icons/liquidityPool.svg';
 import { useTranslation } from 'react-i18next';
 
 const SocialNetworks = () => {
@@ -61,16 +60,8 @@ const SocialNetworks = () => {
       customStyle: "group-hover:text-emerald-400"
     },
     {
-      name: 'Liquidity Pool UVT/Avax',
-      url: 'https://lfj.gg/avalanche/pool/v1/0x281027c6a46142d6fc57f12665147221ce69af33/AVAX',
-      icon: (
-        <img src={liquidityPool} alt="Liquidity Pool Icon" className="w-6 h-6" />
-      ),
-      customStyle: "group-hover:text-blue-400"
-    },
-    {
       name: 'Swap Token',
-      url: 'https://lfj.gg/avalanche/swap?outputCurrency=AVAX&inputCurrency=0x281027C6a46142D6FC57f12665147221CE69Af33',
+      url: 'https://ultravioletadao.xyz/token',
       icon: (
         <img src={swapToken} alt="SwapToken Icon" className="w-6 h-6" />
       ),
