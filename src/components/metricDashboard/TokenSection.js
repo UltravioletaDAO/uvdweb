@@ -13,16 +13,16 @@ const TokenSection = () => {
   if (data.error) return <div>Error: {data.error}</div>;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-token/20">
-              <Coins className="h-6 w-6 text-token" />
+          <h2 className="text-2xl font-bold flex items-center gap-3 mb-2">
+            <div className="p-2 rounded-lg bg-token/15">
+              <Coins className="h-5 w-5 text-token" />
             </div>
-            Token UVD
+            <span className="text-token">TOKEN $UVD</span>
           </h2>
-          <p className="text-muted-foreground mt-1">
+          <p className="text-sm text-muted-foreground ml-11">
             Actividad y métricas del UVD token
           </p>
         </div>
@@ -30,39 +30,39 @@ const TokenSection = () => {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          title="1 AVAX ="
-          value={`${parseFloat(uvdPerAvax).toLocaleString()} UVD`}
+          title={`${parseFloat(uvdPerUsdc).toLocaleString()} UVD = $1 USD`}
+          value=""
           variant="token"
           icon={<TrendingUp className="h-4 w-4" />}
         />
         <MetricCard
-          title="1 USD ="
-          value={`${parseFloat(uvdPerUsdc).toLocaleString()} UVD`}
+          title={`${parseFloat(uvdPerAvax).toLocaleString()} UVD = 1 AVAX`}
+          value=""
           variant="token"
           icon={<TrendingUp className="h-4 w-4" />}
         />
         <MetricCard
-          title="Total Holders"
+          title="Holders"
           value={data.holderCount.toLocaleString()}
+          change={`${data.totalTransactions.toLocaleString()} transacciones`}
+          changeType="neutral"
           variant="token"
           icon={<Users className="h-4 w-4" />}
         />
         <MetricCard
-          title="Total de Transacciones"
-          value={
-            typeof data.totalTransactions === "number"
-              ? data.totalTransactions.toLocaleString()
-              : "N/A"
-          }
+          title="Liquidez Total Backing UVD"
+          value={`$${parseFloat(data.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 })}`}
+          change={`${data.liquidity ? Math.round(parseFloat(data.liquidity) / 29.87).toLocaleString() : '0'} AVAX`}
+          changeType="positive"
           variant="token"
           icon={<Activity className="h-4 w-4" />}
         />
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-6 lg:grid-cols-2 mt-8">
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Evolución del Precio</h3>
-          <div className="p-6 rounded-lg border border-token/20 bg-gradient-to-br from-token/5 to-transparent">
+          <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">Evolución del Precio</h3>
+          <div className="p-5 rounded-xl border border-token/15 bg-gradient-to-br from-token/5 to-transparent">
             <div className="h-32 w-full">
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={priceHistory}>
@@ -89,11 +89,11 @@ const TokenSection = () => {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Información del Token</h3>
-          <div className="space-y-3">
-            <div className="p-4 rounded-lg border border-token/20 bg-gradient-to-br from-token/5 to-transparent">
-              <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium">Contract Avalanche</span>
+          <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">Información del Token</h3>
+          <div className="space-y-2">
+            <div className="p-3 rounded-lg border border-token/10 bg-gradient-to-br from-token/3 to-transparent">
+              <div className="flex justify-between items-center mb-1">
+                <span className="text-xs font-medium uppercase text-muted-foreground">Contract Avalanche</span>
                 <Button variant="ghost" size="sm" className="h-6 p-1" asChild>
                   <a
                     href="https://snowscan.xyz/token/0x4Ffe7e01832243e03668E090706F17726c26d6B2"
@@ -109,44 +109,38 @@ const TokenSection = () => {
               </code>
             </div>
 
-            <div className="p-4 rounded-lg border border-token/20 bg-gradient-to-br from-token/5 to-transparent">
-              <div className="space-y-2">
-                <div className="flex justify-between">
-                  <span className="text-sm">Total Supply</span>
-                  <span className="text-sm font-medium">
+            <div className="p-4 rounded-lg border border-token/10 bg-gradient-to-br from-token/3 to-transparent">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Total Supply</span>
+                  <span className="text-sm font-semibold">
                     {data.totalSupply.toLocaleString()}
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-sm">Supply Circulando</span>
-                  <span className="text-sm font-medium">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Supply Circulando</span>
+                  <span className="text-sm font-semibold">
                     {data.circulatingSupply.toLocaleString()}
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-sm">Supply Quemado</span>
-                  <span className="text-sm font-medium">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Supply Quemado</span>
+                  <span className="text-sm font-semibold">
                     {data.burnedSupply.toLocaleString()}
                   </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-sm">Market Cap</span>
-                  <span className="text-sm font-medium">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Market Cap</span>
+                  <span className="text-sm font-semibold">
                     ${data.marketCap.toLocaleString()}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-sm">Liquidez LP Total</span>
-                  <span className="text-sm font-medium">
-                    ${data.liquidity.toLocaleString()}
                   </span>
                 </div>
               </div>
             </div>
 
-            <div className="p-4 rounded-lg border border-token/20 bg-gradient-to-br from-token/5 to-transparent">
+            <div className="p-3 rounded-lg border border-token/10 bg-gradient-to-br from-token/3 to-transparent">
               <div className="flex justify-between items-center">
-                <span className="text-sm font-medium">Ver en DEX</span>
+                <span className="text-xs font-medium uppercase text-muted-foreground">Ver en DEX</span>
                 <div className="flex gap-2">
                   <Button variant="ghost" size="sm" className="h-6 p-1" asChild>
                     <a

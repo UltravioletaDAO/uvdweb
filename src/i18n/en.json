@@ -11,9 +11,12 @@
       },
       "token": {
         "title": "Token UVD",
+        "title_full": "TOKEN $UVD",
         "holders": "Holders",
         "transactions": "Transactions",
-        "usd_conversion": "{{uvd}} UVD = {{amount}} USD"
+        "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
+        "total_liquidity": "Total Liquidity",
+        "total_liquidity_backing": "Total Liquidity Backing UVD"
       },
       "funds": {
         "title": "Funds & Finance",

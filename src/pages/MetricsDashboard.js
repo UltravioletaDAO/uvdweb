@@ -11,26 +11,24 @@ const MetricsDashboard = () =>{
   
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8 max-w-7xl">
-        <header>
-          <div className="flex items-center justify-between mb-3">
+      <div className="container mx-auto px-4 py-12 max-w-7xl">
+        <header className="mb-12">
+          <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-2xl sm:text-3xl font-bold tracking-tight flex items-center gap-3">
-                <div className="p-3 rounded-xl bg-primary/20">
-                  <Activity className="h-8 w-8 text-primary" />
+              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight flex items-center gap-4 mb-3">
+                <div className="p-2.5 rounded-xl bg-primary/15">
+                  <Activity className="h-7 w-7 text-primary" />
                 </div>
                 {t('metricsDashboard.title')}
               </h1>
-              <p className="text-xl text-muted-foreground mt-2">
+              <p className="text-lg text-muted-foreground ml-14">
                 {t('metricsDashboard.subtitle')}
               </p>
             </div>
           </div>
-
-          <div className="mb-8"></div>
         </header>
 
-        <main className="space-y-16">
+        <main className="space-y-20">
           <section>
             <SnapshotSection />
           </section>

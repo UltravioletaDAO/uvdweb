@@ -43,16 +43,16 @@ const SnapshotSection = () => {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-8">
+      <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h2 className="text-3xl font-bold flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-snapshot/20">
-              <Vote className="h-6 w-6 text-snapshot" />
+          <h2 className="text-2xl font-bold flex items-center gap-3 mb-2">
+            <div className="p-2 rounded-lg bg-snapshot/15">
+              <Vote className="h-5 w-5 text-snapshot" />
             </div>
-            Snapshot Governance
+            <span className="text-snapshot">SNAPSHOT GOVERNANCE</span>
           </h2>
-          <p className="text-muted-foreground mt-1">
+          <p className="text-sm text-muted-foreground ml-11">
             {t('metricsDashboard.snapshot.subtitle')}
           </p>
         </div>
@@ -85,13 +85,6 @@ const SnapshotSection = () => {
         <>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <MetricCard
-              title="Followers"
-              value={metrics.followers}
-              changeType="positive"
-              variant="snapshot"
-              icon={<Users className="h-4 w-4" />}
-            />
-            <MetricCard
               title="Propuestas"
               value={metrics.proposals}
               change={t('metricsDashboard.snapshot.total_historic')}
@@ -106,6 +99,13 @@ const SnapshotSection = () => {
               icon={<Vote className="h-4 w-4" />}
             />
             <MetricCard
+              title="Followers"
+              value={metrics.followers.toLocaleString()}
+              changeType="positive"
+              variant="snapshot"
+              icon={<Users className="h-4 w-4" />}
+            />
+            <MetricCard
               title="Quórum requerido"
               value={latestProposal && latestProposal.quorum ? latestProposal.quorum.toLocaleString() : "N/A"}
               change={t('metricsDashboard.snapshot.latest_proposal')}
@@ -115,13 +115,13 @@ const SnapshotSection = () => {
             />
           </div>
 
-          <div className="grid gap-6 lg:grid-cols-2">
+          <div className="grid gap-6 lg:grid-cols-2 mt-8">
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold">
+              <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">
                 {latestProposal ? t('metricsDashboard.snapshot.last_proposal') : t('metricsDashboard.snapshot.no_active_proposals')}
               </h3>
               {latestProposal ? (
-                <div className="p-6 rounded-lg border border-snapshot/20 bg-gradient-to-br from-snapshot/5 to-transparent">
+                <div className="p-5 rounded-xl border border-snapshot/15 bg-gradient-to-br from-snapshot/5 to-transparent">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="font-medium">
                       {latestProposal.title}
@@ -180,7 +180,7 @@ const SnapshotSection = () => {
             </div>
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h3 className="text-lg font-semibold">{t('metricsDashboard.snapshot.top_voters')}</h3>
+                <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">{t('metricsDashboard.snapshot.top_voters')}</h3>
                 <Button
                   variant="outline"
                   size="sm"
@@ -204,7 +204,7 @@ const SnapshotSection = () => {
                 {leaderboard.slice(0, 5).map((user, idx) => (
                   <div
                     key={user.user}
-                    className="p-4 rounded-lg border border-snapshot/20 bg-gradient-to-br from-snapshot/5 to-transparent flex items-center justify-between"
+                    className="p-3 rounded-lg border border-snapshot/10 bg-gradient-to-br from-snapshot/3 to-transparent flex items-center justify-between hover:border-snapshot/20 transition-colors"
                   >
                     <div className="flex items-center gap-2">
                       <span className="font-bold text-snapshot">{idx + 1}.</span>

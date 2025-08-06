@@ -236,28 +236,44 @@ const Home = () => {
             className="group"
             >
               <div style={{ fontSize: '14px', color: '#888', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                💰 {t('home.metrics.token.title')}
+                💰 {t('home.metrics.token.title_full')}
               </div>
-              <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '4px' }}>
-                {t('home.metrics.token.usd_conversion', { 
-                  amount: 1, 
-                  uvd: tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() : '-'
-                })}
+              <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#fff', marginBottom: '8px' }}>
+                {tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() : '-'} UVD = $1 USD
               </div>
-              <div style={{ fontSize: '11px', color: '#666', marginTop: '12px' }}>
+              <div style={{ fontSize: '20px', fontWeight: '600', color: '#fff', marginBottom: '4px' }}>
+                {tokenData.priceNative ? Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString() : '-'} UVD = 1 AVAX
+              </div>
+              <div style={{ fontSize: '14px', color: '#9c27b0', marginBottom: '8px' }}>
+                {t('home.metrics.token.total_liquidity_backing')}: ${tokenData.liquidity ? parseFloat(tokenData.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 }) : '-'} 
+                {tokenData.liquidity && tokenData.priceNative && tokenData.priceUsd && (
+                  <span style={{ fontSize: '12px', color: '#999', marginLeft: '6px' }}>
+                    ({Math.floor(parseFloat(tokenData.liquidity) / (parseFloat(tokenData.priceUsd) / parseFloat(tokenData.priceNative))).toLocaleString()} AVAX)
+                  </span>
+                )}
+              </div>
+              <div style={{ fontSize: '11px', color: '#666', marginTop: '8px', borderTop: '1px solid rgba(255, 179, 0, 0.1)', paddingTop: '8px' }}>
                 {tokenData.holderCount?.toLocaleString() || '-'} {t('home.metrics.token.holders')} • {tokenData.totalTransactions?.toLocaleString() || '-'} {t('home.metrics.token.transactions')}
               </div>
               
               {/* Tooltip con conversiones */}
               <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 bg-gray-900 text-white p-3 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none z-10">
-                <div className="text-xs space-y-1">
+                <div className="text-xs space-y-2">
                   {tokenData.priceUsd && (
-                    <>
-                      <div>{t('home.metrics.token.usd_conversion', { amount: 1, uvd: Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() })}</div>
-                      <div>{t('home.metrics.token.usd_conversion', { amount: 10, uvd: Math.floor(10 / parseFloat(tokenData.priceUsd)).toLocaleString() })}</div>
-                      <div>{t('home.metrics.token.usd_conversion', { amount: 100, uvd: Math.floor(100 / parseFloat(tokenData.priceUsd)).toLocaleString() })}</div>
-                      <div>{t('home.metrics.token.usd_conversion', { amount: 1000, uvd: Math.floor(1000 / parseFloat(tokenData.priceUsd)).toLocaleString() })}</div>
-                    </>
+                    <div className="border-b border-gray-700 pb-1">
+                      <div className="font-semibold mb-1">USD:</div>
+                      <div>{Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $1</div>
+                      <div>{Math.floor(10 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $10</div>
+                      <div>{Math.floor(100 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $100</div>
+                    </div>
+                  )}
+                  {tokenData.priceNative && (
+                    <div>
+                      <div className="font-semibold mb-1">AVAX:</div>
+                      <div>{Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 1 AVAX</div>
+                      <div>{Math.floor(5 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 5 AVAX</div>
+                      <div>{Math.floor(10 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 10 AVAX</div>
+                    </div>
                   )}
                 </div>
                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-gray-900"></div>
@@ -304,7 +320,8 @@ const Home = () => {
                   holders: parseInt(tokenData.holderCount),
                   transactions: parseInt(tokenData.totalTransactions) || 0,
                   treasury: Math.floor(treasuryTotal),
-                  multisigners: owners.length
+                  multisigners: owners.length,
+                  liquidity: tokenData.liquidity ? parseFloat(tokenData.liquidity) : 0
                 }}
               />
             </div>

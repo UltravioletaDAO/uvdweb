@@ -17,16 +17,16 @@ export function FundsSection() {
   if (error) return <div>Error: {error}</div>;
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-3xl font-bold flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-funds/20">
-              <Wallet className="h-6 w-6 text-funds" />
+          <h2 className="text-2xl font-bold flex items-center gap-3 mb-2">
+            <div className="p-2 rounded-lg bg-funds/15">
+              <Wallet className="h-5 w-5 text-funds" />
             </div>
-            Fondos y Finanzas
+            <span className="text-funds">FUNDS & FINANCE</span>
           </h2>
-          <p className="text-muted-foreground mt-1">
+          <p className="text-sm text-muted-foreground ml-11">
             {t('metricsDashboard.funds.subtitle')}
           </p>
         </div>
@@ -34,39 +34,39 @@ export function FundsSection() {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          title={t('metricsDashboard.funds.multisig_avalanche')}
-          value={`$${fiatTotal.toLocaleString(undefined, { maximumFractionDigits: 2 })}`}
+          title="Avalanche Multisig"
+          value={`$${fiatTotal.toLocaleString(undefined, { maximumFractionDigits: 0 })}`}
+          change={`${owners.length} multisigners`}
+          changeType="positive"
           variant="funds"
           icon={<Shield className="h-4 w-4" />}
         />
         <MetricCard
-          title="Multifirmantes (Avalanche)"
-          value={owners.length}
-          change={`${threshold} firmas requeridas`}
-          changeType="positive"
+          title="Firmas Requeridas AVAX"
+          value={`${threshold}/${owners.length}`}
           variant="funds"
           icon={<Users className="h-4 w-4" />}
         />
         <MetricCard
-          title="Multisig Solana"
-          value="0 SOL"
+          title="Solana Multisig"
+          value="$0"
+          change="10 multisigners"
+          changeType="neutral"
           variant="funds"
           icon={<Shield className="h-4 w-4" />}
         />
         <MetricCard
-          title="Multifirmantes (Solana)"
-          value="10"
-          change="6 firmas requeridas"
-          changeType="positive"
+          title="Firmas Requeridas SOL"
+          value="6/10"
           variant="funds"
           icon={<Users className="h-4 w-4" />}
         />
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
+      <div className="grid gap-6 lg:grid-cols-2 mt-8">
         <div className="space-y-4">
-                      <h3 className="text-lg font-semibold">{t('metricsDashboard.funds.multisig_avalanche')}</h3>
-          <div className="p-6 rounded-lg border border-funds/20 bg-gradient-to-br from-funds/5 to-transparent">
+          <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">{t('metricsDashboard.funds.multisig_avalanche')}</h3>
+          <div className="p-5 rounded-xl border border-funds/15 bg-gradient-to-br from-funds/5 to-transparent">
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="font-medium">Saldo Principal</span>
@@ -86,7 +86,7 @@ export function FundsSection() {
               {tokens.slice(0, 5).map((token, idx) => (
                 <li
                   key={token.tokenInfo.address + idx}
-                  className="flex items-center justify-between p-3 rounded bg-background/50 hover:bg-funds/10 transition"
+                  className="flex items-center justify-between p-2.5 rounded-lg bg-background/50 hover:bg-funds/10 transition-colors"
                 >
                   <div className="flex items-center gap-2">
                     <img
@@ -120,8 +120,8 @@ export function FundsSection() {
         </div>
 
         <div className="space-y-4">
-          <h3 className="text-lg font-semibold">Multisig Solana</h3>
-          <div className="p-6 rounded-lg border border-funds/20 bg-gradient-to-br from-funds/5 to-transparent">
+          <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">Multisig Solana</h3>
+          <div className="p-5 rounded-xl border border-funds/15 bg-gradient-to-br from-funds/5 to-transparent">
             <div className="space-y-4">
               <div className="flex justify-between items-center">
                 <span className="font-medium">Saldo Principal</span>
@@ -137,7 +137,7 @@ export function FundsSection() {
               </div>
 
               <div className="space-y-3">
-                <div className="flex justify-between items-center p-3 rounded bg-background/50">
+                <div className="flex justify-between items-center p-2.5 rounded-lg bg-background/50">
                   <div className="flex items-center gap-2">
                     <div className="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-xs font-bold text-white">
                       S

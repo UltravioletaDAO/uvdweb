@@ -76,6 +76,7 @@ MÉTRICAS ACTUALES:
 - Precio del token: ${metrics.uvdPrice.toLocaleString()} UVD = 1 USD
 - Holders del token: ${metrics.holders.toLocaleString()}
 - Transacciones del token: ${metrics.transactions.toLocaleString()}
+- Liquidez total del pool: $${metrics.liquidity?.toLocaleString() || 0} USD
 - Tesoro (Avalanche): $${metrics.treasury.toLocaleString()} USD
 - Multifirmantes activos: ${metrics.multisigners}
 
@@ -89,6 +90,7 @@ CURRENT METRICS:
 - Token price: ${metrics.uvdPrice.toLocaleString()} UVD = 1 USD
 - Token holders: ${metrics.holders.toLocaleString()}
 - Token transactions: ${metrics.transactions.toLocaleString()}
+- Total pool liquidity: $${metrics.liquidity?.toLocaleString() || 0} USD
 - Treasury (Avalanche): $${metrics.treasury.toLocaleString()} USD
 - Active multisigners: ${metrics.multisigners}
 
@@ -150,20 +152,21 @@ export const generateFallbackAnalysis = (metrics, language) => {
     holders: metrics?.holders || 0,
     transactions: metrics?.transactions || 0,
     treasury: metrics?.treasury || 0,
-    multisigners: metrics?.multisigners || 0
+    multisigners: metrics?.multisigners || 0,
+    liquidity: metrics?.liquidity || 0
   };
 
   if (language === 'es') {
     return `Te tengo que contar lo que estamos haciendo. Ya somos ${safeMetrics.holders.toLocaleString()} personas en Ultravioleta DAO, y entre todos ya votamos ${safeMetrics.votes.toLocaleString()} veces en nuestras ${safeMetrics.proposals} propuestas. Imagínate, somos miles tomando decisiones juntos sobre el futuro de Web3 en Latinoamérica. Nuestras ${safeMetrics.transactions.toLocaleString()} transacciones del token muestran que esto no es solo charla, estamos moviendo el proyecto todos los días.
 
-Lo que nos hace diferentes es que no somos un proyecto más de crypto. Somos una comunidad real con $${safeMetrics.treasury.toLocaleString()} USD en nuestro tesoro, cuidado por ${safeMetrics.multisigners} multifirmantes de confianza. Acá no hay un CEO ni una empresa detrás. Somos ${safeMetrics.followers} personas activas construyendo algo desde cero, tomando cada decisión entre todos. Esto es Web3 de verdad, no de mentira.
+Lo que nos hace diferentes es que no somos un proyecto más de crypto. Somos una comunidad real con $${safeMetrics.liquidity.toLocaleString()} USD en liquidez y $${safeMetrics.treasury.toLocaleString()} USD en nuestro tesoro, cuidado por ${safeMetrics.multisigners} multifirmantes de confianza. Acá no hay un CEO ni una empresa detrás. Somos ${safeMetrics.followers} personas activas construyendo algo desde cero, tomando cada decisión entre todos. Esto es Web3 de verdad, no de mentira.
 
 Y mira el timing: con ${safeMetrics.uvdPrice.toLocaleString()} UVD por cada dólar, estás entrando en el momento perfecto para unirte a nosotros. No cuando ya explotó y está caro, sino ahora que lo estamos armando. Los que entraron temprano en Bitcoin o Ethereum hoy son leyendas. Esta es tu chance de ser parte de nuestro proyecto desde el día uno. Estamos despegando y todavía podés subirte.`;
   }
 
   return `I've got to tell you what we're doing. We're already ${safeMetrics.holders.toLocaleString()} people in Ultravioleta DAO, and together we've voted ${safeMetrics.votes.toLocaleString()} times on our ${safeMetrics.proposals} proposals. Imagine that - we're thousands making decisions together about the future of Web3 in Latin America. Our ${safeMetrics.transactions.toLocaleString()} token transactions show this isn't just talk, we're moving the project forward every day.
 
-What makes us different is that we're not just another crypto project. We're a real community with $${safeMetrics.treasury.toLocaleString()} USD in our treasury, watched over by ${safeMetrics.multisigners} trusted multisigners. There's no CEO or company behind this. We're ${safeMetrics.followers} active people building something from scratch, making every decision together. This is real Web3, not fake.
+What makes us different is that we're not just another crypto project. We're a real community with $${safeMetrics.liquidity.toLocaleString()} USD in liquidity and $${safeMetrics.treasury.toLocaleString()} USD in our treasury, watched over by ${safeMetrics.multisigners} trusted multisigners. There's no CEO or company behind this. We're ${safeMetrics.followers} active people building something from scratch, making every decision together. This is real Web3, not fake.
 
 And look at the timing: with ${safeMetrics.uvdPrice.toLocaleString()} UVD per dollar, you're getting in at the perfect moment to join us. Not when it's already exploded and expensive, but now while we're building it. Those who got into Bitcoin or Ethereum early are legends today. This is your chance to be part of our project from day one. We're taking off and you can still get on board.`;
 };

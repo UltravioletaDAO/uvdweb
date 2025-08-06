@@ -17,11 +17,23 @@ export async function getTokenData() {
   const res3 = await fetch(url3);
   const transactionsData = await res3.json();
 
+  // La liquidez total del pool incluye ambos lados (UVD + AVAX)
+  // Pero solo queremos mostrar el valor de los AVAX (la mitad del pool)
+  const liquidityTotalUsd = pair.liquidity?.usd || "0";
+  const liquidityAvax = pair.liquidity?.quote || "0"; // Cantidad de AVAX en el pool
+  const liquidityUvd = pair.liquidity?.base || "0"; // Cantidad de UVD en el pool
+  
+  // El valor real de liquidez es solo el lado de AVAX (aproximadamente la mitad del total)
+  // Esto es lo que realmente respalda el valor del token
+  const liquidityUsd = parseFloat(liquidityTotalUsd) / 2;
+
   return {
     priceNative: pair.priceNative || "NA",
     priceUsd: pair.priceUsd || "N/A",
     priceChange24h: pair.priceChange?.h24 || pair.priceChange24h || "N/A",
-    liquidity: pair.liquidity?.usd || pair.liquidity || "N/A",
+    liquidity: liquidityUsd, // Valor de solo el lado AVAX en USD
+    liquidityAvax: liquidityAvax, // Cantidad de AVAX
+    liquidityUvd: liquidityUvd, // Cantidad de UVD
     marketCap: pair.marketCap || "N/A",
     holderCount: details.gp?.holderCount || "N/A",
     totalSupply: details.su?.totalSupply || "N/A",
