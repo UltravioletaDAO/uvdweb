@@ -6,6 +6,7 @@ import { es } from 'date-fns/locale';
 import { enUS } from 'date-fns/locale';
 import snapshot from '@snapshot-labs/snapshot.js';
 import detectEthereumProvider from '@metamask/detect-provider';
+import { debugError } from '../lib/utils';
 
 const formatVotingPower = (value) => {
   if (value >= 1000000) {
@@ -687,7 +688,7 @@ const Snapshot = () => {
           }]
         });
       } catch (err) {
-        console.log('Error requesting permissions:', err);
+        debugError('Error requesting permissions:', err);
         if (err.code === 4001) {
           throw new Error(t('snapshot.errors.user_rejected_connection'));
         }
