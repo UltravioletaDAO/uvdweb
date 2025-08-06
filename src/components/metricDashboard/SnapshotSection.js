@@ -88,20 +88,23 @@ const SnapshotSection = () => {
               title="Propuestas"
               value={metrics.proposals}
               change={t('metricsDashboard.snapshot.total_historic')}
-              changeType="positive"
+              changeType="neutral"
               variant="snapshot"
               icon={<FileText className="h-4 w-4" />}
             />
             <MetricCard
               title="Votos"
               value={metrics.votes.toLocaleString()}
+              change={`De ${metrics.proposals} propuestas`}
+              changeType="neutral"
               variant="snapshot"
               icon={<Vote className="h-4 w-4" />}
             />
             <MetricCard
               title="Followers"
               value={metrics.followers.toLocaleString()}
-              changeType="positive"
+              change="Miembros activos"
+              changeType="neutral"
               variant="snapshot"
               icon={<Users className="h-4 w-4" />}
             />

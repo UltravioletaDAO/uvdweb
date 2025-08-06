@@ -44,6 +44,8 @@ export function FundsSection() {
         <MetricCard
           title="Firmas Requeridas AVAX"
           value={`${threshold}/${owners.length}`}
+          change="Para ejecutar transacciones"
+          changeType="neutral"
           variant="funds"
           icon={<Users className="h-4 w-4" />}
         />
@@ -58,6 +60,8 @@ export function FundsSection() {
         <MetricCard
           title="Firmas Requeridas SOL"
           value="6/10"
+          change="Para ejecutar transacciones"
+          changeType="neutral"
           variant="funds"
           icon={<Users className="h-4 w-4" />}
         />

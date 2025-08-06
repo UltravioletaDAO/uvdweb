@@ -43,11 +43,25 @@ export function MetricCard({
       </CardHeader>
       <CardContent>
         <div className="text-xl font-bold">{value}</div>
-        {change && (
-          <p className={cn("text-xs mt-1", changeColors[changeType])}>{change}</p>
-        )}
-        {description && (
-          <p className="text-xs text-muted-foreground mt-1">{description}</p>
+        {(change || description) && (
+          <div className={cn(
+            "text-xs pt-2 mt-2 border-t",
+            variant === "snapshot" ? "border-snapshot/15" :
+            variant === "token" ? "border-token/15" :
+            variant === "funds" ? "border-funds/15" :
+            variant === "community" ? "border-community/15" :
+            variant === "rewards" ? "border-rewards/15" :
+            "border-border/15"
+          )}>
+            {change && (
+              <div className={cn(changeColors[changeType])}>
+                {change}
+              </div>
+            )}
+            {description && (
+              <div className="text-muted-foreground mt-1">{description}</div>
+            )}
+          </div>
         )}
       </CardContent>
     </Card>

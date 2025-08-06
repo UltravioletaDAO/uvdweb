@@ -30,14 +30,18 @@ const TokenSection = () => {
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          title={`${parseFloat(uvdPerUsdc).toLocaleString()} UVD = $1 USD`}
-          value=""
+          title="Precio USD"
+          value={`${parseFloat(uvdPerUsdc).toLocaleString()} UVD`}
+          change="= $1 USD"
+          changeType="neutral"
           variant="token"
           icon={<TrendingUp className="h-4 w-4" />}
         />
         <MetricCard
-          title={`${parseFloat(uvdPerAvax).toLocaleString()} UVD = 1 AVAX`}
-          value=""
+          title="Precio AVAX"
+          value={`${parseFloat(uvdPerAvax).toLocaleString()} UVD`}
+          change="= 1 AVAX"
+          changeType="neutral"
           variant="token"
           icon={<TrendingUp className="h-4 w-4" />}
         />

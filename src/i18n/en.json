@@ -7,7 +7,8 @@
         "title": "Snapshot Governance",
         "proposals": "Proposals",
         "votes": "Votes",
-        "followers": "Followers"
+        "followers": "Followers",
+        "since": "Since June 2023"
       },
       "token": {
         "title": "Token UVD",

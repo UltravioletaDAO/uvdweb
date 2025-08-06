@@ -192,18 +192,23 @@ const Home = () => {
               border: '1px solid rgba(0, 255, 163, 0.2)',
               borderRadius: '12px',
               padding: '24px',
-              textAlign: 'center'
+              textAlign: 'center',
+              minHeight: '180px',
+              display: 'flex',
+              flexDirection: 'column'
             }}>
               <div style={{ fontSize: '14px', color: '#888', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
                 🏦 {t('home.metrics.funds.community_vault')}
               </div>
-              <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '4px' }}>
-                ${treasuryTotal ? Math.floor(treasuryTotal).toLocaleString() : '-'}
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '8px' }}>
+                  ${treasuryTotal ? Math.floor(treasuryTotal).toLocaleString() : '-'}
+                </div>
+                <div style={{ fontSize: '12px', color: '#999', marginBottom: '8px' }}>
+                  {t('home.metrics.funds.multisig')}
+                </div>
               </div>
-              <div style={{ fontSize: '12px', color: '#999' }}>
-                {t('home.metrics.funds.multisig')}
-              </div>
-              <div style={{ fontSize: '11px', color: '#666', marginTop: '12px' }}>
+              <div style={{ fontSize: '11px', color: '#666', borderTop: '1px solid rgba(0, 255, 163, 0.1)', paddingTop: '8px', marginTop: 'auto' }}>
                 {threshold || '-'} {t('home.metrics.funds.required_of')} {owners?.length || '-'} {t('home.metrics.funds.multisigners')}
               </div>
             </div>
@@ -214,35 +219,43 @@ const Home = () => {
               border: '1px solid rgba(106, 0, 255, 0.2)',
               borderRadius: '12px',
               padding: '24px',
-              textAlign: 'center'
+              textAlign: 'center',
+              minHeight: '180px',
+              display: 'flex',
+              flexDirection: 'column'
             }}>
               <div style={{ fontSize: '14px', color: '#888', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
                 🗳️ {t('home.metrics.snapshot.title')}
               </div>
               
-              {/* Propuestas y Votos con mayor visibilidad */}
-              <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '12px' }}>
-                <div>
-                  <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#fff' }}>
-                    {snapshotMetrics?.proposals || '-'}
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                {/* Propuestas y Votos con mayor visibilidad */}
+                <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '8px' }}>
+                  <div>
+                    <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#fff' }}>
+                      {snapshotMetrics?.proposals || '-'}
+                    </div>
+                    <div style={{ fontSize: '11px', color: '#bb86fc', fontWeight: '600' }}>
+                      {t('home.metrics.snapshot.proposals')}
+                    </div>
                   </div>
-                  <div style={{ fontSize: '11px', color: '#bb86fc', fontWeight: '600' }}>
-                    {t('home.metrics.snapshot.proposals')}
+                  <div>
+                    <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#fff' }}>
+                      {snapshotMetrics?.votes?.toLocaleString() || '-'}
+                    </div>
+                    <div style={{ fontSize: '11px', color: '#bb86fc', fontWeight: '600' }}>
+                      {t('home.metrics.snapshot.votes')}
+                    </div>
                   </div>
                 </div>
-                <div>
-                  <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#fff' }}>
-                    {snapshotMetrics?.votes?.toLocaleString() || '-'}
-                  </div>
-                  <div style={{ fontSize: '11px', color: '#bb86fc', fontWeight: '600' }}>
-                    {t('home.metrics.snapshot.votes')}
-                  </div>
+                <div style={{ fontSize: '10px', color: '#888', marginTop: '4px' }}>
+                  {t('home.metrics.snapshot.since')}
                 </div>
               </div>
               
               {/* Followers con menor visibilidad */}
-              <div style={{ fontSize: '12px', color: '#666', borderTop: '1px solid rgba(106, 0, 255, 0.1)', paddingTop: '8px' }}>
-                {snapshotMetrics?.followers || '-'} {t('home.metrics.snapshot.followers')}
+              <div style={{ fontSize: '11px', color: '#666', borderTop: '1px solid rgba(106, 0, 255, 0.2)', paddingTop: '8px', marginTop: 'auto' }}>
+                {snapshotMetrics?.followers || '-'} members participating in governance
               </div>
             </div>
 
@@ -253,28 +266,33 @@ const Home = () => {
               borderRadius: '12px',
               padding: '24px',
               textAlign: 'center',
-              position: 'relative'
+              position: 'relative',
+              minHeight: '180px',
+              display: 'flex',
+              flexDirection: 'column'
             }}
             className="group"
             >
               <div style={{ fontSize: '14px', color: '#888', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
                 💰 {t('home.metrics.token.title_full')}
               </div>
-              <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#fff', marginBottom: '8px' }}>
-                {tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() : '-'} UVD = $1 USD
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#fff', marginBottom: '6px' }}>
+                  {tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() : '-'} UVD = $1 USD
+                </div>
+                <div style={{ fontSize: '20px', fontWeight: '600', color: '#fff', marginBottom: '6px' }}>
+                  {tokenData.priceNative ? Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString() : '-'} UVD = 1 AVAX
+                </div>
+                <div style={{ fontSize: '14px', color: '#9c27b0' }}>
+                  {t('home.metrics.token.total_liquidity_backing')}: ${tokenData.liquidity ? parseFloat(tokenData.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 }) : '-'} 
+                  {tokenData.liquidity && tokenData.priceNative && tokenData.priceUsd && (
+                    <span style={{ fontSize: '12px', color: '#999', marginLeft: '6px' }}>
+                      ({Math.floor(parseFloat(tokenData.liquidity) / (parseFloat(tokenData.priceUsd) / parseFloat(tokenData.priceNative))).toLocaleString()} AVAX)
+                    </span>
+                  )}
+                </div>
               </div>
-              <div style={{ fontSize: '20px', fontWeight: '600', color: '#fff', marginBottom: '4px' }}>
-                {tokenData.priceNative ? Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString() : '-'} UVD = 1 AVAX
-              </div>
-              <div style={{ fontSize: '14px', color: '#9c27b0', marginBottom: '8px' }}>
-                {t('home.metrics.token.total_liquidity_backing')}: ${tokenData.liquidity ? parseFloat(tokenData.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 }) : '-'} 
-                {tokenData.liquidity && tokenData.priceNative && tokenData.priceUsd && (
-                  <span style={{ fontSize: '12px', color: '#999', marginLeft: '6px' }}>
-                    ({Math.floor(parseFloat(tokenData.liquidity) / (parseFloat(tokenData.priceUsd) / parseFloat(tokenData.priceNative))).toLocaleString()} AVAX)
-                  </span>
-                )}
-              </div>
-              <div style={{ fontSize: '11px', color: '#666', marginTop: '8px', borderTop: '1px solid rgba(255, 179, 0, 0.1)', paddingTop: '8px' }}>
+              <div style={{ fontSize: '11px', color: '#666', borderTop: '1px solid rgba(255, 179, 0, 0.1)', paddingTop: '8px', marginTop: 'auto' }}>
                 {tokenData.holderCount?.toLocaleString() || '-'} {t('home.metrics.token.holders')} • {tokenData.totalTransactions?.toLocaleString() || '-'} {t('home.metrics.token.transactions')}
               </div>
               
