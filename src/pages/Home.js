@@ -248,14 +248,14 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div style={{ fontSize: '10px', color: '#888', marginTop: '4px' }}>
-                  {t('home.metrics.snapshot.since')}
+                <div style={{ fontSize: '10px', color: '#666', marginTop: '4px' }}>
+                  {snapshotMetrics?.followers || '-'} members participating in governance
                 </div>
               </div>
               
-              {/* Followers con menor visibilidad */}
-              <div style={{ fontSize: '11px', color: '#666', borderTop: '1px solid rgba(106, 0, 255, 0.2)', paddingTop: '8px', marginTop: 'auto' }}>
-                {snapshotMetrics?.followers || '-'} members participating in governance
+              {/* Since June 2023 en la línea divisoria */}
+              <div style={{ fontSize: '11px', color: '#888', borderTop: '1px solid rgba(106, 0, 255, 0.2)', paddingTop: '8px', marginTop: 'auto' }}>
+                {t('home.metrics.snapshot.since')}
               </div>
             </div>
 
