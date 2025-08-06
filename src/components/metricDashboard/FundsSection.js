@@ -87,7 +87,10 @@ export function FundsSection() {
 
               <div className="space-y-3">
               <ul className="space-y-2">
-              {tokens.slice(0, 5).map((token, idx) => (
+              {tokens
+                .filter(token => Number(token.fiatBalance) >= 1)
+                .slice(0, 5)
+                .map((token, idx) => (
                 <li
                   key={token.tokenInfo.address + idx}
                   className="flex items-center justify-between p-2.5 rounded-lg bg-background/50 hover:bg-funds/10 transition-colors"

@@ -167,3 +167,8 @@ Tests should focus on:
 2. Create hook for contract calls
 3. Handle wallet connection states
 4. Add error handling for transaction failures
+
+
+- agrega comentarios al README.md principal detallados, despues de cada implementacion.
+
+- siempre que hagas un cambio asegurate de actualizar las traducciones (es.json y en.json)

@@ -1,7 +1,8 @@
+import { useState, useEffect } from "react";
 import { MetricCard } from "../MetricCard";
 import { Button } from "../Button";
 import { Progress } from "../Progress";
-import { ExternalLink, Vote, FileText, Users } from "lucide-react";
+import { ExternalLink, Vote, FileText, Users, ChevronLeft, ChevronRight } from "lucide-react";
 import { SNAPSHOT_SPACES } from "../../lib/snapshotSpaces";
 import { useSnapshotData } from "../../hooks/useSnapshotData";
 import { useTranslation } from 'react-i18next';
@@ -13,11 +14,58 @@ const SnapshotSection = () => {
     error,
     loading,
     metrics,
-    latestProposal,
+    proposals,
     leaderboard,
     handleSpaceChange,
     loadSpaceData,
   } = useSnapshotData();
+
+  const [currentProposalIndex, setCurrentProposalIndex] = useState(0);
+  const [autoRotate, setAutoRotate] = useState(true);
+  const [votersOffset, setVotersOffset] = useState(0);
+  const [autoScrollVoters, setAutoScrollVoters] = useState(true);
+
+  // Auto-rotate proposals carousel
+  useEffect(() => {
+    if (!autoRotate || proposals.length <= 1) return;
+
+    const interval = setInterval(() => {
+      setCurrentProposalIndex((prev) => (prev + 1) % proposals.length);
+    }, 5000); // Change proposal every 5 seconds
+
+    return () => clearInterval(interval);
+  }, [autoRotate, proposals.length]);
+
+  // Auto-scroll voters
+  useEffect(() => {
+    if (!autoScrollVoters || leaderboard.length <= 5) return;
+
+    const interval = setInterval(() => {
+      setVotersOffset((prev) => {
+        const maxOffset = Math.max(0, leaderboard.length - 5);
+        return prev >= maxOffset ? 0 : prev + 1;
+      });
+    }, 3000); // Scroll every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [autoScrollVoters, leaderboard.length]);
+
+  const currentProposal = proposals[currentProposalIndex] || null;
+  const hasMultipleProposals = proposals.length > 1;
+
+  const goToPreviousProposal = () => {
+    setAutoRotate(false);
+    setCurrentProposalIndex((prev) => 
+      prev === 0 ? proposals.length - 1 : prev - 1
+    );
+  };
+
+  const goToNextProposal = () => {
+    setAutoRotate(false);
+    setCurrentProposalIndex((prev) => 
+      (prev + 1) % proposals.length
+    );
+  };
 
   if (error) {
     return (
@@ -110,7 +158,7 @@ const SnapshotSection = () => {
             />
             <MetricCard
               title="Quórum requerido"
-              value={latestProposal && latestProposal.quorum ? latestProposal.quorum.toLocaleString() : "N/A"}
+              value={currentProposal && currentProposal.quorum ? currentProposal.quorum.toLocaleString() : "N/A"}
               change={t('metricsDashboard.snapshot.latest_proposal')}
               changeType="positive"
               variant="snapshot"
@@ -120,14 +168,39 @@ const SnapshotSection = () => {
 
           <div className="grid gap-6 lg:grid-cols-2 mt-8">
             <div className="space-y-4">
-              <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">
-                {latestProposal ? t('metricsDashboard.snapshot.last_proposal') : t('metricsDashboard.snapshot.no_active_proposals')}
-              </h3>
-              {latestProposal ? (
-                <div className="p-5 rounded-xl border border-snapshot/15 bg-gradient-to-br from-snapshot/5 to-transparent">
+              <div className="flex items-center justify-between">
+                <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">
+                  {currentProposal ? t('metricsDashboard.snapshot.last_proposal') : t('metricsDashboard.snapshot.no_active_proposals')}
+                </h3>
+                {hasMultipleProposals && (
+                  <div className="flex items-center gap-1">
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={goToPreviousProposal}
+                      className="h-7 w-7 p-0"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </Button>
+                    <span className="text-xs text-muted-foreground px-2">
+                      {currentProposalIndex + 1} / {proposals.length}
+                    </span>
+                    <Button
+                      variant="ghost"
+                      size="sm"
+                      onClick={goToNextProposal}
+                      className="h-7 w-7 p-0"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
+                )}
+              </div>
+              {currentProposal ? (
+                <div className="p-5 rounded-xl border border-snapshot/15 bg-gradient-to-br from-snapshot/5 to-transparent transition-all duration-500">
                   <div className="flex items-center justify-between mb-3">
                     <h4 className="font-medium">
-                      {latestProposal.title}
+                      {currentProposal.title}
                     </h4>
                     <Button
                       variant="outline"
@@ -136,7 +209,7 @@ const SnapshotSection = () => {
                       asChild
                     >
                       <a
-                        href={`https://snapshot.org/#/${currentSpace}/proposal/${latestProposal.id}`}
+                        href={`https://snapshot.org/#/${currentSpace}/proposal/${currentProposal.id}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -146,27 +219,27 @@ const SnapshotSection = () => {
                     </Button>
                   </div>
                   <p className="text-sm text-muted-foreground mb-4">
-                    {latestProposal.body?.substring(0, 200)}...
+                    {currentProposal.body?.substring(0, 200)}...
                   </p>
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span>Estado</span>
-                      <span className="font-medium capitalize">{latestProposal.state}</span>
+                      <span className="font-medium capitalize">{currentProposal.state}</span>
                     </div>
-                    {latestProposal.quorum && (
+                    {currentProposal.quorum && (
                       <>
                         <div className="flex justify-between text-sm">
                           <span>Quórum</span>
                           <span className="font-medium">
-                            {latestProposal.scores_total && latestProposal.quorum 
-                              ? `${Math.min(Math.round((latestProposal.scores_total / latestProposal.quorum) * 100), 100)}% / 100%`
+                            {currentProposal.scores_total && currentProposal.quorum 
+                              ? `${Math.min(Math.round((currentProposal.scores_total / currentProposal.quorum) * 100), 100)}% / 100%`
                               : '0% / 100%'
                             }
                           </span>
                         </div>
                         <Progress 
-                          value={latestProposal.scores_total && latestProposal.quorum 
-                            ? Math.min((latestProposal.scores_total / latestProposal.quorum) * 100, 100) 
+                          value={currentProposal.scores_total && currentProposal.quorum 
+                            ? Math.min((currentProposal.scores_total / currentProposal.quorum) * 100, 100) 
                             : 0
                           } 
                           className="h-2" 
@@ -174,6 +247,24 @@ const SnapshotSection = () => {
                       </>
                     )}
                   </div>
+                  {hasMultipleProposals && (
+                    <div className="flex items-center justify-center mt-4 gap-1">
+                      {proposals.map((_, index) => (
+                        <button
+                          key={index}
+                          className={`h-1.5 transition-all duration-300 rounded-full ${
+                            index === currentProposalIndex 
+                              ? 'w-6 bg-snapshot' 
+                              : 'w-1.5 bg-snapshot/30 hover:bg-snapshot/50'
+                          }`}
+                          onClick={() => {
+                            setAutoRotate(false);
+                            setCurrentProposalIndex(index);
+                          }}
+                        />
+                      ))}
+                    </div>
+                  )}
                 </div>
               ) : (
                 <div className="p-6 rounded-lg border border-snapshot/20 bg-gradient-to-br from-snapshot/5 to-transparent text-center">
@@ -200,25 +291,34 @@ const SnapshotSection = () => {
                   </a>
                 </Button>
               </div>
-              <div className="space-y-3">
+              <div 
+                className="space-y-3 overflow-hidden relative"
+                onMouseEnter={() => setAutoScrollVoters(false)}
+                onMouseLeave={() => setAutoScrollVoters(true)}
+              >
                 {leaderboard.length === 0 && (
                   <div className="text-muted-foreground text-sm">No hay datos de leaderboard.</div>
                 )}
-                {leaderboard.slice(0, 5).map((user, idx) => (
-                  <div
-                    key={user.user}
-                    className="p-3 rounded-lg border border-snapshot/10 bg-gradient-to-br from-snapshot/3 to-transparent flex items-center justify-between hover:border-snapshot/20 transition-colors"
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="font-bold text-snapshot">{idx + 1}.</span>
-                      <span className="font-mono text-xs">{user.user.slice(0, 6)}...{user.user.slice(-4)}</span>
+                <div className="transition-transform duration-500 ease-in-out" style={{ transform: `translateY(-${votersOffset * 60}px)` }}>
+                  {leaderboard.map((user, idx) => (
+                    <div
+                      key={user.user}
+                      className="p-3 rounded-lg border border-snapshot/10 bg-gradient-to-br from-snapshot/3 to-transparent flex items-center justify-between hover:border-snapshot/20 transition-colors h-[52px]"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-snapshot">{idx + 1}.</span>
+                        <span className="font-mono text-xs">{user.user.slice(0, 6)}...{user.user.slice(-4)}</span>
+                      </div>
+                      <div className="flex flex-col items-end">
+                        <span className="text-xs font-medium">{user.votesCount} votos</span>
+                        <span className="text-xs text-muted-foreground">{user.proposalsCount} propuestas</span>
+                      </div>
                     </div>
-                    <div className="flex flex-col items-end">
-                      <span className="text-xs font-medium">{user.votesCount} votos</span>
-                      <span className="text-xs text-muted-foreground">{user.proposalsCount} propuestas</span>
-                    </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
+                {leaderboard.length > 5 && (
+                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+                )}
               </div>
             </div>
           </div>
