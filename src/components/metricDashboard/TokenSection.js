@@ -56,7 +56,7 @@ const TokenSection = () => {
         <MetricCard
           title="Liquidez Total Backing UVD"
           value={`$${parseFloat(data.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 })}`}
-          change={`${data.liquidity ? Math.round(parseFloat(data.liquidity) / 29.87).toLocaleString() : '0'} AVAX`}
+          change={`${data.liquidity && data.priceNative && data.priceUsd ? Math.floor(parseFloat(data.liquidity) / (parseFloat(data.priceUsd) / parseFloat(data.priceNative))).toLocaleString() : '0'} AVAX`}
           changeType="positive"
           variant="token"
           icon={<Activity className="h-4 w-4" />}
