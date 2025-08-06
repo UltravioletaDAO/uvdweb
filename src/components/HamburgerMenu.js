@@ -12,8 +12,8 @@ import {
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
   GiftIcon,
-  CubeTransparentIcon,
   ChartBarIcon,
+  ArrowTrendingUpIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 
@@ -56,7 +56,15 @@ const HamburgerMenu = () => {
       path: "/blog",
       isExternal: false,
       description: t('navigation.descriptions.blog'),
-    }/* Delegations disabled for now (Beam validator was shut down)
+    },
+    {
+      name: t('navigation.metrics'),
+      icon: ArrowTrendingUpIcon,
+      path: "/metrics",
+      isExternal: false,
+      description: t('navigation.descriptions.metrics'),
+    }
+    /* Delegations disabled for now (Beam validator was shut down)
     ,
     {
       name: t('navigation.delegations'),

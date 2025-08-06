@@ -1,7 +1,59 @@
 {
   "home": {
     "title": "Ultravioleta DAO",
-    "subtitle": "The most active Web3 community in Latin America"
+    "subtitle": "The most active Web3 community in Latin America",
+    "metrics": {
+      "snapshot": {
+        "title": "Snapshot Governance",
+        "proposals": "Proposals",
+        "votes": "Votes",
+        "followers": "Followers",
+        "since": "Since June 2023"
+      },
+      "token": {
+        "title": "Token UVD",
+        "title_full": "TOKEN $UVD",
+        "holders": "Holders",
+        "transactions": "Transactions",
+        "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
+        "total_liquidity": "Total Liquidity",
+        "total_liquidity_backing": "Total Liquidity Backing UVD"
+      },
+      "funds": {
+        "title": "Funds & Finance",
+        "community_vault": "Community Vault",
+        "multisig": "Avalanche Multisig",
+        "signers": "Available multisigners",
+        "required_of": "signatures required from",
+        "multisigners": "multisigners to execute transactions"
+      },
+      "see_more": "See more metrics",
+      "generating_story": "Generating summary...",
+      "story_title": "How Are We Doing?",
+      "generating_analysis": "Analyzing DAO metrics...",
+      "expert_analysis": "Where we stand today",
+      "offline_analysis": "Offline analysis",
+      "ai_generated": "AI-generated analysis based on real-time metrics"
+    }
+  },
+  "metricsDashboard": {
+    "title": "Metrics Dashboard",
+    "subtitle": "Metrics panel with activity, rewards and growth of UltravioletaDAO",
+    "snapshot": {
+      "subtitle": "Community proposals and voting",
+      "error_loading": "Error loading data",
+      "retry": "Retry",
+      "total_historic": "Total historic",
+      "latest_proposal": "Latest proposal",
+      "last_proposal": "Latest Proposals",
+      "no_active_proposals": "No Active Proposals",
+      "top_voters": "Top community voters",
+      "see_all": "See All"
+    },
+    "funds": {
+      "subtitle": "Community treasury management activity",
+      "multisig_avalanche": "Avalanche Multisig"
+    }
   },
   "auth": {
     "register": "Apply to UltravioletaDAO",
@@ -19,6 +71,7 @@
     "wheel": "Wheel decide",
     "delegations": "Delegations",
     "safestats": "Multisigners",
+    "metrics": "Metrics",
     "categories": {
       "main": "Main",
       "governance": "Governance",
@@ -34,7 +87,8 @@
       "purge": "Inactive users management",
       "wheel": "Prize wheel UVD",
       "delegations": "Stake and delegate your tokens",
-      "safestats": "Multisigners statistics"
+      "safestats": "Multisigners statistics",
+      "metrics": "Metrics Dashboard"
     },
     "aria": {
       "open_menu": "Open menu",

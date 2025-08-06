@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { debugLog } from '../lib/utils';
 
 const TWITCH_CLIENT_ID = process.env.REACT_APP_TWITCH_CLIENT_ID;
 const REDIRECT_URI = `${window.location.origin}/twitch-callback`;
@@ -24,7 +25,7 @@ const TwitchAuth = () => {
     authUrl.searchParams.append('force_verify', 'true');
 
     // Para debug: mostrar la URL generada
-    console.log('Auth URL:', authUrl.toString());
+    debugLog('Auth URL:', authUrl.toString());
 
     // Redirigir a Twitch para autenticación
     window.location.href = authUrl.toString();

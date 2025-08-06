@@ -1,7 +1,59 @@
 {
   "home": {
     "title": "Ultravioleta DAO",
-    "subtitle": "La comunidad Web3 más activa de Latinoamérica"
+    "subtitle": "La comunidad Web3 más activa de Latinoamérica",
+    "metrics": {
+      "snapshot": {
+        "title": "Snapshot Governance",
+        "proposals": "Propuestas",
+        "votes": "Votos",
+        "followers": "Followers",
+        "since": "Desde Junio 2023"
+      },
+      "token": {
+        "title": "Token UVD",
+        "title_full": "TOKEN $UVD",
+        "holders": "Holders",
+        "transactions": "Transacciones",
+        "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
+        "total_liquidity": "Liquidez Total",
+        "total_liquidity_backing": "Liquidez Total respaldando UVD"
+      },
+      "funds": {
+        "title": "Fondos y Finanzas",
+        "community_vault": "Caja Fuerte Comunitaria",
+        "multisig": "Multisig Avalanche",
+        "signers": "Multifirmantes disponibles",
+        "required_of": "firmas requeridas de",
+        "multisigners": "multifirmantes para ejecutar transacciones"
+      },
+      "see_more": "Ver más métricas",
+      "generating_story": "Generando resumen...",
+      "story_title": "¿Cómo Vamos?",
+      "generating_analysis": "Analizando métricas del DAO...",
+      "expert_analysis": "Cómo vamos hoy",
+      "offline_analysis": "Análisis offline",
+      "ai_generated": "Análisis generado por IA basado en métricas en tiempo real"
+    }
+  },
+  "metricsDashboard": {
+    "title": "Dashboard de Métricas",
+    "subtitle": "Panel de métricas con la actividad, recompensas y crecimiento de la UltravioletaDAO",
+    "snapshot": {
+      "subtitle": "Propuestas y votaciones de la comunidad",
+      "error_loading": "Error al cargar datos",
+      "retry": "Reintentar",
+      "total_historic": "Total histórico",
+      "latest_proposal": "Última propuesta",
+      "last_proposal": "Últimas Propuestas",
+      "no_active_proposals": "Sin Propuestas Activas",
+      "top_voters": "Top votantes de la comunidad",
+      "see_all": "Ver Todo"
+    },
+    "funds": {
+      "subtitle": "Actividad de la gestión del tesoro comunitario",
+      "multisig_avalanche": "Multisig Avalanche"
+    }
   },
   "auth": {
     "register": "Aplicar a UltravioletaDAO",
@@ -19,6 +71,7 @@
     "wheel": "Ruleta",
     "delegations": "Delegaciones",
     "safestats": "Multifirmantes",
+    "metrics": "Métricas",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -34,7 +87,8 @@
       "purge": "Gestión de usuarios inactivos",
       "wheel": "Ruleta de premios UVD",
       "delegations": "Stakea y delegar tus tokens",
-      "safestats": "Estadísticas de multifirmantes"
+      "safestats": "Estadísticas de multifirmantes",
+      "metrics": "Dashboard de métricas"
     },
     "aria": {
       "open_menu": "Abrir menú",

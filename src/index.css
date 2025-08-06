@@ -8,6 +8,55 @@
   html {
     font-family: 'Inter', system-ui, sans-serif;
   }
+  :root {
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 142.1 76.2% 36.3%;
+    --primary-foreground: 355.7 100% 97.3%;
+
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 142.1 76.2% 36.3%;
+
+    --radius: 0.75rem;
+
+
+    /* Custom dashboard colors */
+    --snapshot: 220 70% 50%;
+    --snapshot-foreground: 0 0% 98%;
+    
+    --token: 262 83% 58%;
+    --token-foreground: 0 0% 98%;
+    
+    --funds: 32 81% 60%;
+    --funds-foreground: 0 0% 98%;
+    
+    --community: 340 82% 52%;
+    --community-foreground: 0 0% 98%;
+
+    --rewards: 45 93% 58%;
+    --rewards-foreground: 0 0% 98%;
+    
+    /* Chart colors */
+    --chart-1: 142.1 76.2% 36.3%;
+    --chart-2: 220 70% 50%;
+    --chart-3: 262 83% 58%;
+    --chart-4: 32 81% 60%;
+    --chart-5: 340 82% 52%;
+  }
 }
 
 @layer components {

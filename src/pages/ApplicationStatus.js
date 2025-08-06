@@ -8,6 +8,7 @@ import {
   XMarkIcon,
   ArrowLeftIcon 
 } from '@heroicons/react/24/outline';
+import { debugLog } from '../lib/utils';
 
 const ApplicationStatus = () => {
   const [email, setEmail] = useState('');
@@ -55,7 +56,7 @@ const ApplicationStatus = () => {
 
     try {
       const url = `${process.env.REACT_APP_API_URL}/apply/status/${email}`;
-      console.log('Intentando conectar a:', url);
+      debugLog('Intentando conectar a:', url);
 
       const response = await fetch(url, {
         method: 'GET',
@@ -64,9 +65,9 @@ const ApplicationStatus = () => {
         }
       });
 
-      console.log('Respuesta del servidor:', response.status);
+      debugLog('Respuesta del servidor:', response.status);
       const data = await response.json();
-      console.log('Datos recibidos:', data);
+      debugLog('Datos recibidos:', data);
 
       if (!response.ok) {
         throw new Error(data.message || 'Error al consultar el estado');

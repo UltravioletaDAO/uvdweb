@@ -5,6 +5,10 @@ import { UserGroupIcon, CurrencyDollarIcon, UserGroupIcon as GroupIcon, Sparkles
 import ApplicationForm from './ApplicationForm';
 import { useTranslation } from 'react-i18next';
 import { getEvents } from '../services/events/Events';
+import { useCombinedSnapshotData } from '../hooks/useCombinedSnapshotData';
+import { useTokenMetrics } from '../hooks/useTokenMetrics';
+import { useSafeAvalanche } from '../hooks/useSafeAvalanche';
+import DaoStoryteller from '../components/DaoStoryteller';
 
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -13,6 +17,11 @@ const Home = () => {
   
   const { t } = useTranslation();
   const showButtons = process.env.REACT_APP_SHOW_SIGNUP_BUTTONS === 'true';
+
+  // Metrics hooks
+  const { metrics: snapshotMetrics } = useCombinedSnapshotData();
+  const tokenData = useTokenMetrics();
+  const { fiatTotal: treasuryTotal, owners, threshold } = useSafeAvalanche();
 
   useEffect(() => {
     getEvents().then(fetchedEvents => {
@@ -81,7 +90,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-background">
       {/* Hero Section */}
-      <section className="relative overflow-hidden min-h-[80vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[40vh] flex items-center">
         {/* Imagen de fondo con overlay */}
         <div className="absolute inset-0">
           <div 
@@ -98,7 +107,7 @@ const Home = () => {
           <div className="absolute inset-0 bg-ultraviolet-darker/15 mix-blend-overlay" />
         </div>
         
-        <div className="container mx-auto px-4 py-20 relative z-10">
+        <div className="container mx-auto px-4 py-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
@@ -158,26 +167,201 @@ const Home = () => {
                 >
                   {t('auth.register')}
                 </motion.button>
-
-                <motion.div
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  {/* <Link
-                    to="/status"
-                    className="inline-block px-8 py-4 bg-ultraviolet-darker text-text-primary rounded-lg
-                      hover:bg-ultraviolet-dark transition-colors duration-200
-                      font-semibold text-lg shadow-lg shadow-ultraviolet-darker/20
-                      backdrop-blur-sm"
-                  >
-                    {t('auth.login')} / {t('auth.login_en')}
-                  </Link> */}
-                </motion.div>
               </motion.div>
             )}
           </motion.div>
         </div>
       </section>
+
+      {/* DAO Metrics - Simple boxes right after Apply button */}
+      <div style={{ 
+        backgroundColor: '#0a0a1b',
+        padding: '60px 20px',
+        borderTop: '1px solid rgba(255,255,255,0.1)'
+      }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          <div style={{ 
+            display: 'grid', 
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
+            gap: '24px' 
+          }}>
+            
+            {/* Community Vault Box - First */}
+            <div style={{
+              backgroundColor: 'rgba(0, 255, 163, 0.05)',
+              border: '1px solid rgba(0, 255, 163, 0.2)',
+              borderRadius: '12px',
+              padding: '24px',
+              textAlign: 'center',
+              minHeight: '180px',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <div style={{ fontSize: '14px', color: '#888', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                🏦 {t('home.metrics.funds.community_vault')}
+              </div>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '8px' }}>
+                  ${treasuryTotal ? Math.floor(treasuryTotal).toLocaleString() : '-'}
+                </div>
+                <div style={{ fontSize: '12px', color: '#999', marginBottom: '8px' }}>
+                  {t('home.metrics.funds.multisig')}
+                </div>
+              </div>
+              <div style={{ fontSize: '11px', color: '#666', borderTop: '1px solid rgba(0, 255, 163, 0.1)', paddingTop: '8px', marginTop: 'auto' }}>
+                {threshold || '-'} {t('home.metrics.funds.required_of')} {owners?.length || '-'} {t('home.metrics.funds.multisigners')}
+              </div>
+            </div>
+
+            {/* Snapshot Governance Box - Middle */}
+            <div style={{
+              backgroundColor: 'rgba(106, 0, 255, 0.05)',
+              border: '1px solid rgba(106, 0, 255, 0.2)',
+              borderRadius: '12px',
+              padding: '24px',
+              textAlign: 'center',
+              minHeight: '180px',
+              display: 'flex',
+              flexDirection: 'column'
+            }}>
+              <div style={{ fontSize: '14px', color: '#888', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                🗳️ {t('home.metrics.snapshot.title')}
+              </div>
+              
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                {/* Propuestas y Votos con mayor visibilidad */}
+                <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '8px' }}>
+                  <div>
+                    <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#fff' }}>
+                      {snapshotMetrics?.proposals || '-'}
+                    </div>
+                    <div style={{ fontSize: '11px', color: '#bb86fc', fontWeight: '600' }}>
+                      {t('home.metrics.snapshot.proposals')}
+                    </div>
+                  </div>
+                  <div>
+                    <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#fff' }}>
+                      {snapshotMetrics?.votes?.toLocaleString() || '-'}
+                    </div>
+                    <div style={{ fontSize: '11px', color: '#bb86fc', fontWeight: '600' }}>
+                      {t('home.metrics.snapshot.votes')}
+                    </div>
+                  </div>
+                </div>
+                <div style={{ fontSize: '10px', color: '#666', marginTop: '4px' }}>
+                  {snapshotMetrics?.followers || '-'} members participating in governance
+                </div>
+              </div>
+              
+              {/* Since June 2023 en la línea divisoria */}
+              <div style={{ fontSize: '11px', color: '#888', borderTop: '1px solid rgba(106, 0, 255, 0.2)', paddingTop: '8px', marginTop: 'auto' }}>
+                {t('home.metrics.snapshot.since')}
+              </div>
+            </div>
+
+            {/* Token UVD Box - Right */}
+            <div style={{
+              backgroundColor: 'rgba(255, 179, 0, 0.05)',
+              border: '1px solid rgba(255, 179, 0, 0.2)',
+              borderRadius: '12px',
+              padding: '24px',
+              textAlign: 'center',
+              position: 'relative',
+              minHeight: '180px',
+              display: 'flex',
+              flexDirection: 'column'
+            }}
+            className="group"
+            >
+              <div style={{ fontSize: '14px', color: '#888', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                💰 {t('home.metrics.token.title_full')}
+              </div>
+              <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
+                <div style={{ fontSize: '24px', fontWeight: 'bold', color: '#fff', marginBottom: '6px' }}>
+                  {tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() : '-'} UVD = $1 USD
+                </div>
+                <div style={{ fontSize: '20px', fontWeight: '600', color: '#fff', marginBottom: '6px' }}>
+                  {tokenData.priceNative ? Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString() : '-'} UVD = 1 AVAX
+                </div>
+                <div style={{ fontSize: '14px', color: '#9c27b0' }}>
+                  {t('home.metrics.token.total_liquidity_backing')}: ${tokenData.liquidity ? parseFloat(tokenData.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 }) : '-'} 
+                  {tokenData.liquidity && tokenData.priceNative && tokenData.priceUsd && (
+                    <span style={{ fontSize: '12px', color: '#999', marginLeft: '6px' }}>
+                      ({Math.floor(parseFloat(tokenData.liquidity) / (parseFloat(tokenData.priceUsd) / parseFloat(tokenData.priceNative))).toLocaleString()} AVAX)
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div style={{ fontSize: '11px', color: '#666', borderTop: '1px solid rgba(255, 179, 0, 0.1)', paddingTop: '8px', marginTop: 'auto' }}>
+                {tokenData.holderCount?.toLocaleString() || '-'} {t('home.metrics.token.holders')} • {tokenData.totalTransactions?.toLocaleString() || '-'} {t('home.metrics.token.transactions')}
+              </div>
+              
+              {/* Tooltip con conversiones */}
+              <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 bg-gray-900 text-white p-3 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none z-10">
+                <div className="text-xs space-y-2">
+                  {tokenData.priceUsd && (
+                    <div className="border-b border-gray-700 pb-1">
+                      <div className="font-semibold mb-1">USD:</div>
+                      <div>{Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $1</div>
+                      <div>{Math.floor(10 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $10</div>
+                      <div>{Math.floor(100 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $100</div>
+                    </div>
+                  )}
+                  {tokenData.priceNative && (
+                    <div>
+                      <div className="font-semibold mb-1">AVAX:</div>
+                      <div>{Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 1 AVAX</div>
+                      <div>{Math.floor(5 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 5 AVAX</div>
+                      <div>{Math.floor(10 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 10 AVAX</div>
+                    </div>
+                  )}
+                </div>
+                <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-gray-900"></div>
+              </div>
+            </div>
+
+          </div>
+          
+          {/* DAO Storyteller - Historia generada por IA - Solo muestra con datos reales */}
+          {snapshotMetrics?.proposals && 
+           snapshotMetrics?.votes && 
+           tokenData.holderCount && 
+           treasuryTotal && 
+           owners?.length && (
+            <div style={{ marginTop: '24px' }}>
+              <DaoStoryteller 
+                metrics={{
+                  proposals: snapshotMetrics.proposals,
+                  votes: snapshotMetrics.votes,
+                  followers: snapshotMetrics.followers || 0,
+                  uvdPrice: tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)) : 0,
+                  holders: parseInt(tokenData.holderCount),
+                  transactions: parseInt(tokenData.totalTransactions) || 0,
+                  treasury: Math.floor(treasuryTotal),
+                  multisigners: owners.length,
+                  threshold: threshold || 0,
+                  liquidity: tokenData.liquidity ? parseFloat(tokenData.liquidity) : 0
+                }}
+              />
+            </div>
+          )}
+        </div>
+
+        
+        {/* Link "See More" */}
+        <div style={{ textAlign: 'center', paddingTop: '24px', paddingBottom: '24px' }}>
+          <Link
+            to="/metrics"
+            className="inline-flex items-center gap-2 text-sm text-white hover:text-ultraviolet-light transition-colors duration-200"
+            style={{ textDecoration: 'none' }}
+          >
+            <span>{t('home.metrics.see_more')}</span>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </Link>
+        </div>
+      </div>
 
       {/* Características actualizadas */}
       <section className="py-16 bg-background-lighter">
@@ -286,6 +470,8 @@ const Home = () => {
           </div>
         </div>
       </section>
+
+
 
       {/* Próximos eventos */}
       {showEventsSection && (

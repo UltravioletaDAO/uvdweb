@@ -4,6 +4,7 @@ import Modal from '../components/Modal';
 import FormField from '../components/FormField';
 import SuccessMessage from '../components/SuccessMessage';
 import { useTranslation } from 'react-i18next';
+import { debugLog } from '../lib/utils';
 
 const ApplicationForm = ({ isOpen, onClose }) => {
   // Estado para manejar los pasos del formulario
@@ -210,7 +211,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
         throw new Error(t('form.errors.api_url_missing'));
       }
 
-      console.log('Enviando datos al servidor:', `${apiUrl}/apply`); // Debug
+      debugLog('Enviando datos al servidor:', `${apiUrl}/apply`);
 
       // Añadir timestamp al formData
       const now = new Date();
@@ -229,7 +230,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
       });
 
       // Log de la respuesta para debug
-      console.log('Respuesta del servidor:', {
+      debugLog('Respuesta del servidor:', {
         status: response.status,
         statusText: response.statusText,
         headers: Object.fromEntries(response.headers.entries())
