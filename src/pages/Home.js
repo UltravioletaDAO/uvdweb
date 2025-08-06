@@ -202,7 +202,7 @@ const Home = () => {
               <div style={{ display: 'flex', justifyContent: 'space-around', marginBottom: '12px' }}>
                 <div>
                   <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#fff' }}>
-                    {snapshotMetrics?.proposals || 176}
+                    {snapshotMetrics?.proposals || '-'}
                   </div>
                   <div style={{ fontSize: '11px', color: '#bb86fc', fontWeight: '600' }}>
                     {t('home.metrics.snapshot.proposals')}
@@ -210,7 +210,7 @@ const Home = () => {
                 </div>
                 <div>
                   <div style={{ fontSize: '28px', fontWeight: 'bold', color: '#fff' }}>
-                    {snapshotMetrics?.votes?.toLocaleString() || '5,223'}
+                    {snapshotMetrics?.votes?.toLocaleString() || '-'}
                   </div>
                   <div style={{ fontSize: '11px', color: '#bb86fc', fontWeight: '600' }}>
                     {t('home.metrics.snapshot.votes')}
@@ -220,7 +220,7 @@ const Home = () => {
               
               {/* Followers con menor visibilidad */}
               <div style={{ fontSize: '12px', color: '#666', borderTop: '1px solid rgba(106, 0, 255, 0.1)', paddingTop: '8px' }}>
-                {snapshotMetrics?.followers || 117} {t('home.metrics.snapshot.followers')}
+                {snapshotMetrics?.followers || '-'} {t('home.metrics.snapshot.followers')}
               </div>
             </div>
 
@@ -241,20 +241,24 @@ const Home = () => {
               <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '4px' }}>
                 {t('home.metrics.token.usd_conversion', { 
                   amount: 1, 
-                  uvd: tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() : '112,968'
+                  uvd: tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() : '-'
                 })}
               </div>
               <div style={{ fontSize: '11px', color: '#666', marginTop: '12px' }}>
-                {tokenData.holderCount?.toLocaleString() || '6,173'} {t('home.metrics.token.holders')} • {tokenData.totalTransactions?.toLocaleString() || '0'} {t('home.metrics.token.transactions')}
+                {tokenData.holderCount?.toLocaleString() || '-'} {t('home.metrics.token.holders')} • {tokenData.totalTransactions?.toLocaleString() || '-'} {t('home.metrics.token.transactions')}
               </div>
               
               {/* Tooltip con conversiones */}
               <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-2 w-48 bg-gray-900 text-white p-3 rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 pointer-events-none z-10">
                 <div className="text-xs space-y-1">
-                  <div>{t('home.metrics.token.usd_conversion', { amount: 1, uvd: tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() : '112,866' })}</div>
-                  <div>{t('home.metrics.token.usd_conversion', { amount: 10, uvd: tokenData.priceUsd ? Math.floor(10 / parseFloat(tokenData.priceUsd)).toLocaleString() : '1,128,660' })}</div>
-                  <div>{t('home.metrics.token.usd_conversion', { amount: 100, uvd: tokenData.priceUsd ? Math.floor(100 / parseFloat(tokenData.priceUsd)).toLocaleString() : '11,286,600' })}</div>
-                  <div>{t('home.metrics.token.usd_conversion', { amount: 1000, uvd: tokenData.priceUsd ? Math.floor(1000 / parseFloat(tokenData.priceUsd)).toLocaleString() : '112,866,000' })}</div>
+                  {tokenData.priceUsd && (
+                    <>
+                      <div>{t('home.metrics.token.usd_conversion', { amount: 1, uvd: Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() })}</div>
+                      <div>{t('home.metrics.token.usd_conversion', { amount: 10, uvd: Math.floor(10 / parseFloat(tokenData.priceUsd)).toLocaleString() })}</div>
+                      <div>{t('home.metrics.token.usd_conversion', { amount: 100, uvd: Math.floor(100 / parseFloat(tokenData.priceUsd)).toLocaleString() })}</div>
+                      <div>{t('home.metrics.token.usd_conversion', { amount: 1000, uvd: Math.floor(1000 / parseFloat(tokenData.priceUsd)).toLocaleString() })}</div>
+                    </>
+                  )}
                 </div>
                 <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[8px] border-t-gray-900"></div>
               </div>
@@ -272,35 +276,44 @@ const Home = () => {
                 🏦 {t('home.metrics.funds.title')}
               </div>
               <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '4px' }}>
-                ${Math.floor(treasuryTotal || 2739).toLocaleString()}
+                ${treasuryTotal ? Math.floor(treasuryTotal).toLocaleString() : '-'}
               </div>
               <div style={{ fontSize: '12px', color: '#999' }}>
                 {t('home.metrics.funds.multisig')}
               </div>
               <div style={{ fontSize: '11px', color: '#666', marginTop: '12px' }}>
-                {owners.length || 30} {t('home.metrics.funds.signers')}
+                {owners?.length || '-'} {t('home.metrics.funds.signers')}
               </div>
             </div>
 
           </div>
+          
+          {/* DAO Storyteller - Historia generada por IA - Solo muestra con datos reales */}
+          {snapshotMetrics?.proposals && 
+           snapshotMetrics?.votes && 
+           tokenData.holderCount && 
+           treasuryTotal && 
+           owners?.length && (
+            <div style={{ marginTop: '24px' }}>
+              <DaoStoryteller 
+                metrics={{
+                  proposals: snapshotMetrics.proposals,
+                  votes: snapshotMetrics.votes,
+                  followers: snapshotMetrics.followers || 0,
+                  uvdPrice: tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)) : 0,
+                  holders: parseInt(tokenData.holderCount),
+                  transactions: parseInt(tokenData.totalTransactions) || 0,
+                  treasury: Math.floor(treasuryTotal),
+                  multisigners: owners.length
+                }}
+              />
+            </div>
+          )}
         </div>
-        
-        {/* DAO Storyteller - Historia generada por IA */}
-        <DaoStoryteller 
-          metrics={{
-            proposals: snapshotMetrics?.proposals || 176,
-            votes: snapshotMetrics?.votes || 5223,
-            followers: snapshotMetrics?.followers || 117,
-            uvdPrice: tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)) : 112968,
-            holders: parseInt(tokenData.holderCount) || 6170,
-            transactions: parseInt(tokenData.totalTransactions) || 71548,
-            treasury: Math.floor(treasuryTotal || 2684),
-            multisigners: owners.length || 30
-          }}
-        />
+
         
         {/* Link "See More" */}
-        <div style={{ textAlign: 'center', paddingBottom: '24px' }}>
+        <div style={{ textAlign: 'center', paddingTop: '24px', paddingBottom: '24px' }}>
           <Link
             to="/metrics"
             className="inline-flex items-center gap-2 text-sm text-white hover:text-ultraviolet-light transition-colors duration-200"

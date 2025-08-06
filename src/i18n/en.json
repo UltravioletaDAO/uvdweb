@@ -22,7 +22,11 @@
       },
       "see_more": "See more metrics",
       "generating_story": "Generating summary...",
-      "story_title": "How Are We Doing?"
+      "story_title": "How Are We Doing?",
+      "generating_analysis": "Analyzing DAO metrics...",
+      "expert_analysis": "Where we stand today",
+      "offline_analysis": "Offline analysis",
+      "ai_generated": "AI-generated analysis based on real-time metrics"
     }
   },
   "metricsDashboard": {

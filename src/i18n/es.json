@@ -22,7 +22,11 @@
       },
       "see_more": "Ver más métricas",
       "generating_story": "Generando resumen...",
-      "story_title": "¿Cómo Vamos?"
+      "story_title": "¿Cómo Vamos?",
+      "generating_analysis": "Analizando métricas del DAO...",
+      "expert_analysis": "Cómo vamos hoy",
+      "offline_analysis": "Análisis offline",
+      "ai_generated": "Análisis generado por IA basado en métricas en tiempo real"
     }
   },
   "metricsDashboard": {
