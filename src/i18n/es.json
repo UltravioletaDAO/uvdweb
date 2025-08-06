@@ -20,8 +20,11 @@
       },
       "funds": {
         "title": "Fondos y Finanzas",
+        "community_vault": "Caja Fuerte Comunitaria",
         "multisig": "Multisig Avalanche",
-        "signers": "Multifirmantes disponibles"
+        "signers": "Multifirmantes disponibles",
+        "required_of": "firmas requeridas de",
+        "multisigners": "multifirmantes para ejecutar transacciones"
       },
       "see_more": "Ver más métricas",
       "generating_story": "Generando resumen...",

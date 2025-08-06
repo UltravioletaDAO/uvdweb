@@ -20,8 +20,11 @@
       },
       "funds": {
         "title": "Funds & Finance",
+        "community_vault": "Community Vault",
         "multisig": "Avalanche Multisig",
-        "signers": "Available multisigners"
+        "signers": "Available multisigners",
+        "required_of": "signatures required from",
+        "multisigners": "multisigners to execute transactions"
       },
       "see_more": "See more metrics",
       "generating_story": "Generating summary...",

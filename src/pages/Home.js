@@ -21,7 +21,7 @@ const Home = () => {
   // Metrics hooks
   const { metrics: snapshotMetrics } = useCombinedSnapshotData();
   const tokenData = useTokenMetrics();
-  const { fiatTotal: treasuryTotal, owners } = useSafeAvalanche();
+  const { fiatTotal: treasuryTotal, owners, threshold } = useSafeAvalanche();
 
   useEffect(() => {
     getEvents().then(fetchedEvents => {
@@ -186,7 +186,29 @@ const Home = () => {
             gap: '24px' 
           }}>
             
-            {/* Snapshot Governance Box */}
+            {/* Community Vault Box - First */}
+            <div style={{
+              backgroundColor: 'rgba(0, 255, 163, 0.05)',
+              border: '1px solid rgba(0, 255, 163, 0.2)',
+              borderRadius: '12px',
+              padding: '24px',
+              textAlign: 'center'
+            }}>
+              <div style={{ fontSize: '14px', color: '#888', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                🏦 {t('home.metrics.funds.community_vault')}
+              </div>
+              <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '4px' }}>
+                ${treasuryTotal ? Math.floor(treasuryTotal).toLocaleString() : '-'}
+              </div>
+              <div style={{ fontSize: '12px', color: '#999' }}>
+                {t('home.metrics.funds.multisig')}
+              </div>
+              <div style={{ fontSize: '11px', color: '#666', marginTop: '12px' }}>
+                {threshold || '-'} {t('home.metrics.funds.required_of')} {owners?.length || '-'} {t('home.metrics.funds.multisigners')}
+              </div>
+            </div>
+
+            {/* Snapshot Governance Box - Middle */}
             <div style={{
               backgroundColor: 'rgba(106, 0, 255, 0.05)',
               border: '1px solid rgba(106, 0, 255, 0.2)',
@@ -224,7 +246,7 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Token UVD Box */}
+            {/* Token UVD Box - Right */}
             <div style={{
               backgroundColor: 'rgba(255, 179, 0, 0.05)',
               border: '1px solid rgba(255, 179, 0, 0.2)',
@@ -280,28 +302,6 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Fondos y Finanzas Box */}
-            <div style={{
-              backgroundColor: 'rgba(0, 255, 163, 0.05)',
-              border: '1px solid rgba(0, 255, 163, 0.2)',
-              borderRadius: '12px',
-              padding: '24px',
-              textAlign: 'center'
-            }}>
-              <div style={{ fontSize: '14px', color: '#888', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '1px' }}>
-                🏦 {t('home.metrics.funds.title')}
-              </div>
-              <div style={{ fontSize: '32px', fontWeight: 'bold', color: '#fff', marginBottom: '4px' }}>
-                ${treasuryTotal ? Math.floor(treasuryTotal).toLocaleString() : '-'}
-              </div>
-              <div style={{ fontSize: '12px', color: '#999' }}>
-                {t('home.metrics.funds.multisig')}
-              </div>
-              <div style={{ fontSize: '11px', color: '#666', marginTop: '12px' }}>
-                {owners?.length || '-'} {t('home.metrics.funds.signers')}
-              </div>
-            </div>
-
           </div>
           
           {/* DAO Storyteller - Historia generada por IA - Solo muestra con datos reales */}
@@ -321,6 +321,7 @@ const Home = () => {
                   transactions: parseInt(tokenData.totalTransactions) || 0,
                   treasury: Math.floor(treasuryTotal),
                   multisigners: owners.length,
+                  threshold: threshold || 0,
                   liquidity: tokenData.liquidity ? parseFloat(tokenData.liquidity) : 0
                 }}
               />
