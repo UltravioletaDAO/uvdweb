@@ -53,6 +53,30 @@
     "funds": {
       "subtitle": "Actividad de la gestión del tesoro comunitario",
       "multisig_avalanche": "Multisig Avalanche"
+    },
+    "contributorSection": {
+      "title": "Contribuidores DAO",
+      "subtitle": "Miembros activos y colaboradores de la comunidad",
+      "searchPlaceholder": "Buscar miembros...",
+      "stats": {
+        "totalMembers": "Miembros Totales",
+        "activeContributors": "Contribuidores Activos",
+        "pendingApplications": "Aplicaciones Pendientes",
+        "newThisMonth": "Nuevos Este Mes"
+      },
+      "filters": {
+        "all": "Todos",
+        "active": "Activos",
+        "new": "Nuevos"
+      },
+      "footer": {
+        "showingMembers": "Mostrando {{count}} de {{total}} miembros",
+        "viewApplications": "Ver Aplicaciones"
+      },
+      "underConstruction": {
+        "title": "Sección en construcción",
+        "message": "Estamos trabajando para conectar los perfiles de X (Twitter) con los miembros del DAO. Esta funcionalidad estará disponible pronto."
+      }
     }
   },
   "auth": {
@@ -67,7 +91,7 @@
     "links": "Links",
     "courses": "Cursos",
     "blog": "Blog",
-    "purge": "Purga",
+    "contributors": "Contribuidores",
     "multisig": "Multifirma",
     "wheel": "Ruleta",
     "delegations": "Delegaciones",
@@ -86,7 +110,7 @@
       "blog": "Paila News",
       "snapshot": "Votaciones y propuestas de gobernanza",
       "multisig": "Multifirma para gestión de fondos",
-      "purge": "Gestión de usuarios inactivos",
+      "contributors": "Miembros y contribuidores del DAO",
       "wheel": "Ruleta de premios UVD",
       "delegations": "Stakea y delegar tus tokens",
       "safestats": "Estadísticas de multifirmantes",
@@ -297,7 +321,8 @@
         "title": "Valores actuales",
         "probability_suffix": "%",
         "min_segments_error": "La ruleta necesita al menos 2 valores"
-      }
+      },
+      "probability_validation_error": "Los porcentajes deben sumar 100%. Por favor, revisa los valores."
     },
     "buttons": {
       "equalize": "Igualar probabilidades",

@@ -6,7 +6,7 @@ import ApplicationForm from "./pages/ApplicationForm";
 import SocialNetworks from "./pages/SocialNetworks";
 import ApplicationStatus from "./pages/ApplicationStatus";
 import Header from "./components/Header";
-import Purge from "./pages/Purge";
+import Contributors from "./pages/Contributors";
 import Courses from "./pages/Courses";
 import Token from "./pages/Token";
 import Blog from "./pages/BlogList"
@@ -39,7 +39,7 @@ function App() {
               <Route path="/links" element={<SocialNetworks />} />
               <Route path="/status" element={<ApplicationStatus />} />
               <Route path="/courses" element={<Courses />} />
-              <Route path="/purge" element={<Purge />} />
+              <Route path="/contributors" element={<Contributors />} />
               <Route path="/token" element={<Token />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />

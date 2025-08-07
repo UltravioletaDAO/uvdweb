@@ -6,7 +6,7 @@ import {
   LinkIcon,
   AcademicCapIcon,
   RectangleStackIcon,
-  UserMinusIcon,
+  UsersIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
   GiftIcon,
@@ -83,9 +83,9 @@ const Header = () => {
       customStyle: "text-emerald-400 hover:text-emerald-300",
     },
     {
-      name: t('navigation.purge'),
-      icon: UserMinusIcon,
-      path: "/purge",
+      name: t('navigation.contributors'),
+      icon: UsersIcon,
+      path: "/contributors",
       isExternal: false,
     },
     {
