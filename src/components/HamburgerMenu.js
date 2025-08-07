@@ -8,7 +8,7 @@ import {
   LinkIcon,
   AcademicCapIcon,
   RectangleStackIcon,
-  UserMinusIcon,
+  UsersIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
   GiftIcon,
@@ -114,11 +114,11 @@ const HamburgerMenu = () => {
 
   const adminItems = [
     {
-      name: t('navigation.purge'),
-      icon: UserMinusIcon,
-      path: "/purge",
+      name: t('navigation.contributors'),
+      icon: UsersIcon,
+      path: "/contributors",
       isExternal: false,
-      description: t('navigation.descriptions.purge'),
+      description: t('navigation.descriptions.contributors'),
     },
     {
       name: t('navigation.safestats'),
