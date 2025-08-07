@@ -14,8 +14,10 @@ import {
   GiftIcon,
   ChartBarIcon,
   ArrowTrendingUpIcon,
+  InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +37,13 @@ const HamburgerMenu = () => {
       path: "/",
       isExternal: false,
       description: t('navigation.descriptions.home'),
+    },
+    {
+      name: t('navigation.about'),
+      icon: InformationCircleIcon,
+      path: "/about",
+      isExternal: false,
+      description: t('navigation.descriptions.about'),
     },
     {
       name: t('navigation.links'),
@@ -336,6 +345,11 @@ const HamburgerMenu = () => {
               <p className="text-sm text-text-secondary">
                 {t('home.subtitle')}
               </p>
+              
+              {/* Language Switcher */}
+              <div className="mt-4">
+                <LanguageSwitcher />
+              </div>
               
               {/* Separador con gradiente */}
               <div className="h-px bg-gradient-to-r from-ultraviolet-darker/10 via-ultraviolet-darker/30 to-ultraviolet-darker/10 my-4"></div>

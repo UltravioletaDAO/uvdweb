@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import ApplicationForm from "./pages/ApplicationForm";
 import SocialNetworks from "./pages/SocialNetworks";
 import ApplicationStatus from "./pages/ApplicationStatus";
@@ -33,6 +34,7 @@ function App() {
             <HamburgerMenu />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
               <Route path="/aplicar" element={<ApplicationForm />} />
               <Route path="/links" element={<SocialNetworks />} />
               <Route path="/status" element={<ApplicationStatus />} />

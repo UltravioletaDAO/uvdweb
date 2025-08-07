@@ -62,6 +62,7 @@
   },
   "navigation": {
     "home": "Inicio",
+    "about": "Historia",
     "snapshot": "Snapshot",
     "links": "Links",
     "courses": "Cursos",
@@ -79,6 +80,7 @@
     },
     "descriptions": {
       "home": "Dashboard principal de Ultravioleta DAO",
+      "about": "Historia y origen de Ultravioleta DAO",
       "links": "Enlaces importantes de la comunidad",
       "courses": "Cursos y material educativo",
       "blog": "Paila News",
@@ -481,6 +483,119 @@
     "refresh_quote": "Actualizar cuotas",
     "auto_refresh": "Actualización automática cada 5s",
     "updating": "Actualizando"
+  },
+  "about": {
+    "hero": {
+      "title": "Historia de Ultravioleta DAO",
+      "subtitle": "De una comunidad de streaming a la DAO Web3 más activa de Latinoamérica"
+    },
+    "origin": {
+      "title": "Historia y Origen",
+      "paragraph1": "La historia de Ultravioleta DAO comenzó en marzo de 2022 bajo el nombre inicial de 'Cuchorapido', una comunidad creada a partir de transmisiones en vivo en Twitch. El enfoque inicial giraba en torno a temas de Web3, tecnología descentralizada, consciencia digital y la exploración práctica de estas herramientas frente a una audiencia activa y participativa.",
+      "paragraph2": "Lo que empezó como una plataforma sencilla para discutir conceptos abstractos, rápidamente se convirtió en un espacio dinámico donde la audiencia no solo escuchaba, sino que intervenía, proponía ideas y tomaba decisiones reales.",
+      "paragraph3": "A medida que la comunidad se consolidaba, surgió la necesidad natural de organizarse mediante herramientas más sofisticadas, dando lugar al lanzamiento del primer token de gobernanza, CRT, inicialmente desplegado en Polygon. Esta primera etapa sirvió como laboratorio en vivo, permitiendo entender los procesos de gobernanza descentralizada desde la práctica.",
+      "paragraph4": "Luego de dos años de crecimiento continuo, en junio de 2024 la comunidad decidió dar un paso más y formalizarse como Ultravioleta DAO, manteniendo el núcleo original, pero con una identidad renovada que reflejaba su evolución. Este cambio marcó la transición definitiva hacia una organización descentralizada plenamente operativa y establecida, con un nuevo token llamado UVD, actualmente vigente en la red Avalanche."
+    },
+    "timeline": {
+      "title": "Nuestra Evolución",
+      "march2022": {
+        "date": "Marzo 2022",
+        "title": "Nacimiento como Cuchorapido",
+        "description": "Inicio de la comunidad a través de transmisiones en vivo en Twitch, explorando Web3 y tecnología descentralizada."
+      },
+      "crt": {
+        "date": "2022-2023",
+        "title": "Token CRT y Gobernanza",
+        "description": "Lanzamiento del primer token de gobernanza CRT en Polygon, posteriormente migrado a Avalanche como CRT v2."
+      },
+      "june2024": {
+        "date": "Junio 2024",
+        "title": "Transformación a Ultravioleta DAO",
+        "description": "Formalización como Ultravioleta DAO con identidad renovada y lanzamiento del token UVD en Avalanche."
+      },
+      "current": {
+        "date": "Presente",
+        "title": "DAO Plenamente Operativa",
+        "description": "176 propuestas ejecutadas, 5,218+ votos, registro legal DUNA en proceso, y eventos presenciales en múltiples ciudades."
+      }
+    },
+    "vision": {
+      "title": "Visión",
+      "description": "Ultravioleta DAO busca consolidarse como un referente latinoamericano en la creación de cultura Web3, impulsando la educación abierta, la experimentación tecnológica y la participación comunitaria efectiva."
+    },
+    "mission": {
+      "title": "Misión",
+      "description": "Mantener un espacio descentralizado de aprendizaje colectivo, donde la experimentación práctica, el ensayo-error y la toma de decisiones en tiempo real sean el núcleo de nuestra dinámica diaria."
+    },
+    "values": {
+      "title": "Nuestros Valores",
+      "learning": {
+        "title": "Aprendizaje en Público",
+        "description": "Documentar y compartir tanto los éxitos como los fracasos, fortaleciendo una cultura basada en la transparencia radical."
+      },
+      "community": {
+        "title": "Participación Activa",
+        "description": "Cada miembro tiene voz y voto en las decisiones importantes, construyendo juntos el futuro del DAO."
+      },
+      "transparency": {
+        "title": "Transparencia Radical",
+        "description": "Todo queda registrado, todo puede ser auditado, y todos pueden participar en la gobernanza."
+      }
+    },
+    "activities": {
+      "title": "Actividades e Iniciativas",
+      "education": {
+        "title": "Educación Continua",
+        "description": "Transmisiones diarias en Twitch, The Arena y X, con votaciones y toma de decisiones en directo."
+      },
+      "governance": {
+        "title": "Gobernanza Activa",
+        "description": "176 propuestas de gobernanza ejecutadas en Snapshot, con más de 5,218 votos realizados por la comunidad."
+      },
+      "economy": {
+        "title": "Economía Gamificada",
+        "description": "Watch-to-Earn, Chat-to-Earn y Burn-to-Chat: sistemas de recompensas e incentivos por participación activa."
+      },
+      "infrastructure": {
+        "title": "Infraestructura Técnica",
+        "description": "Administración de nodos validadores en testnets y mainnets, ofreciendo experiencia práctica a los miembros."
+      },
+      "events": {
+        "title": "Eventos Presenciales",
+        "description": "Encuentros en Bogotá, Medellín y preparación del Ultra Evento 2025 con +100 participantes."
+      },
+      "ai": {
+        "title": "IA Comunitaria",
+        "description": "Desarrollo de agentes inteligentes 'Karma' y 'Hello' para optimizar tareas y gestionar recompensas automáticamente."
+      }
+    },
+    "governance": {
+      "title": "Experiencia con Token de Gobernanza",
+      "paragraph1": "La implementación y evolución del token de gobernanza fue clave para la comunidad. Cada migración, desde CRT hasta UVD, significó un salto cualitativo en las capacidades organizativas y de toma de decisiones.",
+      "paragraph2": "Las decisiones gestionadas mediante el token incluyen asignación de presupuestos comunitarios, elección de ponentes para eventos, determinación de recompensas, parámetros económicos internos y definición de documentos fundacionales como manifiestos y constituciones del DAO.",
+      "paragraph3": "El token no solo facilitó la gobernanza práctica, sino que además alineó intereses y creó un fuerte sentido de responsabilidad y valor compartido entre los participantes."
+    },
+    "current": {
+      "title": "Estado Actual y Proyectos",
+      "structure": {
+        "title": "Estructura Horizontal",
+        "description": "Actualmente, Ultravioleta DAO posee una estructura horizontal, sin jerarquías tradicionales, donde los roles son asumidos voluntariamente según afinidad y disponibilidad. Nuestra infraestructura tecnológica incluye plataformas robustas como Snapshot, multifirmas con múltiples firmantes, bots especializados y dashboards propios para el seguimiento en tiempo real."
+      },
+      "projects": {
+        "title": "Ultra Evento 2025",
+        "description": "El principal proyecto actual es el Ultra Evento 2025, a realizarse el 23 y 24 de agosto en Medellín, con el apoyo de reconocidos patrocinadores como Avalanche, Uniswap, Rekt.news, Celo Colombia, Superfluid, Magic Eden, Self.xyz, Pyth y HeroesOfCipher. Este evento contará con dinámicas innovadoras como airdrops automáticos, POAPs, incentivos para la verificación de identidad y cobertura completa en streaming."
+      }
+    },
+    "blockchain": {
+      "title": "¿Qué significa la tecnología blockchain para Ultravioleta DAO?",
+      "paragraph1": "Blockchain, para Ultravioleta, es una herramienta de coordinación y transparencia radical. Nos ha permitido distribuir valor, tomar decisiones colectivas, y organizar nuestra comunidad sin jerarquías. Es infraestructura, pero también cultura: todo queda registrado, todo puede ser auditado, y todos pueden participar.",
+      "paragraph2": "En América Latina, donde muchas veces los sistemas tradicionales fallan o no llegan, blockchain ofrece una vía paralela para construir confianza, economías propias y formas nuevas de colaboración. Para nosotros no es una promesa futura, sino una práctica diaria que ya está generando impacto real desde abajo y hacia afuera."
+    },
+    "cta": {
+      "title": "¿Quieres ser parte del cambio?",
+      "description": "Únete a la comunidad Web3 más activa de Latinoamérica y construye con nosotros el futuro descentralizado.",
+      "button": "Aplicar al DAO"
+    }
   },
   "wrap": {
     "title": "Unwrap",
