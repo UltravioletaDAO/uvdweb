@@ -5,7 +5,7 @@ import About from "./pages/About";
 import ApplicationForm from "./pages/ApplicationForm";
 import SocialNetworks from "./pages/SocialNetworks";
 import ApplicationStatus from "./pages/ApplicationStatus";
-import HamburgerMenu from "./components/HamburgerMenu";
+import Header from "./components/Header";
 import Purge from "./pages/Purge";
 import Courses from "./pages/Courses";
 import Token from "./pages/Token";
@@ -31,7 +31,7 @@ function App() {
       <ThirdwebProvider>
         <Router>
           <div className="min-h-screen bg-background text-text-primary">
-            <HamburgerMenu />
+            <Header />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />

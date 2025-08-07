@@ -339,9 +339,13 @@ const HamburgerMenu = () => {
               transition={{ delay: 0.2, duration: 0.3 }}
               className="pt-16 pb-4 px-4"
             >
-              <h2 className="text-2xl font-bold text-text-primary mb-1">
-                Ultravioleta DAO
-              </h2>
+              <div className="flex items-center justify-center mb-3">
+                <img 
+                  src="/uvd.png" 
+                  alt="Ultravioleta DAO"
+                  className="h-16 w-16"
+                />
+              </div>
               <p className="text-sm text-text-secondary">
                 {t('home.subtitle')}
               </p>
