@@ -8,6 +8,7 @@
         "proposals": "Proposals",
         "votes": "Votes",
         "followers": "Followers",
+        "members_participating": "{{count}} members participating in governance",
         "since": "Since June 2023"
       },
       "token": {

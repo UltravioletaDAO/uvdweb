@@ -249,7 +249,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div style={{ fontSize: '10px', color: '#666', marginTop: '4px' }}>
-                  {snapshotMetrics?.followers || '-'} members participating in governance
+                  {t('home.metrics.snapshot.members_participating', { count: snapshotMetrics?.followers || '-' })}
                 </div>
               </div>
               
