@@ -1,11 +1,12 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import About from "./pages/About";
 import ApplicationForm from "./pages/ApplicationForm";
 import SocialNetworks from "./pages/SocialNetworks";
 import ApplicationStatus from "./pages/ApplicationStatus";
-import HamburgerMenu from "./components/HamburgerMenu";
-import Purge from "./pages/Purge";
+import Header from "./components/Header";
+import Contributors from "./pages/Contributors";
 import Courses from "./pages/Courses";
 import Token from "./pages/Token";
 import Blog from "./pages/BlogList"
@@ -30,14 +31,15 @@ function App() {
       <ThirdwebProvider>
         <Router>
           <div className="min-h-screen bg-background text-text-primary">
-            <HamburgerMenu />
+            <Header />
             <Routes>
               <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
               <Route path="/aplicar" element={<ApplicationForm />} />
               <Route path="/links" element={<SocialNetworks />} />
               <Route path="/status" element={<ApplicationStatus />} />
               <Route path="/courses" element={<Courses />} />
-              <Route path="/purge" element={<Purge />} />
+              <Route path="/contributors" element={<Contributors />} />
               <Route path="/token" element={<Token />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />

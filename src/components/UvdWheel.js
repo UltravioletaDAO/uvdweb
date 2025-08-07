@@ -101,7 +101,7 @@ const UvdWheel = ({ segments, probabilities = [], onSpinEnd, disabled = false })
     
     // Validar que los porcentajes sumen 100% antes de girar
     if (!validateProbabilities()) {
-      alert('Los porcentajes deben sumar 100%. Por favor, revisa los valores.');
+      alert(t('wheel.segments.probability_validation_error'));
       return;
     }
     

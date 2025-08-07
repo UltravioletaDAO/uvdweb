@@ -3,6 +3,7 @@ import TokenSection from "../components/metricDashboard/TokenSection";
 import {FundsSection} from "../components/metricDashboard/FundsSection";
 import {CommunitySection} from "../components/metricDashboard/CommunitySection";
 import {RewardsSection} from "../components/metricDashboard/RewardsSection";
+import {ContributorSection} from "../components/metricDashboard/ContributorSection";
 import { Activity } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 
@@ -43,6 +44,9 @@ const MetricsDashboard = () =>{
             <FundsSection />
           </section>
 
+          <section>
+            <ContributorSection />
+          </section>
 
           {/* <section>
             <CommunitySection />

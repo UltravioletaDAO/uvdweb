@@ -188,3 +188,17 @@ Para contribuir al proyecto:
 ## 🌐 Enlaces
 
 - [X](https://x.com/UltravioletaDAO)
+
+## 📝 Cambios Recientes
+
+### Sección de Contribuidores (Contributors)
+- **Eliminada**: Página de purga de usuarios inactivos (`/purge`)
+- **Agregada**: Nueva página de Contribuidores (`/contributors`) que muestra:
+  - Lista completa de los 122 miembros actuales del DAO
+  - Búsqueda en tiempo real de miembros
+  - Estadísticas de miembros totales, activos y nuevos
+  - Filtros para ver todos, activos o nuevos miembros
+  - Integración con API para obtener aplicaciones aprobadas pendientes
+- **Actualizada**: Navegación reemplazando "Purge" con "Contributors"
+- **Mejorado**: Dashboard de métricas ahora incluye sección de contribuidores
+- **Traducciones**: Agregadas traducciones completas en español e inglés

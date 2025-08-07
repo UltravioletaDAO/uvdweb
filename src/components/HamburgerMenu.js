@@ -8,14 +8,16 @@ import {
   LinkIcon,
   AcademicCapIcon,
   RectangleStackIcon,
-  UserMinusIcon,
+  UsersIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
   GiftIcon,
   ChartBarIcon,
   ArrowTrendingUpIcon,
+  InformationCircleIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const HamburgerMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,6 +37,13 @@ const HamburgerMenu = () => {
       path: "/",
       isExternal: false,
       description: t('navigation.descriptions.home'),
+    },
+    {
+      name: t('navigation.about'),
+      icon: InformationCircleIcon,
+      path: "/about",
+      isExternal: false,
+      description: t('navigation.descriptions.about'),
     },
     {
       name: t('navigation.links'),
@@ -105,11 +114,11 @@ const HamburgerMenu = () => {
 
   const adminItems = [
     {
-      name: t('navigation.purge'),
-      icon: UserMinusIcon,
-      path: "/purge",
+      name: t('navigation.contributors'),
+      icon: UsersIcon,
+      path: "/contributors",
       isExternal: false,
-      description: t('navigation.descriptions.purge'),
+      description: t('navigation.descriptions.contributors'),
     },
     {
       name: t('navigation.safestats'),
@@ -330,12 +339,21 @@ const HamburgerMenu = () => {
               transition={{ delay: 0.2, duration: 0.3 }}
               className="pt-16 pb-4 px-4"
             >
-              <h2 className="text-2xl font-bold text-text-primary mb-1">
-                Ultravioleta DAO
-              </h2>
+              <div className="flex items-center justify-center mb-3">
+                <img 
+                  src="/uvd.png" 
+                  alt="Ultravioleta DAO"
+                  className="h-16 w-16"
+                />
+              </div>
               <p className="text-sm text-text-secondary">
                 {t('home.subtitle')}
               </p>
+              
+              {/* Language Switcher */}
+              <div className="mt-4">
+                <LanguageSwitcher />
+              </div>
               
               {/* Separador con gradiente */}
               <div className="h-px bg-gradient-to-r from-ultraviolet-darker/10 via-ultraviolet-darker/30 to-ultraviolet-darker/10 my-4"></div>

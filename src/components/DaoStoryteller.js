@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import { SparklesIcon, FireIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
-import { generateDaoAnalysis, cacheAnalysis } from '../api/storyteller';
+import { generateDaoAnalysis } from '../api/storyteller';
 
 const DaoStoryteller = ({ metrics }) => {
   const [analysis, setAnalysis] = useState('');
@@ -11,12 +11,11 @@ const DaoStoryteller = ({ metrics }) => {
   const [isUsingFallback, setIsUsingFallback] = useState(false);
   const [hasGenerated, setHasGenerated] = useState(false);
   const { t, i18n } = useTranslation();
-  const lastMetricsRef = useRef(null);
-  const lastLanguageRef = useRef(null);
+  const lastLanguageRef = useRef(i18n.language);
 
-  const generateStory = async () => {
-    // Prevent multiple generations
-    if (hasGenerated) return;
+  const generateStory = async (forceRegenerate = false) => {
+    // Allow regeneration when language changes
+    if (hasGenerated && !forceRegenerate) return;
     
     setLoading(true);
     setError(null);
@@ -31,11 +30,13 @@ const DaoStoryteller = ({ metrics }) => {
       if (result.success) {
         setAnalysis(result.analysis);
         setHasGenerated(true);
+        lastLanguageRef.current = currentLang;
       } else {
         // Use fallback but mark it as such
         setAnalysis(result.fallback);
         setIsUsingFallback(result.isUsingFallback || true);
         setHasGenerated(true);
+        lastLanguageRef.current = currentLang;
         console.info('Using fallback analysis:', result.error);
       }
 
@@ -49,18 +50,27 @@ const DaoStoryteller = ({ metrics }) => {
       setAnalysis(fallback);
       setIsUsingFallback(true);
       setHasGenerated(true);
+      lastLanguageRef.current = i18n.language;
     } finally {
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    // Only generate story once on initial mount (page load)
+    // Generate story on initial mount
     if (metrics && Object.keys(metrics).length > 0 && !hasGenerated) {
       generateStory();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []); // Empty dependency array = only run once on mount, ignore all changes
+  }, []); // Empty dependency array = only run once on mount
+
+  useEffect(() => {
+    // Regenerate story when language changes
+    if (metrics && Object.keys(metrics).length > 0 && lastLanguageRef.current !== i18n.language) {
+      generateStory(true); // Force regeneration
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [i18n.language]); // Run when language changes
 
   if (loading) {
     return (
