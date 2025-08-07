@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import ApplicationForm from './ApplicationForm';
 import { 
   UserGroupIcon, 
   BeakerIcon,
@@ -14,6 +15,7 @@ import {
 
 const About = () => {
   const { t } = useTranslation();
+  const [isFormOpen, setIsFormOpen] = useState(false);
 
   const fadeInUp = {
     initial: { opacity: 0, y: 20 },
@@ -393,14 +395,19 @@ const About = () => {
           <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
             {t('about.cta.description')}
           </p>
-          <Link
-            to="/aplicar"
+          <button
+            onClick={() => setIsFormOpen(true)}
             className="inline-flex items-center px-8 py-4 text-lg font-semibold text-white bg-gradient-to-r from-purple-600 to-blue-600 rounded-lg hover:from-purple-700 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
           >
             {t('about.cta.button')}
-          </Link>
+          </button>
         </motion.div>
       </section>
+
+      <ApplicationForm 
+        isOpen={isFormOpen} 
+        onClose={() => setIsFormOpen(false)} 
+      />
     </div>
   );
 };

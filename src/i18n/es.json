@@ -17,7 +17,7 @@
         "transactions": "Transacciones",
         "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
         "total_liquidity": "Liquidez Total",
-        "total_liquidity_backing": "Liquidez Total respaldando UVD"
+        "total_liquidity_backing": "Liquidez respaldando $UVD"
       },
       "funds": {
         "title": "Fondos y Finanzas",

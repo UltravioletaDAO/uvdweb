@@ -343,7 +343,7 @@ const HamburgerMenu = () => {
                 <img 
                   src="/uvd.png" 
                   alt="Ultravioleta DAO"
-                  className="h-16 w-16"
+                  className="h-16 !w-[18%] !max-w-[18%]"
                 />
               </div>
               <p className="text-sm text-text-secondary">
