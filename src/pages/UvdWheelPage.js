@@ -124,6 +124,11 @@ const UvdWheelPage = () => {
   const [lastTxHash, setLastTxHash] = useState(null);
   const [tokenDecimals, setTokenDecimals] = useState(18); // Por defecto 18 decimales
   const [hasTokenApproval, setHasTokenApproval] = useState(false);
+  const [fiboHolders, setFiboHolders] = useState({});
+  const [doublePaymentMultiplier, setDoublePaymentMultiplier] = useState(2);
+  const [spinWasDoubled, setSpinWasDoubled] = useState(false);
+  const [lastWinnerUsername, setLastWinnerUsername] = useState('');
+  const [lastWinnerWallet, setLastWinnerWallet] = useState('');
 
   // Referencia para mantener el intervalo de verificación
   const checkIntervalRef = useRef(null);
@@ -411,6 +416,78 @@ const UvdWheelPage = () => {
     }
   };
 
+  // Cargar holders de Echoes FIBO (para pago doble)
+  useEffect(() => {
+    const loadFiboHolders = async () => {
+      try {
+        const res = await fetch('/db/echoes-fibo-holders.json', { cache: 'no-cache' });
+        if (!res.ok) return;
+        const data = await res.json();
+        const rawHolders = data?.holders || {};
+        const normalized = {};
+        Object.keys(rawHolders).forEach((addr) => {
+          if (typeof addr === 'string') {
+            normalized[addr.toLowerCase()] = rawHolders[addr];
+          }
+        });
+        setFiboHolders(normalized);
+        if (data?.double_payment_multiplier) {
+          const mult = Number(data.double_payment_multiplier);
+          if (!Number.isNaN(mult) && mult > 0) {
+            setDoublePaymentMultiplier(mult);
+          }
+        }
+      } catch (e) {
+        console.warn('Error loading echoes-fibo-holders.json', e);
+      }
+    };
+    loadFiboHolders();
+  }, []);
+
+  const getRewardAmountWithMultiplier = (wallet, baseAmount) => {
+    const base = Number(baseAmount);
+    if (!wallet || Number.isNaN(base)) return baseAmount?.toString?.() ?? String(baseAmount);
+    const isHolder = !!fiboHolders[wallet.toLowerCase?.()];
+    const multiplier = isHolder ? doublePaymentMultiplier : 1;
+    return (base * multiplier).toString();
+  };
+
+  const isEchoesHolder = (wallet) => {
+    if (!wallet) return false;
+    try {
+      return !!fiboHolders[wallet.toLowerCase?.()];
+    } catch {
+      return false;
+    }
+  };
+
+  const getFiboLabel = (wallet) => {
+    if (!wallet) return '';
+    try {
+      const entry = fiboHolders[wallet.toLowerCase?.()];
+      if (!entry) return '';
+      if (typeof entry.comment === 'string' && entry.comment.trim()) {
+        return entry.comment.trim();
+      }
+      const fibo = entry.fibo;
+      if (Array.isArray(fibo)) {
+        return `FIBO #${fibo.join('/#')}`;
+      }
+      if (typeof fibo === 'number' || typeof fibo === 'string') {
+        return `FIBO #${fibo}`;
+      }
+      return '';
+    } catch {
+      return '';
+    }
+  };
+
+  const getEchoesBadgeText = (wallet) => {
+    if (!isEchoesHolder(wallet)) return '';
+    const label = getFiboLabel(wallet);
+    return label ? `x2 por Echoes ${label}` : 'x2 por Echoes';
+  };
+
   // Configurar el intervalo de actualización cuando se activa el switch
   useEffect(() => {
     // Limpiar cualquier intervalo existente
@@ -486,12 +563,19 @@ const UvdWheelPage = () => {
     try {
       if (participants.length > 0) {
         const currentParticipant = participants[currentParticipantIndex];
+        const isHolder = isEchoesHolder(currentParticipant.wallet);
+        const rewardAmount = getRewardAmountWithMultiplier(currentParticipant.wallet, result);
+        setSpinResult(rewardAmount);
+        setSpinWasDoubled(!!isHolder);
+        setLastWinnerUsername(currentParticipant.username || '');
+        setLastWinnerWallet(currentParticipant.wallet || '');
         
         // Guardar el resultado actual
         const newResult = {
           wallet: currentParticipant.wallet,
           username: currentParticipant.username,
-          result: result
+          result: rewardAmount,
+          wasDoubled: !!isHolder
         };
         
         // También agregarlo a los completados para el CSV final
@@ -543,6 +627,8 @@ const UvdWheelPage = () => {
 
             // Enviar mensaje al chat con el resultado
             try {
+              const winnerDisplay = currentParticipant.username || `${currentParticipant.wallet.slice(0, 6)}...${currentParticipant.wallet.slice(-4)}`;
+              const echoesSuffix = isHolder ? ` (${getEchoesBadgeText(currentParticipant.wallet)})` : '';
               await fetch(`https://api.twitch.tv/helix/chat/messages?broadcaster_id=${broadcasterId}&sender_id=${broadcasterId}`, {
                 method: 'POST',
                 headers: {
@@ -551,7 +637,7 @@ const UvdWheelPage = () => {
                   'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                  message: `@${currentParticipant.username} Ganaste ${result} $UVD en la ruleta. Los tokens serán enviados pronto.`,
+                  message: `@${winnerDisplay} Ganaste ${rewardAmount} $UVD en la ruleta${echoesSuffix}. Los tokens serán enviados pronto.`,
                   reply_to_message_id: null
                 })
               });
@@ -573,6 +659,9 @@ const UvdWheelPage = () => {
       // Esperar un momento antes de desbloquear el botón para evitar clics accidentales
       setTimeout(() => {
         setIsProcessingResult(false);
+        if (participants.length === 0) {
+          setSpinWasDoubled(false);
+        }
       }, 1500); // 1.5 segundos de seguridad
     }
   };
@@ -1210,6 +1299,16 @@ const UvdWheelPage = () => {
               <div className="mt-6 p-6 bg-purple-100 rounded-lg shadow-md text-center w-full">
                 <h3 className="text-2xl font-semibold text-purple-800 mb-2">{t('wheel.results.title')}:</h3>
                 <p className="text-5xl font-bold text-purple-900">{spinResult}</p>
+                <div className="mt-2 flex items-center justify-center gap-2 text-purple-800">
+                  <span className="text-base font-semibold">
+                    {lastWinnerUsername || (lastWinnerWallet ? `${lastWinnerWallet.slice(0, 6)}...${lastWinnerWallet.slice(-4)}` : t('wheel.participants.list.anonymous'))}
+                  </span>
+                  {spinWasDoubled && (
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-semibold bg-yellow-200 text-yellow-800 border border-yellow-300">
+                      {getEchoesBadgeText(lastWinnerWallet)}
+                    </span>
+                  )}
+                </div>
                 {participants.length > 0 && currentParticipantIndex >= participants.length && (
                   <p className="mt-2 text-yellow-600 font-semibold">
                     {t('wheel.results.no_more_participants')}
@@ -1461,8 +1560,13 @@ const UvdWheelPage = () => {
                                           {result.result}
                                         </span>
                                       ) : index === currentParticipantIndex ? (
-                                        <span className="text-sm text-purple-800 animate-pulse">
+                                        <span className="text-sm text-purple-800 animate-pulse inline-flex items-center gap-2">
                                           {t('wheel.participants.list.current_turn')}
+                                          {isEchoesHolder(participant.wallet) && (
+                                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-yellow-200 text-yellow-800 border border-yellow-300">
+                                              {getEchoesBadgeText(participant.wallet)}
+                                            </span>
+                                          )}
                                         </span>
                                       ) : index > currentParticipantIndex ? (
                                         <span className="text-sm text-gray-400">
@@ -1512,9 +1616,16 @@ const UvdWheelPage = () => {
                                         </span>
                                       </td>
                                       <td className="px-4 py-3">
-                                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
-                                          {completed.result}
-                                        </span>
+                                        <div className="flex items-center gap-2">
+                                          <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                            {completed.result}
+                                          </span>
+                                          {completed.wasDoubled && (
+                                            <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-yellow-200 text-yellow-800 border border-yellow-300">
+                                              {getEchoesBadgeText(completed.wallet) || 'x2'}
+                                            </span>
+                                          )}
+                                        </div>
                                       </td>
                                       <td className="px-4 py-3">
                                         {/* No hay botón de eliminar para completados */}

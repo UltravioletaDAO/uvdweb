@@ -1,0 +1,39 @@
+{
+    "description": "Echoes collection holders - eligible for double payment in chat-to-earn",
+    "double_payment_multiplier": 2,
+    "holders": {
+      "0x40c23aa5b811b61844d274f630e9d0fd0aff8ec3": {
+        "fibo": 21,
+        "comment": "FIBO #21"
+      },
+      "0x8Aa4ae6E69d64eB02189d8D1dA178061841efa8D": {
+        "fibo": 3,
+        "comment": "FIBO #3"
+      },
+      "0xe4dc963c56979e0260fc146b87ee24f18220e545": {
+        "fibo": [1, 55],
+        "comment": "FIBO #1 and #55"
+      },
+      "0x0f36b46e5bd24a81789a59f215f6219749ac985a": {
+        "fibo": 2,
+        "comment": "FIBO #2"
+      },
+      "0x7d762dd4d62c8a3c631d18d23e78ad3691ebf42f": {
+        "fibo": 13,
+        "comment": "FIBO #13"
+      },
+      "0x189e8f7bb2c3c35deaae902f39aba41f2c2ca8d2": {
+        "fibo": 34,
+        "comment": "FIBO #34"
+      },
+      "0xc95B0C2C28923bBbD2997104Dd1ea15AC71C409a": {
+        "fibo": 5,
+        "comment": "FIBO #5"
+      },
+      "0x8c156493f807d3fc9805a8a2858e228525cce150": {
+        "fibo": 8,
+        "comment": "FIBO #8"
+      }
+    },
+    "last_updated": "2025-08-08"
+  }
