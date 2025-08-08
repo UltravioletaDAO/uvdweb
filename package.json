@@ -20,6 +20,7 @@
     "i18next-browser-languagedetector": "^8.0.2",
     "lucide-react": "^0.525.0",
     "mongodb": "^6.13.0",
+    "dotenv": "^16.4.5",
     "openai": "^5.12.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -42,6 +43,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "update:applicants": "node scripts/updateApplicantsApproved.js",
     "server:install": "cd server && npm install",
     "server:dev": "cd server && npm run dev"
   },
