@@ -67,4 +67,9 @@
   },
   "author": "",
   "license": "ISC"
+  ,
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  }
 }
