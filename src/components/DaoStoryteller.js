@@ -28,16 +28,20 @@ const DaoStoryteller = ({ metrics }) => {
       const result = await generateDaoAnalysis(metrics, currentLang);
       
       if (result.success) {
+        console.log('DAO Storyteller: Successfully generated AI analysis');
         setAnalysis(result.analysis);
         setHasGenerated(true);
         lastLanguageRef.current = currentLang;
       } else {
         // Use fallback but mark it as such
+        console.warn('DAO Storyteller: Using fallback analysis', {
+          error: result.error,
+          hasKey: !!process.env.REACT_APP_OPENAI_API_KEY
+        });
         setAnalysis(result.fallback);
         setIsUsingFallback(result.isUsingFallback || true);
         setHasGenerated(true);
         lastLanguageRef.current = currentLang;
-        console.info('Using fallback analysis:', result.error);
       }
 
     } catch (err) {
