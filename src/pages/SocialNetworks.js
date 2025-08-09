@@ -52,7 +52,7 @@ const SocialNetworks = () => {
       customStyle: "group-hover:text-[#FF5CAA]"
     },
     {
-      name: 'Multifirma',
+      name: t('navigation.multisig'),
       url: 'https://app.safe.global/home?safe=avax:0x52110a2Cc8B6bBf846101265edAAe34E753f3389',
       icon: (
         <img src={multifirma} alt={t('navigation_extra.multisig_alt')} className="w-6 h-6" />
@@ -60,7 +60,7 @@ const SocialNetworks = () => {
       customStyle: "group-hover:text-emerald-400"
     },
     {
-      name: 'Swap Token',
+      name: t('links.swap_token'),
       url: 'https://ultravioletadao.xyz/token',
       icon: (
         <img src={swapToken} alt={t('navigation_extra.swap_token_alt')} className="w-6 h-6" />

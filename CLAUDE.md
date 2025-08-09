@@ -171,4 +171,4 @@ Tests should focus on:
 
 - agrega comentarios al README.md principal detallados, despues de cada implementacion.
 
-- siempre que hagas un cambio asegurate de actualizar las traducciones (es.json y en.json)
+- siempre que hagas un cambio asegurate de actualizar las traducciones de i18n

@@ -11,10 +11,10 @@ import {
   UsersIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
-  GiftIcon,
   ChartBarIcon,
   ArrowTrendingUpIcon,
   InformationCircleIcon,
+  PlayCircleIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -129,11 +129,11 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.safestats'),
     },
     {
-      name: t('navigation.wheel'),
-      icon: GiftIcon,
+      name: t('navigation.watchToEarn'),
+      icon: PlayCircleIcon,
       path: "/wheel",
       isExternal: false,
-      description: t('navigation.descriptions.wheel'),
+      description: t('navigation.descriptions.watchToEarn'),
     },
   ];
 

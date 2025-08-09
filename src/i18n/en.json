@@ -179,7 +179,7 @@
     "token": "Token",
     "contributors": "Contributors",
     "multisig": "Multisig",
-    "wheel": "Roulette",
+    "watchToEarn": "Watch to Earn",
     "delegations": "Delegations",
     "safestats": "Multisigners",
     "metrics": "Metrics",
@@ -198,7 +198,7 @@
       "snapshot": "Governance votes and proposals",
       "multisig": "Multisig for fund management",
       "contributors": "DAO members and contributors",
-      "wheel": "Prize roulette UVD",
+      "watchToEarn": "Watch to Earn: redeem with Twitch points and get paid in UVD",
       "delegations": "Stake and delegate your tokens",
       "safestats": "Multisigners statistics",
       "metrics": "Metrics Dashboard"
@@ -335,6 +335,13 @@
     "email_placeholder": "Email",
     "subscribe": "Subscribe"
   },
+  "not_found": {
+    "title": "Page not found"
+  },
+  "links": {
+    "title": "Our Links",
+    "swap_token": "Swap Token"
+  },
   "blog": {
     "title": "Paila News",
     "no_posts": "No posts available at the moment",
@@ -409,7 +416,52 @@
     "auto": "Auto",
     "profile": "Profile"
   },
+  "courses": {
+    "title": "Our Courses"
+  },
+  "token": {
+    "title": "Ultravioleta DAO Token",
+    "description_1": "$UVD is the governance and utility token of Ultravioleta DAO, which facilitates member participation in decentralized decision-making and treasury management. It's used to vote on proposals, allocate community funds, and support member initiatives.",
+    "description_2": "Through $UVD, the DAO maintains a transparent and democratic structure, ensuring its resources are directed based on collective governance."
+  },
+  "snapshot": {
+    "connect_wallet": "Connect Wallet"
+  },
+  "success": {
+    "back_home": "Back home"
+  },
+  "safestats": {
+    "title": "UltravioletaDAO Multisigners",
+    "filter_options": "Filter options",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "filter": "Filter",
+    "statistics_title": "Signature statistics",
+    "from_to": "({{from}} to {{to}}, {{count}} transactions)",
+    "all_time": "All time",
+    "errors": {
+      "loading_data": "Error loading data",
+      "date_required": "Please select at least one date"
+    }
+  },
+  "watch_to_earn": {
+    "title": "Watch to Earn",
+    "subtitle": "Earn your Twitch points live to spin and win rewards in $UVD. The more you participate and watch the stream, the more chances you have to claim and get paid directly in our community currency.",
+    "redeem_points": "Redeem with Twitch points",
+    "uvd_payment": "UVD on-chain payment",
+    "viewing_rewards": "Rewards for watching the stream",
+    "personalize_wheel": "Customize Wheel",
+    "add_participant": "Add participant",
+    "click_to_spin": "Click to spin"
+  },
   "wheel": {
+    "title": "Watch to Earn",
+    "description": "Redeem your Twitch channel points live to spin and earn rewards in $UVD. The more you participate and watch the stream, the more chances you have to claim and get paid directly in our community token.",
+    "highlights": {
+      "redeem": "Redeem with Twitch points",
+      "paid": "Paid in UVD on-chain",
+      "watch": "Rewards for watching the stream"
+    },
     "customize_button": {
       "show": "Customize Wheel",
       "hide": "Hide Options"

@@ -7,6 +7,7 @@ import TwitchAuth from '../components/TwitchAuth';
 import { ethers } from 'ethers';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { PlayCircleIcon, CurrencyDollarIcon, SparklesIcon } from '@heroicons/react/24/outline';
 
 // ABI mínimo para interactuar con tokens ERC20
 const ERC20_ABI = [
@@ -1242,7 +1243,7 @@ const UvdWheelPage = () => {
           limit={3}
         />
         
-        <div className="flex justify-between items-center mb-10">
+        <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-4">
             <button
               onClick={() => window.location.href = '/'}
@@ -1281,6 +1282,31 @@ const UvdWheelPage = () => {
                 </svg>
               </div>
             )}
+          </div>
+        </div>
+
+        {/* Header Watch to Earn */}
+        <div className="mb-8">
+          <div className="flex items-center gap-3 mb-2">
+            <PlayCircleIcon className="w-8 h-8 text-ultraviolet" />
+            <h1 className="text-2xl sm:text-3xl font-bold text-text-primary">{t('wheel.title')}</h1>
+          </div>
+          <p className="text-text-secondary max-w-3xl">
+            {t('wheel.description')}
+          </p>
+          <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="flex items-center gap-2 bg-background-lighter/60 rounded-md px-3 py-2 border border-ultraviolet-darker/15">
+              <SparklesIcon className="w-5 h-5 text-ultraviolet" />
+              <span className="text-sm text-text-primary">{t('wheel.highlights.redeem')}</span>
+            </div>
+            <div className="flex items-center gap-2 bg-background-lighter/60 rounded-md px-3 py-2 border border-ultraviolet-darker/15">
+              <CurrencyDollarIcon className="w-5 h-5 text-ultraviolet" />
+              <span className="text-sm text-text-primary">{t('wheel.highlights.paid')}</span>
+            </div>
+            <div className="flex items-center gap-2 bg-background-lighter/60 rounded-md px-3 py-2 border border-ultraviolet-darker/15">
+              <PlayCircleIcon className="w-5 h-5 text-ultraviolet" />
+              <span className="text-sm text-text-primary">{t('wheel.highlights.watch')}</span>
+            </div>
           </div>
         </div>
 

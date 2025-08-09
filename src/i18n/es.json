@@ -179,7 +179,7 @@
     "token": "Token",
     "contributors": "Contribuidores",
     "multisig": "Multifirma",
-    "wheel": "Ruleta",
+    "watchToEarn": "Watch to Earn",
     "delegations": "Delegaciones",
     "safestats": "Multifirmantes",
     "metrics": "Métricas",
@@ -198,7 +198,7 @@
       "snapshot": "Votaciones y propuestas de gobernanza",
       "multisig": "Multifirma para gestión de fondos",
       "contributors": "Miembros y contribuidores del DAO",
-      "wheel": "Ruleta de premios UVD",
+      "watchToEarn": "Watch to Earn: reclama con puntos de Twitch y recibe UVD",
       "delegations": "Stakea y delegar tus tokens",
       "safestats": "Estadísticas de multifirmantes",
       "metrics": "Dashboard de métricas"
@@ -327,7 +327,8 @@
     "title": "Nuestros Cursos"
   },
   "links": {
-    "title": "Nuestros Links"
+    "title": "Nuestros Links",
+    "swap_token": "Swap Token"
   },
   "purge": {
     "title": "Purga",
@@ -394,6 +395,13 @@
     "profile": "Perfil"
   },
   "wheel": {
+    "title": "Watch to Earn",
+    "description": "Canjea tus puntos de Twitch en vivo para girar y gana recompensas en $UVD. Mientras más participas y ves el stream, más oportunidades tienes de reclamar y ser pagado directamente en nuestra moneda de la comunidad.",
+    "highlights": {
+      "redeem": "Canje con puntos de Twitch",
+      "paid": "Pago en UVD on-chain",
+      "watch": "Recompensas por ver el stream"
+    },
     "customize_button": {
       "show": "Personalizar Ruleta",
       "hide": "Ocultar opciones"
@@ -756,6 +764,9 @@
     "subtitle": "Suscríbete y recibe las últimas novedades",
     "email_placeholder": "Email",
     "subscribe": "Suscribirse"
+  },
+  "not_found": {
+    "title": "Página no encontrada"
   },
   "blog": {
     "title": "Paila News",
