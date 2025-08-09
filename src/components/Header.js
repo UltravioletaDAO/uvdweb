@@ -5,14 +5,14 @@ import {
   HomeIcon,
   LinkIcon,
   AcademicCapIcon,
-  RectangleStackIcon,
   UsersIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
-  GiftIcon,
   ChartBarIcon,
   ArrowTrendingUpIcon,
   InformationCircleIcon,
+  CurrencyDollarIcon,
+  PlayCircleIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -48,9 +48,9 @@ const Header = () => {
       isExternal: false,
     },
     {
-      name: t('navigation.blog'),
-      icon: RectangleStackIcon,
-      path: "/blog",
+      name: t('navigation.token'),
+      icon: CurrencyDollarIcon,
+      path: "/token",
       isExternal: false,
     },
     {
@@ -96,8 +96,8 @@ const Header = () => {
       customStyle: "text-blue-400 hover:text-blue-300",
     },
     {
-      name: t('navigation.wheel'),
-      icon: GiftIcon,
+      name: t('navigation.watchToEarn'),
+      icon: PlayCircleIcon,
       path: "/wheel",
       isExternal: false,
     },
@@ -121,7 +121,7 @@ const Header = () => {
             </div>
 
             {/* Navigation Items */}
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-1.5">
               {mainMenuItems.map((item) => (
                 <div key={item.name}>
                   {item.isExternal ? (
@@ -129,26 +129,26 @@ const Header = () => {
                       href={item.path}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center px-2.5 py-1.5 rounded-md text-xs font-normal tracking-wide
+                      className={`flex items-center px-2 py-1 rounded-md text-[10px] leading-none font-normal tracking-wide
                         transition-all duration-200 hover:bg-white/10 hover:text-white
                         ${location.pathname === item.path ? 'bg-white/15 text-white' : ''}
                         ${item.customStyle || 'text-text-primary'}`}
                       aria-label={item.name}
                     >
-                      <item.icon className="w-3.5 h-3.5 mr-1" />
-                      <span className="uppercase text-xs font-medium">{item.name}</span>
+                      <item.icon className="w-3 h-3 mr-1" />
+                      <span className="uppercase text-[10px] font-medium whitespace-nowrap leading-none">{item.name}</span>
                       <ArrowTopRightOnSquareIcon className="w-2.5 h-2.5 ml-1 opacity-50" />
                     </a>
                   ) : (
                     <Link
                       to={item.path}
-                      className={`flex items-center px-2.5 py-1.5 rounded-md text-xs font-normal tracking-wide
+                      className={`flex items-center px-2 py-1 rounded-md text-[10px] leading-none font-normal tracking-wide
                         transition-all duration-200 hover:bg-white/10 hover:text-white
                         ${location.pathname === item.path ? 'bg-white/15 text-white' : 'text-text-primary'}`}
                       aria-label={item.name}
                     >
-                      <item.icon className="w-3.5 h-3.5 mr-1" />
-                      <span className="uppercase text-xs font-medium">{item.name}</span>
+                      <item.icon className="w-3 h-3 mr-1" />
+                      <span className="uppercase text-[10px] font-medium whitespace-nowrap leading-none">{item.name}</span>
                     </Link>
                   )}
                   {location.pathname === item.path && !item.isExternal && (

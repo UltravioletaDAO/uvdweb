@@ -7,14 +7,14 @@ import {
   HomeIcon,
   LinkIcon,
   AcademicCapIcon,
-  RectangleStackIcon,
+  CurrencyDollarIcon,
   UsersIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
-  GiftIcon,
   ChartBarIcon,
   ArrowTrendingUpIcon,
   InformationCircleIcon,
+  PlayCircleIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -60,11 +60,11 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.courses'),
     },
     {
-      name: t('navigation.blog'),
-      icon: RectangleStackIcon,
-      path: "/blog",
+      name: t('navigation.token'),
+      icon: CurrencyDollarIcon,
+      path: "/token",
       isExternal: false,
-      description: t('navigation.descriptions.blog'),
+      description: t('navigation.descriptions.token'),
     },
     {
       name: t('navigation.metrics'),
@@ -129,11 +129,11 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.safestats'),
     },
     {
-      name: t('navigation.wheel'),
-      icon: GiftIcon,
+      name: t('navigation.watchToEarn'),
+      icon: PlayCircleIcon,
       path: "/wheel",
       isExternal: false,
-      description: t('navigation.descriptions.wheel'),
+      description: t('navigation.descriptions.watchToEarn'),
     },
   ];
 

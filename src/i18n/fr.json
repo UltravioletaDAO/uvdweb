@@ -1,0 +1,544 @@
+{
+  "seo": {
+    "defaultDescription": "Construire l'avenir du Web3 en Amérique latine grâce à la gouvernance décentralisée, l'innovation communautaire et la gestion collaborative du trésor."
+  },
+  "home": {
+    "seoTitle": "Accueil - DAO leader du Web3 en Amérique latine",
+    "seoDescription": "Rejoignez UltraVioleta DAO - Construire l'avenir du Web3 en Amérique latine grâce à la gouvernance décentralisée, l'innovation communautaire et la gestion collaborative du trésor.",
+    "title": "Ultravioleta DAO",
+    "subtitle": "La communauté Web3 la plus active d'Amérique latine",
+    "metrics": {
+      "snapshot": {
+        "title": "Gouvernance Snapshot",
+        "proposals": "Propositions",
+        "votes": "Votes",
+        "followers": "Followers",
+        "members_participating": "{{count}} membres participant à la gouvernance",
+        "since": "Depuis juin 2023"
+      },
+      "token": {
+        "title": "Token UVD",
+        "title_full": "TOKEN $UVD",
+        "holders": "Détenteurs",
+        "transactions": "Transactions",
+        "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
+        "total_liquidity": "Liquidité Totale",
+        "total_liquidity_backing": "Liquidité soutenant $UVD",
+        "tooltip": {
+          "usd": "USD",
+          "avax": "AVAX"
+        }
+      },
+      "funds": {
+        "title": "Fonds et Finances",
+        "community_vault": "Coffre Communautaire",
+        "multisig": "Multisig Avalanche",
+        "signers": "Multisignataires disponibles",
+        "required_of": "signatures requises sur",
+        "multisigners": "multisignataires pour exécuter les transactions"
+      },
+      "see_more": "Voir plus de métriques",
+      "generating_story": "Génération du résumé...",
+      "story_title": "Comment allons-nous ?",
+      "generating_analysis": "Analyse des métriques du DAO...",
+      "expert_analysis": "Comment allons-nous aujourd'hui",
+      "offline_analysis": "Analyse hors ligne",
+      "ai_generated": "Analyse générée par IA basée sur des métriques en temps réel"
+    }
+  },
+  "metricsDashboard": {
+    "title": "Tableau de Bord des Métriques",
+    "subtitle": "Panneau de métriques avec l'activité, les récompenses et la croissance d'Ultravioleta DAO",
+    "snapshot": {
+      "subtitle": "Propositions et votes de la communauté",
+      "error_loading": "Erreur lors du chargement des données",
+      "retry": "Réessayer",
+      "total_historic": "Total historique",
+      "latest_proposal": "Dernière proposition",
+      "last_proposal": "Dernières Propositions",
+      "no_active_proposals": "Aucune proposition active",
+      "top_voters": "Top votants de la communauté",
+      "see_all": "Voir Tout",
+      "from_proposals": "de propositions",
+      "active_members": "Membres actifs",
+      "view_on_snapshot": "Voir sur Snapshot",
+      "state": "État",
+      "quorum": "Quorum",
+      "leaderboard_no_data": "Pas de données de classement",
+      "no_proposals_message": "Aucune proposition active pour le moment"
+    },
+    "funds": {
+      "subtitle": "Activité de la gestion du trésor communautaire",
+      "multisig_avalanche": "Multisig Avalanche",
+      "multisig_solana": "Multisig Solana",
+      "required_signatures_sol": "Signatures requises SOL",
+      "required_signatures_avax": "Signatures requises AVAX",
+      "to_execute_transactions": "Pour exécuter des transactions",
+      "main_balance": "Solde principal"
+    },
+    "tokenSection": {
+      "subtitle": "Activité et métriques du token UVD",
+      "price_usd": "Prix USD",
+      "price_avax": "Prix AVAX",
+      "holders": "Détenteurs",
+      "transactions": "transactions",
+      "liquidity_total": "Liquidité Totale Backing UVD",
+      "price_evolution": "Évolution du Prix",
+      "days_ago_30": "Il y a 30 jours",
+      "today": "Aujourd'hui",
+      "info_title": "Informations du Token",
+      "contract_avalanche": "Contrat Avalanche",
+      "total_supply": "Total Supply",
+      "circulating_supply": "Supply en Circulation",
+      "burned_supply": "Supply Brûlé",
+      "market_cap": "Market Cap",
+      "view_on_dex": "Voir sur DEX",
+      "lfj": "LFJ",
+      "arena_trade": "ArenaTrade"
+    },
+    "community": {
+      "title": "Communauté DAO",
+      "subtitle": "Membres actifs et participation communautaire",
+      "num_members": "Nombre de Membres",
+      "events_done": "Événements Réalisés",
+      "events_desc": "Meetups, Workshops...",
+      "members_title": "Membres de la Communauté",
+      "join": "Rejoindre UltravioletaDAO",
+      "view_all_members": "Voir Tous les Membres ({{count}})",
+      "recent_activity": "Activité Récente",
+      "quick_links": "Liens Rapides",
+      "discord": "Serveur Discord",
+      "twitter": "Twitter/X",
+      "the_arena": "The Arena"
+    },
+    "contributorSection": {
+      "title": "Contributeurs DAO",
+      "subtitle": "Membres actifs et collaborateurs de la communauté",
+      "searchPlaceholder": "Chercher des membres...",
+      "stats": {
+        "totalMembers": "Membres Totaux",
+        "activeContributors": "Contributeurs Actifs",
+        "pendingApplications": "Candidatures en Attente",
+        "newThisMonth": "Nouveaux ce Mois"
+      },
+      "footer": {
+        "showingMembers": "Affichage de {{count}} sur {{total}} membres",
+        "viewApplications": "Voir les Candidatures"
+      },
+      "underConstruction": {
+        "title": "Section en construction",
+        "message": "Nous travaillons pour connecter les profils X (Twitter) avec les membres du DAO. Cette fonctionnalité sera bientôt disponible."
+      }
+    }
+  },
+  "navigation": {
+    "home": "Accueil",
+    "about": "Histoire",
+    "snapshot": "Snapshot",
+    "links": "Liens",
+    "courses": "Cours",
+    "blog": "Blog",
+    "token": "Token",
+    "contributors": "Contributeurs",
+    "multisig": "Multisig",
+    "watchToEarn": "Watch to Earn",
+    "delegations": "Délégations",
+    "safestats": "Multisignataires",
+    "metrics": "Métriques",
+    "categories": {
+      "main": "Principal",
+      "governance": "Gouvernance",
+      "admin": "Administration"
+    },
+    "descriptions": {
+      "home": "Tableau de bord principal d'Ultravioleta DAO",
+      "about": "Histoire et origine d'Ultravioleta DAO",
+      "links": "Liens importants de la communauté",
+      "courses": "Cours et matériel éducatif",
+      "blog": "Paila News",
+      "token": "Page du token $UVD",
+      "snapshot": "Votes et propositions de gouvernance",
+      "multisig": "Multisig pour la gestion des fonds",
+      "contributors": "Membres et contributeurs du DAO",
+      "watchToEarn": "Watch to Earn: échangez avec des points Twitch et recevez des UVD",
+      "delegations": "Stakez et déléguez vos tokens",
+      "safestats": "Statistiques des multisignataires",
+      "metrics": "Tableau de bord des métriques"
+    },
+    "aria": {
+      "open_menu": "Ouvrir le menu",
+      "close_menu": "Fermer le menu",
+      "main_menu": "Menu principal",
+      "change_language": "Changer de langue"
+    }
+  },
+  "auth": {
+    "register": "Postuler à Ultravioleta DAO",
+    "login": "Connexion"
+  },
+  "features": {
+    "community": {
+      "title": "Communauté Active",
+      "description": "Nous sommes l'une des communautés Web3 les plus actives d'Amérique latine",
+      "button": "Rejoignez-nous"
+    },
+    "token": {
+      "title": "$UVD : notre token de gouvernance",
+      "description": "Participez à la croissance et à la prise de décision avec notre token de gouvernance UVD",
+      "button": "Voir le Token"
+    },
+    "raffles": {
+      "title": "Tirages Périodiques",
+      "description": "Participez à nos tirages exclusifs pour les détenteurs d'UVD et les membres de la communauté"
+    }
+  },
+  "benefits": {
+    "title": "Avantages de Rejoindre",
+    "experts": {
+      "title": "Groupe Privé d'Experts",
+      "description": "Accès à un groupe Telegram privé avec des experts dans plusieurs domaines"
+    },
+    "networking": {
+      "title": "Nouvelles Relations et Opportunités",
+      "description": "Rencontrez et collaborez avec des leaders et développeurs clés de l'écosystème Web3"
+    },
+    "alphas": {
+      "title": "Les Meilleurs Alphas",
+      "description": "Obtenez un accès exclusif aux informations et opportunités stratégiques en Web3"
+    }
+  },
+  "about": {
+    "hero": {
+      "title": "Histoire d'Ultravioleta DAO",
+      "subtitle": "D'une communauté de streaming au DAO Web3 le plus actif d'Amérique latine"
+    },
+    "origin": {
+      "title": "Histoire et Origine",
+      "paragraph1": "L'histoire d'Ultravioleta DAO a commencé en mars 2022 sous le nom initial de 'Cuchorapido', une communauté créée à partir de transmissions en direct sur Twitch. L'objectif initial tournait autour des thèmes du Web3, de la technologie décentralisée, de la conscience numérique et de l'exploration pratique de ces outils devant un public actif et participatif.",
+      "paragraph2": "Ce qui a commencé comme une plateforme simple pour discuter de concepts abstraits s'est rapidement transformé en un espace dynamique où le public ne se contentait pas d'écouter, mais intervenait, proposait des idées et prenait de vraies décisions.",
+      "paragraph3": "Au fur et à mesure que la communauté se consolidait, le besoin naturel de s'organiser avec des outils plus sophistiqués est apparu, conduisant au lancement du premier token de gouvernance, CRT, initialement déployé sur Polygon. Cette première étape a servi de laboratoire vivant, permettant de comprendre les processus de gouvernance décentralisée par la pratique.",
+      "paragraph4": "Après deux ans de croissance continue, en juin 2024, la communauté a décidé de franchir une nouvelle étape et de se formaliser en tant qu'Ultravioleta DAO, en conservant le noyau original, mais avec une identité renouvelée reflétant son évolution. Ce changement a marqué la transition définitive vers une organisation décentralisée pleinement opérationnelle et établie, avec un nouveau token appelé UVD, actuellement actif sur le réseau Avalanche."
+    },
+    "timeline": {
+      "title": "Notre Évolution",
+      "march2022": {
+        "date": "Mars 2022",
+        "title": "Naissance comme Cuchorapido",
+        "description": "Début de la communauté à travers des transmissions en direct sur Twitch, explorant le Web3 et la technologie décentralisée."
+      },
+      "crt": {
+        "date": "2022-2023",
+        "title": "Token CRT et Gouvernance",
+        "description": "Lancement du premier token de gouvernance CRT sur Polygon, puis migré vers Avalanche comme CRT v2."
+      },
+      "june2024": {
+        "date": "Juin 2024",
+        "title": "Transformation en Ultravioleta DAO",
+        "description": "Formalisation en tant qu'Ultravioleta DAO avec une identité renouvelée et lancement du token UVD sur Avalanche."
+      },
+      "current": {
+        "date": "Présent",
+        "title": "DAO Pleinement Opérationnelle",
+        "description": "176 propositions exécutées, 5 218+ votes, enregistrement légal DUNA en cours, et événements présentiels dans plusieurs villes."
+      }
+    },
+    "vision": {
+      "title": "Vision",
+      "description": "Ultravioleta DAO cherche à se consolider comme une référence latino-américaine dans la création de culture Web3, en promouvant l'éducation ouverte, l'expérimentation technologique et la participation communautaire effective."
+    },
+    "mission": {
+      "title": "Mission",
+      "description": "Maintenir un espace décentralisé d'apprentissage collectif, où l'expérimentation pratique, l'essai-erreur et la prise de décision en temps réel sont au cœur de notre dynamique quotidienne."
+    },
+    "values": {
+      "title": "Nos Valeurs",
+      "learning": {
+        "title": "Apprentissage en Public",
+        "description": "Documenter et partager les succès comme les échecs, renforçant une culture basée sur la transparence radicale."
+      },
+      "community": {
+        "title": "Participation Active",
+        "description": "Chaque membre a une voix et un vote dans les décisions importantes, construisant ensemble l'avenir du DAO."
+      },
+      "transparency": {
+        "title": "Transparence Radicale",
+        "description": "Tout est enregistré, tout peut être audité, et tous peuvent participer à la gouvernance."
+      }
+    },
+    "activities": {
+      "title": "Activités et Initiatives",
+      "education": {
+        "title": "Éducation Continue",
+        "description": "Transmissions quotidiennes sur Twitch, The Arena et X, avec votes et prises de décisions en direct."
+      },
+      "governance": {
+        "title": "Gouvernance Active",
+        "description": "176 propositions de gouvernance exécutées sur Snapshot, avec plus de 5 218 votes réalisés par la communauté."
+      },
+      "economy": {
+        "title": "Économie Gamifiée",
+        "description": "Watch-to-Earn, Chat-to-Earn et Burn-to-Chat : systèmes de récompenses et d'incitations pour la participation active."
+      },
+      "infrastructure": {
+        "title": "Infrastructure Technique",
+        "description": "Administration de nœuds validateurs sur testnets et mainnets, offrant une expérience pratique aux membres."
+      },
+      "events": {
+        "title": "Événements Présentiels",
+        "description": "Rencontres à Bogotá, Medellín et préparation de l'Ultra Evento 2025 avec +100 participants."
+      },
+      "ai": {
+        "title": "IA Communautaire",
+        "description": "Développement d'agents intelligents 'Karma' et 'Hello' pour optimiser les tâches et gérer automatiquement les récompenses."
+      }
+    },
+    "governance": {
+      "title": "Expérience avec le Token de Gouvernance",
+      "paragraph1": "L'implémentation et l'évolution du token de gouvernance ont été clés pour la communauté. Chaque migration, de CRT à UVD, a signifié un saut qualitatif dans les capacités organisationnelles et de prise de décision.",
+      "paragraph2": "Les décisions gérées par le token incluent l'allocation des budgets communautaires, le choix des conférenciers pour les événements, la détermination des récompenses, les paramètres économiques internes et la définition de documents fondateurs comme les manifestes et constitutions du DAO.",
+      "paragraph3": "Le token n'a pas seulement facilité la gouvernance pratique, mais a également aligné les intérêts et créé un fort sentiment de responsabilité et de valeur partagée entre les participants."
+    },
+    "current": {
+      "title": "État Actuel et Projets",
+      "structure": {
+        "title": "Structure Horizontale",
+        "description": "Actuellement, Ultravioleta DAO possède une structure horizontale, sans hiérarchies traditionnelles, où les rôles sont assumés volontairement selon l'affinité et la disponibilité. Notre infrastructure technologique comprend des plateformes robustes comme Snapshot, des multisigs avec plusieurs signataires, des bots spécialisés et des tableaux de bord propriétaires pour le suivi en temps réel."
+      },
+      "projects": {
+        "title": "Ultra Evento 2025",
+        "description": "Le projet principal actuel est l'Ultra Evento 2025, qui aura lieu les 23 et 24 août à Medellín, avec le soutien de sponsors reconnus comme Avalanche, Uniswap, Rekt.news, Celo Colombia, Superfluid, Magic Eden, Self.xyz, Pyth et HeroesOfCipher. Cet événement proposera des dynamiques innovantes comme des airdrops automatiques, des POAPs, des incitations à la vérification d'identité et une couverture complète en streaming."
+      }
+    },
+    "blockchain": {
+      "title": "Que signifie la technologie blockchain pour Ultravioleta DAO?",
+      "paragraph1": "Blockchain, pour Ultravioleta, est un outil de coordination et de transparence radicale. Elle nous a permis de distribuer de la valeur, de prendre des décisions collectives et d'organiser notre communauté sans hiérarchies. C'est une infrastructure, mais aussi une culture : tout est enregistré, tout peut être audité, et tous peuvent participer.",
+      "paragraph2": "En Amérique latine, où les systèmes traditionnels échouent ou n'arrivent pas toujours, blockchain offre une voie parallèle pour construire la confiance, des économies propres et de nouvelles formes de collaboration. Pour nous, ce n'est pas une promesse future, mais une pratique quotidienne qui génère déjà un impact réel depuis la base et vers l'extérieur."
+    },
+    "cta": {
+      "title": "Voulez-vous faire partie du changement ?",
+      "description": "Rejoignez la communauté Web3 la plus active d'Amérique latine et construisez avec nous l'avenir décentralisé.",
+      "button": "Postuler au DAO"
+    }
+  },
+  "common": {
+    "cancel": "Annuler",
+    "disconnect": "Déconnecter",
+    "locale": "fr_FR",
+    "close": "Fermer",
+    "auto": "Auto",
+    "profile": "Profil"
+  },
+  "courses": {
+    "title": "Nos Cours"
+  },
+  "token": {
+    "title": "Token Ultravioleta DAO",
+    "description_1": "$UVD est le jeton de gouvernance et d'utilité d'Ultravioleta DAO, qui facilite la participation des membres dans la prise de décisions décentralisées et la gestion de la trésorerie. Il est utilisé pour voter sur les propositions, attribuer des fonds communautaires et soutenir les initiatives des membres.",
+    "description_2": "Grâce à $UVD, la DAO maintient une structure transparente et démocratique, garantissant que ses ressources sont dirigées en fonction de la gouvernance collective."
+  },
+  "success": {
+    "back_home": "Retour à l'accueil"
+  },
+  "safestats": {
+    "title": "Multisignataires UltravioletaDAO",
+    "filter_options": "Options de filtrage",
+    "start_date": "Date de début",
+    "end_date": "Date de fin",
+    "filter": "Filtrer",
+    "statistics_title": "Statistiques de signatures",
+    "from_to": "({{from}} à {{to}}, {{count}} transactions)",
+    "all_time": "Tout le temps",
+    "errors": {
+      "loading_data": "Erreur lors du chargement des données",
+      "date_required": "Veuillez sélectionner au moins une date"
+    }
+  },
+  "watch_to_earn": {
+    "title": "Watch to Earn",
+    "subtitle": "Gagnez vos points Twitch en direct pour tourner et gagner des récompenses en $UVD. Plus vous participez et regardez le stream, plus vous avez de chances de réclamer et d'être payé directement en notre monnaie communautaire.",
+    "redeem_points": "Échanger avec des points Twitch",
+    "uvd_payment": "Paiement en UVD on-chain",
+    "viewing_rewards": "Récompenses pour regarder le stream",
+    "personalize_wheel": "Personnaliser la Roue",
+    "add_participant": "Ajouter un participant",
+    "click_to_spin": "Cliquez pour tourner"
+  },
+  "wheel": {
+    "title": "Watch to Earn",
+    "description": "Échangez vos points Twitch en direct pour tourner et gagner des récompenses en $UVD. Plus vous participez et regardez le stream, plus vous avez de chances de réclamer et d'être payé directement dans notre monnaie communautaire.",
+    "highlights": {
+      "redeem": "Échanger avec des points Twitch",
+      "paid": "Paiement en UVD on-chain",
+      "watch": "Récompenses pour regarder le stream"
+    },
+    "customize_button": {
+      "show": "Personnaliser la Roue",
+      "hide": "Masquer les options"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Adresse du contrat"
+    },
+    "segments": {
+      "add": {
+        "title": "Ajouter une nouvelle valeur",
+        "value_placeholder": "Valeur",
+        "probability_placeholder": "Probabilité %",
+        "button": "Ajouter"
+      },
+      "current": {
+        "title": "Valeurs actuelles",
+        "probability_suffix": "%",
+        "min_segments_error": "La roue a besoin d'au moins 2 valeurs"
+      },
+      "probability_validation_error": "Les pourcentages doivent totaliser 100%. Veuillez vérifier les valeurs."
+    },
+    "buttons": {
+      "equalize": "Égaliser les probabilités",
+      "reset": "Réinitialiser aux valeurs par défaut"
+    },
+    "participants": {
+      "panel": {
+        "show": "Ajouter un participant",
+        "hide": "Masquer les participants",
+        "clear": "Effacer"
+      },
+      "add": {
+        "title": "Nouveau participant",
+        "wallet_placeholder": "Wallet (obligatoire)",
+        "username_placeholder": "Utilisateur (optionnel)",
+        "button": "Ajouter",
+        "wallet_required": "Le wallet est obligatoire"
+      },
+      "list": {
+        "title": "Participants et Résultats",
+        "headers": {
+          "user": "Utilisateur",
+          "wallet": "Wallet",
+          "result": "Résultat"
+        },
+        "anonymous": "Anonyme",
+        "current_turn": "Tour actuel",
+        "pending": "En attente",
+        "total": "Total",
+        "remove": "Supprimer le participant",
+        "completed": "Résultats"
+      }
+    },
+    "results": {
+      "title": "Résultat",
+      "current_participant": "Participant actuel",
+      "no_more_participants": "Il n'y a plus de participants. Ajoutez-en plus pour continuer",
+      "export": {
+        "button": "Exporter les résultats",
+        "no_results": "Aucun résultat à exporter"
+      },
+      "copy": {
+        "button": "Copier les résultats",
+        "error": "Erreur lors de la copie des résultats"
+      },
+      "send": {
+        "button": "Envoyer les prix"
+      }
+    },
+    "wallet": {
+      "send_rewards": "Airdrop de Prix",
+      "connect_required": "Connectez votre wallet pour envoyer des prix",
+      "connected": "Wallet connecté",
+      "connected_success": "Wallet connecté avec succès!",
+      "balance": "Solde",
+      "connect_button": "Connecter Wallet",
+      "approve_button": "Approuver",
+      "send_button": "Envoyer les Prix",
+      "view_transaction": "Voir la Transaction",
+      "approving": "Approbation",
+      "sending": "Envoi...",
+      "approving_transaction": "Approbation de la transaction...",
+      "sending_transaction": "Traitement de la transaction...",
+      "no_provider": "Aucun wallet EVM détecté. Veuillez installer un wallet compatible.",
+      "user_rejected": "Demande rejetée par l'utilisateur",
+      "connection_error": "Erreur de connexion au wallet",
+      "network_add_error": "Erreur lors de l'ajout du réseau Avalanche",
+      "network_switch_error": "Erreur lors du changement vers le réseau Avalanche",
+      "invalid_state": "État invalide. Vérifiez la connexion et le token",
+      "already_approved": "Tokens déjà approuvés",
+      "approval_success": "Tokens approuvés avec succès!",
+      "approval_error": "Erreur lors de l'approbation des tokens",
+      "insufficient_allowance": "Autorisation de token insuffisante. Veuillez d'abord approuver",
+      "send_success": "Prix envoyés avec succès!",
+      "send_error": "Erreur lors de l'envoi des prix",
+      "info": "Les prix seront envoyés directement depuis votre wallet en utilisant le réseau Avalanche C-Chain.",
+      "total_rewards": "Total des prix"
+    },
+    "spin_button": {
+      "spinning": "Rotation...",
+      "disabled": "Non disponible",
+      "loading": "Chargement des participants...",
+      "ready": "Cliquez pour tourner"
+    },
+    "twitch": {
+      "load": "Charger depuis Twitch",
+      "loading": "Chargement des récompenses...",
+      "load_error": "Erreur lors du chargement des récompenses Twitch",
+      "auth_error": "Erreur d'authentification. Veuillez vous reconnecter",
+      "complete_error": "Erreur lors de la finalisation de la récompense",
+      "no_rewards": "Aucune récompense en attente à charger",
+      "invalid_wallet": "Wallet invalide détecté",
+      "auth_required": "Vous devez vous authentifier avec Twitch",
+      "auth_button": "Se connecter avec Twitch",
+      "redirecting": "Redirection...",
+      "create_reward_error": "Erreur lors de la création de la récompense. Assurez-vous d'être affilié ou partenaire Twitch",
+      "client_id_mismatch": "La récompense a été créée avec une autre application. Veuillez créer une nouvelle récompense depuis cette application",
+      "redemption_error": "Erreur lors de la récupération des rachats. Veuillez réessayer",
+      "auto_update": "Mise à jour automatique"
+    }
+  },
+  "not_found": {
+    "title": "Page non trouvée"
+  },
+  "links": {
+    "title": "Nos Liens",
+    "swap_token": "Échanger Token"
+  },
+  "snapshot": {
+    "title": "Propositions de Gouvernance Ultravioleta DAO",
+    "view_votes": "Voir les votes",
+    "new_proposal": "Nouvelle proposition",
+    "author": "par",
+    "votes_count": "{{count}} votes",
+    "quorum": "{{percentage}}% quorum",
+    "states": {
+      "active": "Active",
+      "closed": "Fermée",
+      "passed": "Approuvée",
+      "rejected": "Rejetée",
+      "pending": "En attente"
+    },
+    "no_proposals": "Il n'y a pas de propositions actives en ce moment",
+    "connect_wallet": "Connecter Wallet",
+    "voting_power": "Pouvoir de vote",
+    "vote": "Voter",
+    "choices": "Options",
+    "voted": "Vous avez voté",
+    "vote_cancelled": "Vote annulé",
+    "vote_submitted": "Vote envoyé avec succès!",
+    "errors": {
+      "no_metamask": "Veuillez installer MetaMask ou un autre fournisseur Ethereum",
+      "connect_wallet": "Veuillez connecter votre wallet pour pouvoir voter",
+      "connect_wallet_proposal": "Veuillez connecter votre wallet pour créer une nouvelle proposition",
+      "vote_failed": "Erreur lors du vote, veuillez réessayer",
+      "insufficient_power": "Vous n'avez pas assez de pouvoir de vote",
+      "user_rejected_connection": "Vous avez rejeté la connexion du wallet",
+      "user_rejected_vote": "Vous avez rejeté la signature du vote",
+      "provider_error": "Erreur de connexion avec le fournisseur Ethereum"
+    },
+    "vote_reason_title": "Raison du vote",
+    "vote_reason_placeholder": "Écrivez une raison optionnelle pour votre vote...",
+    "voter": "Votant",
+    "choice": "Choix",
+    "date": "Date",
+    "results": "Résultats",
+    "votes": "votes",
+    "view_more": "Voir plus"
+  }
+}

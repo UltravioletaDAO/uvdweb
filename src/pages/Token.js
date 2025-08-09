@@ -58,9 +58,9 @@ const Token = () => {
 
           
                 
-                <ConnectButton
+                 <ConnectButton
       client={client}
-      connectButton={{ label: t('snapshot.connect_wallet') }}
+       connectButton={{ label: t('snapshot.connect_wallet') }}
       connectModal={{ showThirdwebBranding: false, size: "compact" }}
       locale={t('common.locale')}
       theme={darkTheme({

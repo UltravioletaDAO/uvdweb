@@ -2,6 +2,7 @@ import { MetricCard } from "../MetricCard";
 import { MemberCard } from "../MemberCard";
 import { Button } from "../Button";
 import { Users, Calendar } from "lucide-react";
+import { useTranslation } from 'react-i18next';
 
 const activeMembersData = [
   {
@@ -81,6 +82,7 @@ const activeMembersData = [
 ];
 
 export function CommunitySection() {
+  const { t } = useTranslation();
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">
@@ -89,25 +91,25 @@ export function CommunitySection() {
             <div className="p-2 rounded-lg bg-community/20">
               <Users className="h-6 w-6 text-community" />
             </div>
-            Comunidad DAO
+            {t('home.metrics.community_title') || 'Comunidad DAO'}
           </h2>
           <p className="text-muted-foreground mt-1">
-            Miembros activos y participación de la comunidad
+            {t('home.metrics.community_subtitle') || 'Miembros activos y participación de la comunidad'}
           </p>
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
         <MetricCard
-          title="Número de Miembros"
+          title={t('metricsDashboard.community.num_members') || 'Número de Miembros'}
           value="###"
           variant="community"
           icon={<Users className="h-4 w-4" />}
         />
         <MetricCard
-          title="Eventos Realizados"
+          title={t('metricsDashboard.community.events_done') || 'Eventos Realizados'}
           value="#"
-          description="Quedadas, Workshops..."
+          description={t('metricsDashboard.community.events_desc') || 'Quedadas, Workshops...'}
           variant="community"
           icon={<Calendar className="h-4 w-4" />}
         />
@@ -117,7 +119,7 @@ export function CommunitySection() {
         <div className="lg:col-span-2 space-y-4">
           <div className="flex items-center justify-between">
             <h3 className="text-lg font-semibold">
-              Miembros de la comunidad
+              {t('metricsDashboard.community.members_title') || 'Miembros de la comunidad'}
             </h3>
             <Button
               variant="outline"
@@ -130,7 +132,7 @@ export function CommunitySection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Únete a UltravioletaDAO
+                {t('metricsDashboard.community.join') || 'Únete a UltravioletaDAO'}
               </a>
             </Button>
           </div>
@@ -152,14 +154,14 @@ export function CommunitySection() {
               variant="outline"
               className="border-community/30 text-community"
             >
-              Ver Todos los Miembros (###)
+              {t('metricsDashboard.community.view_all_members', { count: '###' }) || 'Ver Todos los Miembros (###)'}
             </Button>
           </div>
         </div>
 
         <div className="space-y-6">
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Actividad Reciente</h3>
+            <h3 className="text-lg font-semibold">{t('metricsDashboard.community.recent_activity') || 'Actividad Reciente'}</h3>
             <div className="space-y-3">
               <div className="p-4 rounded-lg border border-community/20 bg-gradient-to-br from-community/5 to-transparent">
                 <div className="space-y-2">
@@ -203,7 +205,7 @@ export function CommunitySection() {
           </div>
 
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Enlaces Rápidos</h3>
+            <h3 className="text-lg font-semibold">{t('metricsDashboard.community.quick_links') || 'Enlaces Rápidos'}</h3>
             <div className="space-y-2">
               <Button
                 variant="outline"
@@ -215,7 +217,7 @@ export function CommunitySection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Discord Server
+                  {t('metricsDashboard.community.discord') || 'Discord Server'}
                 </a>
               </Button>
               <Button
@@ -228,7 +230,7 @@ export function CommunitySection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Twitter/X
+                  {t('metricsDashboard.community.twitter') || 'Twitter/X'}
                 </a>
               </Button>
               <Button
@@ -241,7 +243,7 @@ export function CommunitySection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  The Arena
+                  {t('metricsDashboard.community.the_arena') || 'The Arena'}
                 </a>
               </Button>
             </div>

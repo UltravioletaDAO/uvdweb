@@ -9,6 +9,7 @@ import { useCombinedSnapshotData } from '../hooks/useCombinedSnapshotData';
 import { useTokenMetrics } from '../hooks/useTokenMetrics';
 import { useSafeAvalanche } from '../hooks/useSafeAvalanche';
 import DaoStoryteller from '../components/DaoStoryteller';
+import SEO from '../components/SEO';
 
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -88,7 +89,13 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO 
+        title={t('home.seoTitle', 'Home')}
+        description={t('home.seoDescription', 'Join UltraVioleta DAO - Building the future of Web3 in Latin America through decentralized governance, community innovation, and collaborative treasury management.')}
+        keywords="UltraVioleta DAO, Web3 LATAM, Latin America Blockchain, DAO Community, Decentralized Governance, Avalanche, Snapshot Voting, Web3 Development, DeFi Latin America"
+      />
+      <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-[40vh] flex items-center">
         {/* Imagen de fondo con overlay */}
@@ -249,7 +256,7 @@ const Home = () => {
                   </div>
                 </div>
                 <div style={{ fontSize: '10px', color: '#666', marginTop: '4px' }}>
-                  {snapshotMetrics?.followers || '-'} members participating in governance
+                  {t('home.metrics.snapshot.members_participating', { count: snapshotMetrics?.followers || '-' })}
                 </div>
               </div>
               
@@ -301,7 +308,7 @@ const Home = () => {
                 <div className="text-xs space-y-2">
                   {tokenData.priceUsd && (
                     <div className="border-b border-gray-700 pb-1">
-                      <div className="font-semibold mb-1">USD:</div>
+                      <div className="font-semibold mb-1">{t('home.metrics.token.tooltip.usd')}</div>
                       <div>{Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $1</div>
                       <div>{Math.floor(10 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $10</div>
                       <div>{Math.floor(100 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $100</div>
@@ -309,7 +316,7 @@ const Home = () => {
                   )}
                   {tokenData.priceNative && (
                     <div>
-                      <div className="font-semibold mb-1">AVAX:</div>
+                      <div className="font-semibold mb-1">{t('home.metrics.token.tooltip.avax')}</div>
                       <div>{Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 1 AVAX</div>
                       <div>{Math.floor(5 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 5 AVAX</div>
                       <div>{Math.floor(10 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 10 AVAX</div>
@@ -552,7 +559,7 @@ const Home = () => {
                                 className="w-full aspect-[16/9] object-cover rounded-lg"
                                 onError={(e) => {
                                   e.target.src = "/api/placeholder/300/200";
-                                  e.target.alt = "Event placeholder";
+                                  e.target.alt = t('events.image_alt_placeholder');
                                 }}
                               />
                             </div>
@@ -573,6 +580,7 @@ const Home = () => {
         onClose={() => setIsFormOpen(false)} 
       />
     </div>
+    </>
   );
 };
 

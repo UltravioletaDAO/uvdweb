@@ -1,6 +1,8 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Pagination = ({ currentPage, totalPages, paginate }) => {
+  const { t } = useTranslation();
   return (
     <div className="flex items-center gap-8">
       <button 
@@ -15,7 +17,7 @@ const Pagination = ({ currentPage, totalPages, paginate }) => {
       </button>
 
       <p className="text-text-secondary">
-        Pagina <strong className="text-text-primary">{currentPage}</strong> de&nbsp;<strong className="text-text-primary">{totalPages}</strong>
+        {t('pagination.page_of', { current: currentPage, total: totalPages })}
       </p>
       
       <button 

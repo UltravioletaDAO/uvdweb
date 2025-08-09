@@ -1,5 +1,10 @@
 {
+  "seo": {
+    "defaultDescription": "Construyendo el futuro de Web3 en América Latina a través de gobernanza descentralizada, innovación impulsada por la comunidad y gestión colaborativa del tesoro."
+  },
   "home": {
+    "seoTitle": "Inicio - DAO líder de Web3 en América Latina",
+    "seoDescription": "Únete a UltraVioleta DAO - Construyendo el futuro de Web3 en América Latina mediante gobernanza descentralizada, innovación comunitaria y gestión colaborativa del tesoro.",
     "title": "Ultravioleta DAO",
     "subtitle": "La comunidad Web3 más activa de Latinoamérica",
     "metrics": {
@@ -8,6 +13,7 @@
         "proposals": "Propuestas",
         "votes": "Votos",
         "followers": "Followers",
+        "members_participating": "{{count}} miembros participando en gobernanza",
         "since": "Desde Junio 2023"
       },
       "token": {
@@ -17,7 +23,11 @@
         "transactions": "Transacciones",
         "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
         "total_liquidity": "Liquidez Total",
-        "total_liquidity_backing": "Liquidez respaldando $UVD"
+        "total_liquidity_backing": "Liquidez respaldando $UVD",
+        "tooltip": {
+          "usd": "USD",
+          "avax": "AVAX"
+        }
       },
       "funds": {
         "title": "Fondos y Finanzas",
@@ -37,8 +47,10 @@
     }
   },
   "metricsDashboard": {
+    "seoTitle": "Panel de Métricas - Análisis DAO en Tiempo Real",
+    "seoDescription": "Rastrea el rendimiento de UltraVioleta DAO con métricas en tiempo real. Visualiza participación en gobernanza, balance del tesoro, análisis de tokens, crecimiento de la comunidad y recompensas.",
     "title": "Dashboard de Métricas",
-    "subtitle": "Panel de métricas con la actividad, recompensas y crecimiento de la UltravioletaDAO",
+    "subtitle": "Panel de métricas con la actividad, recompensas y crecimiento de la Ultravioleta DAO",
     "snapshot": {
       "subtitle": "Propuestas y votaciones de la comunidad",
       "error_loading": "Error al cargar datos",
@@ -48,11 +60,23 @@
       "last_proposal": "Últimas Propuestas",
       "no_active_proposals": "Sin Propuestas Activas",
       "top_voters": "Top votantes de la comunidad",
-      "see_all": "Ver Todo"
+      "see_all": "Ver Todo",
+      "from_proposals": "de propuestas",
+      "active_members": "Miembros activos",
+      "view_on_snapshot": "Ver en Snapshot",
+      "state": "Estado",
+      "quorum": "Quórum",
+      "leaderboard_no_data": "Sin datos de líderes",
+      "no_proposals_message": "No hay propuestas activas en este momento"
     },
     "funds": {
       "subtitle": "Actividad de la gestión del tesoro comunitario",
-      "multisig_avalanche": "Multisig Avalanche"
+      "multisig_avalanche": "Multisig Avalanche",
+      "multisig_solana": "Multisig Solana",
+      "required_signatures_sol": "Firmas Requeridas SOL",
+      "required_signatures_avax": "Firmas Requeridas AVAX",
+      "to_execute_transactions": "Para ejecutar transacciones",
+      "main_balance": "Balance principal"
     },
     "contributorSection": {
       "title": "Contribuidores DAO",
@@ -64,11 +88,6 @@
         "pendingApplications": "Aplicaciones Pendientes",
         "newThisMonth": "Nuevos Este Mes"
       },
-      "filters": {
-        "all": "Todos",
-        "active": "Activos",
-        "new": "Nuevos"
-      },
       "footer": {
         "showingMembers": "Mostrando {{count}} de {{total}} miembros",
         "viewApplications": "Ver Aplicaciones"
@@ -77,10 +96,79 @@
         "title": "Sección en construcción",
         "message": "Estamos trabajando para conectar los perfiles de X (Twitter) con los miembros del DAO. Esta funcionalidad estará disponible pronto."
       }
+    },
+    "tokenSection": {
+      "subtitle": "Actividad y métricas del UVD token",
+      "price_usd": "Precio USD",
+      "price_avax": "Precio AVAX",
+      "holders": "Holders",
+      "transactions": "transacciones",
+      "liquidity_total": "Liquidez Total Backing UVD",
+      "price_evolution": "Evolución del Precio",
+      "days_ago_30": "30 días atrás",
+      "today": "Hoy",
+      "info_title": "Información del Token",
+      "contract_avalanche": "Contract Avalanche",
+      "total_supply": "Total Supply",
+      "circulating_supply": "Supply Circulando",
+      "burned_supply": "Supply Quemado",
+      "market_cap": "Market Cap",
+      "view_on_dex": "Ver en DEX",
+      "lfj": "LFJ",
+      "arena_trade": "ArenaTrade"
+    },
+    "rewards": {
+      "title": "Watch to Earn",
+      "subtitle": "Recompensas por participación y ruletas",
+      "cards": {
+        "active_users": "Usuarios Activos (Ruletas)",
+        "total_claimed": "Total Reclamado (Ruletas)",
+        "uvd_distributed": "UVD distribuidos",
+        "airdrops_delivered": "Airdrops Entregados",
+        "total_emitted": "Monto Total Emitido"
+      },
+      "info": {
+        "title": "Información de Ruletas",
+        "daily_limit": "Límite Diario de Ruletas",
+        "cooldown": "Cooldown Ruleta",
+        "cooldown_value": "1 semana (todos los viernes)",
+        "min_max_reward": "Min/Max Recompensa"
+      },
+      "types": {
+        "title": "Tipos de Ruletas Activas",
+        "roulette_x": "Ruleta X",
+        "roulette_y": "Ruleta Y",
+        "last_participants": "Ultimos Participantes",
+        "avg_reward": "Recompensa Promedio"
+      },
+      "distribution": {
+        "title": "Distribución de Recompensas",
+        "ruletas": "Ruletas",
+        "airdrops": "Airdrops"
+      },
+      "recent_activity": {
+        "title": "Actividad Reciente",
+        "view_history": "Ver Histórico Completo"
+      }
+    },
+    "community": {
+      "title": "Community Hub",
+      "subtitle": "Central de actividad comunitaria",
+      "num_members": "{{count}} Miembros",
+      "events_done": "{{count}} Eventos Completados",
+      "events_desc": "Encuentros y charlas realizadas",
+      "members_title": "Miembros destacados",
+      "join": "Aplica a Ultravioleta DAO",
+      "view_all_members": "Ver todos los miembros",
+      "recent_activity": "Actividad Reciente",
+      "quick_links": "Enlaces Rápidos",
+      "discord": "Discord",
+      "twitter": "Twitter",
+      "the_arena": "The Arena"
     }
   },
   "auth": {
-    "register": "Aplicar a UltravioletaDAO",
+    "register": "Aplicar a Ultravioleta DAO",
     "login": "Iniciar Sesión",
     "login_en": "Login"
   },
@@ -91,9 +179,10 @@
     "links": "Links",
     "courses": "Cursos",
     "blog": "Blog",
+    "token": "Token",
     "contributors": "Contribuidores",
     "multisig": "Multifirma",
-    "wheel": "Ruleta",
+    "watchToEarn": "Watch to Earn",
     "delegations": "Delegaciones",
     "safestats": "Multifirmantes",
     "metrics": "Métricas",
@@ -108,10 +197,11 @@
       "links": "Enlaces importantes de la comunidad",
       "courses": "Cursos y material educativo",
       "blog": "Paila News",
+      "token": "Página del token $UVD",
       "snapshot": "Votaciones y propuestas de gobernanza",
       "multisig": "Multifirma para gestión de fondos",
       "contributors": "Miembros y contribuidores del DAO",
-      "wheel": "Ruleta de premios UVD",
+      "watchToEarn": "Watch to Earn: reclama con puntos de Twitch y recibe UVD",
       "delegations": "Stakea y delegar tus tokens",
       "safestats": "Estadísticas de multifirmantes",
       "metrics": "Dashboard de métricas"
@@ -119,7 +209,8 @@
     "aria": {
       "open_menu": "Abrir menú",
       "close_menu": "Cerrar menú",
-      "main_menu": "Menú principal"
+      "main_menu": "Menú principal",
+      "change_language": "Cambiar idioma"
     }
   },
   "features": {
@@ -139,8 +230,8 @@
     }
   },
   "token": {
-    "title": "UltravioletaDAO Token",
-    "description_1": "$UVD es el token de gobernanza y utilidad de UltraVioleta DAO, que faculta a los titulares a participar en la toma de decisiones descentralizada y la gestión de tesorería. Se utiliza para votar propuestas, asignar fondos comunitarios y apoyar iniciativas de los miembros.",
+    "title": "Ultravioleta DAO Token",
+    "description_1": "$UVD es el token de gobernanza y utilidad de Ultravioleta DAO, que faculta a los titulares a participar en la toma de decisiones descentralizada y la gestión de tesorería. Se utiliza para votar propuestas, asignar fondos comunitarios y apoyar iniciativas de los miembros.",
     "description_2": "A través de $UVD, la DAO mantiene una estructura transparente y democrática, asegurando que sus recursos se dirigen en base a la gobernanza colectiva.",
     "chart_title": "Gráfico $UVD en Dexscreener",
     "buttons": {
@@ -239,7 +330,8 @@
     "title": "Nuestros Cursos"
   },
   "links": {
-    "title": "Nuestros Links"
+    "title": "Nuestros Links",
+    "swap_token": "Swap Token"
   },
   "purge": {
     "title": "Purga",
@@ -253,7 +345,8 @@
   },
   "events": {
     "title": "Próximos eventos",
-    "description": "Eventos de interés para la comunidad a los que se recomienda asistir. ¡No te los pierdas!"
+    "description": "Eventos de interés para la comunidad a los que se recomienda asistir. ¡No te los pierdas!",
+    "image_alt_placeholder": "Imagen de evento"
   },
   "snapshot": {
     "title": "Propuestas Gobernanza Ultravioleta DAO",
@@ -299,9 +392,19 @@
   "common": {
     "cancel": "Cancelar",
     "disconnect": "Desconectar",
-    "locale": "es_ES"
+    "locale": "es_ES",
+    "close": "Cerrar",
+    "auto": "Auto",
+    "profile": "Perfil"
   },
   "wheel": {
+    "title": "Watch to Earn",
+    "description": "Canjea tus puntos de Twitch en vivo para girar y gana recompensas en $UVD. Mientras más participas y ves el stream, más oportunidades tienes de reclamar y ser pagado directamente en nuestra moneda de la comunidad.",
+    "highlights": {
+      "redeem": "Canje con puntos de Twitch",
+      "paid": "Pago en UVD on-chain",
+      "watch": "Recompensas por ver el stream"
+    },
     "customize_button": {
       "show": "Personalizar Ruleta",
       "hide": "Ocultar opciones"
@@ -510,6 +613,8 @@
     "updating": "Actualizando"
   },
   "about": {
+    "seoTitle": "Acerca de Nosotros - Conoce UltraVioleta DAO",
+    "seoDescription": "Descubre UltraVioleta DAO - Una comunidad descentralizada construyendo infraestructura Web3 en América Latina. Conoce nuestra misión, visión, valores y trayectoria desde 2022.",
     "hero": {
       "title": "Historia de Ultravioleta DAO",
       "subtitle": "De una comunidad de streaming a la DAO Web3 más activa de Latinoamérica"
@@ -658,5 +763,58 @@
     "unwrap_cancelled": "Unwrap cancelado por el usuario",
     "view_transaction": "Ver en Snowtrace",
     "refresh_balances": "Actualizar balances"
+  },
+  "newsletter": {
+    "title": "Mantente al día",
+    "subtitle": "Suscríbete y recibe las últimas novedades",
+    "email_placeholder": "Email",
+    "subscribe": "Suscribirse"
+  },
+  "not_found": {
+    "title": "Página no encontrada"
+  },
+  "blog": {
+    "title": "Paila News",
+    "no_posts": "No hay posts disponibles en este momento",
+    "not_found": "No se encontró el post solicitado",
+    "tags": "Tags:",
+    "related": "También te podría interesar..."
+  },
+  "pagination": {
+    "page_of": "Página {{current}} de {{total}}"
+  },
+  "applicationStatus": {
+    "title": "Estado de tu Aplicación",
+    "instructions": "Ingresa el email con el que aplicaste para verificar el estado",
+    "email_placeholder": "tu@email.com",
+    "checking": "Consultando...",
+    "check_button": "Verificar Estado",
+    "last_update": "Última actualización:",
+    "status": {
+      "pending": {
+        "title": "Aplicación en Espera",
+        "description": "Tu aplicación ha sido recibida y está pendiente de revisión."
+      },
+      "review": {
+        "title": "En Revisión",
+        "description": "Tu aplicación está siendo evaluada por nuestro equipo."
+      },
+      "approved": {
+        "title": "¡Aprobado!",
+        "description": "¡Felicidades! Tu aplicación ha sido aprobada."
+      },
+      "waitlist": {
+        "title": "En Lista de Espera",
+        "description": "Has sido colocado en nuestra lista de espera prioritaria."
+      },
+      "rejected": {
+        "title": "No Aprobado",
+        "description": "Lo sentimos, tu aplicación no ha sido aprobada en este momento."
+      }
+    }
+  },
+  "navigation_extra": {
+    "multisig_alt": "Icono de Multifirma",
+    "swap_token_alt": "Icono de Swap Token"
   }
 } 

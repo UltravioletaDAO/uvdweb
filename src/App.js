@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { HelmetProvider } from 'react-helmet-async';
 import Home from "./pages/Home";
 import About from "./pages/About";
 import ApplicationForm from "./pages/ApplicationForm";
@@ -27,33 +28,35 @@ const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <ThirdwebProvider>
-        <Router>
-          <div className="min-h-screen bg-background text-text-primary">
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/aplicar" element={<ApplicationForm />} />
-              <Route path="/links" element={<SocialNetworks />} />
-              <Route path="/status" element={<ApplicationStatus />} />
-              <Route path="/courses" element={<Courses />} />
-              <Route path="/contributors" element={<Contributors />} />
-              <Route path="/token" element={<Token />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="*" element={<NotFound />} />
-              <Route path="/snapshot" element={<Snapshot />} />
-              <Route path="/wheel" element={<UvdWheel />} />
-              <Route path="/twitch-callback" element={<TwitchCallback />} />
-              <Route path="/safestats" element={<SafeStats />} />
-              <Route path="/metrics" element={<MetricsDashboard />} />
-            </Routes>
-          </div>
-        </Router>
-      </ThirdwebProvider>
-    </QueryClientProvider>
+    <HelmetProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThirdwebProvider>
+          <Router>
+            <div className="min-h-screen bg-background text-text-primary">
+              <Header />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/aplicar" element={<ApplicationForm />} />
+                <Route path="/links" element={<SocialNetworks />} />
+                <Route path="/status" element={<ApplicationStatus />} />
+                <Route path="/courses" element={<Courses />} />
+                <Route path="/contributors" element={<Contributors />} />
+                <Route path="/token" element={<Token />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="*" element={<NotFound />} />
+                <Route path="/snapshot" element={<Snapshot />} />
+                <Route path="/wheel" element={<UvdWheel />} />
+                <Route path="/twitch-callback" element={<TwitchCallback />} />
+                <Route path="/safestats" element={<SafeStats />} />
+                <Route path="/metrics" element={<MetricsDashboard />} />
+              </Routes>
+            </div>
+          </Router>
+        </ThirdwebProvider>
+      </QueryClientProvider>
+    </HelmetProvider>
   );
 }
 

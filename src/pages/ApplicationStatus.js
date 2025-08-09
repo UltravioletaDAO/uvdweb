@@ -9,42 +9,44 @@ import {
   ArrowLeftIcon 
 } from '@heroicons/react/24/outline';
 import { debugLog } from '../lib/utils';
+import { useTranslation } from 'react-i18next';
 
 const ApplicationStatus = () => {
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const { t } = useTranslation();
 
   const statusConfig = {
     pending: {
       icon: ClockIcon,
-      title: 'Aplicación en Espera',
-      description: 'Tu aplicación ha sido recibida y está pendiente de revisión.',
+      title: t('applicationStatus.status.pending.title'),
+      description: t('applicationStatus.status.pending.description'),
       color: 'text-yellow-400'
     },
     review: {
       icon: DocumentMagnifyingGlassIcon,
-      title: 'En Revisión',
-      description: 'Tu aplicación está siendo evaluada por nuestro equipo.',
+      title: t('applicationStatus.status.review.title'),
+      description: t('applicationStatus.status.review.description'),
       color: 'text-blue-400'
     },
     approved: {
       icon: CheckCircleIcon,
-      title: '¡Aprobado!',
-      description: '¡Felicidades! Tu aplicación ha sido aprobada.',
+      title: t('applicationStatus.status.approved.title'),
+      description: t('applicationStatus.status.approved.description'),
       color: 'text-green-400'
     },
     waitlist: {
       icon: ClockIcon,
-      title: 'En Lista de Espera',
-      description: 'Has sido colocado en nuestra lista de espera prioritaria.',
+      title: t('applicationStatus.status.waitlist.title'),
+      description: t('applicationStatus.status.waitlist.description'),
       color: 'text-purple-400'
     },
     rejected: {
       icon: XMarkIcon,
-      title: 'No Aprobado',
-      description: 'Lo sentimos, tu aplicación no ha sido aprobada en este momento.',
+      title: t('applicationStatus.status.rejected.title'),
+      description: t('applicationStatus.status.rejected.description'),
       color: 'text-red-400'
     }
   };
@@ -113,7 +115,7 @@ const ApplicationStatus = () => {
           )}
           <div className="w-full h-px bg-ultraviolet-darker/20" />
           <p className="text-text-secondary text-sm">
-            Última actualización: {formatDate(status.updatedAt)}
+            {t('applicationStatus.last_update')} {formatDate(status.updatedAt)}
           </p>
         </div>
       </motion.div>
@@ -131,7 +133,7 @@ const ApplicationStatus = () => {
         >
           <ArrowLeftIcon className="w-5 h-5 transform group-hover:-translate-x-1 
             transition-transform duration-200" />
-          <span>Volver al inicio</span>
+          <span>{t('success.back_home')}</span>
         </Link>
 
         <motion.div
@@ -141,10 +143,10 @@ const ApplicationStatus = () => {
         >
           <h1 className="text-4xl font-bold text-text-primary
             [text-shadow:_0_0_10px_rgba(106,0,255,0.2)]">
-            Estado de tu Aplicación
+            {t('applicationStatus.title')}
           </h1>
           <p className="text-text-secondary">
-            Ingresa el email con el que aplicaste para verificar el estado
+            {t('applicationStatus.instructions')}
           </p>
         </motion.div>
 
@@ -160,7 +162,7 @@ const ApplicationStatus = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder="tu@email.com"
+              placeholder={t('applicationStatus.email_placeholder')}
               className="w-full px-4 py-3 bg-background-input border rounded-lg
                 focus:ring-2 focus:ring-ultraviolet focus:border-transparent
                 border-ultraviolet-darker text-text-primary placeholder-text-secondary
@@ -181,10 +183,10 @@ const ApplicationStatus = () => {
               <div className="flex items-center justify-center">
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white
                   rounded-full animate-spin mr-2" />
-                Consultando...
+                {t('applicationStatus.checking')}
               </div>
             ) : (
-              'Verificar Estado'
+              t('applicationStatus.check_button')
             )}
           </button>
         </motion.form>

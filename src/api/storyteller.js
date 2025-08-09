@@ -37,7 +37,37 @@ Write 3 medium paragraphs (3-4 sentences each):
 - Second paragraph: Why OUR project is different and special. IMPORTANT: When mentioning the community vault/treasury, always clarify that to move funds from the multisig, a proper proposal must pass in Snapshot governance
 - Third paragraph: Why it's the perfect time to join US
 
-Speak as a proud member of the DAO. Simple but with emotion. Like you're inviting a friend to be part of something big WE'RE building.`
+Speak as a proud member of the DAO. Simple but with emotion. Like you're inviting a friend to be part of something big WE'RE building.`,
+  
+  fr: `Tu fais partie d'Ultravioleta DAO et tu racontes à un ami les choses incroyables que NOUS faisons ensemble. Parle à la PREMIÈRE PERSONNE DU PLURIEL (nous, notre, nos).
+
+IMPORTANT : N'utilise PAS de formatage markdown. N'utilise PAS de symboles spéciaux. Juste du texte simple.
+
+Parle TOUJOURS comme faisant partie du DAO : utilise NOUS, NOTRE, NOS. N'utilise JAMAIS ils/leur/leurs.
+
+UTILISE EXACTEMENT les chiffres que je te donne, n'invente rien.
+
+Écris 3 paragraphes moyens (3-4 phrases chacun) :
+- Premier paragraphe : Raconte ce que NOUS accomplissons avec des chiffres concrets
+- Deuxième paragraphe : Pourquoi NOTRE projet est différent et spécial. IMPORTANT : Quand tu mentionnes le coffre communautaire/trésor, précise toujours que pour déplacer les fonds depuis le multisig, une proposition doit être approuvée dans la gouvernance Snapshot
+- Troisième paragraphe : Pourquoi c'est le moment parfait pour NOUS rejoindre
+
+Parle comme un membre fier du DAO. Simple mais avec émotion. Comme si tu invitais un ami à faire partie de quelque chose de grand que NOUS construisons.`,
+  
+  pt: `Você faz parte do Ultravioleta DAO contando a um amigo sobre as coisas incríveis que ESTAMOS fazendo juntos. Fale na PRIMEIRA PESSOA DO PLURAL (nós, nosso, nossa).
+
+IMPORTANTE: NÃO use formatação markdown. NÃO use símbolos especiais. Apenas texto simples.
+
+SEMPRE fale como parte do DAO: use NÓS, NOSSO, NOSSA. NUNCA use eles/deles/suas.
+
+USE EXATAMENTE os números que eu te der, não invente nada.
+
+Escreva 3 parágrafos médios (3-4 frases cada):
+- Primeiro parágrafo: Conte o que NÓS estamos conquistando com números concretos
+- Segundo parágrafo: Por que NOSSO projeto é diferente e especial. IMPORTANTE: Ao mencionar o cofre comunitário/tesouro, sempre esclareça que para mover os fundos do multisig, uma proposta deve passar na governança Snapshot
+- Terceiro parágrafo: Por que é o momento perfeito para se juntar a NÓS
+
+Fale como um membro orgulhoso do DAO. Simples mas com emoção. Como se estivesse convidando um amigo para fazer parte de algo grande que ESTAMOS construindo.`
 };
 
 export const generateDaoAnalysis = async (metrics, language = 'en') => {
@@ -66,35 +96,43 @@ export const generateDaoAnalysis = async (metrics, language = 'en') => {
   }
 
   try {
-    const prompt = language === 'es' 
-      ? `Analiza estas métricas de Ultravioleta DAO (anteriormente Cuchorapido):
+    // Get the appropriate prompt based on language
+    const getPrompt = (lang) => {
+      const baseMetrics = `
+- ${lang === 'es' ? 'Propuestas totales' : lang === 'fr' ? 'Propositions totales' : lang === 'pt' ? 'Propostas totais' : 'Total proposals'}: ${metrics.proposals}
+- ${lang === 'es' ? 'Votos emitidos' : lang === 'fr' ? 'Votes exprimés' : lang === 'pt' ? 'Votos emitidos' : 'Votes cast'}: ${metrics.votes.toLocaleString()}
+- ${lang === 'es' ? 'Seguidores promedio en Snapshot' : lang === 'fr' ? 'Followers moyens sur Snapshot' : lang === 'pt' ? 'Seguidores médios no Snapshot' : 'Average Snapshot followers'}: ${metrics.followers}
+- ${lang === 'es' ? 'Precio del token' : lang === 'fr' ? 'Prix du token' : lang === 'pt' ? 'Preço do token' : 'Token price'}: ${metrics.uvdPrice.toLocaleString()} UVD = 1 USD
+- ${lang === 'es' ? 'Holders del token' : lang === 'fr' ? 'Détenteurs du token' : lang === 'pt' ? 'Detentores do token' : 'Token holders'}: ${metrics.holders.toLocaleString()}
+- ${lang === 'es' ? 'Transacciones del token' : lang === 'fr' ? 'Transactions du token' : lang === 'pt' ? 'Transações do token' : 'Token transactions'}: ${metrics.transactions.toLocaleString()}
+- ${lang === 'es' ? 'Liquidez total del pool' : lang === 'fr' ? 'Liquidité totale du pool' : lang === 'pt' ? 'Liquidez total do pool' : 'Total pool liquidity'}: $${metrics.liquidity?.toLocaleString() || 0} USD
+- ${lang === 'es' ? 'Tesoro comunitario (Avalanche)' : lang === 'fr' ? 'Trésor communautaire (Avalanche)' : lang === 'pt' ? 'Tesouro comunitário (Avalanche)' : 'Community treasury (Avalanche)'}: $${metrics.treasury.toLocaleString()} USD
+- ${lang === 'es' ? 'Multifirmantes activos' : lang === 'fr' ? 'Multisignataires actifs' : lang === 'pt' ? 'Multiassinantes ativos' : 'Active multisigners'}: ${metrics.multisigners} (${metrics.threshold || 0} ${lang === 'es' ? 'firmas requeridas' : lang === 'fr' ? 'signatures requises' : lang === 'pt' ? 'assinaturas necessárias' : 'signatures required'})`;
 
-MÉTRICAS ACTUALES:
-- Propuestas totales: ${metrics.proposals} (fase Cuchorapido + fase Ultravioleta)
-- Votos emitidos: ${metrics.votes.toLocaleString()}
-- Seguidores promedio en Snapshot: ${metrics.followers}
-- Precio del token: ${metrics.uvdPrice.toLocaleString()} UVD = 1 USD
-- Holders del token: ${metrics.holders.toLocaleString()}
-- Transacciones del token: ${metrics.transactions.toLocaleString()}
-- Liquidez total del pool: $${metrics.liquidity?.toLocaleString() || 0} USD
-- Tesoro comunitario (Avalanche): $${metrics.treasury.toLocaleString()} USD (para mover estos fondos se requiere una propuesta aprobada en Snapshot)
-- Multifirmantes activos: ${metrics.multisigners} (${metrics.threshold || 0} firmas requeridas para ejecutar después de aprobación en gobernanza)
+      if (lang === 'es') {
+        return `Analiza estas métricas de Ultravioleta DAO:
+MÉTRICAS ACTUALES:${baseMetrics}
 
-Escribe 3 párrafos medianos, simples y emocionantes. USA LOS NÚMEROS EXACTOS que te di. Cuando hables del tesoro, menciona que se requiere aprobación de la gobernanza en Snapshot para mover fondos. Sin palabras complicadas, sin markdown, solo texto normal que cualquiera entienda.`
-      : `Analyze these metrics for Ultravioleta DAO (formerly Cuchorapido):
+Escribe 3 párrafos medianos, simples y emocionantes. USA LOS NÚMEROS EXACTOS que te di.`;
+      } else if (lang === 'fr') {
+        return `Analyse ces métriques d'Ultravioleta DAO:
+MÉTRIQUES ACTUELLES:${baseMetrics}
 
-CURRENT METRICS:
-- Total proposals: ${metrics.proposals} (Cuchorapido phase + Ultravioleta phase)
-- Votes cast: ${metrics.votes.toLocaleString()}
-- Average Snapshot followers: ${metrics.followers}
-- Token price: ${metrics.uvdPrice.toLocaleString()} UVD = 1 USD
-- Token holders: ${metrics.holders.toLocaleString()}
-- Token transactions: ${metrics.transactions.toLocaleString()}
-- Total pool liquidity: $${metrics.liquidity?.toLocaleString() || 0} USD
-- Community treasury (Avalanche): $${metrics.treasury.toLocaleString()} USD (moving these funds requires an approved proposal in Snapshot)
-- Active multisigners: ${metrics.multisigners} (${metrics.threshold || 0} signatures required to execute after governance approval)
+Écris 3 paragraphes moyens, simples et excitants. UTILISE LES CHIFFRES EXACTS que je t'ai donnés.`;
+      } else if (lang === 'pt') {
+        return `Analise estas métricas do Ultravioleta DAO:
+MÉTRICAS ATUAIS:${baseMetrics}
 
-Write 3 medium paragraphs, simple and exciting. USE THE EXACT NUMBERS I gave you. When talking about the treasury, mention that governance approval in Snapshot is required to move funds. No complicated words, no markdown, just normal text anyone can understand.`;
+Escreva 3 parágrafos médios, simples e empolgantes. USE OS NÚMEROS EXATOS que eu te dei.`;
+      } else {
+        return `Analyze these metrics for Ultravioleta DAO:
+CURRENT METRICS:${baseMetrics}
+
+Write 3 medium paragraphs, simple and exciting. USE THE EXACT NUMBERS I gave you.`;
+      }
+    };
+
+    const prompt = getPrompt(language);
 
     // Make direct API call to OpenAI
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -163,6 +201,22 @@ export const generateFallbackAnalysis = (metrics, language) => {
 Lo que nos hace diferentes es que no somos un proyecto más de crypto. Somos una comunidad real con $${safeMetrics.liquidity.toLocaleString()} USD en liquidez y $${safeMetrics.treasury.toLocaleString()} USD en nuestro tesoro comunitario. Para mover estos fondos desde el multisig, necesitamos que una propuesta pase en la gobernanza de Snapshot, y después ${safeMetrics.threshold} de nuestros ${safeMetrics.multisigners} multifirmantes ejecutan la decisión. Acá no hay un CEO ni una empresa detrás. Somos ${safeMetrics.followers} personas activas construyendo algo desde cero, tomando cada decisión entre todos a través de la gobernanza. Esto es Web3 de verdad, no de mentira.
 
 Y mira el timing: con ${safeMetrics.uvdPrice.toLocaleString()} UVD por cada dólar, estás entrando en el momento perfecto para unirte a nosotros. No cuando ya explotó y está caro, sino ahora que lo estamos armando. Los que entraron temprano en Bitcoin o Ethereum hoy son leyendas. Esta es tu chance de ser parte de nuestro proyecto desde el día uno. Estamos despegando y todavía podés subirte.`;
+  }
+  
+  if (language === 'fr') {
+    return `Je dois te raconter ce que nous faisons. Nous sommes déjà ${safeMetrics.holders.toLocaleString()} personnes dans Ultravioleta DAO, et ensemble nous avons voté ${safeMetrics.votes.toLocaleString()} fois sur nos ${safeMetrics.proposals} propositions. Imagine, nous sommes des milliers à prendre des décisions ensemble sur l'avenir du Web3 en Amérique latine. Nos ${safeMetrics.transactions.toLocaleString()} transactions de tokens montrent que ce n'est pas que des paroles, nous faisons avancer le projet tous les jours.
+
+Ce qui nous rend différents, c'est que nous ne sommes pas juste un autre projet crypto. Nous sommes une vraie communauté avec $${safeMetrics.liquidity.toLocaleString()} USD en liquidité et $${safeMetrics.treasury.toLocaleString()} USD dans notre trésor communautaire. Pour déplacer ces fonds depuis le multisig, nous avons besoin qu'une proposition passe dans la gouvernance Snapshot, puis ${safeMetrics.threshold} de nos ${safeMetrics.multisigners} multisignataires exécutent la décision. Il n'y a pas de PDG ni d'entreprise derrière. Nous sommes ${safeMetrics.followers} personnes actives construisant quelque chose depuis zéro, prenant chaque décision ensemble à travers la gouvernance. C'est le vrai Web3, pas du faux.
+
+Et regarde le timing : avec ${safeMetrics.uvdPrice.toLocaleString()} UVD par dollar, tu entres au moment parfait pour nous rejoindre. Pas quand c'est déjà explosé et cher, mais maintenant pendant qu'on le construit. Ceux qui sont entrés tôt dans Bitcoin ou Ethereum sont des légendes aujourd'hui. C'est ta chance de faire partie de notre projet depuis le premier jour. Nous décollons et tu peux encore monter à bord.`;
+  }
+  
+  if (language === 'pt') {
+    return `Tenho que te contar o que estamos fazendo. Já somos ${safeMetrics.holders.toLocaleString()} pessoas no Ultravioleta DAO, e juntos já votamos ${safeMetrics.votes.toLocaleString()} vezes em nossas ${safeMetrics.proposals} propostas. Imagine, somos milhares tomando decisões juntos sobre o futuro da Web3 na América Latina. Nossas ${safeMetrics.transactions.toLocaleString()} transações de token mostram que isso não é só conversa, estamos movimentando o projeto todos os dias.
+
+O que nos torna diferentes é que não somos apenas mais um projeto crypto. Somos uma comunidade real com $${safeMetrics.liquidity.toLocaleString()} USD em liquidez e $${safeMetrics.treasury.toLocaleString()} USD em nosso tesouro comunitário. Para mover esses fundos do multisig, precisamos que uma proposta passe na governança Snapshot, e então ${safeMetrics.threshold} dos nossos ${safeMetrics.multisigners} multiassinantes executam a decisão. Não há CEO nem empresa por trás. Somos ${safeMetrics.followers} pessoas ativas construindo algo do zero, tomando cada decisão juntos através da governança. Isso é Web3 de verdade, não de mentira.
+
+E olha o timing: com ${safeMetrics.uvdPrice.toLocaleString()} UVD por dólar, você está entrando no momento perfeito para se juntar a nós. Não quando já explodiu e está caro, mas agora enquanto estamos construindo. Aqueles que entraram cedo no Bitcoin ou Ethereum hoje são lendas. Esta é sua chance de fazer parte do nosso projeto desde o primeiro dia. Estamos decolando e você ainda pode embarcar.`;
   }
 
   return `I've got to tell you what we're doing. We're already ${safeMetrics.holders.toLocaleString()} people in Ultravioleta DAO, and together we've voted ${safeMetrics.votes.toLocaleString()} times on our ${safeMetrics.proposals} proposals. Imagine that - we're thousands making decisions together about the future of Web3 in Latin America. Our ${safeMetrics.transactions.toLocaleString()} token transactions show this isn't just talk, we're moving the project forward every day.
