@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const currentDaoMembers = [
   "0x Ultravioleta", "x4", "Colega", "Txntacion", "Alejo", "f3l1p3", "Teddy Saint", 
-  "Juan Jumaga", "cdt", "Cyber Paisa", "nezzcold", "nesman", "Daniel Loaiza", "Fredino", 
+  "Juan Jumaga", "cdt", "Cyber Paisa", "nezzcold", "nesman", "Yesi", "Fredino", 
   "Waira Tamayo", "DavidZO", "Sindy Arenas", "JuanH", "DatBoi", 
   "Jangx", "David Rodríguez", "Juyan", "DogonPay", "Papossa", 
   "Stov3", "Brandon Heat", "lualjarami", "ACPM", "Roypi", "0xPineda", "SaemTwentyTwo", 
@@ -22,7 +22,7 @@ const currentDaoMembers = [
   "Jeinson22", "Jhon Fray", "Dylan Alexander", "knightinstruction", "Freddy Sebastian", 
   "Luis0xz", "Alx Dlarch", "daniiel_zp", "Crashxh", "PitBullPrime", "Mario Peña Alcazar", 
   "Crew", "Shelteer", "Alexis Cedeño", "Daniel S Morales", "Carza", 
-  "Andres92", "Zircon"
+  "Andres92", "Zircon", "alejojc", "IZ", "Danieeel", "Loaiza", "juanpkante", "0xsoulavax"
 ];
 
 export const ContributorSection = () => {
