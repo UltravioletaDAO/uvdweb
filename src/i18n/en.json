@@ -671,6 +671,10 @@
   },
   
   "metricsDashboard": {
+    "seoTitle": "Metrics Dashboard - Real-time DAO Analytics",
+    "seoDescription": "Track UltraVioleta DAO performance with real-time metrics. View governance participation, treasury balance, token analytics, community growth, and member rewards.",
+    "title": "Metrics Dashboard",
+    "subtitle": "Metrics panel with activity, rewards and growth of Ultravioleta DAO",
     "funds": {
       "multisig_solana": "Solana Multisig",
       "required_signatures_sol": "Required Signatures SOL",
@@ -759,12 +763,21 @@
       "multisig_solana": "Solana Multisig"
     },
     "snapshot": {
+      "subtitle": "Community proposals and votes",
+      "error_loading": "Error loading data",
+      "retry": "Retry",
+      "total_historic": "Total historic",
+      "latest_proposal": "Latest proposal",
+      "last_proposal": "Latest Proposals",
+      "no_active_proposals": "No Active Proposals",
+      "top_voters": "Top voters from community",
+      "see_all": "See All",
       "from_proposals": "From {{count}} proposals",
       "active_members": "Active members",
       "view_on_snapshot": "View on Snapshot",
       "state": "State",
       "quorum": "Quorum",
-      "leaderboard_no_data": "No leaderboard data."
+      "leaderboard_no_data": "No leaderboard data"
     },
     "community": {
       "title": "DAO Community",

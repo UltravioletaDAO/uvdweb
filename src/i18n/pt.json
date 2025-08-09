@@ -110,6 +110,25 @@
       "discord": "Servidor Discord",
       "twitter": "Twitter/X",
       "the_arena": "The Arena"
+    },
+    "contributorSection": {
+      "title": "Contribuidores DAO",
+      "subtitle": "Membros ativos e colaboradores da comunidade",
+      "searchPlaceholder": "Buscar membros...",
+      "stats": {
+        "totalMembers": "Membros Totais",
+        "activeContributors": "Contribuidores Ativos",
+        "pendingApplications": "Aplicações Pendentes",
+        "newThisMonth": "Novos Este Mês"
+      },
+      "footer": {
+        "showingMembers": "Mostrando {{count}} de {{total}} membros",
+        "viewApplications": "Ver Aplicações"
+      },
+      "underConstruction": {
+        "title": "Seção em construção",
+        "message": "Estamos trabalhando para conectar os perfis do X (Twitter) com os membros do DAO. Esta funcionalidade estará disponível em breve."
+      }
     }
   },
   "navigation": {
@@ -335,27 +354,6 @@
     "errors": {
       "loading_data": "Erro ao carregar dados",
       "date_required": "Por favor, selecione pelo menos uma data"
-    }
-  },
-  "metricsDashboard": {
-    "contributorSection": {
-      "title": "Contribuidores DAO",
-      "subtitle": "Membros ativos e colaboradores da comunidade",
-      "searchPlaceholder": "Buscar membros...",
-      "stats": {
-        "totalMembers": "Membros Totais",
-        "activeContributors": "Contribuidores Ativos",
-        "pendingApplications": "Aplicações Pendentes",
-        "newThisMonth": "Novos Este Mês"
-      },
-      "footer": {
-        "showingMembers": "Mostrando {{count}} de {{total}} membros",
-        "viewApplications": "Ver Aplicações"
-      },
-      "underConstruction": {
-        "title": "Seção em construção",
-        "message": "Estamos trabalhando para conectar os perfis do X (Twitter) com os membros do DAO. Esta funcionalidade estará disponível em breve."
-      }
     }
   },
   "watch_to_earn": {
