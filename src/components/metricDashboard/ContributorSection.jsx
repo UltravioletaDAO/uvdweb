@@ -22,13 +22,12 @@ const currentDaoMembers = [
   "Jeinson22", "Jhon Fray", "Dylan Alexander", "knightinstruction", "Freddy Sebastian", 
   "Luis0xz", "Alx Dlarch", "daniiel_zp", "Crashxh", "PitBullPrime", "Mario Peña Alcazar", 
   "Crew", "Shelteer", "Alexis Cedeño", "Daniel S Morales", "Carza", 
-  "Alejandro Jaramillo", "Zircon"
+  "Andres92", "Zircon"
 ];
 
 export const ContributorSection = () => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedFilter, setSelectedFilter] = useState('all');
   const [memberProfiles, setMemberProfiles] = useState({});
   const [loading, setLoading] = useState(true);
 
@@ -184,8 +183,8 @@ export const ContributorSection = () => {
       </div>
 
       <div className="bg-background-lighter rounded-xl p-6 border border-ultraviolet-darker/20">
-        <div className="flex flex-col md:flex-row gap-4 mb-6">
-          <div className="relative flex-1">
+        <div className="mb-6">
+          <div className="relative max-w-xl">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
             <input
               type="text"
@@ -197,41 +196,9 @@ export const ContributorSection = () => {
                 text-text-primary placeholder-text-secondary"
             />
           </div>
-          <div className="flex gap-2">
-            <button
-              onClick={() => setSelectedFilter('all')}
-              className={`px-4 py-2 rounded-lg transition-all ${
-                selectedFilter === 'all' 
-                  ? 'bg-ultraviolet text-white' 
-                  : 'bg-background text-text-secondary hover:bg-background-lighter'
-              }`}
-            >
-              {t('metricsDashboard.contributorSection.filters.all')}
-            </button>
-            <button
-              onClick={() => setSelectedFilter('active')}
-              className={`px-4 py-2 rounded-lg transition-all ${
-                selectedFilter === 'active' 
-                  ? 'bg-ultraviolet text-white' 
-                  : 'bg-background text-text-secondary hover:bg-background-lighter'
-              }`}
-            >
-              {t('metricsDashboard.contributorSection.filters.active')}
-            </button>
-            <button
-              onClick={() => setSelectedFilter('new')}
-              className={`px-4 py-2 rounded-lg transition-all ${
-                selectedFilter === 'new' 
-                  ? 'bg-ultraviolet text-white' 
-                  : 'bg-background text-text-secondary hover:bg-background-lighter'
-              }`}
-            >
-              {t('metricsDashboard.contributorSection.filters.new')}
-            </button>
-          </div>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
           {filteredMembers.map((member, index) => (
             <motion.div
               key={index}
@@ -241,7 +208,7 @@ export const ContributorSection = () => {
               className="bg-background rounded-lg px-3 py-3 text-sm text-text-primary
                 border border-ultraviolet-darker/10 hover:border-ultraviolet/30 
                 hover:bg-ultraviolet/5 transition-all cursor-pointer group
-                flex items-center"
+                flex items-center min-w-0"
             >
               <div className="flex items-center justify-between gap-2 w-full">
                 <div className="flex items-center gap-2 flex-1 min-w-0">

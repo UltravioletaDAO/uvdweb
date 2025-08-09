@@ -93,25 +93,25 @@ export function FundsSection() {
                 .map((token, idx) => (
                 <li
                   key={token.tokenInfo.address + idx}
-                  className="flex items-center justify-between p-2.5 rounded-lg bg-background/50 hover:bg-funds/10 transition-colors"
+                  className="flex items-center justify-between gap-2 p-2.5 rounded-lg bg-background/50 hover:bg-funds/10 transition-colors"
                 >
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-2 min-w-0 flex-1">
                     <img
                       src={token.tokenInfo.logoUri}
                       alt={token.tokenInfo.symbol}
-                      className="w-6 h-6 rounded-full border"
+                      className="w-6 h-6 rounded-full border flex-shrink-0"
                       onError={e => {
                         e.target.onerror = null; 
                         e.target.src = "/tokenPlaceholder.svg";
                       }}
                     />
-                    <span className="font-medium">{token.tokenInfo.symbol}</span>
-                    <span className="text-xs text-muted-foreground">
+                    <span className="font-medium flex-shrink-0">{token.tokenInfo.symbol}</span>
+                    <span className="text-xs text-muted-foreground truncate hidden sm:block">
                       {token.tokenInfo.name}
                     </span>
                   </div>
-                  <div className="text-right">
-                    <div className="font-bold">
+                  <div className="text-right flex-shrink-0">
+                    <div className="font-bold text-sm sm:text-base">
                       {(Number(token.balance) / 10 ** token.tokenInfo.decimals).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })}
                     </div>
                     <div className="text-xs text-muted-foreground">

@@ -1,9 +1,8 @@
 import SnapshotSection  from "../components/metricDashboard/SnapshotSection";
 import TokenSection from "../components/metricDashboard/TokenSection";
 import {FundsSection} from "../components/metricDashboard/FundsSection";
-import {CommunitySection} from "../components/metricDashboard/CommunitySection";
-import {RewardsSection} from "../components/metricDashboard/RewardsSection";
-import {ContributorSection} from "../components/metricDashboard/ContributorSection";
+// import {CommunitySection} from "../components/metricDashboard/CommunitySection";
+// import {RewardsSection} from "../components/metricDashboard/RewardsSection";
 import { Activity } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
@@ -18,18 +17,18 @@ const MetricsDashboard = () =>{
         description={t('metricsDashboard.seoDescription', 'Track UltraVioleta DAO performance with real-time metrics. View governance participation, treasury balance, token analytics, community growth, and member rewards.')}
         keywords="DAO Metrics, UltraVioleta Analytics, Treasury Dashboard, Governance Metrics, Token Analytics, Community Growth, DAO Performance, Blockchain Analytics, LATAM Web3 Metrics"
       />
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-background overflow-x-hidden">
       <div className="container mx-auto px-4 py-12 max-w-7xl">
         <header className="mb-12">
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl sm:text-4xl font-bold tracking-tight flex items-center gap-4 mb-3">
-                <div className="p-2.5 rounded-xl bg-primary/15">
-                  <Activity className="h-7 w-7 text-primary" />
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight flex flex-wrap items-center gap-3 mb-3">
+                <div className="p-2 sm:p-2.5 rounded-xl bg-primary/15">
+                  <Activity className="h-6 sm:h-7 w-6 sm:w-7 text-primary" />
                 </div>
-                {t('metricsDashboard.title')}
+                <span className="break-words">{t('metricsDashboard.title')}</span>
               </h1>
-              <p className="text-lg text-muted-foreground ml-14">
+              <p className="text-base sm:text-lg text-muted-foreground sm:ml-14">
                 {t('metricsDashboard.subtitle')}
               </p>
             </div>
@@ -49,10 +48,6 @@ const MetricsDashboard = () =>{
 
           <section>
             <FundsSection />
-          </section>
-
-          <section>
-            <ContributorSection />
           </section>
 
           {/* <section>

@@ -64,7 +64,8 @@
       "view_on_snapshot": "Voir sur Snapshot",
       "state": "État",
       "quorum": "Quorum",
-      "leaderboard_no_data": "Pas de données de classement"
+      "leaderboard_no_data": "Pas de données de classement",
+      "no_proposals_message": "Aucune proposition active pour le moment"
     },
     "funds": {
       "subtitle": "Activité de la gestion du trésor communautaire",
@@ -119,11 +120,6 @@
         "activeContributors": "Contributeurs Actifs",
         "pendingApplications": "Candidatures en Attente",
         "newThisMonth": "Nouveaux ce Mois"
-      },
-      "filters": {
-        "all": "Tous",
-        "active": "Actifs",
-        "new": "Nouveaux"
       },
       "footer": {
         "showingMembers": "Affichage de {{count}} sur {{total}} membres",

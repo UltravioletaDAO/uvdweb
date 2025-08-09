@@ -66,7 +66,8 @@
       "view_on_snapshot": "Ver en Snapshot",
       "state": "Estado",
       "quorum": "Quórum",
-      "leaderboard_no_data": "Sin datos de líderes"
+      "leaderboard_no_data": "Sin datos de líderes",
+      "no_proposals_message": "No hay propuestas activas en este momento"
     },
     "funds": {
       "subtitle": "Actividad de la gestión del tesoro comunitario",
@@ -86,11 +87,6 @@
         "activeContributors": "Contribuidores Activos",
         "pendingApplications": "Aplicaciones Pendientes",
         "newThisMonth": "Nuevos Este Mes"
-      },
-      "filters": {
-        "all": "Todos",
-        "active": "Activos",
-        "new": "Nuevos"
       },
       "footer": {
         "showingMembers": "Mostrando {{count}} de {{total}} miembros",

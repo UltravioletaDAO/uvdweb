@@ -64,7 +64,8 @@
       "view_on_snapshot": "Ver no Snapshot",
       "state": "Estado",
       "quorum": "Quórum",
-      "leaderboard_no_data": "Sem dados de ranking"
+      "leaderboard_no_data": "Sem dados de ranking",
+      "no_proposals_message": "Não há propostas ativas no momento"
     },
     "funds": {
       "subtitle": "Atividade da gestão do tesouro comunitário",
@@ -346,11 +347,6 @@
         "activeContributors": "Contribuidores Ativos",
         "pendingApplications": "Aplicações Pendentes",
         "newThisMonth": "Novos Este Mês"
-      },
-      "filters": {
-        "all": "Todos",
-        "active": "Ativos",
-        "new": "Novos"
       },
       "footer": {
         "showingMembers": "Mostrando {{count}} de {{total}} membros",

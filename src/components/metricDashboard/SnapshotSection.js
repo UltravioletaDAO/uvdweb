@@ -167,108 +167,127 @@ const SnapshotSection = () => {
           </div>
 
           <div className="grid gap-6 lg:grid-cols-2 mt-8">
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">
+            <div className="w-full overflow-hidden">
+              <div className="mb-4">
+                <h3 className="text-sm sm:text-base font-semibold uppercase tracking-wide text-muted-foreground">
                   {currentProposal ? t('metricsDashboard.snapshot.last_proposal') : t('metricsDashboard.snapshot.no_active_proposals')}
                 </h3>
-                {hasMultipleProposals && (
-                  <div className="flex items-center gap-1">
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={goToPreviousProposal}
-                      className="h-7 w-7 p-0"
-                    >
-                      <ChevronLeft className="h-4 w-4" />
-                    </Button>
-                    <span className="text-xs text-muted-foreground px-2">
-                      {currentProposalIndex + 1} / {proposals.length}
-                    </span>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={goToNextProposal}
-                      className="h-7 w-7 p-0"
-                    >
-                      <ChevronRight className="h-4 w-4" />
-                    </Button>
-                  </div>
-                )}
               </div>
               {currentProposal ? (
-                <div className="p-5 rounded-xl border border-snapshot/15 bg-gradient-to-br from-snapshot/5 to-transparent transition-all duration-500">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="font-medium">
-                      {currentProposal.title}
-                    </h4>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="border-snapshot/30"
-                      asChild
-                    >
-                   <a
-                        href={`https://snapshot.org/#/${currentSpace}/proposal/${currentProposal.id}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                <div className="space-y-4">
+                  {/* Card de propuesta */}
+                  <div className="p-4 sm:p-5 rounded-xl border border-snapshot/15 bg-gradient-to-br from-snapshot/5 to-transparent">
+                    {/* Header con título */}
+                    <div className="mb-3">
+                      <h4 className="font-medium text-sm sm:text-base line-clamp-2 mb-2">
+                        {currentProposal.title}
+                      </h4>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="border-snapshot/30 w-full sm:w-auto"
+                        asChild
                       >
-                        {t('home.metrics.see_more')}
-                        <ExternalLink className="ml-2 h-3 w-3" />
-                      </a>
-                    </Button>
-                  </div>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    {currentProposal.body?.substring(0, 200)}...
-                  </p>
-                  <div className="space-y-2">
-                        <div className="flex justify-between text-sm">
-                          <span>{t('metricsDashboard.snapshot.state')}</span>
-                      <span className="font-medium capitalize">{currentProposal.state}</span>
+                        <a
+                          href={`https://snapshot.org/#/${currentSpace}/proposal/${currentProposal.id}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {t('home.metrics.see_more')}
+                          <ExternalLink className="ml-2 h-3 w-3" />
+                        </a>
+                      </Button>
                     </div>
-                    {currentProposal.quorum && (
-                      <>
-                        <div className="flex justify-between text-sm">
-                          <span>{t('metricsDashboard.snapshot.quorum')}</span>
-                          <span className="font-medium">
-                            {currentProposal.scores_total && currentProposal.quorum 
-                              ? `${Math.min(Math.round((currentProposal.scores_total / currentProposal.quorum) * 100), 100)}% / 100%`
-                              : '0% / 100%'
-                            }
-                          </span>
-                        </div>
-                        <Progress 
-                          value={currentProposal.scores_total && currentProposal.quorum 
-                            ? Math.min((currentProposal.scores_total / currentProposal.quorum) * 100, 100) 
-                            : 0
-                          } 
-                          className="h-2" 
-                        />
-                      </>
-                    )}
+                    
+                    {/* Descripción */}
+                    <p className="text-xs sm:text-sm text-muted-foreground mb-4 line-clamp-3">
+                      {currentProposal.body?.substring(0, 150)}...
+                    </p>
+                    
+                    {/* Métricas */}
+                    <div className="space-y-2">
+                      <div className="flex justify-between text-xs sm:text-sm">
+                        <span>{t('metricsDashboard.snapshot.state')}</span>
+                        <span className="font-medium capitalize">{currentProposal.state}</span>
+                      </div>
+                      {currentProposal.quorum && (
+                        <>
+                          <div className="flex justify-between text-xs sm:text-sm">
+                            <span>{t('metricsDashboard.snapshot.quorum')}</span>
+                            <span className="font-medium">
+                              {currentProposal.scores_total && currentProposal.quorum 
+                                ? `${Math.min(Math.round((currentProposal.scores_total / currentProposal.quorum) * 100), 100)}%`
+                                : '0%'
+                              }
+                            </span>
+                          </div>
+                          <Progress 
+                            value={currentProposal.scores_total && currentProposal.quorum 
+                              ? Math.min((currentProposal.scores_total / currentProposal.quorum) * 100, 100) 
+                              : 0
+                            } 
+                            className="h-2" 
+                          />
+                        </>
+                      )}
+                    </div>
                   </div>
+                  
+                  {/* Controles de navegación */}
                   {hasMultipleProposals && (
-                    <div className="flex items-center justify-center mt-4 gap-1">
-                      {proposals.map((_, index) => (
-                        <button
-                          key={index}
-                          className={`h-1.5 transition-all duration-300 rounded-full ${
-                            index === currentProposalIndex 
-                              ? 'w-6 bg-snapshot' 
-                              : 'w-1.5 bg-snapshot/30 hover:bg-snapshot/50'
-                          }`}
-                          onClick={() => {
-                            setAutoRotate(false);
-                            setCurrentProposalIndex(index);
-                          }}
-                        />
-                      ))}
+                    <div className="flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={goToPreviousProposal}
+                          className="h-8 w-8 p-0"
+                        >
+                          <ChevronLeft className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          onClick={goToNextProposal}
+                          className="h-8 w-8 p-0"
+                        >
+                          <ChevronRight className="h-4 w-4" />
+                        </Button>
+                      </div>
+                      
+                      {/* Indicadores */}
+                      <div className="flex items-center gap-1">
+                        {proposals.slice(0, 5).map((_, index) => (
+                          <button
+                            key={index}
+                            className={`h-1.5 transition-all duration-300 rounded-full ${
+                              index === currentProposalIndex 
+                                ? 'w-4 bg-snapshot' 
+                                : 'w-1.5 bg-snapshot/30 hover:bg-snapshot/50'
+                            }`}
+                            onClick={() => {
+                              setAutoRotate(false);
+                              setCurrentProposalIndex(index);
+                            }}
+                            aria-label={`Go to proposal ${index + 1}`}
+                          />
+                        ))}
+                        {proposals.length > 5 && (
+                          <span className="text-xs text-muted-foreground ml-1">+{proposals.length - 5}</span>
+                        )}
+                      </div>
+                      
+                      <span className="text-xs text-muted-foreground">
+                        {currentProposalIndex + 1} / {proposals.length}
+                      </span>
                     </div>
                   )}
                 </div>
               ) : (
-                <div className="p-6 rounded-lg border border-snapshot/20 bg-gradient-to-br from-snapshot/5 to-transparent text-center">
-                  <p className="text-muted-foreground">{t('metricsDashboard.snapshot.no_active_proposals')}</p>
+                <div className="p-5 rounded-xl border border-snapshot/15 bg-gradient-to-br from-snapshot/5 to-transparent">
+                  <p className="text-muted-foreground text-center py-8">
+                    {t('metricsDashboard.snapshot.no_proposals_message', 'No hay propuestas activas en este momento')}
+                  </p>
                 </div>
               )}
             </div>
@@ -303,7 +322,7 @@ const SnapshotSection = () => {
                   {leaderboard.map((user, idx) => (
                     <div
                       key={user.user}
-                      className="p-3 rounded-lg border border-snapshot/10 bg-gradient-to-br from-snapshot/3 to-transparent flex items-center justify-between hover:border-snapshot/20 transition-colors h-[52px]"
+                      className="p-3 rounded-lg border border-snapshot/10 bg-gradient-to-br from-snapshot/3 to-transparent flex items-center justify-between hover:border-snapshot/20 transition-colors min-h-[52px] gap-2"
                     >
                       <div className="flex items-center gap-2">
                         <span className="font-bold text-snapshot">{idx + 1}.</span>

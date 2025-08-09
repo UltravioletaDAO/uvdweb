@@ -52,6 +52,62 @@
     "title": "Metrics Dashboard",
     "subtitle": "Metrics panel with activity, rewards and growth of Ultravioleta DAO",
     "snapshot": {
+      "subtitle": "Community proposals and votes",
+      "error_loading": "Error loading data",
+      "retry": "Retry",
+      "total_historic": "Total historic",
+      "latest_proposal": "Latest proposal",
+      "last_proposal": "Latest Proposals",
+      "no_active_proposals": "No Active Proposals",
+      "top_voters": "Top voters from community",
+      "see_all": "See All",
+      "from_proposals": "from proposals",
+      "active_members": "Active members",
+      "view_on_snapshot": "View on Snapshot",
+      "state": "State",
+      "quorum": "Quorum",
+      "leaderboard_no_data": "No leaderboard data"
+    },
+    "tokenSection": {
+      "subtitle": "Activity and metrics of UVD token",
+      "price_usd": "Price USD",
+      "price_avax": "Price AVAX",
+      "holders": "Holders",
+      "transactions": "transactions",
+      "liquidity_total": "Total Liquidity Backing UVD",
+      "price_evolution": "Price Evolution",
+      "days_ago_30": "30 days ago",
+      "today": "Today",
+      "info_title": "Token Information",
+      "contract_avalanche": "Contract Avalanche",
+      "total_supply": "Total Supply",
+      "circulating_supply": "Circulating Supply",
+      "burned_supply": "Burned Supply",
+      "market_cap": "Market Cap",
+      "view_on_dex": "View on DEX",
+      "lfj": "LFJ",
+      "arena_trade": "ArenaTrade"
+    },
+    "community": {
+      "title": "DAO Community",
+      "subtitle": "Active members and community participation",
+      "num_members": "Number of Members",
+      "events_done": "Events Held",
+      "events_desc": "Meetups, Workshops...",
+      "members_title": "Community Members",
+      "join": "Join UltravioletaDAO",
+      "view_all_members": "View All Members ({{count}})",
+      "recent_activity": "Recent Activity",
+      "quick_links": "Quick Links",
+      "discord": "Discord Server",
+      "twitter": "Twitter/X",
+      "the_arena": "The Arena"
+    },
+    "seoTitle": "Metrics Dashboard - Real-time DAO Analytics",
+    "seoDescription": "Track UltraVioleta DAO performance with real-time metrics. View governance participation, treasury balance, token analytics, community growth, and member rewards.",
+    "title": "Metrics Dashboard",
+    "subtitle": "Metrics panel with activity, rewards and growth of Ultravioleta DAO",
+    "snapshot": {
       "subtitle": "Community proposals and voting",
       "error_loading": "Error loading data",
       "retry": "Retry",
@@ -66,7 +122,8 @@
       "view_on_snapshot": "View on Snapshot",
       "state": "State",
       "quorum": "Quorum",
-      "leaderboard_no_data": "No leaderboard data"
+      "leaderboard_no_data": "No leaderboard data",
+      "no_proposals_message": "No active proposals at the moment"
     },
     "funds": {
       "subtitle": "Community treasury management activity",
@@ -86,11 +143,6 @@
         "activeContributors": "Active Contributors",
         "pendingApplications": "Pending Applications",
         "newThisMonth": "New This Month"
-      },
-      "filters": {
-        "all": "All",
-        "active": "Active",
-        "new": "New"
       },
       "footer": {
         "showingMembers": "Showing {{count}} of {{total}} members",
@@ -669,11 +721,6 @@
         "activeContributors": "Active Contributors",
         "pendingApplications": "Pending Applications",
         "newThisMonth": "New This Month"
-      },
-      "filters": {
-        "all": "All",
-        "active": "Active",
-        "new": "New"
       },
       "footer": {
         "showingMembers": "Showing {{count}} of {{total}} members",
