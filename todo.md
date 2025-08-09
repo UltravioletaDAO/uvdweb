@@ -12,3 +12,21 @@ Ultra sabes que sería bueno para la pagina, tener una línea del tiempo donde r
 
 
 0xSoulAvax: Seria bueno un footer en la pagina que muestre los echoes minteados con el @ del usuario que lo tiene o con los 4 digitos de la wallet
+
+
+Score/meritocracia: sistema de puntos por contribuciones (tiempo, UVD holdeado, invitar invitados, logística, engagement en X/Twitter, etc.), con ranking público.
+
+Web/Producto (DAO site)
+Directorio de miembros con perfiles editables, login por wallet, badges por roles/habilidades y por NFTs.
+Filtros por roles/aptitudes y “marketplace” interno: buscar diseñador, moderador, marketing, etc.
+Top contributors: sublista destacada con badge (diamante/estrella) además del listado completo.
+Métricas en vivo y dashboards: Snapshot, holders, precios, multifirma, propuestas, votos.
+Página del evento (Ultravioleta) con logos de sponsors, sección de entrevistas/artículos (incluye Cointelegraph), y media.
+Línea de tiempo/playlist de streams; agrupación por invitados/actividades; clips destacados.
+Internacionalización: selector de idiomas; streams semanales en inglés (resumen) para comunidad global.
+Badges programáticos por NFTs: verificación automática on-chain (sin listas manuales).
+
+
+Educación/Certificación
+Diplomados/cursos certificados (on-chain): certificar “Diplomado Web3” y emitir credenciales verificables.
+Continuar educación abierta y práctica (validadores, testnet/mainnet, agentes AI para comunidades).

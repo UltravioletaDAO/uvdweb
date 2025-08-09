@@ -98,7 +98,7 @@ const SnapshotSection = () => {
             <div className="p-2 rounded-lg bg-snapshot/15">
               <Vote className="h-5 w-5 text-snapshot" />
             </div>
-            <span className="text-snapshot">SNAPSHOT GOVERNANCE</span>
+            <span className="text-snapshot">{t('home.metrics.snapshot.title')}</span>
           </h2>
           <p className="text-sm text-muted-foreground ml-11">
             {t('metricsDashboard.snapshot.subtitle')}
@@ -133,7 +133,7 @@ const SnapshotSection = () => {
         <>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
             <MetricCard
-              title="Propuestas"
+              title={t('home.metrics.snapshot.proposals')}
               value={metrics.proposals}
               change={t('metricsDashboard.snapshot.total_historic')}
               changeType="neutral"
@@ -141,23 +141,23 @@ const SnapshotSection = () => {
               icon={<FileText className="h-4 w-4" />}
             />
             <MetricCard
-              title="Votos"
+              title={t('home.metrics.snapshot.votes')}
               value={metrics.votes.toLocaleString()}
-              change={`De ${metrics.proposals} propuestas`}
+              change={t('home.metrics.snapshot.proposals', { count: metrics.proposals })}
               changeType="neutral"
               variant="snapshot"
               icon={<Vote className="h-4 w-4" />}
             />
             <MetricCard
-              title="Followers"
+              title={t('home.metrics.snapshot.followers')}
               value={metrics.followers.toLocaleString()}
-              change="Miembros activos"
+              change={t('home.metrics.snapshot.members_participating', { count: metrics.followers })}
               changeType="neutral"
               variant="snapshot"
               icon={<Users className="h-4 w-4" />}
             />
             <MetricCard
-              title="Quórum requerido"
+              title={t('metricsDashboard.snapshot.latest_proposal')}
               value={currentProposal && currentProposal.quorum ? currentProposal.quorum.toLocaleString() : "N/A"}
               change={t('metricsDashboard.snapshot.latest_proposal')}
               changeType="positive"
@@ -208,12 +208,12 @@ const SnapshotSection = () => {
                       className="border-snapshot/30"
                       asChild
                     >
-                      <a
+                   <a
                         href={`https://snapshot.org/#/${currentSpace}/proposal/${currentProposal.id}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        Ver en Snapshot
+                        {t('home.metrics.see_more')}
                         <ExternalLink className="ml-2 h-3 w-3" />
                       </a>
                     </Button>
@@ -222,14 +222,14 @@ const SnapshotSection = () => {
                     {currentProposal.body?.substring(0, 200)}...
                   </p>
                   <div className="space-y-2">
-                    <div className="flex justify-between text-sm">
-                      <span>Estado</span>
+                        <div className="flex justify-between text-sm">
+                          <span>{t('metricsDashboard.snapshot.state')}</span>
                       <span className="font-medium capitalize">{currentProposal.state}</span>
                     </div>
                     {currentProposal.quorum && (
                       <>
                         <div className="flex justify-between text-sm">
-                          <span>Quórum</span>
+                          <span>{t('metricsDashboard.snapshot.quorum')}</span>
                           <span className="font-medium">
                             {currentProposal.scores_total && currentProposal.quorum 
                               ? `${Math.min(Math.round((currentProposal.scores_total / currentProposal.quorum) * 100), 100)}% / 100%`
@@ -268,7 +268,7 @@ const SnapshotSection = () => {
                 </div>
               ) : (
                 <div className="p-6 rounded-lg border border-snapshot/20 bg-gradient-to-br from-snapshot/5 to-transparent text-center">
-                  <p className="text-muted-foreground">No hay propuestas activas en este momento</p>
+                  <p className="text-muted-foreground">{t('metricsDashboard.snapshot.no_active_proposals')}</p>
                 </div>
               )}
             </div>
@@ -296,8 +296,8 @@ const SnapshotSection = () => {
                 onMouseEnter={() => setAutoScrollVoters(false)}
                 onMouseLeave={() => setAutoScrollVoters(true)}
               >
-                {leaderboard.length === 0 && (
-                  <div className="text-muted-foreground text-sm">No hay datos de leaderboard.</div>
+                  {leaderboard.length === 0 && (
+                  <div className="text-muted-foreground text-sm">{t('metricsDashboard.snapshot.leaderboard_no_data')}</div>
                 )}
                 <div className="transition-transform duration-500 ease-in-out" style={{ transform: `translateY(-${votersOffset * 60}px)` }}>
                   {leaderboard.map((user, idx) => (

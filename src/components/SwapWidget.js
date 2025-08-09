@@ -615,7 +615,7 @@ const SwapWidget = () => {
           <button
             onClick={handleClose}
             className="p-1 hover:bg-white/10 rounded-full transition-colors"
-            title="Cerrar notificación"
+            title={t('common.close')}
           >
             <XMarkIcon className="w-4 h-4 text-text-secondary hover:text-text-primary" />
           </button>

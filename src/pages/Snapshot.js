@@ -1031,7 +1031,7 @@ const Snapshot = () => {
             <div className="flex items-center gap-2 sm:gap-4">
               <img 
                 src={userProfile?.avatar ? convertIpfsUrl(userProfile.avatar) : `https://effigy.im/a/${account}.svg`} 
-                alt="Profile" 
+                alt={t('common.profile')} 
                 className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-ultraviolet-darker"
                 onError={(e) => {
                   e.target.onerror = null;

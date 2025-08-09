@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { LanguageIcon } from '@heroicons/react/24/outline';
 
 const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const toggleLanguage = () => {
     const newLang = i18n.language === 'es' ? 'en' : 'es';
@@ -18,7 +18,7 @@ const LanguageSwitcher = () => {
       className="flex items-center gap-2 px-4 py-2 rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-200"
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      aria-label="Change language"
+      aria-label={t('navigation.aria.change_language')}
     >
       <LanguageIcon className="w-5 h-5 text-ultraviolet" />
       <span className="font-medium text-text-primary">

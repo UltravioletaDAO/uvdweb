@@ -1,10 +1,12 @@
 import React from "react"
+import { useTranslation } from 'react-i18next'
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { posts } from "../posts/posts"
 
 function BlogPost() {
   const { slug } = useParams()
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const post = posts.find((post) => post.slug === slug)
 
@@ -18,7 +20,7 @@ function BlogPost() {
     return (
       <main className="min-h-screen bg text-text-primary flex items-center justify-center">
         <div className="text-center text-text-secondary">
-          No se encontró el post solicitado
+          {t('blog.not_found')}
         </div>
       </main>
     )
@@ -65,7 +67,7 @@ function BlogPost() {
         {/* Tags */}
         {post.tags && post.tags.length > 0 && (
           <div className="mt-12 pt-6 border-t border-zinc-800">
-            <h3 className="text-lg text-text-primary font-semibold mb-4">Tags:</h3>
+            <h3 className="text-lg text-text-primary font-semibold mb-4">{t('blog.tags')}</h3>
             <div className="flex flex-wrap gap-2">
               {post.tags.map((tag) => (
                 <span key={tag} className="bg-zinc-800 text-zinc-200 px-3 py-1 rounded-full text-sm">
@@ -79,7 +81,7 @@ function BlogPost() {
         {/* Related posts */}
         {post.relatedPosts && post.relatedPosts.length > 0 && (
           <div className="mt-12 pt-6 border-t border-zinc-800">
-            <h3 className="text-2xl text-text-primary font-bold mb-6">También te podría interesar...</h3>
+            <h3 className="text-2xl text-text-primary font-bold mb-6">{t('blog.related')}</h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {post.relatedPosts.map((relatedSlug) => {
                 const relatedPost = posts.find((p) => p.slug === relatedSlug)

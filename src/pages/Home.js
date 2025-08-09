@@ -301,7 +301,7 @@ const Home = () => {
                 <div className="text-xs space-y-2">
                   {tokenData.priceUsd && (
                     <div className="border-b border-gray-700 pb-1">
-                      <div className="font-semibold mb-1">USD:</div>
+                      <div className="font-semibold mb-1">{t('home.metrics.token.tooltip.usd')}</div>
                       <div>{Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $1</div>
                       <div>{Math.floor(10 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $10</div>
                       <div>{Math.floor(100 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $100</div>
@@ -309,7 +309,7 @@ const Home = () => {
                   )}
                   {tokenData.priceNative && (
                     <div>
-                      <div className="font-semibold mb-1">AVAX:</div>
+                      <div className="font-semibold mb-1">{t('home.metrics.token.tooltip.avax')}</div>
                       <div>{Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 1 AVAX</div>
                       <div>{Math.floor(5 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 5 AVAX</div>
                       <div>{Math.floor(10 / parseFloat(tokenData.priceNative)).toLocaleString()} UVD = 10 AVAX</div>
@@ -552,7 +552,7 @@ const Home = () => {
                                 className="w-full aspect-[16/9] object-cover rounded-lg"
                                 onError={(e) => {
                                   e.target.src = "/api/placeholder/300/200";
-                                  e.target.alt = "Event placeholder";
+                                  e.target.alt = t('events.image_alt_placeholder');
                                 }}
                               />
                             </div>

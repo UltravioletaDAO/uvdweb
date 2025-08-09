@@ -18,7 +18,11 @@
         "transactions": "Transactions",
         "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
         "total_liquidity": "Total Liquidity",
-        "total_liquidity_backing": "Total Liquidity Backing UVD"
+        "total_liquidity_backing": "Total Liquidity Backing UVD",
+        "tooltip": {
+          "usd": "USD",
+          "avax": "AVAX"
+        }
       },
       "funds": {
         "title": "Funds & Finance",
@@ -39,7 +43,7 @@
   },
   "metricsDashboard": {
     "title": "Metrics Dashboard",
-    "subtitle": "Metrics panel with activity, rewards and growth of UltravioletaDAO",
+    "subtitle": "Metrics panel with activity, rewards and growth of Ultravioleta DAO",
     "snapshot": {
       "subtitle": "Community proposals and voting",
       "error_loading": "Error loading data",
@@ -49,11 +53,22 @@
       "last_proposal": "Latest Proposals",
       "no_active_proposals": "No Active Proposals",
       "top_voters": "Top community voters",
-      "see_all": "See All"
+      "see_all": "See All",
+      "from_proposals": "from proposals",
+      "active_members": "Active members",
+      "view_on_snapshot": "View on Snapshot",
+      "state": "State",
+      "quorum": "Quorum",
+      "leaderboard_no_data": "No leaderboard data"
     },
     "funds": {
       "subtitle": "Community treasury management activity",
-      "multisig_avalanche": "Avalanche Multisig"
+      "multisig_avalanche": "Avalanche Multisig",
+      "multisig_solana": "Solana Multisig",
+      "required_signatures_sol": "Required Signatures SOL",
+      "required_signatures_avax": "Required Signatures AVAX",
+      "to_execute_transactions": "to execute transactions",
+      "main_balance": "Main balance"
     },
     "contributorSection": {
       "title": "DAO Contributors",
@@ -78,10 +93,79 @@
         "title": "Section under construction",
         "message": "We're working on connecting X (Twitter) profiles with DAO members. This feature will be available soon."
       }
+    },
+    "tokenSection": {
+      "subtitle": "UVD token activity and metrics",
+      "price_usd": "USD Price",
+      "price_avax": "AVAX Price",
+      "holders": "Holders",
+      "transactions": "transactions",
+      "liquidity_total": "Total Liquidity Backing UVD",
+      "price_evolution": "Price Evolution",
+      "days_ago_30": "30 days ago",
+      "today": "Today",
+      "info_title": "Token Information",
+      "contract_avalanche": "Avalanche Contract",
+      "total_supply": "Total Supply",
+      "circulating_supply": "Circulating Supply",
+      "burned_supply": "Burned Supply",
+      "market_cap": "Market Cap",
+      "view_on_dex": "View on DEX",
+      "lfj": "LFJ",
+      "arena_trade": "ArenaTrade"
+    },
+    "rewards": {
+      "title": "Watch to Earn",
+      "subtitle": "Rewards for participation and roulettes",
+      "cards": {
+        "active_users": "Active Users (Roulettes)",
+        "total_claimed": "Total Claimed (Roulettes)",
+        "uvd_distributed": "UVD distributed",
+        "airdrops_delivered": "Airdrops Delivered",
+        "total_emitted": "Total Amount Emitted"
+      },
+      "info": {
+        "title": "Roulette Information",
+        "daily_limit": "Daily Roulette Limit",
+        "cooldown": "Roulette Cooldown",
+        "cooldown_value": "1 week (every Friday)",
+        "min_max_reward": "Min/Max Reward"
+      },
+      "types": {
+        "title": "Active Roulette Types",
+        "roulette_x": "Roulette X",
+        "roulette_y": "Roulette Y",
+        "last_participants": "Last Participants",
+        "avg_reward": "Average Reward"
+      },
+      "distribution": {
+        "title": "Rewards Distribution",
+        "ruletas": "Roulettes",
+        "airdrops": "Airdrops"
+      },
+      "recent_activity": {
+        "title": "Recent Activity",
+        "view_history": "View Full History"
+      }
+    },
+    "community": {
+      "title": "Community Hub",
+      "subtitle": "Community activity central",
+      "num_members": "{{count}} Members",
+      "events_done": "{{count}} Events Completed",
+      "events_desc": "Meetings and talks held",
+      "members_title": "Featured members",
+      "join": "Apply to Ultravioleta DAO",
+      "view_all_members": "View all members",
+      "recent_activity": "Recent Activity",
+      "quick_links": "Quick Links",
+      "discord": "Discord",
+      "twitter": "Twitter",
+      "the_arena": "The Arena"
     }
   },
   "auth": {
-    "register": "Apply to UltravioletaDAO",
+    "register": "Apply to Ultravioleta DAO",
     "login": "Login",
     "login_en": "Login"
   },
@@ -92,6 +176,7 @@
     "links": "Links",
     "courses": "Courses",
     "blog": "Blog",
+    "token": "Token",
     "contributors": "Contributors",
     "multisig": "Multisig",
     "wheel": "Roulette",
@@ -109,6 +194,7 @@
       "links": "Important community links",
       "courses": "Courses and educational material",
       "blog": "Paila News",
+      "token": "$UVD token page",
       "snapshot": "Governance votes and proposals",
       "multisig": "Multisig for fund management",
       "contributors": "DAO members and contributors",
@@ -120,7 +206,8 @@
     "aria": {
       "open_menu": "Open menu",
       "close_menu": "Close menu",
-      "main_menu": "Main menu"
+      "main_menu": "Main menu",
+      "change_language": "Change language"
     }
   },
   "features": {
@@ -140,8 +227,8 @@
     }
   },
   "token": {
-    "title": "UltravioletaDAO Token",
-    "description_1": "$UVD is the governance and utility token of UltraVioleta DAO, which empowers holders to participate in decentralized decision-making and treasury management. It is used to vote on proposals, allocate community funds, and support member initiatives.",
+    "title": "Ultravioleta DAO Token",
+    "description_1": "$UVD is the governance and utility token of Ultravioleta DAO, which empowers holders to participate in decentralized decision-making and treasury management. It is used to vote on proposals, allocate community funds, and support member initiatives.",
     "description_2": "Through $UVD, the DAO maintains a transparent and democratic structure, ensuring that its resources are directed based on collective governance.",
     "chart_title": "Dexscreener $UVD Chart",
     "buttons": {
@@ -242,6 +329,22 @@
   "links": {
     "title": "Our Links"
   },
+  "newsletter": {
+    "title": "Stay up to date",
+    "subtitle": "Subscribe and receive the latest updates",
+    "email_placeholder": "Email",
+    "subscribe": "Subscribe"
+  },
+  "blog": {
+    "title": "Paila News",
+    "no_posts": "No posts available at the moment",
+    "not_found": "The requested post was not found",
+    "tags": "Tags:",
+    "related": "You might also be interested..."
+  },
+  "pagination": {
+    "page_of": "Page {{current}} of {{total}}"
+  },
   "purge": {
     "title": "Purge",
     "headers": {
@@ -254,7 +357,8 @@
   },
   "events": {
     "title": "Upcoming events",
-    "description": "Community events of interest that are recommended to attend. Don't miss them!"
+    "description": "Community events of interest that are recommended to attend. Don't miss them!",
+    "image_alt_placeholder": "Event placeholder"
   },
   "snapshot": {
     "title": "Ultravioleta DAO Governance Proposals",
@@ -300,7 +404,10 @@
   "common": {
     "cancel": "Cancel",
     "disconnect": "Disconnect",
-    "locale": "en_US"
+    "locale": "en_US",
+    "close": "Close",
+    "auto": "Auto",
+    "profile": "Profile"
   },
   "wheel": {
     "customize_button": {
@@ -415,6 +522,172 @@
     "tutorial": {
       "title": "How to Stake BEAM",
       "video_title": "Tutorial: Staking BEAM Tokens"
+    }
+  },
+  "applicationStatus": {
+    "title": "Your Application Status",
+    "instructions": "Enter the email you applied with to check the status",
+    "email_placeholder": "your@email.com",
+    "checking": "Checking...",
+    "check_button": "Check Status",
+    "last_update": "Last update:",
+    "status": {
+      "pending": {
+        "title": "Application Pending",
+        "description": "Your application has been received and is pending review."
+      },
+      "review": {
+        "title": "Under Review",
+        "description": "Your application is being evaluated by our team."
+      },
+      "approved": {
+        "title": "Approved!",
+        "description": "Congratulations! Your application has been approved."
+      },
+      "waitlist": {
+        "title": "On Waitlist",
+        "description": "You have been placed on our priority waitlist."
+      },
+      "rejected": {
+        "title": "Not Approved",
+        "description": "Sorry, your application has not been approved at this time."
+      }
+    }
+  },
+  "navigation_extra": {
+    "multisig_alt": "Multisig Icon",
+    "swap_token_alt": "Swap Token Icon"
+  },
+  "home": {
+    "metrics": {
+      "token": {
+        "tooltip": {
+          "usd": "USD:",
+          "avax": "AVAX:"
+        }
+      }
+    }
+  },
+  "metricsDashboard": {
+    "funds": {
+      "multisig_solana": "Solana Multisig",
+      "required_signatures_sol": "Required Signatures SOL",
+      "required_signatures_avax": "Required Signatures AVAX",
+      "to_execute_transactions": "To execute transactions",
+      "main_balance": "Main Balance"
+    },
+    "rewards": {
+      "title": "Watch to Earn",
+      "subtitle": "Rewards for participation and roulettes",
+      "cards": {
+        "active_users": "Active Users (Roulette)",
+        "total_claimed": "Total Claimed (Roulette)",
+        "uvd_distributed": "UVD distributed",
+        "airdrops_delivered": "Airdrops Delivered",
+        "total_emitted": "Total Emitted"
+      },
+      "info": {
+        "title": "Roulette Information",
+        "daily_limit": "Daily Roulette Limit",
+        "cooldown": "Roulette Cooldown",
+        "cooldown_value": "1 week (every Friday)",
+        "min_max_reward": "Min/Max Reward"
+      },
+      "types": {
+        "title": "Active Roulette Types",
+        "roulette_x": "Roulette X",
+        "roulette_y": "Roulette Y",
+        "last_participants": "Latest Participants",
+        "avg_reward": "Average Reward"
+      },
+      "distribution": {
+        "title": "Rewards Distribution",
+        "ruletas": "Roulettes",
+        "airdrops": "Airdrops"
+      },
+      "recent_activity": {
+        "title": "Recent Activity",
+        "view_history": "View Full History"
+      }
+    },
+    "contributorSection": {
+      "title": "DAO Contributors",
+      "subtitle": "Active members and community collaborators",
+      "searchPlaceholder": "Search members...",
+      "stats": {
+        "totalMembers": "Total Members",
+        "activeContributors": "Active Contributors",
+        "pendingApplications": "Pending Applications",
+        "newThisMonth": "New This Month"
+      },
+      "filters": {
+        "all": "All",
+        "active": "Active",
+        "new": "New"
+      },
+      "footer": {
+        "showingMembers": "Showing {{count}} of {{total}} members",
+        "viewApplications": "View Applications"
+      },
+      "underConstruction": {
+        "title": "Section under construction",
+        "message": "We're working on connecting X (Twitter) profiles with DAO members. This feature will be available soon."
+      }
+    },
+    "tokenSection": {
+      "subtitle": "Activity and metrics for the UVD token",
+      "price_usd": "Price USD",
+      "price_avax": "Price AVAX",
+      "holders": "Holders",
+      "transactions": "transactions",
+      "liquidity_total": "Total Liquidity Backing UVD",
+      "price_evolution": "Price Evolution",
+      "days_ago_30": "30 days ago",
+      "today": "Today",
+      "info_title": "Token Information",
+      "contract_avalanche": "Contract Avalanche",
+      "total_supply": "Total Supply",
+      "circulating_supply": "Circulating Supply",
+      "burned_supply": "Burned Supply",
+      "market_cap": "Market Cap",
+      "view_on_dex": "View on DEX",
+      "lfj": "LFJ",
+      "arena_trade": "ArenaTrade"
+    },
+    "funds": {
+      "main_balance": "Main Balance",
+      "required_signatures_avax": "Required Signatures AVAX",
+      "required_signatures_sol": "Required Signatures SOL",
+      "to_execute_transactions": "To execute transactions",
+      "multisig_solana": "Solana Multisig"
+    },
+    "snapshot": {
+      "from_proposals": "From {{count}} proposals",
+      "active_members": "Active members",
+      "view_on_snapshot": "View on Snapshot",
+      "state": "State",
+      "quorum": "Quorum",
+      "leaderboard_no_data": "No leaderboard data."
+    },
+    "community": {
+      "title": "DAO Community",
+      "subtitle": "Active members and community participation",
+      "num_members": "Number of Members",
+      "events_done": "Events Held",
+      "events_desc": "Meetups, Workshops...",
+      "members_title": "Community Members",
+      "join": "Join UltravioletaDAO",
+      "view_all_members": "View All Members ({{count}})",
+      "recent_activity": "Recent Activity",
+      "quick_links": "Quick Links",
+      "discord": "Discord Server",
+      "twitter": "Twitter/X",
+      "the_arena": "The Arena"
+    }
+  },
+  "navigation": {
+    "aria": {
+      "change_language": "Change language"
     }
   },
   "wallet": {

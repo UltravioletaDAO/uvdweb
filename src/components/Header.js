@@ -5,7 +5,6 @@ import {
   HomeIcon,
   LinkIcon,
   AcademicCapIcon,
-  RectangleStackIcon,
   UsersIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
@@ -13,6 +12,7 @@ import {
   ChartBarIcon,
   ArrowTrendingUpIcon,
   InformationCircleIcon,
+  CurrencyDollarIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -48,9 +48,9 @@ const Header = () => {
       isExternal: false,
     },
     {
-      name: t('navigation.blog'),
-      icon: RectangleStackIcon,
-      path: "/blog",
+      name: t('navigation.token'),
+      icon: CurrencyDollarIcon,
+      path: "/token",
       isExternal: false,
     },
     {
