@@ -1,5 +1,10 @@
 {
+  "seo": {
+    "defaultDescription": "Construire l'avenir du Web3 en Amérique latine grâce à la gouvernance décentralisée, l'innovation communautaire et la gestion collaborative du trésor."
+  },
   "home": {
+    "seoTitle": "Accueil - DAO leader du Web3 en Amérique latine",
+    "seoDescription": "Rejoignez UltraVioleta DAO - Construire l'avenir du Web3 en Amérique latine grâce à la gouvernance décentralisée, l'innovation communautaire et la gestion collaborative du trésor.",
     "title": "Ultravioleta DAO",
     "subtitle": "La communauté Web3 la plus active d'Amérique latine",
     "metrics": {
@@ -44,6 +49,67 @@
   "metricsDashboard": {
     "title": "Tableau de Bord des Métriques",
     "subtitle": "Panneau de métriques avec l'activité, les récompenses et la croissance d'Ultravioleta DAO",
+    "snapshot": {
+      "subtitle": "Propositions et votes de la communauté",
+      "error_loading": "Erreur lors du chargement des données",
+      "retry": "Réessayer",
+      "total_historic": "Total historique",
+      "latest_proposal": "Dernière proposition",
+      "last_proposal": "Dernières Propositions",
+      "no_active_proposals": "Aucune proposition active",
+      "top_voters": "Top votants de la communauté",
+      "see_all": "Voir Tout",
+      "from_proposals": "de propositions",
+      "active_members": "Membres actifs",
+      "view_on_snapshot": "Voir sur Snapshot",
+      "state": "État",
+      "quorum": "Quorum",
+      "leaderboard_no_data": "Pas de données de classement"
+    },
+    "funds": {
+      "subtitle": "Activité de la gestion du trésor communautaire",
+      "multisig_avalanche": "Multisig Avalanche",
+      "multisig_solana": "Multisig Solana",
+      "required_signatures_sol": "Signatures requises SOL",
+      "required_signatures_avax": "Signatures requises AVAX",
+      "to_execute_transactions": "Pour exécuter des transactions",
+      "main_balance": "Solde principal"
+    },
+    "tokenSection": {
+      "subtitle": "Activité et métriques du token UVD",
+      "price_usd": "Prix USD",
+      "price_avax": "Prix AVAX",
+      "holders": "Détenteurs",
+      "transactions": "transactions",
+      "liquidity_total": "Liquidité Totale Backing UVD",
+      "price_evolution": "Évolution du Prix",
+      "days_ago_30": "Il y a 30 jours",
+      "today": "Aujourd'hui",
+      "info_title": "Informations du Token",
+      "contract_avalanche": "Contrat Avalanche",
+      "total_supply": "Total Supply",
+      "circulating_supply": "Supply en Circulation",
+      "burned_supply": "Supply Brûlé",
+      "market_cap": "Market Cap",
+      "view_on_dex": "Voir sur DEX",
+      "lfj": "LFJ",
+      "arena_trade": "ArenaTrade"
+    },
+    "community": {
+      "title": "Communauté DAO",
+      "subtitle": "Membres actifs et participation communautaire",
+      "num_members": "Nombre de Membres",
+      "events_done": "Événements Réalisés",
+      "events_desc": "Meetups, Workshops...",
+      "members_title": "Membres de la Communauté",
+      "join": "Rejoindre UltravioletaDAO",
+      "view_all_members": "Voir Tous les Membres ({{count}})",
+      "recent_activity": "Activité Récente",
+      "quick_links": "Liens Rapides",
+      "discord": "Serveur Discord",
+      "twitter": "Twitter/X",
+      "the_arena": "The Arena"
+    },
     "contributorSection": {
       "title": "Contributeurs DAO",
       "subtitle": "Membres actifs et collaborateurs de la communauté",

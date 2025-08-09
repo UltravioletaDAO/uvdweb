@@ -1,5 +1,10 @@
 {
+  "seo": {
+    "defaultDescription": "Construyendo el futuro de Web3 en América Latina a través de gobernanza descentralizada, innovación impulsada por la comunidad y gestión colaborativa del tesoro."
+  },
   "home": {
+    "seoTitle": "Inicio - DAO líder de Web3 en América Latina",
+    "seoDescription": "Únete a UltraVioleta DAO - Construyendo el futuro de Web3 en América Latina mediante gobernanza descentralizada, innovación comunitaria y gestión colaborativa del tesoro.",
     "title": "Ultravioleta DAO",
     "subtitle": "La comunidad Web3 más activa de Latinoamérica",
     "metrics": {
@@ -42,6 +47,8 @@
     }
   },
   "metricsDashboard": {
+    "seoTitle": "Panel de Métricas - Análisis DAO en Tiempo Real",
+    "seoDescription": "Rastrea el rendimiento de UltraVioleta DAO con métricas en tiempo real. Visualiza participación en gobernanza, balance del tesoro, análisis de tokens, crecimiento de la comunidad y recompensas.",
     "title": "Dashboard de Métricas",
     "subtitle": "Panel de métricas con la actividad, recompensas y crecimiento de la Ultravioleta DAO",
     "snapshot": {
@@ -610,6 +617,8 @@
     "updating": "Actualizando"
   },
   "about": {
+    "seoTitle": "Acerca de Nosotros - Conoce UltraVioleta DAO",
+    "seoDescription": "Descubre UltraVioleta DAO - Una comunidad descentralizada construyendo infraestructura Web3 en América Latina. Conoce nuestra misión, visión, valores y trayectoria desde 2022.",
     "hero": {
       "title": "Historia de Ultravioleta DAO",
       "subtitle": "De una comunidad de streaming a la DAO Web3 más activa de Latinoamérica"

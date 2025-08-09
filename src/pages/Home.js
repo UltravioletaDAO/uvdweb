@@ -9,6 +9,7 @@ import { useCombinedSnapshotData } from '../hooks/useCombinedSnapshotData';
 import { useTokenMetrics } from '../hooks/useTokenMetrics';
 import { useSafeAvalanche } from '../hooks/useSafeAvalanche';
 import DaoStoryteller from '../components/DaoStoryteller';
+import SEO from '../components/SEO';
 
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -88,7 +89,13 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO 
+        title={t('home.seoTitle', 'Home')}
+        description={t('home.seoDescription', 'Join UltraVioleta DAO - Building the future of Web3 in Latin America through decentralized governance, community innovation, and collaborative treasury management.')}
+        keywords="UltraVioleta DAO, Web3 LATAM, Latin America Blockchain, DAO Community, Decentralized Governance, Avalanche, Snapshot Voting, Web3 Development, DeFi Latin America"
+      />
+      <div className="min-h-screen bg-background">
       {/* Hero Section */}
       <section className="relative overflow-hidden min-h-[40vh] flex items-center">
         {/* Imagen de fondo con overlay */}
@@ -573,6 +580,7 @@ const Home = () => {
         onClose={() => setIsFormOpen(false)} 
       />
     </div>
+    </>
   );
 };
 

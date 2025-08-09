@@ -6,12 +6,19 @@ import {RewardsSection} from "../components/metricDashboard/RewardsSection";
 import {ContributorSection} from "../components/metricDashboard/ContributorSection";
 import { Activity } from "lucide-react";
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const MetricsDashboard = () =>{ 
   const { t } = useTranslation();
   
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO 
+        title={t('metricsDashboard.seoTitle', 'Metrics Dashboard - Real-time DAO Analytics')}
+        description={t('metricsDashboard.seoDescription', 'Track UltraVioleta DAO performance with real-time metrics. View governance participation, treasury balance, token analytics, community growth, and member rewards.')}
+        keywords="DAO Metrics, UltraVioleta Analytics, Treasury Dashboard, Governance Metrics, Token Analytics, Community Growth, DAO Performance, Blockchain Analytics, LATAM Web3 Metrics"
+      />
+      <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12 max-w-7xl">
         <header className="mb-12">
           <div className="flex items-center justify-between">
@@ -59,6 +66,7 @@ const MetricsDashboard = () =>{
         </main>
       </div>
     </div>
+    </>
   );
 }
 

@@ -1,5 +1,10 @@
 {
+  "seo": {
+    "defaultDescription": "Building the future of Web3 in Latin America through decentralized governance, community-driven innovation, and collaborative treasury management."
+  },
   "home": {
+    "seoTitle": "Home - Latin America's Leading Web3 DAO",
+    "seoDescription": "Join UltraVioleta DAO - Building the future of Web3 in Latin America through decentralized governance, community innovation, and collaborative treasury management.",
     "title": "Ultravioleta DAO",
     "subtitle": "The most active Web3 community in Latin America",
     "metrics": {
@@ -42,6 +47,8 @@
     }
   },
   "metricsDashboard": {
+    "seoTitle": "Metrics Dashboard - Real-time DAO Analytics",
+    "seoDescription": "Track UltraVioleta DAO performance with real-time metrics. View governance participation, treasury balance, token analytics, community growth, and member rewards.",
     "title": "Metrics Dashboard",
     "subtitle": "Metrics panel with activity, rewards and growth of Ultravioleta DAO",
     "snapshot": {
@@ -610,16 +617,7 @@
     "multisig_alt": "Multisig Icon",
     "swap_token_alt": "Swap Token Icon"
   },
-  "home": {
-    "metrics": {
-      "token": {
-        "tooltip": {
-          "usd": "USD:",
-          "avax": "AVAX:"
-        }
-      }
-    }
-  },
+  
   "metricsDashboard": {
     "funds": {
       "multisig_solana": "Solana Multisig",
@@ -737,11 +735,7 @@
       "the_arena": "The Arena"
     }
   },
-  "navigation": {
-    "aria": {
-      "change_language": "Change language"
-    }
-  },
+  
   "wallet": {
     "send_rewards": "Rewards Airdrop",
     "connect_required": "Connect your wallet to send rewards",
@@ -837,6 +831,8 @@
     "updating": "Updating"
   },
   "about": {
+    "seoTitle": "About Us - Learn About UltraVioleta DAO",
+    "seoDescription": "Discover UltraVioleta DAO - A decentralized community building Web3 infrastructure in Latin America. Learn about our mission, vision, values, and journey since 2022.",
     "hero": {
       "title": "History of Ultravioleta DAO",
       "subtitle": "From a streaming community to the most active Web3 DAO in Latin America"

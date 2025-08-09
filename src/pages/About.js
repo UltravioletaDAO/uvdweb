@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import ApplicationForm from './ApplicationForm';
+import SEO from '../components/SEO';
 import { 
   UserGroupIcon, 
   BeakerIcon,
@@ -77,7 +77,13 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <>
+      <SEO 
+        title={t('about.seoTitle', 'About Us - Learn About UltraVioleta DAO')}
+        description={t('about.seoDescription', 'Discover UltraVioleta DAO - A decentralized community building Web3 infrastructure in Latin America. Learn about our mission, vision, values, and journey since 2022.')}
+        keywords="About UltraVioleta DAO, Web3 Latin America, DAO Mission, Decentralized Community, Blockchain LATAM, DAO Values, Web3 Education, Community Governance"
+      />
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
       {/* Hero Section */}
       <motion.section 
         initial={{ opacity: 0 }}
@@ -409,6 +415,7 @@ const About = () => {
         onClose={() => setIsFormOpen(false)} 
       />
     </div>
+    </>
   );
 };
 
