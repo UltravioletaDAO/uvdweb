@@ -5,7 +5,23 @@ const getApiKey = () => {
   // In React, environment variables are embedded at build time
   // We need to access them directly from window for runtime access
   const key = process.env.REACT_APP_OPENAI_API_KEY || window.REACT_APP_OPENAI_API_KEY;
-  return key && key !== 'your_openai_api_key_here' && key.length > 20 ? key : null;
+  
+  // Trim whitespace and validate
+  const trimmedKey = key ? key.trim() : null;
+  
+  // Log for debugging (only first/last few chars for security)
+  if (trimmedKey) {
+    console.log('OpenAI API Key detected:', 
+      `${trimmedKey.substring(0, 10)}...${trimmedKey.substring(trimmedKey.length - 5)}`
+    );
+  } else {
+    console.log('No OpenAI API Key found');
+  }
+  
+  return trimmedKey && 
+         trimmedKey !== 'your_openai_api_key_here' && 
+         trimmedKey.length > 20 && 
+         trimmedKey.startsWith('sk-') ? trimmedKey : null;
 };
 
 const SYSTEM_PROMPT = {
@@ -71,8 +87,6 @@ Fale como um membro orgulhoso do DAO. Simples mas com emoção. Como se estivess
 };
 
 export const generateDaoAnalysis = async (metrics, language = 'en') => {
-  const apiKey = getApiKey();
-  
   // Validate metrics
   if (!metrics || typeof metrics !== 'object') {
     console.warn('Invalid metrics provided:', metrics);
@@ -83,6 +97,41 @@ export const generateDaoAnalysis = async (metrics, language = 'en') => {
       isUsingFallback: true
     };
   }
+  
+  // Try to use backend API first (recommended for production)
+  const backendUrl = process.env.REACT_APP_API_URL;
+  if (backendUrl) {
+    try {
+      console.log('Attempting to generate analysis via backend API...');
+      const response = await fetch(`${backendUrl}/storyteller/analyze`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          metrics,
+          language
+        })
+      });
+      
+      if (response.ok) {
+        const data = await response.json();
+        if (data.success && data.analysis) {
+          console.log('Successfully generated analysis via backend');
+          return {
+            success: true,
+            analysis: data.analysis,
+            timestamp: new Date().toISOString()
+          };
+        }
+      }
+    } catch (error) {
+      console.log('Backend API not available, falling back to direct OpenAI call:', error.message);
+    }
+  }
+  
+  // Fallback to direct OpenAI call (development only)
+  const apiKey = getApiKey();
   
   // If no API key, return fallback immediately
   if (!apiKey) {
@@ -159,8 +208,23 @@ Write 3 medium paragraphs, simple and exciting. USE THE EXACT NUMBERS I gave you
     });
 
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.error?.message || 'OpenAI API error');
+      const errorData = await response.json().catch(() => ({}));
+      console.error('OpenAI API Error:', {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorData
+      });
+      
+      // Check for specific error types
+      if (response.status === 401) {
+        throw new Error('Invalid API key. Please check your OpenAI API key.');
+      } else if (response.status === 429) {
+        throw new Error('Rate limit exceeded. Please try again later.');
+      } else if (response.status === 403) {
+        throw new Error('Access forbidden. Check your API key permissions.');
+      }
+      
+      throw new Error(errorData.error?.message || `OpenAI API error: ${response.status}`);
     }
 
     const completion = await response.json();

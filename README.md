@@ -183,8 +183,32 @@ npm start
 
 ### Frontend (.env)
 ```env
+# API Backend URL
 REACT_APP_API_URL=http://localhost:5000
+
+# Snapshot.org Space ID
+REACT_APP_SNAPSHOT_SPACE_ID=ultravioletadao.eth
+
+# CoinGecko API Key (requerido para datos de precio del token)
+# Obtén tu API key gratis en: https://www.coingecko.com/en/developers/dashboard
+REACT_APP_COINGECKO_API_KEY=tu_coingecko_api_key_aqui
+
+# OpenAI API Key (requerido para la funcionalidad DAO Storyteller)
+# Sin esta key, el storyteller mostrará contenido estático de fallback
+# Obtén tu API key en: https://platform.openai.com/api-keys
+REACT_APP_OPENAI_API_KEY=tu_openai_api_key_aqui
+
+# Thirdweb Client ID (requerido para conexiones de wallet Web3)
+# Obtén tu client ID en: https://thirdweb.com/dashboard
+REACT_APP_THIRDWEB_CLIENT_ID=tu_thirdweb_client_id_aqui
 ```
+
+⚠️ **Nota importante sobre DAO Storyteller**: 
+- Si no configuras `REACT_APP_OPENAI_API_KEY`, el componente funcionará pero mostrará análisis estático predefinido
+- El mensaje "Análisis generado por IA basado en métricas en tiempo real" NO aparecerá cuando se use el fallback
+- **IMPORTANTE**: Por seguridad y para evitar problemas de CORS, la API key de OpenAI NO debe usarse directamente desde el frontend en producción
+- En producción (AWS Amplify), se recomienda implementar un endpoint en el backend API que maneje las llamadas a OpenAI
+- El código intenta primero usar el endpoint del backend (`/storyteller/analyze`) antes de intentar la llamada directa
 
 ### Backend (server/.env)
 ```env
