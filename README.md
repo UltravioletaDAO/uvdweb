@@ -240,7 +240,14 @@ Para contribuir al proyecto:
 
 ## 📝 Cambios Recientes
 
-### Text-to-Speech con ElevenLabs (2025-08-10)
+### Text-to-Speech con ElevenLabs - Optimización y Cache (2025-08-10)
+- **Agregado**: Sistema de caché inteligente para audio TTS
+  - Cache en IndexedDB del navegador para almacenar audio generado
+  - Expiración automática del cache después de 1 hora
+  - Reutilización de audio para el mismo texto e idioma
+  - Reducción significativa de costos de API (evita llamadas repetidas)
+  - Cache persistente entre sesiones del navegador
+  - Nota: Para desactivar TTS completamente, configura `REACT_APP_TTS_ENABLED=false`
 - **Mejorado**: Sistema de Text-to-Speech con ElevenLabs API
   - Corregida validación incorrecta de API keys que comenzaban con "sk_"
   - Agregado indicador de carga con spinner mientras se genera el audio

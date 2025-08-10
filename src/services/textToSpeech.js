@@ -1,4 +1,6 @@
 // Text-to-Speech Service using ElevenLabs API with Browser TTS fallback
+import audioCache from './audioCache';
+
 const ELEVENLABS_API_KEY = process.env.REACT_APP_ELEVENLABS_API_KEY;
 const DEBUG_ENABLED = process.env.REACT_APP_DEBUG_ENABLED === 'true';
 const TTS_ENABLED = process.env.REACT_APP_TTS_ENABLED === 'true';
@@ -33,6 +35,17 @@ class TextToSpeechService {
       throw new Error('TTS is disabled in configuration');
     }
 
+    // Check cache first
+    try {
+      const cachedAudio = await audioCache.getCachedAudio(text, language);
+      if (cachedAudio) {
+        this.log(`Using cached audio (${cachedAudio.age} minutes old)`);
+        return cachedAudio.url;
+      }
+    } catch (error) {
+      this.log('Cache check failed, continuing without cache', error);
+    }
+
     // Check if API key exists
     if (ELEVENLABS_API_KEY && ELEVENLABS_API_KEY !== 'your_elevenlabs_api_key_here') {
       this.log('ElevenLabs API Key detected');
@@ -43,7 +56,7 @@ class TextToSpeechService {
     // Try ElevenLabs first if API key exists and is valid format
     if (ELEVENLABS_API_KEY && ELEVENLABS_API_KEY !== 'your_elevenlabs_api_key_here') {
       const voiceId = VOICE_IDS[language] || MULTILINGUAL_VOICE_ID;
-      this.log(`Loading audio for language: ${language}`);
+      this.log(`Generating new audio for language: ${language}`);
 
       try {
         const response = await fetch(
@@ -75,6 +88,15 @@ class TextToSpeechService {
         }
 
         const audioBlob = await response.blob();
+        
+        // Cache the audio for future use
+        try {
+          await audioCache.cacheAudio(text, language, audioBlob);
+          this.log('Audio cached for future use');
+        } catch (cacheError) {
+          this.log('Failed to cache audio', cacheError);
+        }
+        
         const audioUrl = URL.createObjectURL(audioBlob);
         
         this.log('Audio loaded successfully');
@@ -246,6 +268,25 @@ class TextToSpeechService {
       'fr': 'fr-FR'
     };
     return codes[language] || 'en-US';
+  }
+
+  // Cache management methods
+  async getCacheStats() {
+    try {
+      return await audioCache.getCacheStats();
+    } catch (error) {
+      this.log('Error getting cache stats', error);
+      return null;
+    }
+  }
+
+  async clearCache() {
+    try {
+      await audioCache.clearAllCache();
+      this.log('Audio cache cleared');
+    } catch (error) {
+      this.log('Error clearing cache', error);
+    }
   }
 }
 

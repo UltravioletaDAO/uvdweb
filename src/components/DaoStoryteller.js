@@ -14,6 +14,7 @@ const DaoStoryteller = ({ metrics }) => {
   const [isSpeaking, setIsSpeaking] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
   const [isLoadingAudio, setIsLoadingAudio] = useState(false);
+  const [isUsingCachedAudio, setIsUsingCachedAudio] = useState(false);
   const { t, i18n } = useTranslation();
   const lastLanguageRef = useRef(i18n.language);
   
@@ -78,6 +79,15 @@ const DaoStoryteller = ({ metrics }) => {
 
     try {
       setIsLoadingAudio(true);
+      
+      // Check cache stats for debugging
+      if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+        const stats = await ttsService.getCacheStats();
+        if (stats) {
+          console.log('[TTS Cache Stats]', stats);
+        }
+      }
+      
       await ttsService.play(
         analysis, 
         i18n.language,
@@ -91,6 +101,7 @@ const DaoStoryteller = ({ metrics }) => {
           // onEnd
           setIsSpeaking(false);
           setIsPaused(false);
+          setIsUsingCachedAudio(false);
         },
         () => {
           // onPause
@@ -101,6 +112,7 @@ const DaoStoryteller = ({ metrics }) => {
       setIsLoadingAudio(false);
       setIsSpeaking(false);
       setIsPaused(false);
+      setIsUsingCachedAudio(false);
     }
   };
 
