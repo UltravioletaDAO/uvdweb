@@ -8,7 +8,30 @@ const STORE_NAME = 'audioCache';
 class AudioCacheService {
   constructor() {
     this.db = null;
-    this.initPromise = this.initDB();
+    this.isSupported = this.checkSupport();
+    this.initPromise = this.isSupported ? this.initDB() : Promise.resolve();
+  }
+
+  checkSupport() {
+    // Check if IndexedDB is available
+    if (!window.indexedDB) {
+      this.log('IndexedDB not supported in this browser');
+      return false;
+    }
+    
+    // Check for private/incognito mode issues
+    try {
+      // Test if we can actually use IndexedDB
+      const testRequest = indexedDB.open('test');
+      testRequest.onsuccess = () => {
+        indexedDB.deleteDatabase('test');
+      };
+    } catch (e) {
+      this.log('IndexedDB not available (possibly in private mode)');
+      return false;
+    }
+    
+    return true;
   }
 
   log(message, data = null) {
@@ -19,12 +42,14 @@ class AudioCacheService {
 
   async initDB() {
     return new Promise((resolve, reject) => {
-      const request = indexedDB.open(DB_NAME, DB_VERSION);
+      try {
+        const request = indexedDB.open(DB_NAME, DB_VERSION);
 
-      request.onerror = () => {
-        this.log('Failed to open IndexedDB');
-        reject(request.error);
-      };
+        request.onerror = () => {
+          this.log('Failed to open IndexedDB');
+          this.isSupported = false;
+          resolve(); // Resolve instead of reject to allow graceful degradation
+        };
 
       request.onsuccess = () => {
         this.db = request.result;
@@ -32,16 +57,21 @@ class AudioCacheService {
         resolve();
       };
 
-      request.onupgradeneeded = (event) => {
-        const db = event.target.result;
-        
-        // Create object store if it doesn't exist
-        if (!db.objectStoreNames.contains(STORE_NAME)) {
-          const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
-          store.createIndex('timestamp', 'timestamp', { unique: false });
-          this.log('Created audio cache store');
-        }
-      };
+        request.onupgradeneeded = (event) => {
+          const db = event.target.result;
+          
+          // Create object store if it doesn't exist
+          if (!db.objectStoreNames.contains(STORE_NAME)) {
+            const store = db.createObjectStore(STORE_NAME, { keyPath: 'id' });
+            store.createIndex('timestamp', 'timestamp', { unique: false });
+            this.log('Created audio cache store');
+          }
+        };
+      } catch (error) {
+        this.log('Error initializing IndexedDB', error);
+        this.isSupported = false;
+        resolve(); // Graceful degradation
+      }
     });
   }
 
@@ -59,7 +89,15 @@ class AudioCacheService {
 
   async getCachedAudio(text, language) {
     try {
+      if (!this.isSupported) {
+        return null;
+      }
+      
       await this.initPromise;
+      
+      if (!this.db) {
+        return null;
+      }
       
       const cacheKey = this.generateCacheKey(text, language);
       
@@ -115,6 +153,10 @@ class AudioCacheService {
 
   async cacheAudio(text, language, audioBlob) {
     try {
+      if (!this.isSupported || !this.db) {
+        return;
+      }
+      
       await this.initPromise;
       
       const cacheKey = this.generateCacheKey(text, language);
@@ -153,6 +195,10 @@ class AudioCacheService {
 
   async deleteCachedAudio(cacheKey) {
     try {
+      if (!this.isSupported || !this.db) {
+        return;
+      }
+      
       await this.initPromise;
       
       return new Promise((resolve, reject) => {
@@ -177,6 +223,10 @@ class AudioCacheService {
 
   async clearAllCache() {
     try {
+      if (!this.isSupported || !this.db) {
+        return;
+      }
+      
       await this.initPromise;
       
       return new Promise((resolve, reject) => {
@@ -201,6 +251,10 @@ class AudioCacheService {
 
   async getCacheStats() {
     try {
+      if (!this.isSupported || !this.db) {
+        return null;
+      }
+      
       await this.initPromise;
       
       return new Promise((resolve, reject) => {

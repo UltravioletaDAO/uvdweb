@@ -16,6 +16,11 @@ const VOICE_IDS = {
 // Fallback to free multilingual model if no specific voice
 const MULTILINGUAL_VOICE_ID = 'pMsXgVXv3BLzUgSXRplE'; // Serena - multilingual
 
+// Mobile detection
+const isMobile = () => {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+};
+
 class TextToSpeechService {
   constructor() {
     this.audio = null;
@@ -25,7 +30,8 @@ class TextToSpeechService {
 
   log(message, data = null) {
     if (DEBUG_ENABLED) {
-      console.log(`[TTS Service] ${message}`, data || '');
+      const platform = isMobile() ? '[Mobile]' : '[Desktop]';
+      console.log(`[TTS Service] ${platform} ${message}`, data || '');
     }
   }
 
@@ -35,15 +41,21 @@ class TextToSpeechService {
       throw new Error('TTS is disabled in configuration');
     }
 
-    // Check cache first
+    // Check cache first (with timeout for mobile)
     try {
-      const cachedAudio = await audioCache.getCachedAudio(text, language);
+      const cachePromise = audioCache.getCachedAudio(text, language);
+      const timeoutPromise = new Promise((resolve) => 
+        setTimeout(() => resolve(null), 2000) // 2 second timeout
+      );
+      
+      const cachedAudio = await Promise.race([cachePromise, timeoutPromise]);
+      
       if (cachedAudio) {
         this.log(`Using cached audio (${cachedAudio.age} minutes old)`);
         return cachedAudio.url;
       }
     } catch (error) {
-      this.log('Cache check failed, continuing without cache', error);
+      this.log('Cache check failed, continuing without cache');
     }
 
     // Check if API key exists
@@ -59,6 +71,10 @@ class TextToSpeechService {
       this.log(`Generating new audio for language: ${language}`);
 
       try {
+        // Add timeout to API request (15 seconds)
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 15000);
+        
         const response = await fetch(
           `https://api.elevenlabs.io/v1/text-to-speech/${voiceId}`,
           {
@@ -77,9 +93,12 @@ class TextToSpeechService {
                 style: 0.5,
                 use_speaker_boost: true
               }
-            })
+            }),
+            signal: controller.signal
           }
         );
+        
+        clearTimeout(timeoutId);
 
         if (!response.ok) {
           const errorText = await response.text();
@@ -89,12 +108,16 @@ class TextToSpeechService {
 
         const audioBlob = await response.blob();
         
-        // Cache the audio for future use
+        // Cache the audio for future use (with timeout)
         try {
-          await audioCache.cacheAudio(text, language, audioBlob);
+          const cachePromise = audioCache.cacheAudio(text, language, audioBlob);
+          const timeoutPromise = new Promise((resolve) => 
+            setTimeout(() => resolve(), 1000) // 1 second timeout for caching
+          );
+          await Promise.race([cachePromise, timeoutPromise]);
           this.log('Audio cached for future use');
         } catch (cacheError) {
-          this.log('Failed to cache audio', cacheError);
+          this.log('Failed to cache audio (non-blocking)');
         }
         
         const audioUrl = URL.createObjectURL(audioBlob);
@@ -102,7 +125,11 @@ class TextToSpeechService {
         this.log('Audio loaded successfully');
         return audioUrl;
       } catch (error) {
-        this.log('API failed, falling back to browser TTS');
+        if (error.name === 'AbortError') {
+          this.log('API request timed out, falling back to browser TTS');
+        } else {
+          this.log('API failed, falling back to browser TTS');
+        }
         // Fall through to browser TTS
       }
     } else {

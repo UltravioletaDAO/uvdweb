@@ -248,6 +248,12 @@ Para contribuir al proyecto:
   - Reducción significativa de costos de API (evita llamadas repetidas)
   - Cache persistente entre sesiones del navegador
   - Nota: Para desactivar TTS completamente, configura `REACT_APP_TTS_ENABLED=false`
+- **Mejorado**: Compatibilidad móvil para TTS
+  - Detección automática de dispositivos móviles
+  - Manejo robusto de errores de IndexedDB en navegadores móviles
+  - Timeouts configurados para evitar bloqueos en conexiones lentas
+  - Fallback graceful cuando IndexedDB no está disponible (modo incógnito, etc.)
+  - Timeouts de 15 segundos para llamadas API y 2 segundos para cache
 - **Mejorado**: Sistema de Text-to-Speech con ElevenLabs API
   - Corregida validación incorrecta de API keys que comenzaban con "sk_"
   - Agregado indicador de carga con spinner mientras se genera el audio
