@@ -30,6 +30,9 @@ Plataforma de aplicación y gestión para UltraVioleta DAO, la élite de Web3 en
 - **Dashboard Principal**: Página de inicio con sección hero, resumen de métricas y información de la comunidad
 - **Dashboard de Métricas** (`/metrics`): Panel analítico completo con métricas detalladas del DAO
 - **DAO Storyteller**: Análisis del DAO impulsado por IA usando OpenAI GPT-3.5 con interpretación de métricas en tiempo real
+  - **Text-to-Speech con ElevenLabs**: Narración de voz natural en múltiples idiomas (ES, EN, PT, FR)
+  - **Fallback a TTS del navegador**: Síntesis de voz del navegador cuando ElevenLabs no está disponible
+  - **Controles de reproducción**: Play, pausa, y reanudación de narración
 
 ### 🗳️ Gobernanza y Votación
 - **Integración con Snapshot** (`/snapshot`):
@@ -236,6 +239,14 @@ Para contribuir al proyecto:
 - [X](https://x.com/UltravioletaDAO)
 
 ## 📝 Cambios Recientes
+
+### Text-to-Speech con ElevenLabs (2025-08-10)
+- **Mejorado**: Sistema de Text-to-Speech con ElevenLabs API
+  - Corregida validación incorrecta de API keys que comenzaban con "sk_"
+  - Agregado indicador de carga con spinner mientras se genera el audio
+  - Removidos logs de consola que exponían información sensible de APIs
+  - Actualizado mensaje de carga en todos los idiomas (ES, EN, FR, PT)
+  - El sistema ahora acepta correctamente las API keys de ElevenLabs sin restricciones
 
 ### Sección de Contribuidores (Contributors)
 - **Eliminada**: Página de purga de usuarios inactivos (`/purge`)

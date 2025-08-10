@@ -1,8 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
-import { SparklesIcon, FireIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
+import { SparklesIcon, FireIcon, ExclamationTriangleIcon, PlayIcon, PauseIcon, SpeakerWaveIcon } from '@heroicons/react/24/outline';
 import { generateDaoAnalysis } from '../api/storyteller';
+import ttsService from '../services/textToSpeech';
 
 const DaoStoryteller = ({ metrics }) => {
   const [analysis, setAnalysis] = useState('');
@@ -10,8 +11,14 @@ const DaoStoryteller = ({ metrics }) => {
   const [error, setError] = useState(null);
   const [isUsingFallback, setIsUsingFallback] = useState(false);
   const [hasGenerated, setHasGenerated] = useState(false);
+  const [isSpeaking, setIsSpeaking] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
+  const [isLoadingAudio, setIsLoadingAudio] = useState(false);
   const { t, i18n } = useTranslation();
   const lastLanguageRef = useRef(i18n.language);
+  
+  // Check if TTS is enabled in config
+  const ttsEnabled = process.env.REACT_APP_TTS_ENABLED === 'true';
 
   const generateStory = async (forceRegenerate = false) => {
     // Allow regeneration when language changes
@@ -28,16 +35,11 @@ const DaoStoryteller = ({ metrics }) => {
       const result = await generateDaoAnalysis(metrics, currentLang);
       
       if (result.success) {
-        console.log('DAO Storyteller: Successfully generated AI analysis');
         setAnalysis(result.analysis);
         setHasGenerated(true);
         lastLanguageRef.current = currentLang;
       } else {
         // Use fallback but mark it as such
-        console.warn('DAO Storyteller: Using fallback analysis', {
-          error: result.error,
-          hasKey: !!process.env.REACT_APP_OPENAI_API_KEY
-        });
         setAnalysis(result.fallback);
         setIsUsingFallback(result.isUsingFallback || true);
         setHasGenerated(true);
@@ -45,7 +47,6 @@ const DaoStoryteller = ({ metrics }) => {
       }
 
     } catch (err) {
-      console.error('Error generating analysis:', err);
       setError(err.message);
       
       // Generate fallback analysis directly
@@ -60,6 +61,62 @@ const DaoStoryteller = ({ metrics }) => {
     }
   };
 
+  const handleSpeak = async () => {
+    if (!analysis) return;
+
+    if (isPaused) {
+      ttsService.resume();
+      setIsPaused(false);
+      return;
+    }
+
+    if (isSpeaking) {
+      ttsService.pause();
+      setIsPaused(true);
+      return;
+    }
+
+    try {
+      setIsLoadingAudio(true);
+      await ttsService.play(
+        analysis, 
+        i18n.language,
+        () => {
+          // onStart
+          setIsLoadingAudio(false);
+          setIsSpeaking(true);
+          setIsPaused(false);
+        },
+        () => {
+          // onEnd
+          setIsSpeaking(false);
+          setIsPaused(false);
+        },
+        () => {
+          // onPause
+          setIsPaused(true);
+        }
+      );
+    } catch (error) {
+      setIsLoadingAudio(false);
+      setIsSpeaking(false);
+      setIsPaused(false);
+    }
+  };
+
+  const handleStop = () => {
+    ttsService.stop();
+    setIsSpeaking(false);
+    setIsPaused(false);
+  };
+
+  useEffect(() => {
+    return () => {
+      // Cleanup on unmount
+      ttsService.stop();
+    };
+  }, []);
+
   useEffect(() => {
     // Generate story on initial mount
     if (metrics && Object.keys(metrics).length > 0 && !hasGenerated) {
@@ -71,6 +128,8 @@ const DaoStoryteller = ({ metrics }) => {
   useEffect(() => {
     // Regenerate story when language changes
     if (metrics && Object.keys(metrics).length > 0 && lastLanguageRef.current !== i18n.language) {
+      // Stop speech when language changes
+      handleStop();
       generateStory(true); // Force regeneration
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -124,12 +183,52 @@ const DaoStoryteller = ({ metrics }) => {
             {t('home.metrics.expert_analysis')}
           </h3>
         </div>
-        {isUsingFallback && (
-          <div className="flex items-center gap-1 text-xs text-yellow-500">
-            <ExclamationTriangleIcon className="w-4 h-4" />
-            <span>{t('home.metrics.offline_analysis')}</span>
-          </div>
-        )}
+        <div className="flex items-center gap-2">
+          {ttsEnabled && (
+            <div className="flex items-center gap-2">
+              {isLoadingAudio && (
+                <div className="flex items-center gap-2 text-xs text-ultraviolet-light">
+                  <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  <span>{t('home.metrics.loading_audio')}</span>
+                </div>
+              )}
+              <button
+                onClick={handleSpeak}
+                disabled={isLoadingAudio}
+                className="p-1.5 rounded-lg transition-all duration-200 hover:bg-ultraviolet-light/10 focus:outline-none focus:ring-2 focus:ring-ultraviolet-light/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                title={isLoadingAudio ? t('home.metrics.loading_audio') : (isSpeaking ? (isPaused ? t('home.metrics.resume_audio') : t('home.metrics.pause_audio')) : t('home.metrics.play_audio'))}
+                style={{
+                  backgroundColor: isSpeaking || isLoadingAudio ? 'rgba(106, 0, 255, 0.1)' : 'transparent',
+                  border: '1px solid rgba(106, 0, 255, 0.2)',
+                }}
+              >
+                {isLoadingAudio ? (
+                  <svg className="animate-spin h-4 w-4 text-ultraviolet-light" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                ) : isSpeaking ? (
+                  isPaused ? (
+                    <PlayIcon className="w-4 h-4 text-ultraviolet-light" />
+                  ) : (
+                    <PauseIcon className="w-4 h-4 text-ultraviolet-light" />
+                  )
+                ) : (
+                  <SpeakerWaveIcon className="w-4 h-4 text-ultraviolet-light" />
+                )}
+              </button>
+            </div>
+          )}
+          {isUsingFallback && (
+            <div className="flex items-center gap-1 text-xs text-yellow-500">
+              <ExclamationTriangleIcon className="w-4 h-4" />
+              <span>{t('home.metrics.offline_analysis')}</span>
+            </div>
+          )}
+        </div>
       </div>
       <div style={{ 
         color: '#fff', 

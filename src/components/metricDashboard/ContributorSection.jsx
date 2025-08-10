@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const currentDaoMembers = [
   "0x Ultravioleta", "x4", "Colega", "Txntacion", "Alejo", "f3l1p3", "Teddy Saint", 
-  "Juan Jumaga", "cdt", "Cyber Paisa", "nezzcold", "nesman", "Yesi", "Fredino", 
+  "Juan Jumaga", "cdt", "Cyber Paisa", "nezzcold", "Vens", "Yesi", "Fredino", 
   "Waira Tamayo", "DavidZO", "Sindy Arenas", "JuanH", "DatBoi", 
   "Jangx", "David Rodríguez", "Juyan", "DogonPay", "Papossa", 
   "Stov3", "Brandon Heat", "lualjarami", "ACPM", "Roypi", "0xPineda", "SaemTwentyTwo", 
@@ -25,13 +25,26 @@ const currentDaoMembers = [
   "Andres92", "Zircon", "alejojc", "IZ", "Danieeel", "Loaiza", "juanpkante", "0xsoulavax"
 ];
 
+// Utility function to shuffle array randomly
+const shuffleArray = (array) => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
+
 export const ContributorSection = () => {
   const { t } = useTranslation();
   const [searchTerm, setSearchTerm] = useState('');
   const [memberProfiles, setMemberProfiles] = useState({});
   const [loading, setLoading] = useState(true);
+  const [shuffledMembers, setShuffledMembers] = useState([]);
 
   useEffect(() => {
+    // Shuffle members on component mount
+    setShuffledMembers(shuffleArray(currentDaoMembers));
     fetchMemberProfiles();
   }, []);
 
@@ -148,7 +161,7 @@ export const ContributorSection = () => {
     }
   };
 
-  const filteredMembers = currentDaoMembers.filter(member => 
+  const filteredMembers = shuffledMembers.filter(member => 
     member.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -160,7 +173,7 @@ export const ContributorSection = () => {
             <div className="p-2 rounded-lg bg-primary/15">
               <Users className="h-5 w-5 text-primary" />
             </div>
-            <span className="text-primary">{currentDaoMembers.length} {t('metricsDashboard.contributorSection.title').toUpperCase()}</span>
+            <span className="text-primary">{shuffledMembers.length} {t('metricsDashboard.contributorSection.title').toUpperCase()}</span>
           </h2>
           <p className="text-sm text-muted-foreground ml-11">
             {t('metricsDashboard.contributorSection.subtitle')}
@@ -198,35 +211,35 @@ export const ContributorSection = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {filteredMembers.map((member, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: index * 0.01 }}
-              className="bg-background rounded-lg px-3 py-3 text-sm text-text-primary
+              className="bg-background rounded-lg px-4 py-4 text-sm text-text-primary
                 border border-ultraviolet-darker/10 hover:border-ultraviolet/30 
                 hover:bg-ultraviolet/5 transition-all cursor-pointer group
-                flex items-center min-w-0"
+                flex flex-col items-start min-h-[80px] justify-between"
             >
-              <div className="flex items-center justify-between gap-2 w-full">
-                <div className="flex items-center gap-2 flex-1 min-w-0">
+              <div className="w-full">
+                <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 rounded-full bg-green-400 group-hover:animate-pulse flex-shrink-0" />
-                  <span className="truncate">{member}</span>
+                  <span className="text-sm font-medium leading-tight break-words">{member}</span>
                 </div>
                 {memberProfiles[member] && (
                   <a 
                     href={memberProfiles[member].startsWith('http') ? memberProfiles[member] : `https://x.com/${memberProfiles[member].replace('@', '')}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-ultraviolet hover:text-ultraviolet-light flex items-center gap-1 flex-shrink-0"
+                    className="text-ultraviolet hover:text-ultraviolet-light flex items-center gap-1 text-xs"
                     onClick={(e) => e.stopPropagation()}
                   >
-                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
                       <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                     </svg>
-                    <span className="text-xs">@{memberProfiles[member].replace(/^@/, '')}</span>
+                    <span className="break-all">@{memberProfiles[member].replace(/^@/, '')}</span>
                   </a>
                 )}
               </div>
