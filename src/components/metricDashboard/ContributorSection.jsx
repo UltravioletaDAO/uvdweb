@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Search, AlertCircle } from 'lucide-react';
+import { Users, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const currentDaoMembers = [
@@ -181,19 +181,7 @@ export const ContributorSection = () => {
         </div>
       </div>
 
-      <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-lg p-4 mb-6">
-        <div className="flex items-start gap-3">
-          <AlertCircle className="h-5 w-5 text-yellow-500 mt-0.5 flex-shrink-0" />
-          <div>
-            <p className="text-yellow-500 font-semibold text-sm">
-              {t('metricsDashboard.contributorSection.underConstruction.title')}
-            </p>
-            <p className="text-text-secondary text-sm mt-1">
-              {t('metricsDashboard.contributorSection.underConstruction.message')}
-            </p>
-          </div>
-        </div>
-      </div>
+
 
       <div className="bg-background-lighter rounded-xl p-6 border border-ultraviolet-darker/20">
         <div className="mb-6">
