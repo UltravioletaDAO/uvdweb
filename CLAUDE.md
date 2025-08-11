@@ -172,3 +172,5 @@ Tests should focus on:
 - agrega comentarios al README.md principal detallados, despues de cada implementacion.
 
 - siempre que hagas un cambio asegurate de actualizar las traducciones de i18n
+
+- todos los console.log o debug que agreges, asegurate que esten siendo controlados por las variables del config de enable debug tanto para print de pything como para console log del front end

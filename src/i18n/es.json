@@ -43,7 +43,11 @@
       "generating_analysis": "Analizando métricas del DAO...",
       "expert_analysis": "Cómo vamos hoy",
       "offline_analysis": "Análisis offline",
-      "ai_generated": "Análisis generado por IA basado en métricas en tiempo real"
+      "ai_generated": "Análisis generado por IA basado en métricas en tiempo real",
+      "play_audio": "Escuchar análisis",
+      "pause_audio": "Pausar",
+      "resume_audio": "Reanudar",
+      "loading_audio": "Cargando audio..."
     }
   },
   "metricsDashboard": {

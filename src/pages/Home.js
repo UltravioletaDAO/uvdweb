@@ -215,7 +215,7 @@ const Home = () => {
                   {t('home.metrics.funds.multisig')}
                 </div>
               </div>
-              <div style={{ fontSize: '11px', color: '#666', borderTop: '1px solid rgba(0, 255, 163, 0.1)', paddingTop: '8px', marginTop: 'auto' }}>
+              <div style={{ fontSize: '13px', color: '#666', borderTop: '1px solid rgba(0, 255, 163, 0.1)', paddingTop: '8px', marginTop: 'auto' }}>
                 {threshold || '-'} {t('home.metrics.funds.required_of')} {owners?.length || '-'} {t('home.metrics.funds.multisigners')}
               </div>
             </div>
@@ -255,13 +255,13 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div style={{ fontSize: '10px', color: '#666', marginTop: '4px' }}>
+                <div style={{ fontSize: '12px', color: '#666', marginTop: '4px' }}>
                   {t('home.metrics.snapshot.members_participating', { count: snapshotMetrics?.followers || '-' })}
                 </div>
               </div>
               
               {/* Since June 2023 en la línea divisoria */}
-              <div style={{ fontSize: '11px', color: '#888', borderTop: '1px solid rgba(106, 0, 255, 0.2)', paddingTop: '8px', marginTop: 'auto' }}>
+              <div style={{ fontSize: '13px', color: '#888', borderTop: '1px solid rgba(106, 0, 255, 0.2)', paddingTop: '8px', marginTop: 'auto' }}>
                 {t('home.metrics.snapshot.since')}
               </div>
             </div>
@@ -299,7 +299,7 @@ const Home = () => {
                   )}
                 </div>
               </div>
-              <div style={{ fontSize: '11px', color: '#666', borderTop: '1px solid rgba(255, 179, 0, 0.1)', paddingTop: '8px', marginTop: 'auto' }}>
+              <div style={{ fontSize: '13px', color: '#666', borderTop: '1px solid rgba(255, 179, 0, 0.1)', paddingTop: '8px', marginTop: 'auto' }}>
                 {tokenData.holderCount?.toLocaleString() || '-'} {t('home.metrics.token.holders')} • {tokenData.totalTransactions?.toLocaleString() || '-'} {t('home.metrics.token.transactions')}
               </div>
               

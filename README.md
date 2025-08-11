@@ -30,6 +30,9 @@ Plataforma de aplicación y gestión para UltraVioleta DAO, la élite de Web3 en
 - **Dashboard Principal**: Página de inicio con sección hero, resumen de métricas y información de la comunidad
 - **Dashboard de Métricas** (`/metrics`): Panel analítico completo con métricas detalladas del DAO
 - **DAO Storyteller**: Análisis del DAO impulsado por IA usando OpenAI GPT-3.5 con interpretación de métricas en tiempo real
+  - **Text-to-Speech con ElevenLabs**: Narración de voz natural en múltiples idiomas (ES, EN, PT, FR)
+  - **Fallback a TTS del navegador**: Síntesis de voz del navegador cuando ElevenLabs no está disponible
+  - **Controles de reproducción**: Play, pausa, y reanudación de narración
 
 ### 🗳️ Gobernanza y Votación
 - **Integración con Snapshot** (`/snapshot`):
@@ -236,6 +239,27 @@ Para contribuir al proyecto:
 - [X](https://x.com/UltravioletaDAO)
 
 ## 📝 Cambios Recientes
+
+### Text-to-Speech con ElevenLabs - Optimización y Cache (2025-08-10)
+- **Agregado**: Sistema de caché inteligente para audio TTS
+  - Cache en IndexedDB del navegador para almacenar audio generado
+  - Expiración automática del cache después de 1 hora
+  - Reutilización de audio para el mismo texto e idioma
+  - Reducción significativa de costos de API (evita llamadas repetidas)
+  - Cache persistente entre sesiones del navegador
+  - Nota: Para desactivar TTS completamente, configura `REACT_APP_TTS_ENABLED=false`
+- **Mejorado**: Compatibilidad móvil para TTS
+  - Detección automática de dispositivos móviles
+  - Manejo robusto de errores de IndexedDB en navegadores móviles
+  - Timeouts configurados para evitar bloqueos en conexiones lentas
+  - Fallback graceful cuando IndexedDB no está disponible (modo incógnito, etc.)
+  - Timeouts de 15 segundos para llamadas API y 2 segundos para cache
+- **Mejorado**: Sistema de Text-to-Speech con ElevenLabs API
+  - Corregida validación incorrecta de API keys que comenzaban con "sk_"
+  - Agregado indicador de carga con spinner mientras se genera el audio
+  - Removidos logs de consola que exponían información sensible de APIs
+  - Actualizado mensaje de carga en todos los idiomas (ES, EN, FR, PT)
+  - El sistema ahora acepta correctamente las API keys de ElevenLabs sin restricciones
 
 ### Sección de Contribuidores (Contributors)
 - **Eliminada**: Página de purga de usuarios inactivos (`/purge`)
