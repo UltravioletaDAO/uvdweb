@@ -4,7 +4,7 @@ import { Users, Search } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const currentDaoMembers = [
-  "0x Ultravioleta", "x4", "Colega", "Txntacion", "Alejo", "f3l1p3", "Teddy Saint", 
+  "Ultra", "x4", "Colega", "Txntacion", "Alejo", "f3l1p3", "Teddy Saint", 
   "Juan Jumaga", "cdt", "Cyber Paisa", "nezzcold", "Vens", "Yesi", "Fredino", 
   "Waira Tamayo", "DavidZO", "Sindy Arenas", "JuanH", "DatBoi", 
   "Jangx", "David Rodríguez", "Juyan", "DogonPay", "Papossa", 
@@ -14,7 +14,7 @@ const currentDaoMembers = [
   "Allan", "Juliboy", "Mar", "ogsebitas", "Kysaug", "Burgos Σ", "Juan Suarez", 
   "1Nocty", "Sami Madrid", "Nizo", "MichaelGA", "David Barinas", "Juanmansito", 
   "Zeluz", "Mabu", "21", "Julius", "OnlyZ_", "Alejandro Rosero", "Manussa21", 
-  "Gathus_", "Bob Cokirow", "JuanCCF", "Kadrez", "0xstiven", "loaiza", "Fixie", 
+  "Gathus_", "Bob Cokirow", "JuanCCF", "Kadrez", "0xstiven", "Fixie", 
   "San", "JuanWx_", "sxxneiderxx", "LuismiLabs", "Rehabilitation in Progress", 
   "Bogotá Mag", "athan", "Karenn", "Jorge Toledo", "Ari", "ElBitterX", "r3c", 
   "arracacha", "Hanma", "chocoflow", "Elian", "Pkante", "0xyuls", "Juandi", 
