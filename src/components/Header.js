@@ -13,6 +13,7 @@ import {
   InformationCircleIcon,
   CurrencyDollarIcon,
   PlayCircleIcon,
+  CalendarIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -58,6 +59,13 @@ const Header = () => {
       icon: ArrowTrendingUpIcon,
       path: "/metrics",
       isExternal: false,
+    },
+    {
+      name: t('navigation.events'),
+      icon: CalendarIcon,
+      path: "/events",
+      isExternal: false,
+      customStyle: "text-pink-400 hover:text-pink-300",
     },
     {
       name: t('navigation.snapshot'),

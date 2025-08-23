@@ -149,6 +149,7 @@
     "delegations": "Délégations",
     "safestats": "Multisignataires",
     "metrics": "Métriques",
+    "events": "Événements",
     "categories": {
       "main": "Principal",
       "governance": "Gouvernance",
@@ -167,7 +168,8 @@
       "watchToEarn": "Watch to Earn: échangez avec des points Twitch et recevez des UVD",
       "delegations": "Stakez et déléguez vos tokens",
       "safestats": "Statistiques des multisignataires",
-      "metrics": "Tableau de bord des métriques"
+      "metrics": "Tableau de bord des métriques",
+      "events": "Événements et activités du DAO"
     },
     "aria": {
       "open_menu": "Ouvrir le menu",
@@ -544,5 +546,135 @@
     "results": "Résultats",
     "votes": "votes",
     "view_more": "Voir plus"
+  },
+  "events": {
+    "seo": {
+      "title": "Événements - UltraVioleta DAO",
+      "description": "Événements et activités de la communauté UltraVioleta DAO. Conférences, rencontres, hackathons et plus en Amérique latine."
+    },
+    "title": "Événements UVD",
+    "ultraevento": {
+      "title": "Ultra Événement 2025",
+      "date": {
+        "label": "Date",
+        "value": "Samedi 23 août"
+      },
+      "time": {
+        "label": "Horaire",
+        "value": "13h00 – 21h00"
+      },
+      "location": {
+        "label": "Lieu",
+        "value": "Hash House Club, Medellín"
+      },
+      "description": "L'événement le plus important de l'année pour la communauté UltraVioleta DAO. Une journée complète de conférences, réseautage, votes et célébration.",
+      "scheduleTitle": "🕐 Programme Officiel",
+      "speakers": "Conférenciers",
+      "schedule": {
+        "registration": {
+          "title": "🟣 Inscription + Activations Initiales",
+          "description": "Inscription et activations initiales",
+          "detail1": "Remise de badges avec 4 jetons par personne (400 total, 100 participants)",
+          "detail2": "Activations : POAP, Self.xyz, photos, musique",
+          "detail3": "Ouverture du stream",
+          "detail4": "Réception des portefeuilles ouverte"
+        },
+        "internal": {
+          "title": "🟣 Présentation Interne du DAO",
+          "description": "Introduction et logistique de l'événement",
+          "detail1": "Instructions générales",
+          "detail2": "Vision du jour",
+          "detail3": "Logistique pour le vote et la participation"
+        },
+        "snack1": {
+          "title": "🟢 Collation #1",
+          "description": "Première collation"
+        },
+        "opening": {
+          "title": "🟣 Ouverture Officielle de l'Ultra Événement",
+          "description": "Cérémonie d'ouverture",
+          "detail1": "Bienvenue générale",
+          "detail2": "Reconnaissance aux sponsors et à la communauté"
+        },
+        "raffle1": {
+          "title": "🎁 Tirage #1 – UVD",
+          "description": "Premier tirage de l'événement",
+          "detail1": "Prix fixe - Incitation initiale pour animer la communauté"
+        },
+        "snack2": {
+          "title": "🟢 Collation #2",
+          "description": "Deuxième collation (15 min)"
+        },
+        "history": {
+          "title": "🟣 Histoire du DAO – Bloc Spécial",
+          "description": "Présentation de l'histoire et de l'évolution du DAO",
+          "detail1": "Origine, vision et évolution du projet UVD",
+          "detail2": "Voix fondatrices"
+        },
+        "community": {
+          "title": "🟠 Bloc Communauté UVD",
+          "description": "Présentations des membres de la communauté",
+          "note": "Transitions de 3 minutes entre les conférences"
+        },
+        "raffle2": {
+          "title": "🎁 Tirage #2 – UVD",
+          "description": "Deuxième tirage avec prix fixe"
+        },
+        "sponsors": {
+          "title": "🟠 Bloc Sponsors et Partenaires",
+          "description": "Présentations des sponsors et partenaires",
+          "note": "Transitions de 3 minutes entre les conférences"
+        },
+        "snack3": {
+          "title": "🟢 Collation #3",
+          "description": "Troisième collation"
+        },
+        "walletClose": {
+          "title": "📤 Clôture de l'Inscription des Portefeuilles + Airdrop Initial",
+          "description": "Clôture de l'inscription et distribution initiale",
+          "detail1": "$1 UVD par portefeuille enregistré",
+          "detail2": "Activation des 16 multisignataires"
+        },
+        "snapshot": {
+          "title": "📤 Lancement de Proposition sur Snapshot",
+          "description": "Vote communautaire",
+          "detail1": "Vote de 10 minutes pour définir le montant du tirage #3"
+        },
+        "ultraguaca": {
+          "title": "🟡 Ultra Guaca – Activation sur Scène",
+          "description": "Activité interactive avec la communauté",
+          "detail1": "Coordonnée par Jangx",
+          "detail2": "Distribution de $120 UVD parmi 12 gagnants",
+          "detail3": "Validation des mots trouvés + livraison en direct"
+        },
+        "demo": {
+          "title": "🟢 Démo Gouvernance + Multisig + Superfluid",
+          "description": "Démonstration des outils du DAO",
+          "detail1": "Clôture du Snapshot",
+          "detail2": "Exécution du tirage #3",
+          "detail3": "Airdrop secondaire : DAO → multisig, Non-DAO → Superfluid"
+        },
+        "raffle3": {
+          "title": "🎁 Tirage #3 – UVD",
+          "description": "Tirage final voté par la communauté",
+          "detail1": "Remise publique du montant voté"
+        },
+        "closing": {
+          "title": "🏁 Clôture Officielle de l'Événement",
+          "description": "Cérémonie de clôture",
+          "detail1": "Remerciements",
+          "detail2": "Reconnaissance aux sponsors, personnel et communauté",
+          "detail3": "Au revoir du stream"
+        },
+        "party": {
+          "title": "🎉 Réseautage + Fête DAO",
+          "description": "Célébration et réseautage",
+          "detail1": "DJ en direct",
+          "detail2": "Boissons",
+          "detail3": "Entrevues",
+          "detail4": "Clôture finale avec la communauté"
+        }
+      }
+    }
   }
 }

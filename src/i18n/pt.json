@@ -149,6 +149,7 @@
     "delegations": "Delegações",
     "safestats": "Multiassinantes",
     "metrics": "Métricas",
+    "events": "Eventos",
     "categories": {
       "main": "Principal",
       "governance": "Governança",
@@ -167,7 +168,8 @@
       "watchToEarn": "Watch to Earn: resgate com pontos do Twitch e receba UVD",
       "delegations": "Faça stake e delegue seus tokens",
       "safestats": "Estatísticas dos multiassinantes",
-      "metrics": "Painel de métricas"
+      "metrics": "Painel de métricas",
+      "events": "Eventos e atividades do DAO"
     },
     "aria": {
       "open_menu": "Abrir menu",
@@ -547,5 +549,135 @@
     "results": "Resultados",
     "votes": "votos",
     "view_more": "Ver mais"
+  },
+  "events": {
+    "seo": {
+      "title": "Eventos - UltraVioleta DAO",
+      "description": "Eventos e atividades da comunidade UltraVioleta DAO. Conferências, encontros, hackathons e mais na América Latina."
+    },
+    "title": "Eventos UVD",
+    "ultraevento": {
+      "title": "Ultra Evento 2025",
+      "date": {
+        "label": "Data",
+        "value": "Sábado, 23 de agosto"
+      },
+      "time": {
+        "label": "Horário",
+        "value": "13:00 – 21:00"
+      },
+      "location": {
+        "label": "Local",
+        "value": "Hash House Club, Medellín"
+      },
+      "description": "O evento mais importante do ano para a comunidade UltraVioleta DAO. Um dia completo de palestras, networking, votações e celebração.",
+      "scheduleTitle": "🕐 Programação Oficial",
+      "speakers": "Palestrantes",
+      "schedule": {
+        "registration": {
+          "title": "🟣 Registro + Ativações Iniciais",
+          "description": "Registro e ativações iniciais",
+          "detail1": "Entrega de crachás com 4 fichas por pessoa (400 total, 100 participantes)",
+          "detail2": "Ativações: POAP, Self.xyz, fotos, música",
+          "detail3": "Abertura da transmissão",
+          "detail4": "Recepção de carteiras aberta"
+        },
+        "internal": {
+          "title": "🟣 Apresentação Interna do DAO",
+          "description": "Introdução e logística do evento",
+          "detail1": "Instruções gerais",
+          "detail2": "Visão do dia",
+          "detail3": "Logística para votação e participação"
+        },
+        "snack1": {
+          "title": "🟢 Lanche #1",
+          "description": "Primeiro lanche"
+        },
+        "opening": {
+          "title": "🟣 Abertura Oficial do Ultra Evento",
+          "description": "Cerimônia de abertura",
+          "detail1": "Boas-vindas gerais",
+          "detail2": "Reconhecimento aos patrocinadores e comunidade"
+        },
+        "raffle1": {
+          "title": "🎁 Sorteio #1 – UVD",
+          "description": "Primeiro sorteio do evento",
+          "detail1": "Prêmio fixo - Incentivo inicial para animar a comunidade"
+        },
+        "snack2": {
+          "title": "🟢 Lanche #2",
+          "description": "Segundo lanche (15 min)"
+        },
+        "history": {
+          "title": "🟣 História do DAO – Bloco Especial",
+          "description": "Apresentação da história e evolução do DAO",
+          "detail1": "Origem, visão e evolução do projeto UVD",
+          "detail2": "Vozes fundadoras"
+        },
+        "community": {
+          "title": "🟠 Bloco Comunidade UVD",
+          "description": "Apresentações de membros da comunidade",
+          "note": "Transições de 3 minutos entre palestras"
+        },
+        "raffle2": {
+          "title": "🎁 Sorteio #2 – UVD",
+          "description": "Segundo sorteio com prêmio fixo"
+        },
+        "sponsors": {
+          "title": "🟠 Bloco Patrocinadores e Parceiros",
+          "description": "Apresentações de patrocinadores e parceiros",
+          "note": "Transições de 3 minutos entre palestras"
+        },
+        "snack3": {
+          "title": "🟢 Lanche #3",
+          "description": "Terceiro lanche"
+        },
+        "walletClose": {
+          "title": "📤 Encerramento do Registro de Carteiras + Airdrop Inicial",
+          "description": "Encerramento do registro e distribuição inicial",
+          "detail1": "$1 UVD por carteira registrada",
+          "detail2": "Ativação dos 16 multiassinantes"
+        },
+        "snapshot": {
+          "title": "📤 Lançamento de Proposta no Snapshot",
+          "description": "Votação comunitária",
+          "detail1": "Votação de 10 minutos para definir o valor do sorteio #3"
+        },
+        "ultraguaca": {
+          "title": "🟡 Ultra Guaca – Ativação no Palco",
+          "description": "Atividade interativa com a comunidade",
+          "detail1": "Coordenada por Jangx",
+          "detail2": "Distribuição de $120 UVD entre 12 vencedores",
+          "detail3": "Validação de palavras encontradas + entrega ao vivo"
+        },
+        "demo": {
+          "title": "🟢 Demo Governança + Multisig + Superfluid",
+          "description": "Demonstração das ferramentas do DAO",
+          "detail1": "Encerramento do Snapshot",
+          "detail2": "Execução do sorteio #3",
+          "detail3": "Airdrop secundário: DAO → multisig, Não-DAO → Superfluid"
+        },
+        "raffle3": {
+          "title": "🎁 Sorteio #3 – UVD",
+          "description": "Sorteio final votado pela comunidade",
+          "detail1": "Entrega pública do valor votado"
+        },
+        "closing": {
+          "title": "🏁 Encerramento Oficial do Evento",
+          "description": "Cerimônia de encerramento",
+          "detail1": "Agradecimentos",
+          "detail2": "Reconhecimento aos patrocinadores, equipe e comunidade",
+          "detail3": "Despedida da transmissão"
+        },
+        "party": {
+          "title": "🎉 Networking + Festa DAO",
+          "description": "Celebração e networking",
+          "detail1": "DJ ao vivo",
+          "detail2": "Bebidas",
+          "detail3": "Entrevistas",
+          "detail4": "Encerramento final com a comunidade"
+        }
+      }
+    }
   }
 }

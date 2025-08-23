@@ -85,7 +85,11 @@ Plataforma de aplicación y gestión para UltraVioleta DAO, la élite de Web3 en
 - **Sistema de Blog** (`/blog`):
   - Listado de publicaciones
   - Páginas individuales de blog (`/blog/:slug`)
-- **Sistema de Eventos**: Display de próximos eventos comunitarios
+- **Sistema de Eventos** (`/events`): 
+  - Display de próximos eventos comunitarios
+  - Página dedicada para Ultra Evento 2025 con horario detallado
+  - Información de fecha, hora y ubicación del evento
+  - Agenda completa con actividades categorizadas por tipo
 
 ### 🎮 Características Interactivas
 - **Rueda UVD** (`/wheel`):
@@ -272,3 +276,9 @@ Para contribuir al proyecto:
 - **Actualizada**: Navegación reemplazando "Purge" con "Contributors"
 - **Mejorado**: Dashboard de métricas ahora incluye sección de contribuidores
 - **Traducciones**: Agregadas traducciones completas en español e inglés
+- **Nueva Sección de Eventos**: Agregada página `/events` con el horario completo del Ultra Evento 2025 en Medellín
+  - Horario detallado desde 1:00 PM hasta 9:00 PM del 23 de agosto
+  - Categorización visual de actividades con iconos y colores distintivos
+  - Información de ponentes, rifas, activaciones y networking
+  - Diseño responsivo con animaciones usando Framer Motion
+  - Traducciones completas en español e inglés para toda la sección
