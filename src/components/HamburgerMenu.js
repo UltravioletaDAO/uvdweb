@@ -15,6 +15,7 @@ import {
   ArrowTrendingUpIcon,
   InformationCircleIcon,
   PlayCircleIcon,
+  CalendarIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -72,6 +73,13 @@ const HamburgerMenu = () => {
       path: "/metrics",
       isExternal: false,
       description: t('navigation.descriptions.metrics'),
+    },
+    {
+      name: t('navigation.events'),
+      icon: CalendarIcon,
+      path: "/events",
+      isExternal: false,
+      description: t('navigation.descriptions.events'),
     }
     /* Delegations disabled for now (Beam validator was shut down)
     ,

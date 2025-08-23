@@ -190,6 +190,7 @@
     "delegations": "Delegaciones",
     "safestats": "Multifirmantes",
     "metrics": "Métricas",
+    "events": "Eventos",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -208,7 +209,8 @@
       "watchToEarn": "Watch to Earn: reclama con puntos de Twitch y recibe UVD",
       "delegations": "Stakea y delegar tus tokens",
       "safestats": "Estadísticas de multifirmantes",
-      "metrics": "Dashboard de métricas"
+      "metrics": "Dashboard de métricas",
+      "events": "Eventos y actividades del DAO"
     },
     "aria": {
       "open_menu": "Abrir menú",
@@ -820,5 +822,142 @@
   "navigation_extra": {
     "multisig_alt": "Icono de Multifirma",
     "swap_token_alt": "Icono de Swap Token"
+  },
+  "events": {
+    "seo": {
+      "title": "Eventos - UltraVioleta DAO",
+      "description": "Eventos y actividades de la comunidad UltraVioleta DAO. Conferencias, meetups, hackathons y más en América Latina."
+    },
+    "title": "Eventos UVD",
+    "ultraevento": {
+      "title": "Ultra Evento 2025",
+      "date": {
+        "label": "Fecha",
+        "value": "Sábado 23 de agosto"
+      },
+      "time": {
+        "label": "Horario",
+        "value": "1:00 p.m. – 9:00 p.m."
+      },
+      "location": {
+        "label": "Lugar",
+        "value": "Hash House Club, Medellín"
+      },
+      "description": "El evento más importante del año para la comunidad UltraVioleta DAO. Un día completo de charlas, networking, votaciones y celebración.",
+      "scheduleTitle": "🕐 Horario Oficial",
+      "speakers": "Ponentes",
+      "schedule": {
+        "registration": {
+          "title": "🟣 Registro + Activaciones Iniciales",
+          "description": "Registro y activaciones iniciales",
+          "detail1": "Entrega de escarapelas con 4 fichos por persona (400 total, 100 asistentes)",
+          "detail2": "Activaciones: POAP, Self.xyz, fotos, música",
+          "detail3": "Apertura del stream",
+          "detail4": "Recepción de wallets abierta"
+        },
+        "internal": {
+          "title": "🟣 Presentación interna del DAO",
+          "description": "Introducción y logística del evento",
+          "detail1": "Instrucciones generales",
+          "detail2": "Visión del día",
+          "detail3": "Logística para votación y participación"
+        },
+        "snack1": {
+          "title": "🟢 Vianda #1",
+          "description": "Primer snack"
+        },
+        "opening": {
+          "title": "🟣 Apertura oficial del Ultraevento",
+          "description": "Ceremonia de apertura",
+          "detail1": "Bienvenida general",
+          "detail2": "Reconocimiento a sponsors y comunidad"
+        },
+        "raffle1": {
+          "title": "🎁 Rifa #1 – UVD",
+          "description": "Primera rifa del evento",
+          "detail1": "Premio fijo - Incentivo inicial para animar a la comunidad"
+        },
+        "snack2": {
+          "title": "🟢 Vianda #2",
+          "description": "Segundo snack (15 min)"
+        },
+        "history": {
+          "title": "🟣 Historia del DAO – Bloque especial",
+          "description": "Presentación de la historia y evolución del DAO",
+          "detail1": "Origen, visión y evolución del proyecto UVD",
+          "detail2": "Voces fundadoras"
+        },
+        "community": {
+          "title": "🟠 Bloque Comunidad UVD",
+          "description": "Presentaciones de miembros de la comunidad",
+          "note": "Transiciones de 3 minutos entre charlas"
+        },
+        "raffle2": {
+          "title": "🎁 Rifa #2 – UVD",
+          "description": "Segunda rifa con premio fijo"
+        },
+        "sponsors": {
+          "title": "🟠 Bloque Sponsors y Aliados",
+          "description": "Presentaciones de sponsors y partners",
+          "note": "Transiciones de 3 minutos entre charlas"
+        },
+        "snack3": {
+          "title": "🟢 Vianda #3",
+          "description": "Tercer snack"
+        },
+        "constitution": {
+          "title": "🟣 Firma Constitución UVD",
+          "description": "Ceremonia de firma de la constitución del DAO",
+          "detail1": "Lectura del manifiesto",
+          "detail2": "Snapshot simbólico",
+          "detail3": "Foto oficial del DAO"
+        },
+        "walletClose": {
+          "title": "📤 Cierre registro de wallets + Airdrop inicial",
+          "description": "Cierre de registro y distribución inicial",
+          "detail1": "$1 UVD por wallet registrada",
+          "detail2": "Activación de los 16 multifirmantes"
+        },
+        "snapshot": {
+          "title": "📤 Lanzamiento de propuesta en Snapshot",
+          "description": "Votación comunitaria",
+          "detail1": "Votación de 10 minutos para definir monto de la rifa #3"
+        },
+        "ultraguaca": {
+          "title": "🟡 Ultra Guaca – Activación en tarima",
+          "description": "Actividad interactiva con la comunidad",
+          "detail1": "Coordinada por Jangx",
+          "detail2": "Reparto de $120 UVD entre 12 ganadores",
+          "detail3": "Validación de palabras encontradas + entrega en vivo"
+        },
+        "demo": {
+          "title": "🟢 Demo Gobernanza + Multifirma + Superfluid",
+          "description": "Demostración de herramientas del DAO",
+          "detail1": "Cierre del Snapshot",
+          "detail2": "Ejecución de la rifa #3",
+          "detail3": "Airdrop secundario: DAO → multifirma, No DAO → Superfluid"
+        },
+        "raffle3": {
+          "title": "🎁 Rifa #3 – UVD",
+          "description": "Rifa final votada por la comunidad",
+          "detail1": "Entrega pública del monto votado"
+        },
+        "closing": {
+          "title": "🏁 Cierre oficial del evento",
+          "description": "Ceremonia de cierre",
+          "detail1": "Agradecimientos",
+          "detail2": "Reconocimientos a sponsors, staff y comunidad",
+          "detail3": "Despedida del stream"
+        },
+        "party": {
+          "title": "🎉 Networking + Fiesta DAO",
+          "description": "Celebración y networking",
+          "detail1": "DJ en vivo",
+          "detail2": "Drinks",
+          "detail3": "Entrevistas",
+          "detail4": "Cierre final con la comunidad"
+        }
+      }
+    }
   }
 } 
