@@ -1,0 +1,179 @@
+/* Import React app's CSS variables and styling */
+@import "../../src/index.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Override root variables with React app theme colors */
+:root {
+    /* Use React app's background and text colors */
+    --app-background: #121212;
+    /* background.DEFAULT from React app */
+    --app-foreground: #e0e0e0;
+    /* text.primary from React app */
+    --app-foreground-muted: #a0a0a0;
+    /* text.secondary from React app */
+
+    /* Use React app's ultraviolet brand colors */
+    --app-accent: #6a00ff;
+    /* ultraviolet.DEFAULT */
+    --app-accent-hover: #5a00cc;
+    /* ultraviolet.dark */
+    --app-accent-active: #320066;
+    /* ultraviolet.darker */
+    --app-accent-light: #7c1fff;
+    /* ultraviolet.light */
+
+    /* Additional React app colors */
+    --app-gray: #1e1e1e;
+    /* background.lighter */
+    --app-gray-dark: #252525;
+    /* background.input */
+    --app-card-bg: rgba(30, 30, 30, 0.4);
+    --app-card-border: rgba(106, 0, 255, 0.2);
+    /* ultraviolet with opacity */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Maintain dark theme consistency */
+        --app-background: #121212;
+        --app-foreground: #e0e0e0;
+        --app-foreground-muted: #a0a0a0;
+        --app-accent: #6a00ff;
+        --app-accent-hover: #5a00cc;
+        --app-accent-active: #320066;
+        --app-accent-light: #7c1fff;
+        --app-gray: #1e1e1e;
+        --app-gray-dark: #252525;
+        --app-card-bg: rgba(30, 30, 30, 0.4);
+        --app-card-border: rgba(106, 0, 255, 0.2);
+    }
+}
+
+/* Map React app theme to OnchainKit variables */
+.mini-app-theme {
+    --ock-font-family: "Inter", sans-serif;
+    /* Use React app's Inter font */
+    --ock-border-radius: 0.75rem;
+    --ock-border-radius-inner: 0.5rem;
+
+    /* Text colors - using React app's ultraviolet theme */
+    --ock-text-inverse: var(--app-background);
+    --ock-text-foreground: var(--app-foreground);
+    --ock-text-foreground-muted: var(--app-foreground-muted);
+    --ock-text-error: #d32f2f;
+    /* error.DEFAULT from React app */
+    --ock-text-primary: var(--app-accent);
+    --ock-text-success: #22c55e;
+    --ock-text-warning: #f59e0b;
+    --ock-text-disabled: #a1a1aa;
+
+    /* Background colors - using React app's dark theme */
+    --ock-bg-default: var(--app-background);
+    --ock-bg-default-hover: var(--app-gray);
+    --ock-bg-default-active: var(--app-gray-dark);
+    --ock-bg-alternate: var(--app-gray);
+    --ock-bg-alternate-hover: var(--app-gray-dark);
+    --ock-bg-alternate-active: var(--app-gray-dark);
+    --ock-bg-inverse: var(--app-foreground);
+    --ock-bg-inverse-hover: #f0f0f0;
+    --ock-bg-inverse-active: #d0d0d0;
+
+    /* Primary colors - React app's ultraviolet brand */
+    --ock-bg-primary: var(--app-accent);
+    --ock-bg-primary-hover: var(--app-accent-hover);
+    --ock-bg-primary-active: var(--app-accent-active);
+    --ock-bg-primary-washed: rgba(106, 0, 255, 0.1);
+    --ock-bg-primary-disabled: rgba(106, 0, 255, 0.5);
+
+    --ock-bg-secondary: var(--app-gray);
+    --ock-bg-secondary-hover: var(--app-gray-dark);
+    --ock-bg-secondary-active: #2a2a2a;
+    --ock-bg-error: rgba(211, 47, 47, 0.1);
+    --ock-bg-warning: rgba(245, 158, 11, 0.1);
+    --ock-bg-success: rgba(34, 197, 94, 0.1);
+    --ock-bg-default-reverse: var(--app-foreground);
+
+    /* Icon colors - consistent with React app theme */
+    --ock-icon-color-primary: var(--app-accent);
+    --ock-icon-color-foreground: var(--app-foreground);
+    --ock-icon-color-foreground-muted: var(--app-foreground-muted);
+    --ock-icon-color-inverse: var(--app-background);
+    --ock-icon-color-error: #d32f2f;
+    --ock-icon-color-success: #22c55e;
+    --ock-icon-color-warning: #f59e0b;
+
+    /* Line colors - using React app's border styles */
+    --ock-line-primary: var(--app-accent);
+    --ock-line-default: #2a2a2a;
+    /* border.DEFAULT from React app */
+    --ock-line-heavy: var(--app-foreground-muted);
+    --ock-line-inverse: var(--app-foreground);
+}
+
+/* Apply React app's font and base styling */
+body {
+    color: var(--app-foreground);
+    background: var(--app-background);
+    font-family: "Inter", system-ui, sans-serif;
+    /* React app's font */
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Inherit React app's animations */
+.animate-fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in {
+    animation: slideIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Apply React app's component styles to miniapp */
+@layer components {
+    .card-hover {
+        @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+    }
+
+    .form-input {
+        @apply w-full px-4 py-3 border rounded-lg transition-all duration-200 focus:ring-2 focus:ring-ultraviolet focus:border-transparent hover:border-ultraviolet-light;
+    }
+
+    .btn-primary {
+        @apply px-8 py-3 bg-gradient-to-r from-ultraviolet-dark to-ultraviolet text-white font-semibold rounded-full shadow-lg hover:from-ultraviolet-darker hover:to-ultraviolet-dark transform transition-all duration-200 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ultraviolet;
+    }
+}
+
+@layer utilities {
+    .text-balance {
+        text-wrap: balance;
+    }
+}
