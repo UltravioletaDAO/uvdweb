@@ -530,7 +530,8 @@
       "create_reward_error": "Error al crear la recompensa. Asegúrate de ser afiliado o partner de Twitch",
       "client_id_mismatch": "La recompensa fue creada con otra aplicación. Por favor, crea una nueva recompensa desde esta aplicación",
       "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo",
-      "auto_update": "Actualización automática"
+      "auto_update": "Actualización automática",
+      "verify_wallet_info": "Verificación de wallet habilitada (configurar REACT_APP_WHEEL_VERIFY_WALLET=false para desactivar)"
     }
   },
   "delegations": {

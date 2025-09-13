@@ -98,6 +98,7 @@ Plataforma de aplicación y gestión para UltraVioleta DAO, la élite de Web3 en
   - Resultados basados en probabilidad
   - Funcionalidad de exportación de resultados
   - Integración con Twitch para recompensas
+  - Verificación opcional de billeteras contra base de datos (configurable con `REACT_APP_WHEEL_VERIFY_WALLET`)
 
 ### 🔗 Integraciones
 - **Integración con Twitch**:
@@ -207,6 +208,11 @@ REACT_APP_OPENAI_API_KEY=tu_openai_api_key_aqui
 
 # Thirdweb Client ID (requerido para conexiones de wallet Web3)
 # Obtén tu client ID en: https://thirdweb.com/dashboard
+
+# Verificación de billeteras en la ruleta (opcional)
+# Cuando está en true, valida las billeteras contra la base de datos
+# Cuando está en false, acepta cualquier billetera válida sin verificación
+REACT_APP_WHEEL_VERIFY_WALLET=true
 REACT_APP_THIRDWEB_CLIENT_ID=tu_thirdweb_client_id_aqui
 ```
 

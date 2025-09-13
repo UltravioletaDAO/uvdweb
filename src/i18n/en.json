@@ -617,7 +617,8 @@
       "create_reward_error": "Error creating reward. Make sure you are a Twitch affiliate or partner",
       "client_id_mismatch": "The reward was created with another application. Please create a new reward from this application",
       "redemption_error": "Error getting redemptions. Please try again",
-      "auto_update": "Auto-update"
+      "auto_update": "Auto-update",
+      "verify_wallet_info": "Wallet verification enabled (set REACT_APP_WHEEL_VERIFY_WALLET=false to disable)"
     }
   },
   "delegations": {
