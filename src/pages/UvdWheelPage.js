@@ -285,60 +285,73 @@ const UvdWheelPage = () => {
         for (const redemption of data.data) {
           const wallet = redemption.user_input.trim();
           if (isValidEthereumAddress(wallet)) {
-            try {
-              // Validar wallet con la API
-              const apiResponse = await fetch(`${process.env.REACT_APP_API_URL}/wallets`, {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                  username: redemption.user_name,
-                  wallet: wallet
-                })
-              });
-
-              const apiData = await apiResponse.json();
-
-              if (apiResponse.status === 200 || apiResponse.status === 201) {
-                // Casos exitosos: agregar a participantes válidos
-                validParticipants.push({
-                  wallet: wallet,
-                  username: redemption.user_name,
-                  redemptionId: redemption.id,
-                  rewardId: wheelReward.id
+            // Verificar si la validación de wallet está habilitada
+            const shouldVerifyWallet = process.env.REACT_APP_WHEEL_VERIFY_WALLET === 'true';
+            
+            if (shouldVerifyWallet) {
+              try {
+                // Validar wallet con la API
+                const apiResponse = await fetch(`${process.env.REACT_APP_API_URL}/wallets`, {
+                  method: 'POST',
+                  headers: {
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                    username: redemption.user_name,
+                    wallet: wallet
+                  })
                 });
-              } else if (apiResponse.status === 400) {
-                // Casos de error: cancelar la recompensa y enviar mensaje al chat
+
+                const apiData = await apiResponse.json();
+
+                if (apiResponse.status === 200 || apiResponse.status === 201) {
+                  // Casos exitosos: agregar a participantes válidos
+                  validParticipants.push({
+                    wallet: wallet,
+                    username: redemption.user_name,
+                    redemptionId: redemption.id,
+                    rewardId: wheelReward.id
+                  });
+                } else if (apiResponse.status === 400) {
+                  // Casos de error: cancelar la recompensa y enviar mensaje al chat
+                  invalidRedemptions.push({
+                    ...redemption,
+                    reward_id: wheelReward.id
+                  });
+
+                  // Enviar mensaje al chat con el error
+                  try {
+                    await fetch(`https://api.twitch.tv/helix/chat/messages?broadcaster_id=${broadcasterId}&sender_id=${broadcasterId}`, {
+                      method: 'POST',
+                      headers: {
+                        'Authorization': `Bearer ${twitchAccessToken}`,
+                        'Client-Id': process.env.REACT_APP_TWITCH_CLIENT_ID,
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({
+                        message: `@${redemption.user_name} ${apiData.error}: ${apiData.details}`,
+                        reply_to_message_id: null
+                      })
+                    });
+                  } catch (error) {
+                    console.error('Error sending chat message:', error);
+                  }
+                }
+              } catch (error) {
+                console.error('Error validating wallet:', error);
+                // En caso de error en la API, tratar como inválido
                 invalidRedemptions.push({
                   ...redemption,
                   reward_id: wheelReward.id
                 });
-
-                // Enviar mensaje al chat con el error
-                try {
-                  await fetch(`https://api.twitch.tv/helix/chat/messages?broadcaster_id=${broadcasterId}&sender_id=${broadcasterId}`, {
-                    method: 'POST',
-                    headers: {
-                      'Authorization': `Bearer ${twitchAccessToken}`,
-                      'Client-Id': process.env.REACT_APP_TWITCH_CLIENT_ID,
-                      'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                      message: `@${redemption.user_name} ${apiData.error}: ${apiData.details}`,
-                      reply_to_message_id: null
-                    })
-                  });
-                } catch (error) {
-                  console.error('Error sending chat message:', error);
-                }
               }
-            } catch (error) {
-              console.error('Error validating wallet:', error);
-              // En caso de error en la API, tratar como inválido
-              invalidRedemptions.push({
-                ...redemption,
-                reward_id: wheelReward.id
+            } else {
+              // Si la verificación está deshabilitada, agregar directamente a participantes válidos
+              validParticipants.push({
+                wallet: wallet,
+                username: redemption.user_name,
+                redemptionId: redemption.id,
+                rewardId: wheelReward.id
               });
             }
           } else {
