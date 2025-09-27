@@ -160,6 +160,7 @@
     "metrics": "Métriques",
     "events": "Événements",
     "services": "Produits et Services",
+    "nft": "Collections NFT",
     "categories": {
       "main": "Principal",
       "governance": "Gouvernance",
@@ -179,7 +180,9 @@
       "delegations": "Stakez et déléguez vos tokens",
       "safestats": "Statistiques des multisignataires",
       "metrics": "Tableau de bord des métriques",
-      "events": "Événements et activités du DAO"
+      "events": "Événements et activités du DAO",
+      "services": "Découvrez nos produits et services",
+      "nft": "Parcourez nos collections NFT"
     },
     "aria": {
       "open_menu": "Ouvrir le menu",
@@ -924,5 +927,46 @@
       }
     },
     "contact": "Intéressé par nos services? Contactez-nous pour plus d'informations"
+  },
+  "nft": {
+    "title": "Collections NFT",
+    "subtitle": "Explorez des collections d'art numérique uniques d'UltraVioleta DAO",
+    "totalSupply": "Offre Totale",
+    "uniqueOwners": "Propriétaires Uniques",
+    "chain": "Blockchain",
+    "royalty": "Redevances",
+    "viewOnMarketplace": "Voir sur Marketplace",
+    "viewOnOpenSea": "Voir sur OpenSea",
+    "echoes": {
+      "description": "Echoes est une collection limitée de 89 NFT vidéo qui relient le monde numérique et réel. Chaque pièce débloque des avantages exclusifs au sein du DAO Ultravioleta.",
+      "superpowers": {
+        "title": "Superpouvoirs des Détenteurs Echoes",
+        "airdrop": "Airdrop Mensuel",
+        "whitelist": "Whitelist Prioritaire",
+        "event": "Accès Gratuit à l'Événement",
+        "discount": "Réduction sur le Merch",
+        "fibonacci": {
+          "title": "Pouvoir Spécial Fibonacci",
+          "description": "2X Récompenses dans les systèmes Watch-to-Earn et Chat-to-Earn"
+        },
+        "notes": {
+          "venue": "Entrée au lieu uniquement. Vols, hébergement et autres frais non inclus.",
+          "shipping": "Expédition internationale non incluse."
+        }
+      },
+      "treasuryReserved": "Réservé pour le Trésor Communautaire",
+      "treasury": {
+        "title": "Réserve du Trésor Communautaire",
+        "description": "Les Echoes #56 à #89 sont réservés pour le trésor communautaire d'UltraVioleta DAO. Ces NFTs n'ont pas été vendus au public et sont conservés pour de futures initiatives communautaires, récompenses et partenariats stratégiques."
+      }
+    },
+    "vulvas": {
+      "description": "Une collection artistique célébrant la diversité et l'expression à travers des pièces d'art numérique uniques.",
+      "title": "Collection Vulvas de Vulvas",
+      "info": "Cette collection présente des expressions artistiques uniques. Visitez OpenSea pour explorer la collection complète et découvrir les pièces disponibles."
+    },
+    "meta": {
+      "description": "Explorez les collections NFT exclusives d'UltraVioleta DAO - Echoes NFT vidéo sur Avalanche et collections artistiques sur Ethereum."
+    }
   }
 }

@@ -22,6 +22,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThirdwebProvider } from "thirdweb/react";
 import MetricsDashboard from "./pages/MetricsDashboard";
 import ServicesPage from "./pages/ServicesPage";
+import NFTPage from "./pages/NFTPage";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +54,7 @@ function App() {
                 <Route path="/safestats" element={<SafeStats />} />
                 <Route path="/metrics" element={<MetricsDashboard />} />
                 <Route path="/services" element={<ServicesPage />} />
+                <Route path="/nfts" element={<NFTPage />} />
               </Routes>
             </div>
           </Router>

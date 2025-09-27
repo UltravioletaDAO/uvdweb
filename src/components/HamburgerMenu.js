@@ -16,6 +16,7 @@ import {
   InformationCircleIcon,
   PlayCircleIcon,
   CalendarIcon,
+  PhotoIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -66,6 +67,13 @@ const HamburgerMenu = () => {
       path: "/services",
       isExternal: false,
       description: t('navigation.descriptions.services'),
+    },
+    {
+      name: t('navigation.nft'),
+      icon: PhotoIcon,
+      path: "/nfts",
+      isExternal: false,
+      description: t('navigation.descriptions.nft'),
     }
     /* Delegations disabled for now (Beam validator was shut down)
     ,
