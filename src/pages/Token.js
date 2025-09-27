@@ -183,22 +183,79 @@ const Token = () => {
             {t('tokenomics.title')}
           </h2>
 
-          <div className="bg-background-secondary rounded-2xl p-6 mb-6">
+          {/* Total Supply Overview */}
+          <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl p-6 mb-6">
             <h3 className="text-xl font-semibold text-primary mb-4">
-              {t('tokenomics.overview')}
+              {t('tokenomics.supply.title')}
             </h3>
-            <p className="text-text-secondary mb-4">
-              {t('tokenomics.description')}
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div className="bg-background/50 rounded-lg p-4">
-                <span className="text-text-secondary text-sm">{t('tokenomics.treasury_base')}</span>
-                <p className="text-2xl font-bold text-text-primary">2,139,063,651.61 UVD</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
+              <div className="bg-background/80 rounded-lg p-4">
+                <span className="text-text-secondary text-sm">{t('tokenomics.supply.total')}</span>
+                <p className="text-2xl font-bold text-text-primary">10,000,000,000 UVD</p>
+                <span className="text-xs text-text-secondary">10 Billion</span>
               </div>
-              <div className="bg-background/50 rounded-lg p-4">
-                <span className="text-text-secondary text-sm">{t('tokenomics.period')}</span>
-                <p className="text-2xl font-bold text-text-primary">18 {t('tokenomics.months')}</p>
-                <span className="text-text-secondary text-xs">{t('tokenomics.period_dates')}</span>
+              <div className="bg-background/80 rounded-lg p-4">
+                <span className="text-text-secondary text-sm">{t('tokenomics.supply.launch')}</span>
+                <p className="text-2xl font-bold text-text-primary">7,300,000,000 UVD</p>
+                <span className="text-xs text-text-secondary">7.3 Billion (73%)</span>
+              </div>
+              <div className="bg-background/80 rounded-lg p-4">
+                <span className="text-text-secondary text-sm">{t('tokenomics.supply.circulating')}</span>
+                <p className="text-2xl font-bold text-primary">~6,070,000,000 UVD</p>
+                <span className="text-xs text-text-secondary">~60.7%</span>
+              </div>
+            </div>
+
+            {/* Distribution Breakdown */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="bg-background/60 rounded-lg p-4">
+                <h4 className="font-semibold text-text-primary mb-3 flex items-center gap-2">
+                  <span className="text-xl">📊</span>
+                  {t('tokenomics.supply.distribution')}
+                </h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-text-secondary">{t('tokenomics.supply.uvt_holders')}</span>
+                    <span className="text-text-primary font-medium">3,017,000,000 UVD</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-secondary">{t('tokenomics.supply.multisig')}</span>
+                    <span className="text-text-primary font-medium">3,930,000,000 UVD</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-secondary">{t('tokenomics.supply.liquidity')}</span>
+                    <span className="text-text-primary font-medium">2,450,000,000 UVD</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-secondary">{t('tokenomics.supply.airdrop')}</span>
+                    <span className="text-text-primary font-medium">333,300,000 UVD</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-secondary">{t('tokenomics.supply.champions')}</span>
+                    <span className="text-text-primary font-medium">250,000,000 UVD</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-background/60 rounded-lg p-4">
+                <h4 className="font-semibold text-text-primary mb-3 flex items-center gap-2">
+                  <span className="text-xl">🏦</span>
+                  {t('tokenomics.supply.treasury_allocation')}
+                </h4>
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-text-secondary">{t('tokenomics.treasury_base')}</span>
+                    <span className="text-text-primary font-medium">2,139,063,651 UVD</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-secondary">{t('tokenomics.supply.period')}</span>
+                    <span className="text-text-primary font-medium">18 {t('tokenomics.months')}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-text-secondary text-xs">{t('tokenomics.period_dates')}</span>
+                    <span className="text-text-primary font-medium text-xs">Jan 2024 - Jun 2025</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

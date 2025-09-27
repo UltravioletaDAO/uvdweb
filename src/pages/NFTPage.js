@@ -1,13 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import SEOEnhanced from '../components/SEOEnhanced';
+import OptimizedNFTCard from '../components/OptimizedNFTCard';
+import { useNFTCache } from '../hooks/useNFTCache';
 
 const NFTPage = () => {
   const { t, i18n } = useTranslation();
   const [echoesNFTs, setEchoesNFTs] = useState([]);
   const [selectedCollection, setSelectedCollection] = useState('echoes');
   const [loading, setLoading] = useState(true);
+  const [loadedNFTs, setLoadedNFTs] = useState(new Set());
+  const { getCachedUrl, preloadImages, markAsLoaded, isLoaded } = useNFTCache();
+
+  // Register service worker for offline caching
+  useEffect(() => {
+    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
+      navigator.serviceWorker
+        .register('/nft-cache-sw.js')
+        .then(registration => {
+          console.log('NFT Cache Service Worker registered:', registration);
+        })
+        .catch(error => {
+          console.warn('Service Worker registration failed:', error);
+        });
+    }
+  }, []);
 
   const collections = {
     echoes: {
@@ -73,78 +91,45 @@ const NFTPage = () => {
 
   const fibonacciNumbers = [1, 2, 3, 5, 8, 13, 21, 34, 55];
 
-  const NFTCard = ({ nft }) => {
-    const [videoError, setVideoError] = useState(false);
-    const isVideo = nft.animation_url && !videoError;
-    const mediaUrl = convertIPFSToGateway(isVideo ? nft.animation_url : nft.image);
-    const thumbnailUrl = convertIPFSToGateway(nft.image);
+  // Preload adjacent NFTs for smoother scrolling
+  useEffect(() => {
+    if (echoesNFTs.length > 0 && !loading) {
+      const visibleRange = 12; // Preload first 12 NFTs
+      const preloadUrls = echoesNFTs
+        .slice(0, visibleRange)
+        .flatMap(nft => [
+          convertIPFSToGateway(nft.image),
+          nft.animation_url ? convertIPFSToGateway(nft.animation_url) : null
+        ])
+        .filter(Boolean);
+
+      preloadImages(preloadUrls);
+    }
+  }, [echoesNFTs, loading, preloadImages]);
+
+  const handleNFTLoad = useCallback((nftId) => {
+    setLoadedNFTs(prev => new Set(prev).add(nftId));
+    markAsLoaded(nftId);
+  }, [markAsLoaded]);
+
+  // Use memoized NFT rendering for performance
+  const renderNFTCard = useCallback((nft, index) => {
     const isFibonacci = fibonacciNumbers.includes(nft.collectionNumber);
     const isReserved = nft.collectionNumber > 55;
+    const isPriority = index < 8; // First 8 NFTs load immediately
 
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        whileHover={{ scale: 1.02 }}
-        className={`bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden ${
-          isFibonacci ? 'ring-4 ring-yellow-400 ring-offset-2' : ''
-        }`}
-        style={isFibonacci ? {
-          background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-          padding: '2px'
-        } : {}}
-      >
-        <div className={isFibonacci ? 'bg-white dark:bg-gray-800 rounded-lg overflow-hidden' : ''}>
-          <div className="aspect-square relative bg-gray-100 dark:bg-gray-700">
-            {isVideo ? (
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                poster={thumbnailUrl}
-                className="w-full h-full object-cover"
-                onError={() => setVideoError(true)}
-              >
-                <source src={mediaUrl} type="video/mp4" />
-              </video>
-            ) : (
-              <img
-                src={mediaUrl}
-                alt={nft.name}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            )}
-            {isFibonacci && (
-              <div className="absolute top-2 left-2 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black px-2 py-1 rounded text-xs font-bold">
-                ⭐ FIBONACCI #{nft.collectionNumber}
-              </div>
-            )}
-            {isReserved && (
-              <div className="absolute top-2 right-2 bg-gradient-to-r from-purple-600 to-purple-800 text-white px-2 py-1 rounded text-xs font-bold">
-                🏛️ TREASURY
-              </div>
-            )}
-          </div>
-
-          <div className="p-4">
-            <h3 className="font-bold text-lg mb-2">Echo #{nft.collectionNumber}</h3>
-            {isFibonacci && (
-              <div className="mb-2 text-xs bg-gradient-to-r from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 p-2 rounded">
-                <span className="font-bold text-yellow-900 dark:text-yellow-100">🌟 2X REWARDS</span>
-              </div>
-            )}
-            {isReserved && (
-              <div className="text-xs text-purple-600 dark:text-purple-400">
-                {t('nft.echoes.treasuryReserved')}
-              </div>
-            )}
-          </div>
-        </div>
-      </motion.div>
+      <OptimizedNFTCard
+        key={nft.id}
+        nft={nft}
+        isFibonacci={isFibonacci}
+        isReserved={isReserved}
+        getCachedUrl={getCachedUrl}
+        onLoad={handleNFTLoad}
+        priority={isPriority}
+      />
     );
-  };
+  }, [getCachedUrl, handleNFTLoad]);
 
   const CollectionStats = ({ collection }) => (
     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
@@ -320,9 +305,7 @@ const NFTPage = () => {
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                      {echoesNFTs.map((nft) => (
-                        <NFTCard key={nft.id} nft={nft} />
-                      ))}
+                      {echoesNFTs.map((nft, index) => renderNFTCard(nft, index))}
                     </div>
                   )}
                 </>
