@@ -47,7 +47,8 @@
     "eject": "react-scripts eject",
     "update:applicants": "node scripts/updateApplicantsApproved.js",
     "generate:sitemap": "node scripts/generateSitemap.js",
-    "prebuild": "npm run generate:sitemap",
+    "generate:sitemap:advanced": "node scripts/generateAdvancedSitemap.js",
+    "prebuild": "npm run generate:sitemap:advanced",
     "server:install": "cd server && npm install",
     "server:dev": "cd server && npm run dev"
   },

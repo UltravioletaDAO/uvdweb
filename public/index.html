@@ -2,7 +2,23 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+
+    <!-- Preconnect to critical third-party origins -->
+    <link rel="preconnect" href="https://hub.snapshot.org" crossorigin>
+    <link rel="preconnect" href="https://api.coingecko.com" crossorigin>
+    <link rel="preconnect" href="https://safe-transaction-avalanche.safe.global" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- DNS Prefetch for additional resources -->
+    <link rel="dns-prefetch" href="https://api.ultravioletadao.xyz">
+    <link rel="dns-prefetch" href="https://cloudflare-eth.com">
+    <link rel="dns-prefetch" href="https://api.avax.network">
+
+    <!-- Preload critical resources -->
+    <link rel="preload" href="%PUBLIC_URL%/logo.png" as="image" type="image/png">
+    <link rel="preload" href="%PUBLIC_URL%/manifest.json" as="fetch" crossorigin="anonymous">
     
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2HHE9BR62"></script>
@@ -20,15 +36,60 @@
     <link rel="icon" type="image/png" sizes="32x32" href="%PUBLIC_URL%/favicon-32x32.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/apple-touch-icon.png" />
     
-    <!-- PWA -->
+    <!-- PWA and Mobile Optimization -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <meta name="theme-color" content="#6A00FF" />
     <meta name="msapplication-TileColor" content="#6A00FF" />
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="UltraVioleta">
+    <meta name="application-name" content="UltraVioleta DAO">
+    <meta name="msapplication-config" content="%PUBLIC_URL%/browserconfig.xml">
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+
+    <!-- Performance Hints -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
     
-    <title>UltraVioleta DAO</title>
+    <title>UltraVioleta DAO - Leading Web3 DAO in Latin America</title>
+
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+      body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#0a0a0a;color:#fff}#root{min-height:100vh}.loading-spinner{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border:3px solid rgba(106,0,255,0.3);border-top-color:#6a00ff;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+    </style>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
+    <noscript>
+      <style>
+        .noscript-warning {
+          padding: 20px;
+          background: #ff4444;
+          color: white;
+          text-align: center;
+          font-size: 18px;
+        }
+      </style>
+      <div class="noscript-warning">
+        You need to enable JavaScript to run UltraVioleta DAO. This is a Web3 application that requires JavaScript for wallet connections and blockchain interactions.
+      </div>
+    </noscript>
+    <div id="root">
+      <!-- Loading spinner for better perceived performance -->
+      <div class="loading-spinner" id="initial-loader"></div>
+    </div>
+    <script>
+      // Remove loader once app is mounted
+      window.addEventListener('DOMContentLoaded', function() {
+        setTimeout(function() {
+          var loader = document.getElementById('initial-loader');
+          if (loader) loader.style.display = 'none';
+        }, 100);
+      });
+    </script>
   </body>
 </html> 

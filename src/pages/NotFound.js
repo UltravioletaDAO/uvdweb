@@ -1,10 +1,17 @@
 import { Link } from "react-router-dom"
 import { useTranslation } from 'react-i18next'
+import SEO from '../components/SEO'
 
 function NotFound() {
   const { t } = useTranslation();
   return (
-    <main className="h-screen w-full flex flex-col justify-center items-center bg-background">
+    <>
+      <SEO
+        title="404 - Page Not Found"
+        description="The page you are looking for does not exist. Return to UltraVioleta DAO homepage."
+        noindex={true}
+      />
+      <main className="h-screen w-full flex flex-col justify-center items-center bg-background">
     <h1 className="text-9xl font-extrabold text-text-primary tracking-widest">404</h1>
     <div className="bg-ultraviolet-darker px-2 text-md rounded rotate-12 absolute">
       {t('not_found.title', { defaultValue: 'Página no encontrada' })}
@@ -16,6 +23,7 @@ function NotFound() {
         {t('success.back_home')}
       </Link>
   </main>
+    </>
   )
 }
 

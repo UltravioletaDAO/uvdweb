@@ -1,0 +1,30 @@
+# Security Policy for UltraVioleta DAO
+# Last Updated: 2025-09-27
+
+Contact: security@ultravioletadao.xyz
+Contact: https://twitter.com/ultravioletadao
+Expires: 2026-09-27T00:00:00.000Z
+Encryption: https://ultravioleta.xyz/pgp-key.txt
+Acknowledgments: https://ultravioleta.xyz/security-acknowledgments
+Preferred-Languages: en, es, pt
+Canonical: https://ultravioleta.xyz/.well-known/security.txt
+Policy: https://ultravioleta.xyz/security-policy
+
+# Bug Bounty Program
+# We appreciate responsible disclosure of security vulnerabilities.
+# Please report any security issues to our security team.
+
+# Blockchain Specific
+# Smart Contract: 0x4Ffe7e01832243e03668E090706F17726c26d6B2
+# Network: Avalanche C-Chain (Chain ID: 43114)
+# Treasury: 0x80ae3B3847E4e8Bd27A389f7686486CAC9C3f3e8
+
+# PGP Key Fingerprint (example - replace with actual)
+# Fingerprint: 1234 5678 90AB CDEF 1234 5678 90AB CDEF 1234 5678
+
+# Vulnerability Disclosure Policy
+# We follow a 90-day disclosure timeline for reported vulnerabilities
+# Critical vulnerabilities may be disclosed earlier if patches are available
+
+# CSAF Provider Metadata
+CSAF: https://ultravioleta.xyz/.well-known/csaf/provider-metadata.json

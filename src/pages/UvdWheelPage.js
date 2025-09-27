@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import UvdWheel from '../components/UvdWheel';
 import PageTransition from '../components/PageTransition';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 import { isAddress } from '@ethersproject/address';
 import TwitchAuth from '../components/TwitchAuth';
 import { ethers } from 'ethers';
@@ -1239,7 +1240,13 @@ const UvdWheelPage = () => {
   }, []);
 
   return (
-    <PageTransition>
+    <>
+      <SEO
+        title={t('wheel.seoTitle', 'UVD Rewards Wheel - Spin & Win Crypto')}
+        description={t('wheel.seoDescription', 'Spin the UltraVioleta DAO rewards wheel and win UVD tokens. Connect your wallet, spin the wheel, and claim your rewards instantly on Avalanche blockchain.')}
+        keywords="UVD rewards wheel, crypto rewards, spin to win tokens, DAO rewards, Avalanche tokens, Web3 gamification, crypto giveaway"
+      />
+      <PageTransition>
       <div className="container mx-auto px-4 py-8 max-w-7xl">
         {/* Contenedor para las notificaciones */}
         <ToastContainer
@@ -1790,6 +1797,7 @@ const UvdWheelPage = () => {
         </div>
       </div>
     </PageTransition>
+    </>
   );
 };
 

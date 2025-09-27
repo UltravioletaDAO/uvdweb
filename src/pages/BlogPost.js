@@ -2,6 +2,7 @@ import React from "react"
 import { useTranslation } from 'react-i18next'
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { posts } from "../posts/posts"
+import SEO from '../components/SEO'
 
 function BlogPost() {
   const { slug } = useParams()
@@ -27,7 +28,18 @@ function BlogPost() {
   }
 
   return (
-    <main className="min-h-screen bg-background text-text-primary pb-16">
+    <>
+      <SEO
+        title={post.title}
+        description={post.description}
+        keywords={post.categories ? post.categories.join(', ') + ', UltraVioleta DAO, Web3 LATAM' : 'UltraVioleta DAO, Web3 LATAM, blockchain article'}
+        article={true}
+        author={{name: post.author || 'UltraVioleta DAO', type: 'Person'}}
+        publishedTime={post.date}
+        image={post.image}
+        type="article"
+      />
+      <main className="min-h-screen bg-background text-text-primary pb-16">
       {/* Hero section */}
       <div className="relative h-[34vh] w-full">
         <div className="absolute inset-0" />
@@ -117,6 +129,7 @@ function BlogPost() {
         )}
       </div>
     </main>
+    </>
   )
 }
 
