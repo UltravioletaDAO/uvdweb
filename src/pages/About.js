@@ -610,7 +610,7 @@ const About = () => {
                     <li>• <strong>{t('about.current.legal.details.entity')}:</strong> {t('about.current.legal.details.entity_value')}</li>
                     <li>• <strong>{t('about.current.legal.details.jurisdiction')}:</strong> {t('about.current.legal.details.jurisdiction_value')}</li>
                     <li>• <strong>{t('about.current.legal.details.registered')}:</strong> {t('about.current.legal.details.registered_value')}</li>
-                    <li>• <strong>{t('about.current.legal.details.treasury')}:</strong> {t('about.current.legal.details.treasury_value')}</li>
+                    <li className="break-words">• <strong>{t('about.current.legal.details.treasury')}:</strong> <span className="break-all text-sm">{t('about.current.legal.details.treasury_value')}</span></li>
                   </ul>
                 </div>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed">

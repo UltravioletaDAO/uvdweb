@@ -802,7 +802,7 @@
         "author": "Par @lualjarami - Membre d'UltraVioleta DAO",
         "description": "Un livre écrit par l'un de nos membres les plus actifs de la communauté, dédiant une partie des bénéfices au DAO.",
         "benefit1": "60% des bénéfices vont directement au multisig du DAO",
-        "benefit2": "50% de réduction pour les détenteurs d'UVD sur les versions numérique et physique",
+        "benefit2": "50% remboursé en tokens UVD (exclusif aux membres du DAO)",
         "buyButton": "Acheter sur Amazon"
       }
     },
@@ -827,6 +827,37 @@
         "title": "Outils IA pour Communautés en Ligne",
         "karmaHello": "Chat to Earn - Système de récompenses pour la participation au chat",
         "abracadabra": "Stream to Market - Outils de marketing automatisé pour streamers"
+      }
+    },
+    "events": {
+      "ultraevento": {
+        "title": "Ultra Evento 2025",
+        "flagship": "Événement Phare",
+        "date": {
+          "label": "Date",
+          "value": "24 Août 2025"
+        },
+        "time": {
+          "label": "Horaire",
+          "value": "13h00 - 21h00"
+        },
+        "location": {
+          "label": "Lieu",
+          "value": "Hash House, Medellín"
+        },
+        "description": "L'événement annuel le plus important d'UltraVioleta DAO, réunissant la communauté Web3 latino-américaine pour des conférences, du réseautage et des célébrations.",
+        "stats": {
+          "registered": "Inscrits",
+          "attendees": "Participants",
+          "sponsors": "Sponsors",
+          "duration": "Durée"
+        },
+        "sponsors": {
+          "title": "Sponsors 2025",
+          "gratitude": "Merci à tous nos sponsors d'avoir rendu cet événement possible!"
+        },
+        "brandRepresentation": "Dans le cadre de nos services de représentation de marque, nous organisons des événements en personne qui connectent les projets Web3 avec la communauté latino-américaine.",
+        "sponsorCTA": "Sponsoriser le prochain événement"
       }
     },
     "contact": "Intéressé par nos services? Contactez-nous pour plus d'informations"

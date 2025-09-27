@@ -805,7 +805,7 @@
         "author": "Por @lualjarami - Membro do UltraVioleta DAO",
         "description": "Um livro escrito por um dos nossos membros mais ativos da comunidade, dedicando parte dos lucros ao DAO.",
         "benefit1": "60% dos lucros vão diretamente para o multisig do DAO",
-        "benefit2": "50% de desconto para holders de UVD nas versões digital e física",
+        "benefit2": "50% devolvido em tokens UVD (exclusivo para membros do DAO)",
         "buyButton": "Comprar na Amazon"
       }
     },
@@ -830,6 +830,37 @@
         "title": "Ferramentas IA para Comunidades Online",
         "karmaHello": "Chat to Earn - Sistema de recompensas por participação no chat",
         "abracadabra": "Stream to Market - Ferramentas de marketing automatizado para streamers"
+      }
+    },
+    "events": {
+      "ultraevento": {
+        "title": "Ultra Evento 2025",
+        "flagship": "Evento Principal",
+        "date": {
+          "label": "Data",
+          "value": "24 de Agosto, 2025"
+        },
+        "time": {
+          "label": "Horário",
+          "value": "13:00 - 21:00"
+        },
+        "location": {
+          "label": "Local",
+          "value": "Hash House, Medellín"
+        },
+        "description": "O evento anual mais importante do UltraVioleta DAO, reunindo a comunidade Web3 latino-americana para conferências, networking e celebração.",
+        "stats": {
+          "registered": "Registrados",
+          "attendees": "Presentes",
+          "sponsors": "Patrocinadores",
+          "duration": "Duração"
+        },
+        "sponsors": {
+          "title": "Patrocinadores 2025",
+          "gratitude": "Obrigado a todos os nossos patrocinadores por tornar este evento possível!"
+        },
+        "brandRepresentation": "Como parte de nossos serviços de representação de marca, organizamos eventos presenciais que conectam projetos Web3 com a comunidade latino-americana.",
+        "sponsorCTA": "Patrocine o próximo evento"
       }
     },
     "contact": "Interessado em nossos serviços? Entre em contato para mais informações"
