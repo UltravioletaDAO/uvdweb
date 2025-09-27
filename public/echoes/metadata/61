@@ -1,0 +1,41 @@
+{
+  "name": "Eco Collection #62",
+  "description": "A unique collection of echo-themed digital assets from Ultravioleta DAO - Token #62. Original file: 62.mp4",
+  "image": "ipfs://QmXDKxQUfvKcrMnY8PhyrMcCPKUfPU1SMRT9VXyUaJcqE3",
+  "animation_url": "ipfs://QmXDKxQUfvKcrMnY8PhyrMcCPKUfPU1SMRT9VXyUaJcqE3",
+  "external_url": "https://ultravioleta.xyz",
+  "attributes": [
+    {
+      "trait_type": "Type",
+      "value": "Eco"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Common"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Water"
+    },
+    {
+      "trait_type": "Energy",
+      "value": "Solar"
+    },
+    {
+      "trait_type": "Season",
+      "value": "Winter"
+    },
+    {
+      "trait_type": "Original Number",
+      "value": 62
+    },
+    {
+      "trait_type": "File Size (MB)",
+      "value": "10.51"
+    },
+    {
+      "trait_type": "Upload Date",
+      "value": "7/25/2025"
+    }
+  ]
+}

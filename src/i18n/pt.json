@@ -160,6 +160,7 @@
     "metrics": "Métricas",
     "events": "Eventos",
     "services": "Produtos e Serviços",
+    "nft": "Coleções NFT",
     "categories": {
       "main": "Principal",
       "governance": "Governança",
@@ -179,7 +180,9 @@
       "delegations": "Faça stake e delegue seus tokens",
       "safestats": "Estatísticas dos multiassinantes",
       "metrics": "Painel de métricas",
-      "events": "Eventos e atividades do DAO"
+      "events": "Eventos e atividades do DAO",
+      "services": "Explore nossos produtos e serviços",
+      "nft": "Navegue por nossas coleções NFT"
     },
     "aria": {
       "open_menu": "Abrir menu",
@@ -443,6 +446,83 @@
     "title": "Token Ultravioleta DAO",
     "description_1": "$UVD é o token de governança e utilidade da Ultravioleta DAO, que facilita a participação dos membros na tomada de decisões descentralizada e na gestão do tesouro. É usado para votar em propostas, atribuir fundos comunitários e apoiar iniciativas dos membros.",
     "description_2": "Através do $UVD, a DAO mantém uma estrutura transparente e democrática, garantindo que seus recursos sejam direcionados com base na governança coletiva."
+  },
+  "tokenomics": {
+    "title": "Tokenomics UVD",
+    "overview": "Visão Geral",
+    "description": "Estratégia de incentivos e crescimento para Ultravioleta DAO durante o período 2025-2026, projetada para otimizar a distribuição de recompensas e fortalecer a comunidade.",
+    "treasury_base": "Tesouraria Base",
+    "supply": {
+      "title": "Visão Geral do Fornecimento do Token $UVD",
+      "total": "Fornecimento Total",
+      "launch": "Fornecimento de Lançamento",
+      "circulating": "Fornecimento Circulante",
+      "distribution": "Distribuição Inicial",
+      "uvt_holders": "Detentores UVT V2",
+      "multisig": "Tesouraria Multisig",
+      "liquidity": "Pool de Liquidez Arena",
+      "airdrop": "Comunidades Aliadas e Dicas Arena",
+      "champions": "Campeões Arena",
+      "treasury_allocation": "Programas do Tesouro",
+      "period": "Período de Distribuição"
+    },
+    "period": "Período",
+    "months": "meses",
+    "period_dates": "Julho 2025 - Dezembro 2026",
+    "allocation": "Alocação",
+    "view_proposal": "Ver Proposta no Snapshot",
+    "bounties": {
+      "title": "Bounties",
+      "monthly": "Orçamento mensal",
+      "frequency": "Frequência",
+      "per_month": "por mês",
+      "prizes": "Distribuição de prêmios",
+      "first": "1º Lugar",
+      "second": "2º Lugar",
+      "third": "3º Lugar"
+    },
+    "airdrops": {
+      "title": "Airdrops",
+      "monthly": "Por airdrop",
+      "frequency": "Frequência",
+      "per_month": "mensal",
+      "objectives": "Objetivos",
+      "obj1": "Recompensar holders ativos",
+      "obj2": "Incentivar participação em governança",
+      "obj3": "Atrair novos holders"
+    },
+    "wheel": {
+      "title": "Roleta Semanal",
+      "frequency": "Frequência",
+      "per_month": "por mês",
+      "total": "Total",
+      "wheels": "roletas",
+      "prizes": "Prêmios principais"
+    },
+    "savings": {
+      "title": "Fundo de Poupança",
+      "monthly": "Alocação mensal",
+      "uses": "Usos autorizados",
+      "use1": "Despesas operacionais urgentes",
+      "use2": "Investimento em oportunidades estratégicas",
+      "use3": "Marketing e parcerias de alto impacto"
+    },
+    "event": {
+      "title": "Ultra Evento 2025",
+      "allocation": "Alocação especial",
+      "description": "Airdrop exclusivo para participantes do Ultra Evento 2025, fortalecendo a conexão entre comunidade e ecossistema.",
+      "source": "Fonte de fundos",
+      "july": "Airdrop julho",
+      "august": "Airdrop agosto",
+      "complement": "Complemento do fundo de poupança"
+    },
+    "reserve": {
+      "title": "Reserva Restante",
+      "amount": "Quantidade",
+      "percentage": "Porcentagem",
+      "purpose": "Propósito",
+      "future": "Operações futuras"
+    }
   },
   "snapshot": {
     "connect_wallet": "Conectar Wallet"
@@ -864,5 +944,46 @@
       }
     },
     "contact": "Interessado em nossos serviços? Entre em contato para mais informações"
+  },
+  "nft": {
+    "title": "Coleções NFT",
+    "subtitle": "Explore coleções de arte digital únicas do UltraVioleta DAO",
+    "totalSupply": "Fornecimento Total",
+    "uniqueOwners": "Proprietários Únicos",
+    "chain": "Blockchain",
+    "royalty": "Royalties",
+    "viewOnMarketplace": "Ver no Marketplace",
+    "viewOnOpenSea": "Ver no OpenSea",
+    "echoes": {
+      "description": "Echoes é uma coleção limitada de 89 NFTs de vídeo que conectam o mundo digital e real. Cada peça desbloqueia benefícios exclusivos dentro do DAO Ultravioleta.",
+      "superpowers": {
+        "title": "Superpoderes dos Detentores Echoes",
+        "airdrop": "Airdrop Mensal",
+        "whitelist": "Whitelist Prioritária",
+        "event": "Acesso Gratuito ao Evento",
+        "discount": "Desconto em Merch",
+        "fibonacci": {
+          "title": "Poder Especial Fibonacci",
+          "description": "2X Recompensas nos sistemas Watch-to-Earn e Chat-to-Earn"
+        },
+        "notes": {
+          "venue": "Apenas entrada no local. Voos, acomodação e outras despesas não incluídas.",
+          "shipping": "Envio internacional não incluído."
+        }
+      },
+      "treasuryReserved": "Reservado para o Tesouro Comunitário",
+      "treasury": {
+        "title": "Reserva do Tesouro Comunitário",
+        "description": "Os Echoes #56 a #89 estão reservados para o tesouro comunitário do UltraVioleta DAO. Estes NFTs não foram vendidos ao público e são mantidos para futuras iniciativas comunitárias, recompensas e parcerias estratégicas."
+      }
+    },
+    "vulvas": {
+      "description": "Uma coleção artística celebrando a diversidade e expressão através de peças de arte digital únicas.",
+      "title": "Coleção Vulvas de Vulvas",
+      "info": "Esta coleção apresenta expressões artísticas únicas. Visite o OpenSea para explorar a coleção completa e descobrir as peças disponíveis."
+    },
+    "meta": {
+      "description": "Explore as coleções NFT exclusivas do UltraVioleta DAO - Echoes NFTs de vídeo no Avalanche e coleções artísticas no Ethereum."
+    }
   }
 }

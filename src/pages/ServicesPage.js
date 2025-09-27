@@ -319,7 +319,7 @@ const ServicesPage = () => {
                   {t('events.ultraevento.brandRepresentation', 'Como parte de nuestros servicios de representación de marca, organizamos eventos presenciales que conectan a proyectos Web3 con la comunidad latinoamericana.')}
                 </p>
                 <a
-                  href="mailto:contact@ultravioletadao.xyz"
+                  href="mailto:ultravioletadao@gmail.com"
                   className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg transition-all"
                 >
                   <Users className="w-5 h-5 mr-2" />

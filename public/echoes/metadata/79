@@ -1,0 +1,41 @@
+{
+  "name": "Eco Collection #80",
+  "description": "A unique collection of echo-themed digital assets from Ultravioleta DAO - Token #80. Original file: 80.mp4",
+  "image": "ipfs://QmX7TxeM4EB9Rz956aL6yvy26SvpW2s6mRMWJftwmfyc1A",
+  "animation_url": "ipfs://QmX7TxeM4EB9Rz956aL6yvy26SvpW2s6mRMWJftwmfyc1A",
+  "external_url": "https://ultravioleta.xyz",
+  "attributes": [
+    {
+      "trait_type": "Type",
+      "value": "Nature"
+    },
+    {
+      "trait_type": "Rarity",
+      "value": "Common"
+    },
+    {
+      "trait_type": "Element",
+      "value": "Life"
+    },
+    {
+      "trait_type": "Energy",
+      "value": "Wind"
+    },
+    {
+      "trait_type": "Season",
+      "value": "Summer"
+    },
+    {
+      "trait_type": "Original Number",
+      "value": 80
+    },
+    {
+      "trait_type": "File Size (MB)",
+      "value": "10.59"
+    },
+    {
+      "trait_type": "Upload Date",
+      "value": "7/25/2025"
+    }
+  ]
+}
