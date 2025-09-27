@@ -37,6 +37,12 @@
         "required_of": "signatures required from",
         "multisigners": "multisigners to execute transactions"
       },
+      "legal": {
+        "title": "Legal Status",
+        "jurisdiction": "Wyoming, United States",
+        "registered": "Registered Sep. 26, 2025",
+        "learn_more": "Learn more"
+      },
       "see_more": "See more metrics",
       "generating_story": "Generating summary...",
       "story_title": "How Are We Doing?",
@@ -247,6 +253,7 @@
     "safestats": "Multisigners",
     "metrics": "Metrics",
     "events": "Events",
+    "services": "Products & Services",
     "categories": {
       "main": "Main",
       "governance": "Governance",
@@ -928,10 +935,15 @@
         "title": "Transformation to Ultravioleta DAO",
         "description": "Formalization as Ultravioleta DAO with renewed identity and launch of UVD token on Avalanche."
       },
+      "duna2025": {
+        "date": "September 2025",
+        "title": "Legal Registration as DUNA",
+        "description": "Legal formalization as a DAO LLC in Wyoming, establishing UltraVioleta as a Decentralized Unincorporated Nonprofit Association (DUNA)."
+      },
       "current": {
         "date": "Present",
         "title": "Fully Operational DAO",
-        "description": "176 executed proposals, 5,218+ votes, DUNA legal registration in process, and in-person events in multiple cities."
+        "description": "176+ executed proposals, 5,218+ votes, DUNA legal structure established, and in-person events in multiple cities."
       }
     },
     "vision": {
@@ -999,6 +1011,24 @@
       "projects": {
         "title": "Ultra Evento 2025",
         "description": "The main current project is Ultra Evento 2025, to be held August 23-24 in Medellín, with support from renowned sponsors including Avalanche, Uniswap, Rekt.news, Celo Colombia, Superfluid, Magic Eden, Self.xyz, Pyth, and HeroesOfCipher. This event will feature innovative dynamics such as automatic airdrops, POAPs, identity verification incentives, and complete streaming coverage."
+      },
+      "legal": {
+        "title": "Legal Status - DUNA LLC",
+        "description": "UltraVioleta DAO has successfully completed its registration as a Decentralized Autonomous Organization Limited Liability Company (DAO LLC) in Wyoming, United States. This pioneering legal structure, known as DUNA (Decentralized Unincorporated Nonprofit Association), allows us to operate with legal recognition while maintaining our decentralized nature.",
+        "whatIsDuna": "DUNA is an innovative legal structure designed specifically for DAOs, allowing decentralized organizations to obtain legal personality without compromising their autonomy. Learn more about DUNA at",
+        "dunaLinkText": "a16z Crypto - DUNA for DAOs",
+        "details": {
+          "title": "Registration Details",
+          "entity": "Legal Entity",
+          "entity_value": "Ultravioleta DAO LLC",
+          "jurisdiction": "Jurisdiction",
+          "jurisdiction_value": "Wyoming, United States",
+          "registered": "Registration Date",
+          "registered_value": "September 26, 2025",
+          "treasury": "Multisig Treasury",
+          "treasury_value": "0x52110a2Cc8B6bBf846101265edAAe34E753f3389 (Avalanche C-Chain)"
+        },
+        "benefits": "This legal structure provides us with limited liability protection for members, legal recognition for contracts and agreements, clear regulatory compliance, and the ability to maintain our decentralized governance through on-chain voting and smart contracts."
       }
     },
     "blockchain": {
@@ -1185,5 +1215,44 @@
         }
       }
     }
+  },
+  "services": {
+    "title": "Products & Services",
+    "subtitle": "We offer professional Web3 products and services for communities, brands and projects in Latin America",
+    "products": {
+      "title": "Products",
+      "book": {
+        "title": "Book by Luis Alfonso Jaramillo",
+        "author": "By @lualjarami - Member of UltraVioleta DAO",
+        "description": "A book written by one of our most active community members, dedicating part of the profits to the DAO.",
+        "benefit1": "60% of profits go directly to the DAO multisig",
+        "benefit2": "50% discount for UVD holders on digital and physical versions",
+        "buyButton": "Buy on Amazon"
+      }
+    },
+    "ultraServicios": {
+      "description": "Ultra Servicios is our professional division offering comprehensive solutions for the Web3 ecosystem in LATAM.",
+      "communities": {
+        "title": "Communities",
+        "education": "Blockchain and Web3 education adapted to Latin American context",
+        "tokenization": "Community tokenization and digital economy design"
+      },
+      "brand": {
+        "title": "Brand Representation",
+        "representation": "Brand representation in Latin America with cultural focus",
+        "support": "24/7 online community support and management"
+      },
+      "validation": {
+        "title": "Validation Services",
+        "professional": "Professional validation services",
+        "blockchains": "Experience in over 55 different blockchains"
+      },
+      "ai": {
+        "title": "AI Tooling for Online Communities",
+        "karmaHello": "Chat to Earn - Reward system for chat participation",
+        "abracadabra": "Stream to Market - Automated marketing tools for streamers"
+      }
+    },
+    "contact": "Interested in our services? Contact us for more information"
   }
 } 

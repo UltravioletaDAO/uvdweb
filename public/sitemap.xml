@@ -3,12 +3,11 @@
         xmlns:xhtml="http://www.w3.org/1999/xhtml"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   
-  <!-- Homepage -->
   <url>
     <loc>https://ultravioleta.xyz/</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>daily</changefreq>
-    <priority>1.0</priority>
+    <priority>1</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/?lang=pt"/>
@@ -16,135 +15,135 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/"/>
   </url>
   
-  <!-- About -->
   <url>
     <loc>https://ultravioleta.xyz/about</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/about?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/about?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/about?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/about?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/about"/>
   </url>
   
-  <!-- Application Form -->
   <url>
     <loc>https://ultravioleta.xyz/aplicar</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/aplicar?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/aplicar?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/aplicar?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/aplicar?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/aplicar"/>
   </url>
   
-  <!-- Metrics Dashboard -->
   <url>
     <loc>https://ultravioleta.xyz/metrics</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/metrics?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/metrics?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/metrics?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/metrics?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/metrics"/>
   </url>
   
-  <!-- Token -->
   <url>
     <loc>https://ultravioleta.xyz/token</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/token?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/token?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/token?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/token?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/token"/>
   </url>
   
-  <!-- Snapshot Governance -->
   <url>
     <loc>https://ultravioleta.xyz/snapshot</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/snapshot?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/snapshot?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/snapshot?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/snapshot?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/snapshot"/>
   </url>
   
-  <!-- Contributors -->
   <url>
     <loc>https://ultravioleta.xyz/contributors</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/contributors?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/contributors?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/contributors?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/contributors?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/contributors"/>
   </url>
   
-  <!-- Courses -->
   <url>
     <loc>https://ultravioleta.xyz/courses</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/courses?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/courses?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/courses?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/courses?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/courses"/>
   </url>
   
-  <!-- Blog -->
   <url>
     <loc>https://ultravioleta.xyz/blog</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/blog?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/blog?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/blog?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/blog?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/blog"/>
   </url>
   
-  <!-- Social Networks -->
   <url>
     <loc>https://ultravioleta.xyz/links</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/links?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/links?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/links?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/links?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/links"/>
   </url>
   
-  <!-- Safe Stats -->
   <url>
     <loc>https://ultravioleta.xyz/safestats</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/safestats?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/safestats?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/safestats?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/safestats?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/safestats"/>
   </url>
   
-  <!-- UVD Wheel -->
   <url>
     <loc>https://ultravioleta.xyz/wheel</loc>
-    <lastmod>2025-01-09</lastmod>
+    <lastmod>2025-09-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/wheel?lang=es"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/wheel?lang=en"/>
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/wheel?lang=pt"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/wheel?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/wheel"/>
   </url>
 </urlset>

@@ -37,6 +37,12 @@
         "required_of": "firmas requeridas de",
         "multisigners": "multifirmantes para ejecutar transacciones"
       },
+      "legal": {
+        "title": "Estatus Legal",
+        "jurisdiction": "Wyoming, Estados Unidos",
+        "registered": "Registrado Sep. 26, 2025",
+        "learn_more": "Conocer más"
+      },
       "see_more": "Ver más métricas",
       "generating_story": "Generando resumen...",
       "story_title": "¿Cómo Vamos?",
@@ -191,6 +197,7 @@
     "safestats": "Multifirmantes",
     "metrics": "Métricas",
     "events": "Eventos",
+    "services": "Productos y Servicios",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -650,10 +657,15 @@
         "title": "Transformación a Ultravioleta DAO",
         "description": "Formalización como Ultravioleta DAO con identidad renovada y lanzamiento del token UVD en Avalanche."
       },
+      "duna2025": {
+        "date": "Septiembre 2025",
+        "title": "Registro Legal como DUNA",
+        "description": "Formalización legal como DAO LLC en Wyoming, estableciendo UltraVioleta como una Asociación Descentralizada sin Fines de Lucro no Incorporada (DUNA)."
+      },
       "current": {
         "date": "Presente",
         "title": "DAO Plenamente Operativa",
-        "description": "176 propuestas ejecutadas, 5,218+ votos, registro legal DUNA en proceso, y eventos presenciales en múltiples ciudades."
+        "description": "176+ propuestas ejecutadas, 5,218+ votos, estructura legal DUNA establecida, y eventos presenciales en múltiples ciudades."
       }
     },
     "vision": {
@@ -721,6 +733,24 @@
       "projects": {
         "title": "Ultra Evento 2025",
         "description": "El principal proyecto actual es el Ultra Evento 2025, a realizarse el 23 y 24 de agosto en Medellín, con el apoyo de reconocidos patrocinadores como Avalanche, Uniswap, Rekt.news, Celo Colombia, Superfluid, Magic Eden, Self.xyz, Pyth y HeroesOfCipher. Este evento contará con dinámicas innovadoras como airdrops automáticos, POAPs, incentivos para la verificación de identidad y cobertura completa en streaming."
+      },
+      "legal": {
+        "title": "Estatus Legal - DUNA LLC",
+        "description": "UltraVioleta DAO ha completado exitosamente su registro como una Organización Autónoma Descentralizada de Responsabilidad Limitada (DAO LLC) en Wyoming, Estados Unidos. Esta estructura legal pionera, conocida como DUNA (Decentralized Unincorporated Nonprofit Association), nos permite operar con reconocimiento legal mientras mantenemos nuestra naturaleza descentralizada.",
+        "whatIsDuna": "DUNA es una estructura legal innovadora diseñada específicamente para DAOs, permitiendo que las organizaciones descentralizadas obtengan personalidad jurídica sin comprometer su autonomía. Aprende más sobre DUNA en",
+        "dunaLinkText": "a16z Crypto - DUNA para DAOs",
+        "details": {
+          "title": "Detalles del Registro",
+          "entity": "Entidad Legal",
+          "entity_value": "Ultravioleta DAO LLC",
+          "jurisdiction": "Jurisdicción",
+          "jurisdiction_value": "Wyoming, Estados Unidos",
+          "registered": "Fecha de Registro",
+          "registered_value": "26 de Septiembre de 2025",
+          "treasury": "Tesorería Multisig",
+          "treasury_value": "0x52110a2Cc8B6bBf846101265edAAe34E753f3389 (Avalanche C-Chain)"
+        },
+        "benefits": "Esta estructura legal nos proporciona protección de responsabilidad limitada para los miembros, reconocimiento legal para contratos y acuerdos, cumplimiento regulatorio claro, y la capacidad de mantener nuestra gobernanza descentralizada a través de votaciones on-chain y contratos inteligentes."
       }
     },
     "blockchain": {
@@ -960,5 +990,44 @@
         }
       }
     }
+  },
+  "services": {
+    "title": "Productos y Servicios",
+    "subtitle": "Ofrecemos productos y servicios profesionales Web3 para comunidades, marcas y proyectos en América Latina",
+    "products": {
+      "title": "Productos",
+      "book": {
+        "title": "Libro por Luis Alfonso Jaramillo",
+        "author": "Por @lualjarami - Miembro de UltraVioleta DAO",
+        "description": "Un libro escrito por uno de nuestros miembros más activos de la comunidad, dedicando parte de sus ganancias al DAO.",
+        "benefit1": "60% de las ganancias van directamente al multisig del DAO",
+        "benefit2": "50% de descuento para holders de UVD en versión digital y física",
+        "buyButton": "Comprar en Amazon"
+      }
+    },
+    "ultraServicios": {
+      "description": "Ultra Servicios es nuestra división profesional que ofrece soluciones integrales para el ecosistema Web3 en LATAM.",
+      "communities": {
+        "title": "Comunidades",
+        "education": "Educación en blockchain y Web3 adaptada al contexto latinoamericano",
+        "tokenization": "Tokenización de comunidades y diseño de economías digitales"
+      },
+      "brand": {
+        "title": "Representación de Marca",
+        "representation": "Representación de marca en América Latina con enfoque cultural",
+        "support": "Soporte y gestión de comunidades online 24/7"
+      },
+      "validation": {
+        "title": "Servicios de Validación",
+        "professional": "Servicios profesionales de validación",
+        "blockchains": "Experiencia en más de 55 blockchains diferentes"
+      },
+      "ai": {
+        "title": "Herramientas IA para Comunidades",
+        "karmaHello": "Chat to Earn - Sistema de recompensas por participación en chat",
+        "abracadabra": "Stream to Market - Herramientas de marketing automatizado para streamers"
+      }
+    },
+    "contact": "¿Interesado en nuestros servicios? Contáctanos para más información"
   }
 } 

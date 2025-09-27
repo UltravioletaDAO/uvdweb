@@ -68,6 +68,13 @@ const Header = () => {
       customStyle: "text-pink-400 hover:text-pink-300",
     },
     {
+      name: t('navigation.services'),
+      icon: PlayCircleIcon,
+      path: "/services",
+      isExternal: false,
+      customStyle: "text-purple-400 hover:text-purple-300",
+    },
+    {
       name: t('navigation.snapshot'),
       icon: () => (
         <svg

@@ -2,6 +2,37 @@
 
 Plataforma de aplicación y gestión para UltraVioleta DAO, la élite de Web3 en Latinoamérica.
 
+## 📦 Productos y Servicios (Diciembre 2024)
+
+### 🛍️ Nueva Página de Productos y Servicios
+- **Ruta**: `/services` - Página dedicada para productos y servicios del DAO
+- **Ultra Servicios**: División profesional de servicios Web3
+  - **Comunidades**: Educación blockchain y tokenización adaptada a LATAM
+  - **Representación de Marca**: Brand awareness y soporte online 24/7
+  - **Validación Profesional**: Servicios en más de 55 blockchains
+  - **Herramientas IA**: Karma-Hello (chat to earn) y Abracadabra (stream to market)
+- **Productos**:
+  - **Libro de @lualjarami**: Miembro del DAO con libro en Amazon
+    - 60% de ganancias dedicadas al multisig del DAO
+    - 50% descuento en UVD para versiones digital y física
+    - Link directo a Amazon (ASIN: B0FMQPFTVL)
+- **Traducciones**: Soporte completo en ES, EN, PT y FR
+
+## 🎖️ Actualización Legal - DUNA LLC (Septiembre 2025)
+
+### ✅ Registro Legal Completado
+- **Estructura Legal**: UltraVioleta DAO es ahora una DAO LLC registrada en Wyoming, EE.UU.
+- **Tipo de Entidad**: DUNA (Decentralized Unincorporated Nonprofit Association)
+- **Fecha de Registro**: 26 de Septiembre de 2025
+- **ID de Registro**: 2025-001777576
+- **Tesorería Multisig**: 0x52110a2Cc8B6bBf846101265edAAe34E753f3389 (Avalanche C-Chain)
+
+### 📄 Actualizaciones en la Plataforma
+- **Nueva sección en About**: Información completa sobre el estatus legal DUNA con detalles del registro
+- **Timeline actualizado**: Nuevo hito agregado para el registro DUNA en septiembre 2025
+- **Métrica en Home**: Box de estatus legal agregado al dashboard principal
+- **Traducciones**: Soporte completo en español e inglés para toda la información legal
+
 ## 🎯 SEO Optimización Completa (Enero 2025)
 
 ### 📈 Mejoras SEO Implementadas
