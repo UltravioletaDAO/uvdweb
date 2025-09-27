@@ -5,6 +5,7 @@ import CourseCard from "../components/CourseCard";
 import { useEffect, useState } from "react";
 import { getCourses } from "../services/courses/Courses";
 import { useTranslation } from "react-i18next";
+import SEO from '../components/SEO';
 
 const Courses = () => {
   const navigate = useNavigate();
@@ -22,7 +23,14 @@ const Courses = () => {
   }, []);
 
   return (
-    <motion.div
+    <>
+      <SEO
+        title={t('courses.seoTitle', 'Web3 Courses & Blockchain Education')}
+        description={t('courses.seoDescription', 'Learn Web3 development, smart contracts, DeFi protocols, and blockchain technology with UltraVioleta DAO. Free courses and workshops for the Latin American community.')}
+        keywords="Web3 courses, blockchain education, smart contract tutorials, DeFi learning, crypto education LATAM, DAO workshops, Solidity courses, Web3 development"
+        type="Course"
+      />
+      <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -59,6 +67,7 @@ const Courses = () => {
         ))}
       </motion.div>
     </motion.div>
+    </>
   );
 };
 

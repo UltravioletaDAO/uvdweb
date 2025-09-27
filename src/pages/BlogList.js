@@ -4,6 +4,7 @@ import BlogCard from "../components/BlogCard"
 import Newsletter from "../components/Newsletter"
 import { posts } from "../posts/posts"
 import Pagination from '../components/Pagination'
+import SEO from '../components/SEO';
 
 function BlogList() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -17,7 +18,14 @@ function BlogList() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <main className="min-h-screen bg-background text-text-primary py-8 px-4 md:px-8">
+    <>
+      <SEO
+        title={t('blog.seoTitle', 'Blog - Web3 Insights & DAO Updates')}
+        description={t('blog.seoDescription', 'Explore the latest articles, updates, and insights from UltraVioleta DAO. Learn about Web3, DeFi, governance, and blockchain technology in Latin America.')}
+        keywords="UltraVioleta blog, Web3 articles, DAO updates, blockchain news LATAM, DeFi insights, crypto governance, Web3 education, Latin America blockchain blog"
+        type="blog"
+      />
+      <main className="min-h-screen bg-background text-text-primary py-8 px-4 md:px-8">
       <div className="max-w-7xl mx-auto">
         <h1 className="text-4xl font-bold text-text-primary mb-12 mt-16 text-center">{t('blog.title')}</h1>
 
@@ -42,6 +50,7 @@ function BlogList() {
         </div>
       </div>
     </main>
+    </>
   )
 }
 

@@ -7,6 +7,7 @@ import {
 import multifirma from '../assets/icons/multifirma.svg';
 import swapToken from '../assets/icons/swapToken.svg';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const SocialNetworks = () => {
   const navigate = useNavigate();
@@ -70,7 +71,13 @@ const SocialNetworks = () => {
   ];
 
   return (
-    <motion.div
+    <>
+      <SEO
+        title={t('socialnetworks.seoTitle', 'Social Media & Community Links')}
+        description={t('socialnetworks.seoDescription', 'Connect with UltraVioleta DAO across all social platforms. Join our community on Twitter, Discord, Telegram, GitHub, and more.')}
+        keywords="UltraVioleta social media, DAO community links, Web3 social networks, crypto community, blockchain social platforms"
+      />
+      <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -130,6 +137,7 @@ const SocialNetworks = () => {
         </div>
       </div>
     </motion.div>
+    </>
   );
 };
 

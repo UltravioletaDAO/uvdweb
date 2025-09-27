@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon, ClipboardIcon, ClipboardDocumentCheckIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 import {
   getMultisigTransactions,
   getSafeOwners,
@@ -80,7 +81,13 @@ const SafeStats = () => {
   };
 
   return (
-    <motion.div
+    <>
+      <SEO
+        title={t('safestats.seoTitle', 'Safe Multisig Statistics & Analytics')}
+        description={t('safestats.seoDescription', 'Real-time analytics and statistics for UltraVioleta DAO multisig treasury. Track transactions, owner activity, and governance decisions on the blockchain.')}
+        keywords="Safe multisig stats, DAO treasury analytics, blockchain governance metrics, multisig transactions, crypto treasury management, Web3 analytics"
+      />
+      <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -270,6 +277,7 @@ const SafeStats = () => {
         </div>
       </div>
     </motion.div>
+    </>
   );
 };
 
