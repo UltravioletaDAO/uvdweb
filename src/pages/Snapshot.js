@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 import { Web3Provider } from '@ethersproject/providers';
 import { formatDistanceToNow, isPast } from 'date-fns';
 import { es } from 'date-fns/locale';
@@ -941,7 +942,13 @@ const Snapshot = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <>
+      <SEO
+        title="DAO Governance Voting | Snapshot Proposals & Community Decisions"
+        description="Participate in UltraVioleta DAO governance. Vote on proposals, submit ideas, and shape the future of Web3 in Latin America through decentralized voting on Snapshot."
+        keywords="DAO governance, Snapshot voting, decentralized governance, Web3 voting, DAO proposals, community governance, blockchain voting, Latin America DAO, on-chain governance, governance token voting, DAO decision making, Snapshot.org, Web3 democracy, proposal voting, decentralized voting"
+      />
+      <div className="min-h-screen bg-background">
       {alert && (
         <Alert
           message={alert.message}
@@ -1159,6 +1166,7 @@ const Snapshot = () => {
         )}
       </div>
     </div>
+    </>
   );
 };
 

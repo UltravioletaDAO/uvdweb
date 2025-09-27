@@ -181,18 +181,80 @@ const Home = () => {
       </section>
 
       {/* DAO Metrics - Simple boxes right after Apply button */}
-      <div style={{ 
+      <div style={{
         backgroundColor: '#0a0a1b',
         padding: '60px 20px',
         borderTop: '1px solid rgba(255,255,255,0.1)'
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', 
-            gap: '24px' 
+
+          {/* DUNA Legal Status Box - Featured Banner */}
+          <div style={{
+            backgroundColor: 'rgba(147, 51, 234, 0.05)',
+            border: '1px solid rgba(147, 51, 234, 0.2)',
+            borderRadius: '12px',
+            padding: '20px 24px',
+            marginBottom: '24px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '16px'
           }}>
-            
+            <div style={{ display: 'flex', alignItems: 'center', gap: '24px', flex: '1 1 auto' }}>
+              <div style={{ fontSize: '28px' }}>⚖️</div>
+              <div>
+                <div style={{ fontSize: '12px', color: '#888', marginBottom: '4px', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                  {t('home.metrics.legal.title')}
+                </div>
+                <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#fff' }}>
+                  DUNA LLC
+                </div>
+              </div>
+              <div style={{
+                borderLeft: '1px solid rgba(147, 51, 234, 0.2)',
+                paddingLeft: '24px',
+                marginLeft: '8px'
+              }}>
+                <div style={{ fontSize: '14px', color: '#a78bfa' }}>
+                  {t('home.metrics.legal.jurisdiction')}
+                </div>
+                <div style={{ fontSize: '12px', color: '#999', marginTop: '2px' }}>
+                  {t('home.metrics.legal.registered')}
+                </div>
+              </div>
+            </div>
+
+            <Link
+              to="/about#legal"
+              style={{
+                fontSize: '13px',
+                color: '#a78bfa',
+                textDecoration: 'none',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '8px 16px',
+                border: '1px solid rgba(147, 51, 234, 0.3)',
+                borderRadius: '8px',
+                backgroundColor: 'rgba(147, 51, 234, 0.05)',
+                transition: 'all 0.2s'
+              }}
+              className="hover:bg-purple-600/20 hover:border-purple-500/50"
+            >
+              {t('home.metrics.legal.learn_more')}
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '24px'
+          }}>
+
             {/* Community Vault Box - First */}
             <div style={{
               backgroundColor: 'rgba(0, 255, 163, 0.05)',
@@ -328,7 +390,7 @@ const Home = () => {
             </div>
 
           </div>
-          
+
           {/* DAO Storyteller - Historia generada por IA - Solo muestra con datos reales */}
           {snapshotMetrics?.proposals && 
            snapshotMetrics?.votes && 

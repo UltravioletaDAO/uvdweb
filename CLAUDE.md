@@ -15,9 +15,11 @@ npm run build      # Production build to /build directory
 npm test           # Run test suite
 npm run eject      # One-way operation to eject from CRA (use with caution)
 
-# Code Quality
-npm run lint       # ESLint checks (if configured)
-npm run format     # Prettier formatting (if configured)
+# Utility Scripts
+npm run generate:sitemap    # Generate sitemap.xml for SEO
+npm run update:applicants   # Update approved applicants list
+npm run server:install      # Install server dependencies
+npm run server:dev          # Run backend server in development mode
 ```
 
 ## Architecture & Structure
@@ -25,29 +27,30 @@ npm run format     # Prettier formatting (if configured)
 ### Core Technologies
 - **React 18** with Create React App
 - **TailwindCSS** for styling with custom design system
-- **React Query** for data fetching and caching
+- **React Query (@tanstack/react-query)** for data fetching and caching
 - **Framer Motion** for animations
-- **i18next** for internationalization (Spanish/English)
+- **i18next** for internationalization (ES/EN/PT/FR)
 
-### Web3 Integrations
-- **Snapshot.js**: Decentralized governance voting
-- **Thirdweb SDK**: Wallet connections and Web3 interactions
-- **Avalanche Network**: Primary blockchain for treasury and tokens
-- **OpenAI API**: AI-powered DAO storytelling and analysis
+### External API Integrations
+- **Snapshot GraphQL API** (`hub.snapshot.org/graphql`): Governance voting
+- **Thirdweb SDK**: Web3 wallet connections and smart contract interactions
+- **Avalanche C-Chain**: Primary blockchain for treasury and token (UVD)
+- **OpenAI API**: AI-powered DAO storytelling with GPT-3.5
+- **ElevenLabs API**: Text-to-speech with multilingual support
+- **Safe (Gnosis) API**: Multi-signature wallet management
+- **CoinGecko API**: Token price and market data
 
 ### Key Architectural Patterns
 
 1. **Service Layer Pattern** (`/src/services/`)
-   - `api.js`: Central API configuration with axios
-   - `snapshot.js`: Snapshot.org GraphQL integration for governance
-   - `thirdweb.js`: Web3 wallet and contract interactions
-   - `openai.js`: AI integration for DAO analysis
-   - Each service handles specific domain logic and external API calls
+   - Centralized API interaction logic
+   - Consistent error handling across services
+   - Each service focuses on a specific domain
 
 2. **Custom Hooks** (`/src/hooks/`)
    - Data fetching hooks with React Query integration
    - Automatic caching and refetching strategies
-   - Example: `useProposals`, `useMembers`, `useTreasuryData`
+   - Examples: `useSnapshotData`, `useCombinedSnapshotData`, `useTokenMetrics`, `useSafeAvalanche`
 
 3. **Component Organization**
    - `/src/components/`: Reusable UI components
@@ -56,45 +59,53 @@ npm run format     # Prettier formatting (if configured)
    - Components follow composition pattern with clear prop interfaces
 
 4. **State Management**
-   - React Context for global state (AuthContext, LanguageContext)
-   - React Query for server state
+   - React Query for server state and caching
    - Local component state for UI interactions
+   - i18next for language state management
 
 ### Critical Configuration
 
 **Environment Variables** (`.env`):
-```
-REACT_APP_SNAPSHOT_SPACE_ID=ultravioletadao.eth
-REACT_APP_COINGECKO_API_KEY=<required>
-REACT_APP_OPENAI_API_KEY=<required>
-REACT_APP_THIRDWEB_CLIENT_ID=<required>
+```env
+REACT_APP_API_URL=https://api.ultravioletadao.xyz
+REACT_APP_OPENAI_API_KEY=<optional-for-ai-storyteller>
+REACT_APP_ELEVENLABS_API_KEY=<optional-for-tts>
+REACT_APP_DEBUG_ENABLED=false
+REACT_APP_TTS_ENABLED=true
+REACT_APP_WHEEL_VERIFY_WALLET=true
+REACT_APP_SHOW_SIGNUP_BUTTONS=true
+REACT_APP_TWITCH_CLIENT_ID=bk2tvufdg3nodg70rzyt7pxbfwuho8
 ```
 
-**Multi-signature Treasury**:
-- Safe address: `0x80ae3B3847E4e8Bd27A389f7686486CAC9C3f3e8` (Avalanche)
-- 3 of 5 signature requirement for treasury operations
+**Key Contract Addresses** (Avalanche C-Chain):
+- Safe Multisig: `0x80ae3B3847E4e8Bd27A389f7686486CAC9C3f3e8`
+- UVD Token: `0x4Ffe7e01832243e03668E090706F17726c26d6B2`
+- WAVAX: `0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7`
+- Arena Router (DEX): `0xf56d524d651b90e4b84dc2fffd83079698b9066e`
+
+**Snapshot Spaces**:
+- Primary: `ultravioletadao.eth`
+- Secondary: `cuchorapido.eth` (for specific governance proposals)
 
 ### Key Features & Components
 
-1. **MetricsDashboard** (`/src/pages/MetricsDashboard.jsx`)
+1. **MetricsDashboard** (`/src/pages/MetricsDashboard.js`)
    - Central hub for DAO metrics and analytics
    - Integrates governance, token, and treasury data
    - Real-time updates via React Query
+   - Sections: SnapshotSection, TokenSection, FundsSection
 
-2. **DaoStoryteller** (`/src/components/DaoStoryteller.jsx`)
+2. **DaoStoryteller** (`/src/components/DaoStoryteller.js`)
    - AI-powered community narrative generation
-   - Uses OpenAI API with structured prompts
-   - Fallback to default content on API failure
+   - Uses OpenAI GPT-3.5 with structured prompts
+   - Multi-language TTS with ElevenLabs (fallback to browser TTS)
+   - Audio caching for performance optimization
 
-3. **Governance System**
-   - Snapshot.org integration for proposals
-   - Vote tracking and participation metrics
-   - Delegation support
-
-4. **Treasury Management**
-   - Multi-sig balance tracking
-   - Transaction history
-   - Token distribution analytics
+3. **Swap & Token Features** (`/src/components/SwapWidget.js`, `WrapWidget.js`)
+   - Direct token swaps on Arena DEX
+   - AVAX ↔ UVD trading pairs
+   - Wrapping/unwrapping functionality
+   - Real-time price quotes and slippage settings
 
 ### API Integration Patterns
 
@@ -133,8 +144,8 @@ Tests should focus on:
    - Create feature branch from `develop`
    - Implement components in isolation
    - Add corresponding hooks for data fetching
-   - Update translations in `/public/locales/`
-   - Test with both languages
+   - Update translations in `/src/i18n/*.json` for all 4 languages
+   - Test with all language options
 
 2. **Web3 Features**:
    - Test on Avalanche testnet first
@@ -160,17 +171,23 @@ Tests should focus on:
 1. Create component in `/src/pages/`
 2. Add route in App.js
 3. Update navigation in Header component
-4. Add translations for new content
+4. Add translations in all language files
+5. Update sitemap generation in `/scripts/generateSitemap.js`
+6. Add SEO component with meta tags
 
 **Integrating new Web3 feature**:
-1. Add contract interaction in thirdweb.js service
-2. Create hook for contract calls
-3. Handle wallet connection states
-4. Add error handling for transaction failures
+1. Define contract ABI and addresses
+2. Create contract interaction logic using thirdweb SDK
+3. Create custom hook for contract calls
+4. Handle wallet connection states properly
+5. Add error handling for transaction failures
+6. Test on testnet before mainnet deployment
 
+### Important Project Conventions
 
-- agrega comentarios al README.md principal detallados, despues de cada implementacion.
-
-- siempre que hagas un cambio asegurate de actualizar las traducciones de i18n
-
-- todos los console.log o debug que agreges, asegurate que esten siendo controlados por las variables del config de enable debug tanto para print de pything como para console log del front end
+- **Debugging**: All console.log statements must be wrapped with `if (process.env.REACT_APP_DEBUG_ENABLED === 'true')`
+- **i18n Updates**: Always update all 4 language files (`en.json`, `es.json`, `pt.json`, `fr.json`) when adding new text
+- **Comments**: Add detailed comments to README.md after each implementation
+- **SEO**: Use React Helmet for meta tags and ensure all pages have proper SEO configuration
+- **Error Handling**: Implement fallbacks for all external API calls
+- **Performance**: Use React.memo for expensive components and implement lazy loading where appropriate

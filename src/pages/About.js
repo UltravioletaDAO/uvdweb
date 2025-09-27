@@ -3,14 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import ApplicationForm from './ApplicationForm';
 import SEO from '../components/SEO';
-import { 
-  UserGroupIcon, 
+import {
+  UserGroupIcon,
   BeakerIcon,
   AcademicCapIcon,
   GlobeAltIcon,
   FireIcon,
   ChartBarIcon,
-  SparklesIcon
+  SparklesIcon,
+  PlayCircleIcon,
+  PhotoIcon
 } from '@heroicons/react/24/outline';
 
 const About = () => {
@@ -45,16 +47,82 @@ const About = () => {
       icon: BeakerIcon
     },
     {
+      date: t('about.timeline.partner2022.date'),
+      title: t('about.timeline.partner2022.title'),
+      description: t('about.timeline.partner2022.description'),
+      icon: FireIcon
+    },
+    {
+      date: t('about.timeline.september2023.date'),
+      title: t('about.timeline.september2023.title'),
+      description: t('about.timeline.september2023.description'),
+      icon: UserGroupIcon,
+      images: ['/images/quedada-bogota-2023.jpg', '/images/quedada-medellin-2023.jpg'],
+      videos: [
+        { url: 'https://youtu.be/yw5yLp0-_Tw', title: 'Quedada Bogotá 2023' },
+        { url: 'https://youtu.be/PzIwQMhS88s', title: 'Quedada Medellín 2023' }
+      ]
+    },
+    {
+      date: t('about.timeline.january2024.date'),
+      title: t('about.timeline.january2024.title'),
+      description: t('about.timeline.january2024.description'),
+      icon: GlobeAltIcon
+    },
+    {
       date: t('about.timeline.june2024.date'),
       title: t('about.timeline.june2024.title'),
       description: t('about.timeline.june2024.description'),
       icon: FireIcon
     },
     {
+      date: t('about.timeline.july2024.date'),
+      title: t('about.timeline.july2024.title'),
+      description: t('about.timeline.july2024.description'),
+      icon: BeakerIcon
+    },
+    {
+      date: t('about.timeline.october2024.date'),
+      title: t('about.timeline.october2024.title'),
+      description: t('about.timeline.october2024.description'),
+      icon: GlobeAltIcon,
+      images: ['/images/quedada-argentina-avalanche-summit-2024.png']
+    },
+    {
+      date: t('about.timeline.december2024.date'),
+      title: t('about.timeline.december2024.title'),
+      description: t('about.timeline.december2024.description'),
+      icon: UserGroupIcon,
+      images: ['/images/quedada-medellin-2024.jpg'],
+      videos: [
+        { url: 'https://youtu.be/knuBAicIc5U', title: 'Quedada Medellín 2024' }
+      ]
+    },
+    {
+      date: t('about.timeline.january2025.date'),
+      title: t('about.timeline.january2025.title'),
+      description: t('about.timeline.january2025.description'),
+      icon: ChartBarIcon
+    },
+    {
+      date: t('about.timeline.august2025.date'),
+      title: t('about.timeline.august2025.title'),
+      description: t('about.timeline.august2025.description'),
+      icon: FireIcon,
+      images: ['/images/ultraevento-2025.jpg']
+    },
+    {
+      date: t('about.timeline.duna2025.date'),
+      title: t('about.timeline.duna2025.title'),
+      description: t('about.timeline.duna2025.description'),
+      icon: AcademicCapIcon
+    },
+    {
       date: t('about.timeline.current.date'),
       title: t('about.timeline.current.title'),
       description: t('about.timeline.current.description'),
-      icon: ChartBarIcon
+      icon: ChartBarIcon,
+      images: ['/images/quedada-medellin-2025.jpg']
     }
   ];
 
@@ -182,9 +250,69 @@ const About = () => {
                     <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
                       {milestone.title}
                     </h3>
-                    <p className="text-gray-700 dark:text-gray-300">
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">
                       {milestone.description}
                     </p>
+
+                    {/* Images Gallery */}
+                    {milestone.images && milestone.images.length > 0 && (
+                      <div className="mb-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <PhotoIcon className="h-4 w-4 text-gray-500" />
+                          <span className="text-xs text-gray-500 uppercase tracking-wide">Gallery</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          {milestone.images.map((image, idx) => (
+                            <img
+                              key={idx}
+                              src={image}
+                              alt={`${milestone.title} ${idx + 1}`}
+                              className="rounded-lg w-full h-32 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                              onClick={() => window.open(image, '_blank')}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* YouTube Videos */}
+                    {milestone.videos && milestone.videos.length > 0 && (
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 mb-2">
+                          <PlayCircleIcon className="h-4 w-4 text-gray-500" />
+                          <span className="text-xs text-gray-500 uppercase tracking-wide">Videos</span>
+                        </div>
+                        {milestone.videos.map((video, idx) => {
+                          const videoId = video.url.includes('youtu.be/')
+                            ? video.url.split('youtu.be/')[1].split('?')[0]
+                            : video.url.split('v=')[1]?.split('&')[0];
+                          return (
+                            <div key={idx} className="relative">
+                              <a
+                                href={video.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
+                              >
+                                <div className="relative">
+                                  <img
+                                    src={`https://img.youtube.com/vi/${videoId}/mqdefault.jpg`}
+                                    alt={video.title}
+                                    className="w-full h-40 object-cover"
+                                  />
+                                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                                    <PlayCircleIcon className="h-12 w-12 text-white opacity-90" />
+                                  </div>
+                                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                                    <p className="text-white text-sm font-medium">{video.title}</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 </div>
                 
@@ -343,7 +471,7 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">
               {t('about.current.title')}
             </h2>
-            <div className="grid md:grid-cols-2 gap-8">
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div>
                 <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
                   {t('about.current.structure.title')}
@@ -358,6 +486,44 @@ const About = () => {
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">
                   {t('about.current.projects.description')}
+                </p>
+              </div>
+            </div>
+
+            {/* Legal Status Section */}
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mt-8">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
+                <AcademicCapIcon className="h-8 w-8 text-purple-600 mr-3" />
+                {t('about.current.legal.title')}
+              </h3>
+              <div className="space-y-4">
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {t('about.current.legal.description')}
+                </p>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {t('about.current.legal.whatIsDuna')}{' '}
+                  <a
+                    href="https://a16zcrypto.com/posts/article/duna-for-daos/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 underline font-semibold"
+                  >
+                    {t('about.current.legal.dunaLinkText')}
+                  </a>.
+                </p>
+                <div className="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-600 p-4 rounded">
+                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                    {t('about.current.legal.details.title')}
+                  </h4>
+                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                    <li>• <strong>{t('about.current.legal.details.entity')}:</strong> {t('about.current.legal.details.entity_value')}</li>
+                    <li>• <strong>{t('about.current.legal.details.jurisdiction')}:</strong> {t('about.current.legal.details.jurisdiction_value')}</li>
+                    <li>• <strong>{t('about.current.legal.details.registered')}:</strong> {t('about.current.legal.details.registered_value')}</li>
+                    <li>• <strong>{t('about.current.legal.details.treasury')}:</strong> {t('about.current.legal.details.treasury_value')}</li>
+                  </ul>
+                </div>
+                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                  {t('about.current.legal.benefits')}
                 </p>
               </div>
             </div>

@@ -37,6 +37,12 @@
         "required_of": "signatures requises sur",
         "multisigners": "multisignataires pour exécuter les transactions"
       },
+      "legal": {
+        "title": "Statut Légal",
+        "jurisdiction": "Wyoming, États-Unis",
+        "registered": "Enregistré le 26 Sept. 2025",
+        "learn_more": "En savoir plus"
+      },
       "see_more": "Voir plus de métriques",
       "generating_story": "Génération du résumé...",
       "story_title": "Comment allons-nous ?",
@@ -150,6 +156,7 @@
     "safestats": "Multisignataires",
     "metrics": "Métriques",
     "events": "Événements",
+    "services": "Produits et Services",
     "categories": {
       "main": "Principal",
       "governance": "Gouvernance",
@@ -237,15 +244,60 @@
         "title": "Token CRT et Gouvernance",
         "description": "Lancement du premier token de gouvernance CRT sur Polygon, puis migré vers Avalanche comme CRT v2."
       },
+      "partner2022": {
+        "date": "2022",
+        "title": "Partenaire Twitch",
+        "description": "CuchoRapido atteint le statut de Partenaire avec 75 viewers en moyenne. Développement du bot Caldo de Gallina pour l'automatisation."
+      },
+      "september2023": {
+        "date": "Septembre 2023",
+        "title": "Rencontres et Stream Fighters",
+        "description": "Événements en personne à Bogotá et Medellín. Participation à Stream Fighters avec paris NFT. DatBoi embauché pour son leadership."
+      },
+      "january2024": {
+        "date": "Janvier 2024",
+        "title": "Migration vers Avalanche",
+        "description": "Migration complète vers Avalanche C-Chain. 100 portefeuilles Core ouverts en direct. 55 certificats Avalanche Fundamentals complétés."
+      },
       "june2024": {
         "date": "Juin 2024",
         "title": "Transformation en Ultravioleta DAO",
         "description": "Formalisation en tant qu'Ultravioleta DAO avec une identité renouvelée et lancement du token UVD sur Avalanche."
       },
+      "july2024": {
+        "date": "Juillet 2024",
+        "title": "Crise et Renaissance",
+        "description": "Token mal configuré, contrat vidé. La communauté reste unie. UVT v2 créé et distribué 1:1."
+      },
+      "october2024": {
+        "date": "Octobre 2024",
+        "title": "Avalanche Summit Argentine",
+        "description": "10 membres du DAO participent au summit. Développement de Karma Hello et Abracadabra v2 avec Cursor AI."
+      },
+      "december2024": {
+        "date": "Décembre 2024",
+        "title": "Rencontre Medellín 2024",
+        "description": "Rassemblement communautaire à Medellín avec des membres actifs du DAO, renforçant les liens et planifiant l'avenir."
+      },
+      "january2025": {
+        "date": "Janvier 2025",
+        "title": "Explosion Crypto et UVD",
+        "description": "Migration UVT→UVD sur Arena DEX. LP ATH 22K$. Lancement validateur BEAM. 0xUltravioleta Partenaire Twitch."
+      },
+      "august2025": {
+        "date": "Août 2025",
+        "title": "Ultra Event 2025",
+        "description": "Premier événement public officiel d'UltraVioleta DAO au Hash House Club, Medellín. Célébration massive avec +100 participants attendus."
+      },
+      "duna2025": {
+        "date": "Septembre 2025",
+        "title": "Enregistrement Légal comme DUNA",
+        "description": "Formalisation légale en tant que DAO LLC au Wyoming, établissant UltraVioleta comme une Association Décentralisée à But Non Lucratif Non Incorporée (DUNA)."
+      },
       "current": {
         "date": "Présent",
         "title": "DAO Pleinement Opérationnelle",
-        "description": "176 propositions exécutées, 5 218+ votes, enregistrement légal DUNA en cours, et événements présentiels dans plusieurs villes."
+        "description": "176+ propositions exécutées, 5 218+ votes, structure légale DUNA établie, et événements présentiels dans plusieurs villes."
       }
     },
     "vision": {
@@ -313,6 +365,24 @@
       "projects": {
         "title": "Ultra Evento 2025",
         "description": "Le projet principal actuel est l'Ultra Evento 2025, qui aura lieu les 23 et 24 août à Medellín, avec le soutien de sponsors reconnus comme Avalanche, Uniswap, Rekt.news, Celo Colombia, Superfluid, Magic Eden, Self.xyz, Pyth et HeroesOfCipher. Cet événement proposera des dynamiques innovantes comme des airdrops automatiques, des POAPs, des incitations à la vérification d'identité et une couverture complète en streaming."
+      },
+      "legal": {
+        "title": "Statut Légal - DUNA LLC",
+        "description": "UltraVioleta DAO a complété avec succès son enregistrement en tant qu'Organisation Autonome Décentralisée à Responsabilité Limitée (DAO LLC) au Wyoming, États-Unis. Cette structure légale pionnière, connue sous le nom de DUNA (Decentralized Unincorporated Nonprofit Association), nous permet d'opérer avec une reconnaissance légale tout en maintenant notre nature décentralisée.",
+        "whatIsDuna": "DUNA est une structure légale innovante conçue spécifiquement pour les DAOs, permettant aux organisations décentralisées d'obtenir une personnalité juridique sans compromettre leur autonomie. En savoir plus sur DUNA sur",
+        "dunaLinkText": "a16z Crypto - DUNA pour DAOs",
+        "details": {
+          "title": "Détails de l'Enregistrement",
+          "entity": "Entité Légale",
+          "entity_value": "Ultravioleta DAO LLC",
+          "jurisdiction": "Juridiction",
+          "jurisdiction_value": "Wyoming, États-Unis",
+          "registered": "Date d'Enregistrement",
+          "registered_value": "26 Septembre 2025",
+          "treasury": "Trésor Multisig",
+          "treasury_value": "0x52110a2Cc8B6bBf846101265edAAe34E753f3389 (Avalanche C-Chain)"
+        },
+        "benefits": "Cette structure légale nous offre une protection de responsabilité limitée pour les membres, une reconnaissance légale pour les contrats et accords, une conformité réglementaire claire, et la capacité de maintenir notre gouvernance décentralisée à travers des votes on-chain et des contrats intelligents."
       }
     },
     "blockchain": {
@@ -676,5 +746,44 @@
         }
       }
     }
+  },
+  "services": {
+    "title": "Produits et Services",
+    "subtitle": "Nous offrons des produits et services professionnels Web3 pour les communautés, marques et projets en Amérique latine",
+    "products": {
+      "title": "Produits",
+      "book": {
+        "title": "Livre de Luis Alfonso Jaramillo",
+        "author": "Par @lualjarami - Membre d'UltraVioleta DAO",
+        "description": "Un livre écrit par l'un de nos membres les plus actifs de la communauté, dédiant une partie des bénéfices au DAO.",
+        "benefit1": "60% des bénéfices vont directement au multisig du DAO",
+        "benefit2": "50% de réduction pour les détenteurs d'UVD sur les versions numérique et physique",
+        "buyButton": "Acheter sur Amazon"
+      }
+    },
+    "ultraServicios": {
+      "description": "Ultra Servicios est notre division professionnelle offrant des solutions complètes pour l'écosystème Web3 en LATAM.",
+      "communities": {
+        "title": "Communautés",
+        "education": "Éducation blockchain et Web3 adaptée au contexte latino-américain",
+        "tokenization": "Tokenisation de communautés et conception d'économies numériques"
+      },
+      "brand": {
+        "title": "Représentation de Marque",
+        "representation": "Représentation de marque en Amérique latine avec approche culturelle",
+        "support": "Support et gestion de communautés en ligne 24/7"
+      },
+      "validation": {
+        "title": "Services de Validation",
+        "professional": "Services professionnels de validation",
+        "blockchains": "Expérience dans plus de 55 blockchains différentes"
+      },
+      "ai": {
+        "title": "Outils IA pour Communautés en Ligne",
+        "karmaHello": "Chat to Earn - Système de récompenses pour la participation au chat",
+        "abracadabra": "Stream to Market - Outils de marketing automatisé pour streamers"
+      }
+    },
+    "contact": "Intéressé par nos services? Contactez-nous pour plus d'informations"
   }
 }
