@@ -24,6 +24,7 @@
         "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
         "total_liquidity": "Liquidez Total",
         "total_liquidity_backing": "Liquidez respaldando $UVD",
+        "burned_total": "Total Quemado",
         "tooltip": {
           "usd": "USD",
           "avax": "AVAX"
@@ -122,6 +123,8 @@
       "total_supply": "Total Supply",
       "circulating_supply": "Supply Circulando",
       "burned_supply": "Supply Quemado",
+      "burned_total": "Total Quemado",
+      "burned_forever": "Quemado para siempre",
       "market_cap": "Market Cap",
       "view_on_dex": "Ver en DEX",
       "lfj": "LFJ",
@@ -725,7 +728,7 @@
     },
     "mission": {
       "title": "Misión",
-      "description": "Mantener un espacio descentralizado de aprendizaje colectivo, donde la experimentación práctica, el ensayo-error y la toma de decisiones en tiempo real sean el núcleo de nuestra dinámica diaria."
+      "description": "Mantener un espacio descentralizado de aprendizaje colectivo, donde la experimentación práctica, el ensayo-error y la toma de decisiones en tiempo real sean el núcleo de nuestra dinámica diaria. El valor principal de UltravioletaDAO es el aprendizaje en público: documentar y compartir tanto los éxitos como los fracasos, fortaleciendo así una cultura basada en la transparencia radical y el crecimiento mutuo."
     },
     "values": {
       "title": "Nuestros Valores",
@@ -803,6 +806,24 @@
         },
         "benefits": "Esta estructura legal nos proporciona protección de responsabilidad limitada para los miembros, reconocimiento legal para contratos y acuerdos, cumplimiento regulatorio claro, y la capacidad de mantener nuestra gobernanza descentralizada a través de votaciones on-chain y contratos inteligentes."
       }
+    },
+    "featuredOn": {
+      "title": "Apariciones en Medios",
+      "subtitle": "UltraVioleta DAO ha sido destacado en importantes medios de comunicación especializados en blockchain y Web3",
+      "types": {
+        "article": "Artículo",
+        "podcast": "Podcast",
+        "video": "Video",
+        "interview": "Entrevista"
+      },
+      "cointelegraph": {
+        "date": "8 de Agosto de 2025",
+        "description": "\"Blockchain es una herramienta de coordinación y transparencia radical\", según fundador Saúl Jaramillo. Artículo completo sobre nuestra misión, gobernanza y próximos pasos."
+      },
+      "readMore": "Leer más",
+      "watchVideo": "Ver video",
+      "listenPodcast": "Escuchar podcast",
+      "comingSoon": "Próximamente más contenido"
     },
     "blockchain": {
       "title": "¿Qué significa la tecnología blockchain para Ultravioleta DAO?",

@@ -24,6 +24,7 @@
         "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
         "total_liquidity": "Liquidez Total",
         "total_liquidity_backing": "Liquidez apoiando $UVD",
+        "burned_total": "Total Queimado",
         "tooltip": {
           "usd": "USD",
           "avax": "AVAX"
@@ -101,6 +102,8 @@
       "total_supply": "Total Supply",
       "circulating_supply": "Supply em Circulação",
       "burned_supply": "Supply Queimado",
+      "burned_total": "Total Queimado",
+      "burned_forever": "Queimado para sempre",
       "market_cap": "Market Cap",
       "view_on_dex": "Ver no DEX",
       "lfj": "LFJ",
@@ -395,6 +398,24 @@
         },
         "benefits": "Esta estrutura legal nos proporciona proteção de responsabilidade limitada para os membros, reconhecimento legal para contratos e acordos, conformidade regulatória clara, e a capacidade de manter nossa governança descentralizada através de votações on-chain e contratos inteligentes."
       }
+    },
+    "featuredOn": {
+      "title": "Aparições na Mídia",
+      "subtitle": "UltraVioleta DAO tem sido destaque em importantes meios de comunicação especializados em blockchain e Web3",
+      "types": {
+        "article": "Artigo",
+        "podcast": "Podcast",
+        "video": "Vídeo",
+        "interview": "Entrevista"
+      },
+      "cointelegraph": {
+        "date": "8 de Agosto de 2025",
+        "description": "\"Blockchain é uma ferramenta de coordenação e transparência radical\", segundo fundador Saúl Jaramillo. Artigo completo sobre nossa missão, governança e próximos passos."
+      },
+      "readMore": "Ler mais",
+      "watchVideo": "Assistir vídeo",
+      "listenPodcast": "Ouvir podcast",
+      "comingSoon": "Mais conteúdo em breve"
     },
     "blockchain": {
       "title": "O que significa a tecnologia blockchain para Ultravioleta DAO?",

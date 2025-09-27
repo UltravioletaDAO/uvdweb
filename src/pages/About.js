@@ -14,7 +14,9 @@ import {
   PlayCircleIcon,
   PhotoIcon,
   HeartIcon,
-  VideoCameraIcon
+  VideoCameraIcon,
+  NewspaperIcon,
+  MicrophoneIcon
 } from '@heroicons/react/24/outline';
 import { XIcon } from '@heroicons/react/24/solid';
 
@@ -620,8 +622,100 @@ const About = () => {
         </div>
       </section>
 
-      {/* Blockchain Meaning */}
+      {/* Featured On - Media Appearances */}
       <section className="py-16 lg:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white">
+              {t('about.featuredOn.title')}
+            </h2>
+            <p className="text-xl text-gray-700 dark:text-gray-300 text-center mb-12 max-w-3xl mx-auto">
+              {t('about.featuredOn.subtitle')}
+            </p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Cointelegraph Article */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300"
+              >
+                <div className="relative h-48 bg-gradient-to-br from-purple-600 to-blue-600">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <NewspaperIcon className="h-16 w-16 text-white opacity-90" />
+                  </div>
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-white/20 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full">
+                      {t('about.featuredOn.types.article')}
+                    </span>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                    Cointelegraph
+                  </h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                    {t('about.featuredOn.cointelegraph.date')}
+                  </p>
+                  <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
+                    {t('about.featuredOn.cointelegraph.description')}
+                  </p>
+                  <a
+                    href="https://es.cointelegraph.com/news/blockchain-es-una-herramienta-de-coordinacion-y-transparencia-radical-segun-ultravioletadao"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold"
+                  >
+                    {t('about.featuredOn.readMore')}
+                    <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                </div>
+              </motion.div>
+
+              {/* Placeholder for more media appearances */}
+              {[1, 2].map((idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="bg-gray-100 dark:bg-gray-800/50 rounded-lg shadow-lg overflow-hidden border-2 border-dashed border-gray-300 dark:border-gray-700"
+                >
+                  <div className="relative h-48 bg-gradient-to-br from-gray-400 to-gray-500 opacity-20">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <MicrophoneIcon className="h-16 w-16 text-gray-600" />
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mb-3"></div>
+                    <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-1/2 mb-3"></div>
+                    <div className="space-y-2">
+                      <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded"></div>
+                      <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-5/6"></div>
+                    </div>
+                    <div className="mt-4">
+                      <span className="text-gray-500 dark:text-gray-400 text-sm italic">
+                        {t('about.featuredOn.comingSoon')}
+                      </span>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Blockchain Meaning */}
+      <section className="py-16 lg:py-24 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -643,7 +737,7 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-24 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 lg:py-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -24,6 +24,7 @@
         "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
         "total_liquidity": "Total Liquidity",
         "total_liquidity_backing": "Total Liquidity Backing UVD",
+        "burned_total": "Total Burned",
         "tooltip": {
           "usd": "USD",
           "avax": "AVAX"
@@ -93,6 +94,8 @@
       "total_supply": "Total Supply",
       "circulating_supply": "Circulating Supply",
       "burned_supply": "Burned Supply",
+      "burned_total": "Total Burned",
+      "burned_forever": "Burned forever",
       "market_cap": "Market Cap",
       "view_on_dex": "View on DEX",
       "lfj": "LFJ",
@@ -178,6 +181,8 @@
       "total_supply": "Total Supply",
       "circulating_supply": "Circulating Supply",
       "burned_supply": "Burned Supply",
+      "burned_total": "Total Burned",
+      "burned_forever": "Burned forever",
       "market_cap": "Market Cap",
       "view_on_dex": "View on DEX",
       "lfj": "LFJ",
@@ -764,6 +769,8 @@
       "total_supply": "Total Supply",
       "circulating_supply": "Circulating Supply",
       "burned_supply": "Burned Supply",
+      "burned_total": "Total Burned",
+      "burned_forever": "Burned forever",
       "market_cap": "Market Cap",
       "view_on_dex": "View on DEX",
       "lfj": "LFJ",
@@ -1081,6 +1088,24 @@
         },
         "benefits": "This legal structure provides us with limited liability protection for members, legal recognition for contracts and agreements, clear regulatory compliance, and the ability to maintain our decentralized governance through on-chain voting and smart contracts."
       }
+    },
+    "featuredOn": {
+      "title": "Featured On",
+      "subtitle": "UltraVioleta DAO has been featured in major blockchain and Web3 specialized media outlets",
+      "types": {
+        "article": "Article",
+        "podcast": "Podcast",
+        "video": "Video",
+        "interview": "Interview"
+      },
+      "cointelegraph": {
+        "date": "August 8, 2025",
+        "description": "\"Blockchain is a tool for coordination and radical transparency\", according to founder Saúl Jaramillo. Full article about our mission, governance, and next steps."
+      },
+      "readMore": "Read more",
+      "watchVideo": "Watch video",
+      "listenPodcast": "Listen to podcast",
+      "comingSoon": "More content coming soon"
     },
     "blockchain": {
       "title": "What does blockchain technology mean for Ultravioleta DAO?",

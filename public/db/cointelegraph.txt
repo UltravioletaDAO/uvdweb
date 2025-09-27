@@ -1,0 +1,92 @@
+
+Cointelegraph
+
+
+Editora:
+Inés Gaviña
+Inés Gaviña
+08 ago 2025
+“Blockchain es una herramienta de coordinación y transparencia radical”, según UltravioletaDAO
+Según Saúl Jaramillo, fundador de UltravioletaDAO, la blockchain nos ha permitido distribuir valor, tomar decisiones colectivas, y organizar nuestra comunidad sin jerarquías
+
+“Blockchain es una herramienta de coordinación y transparencia radical”, según UltravioletaDAO
+Noticias
+
+
+“Blockchain es una herramienta de coordinación y transparencia radical. Nos ha permitido distribuir valor, tomar decisiones colectivas, y organizar nuestra comunidad sin jerarquías”, aseguró Saúl Jaramillo, fundador y miembro de UltravioletaDAO, en conversación con Cointelegraph en Español. 
+
+Según señaló Jaramillo, UltravioletaDAO nació con el objetivo de impulsar la educación abierta, la experimentación tecnológica y gobernanza comunitaria en Latinoamérica. Hoy buscan consolidarse como un referente regional, ampliar su presencia física y fortalecer la educación con nuevas ediciones de diplomados certificados on-chain.
+
+Argentina: Cámara Fintech proyectó un crecimiento del 12% de empleo en el sector para 2025
+
+“En América Latina, donde muchas veces los sistemas tradicionales fallan o no llegan, blockchain ofrece una vía paralela para construir confianza, economías propias y formas nuevas de colaboración”, comentó Juan Carlos Quiceno Vásquez, miembro activo de UltravioletaDAO y del Team1 de Avalanche, y agregó: 
+
+“Para nosotros, blockchain no es una promesa futura, sino una práctica diaria que ya está generando impacto real desde abajo y hacia afuera. Es infraestructura, pero también cultura: todo queda registrado, todo puede ser auditado, y todos pueden participar”. 
+
+Origen y crecimiento orgánico de la DAO 
+Jaramillo recordó cómo UltravioletaDAO comenzó a organizarse en marzo de 2022 bajo el nombre inicial de "Cuchorapido", una comunidad creada a partir de transmisiones en vivo en Twitch. 
+
+Según relató, el enfoque inicial giraba en torno a Web3, tecnología descentralizada, consciencia digital y la exploración práctica de estas herramientas frente a una audiencia activa y participativa. 
+
+Merge llegará a São Paulo, Brasil, en 2026
+
+“Lo que empezó como una plataforma sencilla para discutir conceptos abstractos, rápidamente se convirtió en un espacio dinámico donde la audiencia no sólo escuchaba, sino que intervenía, proponía ideas y tomaba decisiones reales”, comentó. 
+
+
+La comunidad de UltravioletaDAO se reunió en Medellín, 2024. Fuente: UltravioletaDAO
+A medida que la comunidad se consolidaba, surgió la necesidad natural de organizarse mediante herramientas más sofisticadas, dando lugar al lanzamiento del primer token de gobernanza, el CRT, inicialmente desplegado en Polygon, una plataforma de blockchain de acceso general a contratos inteligentes. Su fundador sostuvo que esa primera etapa sirvió como un laboratorio en vivo, permitiéndoles entender los procesos de gobernanza descentralizada desde la práctica. 
+
+Luego, detalló, el CRT fue migrado a Avalanche como CRT v2, lo que les permitió escalar en funcionalidades y participación.
+
+Tras dos años de crecimiento continuo, en junio de 2024 la comunidad decidió dar un paso más y formalizarse como Ultravioleta DAO, manteniendo el núcleo original, pero con una identidad renovada que reflejaba su evolución. 
+
+“Este cambio marcó la transición definitiva hacia una organización descentralizada plenamente operativa y establecida, con un nuevo token llamado UVD, actualmente vigente en la red Avalanche”, señaló.
+
+Educación, infraestructura y gobernanza 
+Quiceno Vásquez indicó que la DAO cuenta con una estructura horizontal, sin jerarquías tradicionales, donde los roles son asumidos voluntariamente según afinidad y disponibilidad. Su infraestructura tecnológica incluye plataformas robustas como Snapshot, multifirmas con múltiples firmantes, bots especializados y dashboards propios para el seguimiento en tiempo real.
+
+“El token de gobernanza fue clave para la comunidad. Cada migración, desde CRT hasta UVD, significó un salto cualitativo en las capacidades organizativas y de toma de decisiones”, subrayó. 
+
+Las 5 principales ciudades donde puedes pagar el alquiler completamente en Bitcoin
+
+Según remarcó, las decisiones gestionadas mediante el token UVD incluyen asignación de presupuestos comunitarios, elección de ponentes para eventos, determinación de recompensas, parámetros económicos internos y definición de documentos fundacionales como manifiestos y constituciones del DAO.
+
+“El token no sólo facilitó la gobernanza práctica, sino que además alineó intereses y creó un fuerte sentido de responsabilidad y valor compartido entre los participantes”, añadió. 
+
+Desde la organización compartieron las múltiples iniciativas que llevan a cabo:
+
+●  Educación abierta: Transmisiones diarias en Twitch, The Arena y X, con votaciones y toma de decisiones en directo.
+
+●  Gobernanza: Al día de hoy han ejecutado 176 propuestas de gobernanza en Snapshot, con más de 5.218 votos realizados por la comunidad.
+
+●  Economía interna y gamificada: Recompensas semanales mediante ruletas (Watch-to-Earn), incentivos por participación activa gestionados por bots propios de IA, "Karma" y "Hello" (Chat-to-Earn), cada interacción en el chat implica quemar un token UVD, promoviendo calidad sobre cantidad en las conversaciones (Burn-to-Chat). 
+
+●  Infraestructura técnica: Administración de nodos validadores tanto en testnets como mainnets, ofreciendo así experiencia práctica y educativa a sus miembros.
+
+●  Eventos presenciales: Organización de encuentros en Bogotá y Medellín (2023), Medellín (2024), y actualmente prepara el Ultra Evento 2025 en Medellín (en Hash House).
+
+●  IA comunitaria: Desarrollo de agentes inteligentes para optimizar tareas comunitarias, mejorar la moderación automática y gestionar recompensas.
+
+●  Representación regional: Representación de protocolos globales en Latino América. 
+
+Próximos pasos 
+Según destacaron desde Ultravioleta DAO, hoy buscan ampliar su presencia física en nuevas ciudades, consolidar su rol como representante regional de importantes protocolos globales, incrementar la sofisticación de sus agentes de IA para comunidades, y fortalecer la educación práctica en Web3 con nuevas ediciones de diplomados certificados on-chain.
+
+“La misión es mantener un espacio descentralizado de aprendizaje colectivo, donde la experimentación práctica, el ensayo-error y la toma de decisiones en tiempo real sean el núcleo de la dinámica diaria”, declaró Jaramillo.
+
+Por último, su fundador comunicó que está en curso el registro formal de la DAO bajo la estructura legal de una DUNA (Decentralized Unincorporated Nonprofit Association, por sus siglas en inglés) en Wyoming, USA, que proporcionará una cobertura jurídica sin sacrificar la esencia descentralizada.
+
+“El valor principal de UltravioletaDAO es el aprendizaje en público: documentar y compartir tanto los éxitos como los fracasos, fortaleciendo así una cultura basada en la transparencia radical y el crecimiento mutuo”, concluyó. 
+
+Aclaración: La información y/u opiniones emitidas en este artículo no representan necesariamente los puntos de vista o la línea editorial de Cointelegraph. La información aquí expuesta no debe ser tomada como consejo financiero o recomendación de inversión. Toda inversión y movimiento comercial implican riesgos y es responsabilidad de cada persona hacer su debida investigación antes de tomar una decisión de inversión.
+
+Las inversiones en criptoactivos no están reguladas. Es posible que no sean apropiados para inversores minoristas y que se pierda el monto total invertido. Los servicios o productos ofrecidos no están dirigidos ni son accesibles a inversores en España.
+
+#Bitcoin
+#Blockchain (Cadena de bloques)
+#Colombia
+#DAO
+#América Latina
+#Polygon
+#Avalanche
+

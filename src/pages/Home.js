@@ -353,12 +353,15 @@ const Home = () => {
                   {tokenData.priceNative ? Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString() : '-'} UVD = 1 AVAX
                 </div>
                 <div style={{ fontSize: '14px', color: '#9c27b0' }}>
-                  {t('home.metrics.token.total_liquidity_backing')}: ${tokenData.liquidity ? parseFloat(tokenData.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 }) : '-'} 
+                  {t('home.metrics.token.total_liquidity_backing')}: ${tokenData.liquidity ? parseFloat(tokenData.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 }) : '-'}
                   {tokenData.liquidity && tokenData.priceNative && tokenData.priceUsd && (
                     <span style={{ fontSize: '12px', color: '#999', marginLeft: '6px' }}>
                       ({Math.floor(parseFloat(tokenData.liquidity) / (parseFloat(tokenData.priceUsd) / parseFloat(tokenData.priceNative))).toLocaleString()} AVAX)
                     </span>
                   )}
+                </div>
+                <div style={{ fontSize: '13px', color: '#ff4444', marginTop: '4px' }}>
+                  🔥 {t('home.metrics.token.burned_total')}: {tokenData.totalBurnedTokens ? tokenData.totalBurnedTokens.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '0'} UVD
                 </div>
               </div>
               <div style={{ fontSize: '13px', color: '#666', borderTop: '1px solid rgba(255, 179, 0, 0.1)', paddingTop: '8px', marginTop: 'auto' }}>
