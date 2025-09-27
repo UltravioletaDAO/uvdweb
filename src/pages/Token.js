@@ -253,7 +253,7 @@ const Token = () => {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-text-secondary text-xs">{t('tokenomics.period_dates')}</span>
-                    <span className="text-text-primary font-medium text-xs">Jan 2024 - Jun 2025</span>
+         
                   </div>
                 </div>
               </div>

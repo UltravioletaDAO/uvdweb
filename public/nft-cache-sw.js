@@ -1,6 +1,6 @@
 // NFT Cache Service Worker for UltraVioleta DAO
-const CACHE_NAME = 'uvd-nft-cache-v2';
-const IPFS_CACHE_NAME = 'uvd-ipfs-cache-v2';
+const CACHE_NAME = 'uvd-nft-cache-v3';
+const IPFS_CACHE_NAME = 'uvd-ipfs-cache-v3';
 const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days
 
 // IPFS gateways for fallback
@@ -13,7 +13,6 @@ const IPFS_GATEWAYS = [
 
 // URLs to cache on install
 const STATIC_CACHE_URLS = [
-  '/echoes/metadata/',
   '/logo.png',
   '/uvd.png'
 ];
