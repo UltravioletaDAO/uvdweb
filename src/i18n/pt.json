@@ -24,6 +24,7 @@
         "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
         "total_liquidity": "Liquidez Total",
         "total_liquidity_backing": "Liquidez apoiando $UVD",
+        "burned_total": "Total Queimado",
         "tooltip": {
           "usd": "USD",
           "avax": "AVAX"
@@ -101,6 +102,8 @@
       "total_supply": "Total Supply",
       "circulating_supply": "Supply em Circulação",
       "burned_supply": "Supply Queimado",
+      "burned_total": "Total Queimado",
+      "burned_forever": "Queimado para sempre",
       "market_cap": "Market Cap",
       "view_on_dex": "Ver no DEX",
       "lfj": "LFJ",
@@ -284,10 +287,15 @@
         "title": "Explosão Crypto e UVD",
         "description": "Migração UVT→UVD no Arena DEX. LP ATH $22K. Lançamento validador BEAM. 0xUltravioleta Parceiro Twitch."
       },
-      "august2025": {
-        "date": "Agosto 2025",
+      "august23_2025": {
+        "date": "23 de Agosto 2025",
         "title": "Ultra Evento 2025",
-        "description": "Primeiro evento público oficial do UltraVioleta DAO no Hash House Club, Medellín. Celebração massiva com +100 participantes esperados."
+        "description": "Primeiro evento público oficial do UltraVioleta DAO no Hash House Club, Medellín. Evento histórico com 212 registrados e 144 participantes. Conferências, workshops e networking com a comunidade Web3 latino-americana."
+      },
+      "august24_2025": {
+        "date": "24 de Agosto 2025",
+        "title": "Ultra Encontro 2025",
+        "description": "Dia após o Ultra Evento, encontro comunitário íntimo para fortalecer laços entre os membros mais ativos do DAO. Celebração especial com os participantes do evento principal."
       },
       "duna2025": {
         "date": "Setembro 2025",
@@ -298,6 +306,12 @@
         "date": "Presente",
         "title": "DAO Plenamente Operacional",
         "description": "176+ propostas executadas, 5.218+ votos, estrutura legal DUNA estabelecida, e eventos presenciais em múltiplas cidades."
+      },
+      "sponsors": {
+        "poweredBy": "Powered by Legends",
+        "thankYou": "Vídeo de agradecimento",
+        "gratitude": "Obrigado a todos os nossos patrocinadores por tornar este evento lendário possível",
+        "watchVideo": "Assistir vídeo de agradecimento"
       }
     },
     "vision": {
@@ -364,7 +378,7 @@
       },
       "projects": {
         "title": "Ultra Evento 2025",
-        "description": "O principal projeto atual é o Ultra Evento 2025, a ser realizado em 23 e 24 de agosto em Medellín, com o apoio de patrocinadores reconhecidos como Avalanche, Uniswap, Rekt.news, Celo Colombia, Superfluid, Magic Eden, Self.xyz, Pyth e HeroesOfCipher. Este evento contará com dinâmicas inovadoras como airdrops automáticos, POAPs, incentivos para verificação de identidade e cobertura completa em streaming."
+        "description": "O principal projeto realizado foi o Ultra Evento 2025, celebrado em 24 de agosto em Medellín com 212 registrados e 144 participantes. Evento histórico com o apoio de patrocinadores renomados como Avalanche, Rekt, Celo Colombia, Self, Uniswap, Pyth Network, Heroes Of Cipher, deBridge, Superfluid e Magic Eden. Contou com dinâmicas inovadoras como airdrops automáticos, POAPs, incentivos para verificação de identidade e cobertura completa em streaming."
       },
       "legal": {
         "title": "Status Legal - DUNA LLC",
@@ -384,6 +398,24 @@
         },
         "benefits": "Esta estrutura legal nos proporciona proteção de responsabilidade limitada para os membros, reconhecimento legal para contratos e acordos, conformidade regulatória clara, e a capacidade de manter nossa governança descentralizada através de votações on-chain e contratos inteligentes."
       }
+    },
+    "featuredOn": {
+      "title": "Aparições na Mídia",
+      "subtitle": "UltraVioleta DAO tem sido destaque em importantes meios de comunicação especializados em blockchain e Web3",
+      "types": {
+        "article": "Artigo",
+        "podcast": "Podcast",
+        "video": "Vídeo",
+        "interview": "Entrevista"
+      },
+      "cointelegraph": {
+        "date": "8 de Agosto de 2025",
+        "description": "\"Blockchain é uma ferramenta de coordenação e transparência radical\", segundo fundador Saúl Jaramillo. Artigo completo sobre nossa missão, governança e próximos passos."
+      },
+      "readMore": "Ler mais",
+      "watchVideo": "Assistir vídeo",
+      "listenPodcast": "Ouvir podcast",
+      "comingSoon": "Mais conteúdo em breve"
     },
     "blockchain": {
       "title": "O que significa a tecnologia blockchain para Ultravioleta DAO?",
@@ -747,6 +779,19 @@
           "detail3": "Entrevistas",
           "detail4": "Encerramento final com a comunidade"
         }
+      },
+      "gallery": "Galeria do Evento",
+      "stats": {
+        "registered": "Registrados",
+        "attendees": "Participantes",
+        "sponsors": "Patrocinadores",
+        "duration": "Duração"
+      },
+      "sponsors": {
+        "title": "Powered by Legends",
+        "thankYou": "Vídeo de agradecimento",
+        "gratitude": "Obrigado a todos os nossos patrocinadores por tornar este evento lendário possível",
+        "watchVideo": "Assistir vídeo de agradecimento"
       }
     }
   },

@@ -1,5 +1,11 @@
 {
-  "Ultra": "0xultravioleta",
+  "Ultra": {
+    "twitter": "0xultravioleta",
+    "stream": {
+      "platform": "twitch",
+      "url": "twitch.tv/0xultravioleta"
+    }
+  },
   "Colega": "Coleguin_",
   "f3l1p3": "F3l1p3_z",
   "cdt": "ochoita______",
@@ -33,9 +39,21 @@
   "Yesi": "Yelogamo",
   "sxxneiderxx": "Sneiderxyz",
   "Bogotá Mag": "BogotaMag",
-  "Karenn": "karenncanon",
+  "Karenn": {
+    "twitter": "karenncanon",
+    "stream": {
+      "platform": "twitch",
+      "url": "twitch.tv/karenngo"
+    }
+  },
   "Jorge Toledo": "jorgetoledoxx",
-  "ElBitterX": "elbitterx",
+  "ElBitterX": {
+    "twitter": "elbitterx",
+    "stream": {
+      "platform": "kick",
+      "url": "kick.com/elbitterx"
+    }
+  },
   "r3c": "aka_r3c",
   "Hanma": "Hanma_ow",
   "Elian": "1eliaaan",
@@ -48,7 +66,13 @@
   "Shelteer": "Shelteer_",
   "Txntacion": "XTxntacion",
   "Teddy Saint": "xTeddySaint",
-  "Brandon Heat": "HernieCrowley",
+  "Brandon Heat": {
+    "twitter": "HernieCrowley",
+    "stream": {
+      "platform": "twitch",
+      "url": "twitch.tv/herniep"
+    }
+  },
   "Roypi": "RoypiTw3",
   "Jokker": "0xJokker",
   "iEFx": "iefxsr",
@@ -82,7 +106,13 @@
   "idk": "0xiDk_",
   "Mario Peña Alcazar": "mr_tecoo",
   "Ari": "aricreando",
-  "Mar": "Mar__uwur",
+  "Mar": {
+    "twitter": "Mar__uwur",
+    "stream": {
+      "platform": "twitch",
+      "url": "twitch.tv/justmar11"
+    }
+  },
   "DatBoi": "DatBo0i_",
   "0xvital.nad": "0xwestfury",
   "Bob Cokirow": "0xdzepequeno",
@@ -120,5 +150,7 @@
   "0xsoulavax": "0xsoulavax",
   "JFQ": "jhonquitoy",
   "Sandusky": "sandusky_eth",
-  "Jhon Fray": "Jhonfray"
+  "Jhon Fray": "Jhonfray",
+  "cabomarzo": "cabomarzo",
+  "0xj4an": "0xj4an"
 }

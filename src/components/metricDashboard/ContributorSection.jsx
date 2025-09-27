@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Users, Search } from 'lucide-react';
+import { Users, Search, Video } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const currentDaoMembers = [
@@ -22,7 +22,8 @@ const currentDaoMembers = [
   "Jeinson22", "Jhon Fray", "Dylan Alexander", "knightinstruction", "Freddy Sebastian", 
   "Luis0xz", "Alx Dlarch", "daniiel_zp", "Crashxh", "PitBullPrime", "Mario Peña Alcazar", 
   "Crew", "Shelteer", "Alexis Cedeño", "Daniel S Morales", "Carza", 
-  "Andres92", "Zircon", "alejojc", "IZ", "Danieeel", "Loaiza", "juanpkante", "0xsoulavax", "JFQ", "Sandusky"
+  "Andres92", "Zircon", "alejojc", "IZ", "Danieeel", "Loaiza", "juanpkante", "0xsoulavax", "JFQ", "Sandusky",
+  "cabomarzo", "0xj4an"
 ];
 
 // Utility function to shuffle array randomly
@@ -165,6 +166,39 @@ export const ContributorSection = () => {
     member.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // Helper function to get member data (handles both string and object formats)
+  const getMemberData = (member) => {
+    const profile = memberProfiles[member];
+    if (!profile) return null;
+    
+    if (typeof profile === 'string') {
+      return { twitter: profile, stream: null };
+    }
+    
+    return {
+      twitter: profile.twitter || '',
+      stream: profile.stream || null
+    };
+  };
+
+  // Helper function to get platform icon
+  const getPlatformIcon = (platform) => {
+    switch (platform) {
+      case 'twitch':
+        return (
+          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+          </svg>
+        );
+      case 'kick':
+        return (
+          <Video className="w-3 h-3" />
+        );
+      default:
+        return <Video className="w-3 h-3" />;
+    }
+  };
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between flex-wrap gap-4">
@@ -200,39 +234,74 @@ export const ContributorSection = () => {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {filteredMembers.map((member, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.01 }}
-              className="bg-background rounded-lg px-4 py-4 text-sm text-text-primary
-                border border-ultraviolet-darker/10 hover:border-ultraviolet/30 
-                hover:bg-ultraviolet/5 transition-all cursor-pointer group
-                flex flex-col items-start min-h-[80px] justify-between"
-            >
-              <div className="w-full">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-2 h-2 rounded-full bg-green-400 group-hover:animate-pulse flex-shrink-0" />
-                  <span className="text-sm font-medium leading-tight break-words">{member}</span>
-                </div>
-                {memberProfiles[member] && (
-                  <a 
-                    href={memberProfiles[member].startsWith('http') ? memberProfiles[member] : `https://x.com/${memberProfiles[member].replace('@', '')}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-ultraviolet hover:text-ultraviolet-light flex items-center gap-1 text-xs"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                    </svg>
-                    <span className="break-all">@{memberProfiles[member].replace(/^@/, '')}</span>
-                  </a>
+          {filteredMembers.map((member, index) => {
+            const memberData = getMemberData(member);
+            const isStreamer = memberData?.stream;
+            
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.01 }}
+                className={`bg-background rounded-lg px-4 py-4 text-sm text-text-primary
+                  border hover:bg-ultraviolet/5 transition-all cursor-pointer group
+                  flex flex-col items-start min-h-[80px] justify-between relative
+                  ${isStreamer 
+                    ? 'border-purple-500/40 bg-gradient-to-br from-purple-500/5 to-pink-500/5 hover:border-purple-400/60' 
+                    : 'border-ultraviolet-darker/10 hover:border-ultraviolet/30'
+                  }`}
+              >
+                {isStreamer && (
+                  <div className="absolute top-2 right-2">
+                    <div className="flex items-center gap-1 px-2 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full border border-purple-500/40">
+                      {getPlatformIcon(memberData.stream.platform)}
+                      <span className="uppercase font-semibold">{memberData.stream.platform}</span>
+                    </div>
+                  </div>
                 )}
-              </div>
-            </motion.div>
-          ))}
+                
+                <div className="w-full">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className={`w-2 h-2 rounded-full group-hover:animate-pulse flex-shrink-0 ${
+                      isStreamer ? 'bg-purple-400' : 'bg-green-400'
+                    }`} />
+                    <span className="text-sm font-medium leading-tight break-words">{member}</span>
+                  </div>
+                  
+                  <div className="space-y-1">
+                    {memberData?.twitter && (
+                      <a 
+                        href={memberData.twitter.startsWith('http') ? memberData.twitter : `https://x.com/${memberData.twitter.replace('@', '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-ultraviolet hover:text-ultraviolet-light flex items-center gap-1 text-xs"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                        <span className="break-all">@{memberData.twitter.replace(/^@/, '')}</span>
+                      </a>
+                    )}
+                    
+                    {isStreamer && (
+                      <a 
+                        href={memberData.stream.url.startsWith('http') ? memberData.stream.url : `https://${memberData.stream.url}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-purple-400 hover:text-purple-300 flex items-center gap-1 text-xs"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {getPlatformIcon(memberData.stream.platform)}
+                        <span className="break-all">{memberData.stream.url.replace(/^https?:\/\//, '')}</span>
+                      </a>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
 
         {loading && (

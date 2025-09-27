@@ -1,7 +1,7 @@
 import { MetricCard } from "../MetricCard";
 import { Button } from "../Button";
 import { LineChart, Line, ResponsiveContainer } from "recharts";
-import { Coins, TrendingUp, Users, Activity, ExternalLink } from "lucide-react";
+import { Coins, TrendingUp, Users, Activity, ExternalLink, Flame } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { useTokenMetrics } from "../../hooks/useTokenMetrics";
 import { usePriceHistory } from "../../hooks/usePriceEvolution";
@@ -30,7 +30,7 @@ const TokenSection = () => {
         </div>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
         <MetricCard
           title={t('metricsDashboard.tokenSection.price_usd')}
           value={`${parseFloat(uvdPerUsdc).toLocaleString()} UVD`}
@@ -62,6 +62,14 @@ const TokenSection = () => {
           changeType="positive"
           variant="token"
           icon={<Activity className="h-4 w-4" />}
+        />
+        <MetricCard
+          title={t('metricsDashboard.tokenSection.burned_total')}
+          value={data.totalBurnedTokens ? `${data.totalBurnedTokens.toLocaleString(undefined, { maximumFractionDigits: 0 })} UVD` : '0 UVD'}
+          change={t('metricsDashboard.tokenSection.burned_forever')}
+          changeType="negative"
+          variant="token"
+          icon={<Flame className="h-4 w-4" />}
         />
       </div>
 
@@ -130,9 +138,9 @@ const TokenSection = () => {
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-sm text-muted-foreground">{t('metricsDashboard.tokenSection.burned_supply')}</span>
-                  <span className="text-sm font-semibold">
-                    {data.burnedSupply.toLocaleString()}
+                  <span className="text-sm text-muted-foreground">{t('metricsDashboard.tokenSection.burned_total')}</span>
+                  <span className="text-sm font-semibold text-red-500">
+                    {data.totalBurnedTokens ? data.totalBurnedTokens.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '0'} UVD
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
