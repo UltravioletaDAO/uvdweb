@@ -1,0 +1,133 @@
+
+========= 2022 =========
+
+MARZO 2022
+- Comienza el proyecto con CuchoRapido en Twitch
+- Primera semana: stream de "Hopium Diaries" de Rekt (documental sobre crypto crashes)
+- Creación del Telegram público del proyecto
+- Onboarding masivo: enseñando blockchain desde cero al 99% de la comunidad
+- Apertura de wallets, conceptos DeFi, staking, yield farming explicados en vivo
+- Primera multisig creada en Polygon (gas barato) con airdrop inicial de MATIC
+- La promesa fundacional: 100% de donaciones (subs y bits) van a la multisig comunitaria
+- Primera colección NFT creada para aprender (JangX como maestro de Photoshop)
+- Creación del token CRT (ERC-20, 24M total supply) en stream en vivo
+- Airdrop inicial: 46K CRT distribuidos a los presentes en stream
+- Primera LP USDC/CRT en SushiSwap con $4 USD de liquidez inicial
+- Todas las decisiones mediante polls en Twitch
+- Snapshot cuchorapido.eth creado para gobernanza on-chain
+- Propuesta aprobada: 40% ingresos para multisig, 60% para LP
+- Desarrollo de Caldo de Gallina: bot para rifas, menciones, fibonacci, airdrops automáticos
+
+2022 (RESTO DEL AÑO)
+- Primer incidente: préstamo de $260 USD a miembro activo, nunca repagado
+- LP activa con comunidad proveyendo liquidez y trading
+- CuchoRapido alcanza Partner en Twitch (promedio 75 viewers)
+- Crecimiento y rotación constante de la comunidad
+
+========= 2023 =========
+
+PRINCIPIOS 2023
+- Implementación inmediata de ChatGPT días después de su lanzamiento
+- Múltiples experimentos con IA en stream
+
+SEPTIEMBRE 2023
+- Quedadas presenciales en Bogotá y Medellín
+- Asistencia a Stream Fighters con apuestas NFT para peleas (David Zoh)
+- DatBoi contratado por 1 año por su liderazgo demostrado
+- Múltiples invitados: Congresistas, Ethereum Bogotá, Ethereum Cali
+
+========= 2024 =========
+
+ENERO 2024
+- Migración decidida a Avalanche C-Chain (gas 400 COP/tx vs 30 COP en Polygon)
+- Polygon presentando fallas técnicas frecuentes
+- Experiencia previa corriendo validadores de Avalanche influye en decisión
+- Creación de CRT V2 en Avalanche
+- Colaboración con CryptoChimba para Avalanche en Colombia
+- Participación y apoyo logístico en todos los hackathones de Avalanche Colombia
+- 100 Core wallets abiertas en stream
+- 55 certificados de Avalanche Fundamentals completados en vivo
+
+FEBRERO - MAYO 2024
+- Experimento crowdsourcing: investigación seed oils
+- Distribución continua de CRT: airdrops, retro bonuses, ruletas viernes
+- Introducción Watch-to-Earn: canjea puntos Twitch por ruletas CRT
+- Préstamos con colateral CRT para motos y arriendos (todos repagados)
+- Desarrollo Abracadabra V1: pipeline manual para resúmenes IA de streams
+- ATH de LP alcanza $2,600 USD
+- Debates internos sobre naming (CuchoRapido DAO vs La Gente DAO)
+
+JUNIO 6, 2024
+- Fin oficial del proceso CuchoRapido
+- Inicio de rebranding y depuración
+- Total recaudado hasta la fecha: >$20K USD, 100% redistribuido
+
+JUNIO 7-18, 2024
+- 14 días de "desaparición" de CuchoRapido
+- Pistas de UltraVioleta dejadas mediante airdrops misteriosos
+- Comunidad conectándose a la misma hora esperando el regreso
+
+JUNIO 19, 2024
+- Nacimiento oficial de UltraVioleta DAO
+- Creación desde cero: snapshot ultravioletadao.eth, nuevas multisigs, redes sociales
+- UVT V1 creado en stream con 70 personas (airdrop 1:1 a holders CRT V2)
+- Telegram nuevo con proceso KYC implementado
+- Seeding inicial $2,500 USD en LP UVT/USDC (SushiSwap)
+
+JULIO 6, 2024
+- Crisis: token mal configurado, contrato drenado
+- "Fortaleza con llaves en la puerta" - pérdida total de fondos
+- Oportunidad de salida para la comunidad, pocos vendieron
+- UVT V2 creado y distribuido 1:1 a holders UVT V1
+
+JULIO - SEPTIEMBRE 2024
+- Sin LP activa durante 7 meses (estrategia de construcción comunitaria)
+- Grupo más pequeño pero más activo y unido
+- Desarrollo Karma Hello: evolución de Caldo de Gallina con IA insultadora
+- Desarrollo Abracadabra V2: pipeline unificado, multi-modelo, SEO optimizado
+- Ambas apps desarrolladas con Cursor AI
+
+OCTUBRE 2024
+- Viaje a Argentina: Avalanche Summit
+- 10 miembros del DAO presentes: Zircon, GRZ, Fer, David, Dat, Saul, Yesi, Waira, Luis, Zog
+
+DICIEMBRE 2024
+- Quedada en Medellín
+- Apertura LP UVT/USDC en Trader Joe con $1K USD
+
+========= 2025 =========
+
+ENERO 2025
+- Crypto explota mundialmente (Trump, memecoins)
+- Nueva comunidad super activa y proactiva se une
+- Repetición de onboarding para nuevos miembros
+- Época memecoins: entrada a KET, WINK (~$400K profits combinados)
+- BLUB causa pérdidas masivas en la comunidad
+- Lanzamiento validador en BEAM Mainnet (L1 de Avalanche)
+- 0xUltravioleta alcanza Partner en Twitch
+- ATH de LP alcanza $7,500 USD
+- Migración UVT/USDC → UVD/AVAX en Arena DEX via Launchpad
+- $10K USD reunidos, bonding del token UVD
+- Airdrop 1:1 y 1:2 según participación en votación (via Superfluid)
+- LP ATH alcanza $22K USD post-migración
+- LP actual: ~$16K USD
+- Introducción Chat-to-Earn y Chat-to-Burn via Karma Hello
+- Lanzamiento "Echoes by UltravioletaDAO" en Magic Eden
+- Coordinación TikTok: posts con millones de views en @ultravioletalandia
+
+FEBRERO 28, 2025
+- Offchain Medellín by Zelf & Avalanche Colombia en Hash House Club
+
+ABRIL 10, 2025
+- Workshop: L1s Personalizadas en Avalanche en Hash House Club
+
+AGOSTO 23, 2025
+- Ultra Evento 2025: primer evento público oficial de UVD (13:00-21:00)
+
+========= MÉTRICAS TOTALES =========
+- Movimiento total en donaciones: >$70K USD en 3 años
+- Todos los holders del airdrop original CRT respetados hasta UVD
+- Probable "UVD fantasma" por wallets perdidas
+- Stream continúa creciendo consistentemente
+
+

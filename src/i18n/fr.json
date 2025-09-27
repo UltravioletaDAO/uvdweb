@@ -244,10 +244,50 @@
         "title": "Token CRT et Gouvernance",
         "description": "Lancement du premier token de gouvernance CRT sur Polygon, puis migré vers Avalanche comme CRT v2."
       },
+      "partner2022": {
+        "date": "2022",
+        "title": "Partenaire Twitch",
+        "description": "CuchoRapido atteint le statut de Partenaire avec 75 viewers en moyenne. Développement du bot Caldo de Gallina pour l'automatisation."
+      },
+      "september2023": {
+        "date": "Septembre 2023",
+        "title": "Rencontres et Stream Fighters",
+        "description": "Événements en personne à Bogotá et Medellín. Participation à Stream Fighters avec paris NFT. DatBoi embauché pour son leadership."
+      },
+      "january2024": {
+        "date": "Janvier 2024",
+        "title": "Migration vers Avalanche",
+        "description": "Migration complète vers Avalanche C-Chain. 100 portefeuilles Core ouverts en direct. 55 certificats Avalanche Fundamentals complétés."
+      },
       "june2024": {
         "date": "Juin 2024",
         "title": "Transformation en Ultravioleta DAO",
         "description": "Formalisation en tant qu'Ultravioleta DAO avec une identité renouvelée et lancement du token UVD sur Avalanche."
+      },
+      "july2024": {
+        "date": "Juillet 2024",
+        "title": "Crise et Renaissance",
+        "description": "Token mal configuré, contrat vidé. La communauté reste unie. UVT v2 créé et distribué 1:1."
+      },
+      "october2024": {
+        "date": "Octobre 2024",
+        "title": "Avalanche Summit Argentine",
+        "description": "10 membres du DAO participent au summit. Développement de Karma Hello et Abracadabra v2 avec Cursor AI."
+      },
+      "december2024": {
+        "date": "Décembre 2024",
+        "title": "Rencontre Medellín 2024",
+        "description": "Rassemblement communautaire à Medellín avec des membres actifs du DAO, renforçant les liens et planifiant l'avenir."
+      },
+      "january2025": {
+        "date": "Janvier 2025",
+        "title": "Explosion Crypto et UVD",
+        "description": "Migration UVT→UVD sur Arena DEX. LP ATH 22K$. Lancement validateur BEAM. 0xUltravioleta Partenaire Twitch."
+      },
+      "august2025": {
+        "date": "Août 2025",
+        "title": "Ultra Event 2025",
+        "description": "Premier événement public officiel d'UltraVioleta DAO au Hash House Club, Medellín. Célébration massive avec +100 participants attendus."
       },
       "duna2025": {
         "date": "Septembre 2025",

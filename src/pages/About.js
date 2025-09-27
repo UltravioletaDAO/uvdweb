@@ -3,14 +3,16 @@ import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import ApplicationForm from './ApplicationForm';
 import SEO from '../components/SEO';
-import { 
-  UserGroupIcon, 
+import {
+  UserGroupIcon,
   BeakerIcon,
   AcademicCapIcon,
   GlobeAltIcon,
   FireIcon,
   ChartBarIcon,
-  SparklesIcon
+  SparklesIcon,
+  PlayCircleIcon,
+  PhotoIcon
 } from '@heroicons/react/24/outline';
 
 const About = () => {
@@ -45,10 +47,69 @@ const About = () => {
       icon: BeakerIcon
     },
     {
+      date: t('about.timeline.partner2022.date'),
+      title: t('about.timeline.partner2022.title'),
+      description: t('about.timeline.partner2022.description'),
+      icon: FireIcon
+    },
+    {
+      date: t('about.timeline.september2023.date'),
+      title: t('about.timeline.september2023.title'),
+      description: t('about.timeline.september2023.description'),
+      icon: UserGroupIcon,
+      images: ['/images/quedada-bogota-2023.jpg', '/images/quedada-medellin-2023.jpg'],
+      videos: [
+        { url: 'https://youtu.be/yw5yLp0-_Tw', title: 'Quedada Bogotá 2023' },
+        { url: 'https://youtu.be/PzIwQMhS88s', title: 'Quedada Medellín 2023' }
+      ]
+    },
+    {
+      date: t('about.timeline.january2024.date'),
+      title: t('about.timeline.january2024.title'),
+      description: t('about.timeline.january2024.description'),
+      icon: GlobeAltIcon
+    },
+    {
       date: t('about.timeline.june2024.date'),
       title: t('about.timeline.june2024.title'),
       description: t('about.timeline.june2024.description'),
       icon: FireIcon
+    },
+    {
+      date: t('about.timeline.july2024.date'),
+      title: t('about.timeline.july2024.title'),
+      description: t('about.timeline.july2024.description'),
+      icon: BeakerIcon
+    },
+    {
+      date: t('about.timeline.october2024.date'),
+      title: t('about.timeline.october2024.title'),
+      description: t('about.timeline.october2024.description'),
+      icon: GlobeAltIcon,
+      images: ['/images/quedada-argentina-avalanche-summit-2024.png']
+    },
+    {
+      date: t('about.timeline.december2024.date'),
+      title: t('about.timeline.december2024.title'),
+      description: t('about.timeline.december2024.description'),
+      icon: UserGroupIcon,
+      images: ['/images/quedada-medellin-2024.jpg'],
+      videos: [
+        { url: 'https://youtu.be/knuBAicIc5U', title: 'Quedada Medellín 2024' }
+      ]
+    },
+    {
+      date: t('about.timeline.january2025.date'),
+      title: t('about.timeline.january2025.title'),
+      description: t('about.timeline.january2025.description'),
+      icon: ChartBarIcon
+    },
+    {
+      date: t('about.timeline.august2025.date'),
+      title: t('about.timeline.august2025.title'),
+      description: t('about.timeline.august2025.description'),
+      icon: FireIcon,
+      images: ['/images/ultraevento-2025.jpg']
     },
     {
       date: t('about.timeline.duna2025.date'),
@@ -60,7 +121,8 @@ const About = () => {
       date: t('about.timeline.current.date'),
       title: t('about.timeline.current.title'),
       description: t('about.timeline.current.description'),
-      icon: ChartBarIcon
+      icon: ChartBarIcon,
+      images: ['/images/quedada-medellin-2025.jpg']
     }
   ];
 
@@ -188,9 +250,69 @@ const About = () => {
                     <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
                       {milestone.title}
                     </h3>
-                    <p className="text-gray-700 dark:text-gray-300">
+                    <p className="text-gray-700 dark:text-gray-300 mb-4">
                       {milestone.description}
                     </p>
+
+                    {/* Images Gallery */}
+                    {milestone.images && milestone.images.length > 0 && (
+                      <div className="mb-4">
+                        <div className="flex items-center gap-2 mb-2">
+                          <PhotoIcon className="h-4 w-4 text-gray-500" />
+                          <span className="text-xs text-gray-500 uppercase tracking-wide">Gallery</span>
+                        </div>
+                        <div className="grid grid-cols-2 gap-2">
+                          {milestone.images.map((image, idx) => (
+                            <img
+                              key={idx}
+                              src={image}
+                              alt={`${milestone.title} ${idx + 1}`}
+                              className="rounded-lg w-full h-32 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                              onClick={() => window.open(image, '_blank')}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* YouTube Videos */}
+                    {milestone.videos && milestone.videos.length > 0 && (
+                      <div className="space-y-2">
+                        <div className="flex items-center gap-2 mb-2">
+                          <PlayCircleIcon className="h-4 w-4 text-gray-500" />
+                          <span className="text-xs text-gray-500 uppercase tracking-wide">Videos</span>
+                        </div>
+                        {milestone.videos.map((video, idx) => {
+                          const videoId = video.url.includes('youtu.be/')
+                            ? video.url.split('youtu.be/')[1].split('?')[0]
+                            : video.url.split('v=')[1]?.split('&')[0];
+                          return (
+                            <div key={idx} className="relative">
+                              <a
+                                href={video.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="block rounded-lg overflow-hidden hover:opacity-90 transition-opacity"
+                              >
+                                <div className="relative">
+                                  <img
+                                    src={`https://img.youtube.com/vi/${videoId}/mqdefault.jpg`}
+                                    alt={video.title}
+                                    className="w-full h-40 object-cover"
+                                  />
+                                  <div className="absolute inset-0 bg-black bg-opacity-30 flex items-center justify-center">
+                                    <PlayCircleIcon className="h-12 w-12 text-white opacity-90" />
+                                  </div>
+                                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+                                    <p className="text-white text-sm font-medium">{video.title}</p>
+                                  </div>
+                                </div>
+                              </a>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    )}
                   </div>
                 </div>
                 
