@@ -1,19 +1,50 @@
 # Robots.txt for UltraVioleta DAO
 # https://ultravioleta.xyz
+# Last updated: 2025-09-27
 
+# Default rules for all bots
 User-agent: *
 Allow: /
+Allow: /about
+Allow: /aplicar
+Allow: /metrics
+Allow: /token
+Allow: /snapshot
+Allow: /contributors
+Allow: /courses
+Allow: /blog
+Allow: /blog/*
+Allow: /links
+Allow: /safestats
+Allow: /wheel
+Allow: /events
+Allow: /services
 Disallow: /api/
 Disallow: /admin/
 Disallow: /twitch-callback
 Disallow: /status
+Disallow: /purge
+Disallow: /*.json$
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+Disallow: /*?*page=
+Allow: /*?lang=
 
-# Crawl-delay for bots (in seconds)
+# Crawl-delay for general bots (in seconds)
 Crawl-delay: 1
 
-# Allow major search engines
+# Allow major search engines with no delay
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
+
+User-agent: Googlebot-Image
+Allow: /
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.svg$
+Allow: /*.webp$
 Crawl-delay: 0
 
 User-agent: Bingbot
@@ -28,7 +59,62 @@ User-agent: DuckDuckBot
 Allow: /
 Crawl-delay: 0
 
-# Block bad bots
+User-agent: Yandexbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: facebookexternalhit
+Allow: /
+Crawl-delay: 0
+
+User-agent: Twitterbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: LinkedInBot
+Allow: /
+Crawl-delay: 0
+
+User-agent: WhatsApp
+Allow: /
+Crawl-delay: 0
+
+User-agent: Telegrambot
+Allow: /
+Crawl-delay: 0
+
+# Web3 and Crypto specific bots
+User-agent: CoinGeckoBot
+Allow: /token
+Allow: /metrics
+Crawl-delay: 2
+
+User-agent: EtherscanBot
+Allow: /
+Crawl-delay: 2
+
+# AI and GPT bots (for Web3 AI tools)
+User-agent: GPTBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: ChatGPT-User
+Allow: /
+Crawl-delay: 2
+
+User-agent: CCBot
+Allow: /
+Crawl-delay: 2
+
+User-agent: anthropic-ai
+Allow: /
+Crawl-delay: 2
+
+User-agent: Claude-Web
+Allow: /
+Crawl-delay: 2
+
+# Block bad bots and scrapers
 User-agent: AhrefsBot
 Disallow: /
 
@@ -41,5 +127,29 @@ Disallow: /
 User-agent: MJ12bot
 Disallow: /
 
-# Sitemap location
+User-agent: MegaIndex
+Disallow: /
+
+User-agent: serpstatbot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: ByteSpider
+Disallow: /
+
+# Performance and caching directives
+User-agent: *
+Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid
+
+# Sitemap locations
 Sitemap: https://ultravioleta.xyz/sitemap.xml
+Sitemap: https://ultravioleta.xyz/sitemap-blog.xml
+Sitemap: https://ultravioleta.xyz/sitemap-images.xml
+
+# Host directive for preferred domain
+Host: https://ultravioleta.xyz

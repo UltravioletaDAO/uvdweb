@@ -146,4 +146,38 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/wheel?lang=fr"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/wheel"/>
   </url>
+
+  <url>
+    <loc>https://ultravioleta.xyz/events</loc>
+    <lastmod>2025-09-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/events?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/events?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/events?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/events?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/events"/>
+    <image:image>
+      <image:loc>https://ultravioleta.xyz/og-events.jpg</image:loc>
+      <image:title>UltraVioleta DAO Events - Web3 Meetups in Latin America</image:title>
+      <image:caption>Join our Web3 community events, workshops and hackathons across Latin America</image:caption>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://ultravioleta.xyz/services</loc>
+    <lastmod>2025-09-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/services?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/services?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/services?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/services?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/services"/>
+    <image:image>
+      <image:loc>https://ultravioleta.xyz/og-services.jpg</image:loc>
+      <image:title>Web3 Development Services by UltraVioleta DAO</image:title>
+      <image:caption>Smart contracts, DeFi protocols, and blockchain solutions for Latin America</image:caption>
+    </image:image>
+  </url>
 </urlset>

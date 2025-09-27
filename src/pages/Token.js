@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
+import SEO from '../components/SEO';
 import {
   ArrowLeftIcon
 } from '@heroicons/react/24/outline';
@@ -36,9 +37,15 @@ const Token = () => {
 
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
+    <>
+      <SEO
+        title="UVD Token | Avalanche Governance Token for Latin America DAO"
+        description="UVD is the native governance token of UltraVioleta DAO on Avalanche blockchain. Trade, swap, and participate in DAO governance. Contract: 0x4Ffe7e01832243e03668E090706F17726c26d6B2"
+        keywords="UVD token, UltraVioleta token, Avalanche token, governance token, DAO token, Latin America cryptocurrency, AVAX DEX, Arena swap, DeFi token LATAM, ERC-20 token, crypto governance, Web3 token, decentralized governance, Avalanche C-Chain, UVD price, UVD trading"
+      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
       className="min-h-screen bg-background py-16 px-4"
@@ -166,6 +173,7 @@ const Token = () => {
         </motion.div>
       </div>
     </motion.div>
+    </>
   );
 };
 

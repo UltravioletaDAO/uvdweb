@@ -1,6 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 import {
   BookOpen,
   Coins,
@@ -61,7 +62,13 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white py-20">
+    <>
+      <SEO
+        title="Web3 Development Services | Smart Contracts & DeFi Solutions"
+        description="Professional blockchain development services by UltraVioleta DAO. Smart contracts, DeFi protocols, tokenization, DAO consulting, and Web3 infrastructure for Latin America projects."
+        keywords="Web3 development services, smart contract development, DeFi protocols, blockchain consulting, DAO setup, tokenization services, Latin America blockchain, Avalanche development, Web3 infrastructure, crypto development agency, blockchain solutions LATAM, NFT development, decentralized applications, Web3 consulting, blockchain integration"
+      />
+      <div className="min-h-screen bg-black text-white py-20">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -212,6 +219,7 @@ const ServicesPage = () => {
         </motion.div>
       </div>
     </div>
+    </>
   );
 };
 

@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
-const SEO = ({ 
+const SEO = ({
   title,
   description,
   keywords,
@@ -14,7 +14,11 @@ const SEO = ({
   modifiedTime,
   canonicalUrl,
   noindex = false,
-  customJsonLd
+  customJsonLd,
+  type = 'website',
+  video,
+  price,
+  availability
 }) => {
   const { pathname } = useLocation();
   const { i18n, t } = useTranslation();
@@ -22,9 +26,9 @@ const SEO = ({
   
   const siteUrl = 'https://ultravioleta.xyz';
   const defaultImage = `${siteUrl}/og-image.png`;
-  const defaultTitle = 'UltraVioleta DAO - Latin American Web3 Community';
-  const defaultDescription = t('seo.defaultDescription', 'Building the future of Web3 in Latin America through decentralized governance, community-driven innovation, and collaborative treasury management.');
-  const defaultKeywords = 'DAO, Web3, Latin America, Blockchain, Decentralized Governance, DeFi, Avalanche, Community, Treasury, Snapshot, Governance Token, LATAM, Crypto, Ethereum';
+  const defaultTitle = 'UltraVioleta DAO - Leading Web3 DAO in Latin America | Avalanche Ecosystem';
+  const defaultDescription = t('seo.defaultDescription', 'UltraVioleta DAO: Premier decentralized autonomous organization building Web3 infrastructure in Latin America. Join 500+ members governing treasury, DeFi protocols, and community initiatives on Avalanche blockchain.');
+  const defaultKeywords = 'UltraVioleta DAO, Latin America DAO, Web3 LATAM, Avalanche DAO, DeFi Latin America, UVD token, blockchain governance, decentralized treasury, Snapshot voting, crypto DAO, Web3 community, Latin American blockchain, DeFi protocols, smart contracts, DAO governance token, Avalanche ecosystem, LATAM crypto, decentralized finance, DAO treasury management, Web3 development';
   
   const fullTitle = title ? `${title} | UltraVioleta DAO` : defaultTitle;
   const fullDescription = description || defaultDescription;
@@ -66,7 +70,33 @@ const SEO = ({
       '@type': 'QuantitativeValue',
       value: '500+',
       unitText: 'members'
-    }
+    },
+    owns: {
+      '@type': 'OwnershipInfo',
+      typeOfGood: {
+        '@type': 'Service',
+        name: 'Treasury Management',
+        description: 'Multi-signature treasury on Avalanche blockchain'
+      }
+    },
+    makesOffer: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Web3 Development',
+          description: 'Smart contract development and DeFi protocol building'
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'DAO Governance',
+          description: 'Decentralized governance through Snapshot voting'
+        }
+      }
+    ]
   };
 
   const websiteJsonLd = {
@@ -175,6 +205,64 @@ const SEO = ({
     ]
   } : null;
 
+  const cryptoJsonLd = pathname === '/token' ? {
+    '@context': 'https://schema.org',
+    '@type': 'FinancialProduct',
+    name: 'UVD Token',
+    alternateName: 'UltraVioleta DAO Token',
+    description: 'Governance token for UltraVioleta DAO on Avalanche blockchain',
+    url: `${siteUrl}/token`,
+    provider: {
+      '@type': 'Organization',
+      name: 'UltraVioleta DAO'
+    },
+    category: 'Cryptocurrency',
+    additionalProperty: [
+      {
+        '@type': 'PropertyValue',
+        name: 'Blockchain',
+        value: 'Avalanche C-Chain'
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Contract Address',
+        value: '0x4Ffe7e01832243e03668E090706F17726c26d6B2'
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Token Type',
+        value: 'ERC-20'
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Use Case',
+        value: 'Governance, Treasury Management, Community Rewards'
+      }
+    ]
+  } : null;
+
+  const daoJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'GovernmentOrganization',
+    '@id': `${siteUrl}#dao`,
+    name: 'UltraVioleta DAO',
+    alternateName: 'UVD DAO',
+    description: 'Decentralized Autonomous Organization governed by token holders',
+    governmentType: 'Decentralized Autonomous Organization',
+    jurisdiction: {
+      '@type': 'AdministrativeArea',
+      name: 'Wyoming, United States (DUNA LLC)'
+    },
+    serviceArea: {
+      '@type': 'Place',
+      name: 'Latin America'
+    },
+    memberOf: {
+      '@type': 'Organization',
+      name: 'Avalanche Ecosystem'
+    }
+  };
+
   const eventJsonLd = pathname === '/courses' ? {
     '@context': 'https://schema.org',
     '@type': 'Course',
@@ -189,13 +277,95 @@ const SEO = ({
     inLanguage: ['es', 'en', 'pt']
   } : null;
 
+  const servicesJsonLd = pathname === '/services' ? {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Web3 Development Services',
+    provider: {
+      '@type': 'Organization',
+      name: 'UltraVioleta DAO'
+    },
+    serviceType: 'Blockchain Development',
+    areaServed: {
+      '@type': 'Place',
+      name: 'Latin America'
+    },
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Web3 Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Smart Contract Development',
+            description: 'Custom smart contracts on Avalanche and EVM chains'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'DeFi Protocol Building',
+            description: 'Design and implementation of DeFi protocols'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'DAO Setup & Consulting',
+            description: 'Complete DAO infrastructure and governance setup'
+          }
+        }
+      ]
+    }
+  } : null;
+
+  const eventsJsonLd = pathname === '/events' ? {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: 'Ultra Evento 2025 - Web3 Summit Latin America',
+    startDate: '2025-10-15T09:00:00-05:00',
+    endDate: '2025-10-15T18:00:00-05:00',
+    eventStatus: 'EventScheduled',
+    eventAttendanceMode: 'OfflineEventAttendanceMode',
+    location: {
+      '@type': 'Place',
+      name: 'Medellín, Colombia',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Medellín',
+        addressRegion: 'Antioquia',
+        addressCountry: 'CO'
+      }
+    },
+    organizer: {
+      '@type': 'Organization',
+      name: 'UltraVioleta DAO',
+      url: siteUrl
+    },
+    description: 'Premier Web3 event in Latin America featuring workshops, networking, and blockchain innovation',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'InStock',
+      url: `${siteUrl}/events`
+    }
+  } : null;
+
   const allJsonLd = [
     organizationJsonLd,
+    daoJsonLd,
     websiteJsonLd,
     breadcrumbJsonLd,
     articleJsonLd,
     faqJsonLd,
     eventJsonLd,
+    cryptoJsonLd,
+    servicesJsonLd,
+    eventsJsonLd,
     customJsonLd
   ].filter(Boolean);
 
@@ -217,7 +387,7 @@ const SEO = ({
       ))}
       <link rel="alternate" hrefLang="x-default" href={fullUrl} />
       
-      <meta property="og:type" content={article ? 'article' : 'website'} />
+      <meta property="og:type" content={article ? 'article' : type} />
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={fullDescription} />
       <meta property="og:image" content={fullImage} />
@@ -256,6 +426,14 @@ const SEO = ({
       
       <meta name="geo.region" content="LATAM" />
       <meta name="geo.placename" content="Latin America" />
+
+      <meta name="author" content="UltraVioleta DAO" />
+      <meta name="publisher" content="UltraVioleta DAO" />
+      <meta name="copyright" content="UltraVioleta DAO" />
+
+      <meta name="revisit-after" content="7 days" />
+      <meta name="rating" content="general" />
+      <meta name="distribution" content="global" />
       
       <meta name="application-name" content="UltraVioleta DAO" />
       <meta name="apple-mobile-web-app-title" content="UltraVioleta" />
