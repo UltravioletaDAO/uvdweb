@@ -444,6 +444,69 @@
     "description_1": "$UVD est le jeton de gouvernance et d'utilité d'Ultravioleta DAO, qui facilite la participation des membres dans la prise de décisions décentralisées et la gestion de la trésorerie. Il est utilisé pour voter sur les propositions, attribuer des fonds communautaires et soutenir les initiatives des membres.",
     "description_2": "Grâce à $UVD, la DAO maintient une structure transparente et démocratique, garantissant que ses ressources sont dirigées en fonction de la gouvernance collective."
   },
+  "tokenomics": {
+    "title": "Tokenomics UVD",
+    "overview": "Vue d'ensemble",
+    "description": "Stratégie d'incitations et de croissance pour Ultravioleta DAO pendant la période 2025-2026, conçue pour optimiser la distribution des récompenses et renforcer la communauté.",
+    "treasury_base": "Trésorerie de base",
+    "period": "Période",
+    "months": "mois",
+    "period_dates": "Juillet 2025 - Décembre 2026",
+    "allocation": "Allocation",
+    "view_proposal": "Voir la proposition sur Snapshot",
+    "bounties": {
+      "title": "Bounties",
+      "monthly": "Budget mensuel",
+      "frequency": "Fréquence",
+      "per_month": "par mois",
+      "prizes": "Distribution des prix",
+      "first": "1ère Place",
+      "second": "2ème Place",
+      "third": "3ème Place"
+    },
+    "airdrops": {
+      "title": "Airdrops",
+      "monthly": "Par airdrop",
+      "frequency": "Fréquence",
+      "per_month": "mensuel",
+      "objectives": "Objectifs",
+      "obj1": "Récompenser les détenteurs actifs",
+      "obj2": "Encourager la participation à la gouvernance",
+      "obj3": "Attirer de nouveaux détenteurs"
+    },
+    "wheel": {
+      "title": "Roue hebdomadaire",
+      "frequency": "Fréquence",
+      "per_month": "par mois",
+      "total": "Total",
+      "wheels": "roues",
+      "prizes": "Prix principaux"
+    },
+    "savings": {
+      "title": "Fonds d'épargne",
+      "monthly": "Allocation mensuelle",
+      "uses": "Utilisations autorisées",
+      "use1": "Dépenses opérationnelles urgentes",
+      "use2": "Investissement dans des opportunités stratégiques",
+      "use3": "Marketing et partenariats à fort impact"
+    },
+    "event": {
+      "title": "Ultra Événement 2025",
+      "allocation": "Allocation spéciale",
+      "description": "Airdrop exclusif pour les participants de l'Ultra Événement 2025, renforçant le lien entre communauté et écosystème.",
+      "source": "Source de fonds",
+      "july": "Airdrop juillet",
+      "august": "Airdrop août",
+      "complement": "Complément du fonds d'épargne"
+    },
+    "reserve": {
+      "title": "Réserve restante",
+      "amount": "Montant",
+      "percentage": "Pourcentage",
+      "purpose": "Objectif",
+      "future": "Opérations futures"
+    }
+  },
   "success": {
     "back_home": "Retour à l'accueil"
   },

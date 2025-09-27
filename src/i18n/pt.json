@@ -444,6 +444,69 @@
     "description_1": "$UVD é o token de governança e utilidade da Ultravioleta DAO, que facilita a participação dos membros na tomada de decisões descentralizada e na gestão do tesouro. É usado para votar em propostas, atribuir fundos comunitários e apoiar iniciativas dos membros.",
     "description_2": "Através do $UVD, a DAO mantém uma estrutura transparente e democrática, garantindo que seus recursos sejam direcionados com base na governança coletiva."
   },
+  "tokenomics": {
+    "title": "Tokenomics UVD",
+    "overview": "Visão Geral",
+    "description": "Estratégia de incentivos e crescimento para Ultravioleta DAO durante o período 2025-2026, projetada para otimizar a distribuição de recompensas e fortalecer a comunidade.",
+    "treasury_base": "Tesouraria Base",
+    "period": "Período",
+    "months": "meses",
+    "period_dates": "Julho 2025 - Dezembro 2026",
+    "allocation": "Alocação",
+    "view_proposal": "Ver Proposta no Snapshot",
+    "bounties": {
+      "title": "Bounties",
+      "monthly": "Orçamento mensal",
+      "frequency": "Frequência",
+      "per_month": "por mês",
+      "prizes": "Distribuição de prêmios",
+      "first": "1º Lugar",
+      "second": "2º Lugar",
+      "third": "3º Lugar"
+    },
+    "airdrops": {
+      "title": "Airdrops",
+      "monthly": "Por airdrop",
+      "frequency": "Frequência",
+      "per_month": "mensal",
+      "objectives": "Objetivos",
+      "obj1": "Recompensar holders ativos",
+      "obj2": "Incentivar participação em governança",
+      "obj3": "Atrair novos holders"
+    },
+    "wheel": {
+      "title": "Roleta Semanal",
+      "frequency": "Frequência",
+      "per_month": "por mês",
+      "total": "Total",
+      "wheels": "roletas",
+      "prizes": "Prêmios principais"
+    },
+    "savings": {
+      "title": "Fundo de Poupança",
+      "monthly": "Alocação mensal",
+      "uses": "Usos autorizados",
+      "use1": "Despesas operacionais urgentes",
+      "use2": "Investimento em oportunidades estratégicas",
+      "use3": "Marketing e parcerias de alto impacto"
+    },
+    "event": {
+      "title": "Ultra Evento 2025",
+      "allocation": "Alocação especial",
+      "description": "Airdrop exclusivo para participantes do Ultra Evento 2025, fortalecendo a conexão entre comunidade e ecossistema.",
+      "source": "Fonte de fundos",
+      "july": "Airdrop julho",
+      "august": "Airdrop agosto",
+      "complement": "Complemento do fundo de poupança"
+    },
+    "reserve": {
+      "title": "Reserva Restante",
+      "amount": "Quantidade",
+      "percentage": "Porcentagem",
+      "purpose": "Propósito",
+      "future": "Operações futuras"
+    }
+  },
   "snapshot": {
     "connect_wallet": "Conectar Wallet"
   },

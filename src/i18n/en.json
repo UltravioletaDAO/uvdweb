@@ -315,6 +315,69 @@
       "liquidity_alt": "Liquidity Pool Icon"
     }
   },
+  "tokenomics": {
+    "title": "UVD Tokenomics",
+    "overview": "Overview",
+    "description": "Incentive and growth strategy for Ultravioleta DAO during the 2025-2026 period, designed to optimize reward distribution and strengthen the community.",
+    "treasury_base": "Base Treasury",
+    "period": "Period",
+    "months": "months",
+    "period_dates": "July 2025 - December 2026",
+    "allocation": "Allocation",
+    "view_proposal": "View Proposal on Snapshot",
+    "bounties": {
+      "title": "Bounties",
+      "monthly": "Monthly budget",
+      "frequency": "Frequency",
+      "per_month": "per month",
+      "prizes": "Prize distribution",
+      "first": "1st Place",
+      "second": "2nd Place",
+      "third": "3rd Place"
+    },
+    "airdrops": {
+      "title": "Airdrops",
+      "monthly": "Per airdrop",
+      "frequency": "Frequency",
+      "per_month": "monthly",
+      "objectives": "Objectives",
+      "obj1": "Reward active holders",
+      "obj2": "Incentivize governance participation",
+      "obj3": "Attract new holders"
+    },
+    "wheel": {
+      "title": "Weekly Wheel",
+      "frequency": "Frequency",
+      "per_month": "per month",
+      "total": "Total",
+      "wheels": "wheels",
+      "prizes": "Main prizes"
+    },
+    "savings": {
+      "title": "Savings Fund",
+      "monthly": "Monthly allocation",
+      "uses": "Authorized uses",
+      "use1": "Urgent operational expenses",
+      "use2": "Strategic opportunity investments",
+      "use3": "High-impact marketing and partnerships"
+    },
+    "event": {
+      "title": "Ultra Event 2025",
+      "allocation": "Special allocation",
+      "description": "Exclusive airdrop for Ultra Event 2025 attendees, strengthening the connection between community and ecosystem.",
+      "source": "Fund source",
+      "july": "July airdrop",
+      "august": "August airdrop",
+      "complement": "Savings fund complement"
+    },
+    "reserve": {
+      "title": "Remaining Reserve",
+      "amount": "Amount",
+      "percentage": "Percentage",
+      "purpose": "Purpose",
+      "future": "Future operations"
+    }
+  },
   "benefits": {
     "title": "Benefits of Joining",
     "experts": {

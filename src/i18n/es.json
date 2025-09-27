@@ -257,6 +257,69 @@
       "liquidity_alt": "Icono de Pool de Liquidez"
     }
   },
+  "tokenomics": {
+    "title": "Tokenomics UVD",
+    "overview": "Visión General",
+    "description": "Estrategia de incentivos y crecimiento para Ultravioleta DAO durante el período 2025-2026, diseñada para optimizar la distribución de recompensas y fortalecer la comunidad.",
+    "treasury_base": "Tesorería Base",
+    "period": "Período",
+    "months": "meses",
+    "period_dates": "Julio 2025 - Diciembre 2026",
+    "allocation": "Asignación",
+    "view_proposal": "Ver Propuesta en Snapshot",
+    "bounties": {
+      "title": "Bounties",
+      "monthly": "Presupuesto mensual",
+      "frequency": "Frecuencia",
+      "per_month": "por mes",
+      "prizes": "Distribución de premios",
+      "first": "1er Lugar",
+      "second": "2do Lugar",
+      "third": "3er Lugar"
+    },
+    "airdrops": {
+      "title": "Airdrops",
+      "monthly": "Por airdrop",
+      "frequency": "Frecuencia",
+      "per_month": "mensual",
+      "objectives": "Objetivos",
+      "obj1": "Recompensar holders activos",
+      "obj2": "Incentivar participación en gobernanza",
+      "obj3": "Atraer nuevos holders"
+    },
+    "wheel": {
+      "title": "Ruleta Semanal",
+      "frequency": "Frecuencia",
+      "per_month": "por mes",
+      "total": "Total",
+      "wheels": "ruletas",
+      "prizes": "Premios principales"
+    },
+    "savings": {
+      "title": "Fondo de Ahorros",
+      "monthly": "Asignación mensual",
+      "uses": "Usos autorizados",
+      "use1": "Gastos operativos urgentes",
+      "use2": "Inversión en oportunidades estratégicas",
+      "use3": "Marketing y partnerships de alto impacto"
+    },
+    "event": {
+      "title": "Ultra Evento 2025",
+      "allocation": "Asignación especial",
+      "description": "Airdrop exclusivo para asistentes del Ultra Evento 2025, fortaleciendo la conexión entre comunidad y ecosistema.",
+      "source": "Fuente de fondos",
+      "july": "Airdrop julio",
+      "august": "Airdrop agosto",
+      "complement": "Complemento del fondo de ahorros"
+    },
+    "reserve": {
+      "title": "Reserva Restante",
+      "amount": "Cantidad",
+      "percentage": "Porcentaje",
+      "purpose": "Propósito",
+      "future": "Operaciones futuras"
+    }
+  },
   "benefits": {
     "title": "Beneficios de Unirte",
     "experts": {
