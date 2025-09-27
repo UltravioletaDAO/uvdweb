@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
-import { 
+import {
   CalendarIcon,
   ClockIcon,
   MapPinIcon,
@@ -14,7 +14,11 @@ import {
   DocumentCheckIcon,
   WalletIcon,
   ChartBarIcon,
-  MusicalNoteIcon
+  MusicalNoteIcon,
+  PhotoIcon,
+  HeartIcon,
+  PlayCircleIcon,
+  VideoCameraIcon
 } from '@heroicons/react/24/outline';
 
 const Events = () => {
@@ -310,10 +314,159 @@ const Events = () => {
                   </div>
                 </div>
 
-                <div className="text-center">
+                <div className="text-center mb-8">
                   <p className="text-gray-300 text-lg">
                     {t('events.ultraevento.description')}
                   </p>
+                </div>
+
+                {/* Event Images Gallery */}
+                <div className="mb-8">
+                  <div className="flex items-center gap-2 mb-4">
+                    <PhotoIcon className="h-5 w-5 text-purple-400" />
+                    <h3 className="text-lg font-semibold text-white">{t('events.ultraevento.gallery')}</h3>
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <img
+                      src="/images/ultraevento-2025-promo.jpg"
+                      alt="Ultra Evento 2025 Promo"
+                      className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                      onClick={() => window.open('/images/ultraevento-2025-promo.jpg', '_blank')}
+                    />
+                    <img
+                      src="/images/ultraevento-2025.jpg"
+                      alt="Ultra Evento 2025"
+                      className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                      onClick={() => window.open('/images/ultraevento-2025.jpg', '_blank')}
+                    />
+                    <img
+                      src="/images/quedada-medellin-2025.jpg"
+                      alt="Ultra Quedada 2025"
+                      className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                      onClick={() => window.open('/images/quedada-medellin-2025.jpg', '_blank')}
+                    />
+                  </div>
+                </div>
+
+                {/* Event Statistics */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                  <div className="bg-gray-800/50 rounded-lg p-4 text-center">
+                    <p className="text-3xl font-bold text-purple-400">212</p>
+                    <p className="text-gray-400 text-sm">{t('events.ultraevento.stats.registered')}</p>
+                  </div>
+                  <div className="bg-gray-800/50 rounded-lg p-4 text-center">
+                    <p className="text-3xl font-bold text-purple-400">144</p>
+                    <p className="text-gray-400 text-sm">{t('events.ultraevento.stats.attendees')}</p>
+                  </div>
+                  <div className="bg-gray-800/50 rounded-lg p-4 text-center">
+                    <p className="text-3xl font-bold text-purple-400">10</p>
+                    <p className="text-gray-400 text-sm">{t('events.ultraevento.stats.sponsors')}</p>
+                  </div>
+                  <div className="bg-gray-800/50 rounded-lg p-4 text-center">
+                    <p className="text-3xl font-bold text-purple-400">8h</p>
+                    <p className="text-gray-400 text-sm">{t('events.ultraevento.stats.duration')}</p>
+                  </div>
+                </div>
+
+                {/* Sponsors Section - Ultra Creative Design */}
+                <div className="relative mt-8 pt-8 border-t-2 border-transparent bg-gradient-to-r from-purple-600/20 via-pink-600/20 to-purple-600/20 rounded-2xl">
+                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-gray-900 px-6 py-2 rounded-full border-2 border-purple-500/50">
+                      <div className="flex items-center gap-2">
+                        <div className="animate-pulse">
+                          <HeartIcon className="h-5 w-5 text-pink-500" />
+                        </div>
+                        <h3 className="text-lg font-bold bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 bg-clip-text text-transparent">
+                          {t('events.ultraevento.sponsors.title')}
+                        </h3>
+                        <div className="animate-pulse animation-delay-200">
+                          <HeartIcon className="h-5 w-5 text-pink-500" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-4">
+                    {/* Main Sponsors Grid */}
+                    <div className="grid grid-cols-2 md:grid-cols-5 gap-4 p-4">
+                      {[
+                        { name: 'Avalanche', twitter: 'AvaxTeam1', video: 'https://x.com/UltravioletaDAO/status/1961197588389953629', color: 'from-red-500 to-red-600' },
+                        { name: 'Rekt', twitter: 'RektHQ', video: 'https://x.com/UltravioletaDAO/status/1961077187227844906', color: 'from-gray-600 to-black' },
+                        { name: 'Celo Colombia', twitter: 'Celo_Col', video: 'https://x.com/UltravioletaDAO/status/1961113800574189779', color: 'from-green-500 to-yellow-500' },
+                        { name: 'Self', twitter: 'selfprotocol', video: 'https://x.com/UltravioletaDAO/status/1961544954301616209', color: 'from-blue-500 to-purple-500' },
+                        { name: 'Uniswap', twitter: 'Uniswap', video: 'https://x.com/UltravioletaDAO/status/1961535762828333124', color: 'from-pink-500 to-pink-600' },
+                        { name: 'Pyth Network', twitter: 'PythNetwork', video: 'https://x.com/UltravioletaDAO/status/1961567997509738889', color: 'from-purple-600 to-indigo-600' },
+                        { name: 'Heroes Of Cipher', twitter: 'HeroesOfCipher', video: 'https://x.com/UltravioletaDAO/status/1961177432419193181', color: 'from-yellow-500 to-orange-500' },
+                        { name: 'deBridge', twitter: 'debridge', video: 'https://x.com/UltravioletaDAO/status/1961424459929092283', color: 'from-cyan-500 to-blue-500' },
+                        { name: 'Superfluid', twitter: 'Superfluid_HQ', video: 'https://x.com/UltravioletaDAO/status/1961617646970970208', color: 'from-green-400 to-cyan-500' },
+                        { name: 'Magic Eden', twitter: 'Eden_Magico', video: 'https://x.com/UltravioletaDAO/status/1961271683995640236', color: 'from-purple-500 to-pink-500' }
+                      ].map((sponsor, idx) => (
+                        <motion.div
+                          key={idx}
+                          initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                          transition={{ delay: idx * 0.1, type: "spring", stiffness: 200 }}
+                          whileHover={{ scale: 1.1, rotate: 5, zIndex: 10 }}
+                          className="relative group"
+                        >
+                          <div className={`absolute inset-0 bg-gradient-to-br ${sponsor.color} opacity-20 blur-xl group-hover:opacity-40 transition-opacity rounded-2xl`}></div>
+                          <div className="relative bg-gray-900/90 backdrop-blur-sm border border-gray-700 rounded-2xl p-4 hover:border-purple-500/50 transition-all duration-300 h-full">
+                            {/* Logo/Avatar */}
+                            <div className={`w-16 h-16 mx-auto mb-3 rounded-xl bg-gradient-to-br ${sponsor.color} p-0.5`}>
+                              <div className="w-full h-full bg-gray-900 rounded-xl flex items-center justify-center">
+                                <span className="text-2xl font-black text-white">
+                                  {sponsor.name.substring(0, 2).toUpperCase()}
+                                </span>
+                              </div>
+                            </div>
+
+                            {/* Name */}
+                            <h4 className="font-bold text-white text-center mb-2 text-sm">
+                              {sponsor.name}
+                            </h4>
+
+                            {/* Social Links */}
+                            <div className="flex items-center justify-center gap-2">
+                              <a
+                                href={`https://x.com/${sponsor.twitter}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center w-8 h-8 bg-black/50 rounded-lg hover:bg-black/70 transition-all group/x"
+                                title={`@${sponsor.twitter}`}
+                              >
+                                <svg className="w-4 h-4 text-gray-400 group-hover/x:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                </svg>
+                              </a>
+                              <a
+                                href={sponsor.video}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center w-8 h-8 bg-purple-600/30 rounded-lg hover:bg-purple-600/50 transition-all group/video"
+                                title={t('events.ultraevento.sponsors.watchVideo')}
+                              >
+                                <PlayCircleIcon className="h-4 w-4 text-purple-400 group-hover/video:text-purple-300 group-hover/video:scale-110 transition-all" />
+                              </a>
+                            </div>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </div>
+
+                    {/* Thank You Message */}
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 1.2 }}
+                      className="mt-6 text-center pb-4"
+                    >
+                      <p className="text-sm text-gray-400">
+                        <span className="inline-block animate-bounce">💜</span>
+                        {' '}{t('events.ultraevento.sponsors.gratitude')}{' '}
+                        <span className="inline-block animate-bounce animation-delay-200">💜</span>
+                      </p>
+                    </motion.div>
+                  </div>
                 </div>
               </div>
             </div>

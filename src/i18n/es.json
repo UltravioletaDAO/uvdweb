@@ -692,10 +692,15 @@
         "title": "Explosión Crypto y UVD",
         "description": "Migración UVT→UVD en Arena DEX. LP ATH $22K. Lanzamiento validador BEAM. 0xUltravioleta Partner en Twitch."
       },
-      "august2025": {
-        "date": "Agosto 2025",
+      "august23_2025": {
+        "date": "23 de Agosto 2025",
         "title": "Ultra Evento 2025",
-        "description": "Primer evento público oficial de UltraVioleta DAO en Hash House Club, Medellín. Celebración masiva con +100 participantes esperados."
+        "description": "Primer evento público oficial de UltraVioleta DAO en Hash House Club, Medellín. Evento histórico con 212 registrados y 144 asistentes. Conferencias, talleres y networking con la comunidad Web3 latinoamericana."
+      },
+      "august24_2025": {
+        "date": "24 de Agosto 2025",
+        "title": "Ultra Quedada 2025",
+        "description": "Día posterior al Ultra Evento, encuentro comunitario íntimo para fortalecer lazos entre los miembros más activos del DAO. Celebración especial con los asistentes del evento principal."
       },
       "duna2025": {
         "date": "Septiembre 2025",
@@ -706,6 +711,12 @@
         "date": "Presente",
         "title": "DAO Plenamente Operativa",
         "description": "176+ propuestas ejecutadas, 5,218+ votos, estructura legal DUNA establecida, y eventos presenciales en múltiples ciudades."
+      },
+      "sponsors": {
+        "poweredBy": "Powered by Legends",
+        "thankYou": "Video de agradecimiento",
+        "gratitude": "Gracias a todos nuestros sponsors por hacer posible este evento legendario",
+        "watchVideo": "Ver video de agradecimiento"
       }
     },
     "vision": {
@@ -772,7 +783,7 @@
       },
       "projects": {
         "title": "Ultra Evento 2025",
-        "description": "El principal proyecto actual es el Ultra Evento 2025, a realizarse el 23 y 24 de agosto en Medellín, con el apoyo de reconocidos patrocinadores como Avalanche, Uniswap, Rekt.news, Celo Colombia, Superfluid, Magic Eden, Self.xyz, Pyth y HeroesOfCipher. Este evento contará con dinámicas innovadoras como airdrops automáticos, POAPs, incentivos para la verificación de identidad y cobertura completa en streaming."
+        "description": "El principal proyecto realizado fue el Ultra Evento 2025, celebrado el 24 de agosto en Medellín con 212 registrados y 144 asistentes. Evento histórico con el apoyo de reconocidos patrocinadores como Avalanche, Rekt, Celo Colombia, Self, Uniswap, Pyth Network, Heroes Of Cipher, deBridge, Superfluid y Magic Eden. Contó con dinámicas innovadoras como airdrops automáticos, POAPs, incentivos para la verificación de identidad y cobertura completa en streaming."
       },
       "legal": {
         "title": "Estatus Legal - DUNA LLC",
@@ -1028,6 +1039,19 @@
           "detail3": "Entrevistas",
           "detail4": "Cierre final con la comunidad"
         }
+      },
+      "gallery": "Galería del Evento",
+      "stats": {
+        "registered": "Registrados",
+        "attendees": "Asistentes",
+        "sponsors": "Sponsors",
+        "duration": "Duración"
+      },
+      "sponsors": {
+        "title": "Powered by Legends",
+        "thankYou": "Video de agradecimiento",
+        "gratitude": "Gracias a todos nuestros sponsors por hacer posible este evento legendario",
+        "watchVideo": "Ver video de agradecimiento"
       }
     }
   },

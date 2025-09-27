@@ -12,8 +12,11 @@ import {
   ChartBarIcon,
   SparklesIcon,
   PlayCircleIcon,
-  PhotoIcon
+  PhotoIcon,
+  HeartIcon,
+  VideoCameraIcon
 } from '@heroicons/react/24/outline';
+import { XIcon } from '@heroicons/react/24/solid';
 
 const About = () => {
   const { t } = useTranslation();
@@ -86,7 +89,10 @@ const About = () => {
       title: t('about.timeline.october2024.title'),
       description: t('about.timeline.october2024.description'),
       icon: GlobeAltIcon,
-      images: ['/images/quedada-argentina-avalanche-summit-2024.png']
+      images: ['/images/quedada-argentina-avalanche-summit-2024.png'],
+      videos: [
+        { url: 'https://youtu.be/aHSl32p5t28', title: 'Avalanche Summit Argentina 2024' }
+      ]
     },
     {
       date: t('about.timeline.december2024.date'),
@@ -105,11 +111,30 @@ const About = () => {
       icon: ChartBarIcon
     },
     {
-      date: t('about.timeline.august2025.date'),
-      title: t('about.timeline.august2025.title'),
-      description: t('about.timeline.august2025.description'),
+      date: t('about.timeline.august23_2025.date'),
+      title: t('about.timeline.august23_2025.title'),
+      description: t('about.timeline.august23_2025.description'),
       icon: FireIcon,
-      images: ['/images/ultraevento-2025.jpg']
+      images: ['/images/ultraevento-2025-promo.jpg', '/images/ultraevento-2025.jpg'],
+      sponsors: [
+        { name: 'Avalanche', twitter: '@AvaxTeam1', videoUrl: 'https://x.com/UltravioletaDAO/status/1961197588389953629' },
+        { name: 'Rekt', twitter: '@RektHQ', videoUrl: 'https://x.com/UltravioletaDAO/status/1961077187227844906' },
+        { name: 'Celo Colombia', twitter: '@Celo_Col', videoUrl: 'https://x.com/UltravioletaDAO/status/1961113800574189779' },
+        { name: 'Self', twitter: '@selfprotocol', videoUrl: 'https://x.com/UltravioletaDAO/status/1961544954301616209' },
+        { name: 'Uniswap', twitter: '@Uniswap', videoUrl: 'https://x.com/UltravioletaDAO/status/1961535762828333124' },
+        { name: 'Pyth Network', twitter: '@PythNetwork', videoUrl: 'https://x.com/UltravioletaDAO/status/1961567997509738889' },
+        { name: 'Heroes Of Cipher', twitter: '@HeroesOfCipher', videoUrl: 'https://x.com/UltravioletaDAO/status/1961177432419193181' },
+        { name: 'deBridge', twitter: '@debridge', videoUrl: 'https://x.com/UltravioletaDAO/status/1961424459929092283' },
+        { name: 'Superfluid', twitter: '@Superfluid_HQ', videoUrl: 'https://x.com/UltravioletaDAO/status/1961617646970970208' },
+        { name: 'Magic Eden', twitter: '@Eden_Magico', videoUrl: 'https://x.com/UltravioletaDAO/status/1961271683995640236' }
+      ]
+    },
+    {
+      date: t('about.timeline.august24_2025.date'),
+      title: t('about.timeline.august24_2025.title'),
+      description: t('about.timeline.august24_2025.description'),
+      icon: UserGroupIcon,
+      images: ['/images/quedada-medellin-2025.jpg']
     },
     {
       date: t('about.timeline.duna2025.date'),
@@ -121,8 +146,7 @@ const About = () => {
       date: t('about.timeline.current.date'),
       title: t('about.timeline.current.title'),
       description: t('about.timeline.current.description'),
-      icon: ChartBarIcon,
-      images: ['/images/quedada-medellin-2025.jpg']
+      icon: ChartBarIcon
     }
   ];
 
@@ -311,6 +335,71 @@ const About = () => {
                             </div>
                           );
                         })}
+                      </div>
+                    )}
+
+                    {/* Sponsors Section - Creative Design */}
+                    {milestone.sponsors && milestone.sponsors.length > 0 && (
+                      <div className="mt-6 pt-4 border-t-2 border-gradient-to-r from-purple-500 to-pink-500">
+                        <div className="flex items-center gap-3 mb-4">
+                          <div className="flex items-center justify-center w-8 h-8 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full animate-pulse">
+                            <HeartIcon className="h-5 w-5 text-white" />
+                          </div>
+                          <span className="text-sm font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent uppercase tracking-wider">
+                            {t('about.timeline.sponsors.poweredBy')}
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                          {milestone.sponsors.map((sponsor, idx) => (
+                            <motion.div
+                              key={idx}
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              transition={{ delay: idx * 0.05 }}
+                              className="group relative bg-gradient-to-r from-purple-900/20 to-pink-900/20 backdrop-blur-sm border border-purple-500/30 rounded-xl p-3 hover:border-purple-400/60 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300"
+                            >
+                              <div className="flex items-center justify-between">
+                                <div className="flex items-center gap-3">
+                                  <div className="flex items-center justify-center w-10 h-10 bg-black/30 rounded-lg group-hover:bg-black/40 transition-colors">
+                                    <span className="text-lg font-bold text-transparent bg-gradient-to-br from-purple-400 to-pink-400 bg-clip-text">
+                                      {sponsor.name.substring(0, 2).toUpperCase()}
+                                    </span>
+                                  </div>
+                                  <div>
+                                    <h4 className="font-semibold text-sm text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                                      {sponsor.name}
+                                    </h4>
+                                    <a
+                                      href={`https://x.com/${sponsor.twitter.substring(1)}`}
+                                      target="_blank"
+                                      rel="noopener noreferrer"
+                                      className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                                    >
+                                      <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                      </svg>
+                                      <span>{sponsor.twitter}</span>
+                                    </a>
+                                  </div>
+                                </div>
+                                <a
+                                  href={sponsor.videoUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center justify-center w-8 h-8 bg-purple-600/20 rounded-full hover:bg-purple-600/30 transition-all group/video"
+                                  title={t('about.timeline.sponsors.watchVideo')}
+                                >
+                                  <PlayCircleIcon className="h-5 w-5 text-purple-600 group-hover/video:text-purple-400 group-hover/video:scale-110 transition-all" />
+                                </a>
+                              </div>
+                            </motion.div>
+                          ))}
+                        </div>
+                        <div className="mt-3 text-center">
+                          <p className="text-xs text-gray-500 dark:text-gray-400 italic">
+                            {t('about.timeline.sponsors.gratitude')}
+                          </p>
+                        </div>
                       </div>
                     )}
                   </div>
