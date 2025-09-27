@@ -37,18 +37,6 @@ const Header = () => {
       isExternal: false,
     },
     {
-      name: t('navigation.links'),
-      icon: LinkIcon,
-      path: "/links",
-      isExternal: false,
-    },
-    {
-      name: t('navigation.courses'),
-      icon: AcademicCapIcon,
-      path: "/courses",
-      isExternal: false,
-    },
-    {
       name: t('navigation.token'),
       icon: CurrencyDollarIcon,
       path: "/token",
@@ -59,13 +47,6 @@ const Header = () => {
       icon: ArrowTrendingUpIcon,
       path: "/metrics",
       isExternal: false,
-    },
-    {
-      name: t('navigation.events'),
-      icon: CalendarIcon,
-      path: "/events",
-      isExternal: false,
-      customStyle: "text-pink-400 hover:text-pink-300",
     },
     {
       name: t('navigation.services'),

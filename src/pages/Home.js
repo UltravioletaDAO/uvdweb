@@ -495,6 +495,70 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Enlaces Importantes */}
+      <section className="py-12 bg-background-lighter">
+        <div className="container mx-auto px-4">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-2xl font-bold text-text-primary text-center mb-8"
+          >
+            {t('links.title', 'Enlaces Importantes')}
+          </motion.h2>
+          <div className="flex flex-wrap justify-center gap-4">
+            <motion.a
+              href="https://twitter.com/UltravioletaDAO"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-2 px-6 py-3 bg-black/40 border border-gray-700 rounded-lg hover:border-[#1DA1F2] transition-all"
+            >
+              <svg viewBox="0 0 24 24" className="w-5 h-5">
+                <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+              <span className="text-white">Twitter/X</span>
+            </motion.a>
+
+            <motion.a
+              href="https://arena.social/UltravioletaDAO"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-2 px-6 py-3 bg-black/40 border border-gray-700 rounded-lg hover:border-[#FF5CAA] transition-all"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" fill="none" className="w-5 h-5">
+                <g fill="white" clipPath="url(#a)">
+                  <path d="M31.463 15.472V42h-.678V17.454c0-8.154-6.64-14.794-14.794-14.794-8.153 0-14.776 6.623-14.776 14.794V42H.537V15.472C.537 6.919 7.455 0 16.009 0c8.552 0 15.454 6.919 15.454 15.472Z"/>
+                  <path d="M28.768 16.984v22.513h-.678V18.705c0-6.675-5.423-12.099-12.099-12.099-6.675 0-12.1 5.406-12.1 12.082v20.791h-.677V16.967c0-7.058 5.72-12.777 12.777-12.777 7.058 0 12.777 5.719 12.777 12.777v.017Z"/>
+                </g>
+                <defs><clipPath id="a"><rect width="30.9263" height="42" fill="white" transform="translate(0.536621)"/></clipPath></defs>
+              </svg>
+              <span className="text-white">The Arena</span>
+            </motion.a>
+
+            <motion.a
+              href="https://app.safe.global/home?safe=avax:0x52110a2Cc8B6bBf846101265edAAe34E753f3389"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              whileHover={{ scale: 1.05 }}
+              className="flex items-center gap-2 px-6 py-3 bg-black/40 border border-gray-700 rounded-lg hover:border-emerald-400 transition-all"
+            >
+              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l7 4.5-7 4.5z" fill="currentColor"/>
+              </svg>
+              <span className="text-white">{t('navigation.multisig', 'Multisig')}</span>
+            </motion.a>
+          </div>
+        </div>
+      </section>
+
       {/* Beneficios actualizados */}
       <section className="py-16">
         <div className="container mx-auto px-4">

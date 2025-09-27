@@ -1086,7 +1086,7 @@
         "author": "Por @lualjarami - Miembro de UltraVioleta DAO",
         "description": "Un libro escrito por uno de nuestros miembros más activos de la comunidad, dedicando parte de sus ganancias al DAO.",
         "benefit1": "60% de las ganancias van directamente al multisig del DAO",
-        "benefit2": "50% de descuento para holders de UVD en versión digital y física",
+        "benefit2": "50% devuelto en tokens UVD (exclusivo para miembros del DAO)",
         "buyButton": "Comprar en Amazon"
       }
     },
@@ -1111,6 +1111,13 @@
         "title": "Herramientas IA para Comunidades",
         "karmaHello": "Chat to Earn - Sistema de recompensas por participación en chat",
         "abracadabra": "Stream to Market - Herramientas de marketing automatizado para streamers"
+      }
+    },
+    "events": {
+      "ultraevento": {
+        "flagship": "Evento Insignia",
+        "brandRepresentation": "Como parte de nuestros servicios de representación de marca, organizamos eventos presenciales que conectan a proyectos Web3 con la comunidad latinoamericana.",
+        "sponsorCTA": "Patrocina el próximo evento"
       }
     },
     "contact": "¿Interesado en nuestros servicios? Contáctanos para más información"

@@ -1315,7 +1315,7 @@
         "author": "By @lualjarami - Member of UltraVioleta DAO",
         "description": "A book written by one of our most active community members, dedicating part of the profits to the DAO.",
         "benefit1": "60% of profits go directly to the DAO multisig",
-        "benefit2": "50% discount for UVD holders on digital and physical versions",
+        "benefit2": "50% refunded in UVD tokens (exclusive for DAO members)",
         "buyButton": "Buy on Amazon"
       }
     },
@@ -1340,6 +1340,37 @@
         "title": "AI Tooling for Online Communities",
         "karmaHello": "Chat to Earn - Reward system for chat participation",
         "abracadabra": "Stream to Market - Automated marketing tools for streamers"
+      }
+    },
+    "events": {
+      "ultraevento": {
+        "title": "Ultra Event 2025",
+        "flagship": "Flagship Event",
+        "date": {
+          "label": "Date",
+          "value": "August 24, 2025"
+        },
+        "time": {
+          "label": "Time",
+          "value": "1:00 p.m. – 9:00 p.m."
+        },
+        "location": {
+          "label": "Location",
+          "value": "Hash House, Medellín"
+        },
+        "description": "The most important annual event of UltraVioleta DAO, bringing together the Latin American Web3 community for conferences, networking and celebration.",
+        "stats": {
+          "registered": "Registered",
+          "attendees": "Attendees",
+          "sponsors": "Sponsors",
+          "duration": "Duration"
+        },
+        "sponsors": {
+          "title": "2025 Sponsors",
+          "gratitude": "Thanks to all our sponsors for making this event possible!"
+        },
+        "brandRepresentation": "As part of our brand representation services, we organize in-person events that connect Web3 projects with the Latin American community.",
+        "sponsorCTA": "Sponsor the next event"
       }
     },
     "contact": "Interested in our services? Contact us for more information"

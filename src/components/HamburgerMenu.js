@@ -47,20 +47,6 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.about'),
     },
     {
-      name: t('navigation.links'),
-      icon: LinkIcon,
-      path: "/links",
-      isExternal: false,
-      description: t('navigation.descriptions.links'),
-    },
-    {
-      name: t('navigation.courses'),
-      icon: AcademicCapIcon,
-      path: "/courses",
-      isExternal: false,
-      description: t('navigation.descriptions.courses'),
-    },
-    {
       name: t('navigation.token'),
       icon: CurrencyDollarIcon,
       path: "/token",
@@ -75,11 +61,11 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.metrics'),
     },
     {
-      name: t('navigation.events'),
-      icon: CalendarIcon,
-      path: "/events",
+      name: t('navigation.services'),
+      icon: PlayCircleIcon,
+      path: "/services",
       isExternal: false,
-      description: t('navigation.descriptions.events'),
+      description: t('navigation.descriptions.services'),
     }
     /* Delegations disabled for now (Beam validator was shut down)
     ,

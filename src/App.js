@@ -21,7 +21,6 @@ import SafeStats from "./pages/SafeStats";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThirdwebProvider } from "thirdweb/react";
 import MetricsDashboard from "./pages/MetricsDashboard";
-import Events from "./pages/Events";
 import ServicesPage from "./pages/ServicesPage";
 
 const queryClient = new QueryClient();
@@ -53,7 +52,6 @@ function App() {
                 <Route path="/twitch-callback" element={<TwitchCallback />} />
                 <Route path="/safestats" element={<SafeStats />} />
                 <Route path="/metrics" element={<MetricsDashboard />} />
-                <Route path="/events" element={<Events />} />
                 <Route path="/services" element={<ServicesPage />} />
               </Routes>
             </div>
