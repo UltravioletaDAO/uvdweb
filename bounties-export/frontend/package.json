@@ -1,0 +1,22 @@
+{
+  "name": "bounties-module-frontend",
+  "version": "1.0.0",
+  "description": "Bounties module frontend components",
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "framer-motion": "^10.16.0",
+    "ethers": "^5.7.2",
+    "web3modal": "^1.9.12",
+    "react-i18next": "^13.5.0",
+    "i18next": "^23.7.0",
+    "@heroicons/react": "^2.1.0",
+    "date-fns": "^2.30.0",
+    "ethereum-blockies-base64": "^1.0.2"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  }
+}
+

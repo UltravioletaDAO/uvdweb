@@ -1,0 +1,499 @@
+{
+  "home": {
+    "title": "Ultravioleta DAO",
+    "subtitle": "La comunidad Web3 más activa de Latinoamérica"
+  },
+  "auth": {
+    "register": "Aplicar a UltravioletaDAO",
+    "login": "Iniciar Sesión",
+    "login_en": "Login",
+    "access_button": "Acceder",
+    "logout_button": "Cerrar sesión"
+  },
+  "navigation": {
+    "home": "Inicio",
+    "apply": "Aplicar",
+    "links": "Links",
+    "status": "Estado de Aplicación",
+    "courses": "Cursos",
+    "purge": "Purga",
+    "token": "Token",
+    "blog": "Blog",
+    "snapshot": "Snapshot",
+    "wheel": "Ruleta UVT",
+    "delegations": "Delegaciones",
+    "safestats": "Estadísticas Safe",
+    "bounties": "Bounties",
+    "categories": {
+      "main": "Principal",
+      "governance": "Gobernanza",
+      "admin": "Administración"
+    },
+    "descriptions": {
+      "home": "Dashboard principal de Ultravioleta DAO",
+      "links": "Enlaces importantes de la comunidad",
+      "courses": "Cursos y material educativo",
+      "blog": "Paila News",
+      "snapshot": "Votaciones y propuestas de gobernanza",
+      "multisig": "Multifirma para gestión de fondos",
+      "purge": "Gestión de usuarios inactivos",
+      "wheel": "Ruleta de premios UVD",
+      "delegations": "Stakea y delegar tus tokens",
+      "safestats": "Estadísticas de multifirmantes",
+      "bounties": "Tareas y recompensas para la comunidad",
+      "todo": "Bounties listas para ser tomadas por los colaboradores",
+      "in_voting": "Bounties que están en progreso o bajo revisión",
+      "finished": "Bounties completadas con recompensas distribuidas"
+    },
+    "aria": {
+      "open_menu": "Abrir menú",
+      "close_menu": "Cerrar menú",
+      "main_menu": "Menú principal"
+    }
+  },
+  "features": {
+    "community": {
+      "title": "Comunidad Activa",
+      "description": "Somos una de las comunidades más activas de Web3 en Latinoamérica",
+      "button": "Conócenos"
+    },
+    "token": {
+      "title": "$UVT: nuestro token de gobernanza",
+      "description": "Participa en el crecimiento y la toma de decisiones con nuestro token de gobernanza UVT",
+      "button": "Ver Token"
+    },
+    "raffles": {
+      "title": "Sorteos Periódicos",
+      "description": "Participa en nuestros sorteos exclusivos para holders de UVT y miembros de la comunidad"
+    }
+  },
+  "token": {
+    "title": "Ultravioleta Token",
+    "description_1": "$UVT es el token de gobernanza y utilidad de UltraVioleta DAO, que faculta a los titulares a participar en la toma de decisiones descentralizada y la gestión de tesorería. Se utiliza para votar propuestas, asignar fondos comunitarios y apoyar iniciativas de los miembros.",
+    "description_2": "A través de $UVT, la DAO mantiene una estructura transparente y democrática, asegurando que sus recursos se dirigen en base a la gobernanza colectiva.",
+    "chart_title": "Gráfico $UVT en Dexscreener",
+    "buttons": {
+      "swap": "Intercambiar Token",
+      "swap_alt": "Icono de Intercambio",
+      "liquidity": "Pool de Liquidez UVT/Avax",
+      "liquidity_alt": "Icono de Pool de Liquidez"
+    }
+  },
+  "benefits": {
+    "title": "Beneficios de Unirte",
+    "experts": {
+      "title": "Grupo privado de expertos",
+      "description": "Acceso a un grupo privado en Telegram con expertos en múltiples áreas"
+    },
+    "networking": {
+      "title": "Nuevas relaciones y oportunidades",
+      "description": "Conoce y colabora con líderes y desarrolladores clave del ecosistema Web3"
+    },
+    "alphas": {
+      "title": "Los mejores alphas",
+      "description": "Obtén acceso exclusivo a información y oportunidades estratégicas en Web3"
+    }
+  },
+  "form": {
+    "title": "Formulario de Postulación",
+    "subtitle": "Únete a nuestra comunidad y sé parte del futuro de Web3",
+    "optional": "opcional",
+    "steps": {
+      "personal": "Datos Personales",
+      "social": "Redes Sociales",
+      "experience": "Experiencia y Wallet"
+    },
+    "fields": {
+      "fullName": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "twitter": "Twitter",
+      "telegram": "Telegram",
+      "twitch": "Twitch (opcional)",
+      "walletAddress": "Dirección de Wallet",
+      "story": "¿Cuál es tu historia?",
+      "purpose": "¿Cuál es tu propósito?",
+      "references": "Referencias (opcional)"
+    },
+    "placeholders": {
+      "fullName": "Tu nombre completo",
+      "email": "ejemplo@correo.com",
+      "twitter": "@usuario",
+      "telegram": "@usuario",
+      "twitch": "usuario",
+      "walletAddress": "0x...",
+      "story": "Cuéntanos tu historia...",
+      "purpose": "Cuéntanos tu propósito...",
+      "references": "¿Alguien te recomendó?"
+    },
+    "validation": {
+      "email_required": "El email es requerido",
+      "email_format": "El email debe tener un formato válido",
+      "social_required": "El usuario de {{social}} es requerido",
+      "social_format": "El usuario de {{social}} debe comenzar con @",
+      "telegram_format": "El usuario de Telegram no puede empezar con un número",
+      "wallet_required": "La dirección de wallet es requerida",
+      "wallet_format": "La dirección de wallet debe ser válida",
+      "story_required": "Tu historia es requerida",
+      "story_length": "Mínimo 55 caracteres (actual: {{current}})",
+      "story_too_long": "Máximo {{max}} caracteres (actual: {{current}})",
+      "purpose_required": "Tu propósito es requerido",
+      "purpose_length": "Mínimo 55 caracteres (actual: {{current}})",
+      "purpose_too_long": "Máximo {{max}} caracteres (actual: {{current}})"
+    },
+    "buttons": {
+      "next": "Siguiente",
+      "prev": "Anterior",
+      "submit": "Enviar Aplicación",
+      "submitting": "Enviando..."
+    },
+    "errors": {
+      "api_url_missing": "La URL del servidor no está configurada",
+      "endpoint_not_found": "No se encontró el endpoint del servidor",
+      "server_error": "Error interno del servidor",
+      "data_error": "Error en los datos enviados",
+      "unexpected_response": "Respuesta inesperada del servidor",
+      "processing_error": "Error al procesar la solicitud",
+      "submit_error": "Error al enviar el formulario. ",
+      "network_error": "Error de conexión de red. Por favor, verifica tu conexión a internet."
+    }
+  },
+  "success": {
+    "title": "¡Solicitud enviada con éxito!",
+    "message": "Tu solicitud ha sido recibida y está en proceso de revisión.",
+    "waitlist": "Si el proceso de aplicación está completo, serás colocado en nuestra lista de espera con prioridad para futuras oportunidades.",
+    "thanks": "¡Gracias por tu interés en formar parte de nuestra comunidad!",
+    "back_home": "Volver al inicio"
+  },
+  "courses": {
+    "title": "Nuestros Cursos"
+  },
+  "links": {
+    "title": "Nuestros Links"
+  },
+  "purge": {
+    "title": "Purga",
+    "headers": {
+      "username": "Username",
+      "wallet": "Billetera",
+      "balance": "Balance actual",
+      "status": "Estado",
+      "reason": "Razón"
+    }
+  },
+  "events": {
+    "title": "Próximos eventos",
+    "description": "Eventos de interés de la comunidad que se recomienda asistir. ¡No te los pierdas!"
+  },
+  "snapshot": {
+    "title": "Propuestas Gobernanza Ultravioleta DAO",
+    "view_votes": "Ver votos",
+    "new_proposal": "Nueva propuesta",
+    "author": "por",
+    "votes_count": "{{count}} votos",
+    "quorum": "{{percentage}}% quorum",
+    "states": {
+      "active": "Activa",
+      "closed": "Cerrada",
+      "passed": "Aprobada",
+      "rejected": "Rechazada",
+      "pending": "Pendiente"
+    },
+    "no_proposals": "No hay propuestas activas en este momento",
+    "connect_wallet": "Conectar Wallet",
+    "voting_power": "Poder de voto",
+    "vote": "Votar",
+    "choices": "Opciones",
+    "voted": "Votaste",
+    "vote_cancelled": "Voto cancelado",
+    "vote_submitted": "¡Voto enviado con éxito!",
+    "errors": {
+      "no_metamask": "Por favor instala MetaMask u otro proveedor de Ethereum",
+      "connect_wallet": "Por favor conecta tu wallet para poder votar",
+      "connect_wallet_proposal": "Por favor conecta tu wallet para poder crear una nueva propuesta",
+      "vote_failed": "Error al votar, por favor intenta nuevamente",
+      "insufficient_power": "No tienes suficiente poder de voto",
+      "user_rejected_connection": "Has rechazado la conexión de la wallet",
+      "user_rejected_vote": "Has rechazado la firma del voto",
+      "provider_error": "Error al conectar con el proveedor de Ethereum"
+    },
+    "vote_reason_title": "Razón del voto",
+    "vote_reason_placeholder": "Escribe una razón opcional para tu voto...",
+    "voter": "Votante",
+    "choice": "Elección",
+    "date": "Fecha",
+    "results": "Resultados",
+    "votes": "votos",
+    "view_more": "Ver más"
+  },
+  "common": {
+    "cancel": "Cancelar",
+    "disconnect": "Desconectar"
+  },
+  "wheel": {
+    "customize_button": {
+      "show": "Personalizar Ruleta",
+      "hide": "Ocultar opciones"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Dirección del contrato"
+    },
+    "segments": {
+      "add": {
+        "title": "Agregar nuevo valor",
+        "value_placeholder": "Valor",
+        "probability_placeholder": "Probabilidad %",
+        "button": "Agregar"
+      },
+      "current": {
+        "title": "Valores actuales",
+        "probability_suffix": "%",
+        "min_segments_error": "La ruleta necesita al menos 2 valores"
+      }
+    },
+    "buttons": {
+      "equalize": "Igualar probabilidades",
+      "reset": "Restablecer valores por defecto"
+    },
+    "participants": {
+      "panel": {
+        "show": "Agregar participante",
+        "hide": "Ocultar participantes",
+        "clear": "Limpiar"
+      },
+      "add": {
+        "title": "Nuevo participante",
+        "wallet_placeholder": "Wallet (obligatoria)",
+        "username_placeholder": "Usuario (opcional)",
+        "button": "Agregar",
+        "wallet_required": "La wallet es obligatoria"
+      },
+      "list": {
+        "title": "Participantes y Resultados",
+        "headers": {
+          "user": "Usuario",
+          "wallet": "Wallet",
+          "result": "Resultado"
+        },
+        "anonymous": "Anónimo",
+        "current_turn": "Turno actual",
+        "pending": "Pendiente",
+        "total": "Total",
+        "remove": "Eliminar participante",
+        "completed": "Resultados"
+      }
+    },
+    "results": {
+      "title": "Resultado",
+      "current_participant": "Participante actual",
+      "no_more_participants": "No hay más participantes. Agrega más para continuar",
+      "export": {
+        "button": "Exportar resultados",
+        "no_results": "No hay resultados para exportar"
+      },
+      "copy": {
+        "button": "Copiar resultados",
+        "error": "Error al copiar los resultados"
+      },
+      "send": {
+        "button": "Enviar premios"
+      }
+    },
+    "wallet": {
+      "send_rewards": "Airdrop de Premios",
+      "connect_required": "Conecta tu wallet para enviar premios",
+      "connected": "Wallet conectada",
+      "connected_success": "¡Wallet conectada exitosamente!",
+      "balance": "Balance",
+      "connect_button": "Conectar Wallet",
+      "approve_button": "Aprobar",
+      "send_button": "Enviar Premios",
+      "view_transaction": "Ver Transacción",
+      "approving": "Aprobando",
+      "sending": "Enviando...",
+      "approving_transaction": "Aprobando transacción...",
+      "sending_transaction": "Procesando transacción...",
+      "no_provider": "No se detectó wallet EVM. Por favor instala una wallet compatible.",
+      "user_rejected": "Solicitud rechazada por el usuario",
+      "connection_error": "Error al conectar con la wallet",
+      "network_add_error": "Error al agregar la red Avalanche",
+      "network_switch_error": "Error al cambiar a la red Avalanche",
+      "invalid_state": "Estado inválido. Verifica la conexión y el token",
+      "already_approved": "Tokens ya aprobados",
+      "approval_success": "¡Tokens aprobados con éxito!",
+      "approval_error": "Error al aprobar tokens",
+      "insufficient_allowance": "Permiso de token insuficiente. Por favor aprueba primero",
+      "send_success": "¡Premios enviados con éxito!",
+      "send_error": "Error al enviar premios",
+      "info": "Los premios se enviarán directamente desde tu wallet usando la red Avalanche C-Chain.",
+      "total_rewards": "Total de premios"
+    },
+    "spin_button": {
+      "spinning": "Girando...",
+      "disabled": "No disponible",
+      "loading": "Cargando participantes...",
+      "ready": "Click para girar"
+    },
+    "twitch": {
+      "load": "Cargar de Twitch",
+      "loading": "Cargando recompensas...",
+      "load_error": "Error al cargar las recompensas de Twitch",
+      "auth_error": "Error de autenticación. Por favor, conéctate de nuevo",
+      "complete_error": "Error al completar la recompensa",
+      "no_rewards": "No hay recompensas pendientes por cargar",
+      "invalid_wallet": "Wallet inválida detectada",
+      "auth_required": "Necesitas autenticarte con Twitch",
+      "auth_button": "Conectar con Twitch",
+      "redirecting": "Redireccionando...",
+      "create_reward_error": "Error al crear la recompensa. Asegúrate de ser afiliado o partner de Twitch",
+      "client_id_mismatch": "La recompensa fue creada con otra aplicación. Por favor, crea una nueva recompensa desde esta aplicación",
+      "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo",
+      "auto_update": "Actualización automática"
+    }
+  },
+  "delegations": {
+    "title": "Delegaciones",
+    "beam_validator": {
+      "title": "🔒 Validador de Beam Network",
+      "join_message": "🚀 ÚNETE al nodo más firme, resiliente y lleno de pura candela LATAM: @UltravioletaDAO",
+      "launch_message": "Ya lanzamos, y ya estamos validando en la L1 de Beam como tiene que ser.",
+      "infrastructure": "🎯 Este nodo no fue montado con palitos y cinta:",
+      "deployment": "Fue desplegado con infraestructura pro, full Terraform sobre AWS, hecho con amor y precisión por @0xultravioleta durante sus transmisiones de twitch.",
+      "reliability": "Esto no se cae, parce. Esto respira comunidad y uptime.",
+      "backed": "🌞 Respaldado por la comunidad Web3 más leal y activa de LATAM",
+      "commitment": "🌎 Comprometidos con la descentralización, transparencia y alto rendimiento",
+      "infrastructure_code": "🛠️ 100% Infra-as-Code, listo para operar en múltiples regiones",
+      "join_movement": "🎯 Quieres ser parte del movimiento?",
+      "delegate": "Delegá hoy mismo y caminá con nosotros hacia una red más libre, abierta y poderosa:",
+      "node_id": "NodeID-83Dx5mVdBzehEn8xomdeMQPLBM9xY2XkZ"
+    },
+    "tutorial": {
+      "title": "Cómo hacer Stake de BEAM"
+    }
+  },
+  "safestats": {
+    "title": "Multifirmantes UltravioletaDAO",
+    "filter": {
+      "title": "Opciones de filtrado",
+      "by_date": "Filtrar por fechas",
+      "start_date": "Fecha Inicio",
+      "end_date": "Fecha Fin"
+    },
+    "loading": "Cargando...",
+    "apply_filter": "Filtrar",
+    "statistics_date": "Estadísticas de firmas ({{start}} a {{end}}, {{count}} transacciones)",
+    "all_time": "Todo el tiempo",
+    "no_transactions": "No se encontraron transacciones en el rango de fechas seleccionado",
+    "table": {
+      "ranking": "Ranking",
+      "address": "Dirección del Firmante",
+      "signatures": "Firmas",
+      "percentage": "Porcentaje de Actividad"
+    },
+    "errors": {
+      "loading_data": "Error al cargar datos de Safe. Por favor, intenta de nuevo.",
+      "invalid_data": "Respuesta inválida de la API de Safe.",
+      "invalid_limit": "Por favor ingresa un número válido entre 1 y 100.",
+      "date_required": "Por favor ingresa al menos una fecha para filtrar."
+    },
+    "copy": "Copiar dirección",
+    "copied": "¡Dirección copiada!"
+  },
+  "bountyForm": {
+    "title_label": "Nombre del Bounty",
+    "description_label": "Descripción de la Tarea",
+    "reward_label": "Recompensa",
+    "endDate_label": "Fecha de Expiración",
+    "create_button": "Crear Bounty",
+    "creating_button": "Creando...",
+    "success_message": "¡Bounty \"{{title}}\" creado exitosamente!",
+    "error_creating_bounty": "Error al crear bounty. Por favor, inicia sesión."
+  },
+  "adminPanel": {
+    "title": "Panel de administración de Bounties",
+    "description": "Aquí puedes crear nuevas bounties y gestionar las existentes."
+  },
+  "bountyColumns": {
+    "empty_message": "Vacío por ahora."
+  },
+  "bountyDetails": {
+    "reward_label": "Recompensa",
+    "expires_label": "Expira",
+    "status_label": "Estado",
+    "status_values": {
+      "todo": "Por hacer",
+      "in_progress": "En progreso",
+      "in_review": "En votación",
+      "done": "Terminada"
+    },
+    "priority_label": "Prioridad",
+    "priority_values": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta"
+    },
+    "requirements_label": "Requisitos",
+    "deliverables_label": "Entregables",
+    "created_by": "Creado por",
+    "submit_task_title": "Subir Tarea",
+    "submitter_name_label": "Tu nombre o email",
+    "submitter_name_placeholder": "Ingresa tu nombre o email",
+    "submission_content_label": "Descripción de tu entrega",
+    "submission_placeholder": "Describe tu trabajo, incluye enlaces, archivos, etc.",
+    "submitting_button": "Enviando...",
+    "submit_button": "Enviar Tarea",
+    "submissions": "Entregas",
+    "submissions_count": "entregas",
+    "submit_task": "Subir Tarea",
+    "your_name": "Tu nombre",
+    "name_placeholder": "Ingresa tu nombre",
+    "submission_description": "Descripción de tu entrega",
+    "submitting": "Enviando...",
+    "submit": "Enviar",
+    "error_bounty_not_selected": "No se ha seleccionado una bounty",
+    "error_submitting_task": "Error al enviar la tarea",
+    "submission_success_message": "¡Tarea enviada exitosamente!"
+  },
+  "submissionList": {
+    "loading": "Cargando entregas...",
+    "error_fetching_submissions": "Error al cargar las entregas.",
+    "no_submissions": "Aún no hay entregas.",
+    "submissions_title": "Entregas",
+    "submitted_by": "Enviado por",
+    "view_link": "Ver Enlace"
+  },
+  "wallet": {
+    "voting_panel": "Panel de Votación",
+    "connect_wallet": "Conectar Wallet",
+    "connecting": "Conectando...",
+    "connected": "Conectado",
+    "network": "Red",
+    "governance_tokens": "Tokens de Gobernanza",
+    "disconnect": "Desconectar",
+    "vote": "Votar",
+    "supported_wallets": "MetaMask, Rabby y otras wallets Web3",
+    "no_ethereum_provider": "No se detectó un proveedor de Ethereum. Instala MetaMask o Rabby.",
+    "unsupported_network": "Red no soportada. Cambia a una red soportada."
+  },
+  "voting": {
+    "voting_section": "Sistema de Votación",
+    "vote_for_winner": "Votar por el Ganador",
+    "select_submission": "Seleccionar Entrega",
+    "choose_submission": "Elige una entrega para votar",
+    "vote_amount": "Cantidad de Votos",
+    "max": "Máx",
+    "available_tokens": "Tokens disponibles",
+    "submit_vote": "Enviar Voto",
+    "submitting_vote": "Enviando voto...",
+    "current_results": "Resultados Actuales",
+    "voters": "votantes",
+    "missing_requirements": "Faltan requisitos para votar",
+    "invalid_amount": "Cantidad de votos inválida",
+    "vote_success": "¡Voto enviado exitosamente!",
+    "vote_error": "Error al enviar el voto",
+    "loading_submissions": "Cargando entregas...",
+    "no_submissions_to_vote": "No hay entregas para votar",
+    "connect_wallet_to_vote": "Conectar Wallet para Votar",
+    "wallet_required_message": "Necesitas conectar tu wallet para participar en la votación descentralizada."
+  }
+} 
