@@ -1546,6 +1546,46 @@
         "learnMore": "Learn More"
       }
     },
+    "karmaReports": {
+      "title": "Chat-to-Earn Performance Report",
+      "period": "June 19 - October 2, 2025",
+      "description": "Real results from Karma Hello's Chat-to-Earn system - First 105 days of operation on Avalanche blockchain",
+      "metrics": {
+        "totalBurned": "Total Burned",
+        "totalDistributed": "Total Distributed",
+        "uniqueRecipients": "Unique Recipients",
+        "totalTransactions": "Total Transactions",
+        "averagePerUser": "Average per User",
+        "operationPeriod": "Operation Period",
+        "days": "days"
+      },
+      "descriptions": {
+        "burnedDesc": "Deflationary mechanism active",
+        "distributedDesc": "Chat-to-Earn rewards",
+        "recipientsDesc": "Active community members",
+        "transactionsDesc": "On-chain interactions",
+        "averageDesc": "Fair distribution model",
+        "periodDesc": "June 19 - Oct 2, 2025"
+      },
+      "leaderboard": {
+        "title": "Complete Leaderboard - All 81 Recipients",
+        "rank": "Rank",
+        "username": "Username",
+        "wallet": "Wallet",
+        "totalUVD": "Total UVD",
+        "scrollMessage": "Scroll for complete list • 81 total recipients"
+      },
+      "systemHealth": {
+        "title": "System Health & Technical Details",
+        "tokenContract": "Token Contract",
+        "burnAddress": "Burn Address",
+        "network": "Network",
+        "botWallet": "Bot Wallet",
+        "networkFull": "Avalanche C-Chain (Chain ID: 43114)",
+        "viewOnSnowTrace": "View on Snowtrace",
+        "viewOnRoutescan": "View on Routescan"
+      }
+    },
     "abracadabraExpanded": {
       "title": "Abracadabra",
       "subtitle": "Stream Analysis & Content Intelligence System",

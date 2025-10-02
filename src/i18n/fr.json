@@ -1033,6 +1033,46 @@
         "learnMore": "En Savoir Plus"
       }
     },
+    "karmaReports": {
+      "title": "Rapport de Performance Chat-to-Earn",
+      "period": "19 juin - 2 octobre, 2025",
+      "description": "Résultats réels du système Chat-to-Earn de Karma Hello - Premiers 105 jours d'opération sur la blockchain Avalanche",
+      "metrics": {
+        "totalBurned": "Total Brûlé",
+        "totalDistributed": "Total Distribué",
+        "uniqueRecipients": "Utilisateurs Uniques",
+        "totalTransactions": "Total de Transactions",
+        "averagePerUser": "Moyenne par Utilisateur",
+        "operationPeriod": "Période d'Opération",
+        "days": "jours"
+      },
+      "descriptions": {
+        "burnedDesc": "Mécanisme déflationniste actif",
+        "distributedDesc": "Récompenses Chat-to-Earn",
+        "recipientsDesc": "Membres actifs de la communauté",
+        "transactionsDesc": "Interactions on-chain",
+        "averageDesc": "Modèle de distribution équitable",
+        "periodDesc": "19 juin - 2 oct, 2025"
+      },
+      "leaderboard": {
+        "title": "Classement Complet - Tous les 81 Destinataires",
+        "rank": "Rang",
+        "username": "Utilisateur",
+        "wallet": "Portefeuille",
+        "totalUVD": "Total UVD",
+        "scrollMessage": "Faites défiler pour voir la liste complète • 81 destinataires au total"
+      },
+      "systemHealth": {
+        "title": "Santé du Système et Détails Techniques",
+        "tokenContract": "Contrat du Token",
+        "burnAddress": "Adresse de Brûlage",
+        "network": "Réseau",
+        "botWallet": "Portefeuille du Bot",
+        "networkFull": "Avalanche C-Chain (Chain ID: 43114)",
+        "viewOnSnowTrace": "Voir sur Snowtrace",
+        "viewOnRoutescan": "Voir sur Routescan"
+      }
+    },
     "abracadabraExpanded": {
       "title": "Abracadabra",
       "subtitle": "Système d'Analyse de Streams et Content Intelligence",
