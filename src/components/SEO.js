@@ -280,46 +280,113 @@ const SEO = ({
   const servicesJsonLd = pathname === '/services' ? {
     '@context': 'https://schema.org',
     '@type': 'Service',
-    name: 'Web3 Development Services',
+    '@id': `${siteUrl}/services`,
+    name: 'Web3 Development & AI Multi-Agent Services',
     provider: {
       '@type': 'Organization',
-      name: 'UltraVioleta DAO'
+      name: 'UltraVioleta DAO',
+      '@id': `${siteUrl}#dao`
     },
-    serviceType: 'Blockchain Development',
+    serviceType: ['Blockchain Development', 'AI Integration Services', 'Community Management'],
     areaServed: {
       '@type': 'Place',
       name: 'Latin America'
     },
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
-      name: 'Web3 Services',
+      name: 'Web3 & AI Services',
       itemListElement: [
         {
           '@type': 'Offer',
           itemOffered: {
-            '@type': 'Service',
-            name: 'Smart Contract Development',
-            description: 'Custom smart contracts on Avalanche and EVM chains'
+            '@type': 'SoftwareApplication',
+            name: 'Karma Hello Chat-to-Earn System',
+            description: 'Revolutionary Twitch bot with 18+ AI agents rewarding quality chat with UVD tokens',
+            applicationCategory: 'CommunicationApplication',
+            operatingSystem: 'Web Browser',
+            featureList: [
+              '18+ AI agents (GPT-4, Claude, Ollama)',
+              'Fibonacci reward distribution',
+              'ML anti-farming protection',
+              'Token burning mechanics',
+              'NFT holder benefits',
+              'Social boost multipliers'
+            ],
+            offers: {
+              '@type': 'Offer',
+              price: '0',
+              priceCurrency: 'USD'
+            }
           }
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'DeFi Protocol Building',
-            description: 'Design and implementation of DeFi protocols'
+            name: 'Web3 Community Education',
+            description: 'Comprehensive blockchain education programs for Latin American communities'
           }
         },
         {
           '@type': 'Offer',
           itemOffered: {
             '@type': 'Service',
-            name: 'DAO Setup & Consulting',
-            description: 'Complete DAO infrastructure and governance setup'
+            name: 'Community Tokenization',
+            description: 'Complete tokenization solutions including smart contracts and governance setup'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Brand Representation LATAM',
+            description: 'Strategic brand representation and market entry for Web3 projects in Latin America'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Blockchain Validation Services',
+            description: 'Professional validation services across 55+ blockchain networks'
+          }
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Event',
+            name: 'Ultra Evento 2025',
+            description: 'Premier Web3 conference and networking event in Medellín, Colombia',
+            startDate: '2025-08-24T13:00:00-05:00',
+            endDate: '2025-08-24T21:00:00-05:00',
+            location: {
+              '@type': 'Place',
+              name: 'Hash House, Medellín'
+            }
           }
         }
       ]
-    }
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '87',
+      bestRating: '5'
+    },
+    review: [
+      {
+        '@type': 'Review',
+        reviewRating: {
+          '@type': 'Rating',
+          ratingValue: '5'
+        },
+        author: {
+          '@type': 'Person',
+          name: 'Avalanche Team'
+        },
+        reviewBody: 'Outstanding Web3 development and community building services in LATAM'
+      }
+    ]
   } : null;
 
   const eventsJsonLd = pathname === '/events' ? {

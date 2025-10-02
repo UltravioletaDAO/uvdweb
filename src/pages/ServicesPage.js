@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import {
@@ -23,6 +24,18 @@ import {
 
 const ServicesPage = () => {
   const { t } = useTranslation();
+
+  // FAQ state management
+  const [karmaFaqsOpen, setKarmaFaqsOpen] = useState([false, false, false, false]);
+  const [abracadabraFaqsOpen, setAbracadabraFaqsOpen] = useState([false, false, false, false]);
+
+  const toggleKarmaFaq = (index) => {
+    setKarmaFaqsOpen(prev => prev.map((open, i) => i === index ? !open : open));
+  };
+
+  const toggleAbracadabraFaq = (index) => {
+    setAbracadabraFaqsOpen(prev => prev.map((open, i) => i === index ? !open : open));
+  };
   const [courses, setCourses] = useState([]);
 
   useEffect(() => {
@@ -85,25 +98,84 @@ const ServicesPage = () => {
   return (
     <>
       <SEO
-        title="Web3 Development Services | Smart Contracts & DeFi Solutions"
-        description="Professional blockchain development services by UltraVioleta DAO. Smart contracts, DeFi protocols, tokenization, DAO consulting, and Web3 infrastructure for Latin America projects."
-        keywords="Web3 development services, smart contract development, DeFi protocols, blockchain consulting, DAO setup, tokenization services, Latin America blockchain, Avalanche development, Web3 infrastructure, crypto development agency, blockchain solutions LATAM, NFT development, decentralized applications, Web3 consulting, blockchain integration"
+        title="Karma Hello Chat-to-Earn AI Bot | Web3 Development & AI Multi-Agent Services"
+        description="Revolutionary Chat-to-Earn Twitch bot with 18+ AI agents (GPT-4, Claude), UVD token rewards, and advanced anti-farming ML systems. Professional Web3 development, tokenization, and blockchain validation services for Latin America by UltraVioleta DAO."
+        keywords="Karma Hello, chat to earn, Twitch crypto bot, AI agents blockchain, multi-agent AI system, UVD token rewards, token burning mechanism, Avalanche C-Chain, Web3 gamification, streaming cryptocurrency, GPT-4 Twitch bot, Claude AI integration, Ollama local AI, BERT anti-farming, Isolation Forest ML, Gradient Boosting fraud detection, Fibonacci rewards system, Echoes NFT benefits, Twitter Social Boost crypto, Cognee Intelligence System, knowledge graph AI, Web3 development services, smart contract development, DeFi protocols Latin America, blockchain consulting LATAM, DAO tokenization services, blockchain validation, chat mining crypto, earn crypto chatting, Twitch monetization Web3, AI-powered community tools, decentralized chat rewards, crypto streaming platform, Web3 education Latin America, Ultra Evento 2025, Avalanche ecosystem services, Wyoming DUNA LLC DAO"
+        customJsonLd={{
+          "@context": "https://schema.org",
+          "@type": ["Service", "SoftwareApplication"],
+          "@id": "https://ultravioleta.xyz/services#karma-hello",
+          "name": "Karma Hello - Chat-to-Earn AI Multi-Agent System",
+          "alternateName": "Karma Hello Bot",
+          "applicationCategory": "BusinessApplication",
+          "operatingSystem": "Web Browser, Twitch",
+          "url": "https://twitch.tv/0xultravioleta",
+          "sameAs": [
+            "https://x.com/karmahelloapp",
+            "https://twitch.tv/0xultravioleta"
+          ],
+          "description": "Advanced Chat-to-Earn system featuring 18+ AI agents that reward quality Twitch chat interactions with UVD tokens on Avalanche blockchain. Features multi-layer anti-farming protection with ML models and token burning mechanics.",
+          "provider": {
+            "@type": "Organization",
+            "name": "UltraVioleta DAO",
+            "url": "https://ultravioleta.xyz"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/InStock"
+          },
+          "featureList": [
+            "18+ AI Agents (OpenAI GPT-4, Anthropic Claude, Ollama)",
+            "Fibonacci-based reward distribution (10,946 to 832,040 UVD)",
+            "Multi-layer anti-farming system with ML",
+            "Token burning mechanism (1 UVD per message)",
+            "2x rewards for Echoes NFT holders",
+            "Twitter Social Boost (1.2x to 5.0x multipliers)",
+            "Cognee Intelligence System with knowledge graphs",
+            "Avalanche C-Chain blockchain integration"
+          ],
+          "screenshot": "https://ultravioleta.xyz/images/karma-hello-screenshot.jpg",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "156"
+          },
+          "isAccessibleForFree": true,
+          "inLanguage": ["es", "en", "pt", "fr"]
+        }}
       />
-      <div className="min-h-screen bg-black text-white py-20">
+      <main className="min-h-screen bg-black text-white py-20">
       <div className="container mx-auto px-4">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-5xl font-bold mb-4">
-            {t('services.title')}
-          </h1>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-            {t('services.subtitle')}
-          </p>
-        </motion.div>
+        {/* Breadcrumb Navigation */}
+        <nav aria-label="Breadcrumb" className="mb-8">
+          <ol className="flex items-center space-x-2 text-sm text-gray-400">
+            <li>
+              <Link to="/" className="hover:text-purple-400 transition-colors">
+                {t('nav.home', 'Home')}
+              </Link>
+            </li>
+            <li className="before:content-['/'] before:mx-2">
+              <span className="text-white" aria-current="page">{t('services.title', 'Services')}</span>
+            </li>
+          </ol>
+        </nav>
+
+        <header className="text-center mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <h1 className="text-5xl font-bold mb-4">
+              {t('services.title')}
+            </h1>
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+              {t('services.subtitle')}
+            </p>
+          </motion.div>
+        </header>
 
         {/* Services Section */}
         <motion.div
@@ -164,28 +236,175 @@ const ServicesPage = () => {
           </div>
         </motion.div>
 
-        {/* Karma Hello Expanded Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.12 }}
+        {/* FAQ Section for Featured Snippets */}
+        <section
+          aria-labelledby="faq-heading"
+          itemScope
+          itemType="https://schema.org/FAQPage"
           className="mb-16"
         >
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-1">
-            <div className="bg-black rounded-2xl p-4 sm:p-6 lg:p-8">
-              <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
-                <h2 className="text-3xl font-bold text-white mb-4 md:mb-0">
-                  {t('services.karmaHelloExpanded.title')}
-                </h2>
-                <div className="flex items-center gap-2 text-purple-400">
-                  <Bot className="w-6 h-6" />
-                  <span className="font-semibold">{t('services.karmaHelloExpanded.subtitle')}</span>
-                </div>
-              </div>
+          <h2 id="faq-heading" className="text-3xl font-bold text-purple-400 mb-8 text-center">
+            Preguntas Frecuentes
+          </h2>
 
-              <p className="text-gray-300 mb-4">
-                {t('services.karmaHelloExpanded.description')}
-              </p>
+          <div className="max-w-4xl mx-auto space-y-8">
+            {/* Karma Hello FAQs */}
+            <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-500/30">
+              <h3 className="text-2xl font-bold text-purple-300 mb-4 flex items-center">
+                <Bot className="w-6 h-6 mr-2" />
+                Karma Hello - Chat-to-Earn
+              </h3>
+
+              <div className="space-y-3">
+                {[
+                  {
+                    question: "¿Qué es Chat-to-Earn?",
+                    answer: "Chat-to-Earn es un concepto revolucionario Web3 donde los usuarios ganan criptomonedas (tokens UVD) participando en interacciones de chat de calidad en Twitch. Karma Hello evalúa la calidad de los mensajes usando 18+ agentes de IA y recompensa a los usuarios con tokens en la blockchain Avalanche."
+                  },
+                  {
+                    question: "¿Cómo previene Karma Hello el farming y el abuso?",
+                    answer: "Karma Hello usa un sistema anti-farming multi-capa con modelos avanzados de ML incluyendo BERT para análisis de texto, Isolation Forest para detección de anomalías, y Gradient Boosting para clasificación de fraude. Además, cada mensaje quema 1 token UVD, creando un desincentivo económico para el spam."
+                  },
+                  {
+                    question: "¿Cuáles son los beneficios para holders de NFTs Echoes?",
+                    answer: "Los holders de NFTs Echoes reciben recompensas x2 en todos los tokens UVD ganados a través de Karma Hello. Este beneficio exclusivo se aplica automáticamente cuando el sistema detecta la propiedad del NFT en la wallet conectada del usuario."
+                  },
+                  {
+                    question: "¿Cuánto puedo ganar con Karma Hello?",
+                    answer: "Las recompensas siguen una distribución Fibonacci que va desde 10,946 hasta 832,040 tokens UVD por mensaje de calidad. Con Twitter Social Boost, los multiplicadores van de 1.2x a 5.0x basados en tu influencia social. Los holders de Echoes NFT obtienen un multiplicador adicional x2 en todas las recompensas."
+                  }
+                ].map((faq, index) => (
+                  <div
+                    key={index}
+                    itemScope
+                    itemProp="mainEntity"
+                    itemType="https://schema.org/Question"
+                    className="bg-black/30 rounded-lg overflow-hidden border border-purple-500/20"
+                  >
+                    <button
+                      onClick={() => toggleKarmaFaq(index)}
+                      className="w-full text-left p-4 flex items-center justify-between hover:bg-purple-900/10 transition-colors"
+                    >
+                      <h4 itemProp="name" className="text-lg font-semibold text-white pr-4">
+                        {faq.question}
+                      </h4>
+                      <span className={`text-purple-400 transform transition-transform ${karmaFaqsOpen[index] ? 'rotate-180' : ''}`}>
+                        ▼
+                      </span>
+                    </button>
+                    {karmaFaqsOpen[index] && (
+                      <div
+                        itemScope
+                        itemProp="acceptedAnswer"
+                        itemType="https://schema.org/Answer"
+                        className="px-4 pb-4"
+                      >
+                        <p itemProp="text" className="text-gray-300">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Abracadabra FAQs */}
+            <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-cyan-500/30">
+              <h3 className="text-2xl font-bold text-cyan-300 mb-4 flex items-center">
+                <Sparkles className="w-6 h-6 mr-2" />
+                Abracadabra - Content Intelligence
+              </h3>
+
+              <div className="space-y-3">
+                {[
+                  {
+                    question: "¿Qué es Abracadabra?",
+                    answer: "Abracadabra es una plataforma integral de análisis de streams y content intelligence que transforma videos de Twitch en contenido procesable, buscable y reutilizable usando IA avanzada. Incluye 5 fases completas: Analytics, Time Machine, Semantic Search, Content Intelligence y Predictive Analytics."
+                  },
+                  {
+                    question: "¿Qué tipo de contenido puede generar automáticamente?",
+                    answer: "Abracadabra puede generar automáticamente blogs en markdown (1500+ palabras), Twitter threads optimizados (280 chars/tweet), clips de video con FFmpeg, imágenes con DALL-E 3/GPT-Image-1, traducciones multi-idioma (10+ idiomas), y resúmenes personalizados. Todo con 56+ API endpoints REST."
+                  },
+                  {
+                    question: "¿Cómo funciona la búsqueda semántica?",
+                    answer: "Abracadabra usa Cognee framework con embeddings de OpenAI para búsqueda en lenguaje natural. Puedes preguntar '¿Qué dijo sobre NFTs?' y el sistema encuentra contenido relevante entendiendo sinónimos, contexto e intenciones. Incluye un knowledge graph con 500+ nodos y multi-hop reasoning hasta 3 saltos."
+                  },
+                  {
+                    question: "¿Qué datos ha procesado Abracadabra?",
+                    answer: "Actualmente ha procesado 70+ streams de Twitch, indexado 640+ topics en Cognee, y tiene un sistema de análisis completo con SQLite + vector store. El procesamiento es completamente automático: descarga, transcripción dual (AWS Transcribe + Whisper), análisis con GPT-4o, y auto-indexing post-procesamiento."
+                  }
+                ].map((faq, index) => (
+                  <div
+                    key={index}
+                    itemScope
+                    itemProp="mainEntity"
+                    itemType="https://schema.org/Question"
+                    className="bg-black/30 rounded-lg overflow-hidden border border-cyan-500/20"
+                  >
+                    <button
+                      onClick={() => toggleAbracadabraFaq(index)}
+                      className="w-full text-left p-4 flex items-center justify-between hover:bg-cyan-900/10 transition-colors"
+                    >
+                      <h4 itemProp="name" className="text-lg font-semibold text-white pr-4">
+                        {faq.question}
+                      </h4>
+                      <span className={`text-cyan-400 transform transition-transform ${abracadabraFaqsOpen[index] ? 'rotate-180' : ''}`}>
+                        ▼
+                      </span>
+                    </button>
+                    {abracadabraFaqsOpen[index] && (
+                      <div
+                        itemScope
+                        itemProp="acceptedAnswer"
+                        itemType="https://schema.org/Answer"
+                        className="px-4 pb-4"
+                      >
+                        <p itemProp="text" className="text-gray-300">
+                          {faq.answer}
+                        </p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Karma Hello Expanded Section */}
+        <section
+          aria-labelledby="karma-hello-heading"
+          itemScope
+          itemType="https://schema.org/SoftwareApplication"
+          className="mb-16"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.12 }}
+          >
+            <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-1">
+              <article className="bg-black rounded-2xl p-4 sm:p-6 lg:p-8">
+                <header className="flex flex-col lg:flex-row items-center justify-between mb-6">
+                  <h2
+                    id="karma-hello-heading"
+                    className="text-3xl font-bold text-white mb-4 md:mb-0"
+                    itemProp="name"
+                  >
+                    {t('services.karmaHelloExpanded.title')}
+                  </h2>
+                  <div className="flex items-center gap-2 text-purple-400">
+                    <Bot className="w-6 h-6" aria-hidden="true" />
+                    <span className="font-semibold" itemProp="applicationCategory">
+                      {t('services.karmaHelloExpanded.subtitle')}
+                    </span>
+                  </div>
+                </header>
+
+                <p className="text-gray-300 mb-4 text-lg" itemProp="description">
+                  <strong>What is Karma Hello?</strong> {t('services.karmaHelloExpanded.description')} Learn more about our <Link to="/token" className="text-purple-400 hover:text-purple-300">UVD Token</Link> and <Link to="/nft" className="text-purple-400 hover:text-purple-300">Echoes NFT collections</Link>.
+                </p>
 
               <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                 <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
@@ -350,52 +569,281 @@ const ServicesPage = () => {
               </div>
 
               {/* CTA Buttons */}
-              <div className="border-t border-gray-800 pt-6">
+              <footer className="border-t border-gray-800 pt-6">
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <a
                     href="https://twitch.tv/0xultravioleta"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg transition-all"
+                    itemProp="url"
                   >
-                    <PlayCircle className="w-5 h-5 mr-2" />
+                    <PlayCircle className="w-5 h-5 mr-2" aria-hidden="true" />
                     {t('services.karmaHelloExpanded.cta.watchLive')}
-                    <ExternalLink className="w-4 h-4 ml-2" />
+                    <ExternalLink className="w-4 h-4 ml-2" aria-hidden="true" />
                   </a>
                   <a
                     href="https://x.com/karmahelloapp"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-all border border-purple-500/30"
+                    itemProp="sameAs"
                   >
-                    <BookOpen className="w-5 h-5 mr-2" />
+                    <BookOpen className="w-5 h-5 mr-2" aria-hidden="true" />
                     {t('services.karmaHelloExpanded.cta.learnMore')}
-                    <ExternalLink className="w-4 h-4 ml-2" />
+                    <ExternalLink className="w-4 h-4 ml-2" aria-hidden="true" />
                   </a>
                 </div>
-              </div>
-            </div>
+              </footer>
+            </article>
           </div>
-        </motion.div>
+          </motion.div>
+        </section>
 
-        {/* Ultra Evento 2025 Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+        {/* Abracadabra Expanded Section */}
+        <section
+          aria-labelledby="abracadabra-heading"
+          itemScope
+          itemType="https://schema.org/SoftwareApplication"
           className="mb-16"
         >
-          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-1">
-            <div className="bg-black rounded-2xl p-4 sm:p-6 lg:p-8">
-              <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
-                <h2 className="text-3xl font-bold text-white mb-4 md:mb-0">
-                  {t('events.ultraevento.title', 'Ultra Evento 2025')}
-                </h2>
-                <div className="flex items-center gap-2 text-purple-400">
-                  <Sparkles className="w-6 h-6" />
-                  <span className="font-semibold">{t('events.ultraevento.flagship', 'Evento Insignia')}</span>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.13 }}
+          >
+            <div className="bg-gradient-to-r from-blue-600 to-cyan-600 rounded-2xl p-1">
+              <article className="bg-black rounded-2xl p-4 sm:p-6 lg:p-8">
+                <header className="flex flex-col lg:flex-row items-center justify-between mb-6">
+                  <h2
+                    id="abracadabra-heading"
+                    className="text-3xl font-bold text-white mb-4 md:mb-0"
+                    itemProp="name"
+                  >
+                    {t('services.abracadabraExpanded.title')}
+                  </h2>
+                  <div className="flex items-center gap-2 text-cyan-400">
+                    <Sparkles className="w-6 h-6" aria-hidden="true" />
+                    <span className="font-semibold" itemProp="applicationCategory">
+                      {t('services.abracadabraExpanded.subtitle')}
+                    </span>
+                  </div>
+                </header>
+
+                <p className="text-gray-300 mb-4 text-lg" itemProp="description">
+                  {t('services.abracadabraExpanded.description')}
+                </p>
+
+                <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                  <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
+                    <CheckCircle className="w-5 h-5 text-cyan-400 mr-3" />
+                    <div>
+                      <p className="text-gray-400 text-xs">Procesados</p>
+                      <p className="text-white font-semibold">{t('services.abracadabraExpanded.processed')}</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
+                    <CheckCircle className="w-5 h-5 text-cyan-400 mr-3" />
+                    <div>
+                      <p className="text-gray-400 text-xs">Indexados</p>
+                      <p className="text-white font-semibold">{t('services.abracadabraExpanded.indexed')}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+
+                {/* 5 Phases */}
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold text-cyan-300 mb-4">
+                    5 Fases Completas de Desarrollo
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {/* Phase 1 */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <BookOpen className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">
+                          {t('services.abracadabraExpanded.phases.phase1.title')}
+                        </h4>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-2">
+                        {t('services.abracadabraExpanded.phases.phase1.description')}
+                      </p>
+                      <ul className="space-y-1 text-xs text-gray-500">
+                        <li>• {t('services.abracadabraExpanded.phases.phase1.detail1')}</li>
+                        <li>• {t('services.abracadabraExpanded.phases.phase1.detail2')}</li>
+                        <li>• {t('services.abracadabraExpanded.phases.phase1.detail3')}</li>
+                      </ul>
+                    </div>
+
+                    {/* Phase 2 */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <Calendar className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">
+                          {t('services.abracadabraExpanded.phases.phase2.title')}
+                        </h4>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-2">
+                        {t('services.abracadabraExpanded.phases.phase2.description')}
+                      </p>
+                      <ul className="space-y-1 text-xs text-gray-500">
+                        <li>• {t('services.abracadabraExpanded.phases.phase2.detail1')}</li>
+                        <li>• {t('services.abracadabraExpanded.phases.phase2.detail2')}</li>
+                        <li>• {t('services.abracadabraExpanded.phases.phase2.detail3')}</li>
+                      </ul>
+                    </div>
+
+                    {/* Phase 3 */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <Bot className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">
+                          {t('services.abracadabraExpanded.phases.phase3.title')}
+                        </h4>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-2">
+                        {t('services.abracadabraExpanded.phases.phase3.description')}
+                      </p>
+                      <ul className="space-y-1 text-xs text-gray-500">
+                        <li>• {t('services.abracadabraExpanded.phases.phase3.detail1')}</li>
+                        <li>• {t('services.abracadabraExpanded.phases.phase3.detail2')}</li>
+                        <li>• {t('services.abracadabraExpanded.phases.phase3.detail3')}</li>
+                      </ul>
+                    </div>
+
+                    {/* Phase 4 */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <Sparkles className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">
+                          {t('services.abracadabraExpanded.phases.phase4.title')}
+                        </h4>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-2">
+                        {t('services.abracadabraExpanded.phases.phase4.description')}
+                      </p>
+                      <ul className="space-y-1 text-xs text-gray-500">
+                        <li>• {t('services.abracadabraExpanded.phases.phase4.detail1')}</li>
+                        <li>• {t('services.abracadabraExpanded.phases.phase4.detail2')}</li>
+                        <li>• {t('services.abracadabraExpanded.phases.phase4.detail3')}</li>
+                      </ul>
+                    </div>
+
+                    {/* Phase 5 */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <Megaphone className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">
+                          {t('services.abracadabraExpanded.phases.phase5.title')}
+                        </h4>
+                      </div>
+                      <p className="text-gray-400 text-sm mb-2">
+                        {t('services.abracadabraExpanded.phases.phase5.description')}
+                      </p>
+                      <ul className="space-y-1 text-xs text-gray-500">
+                        <li>• {t('services.abracadabraExpanded.phases.phase5.detail1')}</li>
+                        <li>• {t('services.abracadabraExpanded.phases.phase5.detail2')}</li>
+                        <li>• {t('services.abracadabraExpanded.phases.phase5.detail3')}</li>
+                      </ul>
+                    </div>
+
+                    {/* Technology Stack */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <Coins className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">
+                          {t('services.abracadabraExpanded.technology.title')}
+                        </h4>
+                      </div>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• {t('services.abracadabraExpanded.technology.backend')}</li>
+                        <li>• {t('services.abracadabraExpanded.technology.ai')}</li>
+                        <li>• {t('services.abracadabraExpanded.technology.database')}</li>
+                        <li>• {t('services.abracadabraExpanded.technology.tools')}</li>
+                        <li>• {t('services.abracadabraExpanded.technology.api')}</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Stats */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                  <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                    <p className="text-2xl font-bold text-cyan-400">
+                      {t('services.abracadabraExpanded.stats.streams')}
+                    </p>
+                    <p className="text-gray-400 text-xs">Procesados</p>
+                  </div>
+                  <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                    <p className="text-2xl font-bold text-cyan-400">
+                      {t('services.abracadabraExpanded.stats.topics')}
+                    </p>
+                    <p className="text-gray-400 text-xs">Topics</p>
+                  </div>
+                  <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                    <p className="text-2xl font-bold text-cyan-400">
+                      {t('services.abracadabraExpanded.stats.endpoints')}
+                    </p>
+                    <p className="text-gray-400 text-xs">API Endpoints</p>
+                  </div>
+                  <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                    <p className="text-2xl font-bold text-cyan-400">
+                      {t('services.abracadabraExpanded.stats.phases')}
+                    </p>
+                    <p className="text-gray-400 text-xs">Fases</p>
+                  </div>
+                </div>
+
+                {/* CTA Buttons */}
+                <footer className="border-t border-gray-800 pt-6">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a
+                      href="https://github.com/yourusername/abracadabra"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 rounded-lg transition-all"
+                    >
+                      <BookOpen className="w-5 h-5 mr-2" aria-hidden="true" />
+                      {t('services.abracadabraExpanded.cta.learnMore')}
+                      <ExternalLink className="w-4 h-4 ml-2" aria-hidden="true" />
+                    </a>
+                  </div>
+                </footer>
+              </article>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Ultra Evento 2025 Section */}
+        <section
+          aria-labelledby="ultra-evento-heading"
+          itemScope
+          itemType="https://schema.org/Event"
+          className="mb-16"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-1">
+              <article className="bg-black rounded-2xl p-4 sm:p-6 lg:p-8">
+                <header className="flex flex-col lg:flex-row items-center justify-between mb-6">
+                  <h2
+                    id="ultra-evento-heading"
+                    className="text-3xl font-bold text-white mb-4 md:mb-0"
+                    itemProp="name"
+                  >
+                    {t('events.ultraevento.title', 'Ultra Evento 2025')}
+                  </h2>
+                  <div className="flex items-center gap-2 text-purple-400">
+                    <Sparkles className="w-6 h-6" aria-hidden="true" />
+                    <span className="font-semibold" itemProp="eventStatus">
+                      {t('events.ultraevento.flagship', 'Evento Insignia')}
+                    </span>
+                  </div>
+                </header>
 
               <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
@@ -452,21 +900,31 @@ const ServicesPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <img
                     src="/images/ultraevento-2025-promo.jpg"
-                    alt="Ultra Evento 2025 Promo"
+                    alt="Ultra Evento 2025 Promo - Web3 conference in Medellín Colombia"
                     className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => window.open('/images/ultraevento-2025-promo.jpg', '_blank')}
+                    loading="lazy"
+                    width="400"
+                    height="192"
+                    itemProp="image"
                   />
                   <img
                     src="/images/ultraevento-2025.jpg"
-                    alt="Ultra Evento 2025"
+                    alt="Ultra Evento 2025 - Latin America blockchain event"
                     className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => window.open('/images/ultraevento-2025.jpg', '_blank')}
+                    loading="lazy"
+                    width="400"
+                    height="192"
                   />
                   <img
                     src="/images/quedada-medellin-2025.jpg"
-                    alt="Ultra Quedada 2025"
+                    alt="Ultra Quedada 2025 - Web3 community meetup Medellín"
                     className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => window.open('/images/quedada-medellin-2025.jpg', '_blank')}
+                    loading="lazy"
+                    width="400"
+                    height="192"
                   />
                 </div>
               </div>
@@ -528,7 +986,7 @@ const ServicesPage = () => {
               </div>
 
               {/* CTA Button */}
-              <div className="mt-6 text-center">
+              <footer className="mt-6 text-center">
                 <p className="text-gray-300 mb-4">
                   {t('events.ultraevento.brandRepresentation', 'Como parte de nuestros servicios de representación de marca, organizamos eventos presenciales que conectan a proyectos Web3 con la comunidad latinoamericana.')}
                 </p>
@@ -539,10 +997,11 @@ const ServicesPage = () => {
                   <Users className="w-5 h-5 mr-2" />
                   {t('events.ultraevento.sponsorCTA', 'Patrocina el próximo evento')}
                 </a>
-              </div>
-            </div>
+              </footer>
+            </article>
           </div>
         </motion.div>
+      </section>
 
         {/* Products Section */}
         <motion.div
@@ -708,7 +1167,7 @@ const ServicesPage = () => {
           </p>
         </motion.div>
       </div>
-    </div>
+    </main>
     </>
   );
 };
