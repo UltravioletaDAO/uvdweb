@@ -1546,6 +1546,128 @@
         "learnMore": "Learn More"
       }
     },
+    "abracadabraExpanded": {
+      "title": "Abracadabra",
+      "subtitle": "Stream Analysis & Content Intelligence System",
+      "description": "Abracadabra is a comprehensive platform that transforms Twitch streams and videos into actionable, searchable, and reusable content using advanced AI. With 5 complete development phases and 56+ API endpoints.",
+      "processed": "70+ Processed Streams",
+      "indexed": "640+ Indexed Topics",
+      "phases": {
+        "phase1": {
+          "title": "Phase 1: Database & Analytics",
+          "description": "SQLite database with automatic ETL",
+          "detail1": "Interactive analytics dashboard",
+          "detail2": "Automatic topic and entity extraction",
+          "detail3": "Sentiment analysis per segment"
+        },
+        "phase2": {
+          "title": "Phase 2: Time Machine",
+          "description": "Advanced temporal search",
+          "detail1": "Period comparison",
+          "detail2": "Temporal trend detection",
+          "detail3": "Interactive timeline view"
+        },
+        "phase3": {
+          "title": "Phase 3: Semantic Search & Knowledge Graph",
+          "description": "Semantic search engine with Cognee",
+          "detail1": "Natural language search",
+          "detail2": "Knowledge graph with 500+ nodes",
+          "detail3": "Multi-hop reasoning (up to 3 jumps)"
+        },
+        "phase4": {
+          "title": "Phase 4: Content Intelligence",
+          "description": "Automatic content generation",
+          "detail1": "Automatic blogs in 4 styles",
+          "detail2": "Twitter threads (280 chars/tweet)",
+          "detail3": "Viral clip detection"
+        },
+        "phase5": {
+          "title": "Phase 5: Predictive Analytics",
+          "description": "Predictions and recommendations",
+          "detail1": "Trending topics forecast (7 days)",
+          "detail2": "Similar content recommendations",
+          "detail3": "Scheduling and A/B testing system"
+        }
+      },
+      "features": {
+        "processing": {
+          "title": "Automatic Processing",
+          "description": "End-to-end download, transcription and analysis",
+          "detail1": "Dual transcription: AWS Transcribe + Whisper",
+          "detail2": "Analysis with GPT-4o-2024-08-06",
+          "detail3": "Auto-indexing post-processing"
+        },
+        "generation": {
+          "title": "Content Generation",
+          "description": "Multiple automatic output formats",
+          "detail1": "Markdown blogs (1500+ words)",
+          "detail2": "Twitter threads with engagement tips",
+          "detail3": "DALL-E 3 / GPT-Image-1 images"
+        },
+        "video": {
+          "title": "Video Processing",
+          "description": "Editing and extraction with FFmpeg",
+          "detail1": "Clips with precise timestamps",
+          "detail2": "Multi-format: YouTube Shorts, TikTok, Reels",
+          "detail3": "Highlight reels with transitions"
+        },
+        "translation": {
+          "title": "Multi-language",
+          "description": "Translation with cultural adaptation",
+          "detail1": "10+ supported languages",
+          "detail2": "SEO keyword preservation",
+          "detail3": "Platform character limits"
+        },
+        "intelligence": {
+          "title": "Content Intelligence",
+          "description": "Intelligent analysis and recommendations",
+          "detail1": "Trending topics forecasting",
+          "detail2": "Similar streams with 4 algorithms",
+          "detail3": "Content gap analysis"
+        },
+        "automation": {
+          "title": "Complete Automation",
+          "description": "End-to-end pipeline without manual intervention",
+          "detail1": "Auto ETL + Cognee indexing",
+          "detail2": "Batch stream processing",
+          "detail3": "Telegram notifications"
+        }
+      },
+      "technology": {
+        "title": "Technology Stack",
+        "backend": "Backend: Python with Flask",
+        "ai": "AI: OpenAI GPT-4o, Claude Sonnet 4, Whisper",
+        "database": "Databases: SQLite, Cognee vector store",
+        "tools": "Tools: AWS Transcribe, FFmpeg, DALL-E 3",
+        "api": "API: 56+ REST endpoints"
+      },
+      "stats": {
+        "streams": "70+ Streams",
+        "topics": "640+ Topics",
+        "endpoints": "56+ Endpoints",
+        "phases": "5 Complete Phases"
+      },
+      "capabilities": {
+        "title": "Main Capabilities",
+        "semantic": "Semantic Search",
+        "knowledge": "Knowledge Graph",
+        "content": "Content Generation",
+        "predictions": "Predictive Analysis",
+        "multiformat": "Multi-format Export",
+        "multilang": "Multi-language (10+)"
+      },
+      "useCases": {
+        "title": "Use Cases",
+        "creators": "Content Creators: Stream analysis and reuse",
+        "marketing": "Marketing Teams: Multi-platform repurposing",
+        "research": "Research Teams: Topic evolution analysis",
+        "developers": "Developers: REST API integration"
+      },
+      "cta": {
+        "learnMore": "Learn More",
+        "viewDemo": "View Demo"
+      }
+    },
     "events": {
       "ultraevento": {
         "title": "Ultra Event 2025",
