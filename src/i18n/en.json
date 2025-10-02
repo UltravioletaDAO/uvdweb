@@ -1422,6 +1422,130 @@
         "abracadabra": "Stream to Market - Automated marketing tools for streamers"
       }
     },
+    "karmaHelloExpanded": {
+      "title": "Karma Hello",
+      "subtitle": "Chat-to-Earn System with Multi-Agent AI",
+      "description": "Karma Hello is an advanced Twitch bot that rewards users with UVD tokens for contributing quality messages to the chat. The system uses real artificial intelligence to evaluate each message and assign rewards based on a quality scale.",
+      "channel": "Channel: twitch.tv/0xultravioleta",
+      "blockchain": "Blockchain: Avalanche (C-Chain)",
+      "features": {
+        "chatToEarn": {
+          "title": "Chat-to-Earn (C2E)",
+          "description": "Earn UVD tokens by actively participating in chat",
+          "detail1": "Quality evaluation by real AI (OpenAI, Anthropic, Ollama)",
+          "detail2": "Distribution based on Fibonacci sequence",
+          "detail3": "Anti-farming system with advanced ML",
+          "detail4": "90% of messages receive 0 points - only exceptional quality wins"
+        },
+        "multiAgent": {
+          "title": "Multi-Agent AI",
+          "description": "System of 11+ specialized agents working together",
+          "detail1": "Event-driven architecture with EventBus",
+          "detail2": "Intelligent coordination with priorities",
+          "detail3": "Auto-recovery and automatic fallback",
+          "detail4": "Configurable gradual rollout"
+        },
+        "tokenBurning": {
+          "title": "Token Burning",
+          "description": "Automatic deflationary mechanism",
+          "detail1": "1 UVD automatically burned per message",
+          "detail2": "Exception system for bots and commands",
+          "detail3": "Complete tracking in MongoDB",
+          "detail4": "Burn statistics dashboard"
+        },
+        "echoesBonus": {
+          "title": "Echoes Holders Bonus",
+          "description": "Exclusive benefits for Echoes NFT holders",
+          "detail1": "Automatic double payment (x2) on all rewards",
+          "detail2": "Automatic detection by wallet",
+          "detail3": "Special indicator in chat",
+          "detail4": "Fibonacci numbers tracking per holder"
+        },
+        "twitterBoost": {
+          "title": "Twitter Social Boost",
+          "description": "Multipliers for positive mentions on Twitter",
+          "detail1": "Boost multiplier from 1.2x to 5.0x",
+          "detail2": "x2 bonus for mentioning Twitch channel",
+          "detail3": "Twitter handles system (!setx @username)",
+          "detail4": "Anti-farming with sentiment analysis"
+        },
+        "cognee": {
+          "title": "Cognee Intelligence System",
+          "description": "Memory system based on knowledge graphs",
+          "detail1": "User risk profiles",
+          "detail2": "Cross-channel pattern detection",
+          "detail3": "Complete decision audit",
+          "detail4": "External API for queries"
+        }
+      },
+      "fibonacci": {
+        "title": "Fibonacci Distribution",
+        "description": "Reward system based on Fibonacci sequence according to quality score (1-21)",
+        "ranges": {
+          "score1_2": "10,946 UVD - Score 1-2 (spam/farming - almost never)",
+          "score3_4": "17,711 UVD - Score 3-4 (very rare - low effort)",
+          "score5_6": "28,657 UVD - Score 5-6 (minimum viable message)",
+          "score7_9": "46,368 UVD - Score 7-9 (decent contribution)",
+          "score10_12": "75,025 UVD - Score 10-12 (good contribution)",
+          "score13_15": "121,393 UVD - Score 13-15 (very good contribution)",
+          "score16_17": "196,418 UVD - Score 16-17 (excellent contribution)",
+          "score18_19": "317,811 UVD - Score 18-19 (exceptional)",
+          "score20": "514,229 UVD - Score 20 (outstanding)",
+          "score21": "832,040 UVD - Score 21 (perfect - extremely rare)"
+        }
+      },
+      "qualityEvaluation": {
+        "title": "Quality Evaluation System",
+        "description": "The system uses real AI to evaluate each message according to specific criteria",
+        "score0": {
+          "title": "Score 0 (90% of messages)",
+          "examples": "Spam, farming, short messages, asking for tokens, generic greetings, emojis only"
+        },
+        "score1_5": {
+          "title": "Score 1-5 (Very rare)",
+          "examples": "Minimal but real contribution, simple answer, brief relevant comment"
+        },
+        "score6_10": {
+          "title": "Score 6-10 (Uncommon)",
+          "examples": "Interesting contribution, relevant question, constructive opinion"
+        },
+        "score11_15": {
+          "title": "Score 11-15 (Rare)",
+          "examples": "Very valuable content, deep analysis, technical contribution, intelligent humor"
+        },
+        "score16_21": {
+          "title": "Score 16-21 (Exceptional <1%)",
+          "examples": "Extraordinary content, unique insights, exceptional creativity"
+        }
+      },
+      "antiFarming": {
+        "title": "Multi-Layer Anti-Farming System",
+        "description": "Advanced protection against system abuse",
+        "detection1": "Spam and copied content detection",
+        "detection2": "Advanced rate limiting per user",
+        "detection3": "ML ensemble with BERT, Isolation Forest and Gradient Boosting",
+        "detection4": "Behavioral pattern analysis",
+        "detection5": "Risk profiles with Cognee Intelligence"
+      },
+      "technology": {
+        "title": "Technologies",
+        "backend": "Backend: Python with FastAPI",
+        "ai": "AI: OpenAI GPT-4, Anthropic Claude, Ollama",
+        "blockchain": "Blockchain: Avalanche C-Chain with RPC pool",
+        "database": "Databases: MongoDB, Redis",
+        "architecture": "Architecture: Event-driven multi-agent"
+      },
+      "stats": {
+        "agents": "18+ Agents",
+        "evaluation": "Real AI Evaluation",
+        "burning": "Automatic Burning",
+        "blockchain": "Avalanche C-Chain"
+      },
+      "cta": {
+        "watchLive": "Watch Live",
+        "learnMore": "Learn More"
+      }
+    },
     "events": {
       "ultraevento": {
         "title": "Ultra Event 2025",
