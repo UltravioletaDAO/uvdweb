@@ -1036,6 +1036,46 @@
         "learnMore": "Saiba Mais"
       }
     },
+    "karmaReports": {
+      "title": "Relatório de Desempenho Chat-to-Earn",
+      "period": "19 de junho - 2 de outubro, 2025",
+      "description": "Resultados reais do sistema Chat-to-Earn do Karma Hello - Primeiros 105 dias de operação na blockchain Avalanche",
+      "metrics": {
+        "totalBurned": "Total Queimado",
+        "totalDistributed": "Total Distribuído",
+        "uniqueRecipients": "Usuários Únicos",
+        "totalTransactions": "Total de Transações",
+        "averagePerUser": "Média por Usuário",
+        "operationPeriod": "Período de Operação",
+        "days": "dias"
+      },
+      "descriptions": {
+        "burnedDesc": "Mecanismo deflacionário ativo",
+        "distributedDesc": "Recompensas Chat-to-Earn",
+        "recipientsDesc": "Membros ativos da comunidade",
+        "transactionsDesc": "Interações on-chain",
+        "averageDesc": "Modelo de distribuição justa",
+        "periodDesc": "19 junho - 2 outubro, 2025"
+      },
+      "leaderboard": {
+        "title": "Leaderboard Completo - Todos os 81 Destinatários",
+        "rank": "Ranking",
+        "username": "Usuário",
+        "wallet": "Carteira",
+        "totalUVD": "Total UVD",
+        "scrollMessage": "Role para ver a lista completa • 81 destinatários no total"
+      },
+      "systemHealth": {
+        "title": "Saúde do Sistema e Detalhes Técnicos",
+        "tokenContract": "Contrato do Token",
+        "burnAddress": "Endereço de Queima",
+        "network": "Rede",
+        "botWallet": "Carteira do Bot",
+        "networkFull": "Avalanche C-Chain (Chain ID: 43114)",
+        "viewOnSnowTrace": "Ver no Snowtrace",
+        "viewOnRoutescan": "Ver no Routescan"
+      }
+    },
     "abracadabraExpanded": {
       "title": "Abracadabra",
       "subtitle": "Sistema de Análise de Streams e Content Intelligence",
