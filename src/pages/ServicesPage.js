@@ -164,6 +164,220 @@ const ServicesPage = () => {
           </div>
         </motion.div>
 
+        {/* Karma Hello Expanded Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.12 }}
+          className="mb-16"
+        >
+          <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-1">
+            <div className="bg-black rounded-2xl p-4 sm:p-6 lg:p-8">
+              <div className="flex flex-col lg:flex-row items-center justify-between mb-6">
+                <h2 className="text-3xl font-bold text-white mb-4 md:mb-0">
+                  {t('services.karmaHelloExpanded.title')}
+                </h2>
+                <div className="flex items-center gap-2 text-purple-400">
+                  <Bot className="w-6 h-6" />
+                  <span className="font-semibold">{t('services.karmaHelloExpanded.subtitle')}</span>
+                </div>
+              </div>
+
+              <p className="text-gray-300 mb-4">
+                {t('services.karmaHelloExpanded.description')}
+              </p>
+
+              <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
+                  <MessageCircle className="w-5 h-5 text-purple-400 mr-3" />
+                  <div>
+                    <p className="text-gray-400 text-xs">Canal</p>
+                    <p className="text-white font-semibold">twitch.tv/0xultravioleta</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
+                  <Coins className="w-5 h-5 text-purple-400 mr-3" />
+                  <div>
+                    <p className="text-gray-400 text-xs">Blockchain</p>
+                    <p className="text-white font-semibold">Avalanche (C-Chain)</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Features Grid */}
+              <div className="mb-6">
+                <h3 className="text-xl font-bold text-purple-300 mb-4">
+                  {t('services.karmaHelloExpanded.features.chatToEarn.title')}
+                </h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                  {/* Chat-to-Earn */}
+                  <div className="bg-gray-900/50 rounded-lg p-4">
+                    <div className="flex items-center mb-2">
+                      <Coins className="w-5 h-5 text-pink-400 mr-2" />
+                      <h4 className="font-semibold text-pink-300">
+                        {t('services.karmaHelloExpanded.features.chatToEarn.title')}
+                      </h4>
+                    </div>
+                    <p className="text-gray-400 text-sm mb-2">
+                      {t('services.karmaHelloExpanded.features.chatToEarn.description')}
+                    </p>
+                    <ul className="space-y-1 text-xs text-gray-500">
+                      <li>• {t('services.karmaHelloExpanded.features.chatToEarn.detail1')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.chatToEarn.detail2')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.chatToEarn.detail3')}</li>
+                    </ul>
+                  </div>
+
+                  {/* Multi-Agent AI */}
+                  <div className="bg-gray-900/50 rounded-lg p-4">
+                    <div className="flex items-center mb-2">
+                      <Bot className="w-5 h-5 text-pink-400 mr-2" />
+                      <h4 className="font-semibold text-pink-300">
+                        {t('services.karmaHelloExpanded.features.multiAgent.title')}
+                      </h4>
+                    </div>
+                    <p className="text-gray-400 text-sm mb-2">
+                      {t('services.karmaHelloExpanded.features.multiAgent.description')}
+                    </p>
+                    <ul className="space-y-1 text-xs text-gray-500">
+                      <li>• {t('services.karmaHelloExpanded.features.multiAgent.detail1')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.multiAgent.detail2')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.multiAgent.detail3')}</li>
+                    </ul>
+                  </div>
+
+                  {/* Token Burning */}
+                  <div className="bg-gray-900/50 rounded-lg p-4">
+                    <div className="flex items-center mb-2">
+                      <Sparkles className="w-5 h-5 text-pink-400 mr-2" />
+                      <h4 className="font-semibold text-pink-300">
+                        {t('services.karmaHelloExpanded.features.tokenBurning.title')}
+                      </h4>
+                    </div>
+                    <p className="text-gray-400 text-sm mb-2">
+                      {t('services.karmaHelloExpanded.features.tokenBurning.description')}
+                    </p>
+                    <ul className="space-y-1 text-xs text-gray-500">
+                      <li>• {t('services.karmaHelloExpanded.features.tokenBurning.detail1')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.tokenBurning.detail2')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.tokenBurning.detail3')}</li>
+                    </ul>
+                  </div>
+
+                  {/* Echoes Bonus */}
+                  <div className="bg-gray-900/50 rounded-lg p-4">
+                    <div className="flex items-center mb-2">
+                      <Gift className="w-5 h-5 text-pink-400 mr-2" />
+                      <h4 className="font-semibold text-pink-300">
+                        {t('services.karmaHelloExpanded.features.echoesBonus.title')}
+                      </h4>
+                    </div>
+                    <p className="text-gray-400 text-sm mb-2">
+                      {t('services.karmaHelloExpanded.features.echoesBonus.description')}
+                    </p>
+                    <ul className="space-y-1 text-xs text-gray-500">
+                      <li>• {t('services.karmaHelloExpanded.features.echoesBonus.detail1')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.echoesBonus.detail2')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.echoesBonus.detail3')}</li>
+                    </ul>
+                  </div>
+
+                  {/* Twitter Boost */}
+                  <div className="bg-gray-900/50 rounded-lg p-4">
+                    <div className="flex items-center mb-2">
+                      <Megaphone className="w-5 h-5 text-pink-400 mr-2" />
+                      <h4 className="font-semibold text-pink-300">
+                        {t('services.karmaHelloExpanded.features.twitterBoost.title')}
+                      </h4>
+                    </div>
+                    <p className="text-gray-400 text-sm mb-2">
+                      {t('services.karmaHelloExpanded.features.twitterBoost.description')}
+                    </p>
+                    <ul className="space-y-1 text-xs text-gray-500">
+                      <li>• {t('services.karmaHelloExpanded.features.twitterBoost.detail1')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.twitterBoost.detail2')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.twitterBoost.detail3')}</li>
+                    </ul>
+                  </div>
+
+                  {/* Cognee Intelligence */}
+                  <div className="bg-gray-900/50 rounded-lg p-4">
+                    <div className="flex items-center mb-2">
+                      <CheckCircle className="w-5 h-5 text-pink-400 mr-2" />
+                      <h4 className="font-semibold text-pink-300">
+                        {t('services.karmaHelloExpanded.features.cognee.title')}
+                      </h4>
+                    </div>
+                    <p className="text-gray-400 text-sm mb-2">
+                      {t('services.karmaHelloExpanded.features.cognee.description')}
+                    </p>
+                    <ul className="space-y-1 text-xs text-gray-500">
+                      <li>• {t('services.karmaHelloExpanded.features.cognee.detail1')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.cognee.detail2')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.cognee.detail3')}</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              {/* Stats */}
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                  <p className="text-2xl font-bold text-purple-400">
+                    {t('services.karmaHelloExpanded.stats.agents')}
+                  </p>
+                  <p className="text-gray-400 text-xs">Agentes IA</p>
+                </div>
+                <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                  <p className="text-2xl font-bold text-purple-400">
+                    {t('services.karmaHelloExpanded.stats.evaluation')}
+                  </p>
+                  <p className="text-gray-400 text-xs">Evaluación</p>
+                </div>
+                <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                  <p className="text-2xl font-bold text-purple-400">
+                    {t('services.karmaHelloExpanded.stats.burning')}
+                  </p>
+                  <p className="text-gray-400 text-xs">Burning</p>
+                </div>
+                <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                  <p className="text-2xl font-bold text-purple-400">
+                    {t('services.karmaHelloExpanded.stats.blockchain')}
+                  </p>
+                  <p className="text-gray-400 text-xs">Network</p>
+                </div>
+              </div>
+
+              {/* CTA Buttons */}
+              <div className="border-t border-gray-800 pt-6">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <a
+                    href="https://twitch.tv/0xultravioleta"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg transition-all"
+                  >
+                    <PlayCircle className="w-5 h-5 mr-2" />
+                    {t('services.karmaHelloExpanded.cta.watchLive')}
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
+                  <a
+                    href="https://x.com/karmahelloapp"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center px-6 py-3 bg-gray-800 hover:bg-gray-700 rounded-lg transition-all border border-purple-500/30"
+                  >
+                    <BookOpen className="w-5 h-5 mr-2" />
+                    {t('services.karmaHelloExpanded.cta.learnMore')}
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Ultra Evento 2025 Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

@@ -912,6 +912,130 @@
         "abracadabra": "Stream to Market - Ferramentas de marketing automatizado para streamers"
       }
     },
+    "karmaHelloExpanded": {
+      "title": "Karma Hello",
+      "subtitle": "Sistema Chat-to-Earn com Multi-Agentes IA",
+      "description": "Karma Hello é um bot avançado do Twitch que recompensa os usuários com tokens UVD por contribuir com mensagens de qualidade no chat. O sistema utiliza inteligência artificial real para avaliar cada mensagem e atribuir recompensas com base em uma escala de qualidade.",
+      "channel": "Canal: twitch.tv/0xultravioleta",
+      "blockchain": "Blockchain: Avalanche (C-Chain)",
+      "features": {
+        "chatToEarn": {
+          "title": "Chat-to-Earn (C2E)",
+          "description": "Ganhe tokens UVD participando ativamente no chat",
+          "detail1": "Avaliação de qualidade por IA real (OpenAI, Anthropic, Ollama)",
+          "detail2": "Distribuição baseada na sequência de Fibonacci",
+          "detail3": "Sistema anti-farming com ML avançado",
+          "detail4": "90% das mensagens recebem 0 pontos - apenas qualidade excepcional ganha"
+        },
+        "multiAgent": {
+          "title": "Multi-Agente IA",
+          "description": "Sistema de 11+ agentes especializados trabalhando em conjunto",
+          "detail1": "Arquitetura Event-driven com EventBus",
+          "detail2": "Coordenação inteligente com prioridades",
+          "detail3": "Auto-recovery e fallback automático",
+          "detail4": "Rollout gradual configurável"
+        },
+        "tokenBurning": {
+          "title": "Token Burning",
+          "description": "Mecanismo deflacionário automático",
+          "detail1": "1 UVD queimado automaticamente por mensagem",
+          "detail2": "Sistema de exceções para bots e comandos",
+          "detail3": "Rastreamento completo no MongoDB",
+          "detail4": "Dashboard de estatísticas de queima"
+        },
+        "echoesBonus": {
+          "title": "Bônus para Detentores Echoes",
+          "description": "Benefícios exclusivos para detentores de NFTs Echoes",
+          "detail1": "Pagamento duplo automático (x2) em todas as recompensas",
+          "detail2": "Detecção automática por wallet",
+          "detail3": "Indicador especial no chat",
+          "detail4": "Rastreamento de números Fibonacci por detentor"
+        },
+        "twitterBoost": {
+          "title": "Twitter Social Boost",
+          "description": "Multiplicadores por menções positivas no Twitter",
+          "detail1": "Multiplicador de boost de 1.2x até 5.0x",
+          "detail2": "Bônus x2 por mencionar o canal do Twitch",
+          "detail3": "Sistema de handles do Twitter (!setx @usuario)",
+          "detail4": "Anti-farming com análise de sentimento"
+        },
+        "cognee": {
+          "title": "Cognee Intelligence System",
+          "description": "Sistema de memória baseado em grafos de conhecimento",
+          "detail1": "Perfis de risco de usuários",
+          "detail2": "Detecção de padrões cross-channel",
+          "detail3": "Auditoria completa de decisões",
+          "detail4": "API externa para consultas"
+        }
+      },
+      "fibonacci": {
+        "title": "Distribuição Fibonacci",
+        "description": "Sistema de recompensas baseado na sequência de Fibonacci de acordo com o score de qualidade (1-21)",
+        "ranges": {
+          "score1_2": "10.946 UVD - Score 1-2 (spam/farming - quase nunca)",
+          "score3_4": "17.711 UVD - Score 3-4 (muito raro - baixo esforço)",
+          "score5_6": "28.657 UVD - Score 5-6 (mensagem viável mínima)",
+          "score7_9": "46.368 UVD - Score 7-9 (contribuição decente)",
+          "score10_12": "75.025 UVD - Score 10-12 (boa contribuição)",
+          "score13_15": "121.393 UVD - Score 13-15 (muito boa contribuição)",
+          "score16_17": "196.418 UVD - Score 16-17 (excelente contribuição)",
+          "score18_19": "317.811 UVD - Score 18-19 (excepcional)",
+          "score20": "514.229 UVD - Score 20 (destacado)",
+          "score21": "832.040 UVD - Score 21 (perfeito - extremamente raro)"
+        }
+      },
+      "qualityEvaluation": {
+        "title": "Sistema de Avaliação de Qualidade",
+        "description": "O sistema utiliza IA real para avaliar cada mensagem de acordo com critérios específicos",
+        "score0": {
+          "title": "Score 0 (90% das mensagens)",
+          "examples": "Spam, farming, mensagens curtas, pedir tokens, saudações genéricas, apenas emojis"
+        },
+        "score1_5": {
+          "title": "Score 1-5 (Muito raro)",
+          "examples": "Contribuição mínima mas real, resposta simples, comentário relevante breve"
+        },
+        "score6_10": {
+          "title": "Score 6-10 (Incomum)",
+          "examples": "Contribuição interessante, pergunta relevante, opinião construtiva"
+        },
+        "score11_15": {
+          "title": "Score 11-15 (Raro)",
+          "examples": "Conteúdo muito valioso, análise profunda, contribuição técnica, humor inteligente"
+        },
+        "score16_21": {
+          "title": "Score 16-21 (Excepcional <1%)",
+          "examples": "Conteúdo extraordinário, insights únicos, criatividade excepcional"
+        }
+      },
+      "antiFarming": {
+        "title": "Sistema Anti-Farming Multi-Camadas",
+        "description": "Proteção avançada contra abuso do sistema",
+        "detection1": "Detecção de spam e conteúdo copiado",
+        "detection2": "Rate limiting avançado por usuário",
+        "detection3": "ML ensemble com BERT, Isolation Forest e Gradient Boosting",
+        "detection4": "Análise de padrões de comportamento",
+        "detection5": "Perfis de risco com Cognee Intelligence"
+      },
+      "technology": {
+        "title": "Tecnologias",
+        "backend": "Backend: Python com FastAPI",
+        "ai": "IA: OpenAI GPT-4, Anthropic Claude, Ollama",
+        "blockchain": "Blockchain: Avalanche C-Chain com pool de RPCs",
+        "database": "Bases de Dados: MongoDB, Redis",
+        "architecture": "Arquitetura: Event-driven multi-agente"
+      },
+      "stats": {
+        "agents": "18+ Agentes",
+        "evaluation": "Avaliação IA Real",
+        "burning": "Queima Automática",
+        "blockchain": "Avalanche C-Chain"
+      },
+      "cta": {
+        "watchLive": "Assistir Ao Vivo",
+        "learnMore": "Saiba Mais"
+      }
+    },
     "events": {
       "ultraevento": {
         "title": "Ultra Evento 2025",
