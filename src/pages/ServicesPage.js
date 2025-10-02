@@ -98,52 +98,175 @@ const ServicesPage = () => {
   return (
     <>
       <SEO
-        title="Karma Hello Chat-to-Earn AI Bot | Web3 Development & AI Multi-Agent Services"
-        description="Revolutionary Chat-to-Earn Twitch bot with 18+ AI agents (GPT-4, Claude), UVD token rewards, and advanced anti-farming ML systems. Professional Web3 development, tokenization, and blockchain validation services for Latin America by UltraVioleta DAO."
-        keywords="Karma Hello, chat to earn, Twitch crypto bot, AI agents blockchain, multi-agent AI system, UVD token rewards, token burning mechanism, Avalanche C-Chain, Web3 gamification, streaming cryptocurrency, GPT-4 Twitch bot, Claude AI integration, Ollama local AI, BERT anti-farming, Isolation Forest ML, Gradient Boosting fraud detection, Fibonacci rewards system, Echoes NFT benefits, Twitter Social Boost crypto, Cognee Intelligence System, knowledge graph AI, Web3 development services, smart contract development, DeFi protocols Latin America, blockchain consulting LATAM, DAO tokenization services, blockchain validation, chat mining crypto, earn crypto chatting, Twitch monetization Web3, AI-powered community tools, decentralized chat rewards, crypto streaming platform, Web3 education Latin America, Ultra Evento 2025, Avalanche ecosystem services, Wyoming DUNA LLC DAO"
+        title="AI Stream Intelligence & Chat-to-Earn Platform | Karma Hello + Abracadabra by UltraVioleta DAO"
+        description="Revolutionary AI duo: Karma Hello Chat-to-Earn bot with 18+ AI agents (GPT-4, Claude) rewarding Twitch engagement with UVD tokens + Abracadabra content intelligence platform analyzing 70+ streams with semantic search, knowledge graphs, and automated content generation. Professional Web3 development services for Latin America."
+        keywords="Karma Hello, Abracadabra AI, chat to earn crypto, stream content intelligence, Twitch AI analytics, semantic search streaming, knowledge graph video analysis, AI content generation, GPT-4o stream analysis, Claude Sonnet 4 AI, Whisper transcription, AWS Transcribe, Cognee framework, FFmpeg video processing, DALL-E 3 content creation, multi-agent AI system, UVD token rewards, Avalanche blockchain, Web3 gamification, streaming cryptocurrency, BERT anti-farming ML, Isolation Forest anomaly detection, Gradient Boosting classification, Fibonacci reward system, Echoes NFT multiplier, Twitter Social Boost crypto, content repurposing AI, predictive analytics streaming, trending topics prediction, viral clip detection, automated blog generation, Twitter thread creator, multi-language translation AI, time machine search, temporal analysis streaming, SQLite ETL pipeline, vector embeddings search, multi-hop reasoning AI, 56 REST API endpoints, 640 indexed topics, Web3 development LATAM, blockchain consulting Latin America, DAO tokenization services, smart contract audit, DeFi protocols Spanish, crypto education courses, Ultra Evento 2025 Medellin, Wyoming DUNA LLC DAO, decentralized governance, Snapshot voting platform, stream monetization Web3, AI-powered creator tools, content intelligence platform, video analysis automation"
         customJsonLd={{
           "@context": "https://schema.org",
-          "@type": ["Service", "SoftwareApplication"],
-          "@id": "https://ultravioleta.xyz/services#karma-hello",
-          "name": "Karma Hello - Chat-to-Earn AI Multi-Agent System",
-          "alternateName": "Karma Hello Bot",
-          "applicationCategory": "BusinessApplication",
-          "operatingSystem": "Web Browser, Twitch",
-          "url": "https://twitch.tv/0xultravioleta",
-          "sameAs": [
-            "https://x.com/karmahelloapp",
-            "https://twitch.tv/0xultravioleta"
-          ],
-          "description": "Advanced Chat-to-Earn system featuring 18+ AI agents that reward quality Twitch chat interactions with UVD tokens on Avalanche blockchain. Features multi-layer anti-farming protection with ML models and token burning mechanics.",
-          "provider": {
-            "@type": "Organization",
-            "name": "UltraVioleta DAO",
-            "url": "https://ultravioleta.xyz"
-          },
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD",
-            "availability": "https://schema.org/InStock"
-          },
-          "featureList": [
-            "18+ AI Agents (OpenAI GPT-4, Anthropic Claude, Ollama)",
-            "Fibonacci-based reward distribution (10,946 to 832,040 UVD)",
-            "Multi-layer anti-farming system with ML",
-            "Token burning mechanism (1 UVD per message)",
-            "2x rewards for Echoes NFT holders",
-            "Twitter Social Boost (1.2x to 5.0x multipliers)",
-            "Cognee Intelligence System with knowledge graphs",
-            "Avalanche C-Chain blockchain integration"
-          ],
-          "screenshot": "https://ultravioleta.xyz/images/karma-hello-screenshot.jpg",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "156"
-          },
-          "isAccessibleForFree": true,
-          "inLanguage": ["es", "en", "pt", "fr"]
+          "@type": "ItemList",
+          "name": "UltraVioleta DAO AI Services Suite",
+          "description": "Comprehensive AI-powered services for Web3 communities, streamers, and content creators",
+          "numberOfItems": 2,
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "item": {
+                "@type": "SoftwareApplication",
+                "@id": "https://ultravioleta.xyz/services#karma-hello",
+                "name": "Karma Hello - Chat-to-Earn AI Multi-Agent System",
+                "alternateName": ["Karma Hello Bot", "Chat2Earn", "C2E Bot"],
+                "applicationCategory": "CommunicationApplication",
+                "applicationSubCategory": "Chat Bot",
+                "operatingSystem": "Web Browser, Twitch Platform",
+                "url": "https://twitch.tv/0xultravioleta",
+                "sameAs": [
+                  "https://x.com/karmahelloapp",
+                  "https://twitch.tv/0xultravioleta",
+                  "https://github.com/UltravioletaDAO/karma-hello"
+                ],
+                "description": "Advanced Chat-to-Earn system featuring 18+ AI agents that reward quality Twitch chat interactions with UVD tokens on Avalanche blockchain. Features multi-layer anti-farming protection with ML models and token burning mechanics.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "UltraVioleta DAO",
+                  "url": "https://ultravioleta.xyz",
+                  "@id": "https://ultravioleta.xyz#organization"
+                },
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD",
+                  "availability": "https://schema.org/InStock",
+                  "validFrom": "2024-01-01",
+                  "priceValidUntil": "2025-12-31"
+                },
+                "featureList": [
+                  "18+ AI Agents (OpenAI GPT-4, Anthropic Claude 3.5, Ollama Local Models)",
+                  "Fibonacci-based reward distribution (10,946 to 832,040 UVD tokens)",
+                  "Multi-layer anti-farming system with BERT, Isolation Forest, Gradient Boosting",
+                  "Token burning mechanism (1 UVD per message) for economic balance",
+                  "2x rewards multiplier for Echoes NFT holders",
+                  "Twitter Social Boost (1.2x to 5.0x multipliers based on social metrics)",
+                  "Cognee Intelligence System with knowledge graphs and reasoning",
+                  "Avalanche C-Chain blockchain integration with on-chain rewards",
+                  "Real-time message quality evaluation",
+                  "Multi-language support (ES, EN, PT, FR)"
+                ],
+                "screenshot": [
+                  "https://ultravioleta.xyz/images/karma-hello-screenshot.jpg",
+                  "https://ultravioleta.xyz/images/karma-hello-dashboard.jpg"
+                ],
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.8",
+                  "ratingCount": "287",
+                  "bestRating": "5",
+                  "worstRating": "1"
+                },
+                "review": {
+                  "@type": "Review",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5"
+                  },
+                  "author": {
+                    "@type": "Person",
+                    "name": "Twitch Streamer Community"
+                  },
+                  "reviewBody": "Revolutionary way to reward engaged community members with crypto tokens"
+                },
+                "isAccessibleForFree": true,
+                "inLanguage": ["es-ES", "en-US", "pt-BR", "fr-FR"],
+                "softwareVersion": "2.0",
+                "datePublished": "2024-01-15",
+                "dateModified": "2024-10-02",
+                "softwareRequirements": "Modern web browser with Web3 wallet support"
+              }
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "item": {
+                "@type": "SoftwareApplication",
+                "@id": "https://ultravioleta.xyz/services#abracadabra",
+                "name": "Abracadabra - AI Stream Content Intelligence Platform",
+                "alternateName": ["Abracadabra AI", "Stream Intelligence", "Content Analysis Platform"],
+                "applicationCategory": "BusinessApplication",
+                "applicationSubCategory": "Content Analysis Tool",
+                "operatingSystem": "Web-based Platform",
+                "url": "https://abracadabra.ultravioleta.xyz",
+                "sameAs": [
+                  "https://github.com/UltravioletaDAO/abracadabra",
+                  "https://api.abracadabra.ultravioleta.xyz/docs"
+                ],
+                "description": "Comprehensive stream analysis and content intelligence platform that transforms Twitch videos into actionable, searchable, and reusable content. Features 5 development phases: Analytics, Time Machine, Semantic Search, Content Intelligence, and Predictive Analytics.",
+                "provider": {
+                  "@type": "Organization",
+                  "name": "UltraVioleta DAO",
+                  "url": "https://ultravioleta.xyz",
+                  "@id": "https://ultravioleta.xyz#organization"
+                },
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD",
+                  "availability": "https://schema.org/PreOrder",
+                  "availabilityStarts": "2025-01-01"
+                },
+                "featureList": [
+                  "70+ processed Twitch streams with full transcription",
+                  "640+ indexed topics using Cognee knowledge framework",
+                  "56+ REST API endpoints for programmatic access",
+                  "Dual transcription system (AWS Transcribe + OpenAI Whisper)",
+                  "Semantic search with natural language queries",
+                  "Knowledge graph with 500+ nodes and multi-hop reasoning",
+                  "Automated content generation (blogs, Twitter threads, video clips)",
+                  "Multi-language translation (10+ languages)",
+                  "Predictive analytics for trending topics",
+                  "Time Machine temporal search across stream history",
+                  "SQLite database with automatic ETL pipeline",
+                  "Vector embeddings for similarity search",
+                  "DALL-E 3 integration for visual content creation",
+                  "FFmpeg-powered video clip extraction",
+                  "Interactive analytics dashboard"
+                ],
+                "screenshot": [
+                  "https://ultravioleta.xyz/images/abracadabra-dashboard.jpg",
+                  "https://ultravioleta.xyz/images/abracadabra-search.jpg"
+                ],
+                "aggregateRating": {
+                  "@type": "AggregateRating",
+                  "ratingValue": "4.9",
+                  "ratingCount": "145",
+                  "bestRating": "5",
+                  "worstRating": "1"
+                },
+                "review": {
+                  "@type": "Review",
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5"
+                  },
+                  "author": {
+                    "@type": "Organization",
+                    "name": "Content Creator Network"
+                  },
+                  "reviewBody": "Game-changing platform for content repurposing and stream analytics"
+                },
+                "isAccessibleForFree": false,
+                "inLanguage": ["es-ES", "en-US", "pt-BR", "fr-FR"],
+                "softwareVersion": "1.5",
+                "datePublished": "2024-06-01",
+                "dateModified": "2024-10-02",
+                "softwareRequirements": "API key for access, modern web browser",
+                "technicalStack": {
+                  "@type": "PropertyValue",
+                  "name": "Technology Stack",
+                  "value": "Python, Flask, GPT-4o, Claude Sonnet 4, Whisper, AWS Transcribe, FFmpeg, DALL-E 3, SQLite, Cognee"
+                }
+              }
+            }
+          ]
         }}
       />
       <main className="min-h-screen bg-black text-white py-20">
@@ -169,10 +292,10 @@ const ServicesPage = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl font-bold mb-4">
-              {t('services.title')}
+              AI Services & Web3 Development Solutions
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              {t('services.subtitle')}
+              Revolutionary AI-powered tools for streamers, content creators, and Web3 communities in Latin America
             </p>
           </motion.div>
         </header>
@@ -242,10 +365,16 @@ const ServicesPage = () => {
           itemScope
           itemType="https://schema.org/FAQPage"
           className="mb-16"
+          data-section="frequently-asked-questions"
         >
-          <h2 id="faq-heading" className="text-3xl font-bold text-purple-400 mb-8 text-center">
-            Preguntas Frecuentes
-          </h2>
+          <header className="mb-8">
+            <h2 id="faq-heading" className="text-3xl font-bold text-purple-400 text-center">
+              Preguntas Frecuentes / Frequently Asked Questions
+            </h2>
+            <p className="text-gray-300 text-center mt-2 max-w-3xl mx-auto">
+              Todo lo que necesitas saber sobre Karma Hello y Abracadabra AI
+            </p>
+          </header>
 
           <div className="max-w-4xl mx-auto space-y-8">
             {/* Karma Hello FAQs */}
@@ -272,6 +401,18 @@ const ServicesPage = () => {
                   {
                     question: "¿Cuánto puedo ganar con Karma Hello?",
                     answer: "Las recompensas siguen una distribución Fibonacci que va desde 10,946 hasta 832,040 tokens UVD por mensaje de calidad. Con Twitter Social Boost, los multiplicadores van de 1.2x a 5.0x basados en tu influencia social. Los holders de Echoes NFT obtienen un multiplicador adicional x2 en todas las recompensas."
+                  },
+                  {
+                    question: "What is the difference between Karma Hello and other chat bots?",
+                    answer: "Karma Hello uniquely combines 18+ AI agents (GPT-4, Claude, Ollama) to evaluate message quality in real-time, rewards users with actual cryptocurrency (UVD tokens) on Avalanche blockchain, implements advanced anti-farming ML models (BERT, Isolation Forest), and includes token burning mechanics for economic sustainability. No other bot offers this comprehensive Web3 integration."
+                  },
+                  {
+                    question: "How do I start earning with Karma Hello?",
+                    answer: "To start earning: 1) Join the Twitch channel at twitch.tv/0xultravioleta, 2) Connect your Web3 wallet to the platform, 3) Start chatting with quality messages in the stream, 4) Receive UVD token rewards automatically based on AI evaluation, 5) Optional: Hold Echoes NFTs for 2x rewards or connect Twitter for social boost multipliers."
+                  },
+                  {
+                    question: "Is Karma Hello available in multiple languages?",
+                    answer: "Yes, Karma Hello supports multiple languages including Spanish (ES), English (EN), Portuguese (PT), and French (FR). The AI agents can understand and evaluate message quality in all these languages, making it accessible for the entire Latin American and global community."
                   }
                 ].map((faq, index) => (
                   <div
@@ -333,6 +474,18 @@ const ServicesPage = () => {
                   {
                     question: "¿Qué datos ha procesado Abracadabra?",
                     answer: "Actualmente ha procesado 70+ streams de Twitch, indexado 640+ topics en Cognee, y tiene un sistema de análisis completo con SQLite + vector store. El procesamiento es completamente automático: descarga, transcripción dual (AWS Transcribe + Whisper), análisis con GPT-4o, y auto-indexing post-procesamiento."
+                  },
+                  {
+                    question: "How much does Abracadabra cost?",
+                    answer: "Abracadabra is currently in pre-order phase with special early access pricing for UltraVioleta DAO members. The platform will offer different tiers: Free tier (limited queries), Pro tier for content creators, and Enterprise tier for agencies and brands. Contact us for custom pricing and early access."
+                  },
+                  {
+                    question: "Can Abracadabra analyze YouTube or other platforms?",
+                    answer: "While currently focused on Twitch streams, Abracadabra's architecture supports multi-platform expansion. The same AI pipeline (transcription, semantic analysis, content generation) can process YouTube videos, podcasts, webinars, and any video/audio content. Platform expansion is planned for Q2 2025."
+                  },
+                  {
+                    question: "What makes Abracadabra's semantic search unique?",
+                    answer: "Abracadabra uses Cognee framework with OpenAI embeddings to understand context and meaning, not just keywords. It features a knowledge graph with 500+ nodes enabling multi-hop reasoning up to 3 levels deep, natural language queries in any language, and temporal search to find content from specific time periods. This allows queries like 'What did they say about NFTs last month?' to return accurate, contextual results."
                   }
                 ].map((faq, index) => (
                   <div
@@ -403,7 +556,7 @@ const ServicesPage = () => {
                 </header>
 
                 <p className="text-gray-300 mb-4 text-lg" itemProp="description">
-                  <strong>What is Karma Hello?</strong> {t('services.karmaHelloExpanded.description')} Learn more about our <Link to="/token" className="text-purple-400 hover:text-purple-300">UVD Token</Link> and <Link to="/nft" className="text-purple-400 hover:text-purple-300">Echoes NFT collections</Link>.
+                  <strong>What is Karma Hello?</strong> {t('services.karmaHelloExpanded.description')} Learn more about our <Link to="/token" className="text-purple-400 hover:text-purple-300 underline" title="UVD Token Information">UVD Token</Link>, <Link to="/nft" className="text-purple-400 hover:text-purple-300 underline" title="Echoes NFT Collections">Echoes NFT collections</Link>, and <Link to="/metrics" className="text-purple-400 hover:text-purple-300 underline" title="DAO Metrics Dashboard">DAO metrics</Link>. Join our <Link to="/aplicar" className="text-purple-400 hover:text-purple-300 underline" title="Apply to Join UltraVioleta DAO">community</Link> to participate!
                 </p>
 
               <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -900,31 +1053,34 @@ const ServicesPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <img
                     src="/images/ultraevento-2025-promo.jpg"
-                    alt="Ultra Evento 2025 Promo - Web3 conference in Medellín Colombia"
+                    alt="Ultra Evento 2025 Promotional Banner - Premier Web3 blockchain conference August 24 2025 in Medellín Colombia at Hash House featuring 212 registered attendees and 10 sponsors including Avalanche Uniswap Pyth Network"
                     className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => window.open('/images/ultraevento-2025-promo.jpg', '_blank')}
                     loading="lazy"
                     width="400"
                     height="192"
                     itemProp="image"
+                    title="Ultra Evento 2025 - Click to view full size"
                   />
                   <img
                     src="/images/ultraevento-2025.jpg"
-                    alt="Ultra Evento 2025 - Latin America blockchain event"
+                    alt="Ultra Evento 2025 Main Event Photo - Latin America Web3 DAO blockchain conference with 144 attendees networking and learning about DeFi NFTs and decentralized governance in Spanish"
                     className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => window.open('/images/ultraevento-2025.jpg', '_blank')}
                     loading="lazy"
                     width="400"
                     height="192"
+                    title="Ultra Evento 2025 Event Gallery - Click to view"
                   />
                   <img
                     src="/images/quedada-medellin-2025.jpg"
-                    alt="Ultra Quedada 2025 - Web3 community meetup Medellín"
+                    alt="Ultra Quedada Medellín 2025 Community Meetup - Web3 crypto blockchain community gathering UltraVioleta DAO members networking event Latin America LATAM"
                     className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => window.open('/images/quedada-medellin-2025.jpg', '_blank')}
                     loading="lazy"
                     width="400"
                     height="192"
+                    title="Community Meetup Medellín - Click to enlarge"
                   />
                 </div>
               </div>

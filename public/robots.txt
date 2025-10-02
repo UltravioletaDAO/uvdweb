@@ -1,6 +1,6 @@
 # Robots.txt for UltraVioleta DAO
 # https://ultravioleta.xyz
-# Last updated: 2025-09-27
+# Last updated: 2025-10-02
 
 # Default rules for all bots
 User-agent: *
@@ -19,6 +19,9 @@ Allow: /safestats
 Allow: /wheel
 Allow: /events
 Allow: /services
+Allow: /services#karma-hello
+Allow: /services#abracadabra
+Allow: /nft
 Disallow: /api/
 Disallow: /admin/
 Disallow: /twitch-callback
