@@ -302,13 +302,13 @@
       },
       "duna2025": {
         "date": "Setembro 2025",
-        "title": "Registro Legal como DUNA",
-        "description": "Formalização legal como DAO LLC em Wyoming, estabelecendo UltraVioleta como uma Associação Descentralizada sem Fins Lucrativos não Incorporada (DUNA)."
+        "title": "Registro Legal como DAO LLC",
+        "description": "Formalização legal como DAO LLC em Wyoming, estabelecendo UltraVioleta como uma Organização Autônoma Descentralizada de Responsabilidade Limitada."
       },
       "current": {
         "date": "Presente",
         "title": "DAO Plenamente Operacional",
-        "description": "176+ propostas executadas, 5.218+ votos, estrutura legal DUNA estabelecida, e eventos presenciais em múltiplas cidades."
+        "description": "176+ propostas executadas, 5.218+ votos, estrutura legal DAO LLC estabelecida, e eventos presenciais em múltiplas cidades."
       },
       "sponsors": {
         "poweredBy": "Powered by Legends",
@@ -384,10 +384,10 @@
         "description": "O principal projeto realizado foi o Ultra Evento 2025, celebrado em 24 de agosto em Medellín com 212 registrados e 144 participantes. Evento histórico com o apoio de patrocinadores renomados como Avalanche, Rekt, Celo Colombia, Self, Uniswap, Pyth Network, Heroes Of Cipher, deBridge, Superfluid e Magic Eden. Contou com dinâmicas inovadoras como airdrops automáticos, POAPs, incentivos para verificação de identidade e cobertura completa em streaming."
       },
       "legal": {
-        "title": "Status Legal - DUNA LLC",
-        "description": "UltraVioleta DAO completou com sucesso seu registro como uma Organização Autônoma Descentralizada de Responsabilidade Limitada (DAO LLC) em Wyoming, Estados Unidos. Esta estrutura legal pioneira, conhecida como DUNA (Decentralized Unincorporated Nonprofit Association), nos permite operar com reconhecimento legal mantendo nossa natureza descentralizada.",
-        "whatIsDuna": "DUNA é uma estrutura legal inovadora projetada especificamente para DAOs, permitindo que organizações descentralizadas obtenham personalidade jurídica sem comprometer sua autonomia. Saiba mais sobre DUNA em",
-        "dunaLinkText": "a16z Crypto - DUNA para DAOs",
+        "title": "Status Legal - DAO LLC",
+        "description": "UltraVioleta DAO completou com sucesso seu registro como uma Organização Autônoma Descentralizada de Responsabilidade Limitada (DAO LLC) em Wyoming, Estados Unidos. Esta estrutura legal pioneira nos permite operar com reconhecimento legal mantendo nossa natureza descentralizada.",
+        "whatIsDuna": "DAO LLC é uma estrutura legal inovadora projetada especificamente para DAOs, permitindo que organizações descentralizadas obtenham personalidade jurídica sem comprometer sua autonomia. Saiba mais em",
+        "dunaLinkText": "Wyoming DAO LLC",
         "details": {
           "title": "Detalhes do Registro",
           "entity": "Entidade Legal",
@@ -1196,6 +1196,37 @@
       "cta": {
         "learnMore": "Saiba Mais",
         "viewDemo": "Ver Demo"
+      },
+      "faqs": {
+        "title": "Abracadabra - Perguntas Frequentes",
+        "q1": {
+          "question": "O que é Abracadabra?",
+          "answer": "Abracadabra é uma plataforma integral de análise de streams e content intelligence que transforma vídeos do Twitch em conteúdo acionável, pesquisável e reutilizável usando IA avançada. Inclui 6 fases completas: Analytics, Time Machine, Semantic Search, Content Intelligence, Predictive Analytics e Multi-Agent System com WebSocket em tempo real."
+        },
+        "q2": {
+          "question": "Que tipo de conteúdo pode gerar automaticamente?",
+          "answer": "Abracadabra pode gerar automaticamente blogs em markdown (1500+ palavras), Twitter threads otimizados (280 chars/tweet), clipes de vídeo com FFmpeg em múltiplos formatos (YouTube Shorts, TikTok, Reels), imagens com DALL-E 3, traduções multi-idioma (10+ idiomas) e resumos personalizados. Tudo com 75+ endpoints REST API."
+        },
+        "q3": {
+          "question": "Como funciona a busca semântica?",
+          "answer": "Abracadabra usa o framework Cognee com embeddings da OpenAI para busca em linguagem natural. Você pode perguntar 'O que disseram sobre NFTs?' e o sistema encontra conteúdo relevante entendendo sinônimos, contexto e intenções. Inclui um knowledge graph com 500+ nós e multi-hop reasoning até 3 saltos."
+        },
+        "q4": {
+          "question": "Quais dados o Abracadabra processou?",
+          "answer": "Atualmente processou 70+ streams do Twitch, indexou 640+ topics no Cognee e tem um sistema de análise completo com SQLite + vector store. O processamento é totalmente automático: download, transcrição dupla (AWS Transcribe + Whisper), análise com GPT-4o e auto-indexing pós-processamento."
+        },
+        "q5": {
+          "question": "Quanto custa o Abracadabra?",
+          "answer": "Abracadabra está atualmente em fase de pré-venda com preços especiais de acesso antecipado para membros do UltraVioleta DAO. A plataforma oferecerá diferentes níveis: Tier gratuito (consultas limitadas), Tier Pro para criadores de conteúdo e Tier Enterprise para agências e marcas. Entre em contato para preços personalizados e acesso antecipado."
+        },
+        "q6": {
+          "question": "O Abracadabra pode analisar YouTube ou outras plataformas?",
+          "answer": "Embora atualmente focado em streams do Twitch, a arquitetura do Abracadabra suporta expansão multi-plataforma. O mesmo pipeline de IA (transcrição, análise semântica, geração de conteúdo) pode processar vídeos do YouTube, podcasts, webinars e qualquer conteúdo de vídeo/áudio. A expansão para outras plataformas está planejada para Q2 2025."
+        },
+        "q7": {
+          "question": "O que torna a busca semântica do Abracadabra única?",
+          "answer": "Abracadabra usa o framework Cognee com embeddings da OpenAI para entender contexto e significado, não apenas palavras-chave. Possui um knowledge graph com 500+ nós que permite multi-hop reasoning até 3 níveis de profundidade, consultas em linguagem natural em qualquer idioma e busca temporal para encontrar conteúdo de períodos específicos. Isso permite consultas como 'O que disseram sobre NFTs no mês passado?' e obter resultados precisos e contextuais."
+        }
       }
     },
     "events": {

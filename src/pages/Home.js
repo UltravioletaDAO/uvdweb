@@ -188,7 +188,7 @@ const Home = () => {
       }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
 
-          {/* DUNA Legal Status Box - Featured Banner */}
+          {/* DAO LLC Legal Status Box - Featured Banner */}
           <div style={{
             backgroundColor: 'rgba(147, 51, 234, 0.05)',
             border: '1px solid rgba(147, 51, 234, 0.2)',
@@ -208,7 +208,7 @@ const Home = () => {
                   {t('home.metrics.legal.title')}
                 </div>
                 <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#fff' }}>
-                  DUNA LLC
+                  DAO LLC
                 </div>
               </div>
               <div style={{
@@ -225,28 +225,55 @@ const Home = () => {
               </div>
             </div>
 
-            <Link
-              to="/about#legal"
-              style={{
-                fontSize: '13px',
-                color: '#a78bfa',
-                textDecoration: 'none',
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '8px 16px',
-                border: '1px solid rgba(147, 51, 234, 0.3)',
-                borderRadius: '8px',
-                backgroundColor: 'rgba(147, 51, 234, 0.05)',
-                transition: 'all 0.2s'
-              }}
-              className="hover:bg-purple-600/20 hover:border-purple-500/50"
-            >
-              {t('home.metrics.legal.learn_more')}
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </Link>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <Link
+                to="/about#legal"
+                style={{
+                  fontSize: '13px',
+                  color: '#a78bfa',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 16px',
+                  border: '1px solid rgba(147, 51, 234, 0.3)',
+                  borderRadius: '8px',
+                  backgroundColor: 'rgba(147, 51, 234, 0.05)',
+                  transition: 'all 0.2s'
+                }}
+                className="hover:bg-purple-600/20 hover:border-purple-500/50"
+              >
+                {t('home.metrics.legal.learn_more')}
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </Link>
+
+              <a
+                href="https://wyobiz.wyo.gov/business/FilingDetails.aspx?eFNum=231152217007187086250219198232174206067107184230"
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: '13px',
+                  color: '#10b981',
+                  textDecoration: 'none',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 16px',
+                  border: '1px solid rgba(16, 185, 129, 0.3)',
+                  borderRadius: '8px',
+                  backgroundColor: 'rgba(16, 185, 129, 0.05)',
+                  transition: 'all 0.2s'
+                }}
+                className="hover:bg-green-600/20 hover:border-green-500/50"
+              >
+                Official Filing
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </a>
+            </div>
           </div>
 
           <div style={{

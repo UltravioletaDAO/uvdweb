@@ -23,7 +23,15 @@ import {
   BarChart3,
   TrendingUp,
   Award,
-  Flame
+  Flame,
+  Video,
+  Search,
+  Brain,
+  Database,
+  Languages,
+  FileText,
+  Image,
+  Zap
 } from 'lucide-react';
 
 const ServicesPage = () => {
@@ -31,7 +39,7 @@ const ServicesPage = () => {
 
   // FAQ state management
   const [karmaFaqsOpen, setKarmaFaqsOpen] = useState([false, false, false, false]);
-  const [abracadabraFaqsOpen, setAbracadabraFaqsOpen] = useState([false, false, false, false]);
+  const [abracadabraFaqsOpen, setAbracadabraFaqsOpen] = useState([false, false, false, false, false, false, false]);
 
   const toggleKarmaFaq = (index) => {
     setKarmaFaqsOpen(prev => prev.map((open, i) => i === index ? !open : open));
@@ -994,138 +1002,202 @@ const ServicesPage = () => {
                 </header>
 
                 <p className="text-gray-300 mb-4 text-lg" itemProp="description">
-                  {t('services.abracadabraExpanded.description')}
+                  <strong>Abracadabra</strong> es una plataforma empresarial de content intelligence que utiliza inteligencia artificial avanzada para transformar videos y streams en contenido procesable, búsquedas semánticas y análisis predictivo. Sistema completo end-to-end que convierte contenido audiovisual bruto en analytics estructurados, contenido derivado automático y predicciones de tendencias.
                 </p>
 
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
-                    <CheckCircle className="w-5 h-5 text-cyan-400 mr-3" />
+                    <Video className="w-5 h-5 text-cyan-400 mr-3" />
                     <div>
-                      <p className="text-gray-400 text-xs">Procesados</p>
-                      <p className="text-white font-semibold">{t('services.abracadabraExpanded.processed')}</p>
+                      <p className="text-gray-400 text-xs">Streams Procesados</p>
+                      <p className="text-white font-semibold">70+ streams indexados</p>
                     </div>
                   </div>
 
                   <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
-                    <CheckCircle className="w-5 h-5 text-cyan-400 mr-3" />
+                    <Database className="w-5 h-5 text-cyan-400 mr-3" />
                     <div>
-                      <p className="text-gray-400 text-xs">Indexados</p>
-                      <p className="text-white font-semibold">{t('services.abracadabraExpanded.indexed')}</p>
+                      <p className="text-gray-400 text-xs">Topics Indexados</p>
+                      <p className="text-white font-semibold">640+ topics en Cognee</p>
                     </div>
                   </div>
                 </div>
 
-                {/* 5 Phases */}
+                {/* Capacidades Clave */}
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-cyan-300 mb-4">
-                    5 Fases Completas de Desarrollo
+                    Capacidades del Sistema
                   </h3>
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    {/* Phase 1 */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    {/* Dual Transcription */}
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
-                        <BookOpen className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">
-                          {t('services.abracadabraExpanded.phases.phase1.title')}
-                        </h4>
-                      </div>
-                      <p className="text-gray-400 text-sm mb-2">
-                        {t('services.abracadabraExpanded.phases.phase1.description')}
-                      </p>
-                      <ul className="space-y-1 text-xs text-gray-500">
-                        <li>• {t('services.abracadabraExpanded.phases.phase1.detail1')}</li>
-                        <li>• {t('services.abracadabraExpanded.phases.phase1.detail2')}</li>
-                        <li>• {t('services.abracadabraExpanded.phases.phase1.detail3')}</li>
-                      </ul>
-                    </div>
-
-                    {/* Phase 2 */}
-                    <div className="bg-gray-900/50 rounded-lg p-4">
-                      <div className="flex items-center mb-2">
-                        <Calendar className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">
-                          {t('services.abracadabraExpanded.phases.phase2.title')}
-                        </h4>
-                      </div>
-                      <p className="text-gray-400 text-sm mb-2">
-                        {t('services.abracadabraExpanded.phases.phase2.description')}
-                      </p>
-                      <ul className="space-y-1 text-xs text-gray-500">
-                        <li>• {t('services.abracadabraExpanded.phases.phase2.detail1')}</li>
-                        <li>• {t('services.abracadabraExpanded.phases.phase2.detail2')}</li>
-                        <li>• {t('services.abracadabraExpanded.phases.phase2.detail3')}</li>
-                      </ul>
-                    </div>
-
-                    {/* Phase 3 */}
-                    <div className="bg-gray-900/50 rounded-lg p-4">
-                      <div className="flex items-center mb-2">
-                        <Bot className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">
-                          {t('services.abracadabraExpanded.phases.phase3.title')}
-                        </h4>
-                      </div>
-                      <p className="text-gray-400 text-sm mb-2">
-                        {t('services.abracadabraExpanded.phases.phase3.description')}
-                      </p>
-                      <ul className="space-y-1 text-xs text-gray-500">
-                        <li>• {t('services.abracadabraExpanded.phases.phase3.detail1')}</li>
-                        <li>• {t('services.abracadabraExpanded.phases.phase3.detail2')}</li>
-                        <li>• {t('services.abracadabraExpanded.phases.phase3.detail3')}</li>
-                      </ul>
-                    </div>
-
-                    {/* Phase 4 */}
-                    <div className="bg-gray-900/50 rounded-lg p-4">
-                      <div className="flex items-center mb-2">
-                        <Sparkles className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">
-                          {t('services.abracadabraExpanded.phases.phase4.title')}
-                        </h4>
-                      </div>
-                      <p className="text-gray-400 text-sm mb-2">
-                        {t('services.abracadabraExpanded.phases.phase4.description')}
-                      </p>
-                      <ul className="space-y-1 text-xs text-gray-500">
-                        <li>• {t('services.abracadabraExpanded.phases.phase4.detail1')}</li>
-                        <li>• {t('services.abracadabraExpanded.phases.phase4.detail2')}</li>
-                        <li>• {t('services.abracadabraExpanded.phases.phase4.detail3')}</li>
-                      </ul>
-                    </div>
-
-                    {/* Phase 5 */}
-                    <div className="bg-gray-900/50 rounded-lg p-4">
-                      <div className="flex items-center mb-2">
-                        <Megaphone className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">
-                          {t('services.abracadabraExpanded.phases.phase5.title')}
-                        </h4>
-                      </div>
-                      <p className="text-gray-400 text-sm mb-2">
-                        {t('services.abracadabraExpanded.phases.phase5.description')}
-                      </p>
-                      <ul className="space-y-1 text-xs text-gray-500">
-                        <li>• {t('services.abracadabraExpanded.phases.phase5.detail1')}</li>
-                        <li>• {t('services.abracadabraExpanded.phases.phase5.detail2')}</li>
-                        <li>• {t('services.abracadabraExpanded.phases.phase5.detail3')}</li>
-                      </ul>
-                    </div>
-
-                    {/* Technology Stack */}
-                    <div className="bg-gray-900/50 rounded-lg p-4">
-                      <div className="flex items-center mb-2">
-                        <Coins className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">
-                          {t('services.abracadabraExpanded.technology.title')}
-                        </h4>
+                        <Video className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">Transcripción Dual</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• {t('services.abracadabraExpanded.technology.backend')}</li>
-                        <li>• {t('services.abracadabraExpanded.technology.ai')}</li>
-                        <li>• {t('services.abracadabraExpanded.technology.database')}</li>
-                        <li>• {t('services.abracadabraExpanded.technology.tools')}</li>
-                        <li>• {t('services.abracadabraExpanded.technology.api')}</li>
+                        <li>• AWS Transcribe (videos &lt; 4 horas)</li>
+                        <li>• OpenAI Whisper (videos &gt; 4 horas)</li>
+                        <li>• Auto-switching inteligente</li>
+                        <li>• Diarización de speakers</li>
                       </ul>
+                    </div>
+
+                    {/* Content Generation */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <FileText className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">Generación de Contenido</h4>
+                      </div>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• DALL-E 3 imágenes (scene-first)</li>
+                        <li>• Resúmenes: conciso, completo, crítica</li>
+                        <li>• Tweets 280 chars con CTA</li>
+                        <li>• SEO descriptions optimizadas</li>
+                      </ul>
+                    </div>
+
+                    {/* Video Processing */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <Image className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">Procesamiento de Video</h4>
+                      </div>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• YouTube Shorts (9:16, max 60s)</li>
+                        <li>• TikTok format (9:16, max 180s)</li>
+                        <li>• Instagram Reels (9:16, max 90s)</li>
+                        <li>• Audio normalización LUFS -20</li>
+                      </ul>
+                    </div>
+
+                    {/* Multi-Language */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <Languages className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">Multi-Idioma</h4>
+                      </div>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• 10+ idiomas: ES, PT, FR, DE, IT, JA, KO, ZH, RU, AR</li>
+                        <li>• Adaptación cultural de modismos</li>
+                        <li>• Preserva markdown y SEO keywords</li>
+                        <li>• Límite de caracteres (Twitter 280)</li>
+                      </ul>
+                    </div>
+
+                    {/* Semantic Search */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <Search className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">Búsqueda Semántica</h4>
+                      </div>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• Cognee Framework integrado</li>
+                        <li>• Natural language queries</li>
+                        <li>• Multi-hop reasoning (3 saltos)</li>
+                        <li>• Knowledge graph 500+ nodos</li>
+                      </ul>
+                    </div>
+
+                    {/* Predictive Analytics */}
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <div className="flex items-center mb-2">
+                        <TrendingUp className="w-5 h-5 text-cyan-400 mr-2" />
+                        <h4 className="font-semibold text-cyan-300">Analytics Predictivo</h4>
+                      </div>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• Trending topics (7-30 días forecast)</li>
+                        <li>• Engagement predictions LSTM</li>
+                        <li>• Optimal posting times</li>
+                        <li>• Content saturation alerts</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Technology Stack */}
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold text-cyan-300 mb-4">
+                    Stack Tecnológico
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <h4 className="font-semibold text-cyan-400 mb-2 text-sm">Backend & AI</h4>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• Python 3.9+ / Flask</li>
+                        <li>• OpenAI GPT-4o-2024-08-06</li>
+                        <li>• Cognee Framework 0.3.4</li>
+                        <li>• PyTorch LSTM networks</li>
+                      </ul>
+                    </div>
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <h4 className="font-semibold text-cyan-400 mb-2 text-sm">Procesamiento</h4>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• AWS Transcribe + Whisper</li>
+                        <li>• FFmpeg video editing</li>
+                        <li>• DALL-E 3 imágenes</li>
+                        <li>• OpenCV computer vision</li>
+                      </ul>
+                    </div>
+                    <div className="bg-gray-900/50 rounded-lg p-4">
+                      <h4 className="font-semibold text-cyan-400 mb-2 text-sm">Infrastructure</h4>
+                      <ul className="space-y-1 text-xs text-gray-400">
+                        <li>• SQLite / PostgreSQL</li>
+                        <li>• WebSocket real-time</li>
+                        <li>• JWT + RBAC auth</li>
+                        <li>• 75+ API endpoints</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Ventajas Competitivas */}
+                <div className="mb-6">
+                  <h3 className="text-xl font-bold text-cyan-300 mb-4">
+                    Ventajas Competitivas
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    <div className="flex items-start gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-white font-semibold text-sm">Full-Stack Intelligence</p>
+                        <p className="text-gray-400 text-xs">Procesamiento end-to-end: download → analytics → content</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-white font-semibold text-sm">Automation-First</p>
+                        <p className="text-gray-400 text-xs">Auto ETL, Cognee indexing, content generation, predictions</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-white font-semibold text-sm">Semantic Layer</p>
+                        <p className="text-gray-400 text-xs">Natural language search, knowledge graph, multi-hop reasoning</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-white font-semibold text-sm">Multi-Format Output</p>
+                        <p className="text-gray-400 text-xs">Blogs, threads, clips, imágenes, audio, data exports</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-white font-semibold text-sm">Predictive & Proactive</p>
+                        <p className="text-gray-400 text-xs">Trending forecasting, engagement predictions, recommendations</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-2">
+                      <CheckCircle className="w-5 h-5 text-green-400 mt-0.5 flex-shrink-0" />
+                      <div>
+                        <p className="text-white font-semibold text-sm">Enterprise-Ready</p>
+                        <p className="text-gray-400 text-xs">JWT + RBAC, WebSocket analytics, multi-usuario, audit trail</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1133,28 +1205,20 @@ const ServicesPage = () => {
                 {/* Stats */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
                   <div className="bg-gray-900/50 rounded-lg p-3 text-center">
-                    <p className="text-2xl font-bold text-cyan-400">
-                      {t('services.abracadabraExpanded.stats.streams')}
-                    </p>
-                    <p className="text-gray-400 text-xs">Procesados</p>
+                    <p className="text-2xl font-bold text-cyan-400">70+</p>
+                    <p className="text-gray-400 text-xs">Streams Procesados</p>
                   </div>
                   <div className="bg-gray-900/50 rounded-lg p-3 text-center">
-                    <p className="text-2xl font-bold text-cyan-400">
-                      {t('services.abracadabraExpanded.stats.topics')}
-                    </p>
-                    <p className="text-gray-400 text-xs">Topics</p>
+                    <p className="text-2xl font-bold text-cyan-400">640+</p>
+                    <p className="text-gray-400 text-xs">Topics Indexados</p>
                   </div>
                   <div className="bg-gray-900/50 rounded-lg p-3 text-center">
-                    <p className="text-2xl font-bold text-cyan-400">
-                      {t('services.abracadabraExpanded.stats.endpoints')}
-                    </p>
+                    <p className="text-2xl font-bold text-cyan-400">75+</p>
                     <p className="text-gray-400 text-xs">API Endpoints</p>
                   </div>
                   <div className="bg-gray-900/50 rounded-lg p-3 text-center">
-                    <p className="text-2xl font-bold text-cyan-400">
-                      {t('services.abracadabraExpanded.stats.phases')}
-                    </p>
-                    <p className="text-gray-400 text-xs">Fases</p>
+                    <p className="text-2xl font-bold text-cyan-400">6</p>
+                    <p className="text-gray-400 text-xs">Fases Completas</p>
                   </div>
                 </div>
 
@@ -1162,9 +1226,7 @@ const ServicesPage = () => {
                 <footer className="border-t border-gray-800 pt-6">
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <a
-                      href="https://github.com/yourusername/abracadabra"
-                      target="_blank"
-                      rel="noopener noreferrer"
+                      href="mailto:ultravioletadao@gmail.com?subject=Consulta sobre Abracadabra"
                       className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 rounded-lg transition-all"
                     >
                       <BookOpen className="w-5 h-5 mr-2" aria-hidden="true" />
@@ -1191,40 +1253,11 @@ const ServicesPage = () => {
           <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-cyan-500/30">
             <h3 className="text-2xl font-bold text-cyan-300 mb-4 flex items-center">
               <Sparkles className="w-6 h-6 mr-2" />
-              Abracadabra - Preguntas Frecuentes
+              {t('services.abracadabraExpanded.faqs.title')}
             </h3>
 
             <div className="space-y-3">
-              {[
-                {
-                  question: "¿Qué es Abracadabra?",
-                  answer: "Abracadabra es una plataforma integral de análisis de streams y content intelligence que transforma videos de Twitch en contenido procesable, buscable y reutilizable usando IA avanzada. Incluye 5 fases completas: Analytics, Time Machine, Semantic Search, Content Intelligence y Predictive Analytics."
-                },
-                {
-                  question: "¿Qué tipo de contenido puede generar automáticamente?",
-                  answer: "Abracadabra puede generar automáticamente blogs en markdown (1500+ palabras), Twitter threads optimizados (280 chars/tweet), clips de video con FFmpeg, imágenes con DALL-E 3/GPT-Image-1, traducciones multi-idioma (10+ idiomas), y resúmenes personalizados. Todo con 56+ API endpoints REST."
-                },
-                {
-                  question: "¿Cómo funciona la búsqueda semántica?",
-                  answer: "Abracadabra usa Cognee framework con embeddings de OpenAI para búsqueda en lenguaje natural. Puedes preguntar '¿Qué dijo sobre NFTs?' y el sistema encuentra contenido relevante entendiendo sinónimos, contexto e intenciones. Incluye un knowledge graph con 500+ nodos y multi-hop reasoning hasta 3 saltos."
-                },
-                {
-                  question: "¿Qué datos ha procesado Abracadabra?",
-                  answer: "Actualmente ha procesado 70+ streams de Twitch, indexado 640+ topics en Cognee, y tiene un sistema de análisis completo con SQLite + vector store. El procesamiento es completamente automático: descarga, transcripción dual (AWS Transcribe + Whisper), análisis con GPT-4o, y auto-indexing post-procesamiento."
-                },
-                {
-                  question: "How much does Abracadabra cost?",
-                  answer: "Abracadabra is currently in pre-order phase with special early access pricing for UltraVioleta DAO members. The platform will offer different tiers: Free tier (limited queries), Pro tier for content creators, and Enterprise tier for agencies and brands. Contact us for custom pricing and early access."
-                },
-                {
-                  question: "Can Abracadabra analyze YouTube or other platforms?",
-                  answer: "While currently focused on Twitch streams, Abracadabra's architecture supports multi-platform expansion. The same AI pipeline (transcription, semantic analysis, content generation) can process YouTube videos, podcasts, webinars, and any video/audio content. Platform expansion is planned for Q2 2025."
-                },
-                {
-                  question: "What makes Abracadabra's semantic search unique?",
-                  answer: "Abracadabra uses Cognee framework with OpenAI embeddings to understand context and meaning, not just keywords. It features a knowledge graph with 500+ nodes enabling multi-hop reasoning up to 3 levels deep, natural language queries in any language, and temporal search to find content from specific time periods. This allows queries like 'What did they say about NFTs last month?' to return accurate, contextual results."
-                }
-              ].map((faq, index) => (
+              {['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7'].map((faqKey, index) => (
                 <div
                   key={index}
                   itemScope
@@ -1237,7 +1270,7 @@ const ServicesPage = () => {
                     className="w-full text-left p-4 flex items-center justify-between hover:bg-cyan-900/10 transition-colors"
                   >
                     <h4 itemProp="name" className="text-lg font-semibold text-white pr-4">
-                      {faq.question}
+                      {t(`services.abracadabraExpanded.faqs.${faqKey}.question`)}
                     </h4>
                     <span className={`text-cyan-400 transform transition-transform ${abracadabraFaqsOpen[index] ? 'rotate-180' : ''}`}>
                       ▼
@@ -1251,7 +1284,7 @@ const ServicesPage = () => {
                       className="px-4 pb-4"
                     >
                       <p itemProp="text" className="text-gray-300">
-                        {faq.answer}
+                        {t(`services.abracadabraExpanded.faqs.${faqKey}.answer`)}
                       </p>
                     </div>
                   )}
