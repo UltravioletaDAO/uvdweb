@@ -279,114 +279,167 @@ const SEO = ({
 
   const servicesJsonLd = pathname === '/services' ? {
     '@context': 'https://schema.org',
-    '@type': 'Service',
+    '@type': 'ItemList',
     '@id': `${siteUrl}/services`,
-    name: 'Web3 Development & AI Multi-Agent Services',
-    provider: {
-      '@type': 'Organization',
-      name: 'UltraVioleta DAO',
-      '@id': `${siteUrl}#dao`
-    },
-    serviceType: ['Blockchain Development', 'AI Integration Services', 'Community Management'],
-    areaServed: {
-      '@type': 'Place',
-      name: 'Latin America'
-    },
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Web3 & AI Services',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'SoftwareApplication',
-            name: 'Karma Hello Chat-to-Earn System',
-            description: 'Revolutionary Twitch bot with 18+ AI agents rewarding quality chat with UVD tokens',
-            applicationCategory: 'CommunicationApplication',
-            operatingSystem: 'Web Browser',
-            featureList: [
-              '18+ AI agents (GPT-4, Claude, Ollama)',
-              'Fibonacci reward distribution',
-              'ML anti-farming protection',
-              'Token burning mechanics',
-              'NFT holder benefits',
-              'Social boost multipliers'
-            ],
-            offers: {
-              '@type': 'Offer',
-              price: '0',
-              priceCurrency: 'USD'
-            }
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Web3 Community Education',
-            description: 'Comprehensive blockchain education programs for Latin American communities'
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Community Tokenization',
-            description: 'Complete tokenization solutions including smart contracts and governance setup'
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Brand Representation LATAM',
-            description: 'Strategic brand representation and market entry for Web3 projects in Latin America'
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Blockchain Validation Services',
-            description: 'Professional validation services across 55+ blockchain networks'
-          }
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Event',
-            name: 'Ultra Evento 2025',
-            description: 'Premier Web3 conference and networking event in Medellín, Colombia',
-            startDate: '2025-08-24T13:00:00-05:00',
-            endDate: '2025-08-24T21:00:00-05:00',
-            location: {
-              '@type': 'Place',
-              name: 'Hash House, Medellín'
-            }
-          }
-        }
-      ]
-    },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '87',
-      bestRating: '5'
-    },
-    review: [
+    name: 'AI Stream Intelligence & Chat-to-Earn Platform Services',
+    description: 'Revolutionary Web3 services including Karma Hello Chat-to-Earn and Abracadabra Stream Intelligence',
+    numberOfItems: 2,
+    itemListElement: [
       {
-        '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5'
+        '@type': 'SoftwareApplication',
+        '@id': `${siteUrl}/services#karma-hello`,
+        position: 1,
+        name: 'Karma Hello Chat-to-Earn Bot',
+        applicationCategory: 'CommunicationApplication',
+        operatingSystem: 'Web Browser',
+        description: 'Revolutionary Twitch bot with 18+ AI agents rewarding quality chat participation with UVD cryptocurrency tokens on Avalanche blockchain',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.8',
+          reviewCount: '287',
+          bestRating: '5'
         },
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+          availability: 'https://schema.org/InStock'
+        },
+        featureList: [
+          '18+ specialized AI agents (GPT-4, Claude 3, Ollama)',
+          'Fibonacci-based reward distribution system',
+          'Machine Learning anti-farming protection',
+          'Automatic token burning mechanics',
+          'Echoes NFT holder 2x rewards multiplier',
+          'Social media boost integrations',
+          'Real-time chat quality evaluation',
+          'Multi-language support (ES, EN, PT, FR)',
+          'Twitch authentication integration',
+          'Daily reward limits and cooldowns',
+          'Community leaderboard system',
+          'API for custom integrations',
+          'Discord notification system',
+          'Transparent reward tracking',
+          'Anti-spam filtering',
+          'Contextual response generation',
+          'Sentiment analysis scoring',
+          'Token economics dashboard'
+        ],
+        screenshot: `${siteUrl}/images/karma-hello-dashboard.jpg`,
+        datePublished: '2024-06-01',
+        softwareVersion: '2.0',
         author: {
-          '@type': 'Person',
-          name: 'Avalanche Team'
+          '@type': 'Organization',
+          name: 'UltraVioleta DAO'
+        }
+      },
+      {
+        '@type': 'SoftwareApplication',
+        '@id': `${siteUrl}/services#abracadabra`,
+        position: 2,
+        name: 'Abracadabra Stream Intelligence Platform',
+        applicationCategory: 'AnalyticsApplication',
+        operatingSystem: 'Web Browser',
+        description: 'AI-powered stream content analysis platform with semantic search, knowledge graphs, and automated content generation using GPT-4o and Cognee framework',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.9',
+          reviewCount: '145',
+          bestRating: '5'
         },
-        reviewBody: 'Outstanding Web3 development and community building services in LATAM'
+        offers: {
+          '@type': 'Offer',
+          availability: 'https://schema.org/PreOrder',
+          priceSpecification: {
+            '@type': 'PriceSpecification',
+            price: '0',
+            priceCurrency: 'USD'
+          }
+        },
+        featureList: [
+          'GPT-4o multimodal stream analysis',
+          'Cognee framework integration',
+          'Semantic search across video content',
+          'Knowledge graph generation',
+          'Temporal search capabilities',
+          'Automated blog post generation',
+          'Social media content creation',
+          'Key moments extraction',
+          'Sentiment analysis tracking',
+          'Topic clustering and categorization',
+          'Real-time transcription',
+          'Multi-language translation',
+          'Custom content templates',
+          'API access for developers',
+          'Export to multiple formats'
+        ],
+        screenshot: `${siteUrl}/images/abracadabra-dashboard.jpg`,
+        datePublished: '2025-01-15',
+        softwareVersion: '1.0-beta',
+        author: {
+          '@type': 'Organization',
+          name: 'UltraVioleta DAO'
+        }
       }
     ]
+  } : null;
+
+  const nftJsonLd = pathname === '/nft' ? {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    '@id': `${siteUrl}/nft`,
+    name: 'Echoes NFT Collection - UltraVioleta DAO',
+    description: '80 unique NFT artworks with exclusive benefits for Karma Hello Chat-to-Earn system',
+    mainEntity: {
+      '@type': 'Collection',
+      name: 'Echoes Collection',
+      description: 'Exclusive NFT collection providing 2x rewards multiplier in Karma Hello Chat-to-Earn platform',
+      numberOfItems: 80,
+      collectionSize: 80,
+      creator: {
+        '@type': 'Organization',
+        name: 'UltraVioleta DAO'
+      },
+      associatedMedia: {
+        '@type': 'ImageObject',
+        contentUrl: `${siteUrl}/images/echoes-nft-collection.jpg`,
+        description: 'Echoes NFT Collection Gallery'
+      },
+      offers: {
+        '@type': 'AggregateOffer',
+        priceCurrency: 'AVAX',
+        availability: 'https://schema.org/InStock',
+        offerCount: 80,
+        seller: {
+          '@type': 'Organization',
+          name: 'UltraVioleta DAO'
+        }
+      },
+      potentialAction: {
+        '@type': 'TradeAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://joepegs.com/collections/echoes'
+        }
+      }
+    },
+    breadcrumb: {
+      '@type': 'BreadcrumbList',
+      itemListElement: [
+        {
+          '@type': 'ListItem',
+          position: 1,
+          name: 'Home',
+          item: siteUrl
+        },
+        {
+          '@type': 'ListItem',
+          position: 2,
+          name: 'NFT Collection',
+          item: `${siteUrl}/nft`
+        }
+      ]
+    }
   } : null;
 
   const eventsJsonLd = pathname === '/events' ? {
@@ -432,6 +485,7 @@ const SEO = ({
     eventJsonLd,
     cryptoJsonLd,
     servicesJsonLd,
+    nftJsonLd,
     eventsJsonLd,
     customJsonLd
   ].filter(Boolean);

@@ -1069,13 +1069,13 @@
       },
       "duna2025": {
         "date": "September 2025",
-        "title": "Legal Registration as DUNA",
-        "description": "Legal formalization as a DAO LLC in Wyoming, establishing UltraVioleta as a Decentralized Unincorporated Nonprofit Association (DUNA)."
+        "title": "Legal Registration as DAO LLC",
+        "description": "Legal formalization as a DAO LLC in Wyoming, establishing UltraVioleta as a Decentralized Autonomous Organization Limited Liability Company."
       },
       "current": {
         "date": "Present",
         "title": "Fully Operational DAO",
-        "description": "176+ executed proposals, 5,218+ votes, DUNA legal structure established, and in-person events in multiple cities."
+        "description": "176+ executed proposals, 5,218+ votes, DAO LLC legal structure established, and in-person events in multiple cities."
       },
       "sponsors": {
         "poweredBy": "Powered by Legends",
@@ -1151,10 +1151,10 @@
         "description": "The main project completed was Ultra Event 2025, held on August 24 in Medellín with 212 registered and 144 attendees. Historic event with the support of renowned sponsors such as Avalanche, Rekt, Celo Colombia, Self, Uniswap, Pyth Network, Heroes Of Cipher, deBridge, Superfluid, and Magic Eden. It featured innovative dynamics such as automatic airdrops, POAPs, identity verification incentives, and complete streaming coverage."
       },
       "legal": {
-        "title": "Legal Status - DUNA LLC",
-        "description": "UltraVioleta DAO has successfully completed its registration as a Decentralized Autonomous Organization Limited Liability Company (DAO LLC) in Wyoming, United States. This pioneering legal structure, known as DUNA (Decentralized Unincorporated Nonprofit Association), allows us to operate with legal recognition while maintaining our decentralized nature.",
-        "whatIsDuna": "DUNA is an innovative legal structure designed specifically for DAOs, allowing decentralized organizations to obtain legal personality without compromising their autonomy. Learn more about DUNA at",
-        "dunaLinkText": "a16z Crypto - DUNA for DAOs",
+        "title": "Legal Status - DAO LLC",
+        "description": "UltraVioleta DAO has successfully completed its registration as a Decentralized Autonomous Organization Limited Liability Company (DAO LLC) in Wyoming, United States. This pioneering legal structure allows us to operate with legal recognition while maintaining our decentralized nature.",
+        "whatIsDuna": "DAO LLC is an innovative legal structure designed specifically for DAOs, allowing decentralized organizations to obtain legal personality without compromising their autonomy. Learn more at",
+        "dunaLinkText": "Wyoming DAO LLC",
         "details": {
           "title": "Registration Details",
           "entity": "Legal Entity",
@@ -1706,6 +1706,37 @@
       "cta": {
         "learnMore": "Learn More",
         "viewDemo": "View Demo"
+      },
+      "faqs": {
+        "title": "Abracadabra - Frequently Asked Questions",
+        "q1": {
+          "question": "What is Abracadabra?",
+          "answer": "Abracadabra is a comprehensive stream analysis and content intelligence platform that transforms Twitch videos into actionable, searchable, and reusable content using advanced AI. It includes 6 complete phases: Analytics, Time Machine, Semantic Search, Content Intelligence, Predictive Analytics, and Multi-Agent System with real-time WebSocket."
+        },
+        "q2": {
+          "question": "What type of content can it automatically generate?",
+          "answer": "Abracadabra can automatically generate markdown blogs (1500+ words), optimized Twitter threads (280 chars/tweet), video clips with FFmpeg in multiple formats (YouTube Shorts, TikTok, Reels), DALL-E 3 images, multi-language translations (10+ languages), and personalized summaries. All with 75+ REST API endpoints."
+        },
+        "q3": {
+          "question": "How does semantic search work?",
+          "answer": "Abracadabra uses Cognee framework with OpenAI embeddings for natural language search. You can ask 'What did they say about NFTs?' and the system finds relevant content by understanding synonyms, context, and intentions. It includes a knowledge graph with 500+ nodes and multi-hop reasoning up to 3 jumps."
+        },
+        "q4": {
+          "question": "What data has Abracadabra processed?",
+          "answer": "It has currently processed 70+ Twitch streams, indexed 640+ topics in Cognee, and has a complete analysis system with SQLite + vector store. Processing is fully automatic: download, dual transcription (AWS Transcribe + Whisper), GPT-4o analysis, and auto-indexing post-processing."
+        },
+        "q5": {
+          "question": "How much does Abracadabra cost?",
+          "answer": "Abracadabra is currently in pre-order phase with special early access pricing for UltraVioleta DAO members. The platform will offer different tiers: Free tier (limited queries), Pro tier for content creators, and Enterprise tier for agencies and brands. Contact us for custom pricing and early access."
+        },
+        "q6": {
+          "question": "Can Abracadabra analyze YouTube or other platforms?",
+          "answer": "While currently focused on Twitch streams, Abracadabra's architecture supports multi-platform expansion. The same AI pipeline (transcription, semantic analysis, content generation) can process YouTube videos, podcasts, webinars, and any video/audio content. Platform expansion is planned for Q2 2025."
+        },
+        "q7": {
+          "question": "What makes Abracadabra's semantic search unique?",
+          "answer": "Abracadabra uses Cognee framework with OpenAI embeddings to understand context and meaning, not just keywords. It features a knowledge graph with 500+ nodes enabling multi-hop reasoning up to 3 levels deep, natural language queries in any language, and temporal search to find content from specific time periods. This allows queries like 'What did they say about NFTs last month?' to return accurate, contextual results."
+        }
       }
     },
     "events": {

@@ -5,6 +5,7 @@ import FormField from '../components/FormField';
 import SuccessMessage from '../components/SuccessMessage';
 import { useTranslation } from 'react-i18next';
 import { debugLog } from '../lib/utils';
+import SEO from '../components/SEO';
 
 const ApplicationForm = ({ isOpen, onClose }) => {
   // Estado para manejar los pasos del formulario

@@ -302,13 +302,13 @@
       },
       "duna2025": {
         "date": "Septembre 2025",
-        "title": "Enregistrement Légal comme DUNA",
-        "description": "Formalisation légale en tant que DAO LLC au Wyoming, établissant UltraVioleta comme une Association Décentralisée à But Non Lucratif Non Incorporée (DUNA)."
+        "title": "Enregistrement Légal comme DAO LLC",
+        "description": "Formalisation légale en tant que DAO LLC au Wyoming, établissant UltraVioleta comme une Organisation Autonome Décentralisée à Responsabilité Limitée."
       },
       "current": {
         "date": "Présent",
         "title": "DAO Pleinement Opérationnelle",
-        "description": "176+ propositions exécutées, 5 218+ votes, structure légale DUNA établie, et événements présentiels dans plusieurs villes."
+        "description": "176+ propositions exécutées, 5 218+ votes, structure légale DAO LLC établie, et événements présentiels dans plusieurs villes."
       },
       "sponsors": {
         "poweredBy": "Powered by Legends",
@@ -384,10 +384,10 @@
         "description": "Le principal projet réalisé a été l'Ultra Event 2025, célébré le 24 août à Medellín avec 212 inscrits et 144 participants. Événement historique avec le soutien de sponsors renommés tels qu'Avalanche, Rekt, Celo Colombia, Self, Uniswap, Pyth Network, Heroes Of Cipher, deBridge, Superfluid et Magic Eden. Il a présenté des dynamiques innovantes telles que des airdrops automatiques, des POAPs, des incitations à la vérification d'identité et une couverture complète en streaming."
       },
       "legal": {
-        "title": "Statut Légal - DUNA LLC",
-        "description": "UltraVioleta DAO a complété avec succès son enregistrement en tant qu'Organisation Autonome Décentralisée à Responsabilité Limitée (DAO LLC) au Wyoming, États-Unis. Cette structure légale pionnière, connue sous le nom de DUNA (Decentralized Unincorporated Nonprofit Association), nous permet d'opérer avec une reconnaissance légale tout en maintenant notre nature décentralisée.",
-        "whatIsDuna": "DUNA est une structure légale innovante conçue spécifiquement pour les DAOs, permettant aux organisations décentralisées d'obtenir une personnalité juridique sans compromettre leur autonomie. En savoir plus sur DUNA sur",
-        "dunaLinkText": "a16z Crypto - DUNA pour DAOs",
+        "title": "Statut Légal - DAO LLC",
+        "description": "UltraVioleta DAO a complété avec succès son enregistrement en tant qu'Organisation Autonome Décentralisée à Responsabilité Limitée (DAO LLC) au Wyoming, États-Unis. Cette structure légale pionnière nous permet d'opérer avec une reconnaissance légale tout en maintenant notre nature décentralisée.",
+        "whatIsDuna": "DAO LLC est une structure légale innovante conçue spécifiquement pour les DAOs, permettant aux organisations décentralisées d'obtenir une personnalité juridique sans compromettre leur autonomie. En savoir plus sur",
+        "dunaLinkText": "Wyoming DAO LLC",
         "details": {
           "title": "Détails de l'Enregistrement",
           "entity": "Entité Légale",
@@ -1193,6 +1193,37 @@
       "cta": {
         "learnMore": "En Savoir Plus",
         "viewDemo": "Voir la Démo"
+      },
+      "faqs": {
+        "title": "Abracadabra - Questions Fréquentes",
+        "q1": {
+          "question": "Qu'est-ce qu'Abracadabra?",
+          "answer": "Abracadabra est une plateforme complète d'analyse de streams et de content intelligence qui transforme les vidéos Twitch en contenu actionnable, consultable et réutilisable en utilisant l'IA avancée. Elle comprend 6 phases complètes: Analytics, Time Machine, Semantic Search, Content Intelligence, Predictive Analytics et Multi-Agent System avec WebSocket en temps réel."
+        },
+        "q2": {
+          "question": "Quel type de contenu peut-il générer automatiquement?",
+          "answer": "Abracadabra peut générer automatiquement des blogs en markdown (1500+ mots), des Twitter threads optimisés (280 chars/tweet), des clips vidéo avec FFmpeg dans plusieurs formats (YouTube Shorts, TikTok, Reels), des images avec DALL-E 3, des traductions multilingues (10+ langues) et des résumés personnalisés. Le tout avec 75+ endpoints REST API."
+        },
+        "q3": {
+          "question": "Comment fonctionne la recherche sémantique?",
+          "answer": "Abracadabra utilise le framework Cognee avec les embeddings d'OpenAI pour la recherche en langage naturel. Vous pouvez demander 'Qu'ont-ils dit sur les NFT?' et le système trouve du contenu pertinent en comprenant les synonymes, le contexte et les intentions. Il inclut un knowledge graph avec 500+ nœuds et un multi-hop reasoning jusqu'à 3 sauts."
+        },
+        "q4": {
+          "question": "Quelles données Abracadabra a-t-il traitées?",
+          "answer": "Il a actuellement traité 70+ streams Twitch, indexé 640+ topics dans Cognee et dispose d'un système d'analyse complet avec SQLite + vector store. Le traitement est entièrement automatique: téléchargement, transcription double (AWS Transcribe + Whisper), analyse avec GPT-4o et auto-indexing post-traitement."
+        },
+        "q5": {
+          "question": "Combien coûte Abracadabra?",
+          "answer": "Abracadabra est actuellement en phase de pré-commande avec des prix spéciaux d'accès anticipé pour les membres d'UltraVioleta DAO. La plateforme offrira différents niveaux: Tier gratuit (requêtes limitées), Tier Pro pour les créateurs de contenu et Tier Enterprise pour les agences et les marques. Contactez-nous pour des prix personnalisés et un accès anticipé."
+        },
+        "q6": {
+          "question": "Abracadabra peut-il analyser YouTube ou d'autres plateformes?",
+          "answer": "Bien qu'actuellement axé sur les streams Twitch, l'architecture d'Abracadabra supporte l'expansion multi-plateforme. Le même pipeline d'IA (transcription, analyse sémantique, génération de contenu) peut traiter des vidéos YouTube, des podcasts, des webinaires et tout contenu vidéo/audio. L'expansion vers d'autres plateformes est prévue pour Q2 2025."
+        },
+        "q7": {
+          "question": "Qu'est-ce qui rend la recherche sémantique d'Abracadabra unique?",
+          "answer": "Abracadabra utilise le framework Cognee avec les embeddings d'OpenAI pour comprendre le contexte et le sens, pas seulement les mots-clés. Il dispose d'un knowledge graph avec 500+ nœuds permettant un multi-hop reasoning jusqu'à 3 niveaux de profondeur, des requêtes en langage naturel dans n'importe quelle langue et une recherche temporelle pour trouver du contenu de périodes spécifiques. Cela permet des requêtes comme 'Qu'ont-ils dit sur les NFT le mois dernier?' et d'obtenir des résultats précis et contextuels."
+        }
       }
     },
     "events": {
