@@ -1055,12 +1055,12 @@
         "periodDesc": "19 juin - 2 oct, 2025"
       },
       "leaderboard": {
-        "title": "Classement Complet - Tous les 81 Destinataires",
+        "title": "Classement Complet - Top 76 Destinataires",
         "rank": "Rang",
         "username": "Utilisateur",
         "wallet": "Portefeuille",
         "totalUVD": "Total UVD",
-        "scrollMessage": "Faites défiler pour voir la liste complète • 81 destinataires au total"
+        "scrollMessage": "Faites défiler pour voir la liste complète • 76 destinataires au total"
       },
       "systemHealth": {
         "title": "Santé du Système et Détails Techniques",

@@ -668,7 +668,7 @@ const ServicesPage = () => {
                     <Coins className="w-6 h-6 text-yellow-400" />
                     <TrendingUp className="w-5 h-5 text-green-400" />
                   </div>
-                  <p className="text-3xl font-bold text-white mb-1">48.5M UVD</p>
+                  <p className="text-3xl font-bold text-white mb-1">8.5M UVD</p>
                   <p className="text-sm text-gray-400">{t('services.karmaReports.metrics.totalDistributed')}</p>
                   <p className="text-xs text-gray-500 mt-2">{t('services.karmaReports.descriptions.distributedDesc')}</p>
                 </div>
@@ -678,7 +678,7 @@ const ServicesPage = () => {
                     <Users className="w-6 h-6 text-blue-400" />
                     <TrendingUp className="w-5 h-5 text-green-400" />
                   </div>
-                  <p className="text-3xl font-bold text-white mb-1">81</p>
+                  <p className="text-3xl font-bold text-white mb-1">76</p>
                   <p className="text-sm text-gray-400">{t('services.karmaReports.metrics.uniqueRecipients')}</p>
                   <p className="text-xs text-gray-500 mt-2">{t('services.karmaReports.descriptions.recipientsDesc')}</p>
                 </div>
@@ -688,7 +688,7 @@ const ServicesPage = () => {
                     <MessageCircle className="w-6 h-6 text-cyan-400" />
                     <BarChart3 className="w-5 h-5 text-purple-400" />
                   </div>
-                  <p className="text-3xl font-bold text-white mb-1">90,328</p>
+                  <p className="text-3xl font-bold text-white mb-1">50,328</p>
                   <p className="text-sm text-gray-400">{t('services.karmaReports.metrics.totalTransactions')}</p>
                   <p className="text-xs text-gray-500 mt-2">{t('services.karmaReports.descriptions.transactionsDesc')}</p>
                 </div>
@@ -698,7 +698,7 @@ const ServicesPage = () => {
                     <Award className="w-6 h-6 text-pink-400" />
                     <CheckCircle className="w-5 h-5 text-green-400" />
                   </div>
-                  <p className="text-3xl font-bold text-white mb-1">599K UVD</p>
+                  <p className="text-3xl font-bold text-white mb-1">112K UVD</p>
                   <p className="text-sm text-gray-400">{t('services.karmaReports.metrics.averagePerUser')}</p>
                   <p className="text-xs text-gray-500 mt-2">{t('services.karmaReports.descriptions.averageDesc')}</p>
                 </div>
@@ -809,11 +809,6 @@ const ServicesPage = () => {
                           { rank: 74, username: '@31226938eca215ab496ff33745b62c6716412d69', wallet: '0x31226938...412d69', total: '39' },
                           { rank: 75, username: '@8c156493f807d3fc9805a8a2858e228525cce150', wallet: '0x8c156493...cce150', total: '25' },
                           { rank: 76, username: '@24655298ccc2b18310a01cbee26b467bcdd14ebe', wallet: '0x24655298...d14ebe', total: '11' },
-                          { rank: 77, username: '@2d6bfedccf93b6a83edcf848f384f7c3db3bcdba', wallet: '0x2d6bfedc...3bcdba', total: '2' },
-                          { rank: 78, username: '@47eff4ae4c9b6593e10044225697df15e3bee80e', wallet: '0x47eff4ae...bee80e', total: '2' },
-                          { rank: 79, username: '@202eeaf7bb0727141f16e158f04342516d5d795e', wallet: '0x202eeaf7...5d795e', total: '1' },
-                          { rank: 80, username: '@c7393e2e87db0bf931b0f7c76eb97f0a5f6ac4e6', wallet: '0xc7393e2e...6ac4e6', total: '0' },
-                          { rank: 81, username: '@9546d17a4c7e4748f71f4c72ca1ab27935a3f0f5', wallet: '0x9546d17a...a3f0f5', total: '40,000,000' },
                         ].map((user, idx) => (
                           <tr key={idx} className={`hover:bg-purple-900/10 transition-colors ${idx < 3 ? 'bg-yellow-900/10' : ''}`}>
                             <td className="px-4 py-3">
