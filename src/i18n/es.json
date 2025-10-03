@@ -1339,12 +1339,12 @@
         "periodDesc": "19 junio - 2 octubre, 2025"
       },
       "leaderboard": {
-        "title": "Leaderboard Completo - Todos los 81 Recipients",
+        "title": "Leaderboard Completo - Top 76 Recipients",
         "rank": "Ranking",
         "username": "Usuario",
         "wallet": "Wallet",
         "totalUVD": "Total UVD",
-        "scrollMessage": "Haz scroll para ver la lista completa • 81 recipients totales"
+        "scrollMessage": "Haz scroll para ver la lista completa • 76 recipients totales"
       },
       "systemHealth": {
         "title": "Estado del Sistema y Detalles Técnicos",
