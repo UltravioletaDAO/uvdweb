@@ -982,23 +982,23 @@ const ServicesPage = () => {
                 </header>
 
                 <p className="text-gray-300 mb-4 text-lg" itemProp="description">
-                  <strong>Abracadabra</strong> es una plataforma empresarial de content intelligence que utiliza inteligencia artificial avanzada para transformar videos y streams en contenido procesable, búsquedas semánticas y análisis predictivo. Sistema completo end-to-end que convierte contenido audiovisual bruto en analytics estructurados, contenido derivado automático y predicciones de tendencias.
+                  {t('services.abracadabraExpanded.fullDescription')}
                 </p>
 
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
                     <Video className="w-5 h-5 text-cyan-400 mr-3" />
                     <div>
-                      <p className="text-gray-400 text-xs">Streams Procesados</p>
-                      <p className="text-white font-semibold">70+ streams indexados</p>
+                      <p className="text-gray-400 text-xs">{t('services.abracadabraExpanded.stats.streamsProcessed')}</p>
+                      <p className="text-white font-semibold">{t('services.abracadabraExpanded.stats.streamsValue')}</p>
                     </div>
                   </div>
 
                   <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
                     <Database className="w-5 h-5 text-cyan-400 mr-3" />
                     <div>
-                      <p className="text-gray-400 text-xs">Topics Indexados</p>
-                      <p className="text-white font-semibold">640+ topics en Cognee</p>
+                      <p className="text-gray-400 text-xs">{t('services.abracadabraExpanded.stats.topicsIndexed')}</p>
+                      <p className="text-white font-semibold">{t('services.abracadabraExpanded.stats.topicsValue')}</p>
                     </div>
                   </div>
                 </div>
@@ -1006,20 +1006,20 @@ const ServicesPage = () => {
                 {/* Capacidades Clave */}
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-cyan-300 mb-4">
-                    Capacidades del Sistema
+                    {t('services.abracadabraExpanded.systemCapabilities.title')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Dual Transcription */}
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <Video className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Transcripción Dual</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.dualTranscription.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• AWS Transcribe (videos &lt; 4 horas)</li>
-                        <li>• OpenAI Whisper (videos &gt; 4 horas)</li>
-                        <li>• Auto-switching inteligente</li>
-                        <li>• Diarización de speakers</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.dualTranscription.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.dualTranscription.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.dualTranscription.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.dualTranscription.item4')}</li>
                       </ul>
                     </div>
 
@@ -1027,13 +1027,13 @@ const ServicesPage = () => {
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <FileText className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Generación de Contenido</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.contentGeneration.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• DALL-E 3 imágenes (scene-first)</li>
-                        <li>• Resúmenes: conciso, completo, crítica</li>
-                        <li>• Tweets 280 chars con CTA</li>
-                        <li>• SEO descriptions optimizadas</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.contentGeneration.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.contentGeneration.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.contentGeneration.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.contentGeneration.item4')}</li>
                       </ul>
                     </div>
 
@@ -1041,13 +1041,13 @@ const ServicesPage = () => {
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <Image className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Procesamiento de Video</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.videoProcessing.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• YouTube Shorts (9:16, max 60s)</li>
-                        <li>• TikTok format (9:16, max 180s)</li>
-                        <li>• Instagram Reels (9:16, max 90s)</li>
-                        <li>• Audio normalización LUFS -20</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.videoProcessing.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.videoProcessing.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.videoProcessing.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.videoProcessing.item4')}</li>
                       </ul>
                     </div>
 
@@ -1055,13 +1055,13 @@ const ServicesPage = () => {
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <Languages className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Multi-Idioma</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.multiLanguage.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• 10+ idiomas: ES, PT, FR, DE, IT, JA, KO, ZH, RU, AR</li>
-                        <li>• Adaptación cultural de modismos</li>
-                        <li>• Preserva markdown y SEO keywords</li>
-                        <li>• Límite de caracteres (Twitter 280)</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.multiLanguage.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.multiLanguage.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.multiLanguage.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.multiLanguage.item4')}</li>
                       </ul>
                     </div>
 
@@ -1069,13 +1069,13 @@ const ServicesPage = () => {
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <Search className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Búsqueda Semántica</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.semanticSearch.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• Cognee Framework integrado</li>
-                        <li>• Natural language queries</li>
-                        <li>• Multi-hop reasoning (3 saltos)</li>
-                        <li>• Knowledge graph 500+ nodos</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.semanticSearch.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.semanticSearch.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.semanticSearch.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.semanticSearch.item4')}</li>
                       </ul>
                     </div>
 
@@ -1083,13 +1083,13 @@ const ServicesPage = () => {
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <TrendingUp className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Analytics Predictivo</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.predictiveAnalytics.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• Trending topics (7-30 días forecast)</li>
-                        <li>• Engagement predictions LSTM</li>
-                        <li>• Optimal posting times</li>
-                        <li>• Content saturation alerts</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.predictiveAnalytics.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.predictiveAnalytics.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.predictiveAnalytics.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.predictiveAnalytics.item4')}</li>
                       </ul>
                     </div>
                   </div>
@@ -1098,7 +1098,7 @@ const ServicesPage = () => {
                 {/* Technology Stack */}
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-cyan-300 mb-4">
-                    Stack Tecnológico
+                    {t('services.abracadabraExpanded.techStack.title')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="bg-gray-900/50 rounded-lg p-4">
