@@ -1272,6 +1272,111 @@
           "question": "Qu'est-ce qui rend la recherche sémantique d'Abracadabra unique?",
           "answer": "Abracadabra utilise le framework Cognee avec les embeddings d'OpenAI pour comprendre le contexte et le sens, pas seulement les mots-clés. Il dispose d'un knowledge graph avec 500+ nœuds permettant un multi-hop reasoning jusqu'à 3 niveaux de profondeur, des requêtes en langage naturel dans n'importe quelle langue et une recherche temporelle pour trouver du contenu de périodes spécifiques. Cela permet des requêtes comme 'Qu'ont-ils dit sur les NFT le mois dernier?' et d'obtenir des résultats précis et contextuels."
         }
+      },
+      "fullDescription": "Abracadabra est une plateforme d'intelligence de contenu d'entreprise qui utilise l'intelligence artificielle avancée pour transformer des vidéos et streams en contenu actionnable, recherches sémantiques et analyses prédictives. Système complet end-to-end qui convertit le contenu audiovisuel brut en analyses structurées, contenu dérivé automatiquement et prédictions de tendances.",
+      "stats": {
+        "streamsProcessed": "Streams Traités",
+        "streamsValue": "70+ streams indexés",
+        "topicsIndexed": "Topics Indexés",
+        "topicsValue": "640+ topics dans Cognee",
+        "apiEndpoints": "API Endpoints",
+        "phasesComplete": "Phases Complètes"
+      },
+      "systemCapabilities": {
+        "title": "Capacités du Système",
+        "dualTranscription": {
+          "title": "Transcription Double",
+          "item1": "AWS Transcribe (vidéos < 4 heures)",
+          "item2": "OpenAI Whisper (vidéos > 4 heures)",
+          "item3": "Auto-switching intelligent",
+          "item4": "Diarisation des speakers"
+        },
+        "contentGeneration": {
+          "title": "Génération de Contenu",
+          "item1": "Images DALL-E 3 (scene-first)",
+          "item2": "Résumés : concis, complet, critique",
+          "item3": "Tweets 280 chars avec CTA",
+          "item4": "Descriptions SEO optimisées"
+        },
+        "videoProcessing": {
+          "title": "Traitement Vidéo",
+          "item1": "YouTube Shorts (9:16, max 60s)",
+          "item2": "Format TikTok (9:16, max 180s)",
+          "item3": "Instagram Reels (9:16, max 90s)",
+          "item4": "Normalisation audio LUFS -20"
+        },
+        "multiLanguage": {
+          "title": "Multi-Langue",
+          "item1": "10+ langues : ES, PT, FR, DE, IT, JA, KO, ZH, RU, AR",
+          "item2": "Adaptation culturelle des expressions",
+          "item3": "Préserve markdown et SEO keywords",
+          "item4": "Limites de caractères (Twitter 280)"
+        },
+        "semanticSearch": {
+          "title": "Recherche Sémantique",
+          "item1": "Framework Cognee intégré",
+          "item2": "Requêtes en langage naturel",
+          "item3": "Multi-hop reasoning (3 sauts)",
+          "item4": "Knowledge graph 500+ nœuds"
+        },
+        "predictiveAnalytics": {
+          "title": "Analyse Prédictive",
+          "item1": "Trending topics (prévision 7-30 jours)",
+          "item2": "Prédictions d'engagement LSTM",
+          "item3": "Horaires de publication optimaux",
+          "item4": "Alertes de saturation de contenu"
+        }
+      },
+      "techStack": {
+        "title": "Stack Technologique",
+        "backendAI": {
+          "title": "Backend & IA",
+          "item1": "Python 3.9+ / Flask",
+          "item2": "OpenAI GPT-4o-2024-08-06",
+          "item3": "Cognee Framework 0.3.4",
+          "item4": "PyTorch LSTM networks"
+        },
+        "processing": {
+          "title": "Traitement",
+          "item1": "AWS Transcribe + Whisper",
+          "item2": "Édition vidéo FFmpeg",
+          "item3": "Images DALL-E 3",
+          "item4": "OpenCV computer vision"
+        },
+        "infrastructure": {
+          "title": "Infrastructure",
+          "item1": "SQLite / PostgreSQL",
+          "item2": "WebSocket temps réel",
+          "item3": "JWT + RBAC auth",
+          "item4": "75+ API endpoints"
+        }
+      },
+      "competitiveAdvantages": {
+        "title": "Avantages Compétitifs",
+        "fullStack": {
+          "title": "Full-Stack Intelligence",
+          "desc": "Traitement end-to-end : téléchargement → analytics → contenu"
+        },
+        "automation": {
+          "title": "Automation-First",
+          "desc": "Auto ETL, indexation Cognee, génération de contenu, prédictions"
+        },
+        "semantic": {
+          "title": "Couche Sémantique",
+          "desc": "Recherche en langage naturel, knowledge graph, multi-hop reasoning"
+        },
+        "multiFormat": {
+          "title": "Sortie Multi-Format",
+          "desc": "Blogs, threads, clips, images, audio, exports de données"
+        },
+        "predictive": {
+          "title": "Prédictif & Proactif",
+          "desc": "Prévision de tendances, prédictions d'engagement, recommandations"
+        },
+        "enterprise": {
+          "title": "Enterprise-Ready",
+          "desc": "JWT + RBAC, analytics WebSocket, multi-utilisateur, audit trail"
+        }
       }
     },
     "events": {
