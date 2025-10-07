@@ -1177,9 +1177,26 @@
     "products": {
       "title": "Productos",
       "book": {
-        "title": "Libro por Luis Alfonso Jaramillo",
-        "author": "Por @lualjarami - Miembro de UltraVioleta DAO",
-        "description": "Un libro escrito por uno de nuestros miembros más activos de la comunidad, dedicando parte de sus ganancias al DAO.",
+        "title": "Ecos del Ayer: Lo Que El Tiempo No Borró",
+        "subtitle": "Edición en Español - Kindle Edition",
+        "author": "Por Luis Alfonso Jaramillo Gallego",
+        "editor": "Editor: Saul Jaramillo",
+        "memberTag": "Miembro de UltraVioleta DAO (@lualjarami)",
+        "format": "Formato: Kindle Edition",
+        "description": "Ecos del Ayer: Lo Que El Tiempo No Borró es una memoria autobiográfica de Luis Alfonso Jaramillo Gallego, que recorre con honestidad y profundidad las múltiples etapas de su vida: desde la niñez hasta la vejez, pasando por transformaciones personales, desafíos sociales y reconciliaciones espirituales.",
+        "contentTitle": "El libro relata:",
+        "content": {
+          "item1": "Su infancia en un entorno rural que sembró los valores fundamentales de su carácter.",
+          "item2": "El tránsito a la adolescencia y los conflictos internos y sociales que vivió en la ciudad.",
+          "item3": "Su camino profesional como abogado en Colombia, enfrentando un sistema judicial lleno de contradicciones.",
+          "item4": "El exilio forzado a Estados Unidos por la violencia, donde asumió nuevos oficios y responsabilidades.",
+          "item5": "Su surgimiento como vendedor e importador, y su compromiso con la familia.",
+          "item6": "Su vida en pareja, basada en el amor, la comprensión, la tolerancia y el perdón como pilares esenciales de la familia.",
+          "item7": "Experiencias límite que lo confrontaron con la fragilidad de la vida y el valor de la libertad.",
+          "item8": "El reencuentro con sus raíces judías en la madurez como parte de un proceso de sanación interior.",
+          "item9": "Reflexiones sobre los cambios tecnológicos, culturales y espirituales que marcaron su generación."
+        },
+        "conclusion": "Más que una simple autobiografía, esta obra es una invitación a honrar la vida vivida, comprender el propósito individual y aceptar que, aún en los momentos más oscuros, siempre hay una luz dispuesta a guiarnos hacia la transformación y la sanación.",
         "benefit1": "60% de las ganancias van directamente al multisig del DAO",
         "benefit2": "50% devuelto en tokens UVD (exclusivo para miembros del DAO)",
         "buyButton": "Comprar en Amazon"

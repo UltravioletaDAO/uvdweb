@@ -1486,46 +1486,70 @@ const ServicesPage = () => {
               transition={{ duration: 0.3 }}
               className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-xl p-8 border border-purple-500/30 hover:border-purple-400/50 transition-all"
             >
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-3 text-purple-300">
+              <div className="flex flex-col gap-6">
+                <div>
+                  <h3 className="text-2xl font-bold mb-2 text-purple-300">
                     {t('services.products.book.title')}
                   </h3>
-                  <p className="text-gray-300 mb-4">
-                    {t('services.products.book.author')}
-                  </p>
-                  <p className="text-gray-400 mb-6">
+                  <p className="text-sm text-gray-400 mb-2">{t('services.products.book.subtitle')}</p>
+                  <p className="text-gray-300 text-sm mb-1">{t('services.products.book.author')}</p>
+                  <p className="text-gray-300 text-sm mb-1">{t('services.products.book.editor')}</p>
+                  <p className="text-purple-400 text-sm mb-3">{t('services.products.book.memberTag')}</p>
+                </div>
+
+                <div>
+                  <p className="text-gray-300 mb-4 leading-relaxed">
                     {t('services.products.book.description')}
                   </p>
 
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center">
-                      <Gift className="w-5 h-5 text-pink-400 mr-3" />
-                      <p className="text-sm text-gray-300">
-                        {t('services.products.book.benefit1')}
-                      </p>
-                    </div>
-                    <div className="flex items-center">
-                      <Coins className="w-5 h-5 text-pink-400 mr-3" />
-                      <p className="text-sm text-gray-300">
-                        {t('services.products.book.benefit2')}
-                      </p>
-                    </div>
-                  </div>
+                  <h4 className="text-lg font-semibold text-purple-300 mb-3">
+                    {t('services.products.book.contentTitle')}
+                  </h4>
+                  <ul className="space-y-2 mb-4 text-gray-400 text-sm">
+                    <li>• {t('services.products.book.content.item1')}</li>
+                    <li>• {t('services.products.book.content.item2')}</li>
+                    <li>• {t('services.products.book.content.item3')}</li>
+                    <li>• {t('services.products.book.content.item4')}</li>
+                    <li>• {t('services.products.book.content.item5')}</li>
+                    <li>• {t('services.products.book.content.item6')}</li>
+                    <li>• {t('services.products.book.content.item7')}</li>
+                    <li>• {t('services.products.book.content.item8')}</li>
+                    <li>• {t('services.products.book.content.item9')}</li>
+                  </ul>
 
-                  <div className="flex flex-wrap gap-4">
-                    <a
-                      href="https://www.amazon.com/dp/B0FMQPFTVL"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
-                    >
-                      <ShoppingCart className="w-5 h-5 mr-2" />
-                      {t('services.products.book.buyButton')}
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </a>
+                  <p className="text-gray-300 mb-6 leading-relaxed italic border-l-4 border-purple-500 pl-4">
+                    {t('services.products.book.conclusion')}
+                  </p>
+                </div>
+
+                <div className="space-y-3 mb-4 pt-4 border-t border-purple-500/30">
+                  <div className="flex items-center">
+                    <Gift className="w-5 h-5 text-pink-400 mr-3 flex-shrink-0" />
+                    <p className="text-sm text-gray-300">
+                      {t('services.products.book.benefit1')}
+                    </p>
+                  </div>
+                  <div className="flex items-center">
+                    <Coins className="w-5 h-5 text-pink-400 mr-3 flex-shrink-0" />
+                    <p className="text-sm text-gray-300">
+                      {t('services.products.book.benefit2')}
+                    </p>
                   </div>
                 </div>
+
+                <div className="flex flex-wrap gap-4">
+                  <a
+                    href="https://www.amazon.com/dp/B0FMQPFTVL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
+                  >
+                    <ShoppingCart className="w-5 h-5 mr-2" />
+                    {t('services.products.book.buyButton')}
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
+                </div>
+              </div>
               </div>
             </motion.div>
           </div>

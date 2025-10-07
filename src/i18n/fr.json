@@ -893,9 +893,26 @@
     "products": {
       "title": "Produits",
       "book": {
-        "title": "Livre de Luis Alfonso Jaramillo",
-        "author": "Par @lualjarami - Membre d'UltraVioleta DAO",
-        "description": "Un livre écrit par l'un de nos membres les plus actifs de la communauté, dédiant une partie des bénéfices au DAO.",
+        "title": "Échos d'Hier : Ce Que le Temps N'a Pas Effacé",
+        "subtitle": "Édition en Espagnol - Kindle Edition",
+        "author": "Par Luis Alfonso Jaramillo Gallego",
+        "editor": "Éditeur : Saul Jaramillo",
+        "memberTag": "Membre d'UltraVioleta DAO (@lualjarami)",
+        "format": "Format : Kindle Edition",
+        "description": "Échos d'Hier : Ce Que le Temps N'a Pas Effacé est un mémoire autobiographique de Luis Alfonso Jaramillo Gallego, qui parcourt avec honnêteté et profondeur les multiples étapes de sa vie : de l'enfance à la vieillesse, en passant par des transformations personnelles, des défis sociaux et des réconciliations spirituelles.",
+        "contentTitle": "Le livre raconte :",
+        "content": {
+          "item1": "Son enfance dans un environnement rural qui a planté les valeurs fondamentales de son caractère.",
+          "item2": "La transition vers l'adolescence et les conflits internes et sociaux qu'il a vécus en ville.",
+          "item3": "Son parcours professionnel comme avocat en Colombie, confronté à un système judiciaire plein de contradictions.",
+          "item4": "L'exil forcé aux États-Unis en raison de la violence, où il a assumé de nouveaux métiers et responsabilités.",
+          "item5": "Son émergence en tant que vendeur et importateur, et son engagement envers la famille.",
+          "item6": "Sa vie en couple, basée sur l'amour, la compréhension, la tolérance et le pardon comme piliers essentiels de la famille.",
+          "item7": "Des expériences limites qui l'ont confronté à la fragilité de la vie et à la valeur de la liberté.",
+          "item8": "Le retour à ses racines juives à maturité dans le cadre d'un processus de guérison intérieure.",
+          "item9": "Réflexions sur les changements technologiques, culturels et spirituels qui ont marqué sa génération."
+        },
+        "conclusion": "Plus qu'une simple autobiographie, cet ouvrage est une invitation à honorer la vie vécue, comprendre le but individuel et accepter que, même dans les moments les plus sombres, il y a toujours une lumière prête à nous guider vers la transformation et la guérison.",
         "benefit1": "60% des bénéfices vont directement au multisig du DAO",
         "benefit2": "50% remboursé en tokens UVD (exclusif aux membres du DAO)",
         "buyButton": "Acheter sur Amazon"

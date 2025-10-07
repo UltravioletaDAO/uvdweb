@@ -896,9 +896,26 @@
     "products": {
       "title": "Produtos",
       "book": {
-        "title": "Livro de Luis Alfonso Jaramillo",
-        "author": "Por @lualjarami - Membro do UltraVioleta DAO",
-        "description": "Um livro escrito por um dos nossos membros mais ativos da comunidade, dedicando parte dos lucros ao DAO.",
+        "title": "Ecos do Ontem: O Que o Tempo Não Apagou",
+        "subtitle": "Edição em Espanhol - Kindle Edition",
+        "author": "Por Luis Alfonso Jaramillo Gallego",
+        "editor": "Editor: Saul Jaramillo",
+        "memberTag": "Membro do UltraVioleta DAO (@lualjarami)",
+        "format": "Formato: Kindle Edition",
+        "description": "Ecos do Ontem: O Que o Tempo Não Apagou é uma memória autobiográfica de Luis Alfonso Jaramillo Gallego, que percorre com honestidade e profundidade as múltiplas etapas de sua vida: desde a infância até a velhice, passando por transformações pessoais, desafios sociais e reconciliações espirituais.",
+        "contentTitle": "O livro relata:",
+        "content": {
+          "item1": "Sua infância em um ambiente rural que plantou os valores fundamentais de seu caráter.",
+          "item2": "A transição para a adolescência e os conflitos internos e sociais que viveu na cidade.",
+          "item3": "Seu caminho profissional como advogado na Colômbia, enfrentando um sistema judicial cheio de contradições.",
+          "item4": "O exílio forçado para os Estados Unidos devido à violência, onde assumiu novos ofícios e responsabilidades.",
+          "item5": "Seu surgimento como vendedor e importador, e seu compromisso com a família.",
+          "item6": "Sua vida em casal, baseada no amor, compreensão, tolerância e perdão como pilares essenciais da família.",
+          "item7": "Experiências limite que o confrontaram com a fragilidade da vida e o valor da liberdade.",
+          "item8": "O reencontro com suas raízes judaicas na maturidade como parte de um processo de cura interior.",
+          "item9": "Reflexões sobre as mudanças tecnológicas, culturais e espirituais que marcaram sua geração."
+        },
+        "conclusion": "Mais do que uma simples autobiografia, esta obra é um convite para honrar a vida vivida, compreender o propósito individual e aceitar que, mesmo nos momentos mais escuros, sempre há uma luz pronta para nos guiar em direção à transformação e cura.",
         "benefit1": "60% dos lucros vão diretamente para o multisig do DAO",
         "benefit2": "50% devolvido em tokens UVD (exclusivo para membros do DAO)",
         "buyButton": "Comprar na Amazon"

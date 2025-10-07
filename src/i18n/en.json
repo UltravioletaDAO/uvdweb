@@ -1406,9 +1406,26 @@
     "products": {
       "title": "Products",
       "book": {
-        "title": "Book by Luis Alfonso Jaramillo",
-        "author": "By @lualjarami - Member of UltraVioleta DAO",
-        "description": "A book written by one of our most active community members, dedicating part of the profits to the DAO.",
+        "title": "Echoes of Yesterday: What Time Did Not Erase",
+        "subtitle": "Spanish Edition - Kindle Edition",
+        "author": "By Luis Alfonso Jaramillo Gallego",
+        "editor": "Editor: Saul Jaramillo",
+        "memberTag": "Member of UltraVioleta DAO (@lualjarami)",
+        "format": "Format: Kindle Edition",
+        "description": "Echoes of Yesterday: What Time Did Not Erase is an autobiographical memoir by Luis Alfonso Jaramillo Gallego, which honestly and deeply explores the multiple stages of his life: from childhood to old age, through personal transformations, social challenges, and spiritual reconciliations.",
+        "contentTitle": "The book narrates:",
+        "content": {
+          "item1": "His childhood in a rural environment that planted the fundamental values of his character.",
+          "item2": "The transition to adolescence and the internal and social conflicts he experienced in the city.",
+          "item3": "His professional path as a lawyer in Colombia, facing a judicial system full of contradictions.",
+          "item4": "Forced exile to the United States due to violence, where he took on new trades and responsibilities.",
+          "item5": "His emergence as a salesman and importer, and his commitment to family.",
+          "item6": "His life as a couple, based on love, understanding, tolerance, and forgiveness as essential pillars of the family.",
+          "item7": "Extreme experiences that confronted him with the fragility of life and the value of freedom.",
+          "item8": "Reconnecting with his Jewish roots in maturity as part of an inner healing process.",
+          "item9": "Reflections on the technological, cultural, and spiritual changes that marked his generation."
+        },
+        "conclusion": "More than a simple autobiography, this work is an invitation to honor the life lived, understand individual purpose, and accept that, even in the darkest moments, there is always a light ready to guide us towards transformation and healing.",
         "benefit1": "60% of profits go directly to the DAO multisig",
         "benefit2": "50% refunded in UVD tokens (exclusive for DAO members)",
         "buyButton": "Buy on Amazon"
