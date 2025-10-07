@@ -875,12 +875,44 @@
   "services": {
     "title": "Produits et Services",
     "subtitle": "Nous offrons des produits et services professionnels Web3 pour les communautés, marques et projets en Amérique latine",
+    "hero": {
+      "title": "Services IA et Solutions de Développement Web3",
+      "subtitle": "Outils révolutionnaires propulsés par l'IA pour les streamers, créateurs de contenu et communautés Web3 en Amérique latine"
+    },
+    "quickNav": {
+      "jumpTo": "Aller à la section :",
+      "ultraServicios": "Ultra Services",
+      "karmaHello": "Karma Hello",
+      "chatToEarnReport": "Rapport Chat-to-Earn",
+      "abracadabra": "Abracadabra",
+      "ultraEvento": "Ultra Événement 2025",
+      "productos": "Produits",
+      "contenidoEducativo": "Contenu Éducatif"
+    },
+    "ultraServiciosTitle": "Ultra Services",
     "products": {
       "title": "Produits",
       "book": {
-        "title": "Livre de Luis Alfonso Jaramillo",
-        "author": "Par @lualjarami - Membre d'UltraVioleta DAO",
-        "description": "Un livre écrit par l'un de nos membres les plus actifs de la communauté, dédiant une partie des bénéfices au DAO.",
+        "title": "Échos d'Hier : Ce Que le Temps N'a Pas Effacé",
+        "subtitle": "Édition en Espagnol - Kindle Edition",
+        "author": "Par Luis Alfonso Jaramillo Gallego",
+        "editor": "Éditeur : Saul Jaramillo",
+        "memberTag": "Membre d'UltraVioleta DAO (@lualjarami)",
+        "format": "Format : Kindle Edition",
+        "description": "Échos d'Hier : Ce Que le Temps N'a Pas Effacé est un mémoire autobiographique de Luis Alfonso Jaramillo Gallego, qui parcourt avec honnêteté et profondeur les multiples étapes de sa vie : de l'enfance à la vieillesse, en passant par des transformations personnelles, des défis sociaux et des réconciliations spirituelles.",
+        "contentTitle": "Le livre raconte :",
+        "content": {
+          "item1": "Son enfance dans un environnement rural qui a planté les valeurs fondamentales de son caractère.",
+          "item2": "La transition vers l'adolescence et les conflits internes et sociaux qu'il a vécus en ville.",
+          "item3": "Son parcours professionnel comme avocat en Colombie, confronté à un système judiciaire plein de contradictions.",
+          "item4": "L'exil forcé aux États-Unis en raison de la violence, où il a assumé de nouveaux métiers et responsabilités.",
+          "item5": "Son émergence en tant que vendeur et importateur, et son engagement envers la famille.",
+          "item6": "Sa vie en couple, basée sur l'amour, la compréhension, la tolérance et le pardon comme piliers essentiels de la famille.",
+          "item7": "Des expériences limites qui l'ont confronté à la fragilité de la vie et à la valeur de la liberté.",
+          "item8": "Le retour à ses racines juives à maturité dans le cadre d'un processus de guérison intérieure.",
+          "item9": "Réflexions sur les changements technologiques, culturels et spirituels qui ont marqué sa génération."
+        },
+        "conclusion": "Plus qu'une simple autobiographie, cet ouvrage est une invitation à honorer la vie vécue, comprendre le but individuel et accepter que, même dans les moments les plus sombres, il y a toujours une lumière prête à nous guider vers la transformation et la guérison.",
         "benefit1": "60% des bénéfices vont directement au multisig du DAO",
         "benefit2": "50% remboursé en tokens UVD (exclusif aux membres du DAO)",
         "buyButton": "Acheter sur Amazon"
@@ -913,6 +945,8 @@
       "title": "Karma Hello",
       "subtitle": "Système Chat-to-Earn avec Multi-Agents IA",
       "description": "Karma Hello est un bot Twitch avancé qui récompense les utilisateurs avec des tokens UVD pour contribuer des messages de qualité au chat. Le système utilise l'intelligence artificielle réelle pour évaluer chaque message et attribuer des récompenses basées sur une échelle de qualité.",
+      "whatIsKarmaHello": "Qu'est-ce que Karma Hello ?",
+      "learnMoreLinks": "En savoir plus sur notre <uvdToken>Token UVD</uvdToken>, <echoesNFT>collections NFT Echoes</echoesNFT>, et <daoMetrics>métriques du DAO</daoMetrics>. Rejoignez notre <community>communauté</community> pour participer !",
       "channel": "Chaîne: twitch.tv/0xultravioleta",
       "blockchain": "Blockchain: Avalanche (C-Chain)",
       "features": {
@@ -1031,6 +1065,37 @@
       "cta": {
         "watchLive": "Regarder en Direct",
         "learnMore": "En Savoir Plus"
+      },
+      "faqs": {
+        "title": "Karma Hello - Questions Fréquentes",
+        "q1": {
+          "question": "Qu'est-ce que Chat-to-Earn ?",
+          "answer": "Chat-to-Earn est un concept révolutionnaire Web3 où les utilisateurs gagnent de la cryptomonnaie (tokens UVD) en participant à des interactions de chat de qualité sur Twitch. Karma Hello évalue la qualité des messages en utilisant plus de 18 agents IA et récompense les utilisateurs avec des tokens sur la blockchain Avalanche."
+        },
+        "q2": {
+          "question": "Comment Karma Hello prévient-il le farming et l'abus ?",
+          "answer": "Karma Hello utilise un système anti-farming multi-couches avec des modèles ML avancés incluant BERT pour l'analyse de texte, Isolation Forest pour la détection d'anomalies, et Gradient Boosting pour la classification de fraude. De plus, chaque message brûle 1 token UVD, créant une désincitation économique au spam."
+        },
+        "q3": {
+          "question": "Quels sont les avantages pour les détenteurs de NFTs Echoes ?",
+          "answer": "Les détenteurs de NFTs Echoes reçoivent des récompenses x2 sur tous les tokens UVD gagnés via Karma Hello. Cet avantage exclusif est appliqué automatiquement lorsque le système détecte la propriété du NFT dans le portefeuille connecté de l'utilisateur."
+        },
+        "q4": {
+          "question": "Combien puis-je gagner avec Karma Hello ?",
+          "answer": "Les récompenses suivent une distribution de Fibonacci allant de 10 946 à 832 040 tokens UVD par message de qualité. Avec Twitter Social Boost, les multiplicateurs vont de 1.2x à 5.0x selon votre influence sociale. Les détenteurs de NFTs Echoes obtiennent un multiplicateur supplémentaire x2 sur toutes les récompenses."
+        },
+        "q5": {
+          "question": "Quelle est la différence entre Karma Hello et d'autres bots de chat ?",
+          "answer": "Karma Hello combine de manière unique plus de 18 agents IA (GPT-4, Claude, Ollama) pour évaluer la qualité des messages en temps réel, récompense les utilisateurs avec de la cryptomonnaie réelle (tokens UVD) sur la blockchain Avalanche, implémente des modèles ML anti-farming avancés (BERT, Isolation Forest), et inclut des mécaniques de brûlage de tokens pour la durabilité économique. Aucun autre bot n'offre cette intégration Web3 aussi complète."
+        },
+        "q6": {
+          "question": "Comment puis-je commencer à gagner avec Karma Hello ?",
+          "answer": "Pour commencer à gagner : 1) Rejoignez le canal Twitch sur twitch.tv/0xultravioleta, 2) Connectez votre portefeuille Web3 à la plateforme, 3) Commencez à chatter avec des messages de qualité dans le stream, 4) Recevez automatiquement des récompenses en tokens UVD basées sur l'évaluation IA, 5) Optionnel : Détenez des NFTs Echoes pour des récompenses x2 ou connectez Twitter pour des multiplicateurs de social boost."
+        },
+        "q7": {
+          "question": "Karma Hello est-il disponible en plusieurs langues ?",
+          "answer": "Oui, Karma Hello prend en charge plusieurs langues incluant l'Espagnol (ES), l'Anglais (EN), le Portugais (PT) et le Français (FR). Les agents IA peuvent comprendre et évaluer la qualité des messages dans toutes ces langues, le rendant accessible pour toute la communauté latino-américaine et mondiale."
+        }
       }
     },
     "karmaReports": {
@@ -1224,6 +1289,111 @@
           "question": "Qu'est-ce qui rend la recherche sémantique d'Abracadabra unique?",
           "answer": "Abracadabra utilise le framework Cognee avec les embeddings d'OpenAI pour comprendre le contexte et le sens, pas seulement les mots-clés. Il dispose d'un knowledge graph avec 500+ nœuds permettant un multi-hop reasoning jusqu'à 3 niveaux de profondeur, des requêtes en langage naturel dans n'importe quelle langue et une recherche temporelle pour trouver du contenu de périodes spécifiques. Cela permet des requêtes comme 'Qu'ont-ils dit sur les NFT le mois dernier?' et d'obtenir des résultats précis et contextuels."
         }
+      },
+      "fullDescription": "Abracadabra est une plateforme d'intelligence de contenu d'entreprise qui utilise l'intelligence artificielle avancée pour transformer des vidéos et streams en contenu actionnable, recherches sémantiques et analyses prédictives. Système complet end-to-end qui convertit le contenu audiovisuel brut en analyses structurées, contenu dérivé automatiquement et prédictions de tendances.",
+      "stats": {
+        "streamsProcessed": "Streams Traités",
+        "streamsValue": "70+ streams indexés",
+        "topicsIndexed": "Topics Indexés",
+        "topicsValue": "640+ topics dans Cognee",
+        "apiEndpoints": "API Endpoints",
+        "phasesComplete": "Phases Complètes"
+      },
+      "systemCapabilities": {
+        "title": "Capacités du Système",
+        "dualTranscription": {
+          "title": "Transcription Double",
+          "item1": "AWS Transcribe (vidéos < 4 heures)",
+          "item2": "OpenAI Whisper (vidéos > 4 heures)",
+          "item3": "Auto-switching intelligent",
+          "item4": "Diarisation des speakers"
+        },
+        "contentGeneration": {
+          "title": "Génération de Contenu",
+          "item1": "Images DALL-E 3 (scene-first)",
+          "item2": "Résumés : concis, complet, critique",
+          "item3": "Tweets 280 chars avec CTA",
+          "item4": "Descriptions SEO optimisées"
+        },
+        "videoProcessing": {
+          "title": "Traitement Vidéo",
+          "item1": "YouTube Shorts (9:16, max 60s)",
+          "item2": "Format TikTok (9:16, max 180s)",
+          "item3": "Instagram Reels (9:16, max 90s)",
+          "item4": "Normalisation audio LUFS -20"
+        },
+        "multiLanguage": {
+          "title": "Multi-Langue",
+          "item1": "10+ langues : ES, PT, FR, DE, IT, JA, KO, ZH, RU, AR",
+          "item2": "Adaptation culturelle des expressions",
+          "item3": "Préserve markdown et SEO keywords",
+          "item4": "Limites de caractères (Twitter 280)"
+        },
+        "semanticSearch": {
+          "title": "Recherche Sémantique",
+          "item1": "Framework Cognee intégré",
+          "item2": "Requêtes en langage naturel",
+          "item3": "Multi-hop reasoning (3 sauts)",
+          "item4": "Knowledge graph 500+ nœuds"
+        },
+        "predictiveAnalytics": {
+          "title": "Analyse Prédictive",
+          "item1": "Trending topics (prévision 7-30 jours)",
+          "item2": "Prédictions d'engagement LSTM",
+          "item3": "Horaires de publication optimaux",
+          "item4": "Alertes de saturation de contenu"
+        }
+      },
+      "techStack": {
+        "title": "Stack Technologique",
+        "backendAI": {
+          "title": "Backend & IA",
+          "item1": "Python 3.9+ / Flask",
+          "item2": "OpenAI GPT-4o-2024-08-06",
+          "item3": "Cognee Framework 0.3.4",
+          "item4": "PyTorch LSTM networks"
+        },
+        "processing": {
+          "title": "Traitement",
+          "item1": "AWS Transcribe + Whisper",
+          "item2": "Édition vidéo FFmpeg",
+          "item3": "Images DALL-E 3",
+          "item4": "OpenCV computer vision"
+        },
+        "infrastructure": {
+          "title": "Infrastructure",
+          "item1": "SQLite / PostgreSQL",
+          "item2": "WebSocket temps réel",
+          "item3": "JWT + RBAC auth",
+          "item4": "75+ API endpoints"
+        }
+      },
+      "competitiveAdvantages": {
+        "title": "Avantages Compétitifs",
+        "fullStack": {
+          "title": "Full-Stack Intelligence",
+          "desc": "Traitement end-to-end : téléchargement → analytics → contenu"
+        },
+        "automation": {
+          "title": "Automation-First",
+          "desc": "Auto ETL, indexation Cognee, génération de contenu, prédictions"
+        },
+        "semantic": {
+          "title": "Couche Sémantique",
+          "desc": "Recherche en langage naturel, knowledge graph, multi-hop reasoning"
+        },
+        "multiFormat": {
+          "title": "Sortie Multi-Format",
+          "desc": "Blogs, threads, clips, images, audio, exports de données"
+        },
+        "predictive": {
+          "title": "Prédictif & Proactif",
+          "desc": "Prévision de tendances, prédictions d'engagement, recommandations"
+        },
+        "enterprise": {
+          "title": "Enterprise-Ready",
+          "desc": "JWT + RBAC, analytics WebSocket, multi-utilisateur, audit trail"
+        }
       }
     },
     "events": {
@@ -1257,7 +1427,12 @@
         "sponsorCTA": "Sponsoriser le prochain événement"
       }
     },
-    "contact": "Intéressé par nos services? Contactez-nous pour plus d'informations"
+    "contact": "Intéressé par nos services? Contactez-nous pour plus d'informations",
+    "educationalVideos": {
+      "title": "Contenu Éducatif",
+      "description": "Accédez à nos vidéos et cours gratuits sur la blockchain, le Web3 et les technologies décentralisées",
+      "viewAll": "Voir toutes les vidéos sur YouTube"
+    }
   },
   "nft": {
     "title": "Collections NFT",

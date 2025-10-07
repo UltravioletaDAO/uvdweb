@@ -33,7 +33,7 @@ function App() {
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <ThirdwebProvider>
-          <Router>
+          <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <div className="min-h-screen bg-background text-text-primary">
               <Header />
               <Routes>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
@@ -304,28 +304,28 @@ const ServicesPage = () => {
           transition={{ duration: 0.3 }}
           className="mb-8 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-4 border border-purple-500/30"
         >
-          <p className="text-sm text-gray-400 mb-3">Jump to section:</p>
+          <p className="text-sm text-gray-400 mb-3">{t('services.quickNav.jumpTo')}</p>
           <div className="flex flex-wrap gap-2">
             <a href="#ultra-servicios" className="px-3 py-1 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg text-sm text-purple-300 transition-colors">
-              Ultra Servicios
+              {t('services.quickNav.ultraServicios')}
             </a>
             <a href="#karma-hello" className="px-3 py-1 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg text-sm text-purple-300 transition-colors">
-              Karma Hello
+              {t('services.quickNav.karmaHello')}
             </a>
             <a href="#karma-reports" className="px-3 py-1 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg text-sm text-purple-300 transition-colors">
-              Chat-to-Earn Report
+              {t('services.quickNav.chatToEarnReport')}
             </a>
             <a href="#abracadabra" className="px-3 py-1 bg-cyan-600/20 hover:bg-cyan-600/40 rounded-lg text-sm text-cyan-300 transition-colors">
-              Abracadabra
+              {t('services.quickNav.abracadabra')}
             </a>
             <a href="#ultra-evento" className="px-3 py-1 bg-pink-600/20 hover:bg-pink-600/40 rounded-lg text-sm text-pink-300 transition-colors">
-              Ultra Evento 2025
+              {t('services.quickNav.ultraEvento')}
             </a>
             <a href="#productos" className="px-3 py-1 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg text-sm text-purple-300 transition-colors">
-              Productos
+              {t('services.quickNav.productos')}
             </a>
             <a href="#contenido-educativo" className="px-3 py-1 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg text-sm text-purple-300 transition-colors">
-              Contenido Educativo
+              {t('services.quickNav.contenidoEducativo')}
             </a>
           </div>
         </motion.div>
@@ -337,10 +337,10 @@ const ServicesPage = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl font-bold mb-4">
-              AI Services & Web3 Development Solutions
+              {t('services.hero.title')}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Revolutionary AI-powered tools for streamers, content creators, and Web3 communities in Latin America
+              {t('services.hero.subtitle')}
             </p>
           </motion.div>
         </header>
@@ -354,7 +354,7 @@ const ServicesPage = () => {
           className="mb-16"
         >
           <h2 className="text-3xl font-bold text-center mb-8 text-purple-400">
-            Ultra Servicios
+            {t('services.ultraServiciosTitle')}
           </h2>
           <p className="text-lg text-gray-300 text-center mb-12 max-w-4xl mx-auto">
             {t('services.ultraServicios.description')}
@@ -437,7 +437,16 @@ const ServicesPage = () => {
                 </header>
 
                 <p className="text-gray-300 mb-4 text-lg" itemProp="description">
-                  <strong>What is Karma Hello?</strong> {t('services.karmaHelloExpanded.description')} Learn more about our <Link to="/token" className="text-purple-400 hover:text-purple-300 underline" title="UVD Token Information">UVD Token</Link>, <Link to="/nft" className="text-purple-400 hover:text-purple-300 underline" title="Echoes NFT Collections">Echoes NFT collections</Link>, and <Link to="/metrics" className="text-purple-400 hover:text-purple-300 underline" title="DAO Metrics Dashboard">DAO metrics</Link>. Join our <Link to="/aplicar" className="text-purple-400 hover:text-purple-300 underline" title="Apply to Join UltraVioleta DAO">community</Link> to participate!
+                  <strong>{t('services.karmaHelloExpanded.whatIsKarmaHello')}</strong> {t('services.karmaHelloExpanded.description')}{' '}
+                  <Trans
+                    i18nKey="services.karmaHelloExpanded.learnMoreLinks"
+                    components={{
+                      uvdToken: <Link to="/token" className="text-purple-400 hover:text-purple-300 underline" title="UVD Token Information" />,
+                      echoesNFT: <Link to="/nft" className="text-purple-400 hover:text-purple-300 underline" title="Echoes NFT Collections" />,
+                      daoMetrics: <Link to="/metrics" className="text-purple-400 hover:text-purple-300 underline" title="DAO Metrics Dashboard" />,
+                      community: <Link to="/aplicar" className="text-purple-400 hover:text-purple-300 underline" title="Apply to Join UltraVioleta DAO" />
+                    }}
+                  />
                 </p>
 
               <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -900,40 +909,11 @@ const ServicesPage = () => {
           <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-500/30">
             <h3 className="text-2xl font-bold text-purple-300 mb-4 flex items-center">
               <Bot className="w-6 h-6 mr-2" />
-              Karma Hello - Preguntas Frecuentes
+              {t('services.karmaHelloExpanded.faqs.title')}
             </h3>
 
             <div className="space-y-3">
-              {[
-                {
-                  question: "¿Qué es Chat-to-Earn?",
-                  answer: "Chat-to-Earn es un concepto revolucionario Web3 donde los usuarios ganan criptomonedas (tokens UVD) participando en interacciones de chat de calidad en Twitch. Karma Hello evalúa la calidad de los mensajes usando 18+ agentes de IA y recompensa a los usuarios con tokens en la blockchain Avalanche."
-                },
-                {
-                  question: "¿Cómo previene Karma Hello el farming y el abuso?",
-                  answer: "Karma Hello usa un sistema anti-farming multi-capa con modelos avanzados de ML incluyendo BERT para análisis de texto, Isolation Forest para detección de anomalías, y Gradient Boosting para clasificación de fraude. Además, cada mensaje quema 1 token UVD, creando un desincentivo económico para el spam."
-                },
-                {
-                  question: "¿Cuáles son los beneficios para holders de NFTs Echoes?",
-                  answer: "Los holders de NFTs Echoes reciben recompensas x2 en todos los tokens UVD ganados a través de Karma Hello. Este beneficio exclusivo se aplica automáticamente cuando el sistema detecta la propiedad del NFT en la wallet conectada del usuario."
-                },
-                {
-                  question: "¿Cuánto puedo ganar con Karma Hello?",
-                  answer: "Las recompensas siguen una distribución Fibonacci que va desde 10,946 hasta 832,040 tokens UVD por mensaje de calidad. Con Twitter Social Boost, los multiplicadores van de 1.2x a 5.0x basados en tu influencia social. Los holders de Echoes NFT obtienen un multiplicador adicional x2 en todas las recompensas."
-                },
-                {
-                  question: "What is the difference between Karma Hello and other chat bots?",
-                  answer: "Karma Hello uniquely combines 18+ AI agents (GPT-4, Claude, Ollama) to evaluate message quality in real-time, rewards users with actual cryptocurrency (UVD tokens) on Avalanche blockchain, implements advanced anti-farming ML models (BERT, Isolation Forest), and includes token burning mechanics for economic sustainability. No other bot offers this comprehensive Web3 integration."
-                },
-                {
-                  question: "How do I start earning with Karma Hello?",
-                  answer: "To start earning: 1) Join the Twitch channel at twitch.tv/0xultravioleta, 2) Connect your Web3 wallet to the platform, 3) Start chatting with quality messages in the stream, 4) Receive UVD token rewards automatically based on AI evaluation, 5) Optional: Hold Echoes NFTs for 2x rewards or connect Twitter for social boost multipliers."
-                },
-                {
-                  question: "Is Karma Hello available in multiple languages?",
-                  answer: "Yes, Karma Hello supports multiple languages including Spanish (ES), English (EN), Portuguese (PT), and French (FR). The AI agents can understand and evaluate message quality in all these languages, making it accessible for the entire Latin American and global community."
-                }
-              ].map((faq, index) => (
+              {['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7'].map((faqKey, index) => (
                 <div
                   key={index}
                   itemScope
@@ -946,7 +926,7 @@ const ServicesPage = () => {
                     className="w-full text-left p-4 flex items-center justify-between hover:bg-purple-900/10 transition-colors"
                   >
                     <h4 itemProp="name" className="text-lg font-semibold text-white pr-4">
-                      {faq.question}
+                      {t(`services.karmaHelloExpanded.faqs.${faqKey}.question`)}
                     </h4>
                     <span className={`text-purple-400 transform transition-transform ${karmaFaqsOpen[index] ? 'rotate-180' : ''}`}>
                       ▼
@@ -960,7 +940,7 @@ const ServicesPage = () => {
                       className="px-4 pb-4"
                     >
                       <p itemProp="text" className="text-gray-300">
-                        {faq.answer}
+                        {t(`services.karmaHelloExpanded.faqs.${faqKey}.answer`)}
                       </p>
                     </div>
                   )}
@@ -1002,23 +982,23 @@ const ServicesPage = () => {
                 </header>
 
                 <p className="text-gray-300 mb-4 text-lg" itemProp="description">
-                  <strong>Abracadabra</strong> es una plataforma empresarial de content intelligence que utiliza inteligencia artificial avanzada para transformar videos y streams en contenido procesable, búsquedas semánticas y análisis predictivo. Sistema completo end-to-end que convierte contenido audiovisual bruto en analytics estructurados, contenido derivado automático y predicciones de tendencias.
+                  {t('services.abracadabraExpanded.fullDescription')}
                 </p>
 
                 <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                   <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
                     <Video className="w-5 h-5 text-cyan-400 mr-3" />
                     <div>
-                      <p className="text-gray-400 text-xs">Streams Procesados</p>
-                      <p className="text-white font-semibold">70+ streams indexados</p>
+                      <p className="text-gray-400 text-xs">{t('services.abracadabraExpanded.stats.streamsProcessed')}</p>
+                      <p className="text-white font-semibold">{t('services.abracadabraExpanded.stats.streamsValue')}</p>
                     </div>
                   </div>
 
                   <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
                     <Database className="w-5 h-5 text-cyan-400 mr-3" />
                     <div>
-                      <p className="text-gray-400 text-xs">Topics Indexados</p>
-                      <p className="text-white font-semibold">640+ topics en Cognee</p>
+                      <p className="text-gray-400 text-xs">{t('services.abracadabraExpanded.stats.topicsIndexed')}</p>
+                      <p className="text-white font-semibold">{t('services.abracadabraExpanded.stats.topicsValue')}</p>
                     </div>
                   </div>
                 </div>
@@ -1026,20 +1006,20 @@ const ServicesPage = () => {
                 {/* Capacidades Clave */}
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-cyan-300 mb-4">
-                    Capacidades del Sistema
+                    {t('services.abracadabraExpanded.systemCapabilities.title')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Dual Transcription */}
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <Video className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Transcripción Dual</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.dualTranscription.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• AWS Transcribe (videos &lt; 4 horas)</li>
-                        <li>• OpenAI Whisper (videos &gt; 4 horas)</li>
-                        <li>• Auto-switching inteligente</li>
-                        <li>• Diarización de speakers</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.dualTranscription.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.dualTranscription.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.dualTranscription.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.dualTranscription.item4')}</li>
                       </ul>
                     </div>
 
@@ -1047,13 +1027,13 @@ const ServicesPage = () => {
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <FileText className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Generación de Contenido</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.contentGeneration.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• DALL-E 3 imágenes (scene-first)</li>
-                        <li>• Resúmenes: conciso, completo, crítica</li>
-                        <li>• Tweets 280 chars con CTA</li>
-                        <li>• SEO descriptions optimizadas</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.contentGeneration.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.contentGeneration.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.contentGeneration.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.contentGeneration.item4')}</li>
                       </ul>
                     </div>
 
@@ -1061,13 +1041,13 @@ const ServicesPage = () => {
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <Image className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Procesamiento de Video</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.videoProcessing.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• YouTube Shorts (9:16, max 60s)</li>
-                        <li>• TikTok format (9:16, max 180s)</li>
-                        <li>• Instagram Reels (9:16, max 90s)</li>
-                        <li>• Audio normalización LUFS -20</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.videoProcessing.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.videoProcessing.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.videoProcessing.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.videoProcessing.item4')}</li>
                       </ul>
                     </div>
 
@@ -1075,13 +1055,13 @@ const ServicesPage = () => {
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <Languages className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Multi-Idioma</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.multiLanguage.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• 10+ idiomas: ES, PT, FR, DE, IT, JA, KO, ZH, RU, AR</li>
-                        <li>• Adaptación cultural de modismos</li>
-                        <li>• Preserva markdown y SEO keywords</li>
-                        <li>• Límite de caracteres (Twitter 280)</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.multiLanguage.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.multiLanguage.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.multiLanguage.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.multiLanguage.item4')}</li>
                       </ul>
                     </div>
 
@@ -1089,13 +1069,13 @@ const ServicesPage = () => {
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <Search className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Búsqueda Semántica</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.semanticSearch.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• Cognee Framework integrado</li>
-                        <li>• Natural language queries</li>
-                        <li>• Multi-hop reasoning (3 saltos)</li>
-                        <li>• Knowledge graph 500+ nodos</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.semanticSearch.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.semanticSearch.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.semanticSearch.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.semanticSearch.item4')}</li>
                       </ul>
                     </div>
 
@@ -1103,13 +1083,13 @@ const ServicesPage = () => {
                     <div className="bg-gray-900/50 rounded-lg p-4">
                       <div className="flex items-center mb-2">
                         <TrendingUp className="w-5 h-5 text-cyan-400 mr-2" />
-                        <h4 className="font-semibold text-cyan-300">Analytics Predictivo</h4>
+                        <h4 className="font-semibold text-cyan-300">{t('services.abracadabraExpanded.systemCapabilities.predictiveAnalytics.title')}</h4>
                       </div>
                       <ul className="space-y-1 text-xs text-gray-400">
-                        <li>• Trending topics (7-30 días forecast)</li>
-                        <li>• Engagement predictions LSTM</li>
-                        <li>• Optimal posting times</li>
-                        <li>• Content saturation alerts</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.predictiveAnalytics.item1')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.predictiveAnalytics.item2')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.predictiveAnalytics.item3')}</li>
+                        <li>• {t('services.abracadabraExpanded.systemCapabilities.predictiveAnalytics.item4')}</li>
                       </ul>
                     </div>
                   </div>
@@ -1118,7 +1098,7 @@ const ServicesPage = () => {
                 {/* Technology Stack */}
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-cyan-300 mb-4">
-                    Stack Tecnológico
+                    {t('services.abracadabraExpanded.techStack.title')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div className="bg-gray-900/50 rounded-lg p-4">
@@ -1506,45 +1486,68 @@ const ServicesPage = () => {
               transition={{ duration: 0.3 }}
               className="bg-gradient-to-br from-purple-900/30 to-pink-900/30 rounded-xl p-8 border border-purple-500/30 hover:border-purple-400/50 transition-all"
             >
-              <div className="flex flex-col md:flex-row gap-8">
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-3 text-purple-300">
+              <div className="flex flex-col gap-6">
+                <div>
+                  <h3 className="text-2xl font-bold mb-2 text-purple-300">
                     {t('services.products.book.title')}
                   </h3>
-                  <p className="text-gray-300 mb-4">
-                    {t('services.products.book.author')}
-                  </p>
-                  <p className="text-gray-400 mb-6">
+                  <p className="text-sm text-gray-400 mb-2">{t('services.products.book.subtitle')}</p>
+                  <p className="text-gray-300 text-sm mb-1">{t('services.products.book.author')}</p>
+                  <p className="text-gray-300 text-sm mb-1">{t('services.products.book.editor')}</p>
+                  <p className="text-purple-400 text-sm mb-3">{t('services.products.book.memberTag')}</p>
+                </div>
+
+                <div>
+                  <p className="text-gray-300 mb-4 leading-relaxed">
                     {t('services.products.book.description')}
                   </p>
 
-                  <div className="space-y-3 mb-6">
-                    <div className="flex items-center">
-                      <Gift className="w-5 h-5 text-pink-400 mr-3" />
-                      <p className="text-sm text-gray-300">
-                        {t('services.products.book.benefit1')}
-                      </p>
-                    </div>
-                    <div className="flex items-center">
-                      <Coins className="w-5 h-5 text-pink-400 mr-3" />
-                      <p className="text-sm text-gray-300">
-                        {t('services.products.book.benefit2')}
-                      </p>
-                    </div>
-                  </div>
+                  <h4 className="text-lg font-semibold text-purple-300 mb-3">
+                    {t('services.products.book.contentTitle')}
+                  </h4>
+                  <ul className="space-y-2 mb-4 text-gray-400 text-sm">
+                    <li>• {t('services.products.book.content.item1')}</li>
+                    <li>• {t('services.products.book.content.item2')}</li>
+                    <li>• {t('services.products.book.content.item3')}</li>
+                    <li>• {t('services.products.book.content.item4')}</li>
+                    <li>• {t('services.products.book.content.item5')}</li>
+                    <li>• {t('services.products.book.content.item6')}</li>
+                    <li>• {t('services.products.book.content.item7')}</li>
+                    <li>• {t('services.products.book.content.item8')}</li>
+                    <li>• {t('services.products.book.content.item9')}</li>
+                  </ul>
 
-                  <div className="flex flex-wrap gap-4">
-                    <a
-                      href="https://www.amazon.com/dp/B0FMQPFTVL"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
-                    >
-                      <ShoppingCart className="w-5 h-5 mr-2" />
-                      {t('services.products.book.buyButton')}
-                      <ExternalLink className="w-4 h-4 ml-2" />
-                    </a>
+                  <p className="text-gray-300 mb-6 leading-relaxed italic border-l-4 border-purple-500 pl-4">
+                    {t('services.products.book.conclusion')}
+                  </p>
+                </div>
+
+                <div className="space-y-3 mb-4 pt-4 border-t border-purple-500/30">
+                  <div className="flex items-center">
+                    <Gift className="w-5 h-5 text-pink-400 mr-3 flex-shrink-0" />
+                    <p className="text-sm text-gray-300">
+                      {t('services.products.book.benefit1')}
+                    </p>
                   </div>
+                  <div className="flex items-center">
+                    <Coins className="w-5 h-5 text-pink-400 mr-3 flex-shrink-0" />
+                    <p className="text-sm text-gray-300">
+                      {t('services.products.book.benefit2')}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-4">
+                  <a
+                    href="https://www.amazon.com/dp/B0FMQPFTVL"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg transition-colors"
+                  >
+                    <ShoppingCart className="w-5 h-5 mr-2" />
+                    {t('services.products.book.buyButton')}
+                    <ExternalLink className="w-4 h-4 ml-2" />
+                  </a>
                 </div>
               </div>
             </motion.div>
