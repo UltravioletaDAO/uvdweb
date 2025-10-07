@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://ultravioleta.xyz/</loc>
+    <image:image>
+      <image:loc>https://ultravioleta.xyz/logo.png</image:loc>
+      <image:title>UltraVioleta DAO Logo</image:title>
+      <image:caption>Official logo of UltraVioleta DAO</image:caption>
+      <image:geo_location>Latin America</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by-sa/4.0/</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://ultravioleta.xyz/og-image.png</image:loc>
+      <image:title>UltraVioleta DAO</image:title>
+      <image:caption>UltraVioleta DAO - Leading Web3 DAO in Latin America</image:caption>
+      <image:geo_location>Latin America</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by-sa/4.0/</image:license>
+    </image:image>
+    <image:image>
+      <image:loc>https://ultravioleta.xyz/logo_uvd.svg</image:loc>
+      <image:title>UVD Logo</image:title>
+      <image:caption>UVD token vector logo</image:caption>
+      <image:geo_location>Latin America</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by-sa/4.0/</image:license>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://ultravioleta.xyz/token</loc>
+    <image:image>
+      <image:loc>https://ultravioleta.xyz/uvd.png</image:loc>
+      <image:title>UVD Token</image:title>
+      <image:caption>UVD governance token logo</image:caption>
+      <image:geo_location>Latin America</image:geo_location>
+      <image:license>https://creativecommons.org/licenses/by-sa/4.0/</image:license>
+    </image:image>
+  </url>
+</urlset>
