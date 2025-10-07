@@ -7,17 +7,44 @@ async function fetchBurnedTokens() {
   const deadAddress = "0x000000000000000000000000000000000000dEaD";
 
   try {
-    // Try using Covalent API with a free key
-    const covalentKey = "cqt_rQRXHMgXJKg8YvWRJqJQT3GdyQJG"; // Free tier key
-    const chainId = 43114; // Avalanche C-Chain
+    // ERC20 balanceOf function signature
+    const balanceOfSignature = "0x70a08231"; // balanceOf(address)
 
-    // Fetch token balances from Covalent
-    const deadUrl = `https://api.covalenthq.com/v1/${chainId}/address/${deadAddress}/balances_v2/?key=${covalentKey}`;
-    const zeroUrl = `https://api.covalenthq.com/v1/${chainId}/address/${zeroAddress}/balances_v2/?key=${covalentKey}`;
+    // Prepare the data for both calls
+    const deadAddressData = balanceOfSignature + deadAddress.slice(2).padStart(64, '0');
+    const zeroAddressData = balanceOfSignature + zeroAddress.slice(2).padStart(64, '0');
 
+    // Use Avalanche public RPC
+    const rpcUrl = "https://api.avax.network/ext/bc/C/rpc";
+
+    // Make RPC calls to get balances
     const [deadResponse, zeroResponse] = await Promise.all([
-      fetch(deadUrl),
-      fetch(zeroUrl).catch(() => ({ json: () => ({ data: { items: [] } }) })) // Fallback for zero address
+      fetch(rpcUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          id: 1,
+          method: 'eth_call',
+          params: [{
+            to: TOKEN_ADDRESS,
+            data: deadAddressData
+          }, 'latest']
+        })
+      }),
+      fetch(rpcUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          jsonrpc: '2.0',
+          id: 2,
+          method: 'eth_call',
+          params: [{
+            to: TOKEN_ADDRESS,
+            data: zeroAddressData
+          }, 'latest']
+        })
+      })
     ]);
 
     const [deadData, zeroData] = await Promise.all([
@@ -28,32 +55,30 @@ async function fetchBurnedTokens() {
     let deadTokens = 0;
     let zeroTokens = 0;
 
-    // Find UVD token in the balances
-    if (deadData?.data?.items) {
-      const uvdDead = deadData.data.items.find(item =>
-        item.contract_address?.toLowerCase() === TOKEN_ADDRESS.toLowerCase()
-      );
-      if (uvdDead) {
-        deadTokens = parseFloat(uvdDead.balance) / 1e18;
-      }
+    // Parse the hex results and convert from wei to tokens (divide by 1e18)
+    if (deadData?.result) {
+      deadTokens = parseInt(deadData.result, 16) / 1e18;
     }
 
-    if (zeroData?.data?.items) {
-      const uvdZero = zeroData.data.items.find(item =>
-        item.contract_address?.toLowerCase() === TOKEN_ADDRESS.toLowerCase()
-      );
-      if (uvdZero) {
-        zeroTokens = parseFloat(uvdZero.balance) / 1e18;
-      }
+    if (zeroData?.result) {
+      zeroTokens = parseInt(zeroData.result, 16) / 1e18;
     }
 
-    // If Covalent fails or returns 0, use known minimum values
-    const knownMinimumDead = 17716164; // Known minimum in dead address
-    const knownMinimumZero = 0; // We'll check if there's any in zero address
+    // Updated known minimum value - as of last manual check
+    const knownMinimumDead = 17718151; // Updated minimum in dead address
+    const knownMinimumZero = 0;
 
-    // Ensure we never show less than the known minimum
+    // Ensure we never show less than the known minimum (in case of RPC errors)
     const finalDeadTokens = Math.max(deadTokens, knownMinimumDead);
     const finalZeroTokens = Math.max(zeroTokens, knownMinimumZero);
+
+    if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+      console.log('Burned tokens fetched:', {
+        dead: finalDeadTokens.toLocaleString(),
+        zero: finalZeroTokens.toLocaleString(),
+        total: (finalDeadTokens + finalZeroTokens).toLocaleString()
+      });
+    }
 
     return {
       zeroAddress: finalZeroTokens,
@@ -63,7 +88,7 @@ async function fetchBurnedTokens() {
   } catch (error) {
     console.error("Error fetching burned tokens:", error);
     // Return known minimum values
-    const knownMinimumDead = 17716164;
+    const knownMinimumDead = 17718151;
     return {
       zeroAddress: 0,
       deadAddress: knownMinimumDead,

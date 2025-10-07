@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getTokenData } from "../services/metrics/Token/TokenMetricsService";
 
-const REFRESH_INTERVAL = 5000;
+const REFRESH_INTERVAL = 55000;
 
 export function useTokenMetrics() {
   const [data, setData] = useState({

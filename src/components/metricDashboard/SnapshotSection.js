@@ -5,6 +5,7 @@ import { Progress } from "../Progress";
 import { ExternalLink, Vote, FileText, Users, ChevronLeft, ChevronRight } from "lucide-react";
 import { SNAPSHOT_SPACES } from "../../lib/snapshotSpaces";
 import { useSnapshotData } from "../../hooks/useSnapshotData";
+import { useCombinedSnapshotData } from "../../hooks/useCombinedSnapshotData";
 import { useTranslation } from 'react-i18next';
 
 const SnapshotSection = () => {
@@ -19,6 +20,9 @@ const SnapshotSection = () => {
     handleSpaceChange,
     loadSpaceData,
   } = useSnapshotData();
+
+  // Obtener métricas combinadas
+  const { metrics: combinedMetrics } = useCombinedSnapshotData();
 
   const [currentProposalIndex, setCurrentProposalIndex] = useState(0);
   const [autoRotate, setAutoRotate] = useState(true);
@@ -93,18 +97,38 @@ const SnapshotSection = () => {
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between flex-wrap gap-4">
-        <div>
+        <div className="flex-1">
           <h2 className="text-2xl font-bold flex items-center gap-3 mb-2">
             <div className="p-2 rounded-lg bg-snapshot/15">
               <Vote className="h-5 w-5 text-snapshot" />
             </div>
             <span className="text-snapshot">{t('home.metrics.snapshot.title')}</span>
           </h2>
-          <p className="text-sm text-muted-foreground ml-11">
+
+          {/* Métricas combinadas debajo del título */}
+          <div className="flex items-center gap-6 ml-11 text-sm">
+            <div className="flex items-center gap-2">
+              <FileText className="h-4 w-4 text-snapshot/70" />
+              <span className="text-muted-foreground">{t('home.metrics.snapshot.proposals')}:</span>
+              <span className="font-semibold text-white">{combinedMetrics.proposals}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Vote className="h-4 w-4 text-snapshot/70" />
+              <span className="text-muted-foreground">{t('home.metrics.snapshot.votes')}:</span>
+              <span className="font-semibold text-white">{combinedMetrics.votes.toLocaleString()}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Users className="h-4 w-4 text-snapshot/70" />
+              <span className="text-muted-foreground">{t('home.metrics.snapshot.followers')}:</span>
+              <span className="font-semibold text-white">{combinedMetrics.followers.toLocaleString()}</span>
+            </div>
+          </div>
+
+          <p className="text-xs text-muted-foreground ml-11 mt-2">
             {t('metricsDashboard.snapshot.subtitle')}
           </p>
         </div>
-        
+
         {/* Tabs para cambiar entre spaces */}
         <div className="flex gap-2">
           {Object.values(SNAPSHOT_SPACES).map((space) => (
