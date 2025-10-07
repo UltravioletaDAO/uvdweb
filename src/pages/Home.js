@@ -8,7 +8,7 @@ import { getEvents } from '../services/events/Events';
 import { useCombinedSnapshotData } from '../hooks/useCombinedSnapshotData';
 import { useTokenMetrics } from '../hooks/useTokenMetrics';
 import { useSafeAvalanche } from '../hooks/useSafeAvalanche';
-// import DaoStoryteller from '../components/DaoStoryteller'; // Temporarily disabled - will be moved to backend API
+import DaoStoryteller from '../components/DaoStoryteller';
 import SEO from '../components/SEO';
 
 const Home = () => {
@@ -421,9 +421,8 @@ const Home = () => {
 
           </div>
 
-          {/* DAO Storyteller - Historia generada por IA - Solo muestra con datos reales */}
-          {/* DaoStoryteller temporarily disabled - will be moved to backend API to prevent API key exposure */}
-          {/* {snapshotMetrics?.proposals &&
+          {/* DAO Storyteller - Historia generada con template por defecto */}
+          {snapshotMetrics?.proposals &&
            snapshotMetrics?.votes &&
            tokenData.holderCount &&
            treasuryTotal &&
@@ -444,7 +443,7 @@ const Home = () => {
                 }}
               />
             </div>
-          )} */}
+          )}
         </div>
 
         
