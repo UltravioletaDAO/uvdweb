@@ -1550,7 +1550,6 @@ const ServicesPage = () => {
                   </a>
                 </div>
               </div>
-              </div>
             </motion.div>
           </div>
         </motion.div>
