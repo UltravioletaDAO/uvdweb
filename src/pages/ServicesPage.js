@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
@@ -304,28 +304,28 @@ const ServicesPage = () => {
           transition={{ duration: 0.3 }}
           className="mb-8 bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-4 border border-purple-500/30"
         >
-          <p className="text-sm text-gray-400 mb-3">Jump to section:</p>
+          <p className="text-sm text-gray-400 mb-3">{t('services.quickNav.jumpTo')}</p>
           <div className="flex flex-wrap gap-2">
             <a href="#ultra-servicios" className="px-3 py-1 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg text-sm text-purple-300 transition-colors">
-              Ultra Servicios
+              {t('services.quickNav.ultraServicios')}
             </a>
             <a href="#karma-hello" className="px-3 py-1 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg text-sm text-purple-300 transition-colors">
-              Karma Hello
+              {t('services.quickNav.karmaHello')}
             </a>
             <a href="#karma-reports" className="px-3 py-1 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg text-sm text-purple-300 transition-colors">
-              Chat-to-Earn Report
+              {t('services.quickNav.chatToEarnReport')}
             </a>
             <a href="#abracadabra" className="px-3 py-1 bg-cyan-600/20 hover:bg-cyan-600/40 rounded-lg text-sm text-cyan-300 transition-colors">
-              Abracadabra
+              {t('services.quickNav.abracadabra')}
             </a>
             <a href="#ultra-evento" className="px-3 py-1 bg-pink-600/20 hover:bg-pink-600/40 rounded-lg text-sm text-pink-300 transition-colors">
-              Ultra Evento 2025
+              {t('services.quickNav.ultraEvento')}
             </a>
             <a href="#productos" className="px-3 py-1 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg text-sm text-purple-300 transition-colors">
-              Productos
+              {t('services.quickNav.productos')}
             </a>
             <a href="#contenido-educativo" className="px-3 py-1 bg-purple-600/20 hover:bg-purple-600/40 rounded-lg text-sm text-purple-300 transition-colors">
-              Contenido Educativo
+              {t('services.quickNav.contenidoEducativo')}
             </a>
           </div>
         </motion.div>
@@ -337,10 +337,10 @@ const ServicesPage = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl font-bold mb-4">
-              AI Services & Web3 Development Solutions
+              {t('services.hero.title')}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Revolutionary AI-powered tools for streamers, content creators, and Web3 communities in Latin America
+              {t('services.hero.subtitle')}
             </p>
           </motion.div>
         </header>
@@ -354,7 +354,7 @@ const ServicesPage = () => {
           className="mb-16"
         >
           <h2 className="text-3xl font-bold text-center mb-8 text-purple-400">
-            Ultra Servicios
+            {t('services.ultraServiciosTitle')}
           </h2>
           <p className="text-lg text-gray-300 text-center mb-12 max-w-4xl mx-auto">
             {t('services.ultraServicios.description')}
@@ -437,7 +437,16 @@ const ServicesPage = () => {
                 </header>
 
                 <p className="text-gray-300 mb-4 text-lg" itemProp="description">
-                  <strong>What is Karma Hello?</strong> {t('services.karmaHelloExpanded.description')} Learn more about our <Link to="/token" className="text-purple-400 hover:text-purple-300 underline" title="UVD Token Information">UVD Token</Link>, <Link to="/nft" className="text-purple-400 hover:text-purple-300 underline" title="Echoes NFT Collections">Echoes NFT collections</Link>, and <Link to="/metrics" className="text-purple-400 hover:text-purple-300 underline" title="DAO Metrics Dashboard">DAO metrics</Link>. Join our <Link to="/aplicar" className="text-purple-400 hover:text-purple-300 underline" title="Apply to Join UltraVioleta DAO">community</Link> to participate!
+                  <strong>{t('services.karmaHelloExpanded.whatIsKarmaHello')}</strong> {t('services.karmaHelloExpanded.description')}{' '}
+                  <Trans
+                    i18nKey="services.karmaHelloExpanded.learnMoreLinks"
+                    components={{
+                      uvdToken: <Link to="/token" className="text-purple-400 hover:text-purple-300 underline" title="UVD Token Information" />,
+                      echoesNFT: <Link to="/nft" className="text-purple-400 hover:text-purple-300 underline" title="Echoes NFT Collections" />,
+                      daoMetrics: <Link to="/metrics" className="text-purple-400 hover:text-purple-300 underline" title="DAO Metrics Dashboard" />,
+                      community: <Link to="/aplicar" className="text-purple-400 hover:text-purple-300 underline" title="Apply to Join UltraVioleta DAO" />
+                    }}
+                  />
                 </p>
 
               <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -900,40 +909,11 @@ const ServicesPage = () => {
           <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-500/30">
             <h3 className="text-2xl font-bold text-purple-300 mb-4 flex items-center">
               <Bot className="w-6 h-6 mr-2" />
-              Karma Hello - Preguntas Frecuentes
+              {t('services.karmaHelloExpanded.faqs.title')}
             </h3>
 
             <div className="space-y-3">
-              {[
-                {
-                  question: "¿Qué es Chat-to-Earn?",
-                  answer: "Chat-to-Earn es un concepto revolucionario Web3 donde los usuarios ganan criptomonedas (tokens UVD) participando en interacciones de chat de calidad en Twitch. Karma Hello evalúa la calidad de los mensajes usando 18+ agentes de IA y recompensa a los usuarios con tokens en la blockchain Avalanche."
-                },
-                {
-                  question: "¿Cómo previene Karma Hello el farming y el abuso?",
-                  answer: "Karma Hello usa un sistema anti-farming multi-capa con modelos avanzados de ML incluyendo BERT para análisis de texto, Isolation Forest para detección de anomalías, y Gradient Boosting para clasificación de fraude. Además, cada mensaje quema 1 token UVD, creando un desincentivo económico para el spam."
-                },
-                {
-                  question: "¿Cuáles son los beneficios para holders de NFTs Echoes?",
-                  answer: "Los holders de NFTs Echoes reciben recompensas x2 en todos los tokens UVD ganados a través de Karma Hello. Este beneficio exclusivo se aplica automáticamente cuando el sistema detecta la propiedad del NFT en la wallet conectada del usuario."
-                },
-                {
-                  question: "¿Cuánto puedo ganar con Karma Hello?",
-                  answer: "Las recompensas siguen una distribución Fibonacci que va desde 10,946 hasta 832,040 tokens UVD por mensaje de calidad. Con Twitter Social Boost, los multiplicadores van de 1.2x a 5.0x basados en tu influencia social. Los holders de Echoes NFT obtienen un multiplicador adicional x2 en todas las recompensas."
-                },
-                {
-                  question: "What is the difference between Karma Hello and other chat bots?",
-                  answer: "Karma Hello uniquely combines 18+ AI agents (GPT-4, Claude, Ollama) to evaluate message quality in real-time, rewards users with actual cryptocurrency (UVD tokens) on Avalanche blockchain, implements advanced anti-farming ML models (BERT, Isolation Forest), and includes token burning mechanics for economic sustainability. No other bot offers this comprehensive Web3 integration."
-                },
-                {
-                  question: "How do I start earning with Karma Hello?",
-                  answer: "To start earning: 1) Join the Twitch channel at twitch.tv/0xultravioleta, 2) Connect your Web3 wallet to the platform, 3) Start chatting with quality messages in the stream, 4) Receive UVD token rewards automatically based on AI evaluation, 5) Optional: Hold Echoes NFTs for 2x rewards or connect Twitter for social boost multipliers."
-                },
-                {
-                  question: "Is Karma Hello available in multiple languages?",
-                  answer: "Yes, Karma Hello supports multiple languages including Spanish (ES), English (EN), Portuguese (PT), and French (FR). The AI agents can understand and evaluate message quality in all these languages, making it accessible for the entire Latin American and global community."
-                }
-              ].map((faq, index) => (
+              {['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7'].map((faqKey, index) => (
                 <div
                   key={index}
                   itemScope
@@ -946,7 +926,7 @@ const ServicesPage = () => {
                     className="w-full text-left p-4 flex items-center justify-between hover:bg-purple-900/10 transition-colors"
                   >
                     <h4 itemProp="name" className="text-lg font-semibold text-white pr-4">
-                      {faq.question}
+                      {t(`services.karmaHelloExpanded.faqs.${faqKey}.question`)}
                     </h4>
                     <span className={`text-purple-400 transform transition-transform ${karmaFaqsOpen[index] ? 'rotate-180' : ''}`}>
                       ▼
@@ -960,7 +940,7 @@ const ServicesPage = () => {
                       className="px-4 pb-4"
                     >
                       <p itemProp="text" className="text-gray-300">
-                        {faq.answer}
+                        {t(`services.karmaHelloExpanded.faqs.${faqKey}.answer`)}
                       </p>
                     </div>
                   )}

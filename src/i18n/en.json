@@ -1388,6 +1388,21 @@
   "services": {
     "title": "Products & Services",
     "subtitle": "We offer professional Web3 products and services for communities, brands and projects in Latin America",
+    "hero": {
+      "title": "AI Services & Web3 Development Solutions",
+      "subtitle": "Revolutionary AI-powered tools for streamers, content creators, and Web3 communities in Latin America"
+    },
+    "quickNav": {
+      "jumpTo": "Jump to section:",
+      "ultraServicios": "Ultra Services",
+      "karmaHello": "Karma Hello",
+      "chatToEarnReport": "Chat-to-Earn Report",
+      "abracadabra": "Abracadabra",
+      "ultraEvento": "Ultra Event 2025",
+      "productos": "Products",
+      "contenidoEducativo": "Educational Content"
+    },
+    "ultraServiciosTitle": "Ultra Services",
     "products": {
       "title": "Products",
       "book": {
@@ -1426,6 +1441,8 @@
       "title": "Karma Hello",
       "subtitle": "Chat-to-Earn System with Multi-Agent AI",
       "description": "Karma Hello is an advanced Twitch bot that rewards users with UVD tokens for contributing quality messages to the chat. The system uses real artificial intelligence to evaluate each message and assign rewards based on a quality scale.",
+      "whatIsKarmaHello": "What is Karma Hello?",
+      "learnMoreLinks": "Learn more about our <uvdToken>UVD Token</uvdToken>, <echoesNFT>Echoes NFT collections</echoesNFT>, and <daoMetrics>DAO metrics</daoMetrics>. Join our <community>community</community> to participate!",
       "channel": "Channel: twitch.tv/0xultravioleta",
       "blockchain": "Blockchain: Avalanche (C-Chain)",
       "features": {
@@ -1544,6 +1561,37 @@
       "cta": {
         "watchLive": "Watch Live",
         "learnMore": "Learn More"
+      },
+      "faqs": {
+        "title": "Karma Hello - Frequently Asked Questions",
+        "q1": {
+          "question": "What is Chat-to-Earn?",
+          "answer": "Chat-to-Earn is a revolutionary Web3 concept where users earn cryptocurrency (UVD tokens) by participating in quality chat interactions on Twitch. Karma Hello evaluates message quality using 18+ AI agents and rewards users with tokens on the Avalanche blockchain."
+        },
+        "q2": {
+          "question": "How does Karma Hello prevent farming and abuse?",
+          "answer": "Karma Hello uses a multi-layer anti-farming system with advanced ML models including BERT for text analysis, Isolation Forest for anomaly detection, and Gradient Boosting for fraud classification. Additionally, each message burns 1 UVD token, creating an economic disincentive for spam."
+        },
+        "q3": {
+          "question": "What are the benefits for Echoes NFT holders?",
+          "answer": "Echoes NFT holders receive x2 rewards on all UVD tokens earned through Karma Hello. This exclusive benefit is applied automatically when the system detects NFT ownership in the user's connected wallet."
+        },
+        "q4": {
+          "question": "How much can I earn with Karma Hello?",
+          "answer": "Rewards follow a Fibonacci distribution ranging from 10,946 to 832,040 UVD tokens per quality message. With Twitter Social Boost, multipliers range from 1.2x to 5.0x based on your social influence. Echoes NFT holders get an additional x2 multiplier on all rewards."
+        },
+        "q5": {
+          "question": "What is the difference between Karma Hello and other chat bots?",
+          "answer": "Karma Hello uniquely combines 18+ AI agents (GPT-4, Claude, Ollama) to evaluate message quality in real-time, rewards users with actual cryptocurrency (UVD tokens) on Avalanche blockchain, implements advanced anti-farming ML models (BERT, Isolation Forest), and includes token burning mechanics for economic sustainability. No other bot offers this comprehensive Web3 integration."
+        },
+        "q6": {
+          "question": "How do I start earning with Karma Hello?",
+          "answer": "To start earning: 1) Join the Twitch channel at twitch.tv/0xultravioleta, 2) Connect your Web3 wallet to the platform, 3) Start chatting with quality messages in the stream, 4) Receive UVD token rewards automatically based on AI evaluation, 5) Optional: Hold Echoes NFTs for 2x rewards or connect Twitter for social boost multipliers."
+        },
+        "q7": {
+          "question": "Is Karma Hello available in multiple languages?",
+          "answer": "Yes, Karma Hello supports multiple languages including Spanish (ES), English (EN), Portuguese (PT), and French (FR). The AI agents can understand and evaluate message quality in all these languages, making it accessible for the entire Latin American and global community."
+        }
       }
     },
     "karmaReports": {
@@ -1770,7 +1818,12 @@
         "sponsorCTA": "Sponsor the next event"
       }
     },
-    "contact": "Interested in our services? Contact us for more information"
+    "contact": "Interested in our services? Contact us for more information",
+    "educationalVideos": {
+      "title": "Educational Content",
+      "description": "Access our free videos and courses on blockchain, Web3, and decentralized technologies",
+      "viewAll": "View all videos on YouTube"
+    }
   },
   "nft": {
     "title": "NFT Collections",

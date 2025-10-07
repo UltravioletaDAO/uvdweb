@@ -1159,6 +1159,21 @@
   "services": {
     "title": "Productos y Servicios",
     "subtitle": "Ofrecemos productos y servicios profesionales Web3 para comunidades, marcas y proyectos en América Latina",
+    "hero": {
+      "title": "Servicios de IA y Soluciones de Desarrollo Web3",
+      "subtitle": "Herramientas revolucionarias impulsadas por IA para streamers, creadores de contenido y comunidades Web3 en América Latina"
+    },
+    "quickNav": {
+      "jumpTo": "Ir a la sección:",
+      "ultraServicios": "Ultra Servicios",
+      "karmaHello": "Karma Hello",
+      "chatToEarnReport": "Reporte Chat-to-Earn",
+      "abracadabra": "Abracadabra",
+      "ultraEvento": "Ultra Evento 2025",
+      "productos": "Productos",
+      "contenidoEducativo": "Contenido Educativo"
+    },
+    "ultraServiciosTitle": "Ultra Servicios",
     "products": {
       "title": "Productos",
       "book": {
@@ -1197,6 +1212,8 @@
       "title": "Karma Hello",
       "subtitle": "Sistema Chat-to-Earn con Multi-Agentes AI",
       "description": "Karma Hello es un bot avanzado de Twitch que recompensa a los usuarios con tokens UVD por contribuir con mensajes de calidad al chat. El sistema utiliza inteligencia artificial real para evaluar cada mensaje y asignar recompensas basadas en una escala de calidad.",
+      "whatIsKarmaHello": "¿Qué es Karma Hello?",
+      "learnMoreLinks": "Aprende más sobre nuestro <uvdToken>Token UVD</uvdToken>, <echoesNFT>colecciones NFT Echoes</echoesNFT>, y <daoMetrics>métricas del DAO</daoMetrics>. ¡Únete a nuestra <community>comunidad</community> para participar!",
       "channel": "Canal: twitch.tv/0xultravioleta",
       "blockchain": "Blockchain: Avalanche (C-Chain)",
       "features": {
@@ -1315,6 +1332,37 @@
       "cta": {
         "watchLive": "Ver en Vivo",
         "learnMore": "Conocer Más"
+      },
+      "faqs": {
+        "title": "Karma Hello - Preguntas Frecuentes",
+        "q1": {
+          "question": "¿Qué es Chat-to-Earn?",
+          "answer": "Chat-to-Earn es un concepto revolucionario Web3 donde los usuarios ganan criptomonedas (tokens UVD) participando en interacciones de chat de calidad en Twitch. Karma Hello evalúa la calidad de los mensajes usando 18+ agentes de IA y recompensa a los usuarios con tokens en la blockchain Avalanche."
+        },
+        "q2": {
+          "question": "¿Cómo previene Karma Hello el farming y el abuso?",
+          "answer": "Karma Hello usa un sistema anti-farming multi-capa con modelos avanzados de ML incluyendo BERT para análisis de texto, Isolation Forest para detección de anomalías, y Gradient Boosting para clasificación de fraude. Además, cada mensaje quema 1 token UVD, creando un desincentivo económico para el spam."
+        },
+        "q3": {
+          "question": "¿Cuáles son los beneficios para holders de NFTs Echoes?",
+          "answer": "Los holders de NFTs Echoes reciben recompensas x2 en todos los tokens UVD ganados a través de Karma Hello. Este beneficio exclusivo se aplica automáticamente cuando el sistema detecta la propiedad del NFT en la wallet conectada del usuario."
+        },
+        "q4": {
+          "question": "¿Cuánto puedo ganar con Karma Hello?",
+          "answer": "Las recompensas siguen una distribución Fibonacci que va desde 10,946 hasta 832,040 tokens UVD por mensaje de calidad. Con Twitter Social Boost, los multiplicadores van de 1.2x a 5.0x basados en tu influencia social. Los holders de Echoes NFT obtienen un multiplicador adicional x2 en todas las recompensas."
+        },
+        "q5": {
+          "question": "¿Cuál es la diferencia entre Karma Hello y otros bots de chat?",
+          "answer": "Karma Hello combina de manera única 18+ agentes de IA (GPT-4, Claude, Ollama) para evaluar la calidad de los mensajes en tiempo real, recompensa a los usuarios con criptomonedas reales (tokens UVD) en la blockchain Avalanche, implementa modelos avanzados de ML anti-farming (BERT, Isolation Forest), e incluye mecánicas de quema de tokens para la sostenibilidad económica. Ningún otro bot ofrece esta integración Web3 tan completa."
+        },
+        "q6": {
+          "question": "¿Cómo empiezo a ganar con Karma Hello?",
+          "answer": "Para empezar a ganar: 1) Únete al canal de Twitch en twitch.tv/0xultravioleta, 2) Conecta tu wallet Web3 a la plataforma, 3) Comienza a chatear con mensajes de calidad en el stream, 4) Recibe recompensas en tokens UVD automáticamente basadas en la evaluación de IA, 5) Opcional: Posee NFTs Echoes para recompensas x2 o conecta Twitter para multiplicadores de social boost."
+        },
+        "q7": {
+          "question": "¿Karma Hello está disponible en múltiples idiomas?",
+          "answer": "Sí, Karma Hello soporta múltiples idiomas incluyendo Español (ES), Inglés (EN), Portugués (PT) y Francés (FR). Los agentes de IA pueden entender y evaluar la calidad de los mensajes en todos estos idiomas, haciéndolo accesible para toda la comunidad latinoamericana y global."
+        }
       }
     },
     "karmaReports": {
@@ -1508,6 +1556,111 @@
           "question": "¿Qué hace única la búsqueda semántica de Abracadabra?",
           "answer": "Abracadabra usa Cognee framework con embeddings de OpenAI para entender contexto y significado, no solo palabras clave. Cuenta con un knowledge graph de 500+ nodos que permite multi-hop reasoning hasta 3 niveles de profundidad, consultas en lenguaje natural en cualquier idioma, y búsqueda temporal para encontrar contenido de períodos específicos. Esto permite consultas como '¿Qué dijeron sobre NFTs el mes pasado?' y obtener resultados precisos y contextuales."
         }
+      },
+      "fullDescription": "Abracadabra es una plataforma empresarial de content intelligence que utiliza inteligencia artificial avanzada para transformar videos y streams en contenido procesable, búsquedas semánticas y análisis predictivo. Sistema completo end-to-end que convierte contenido audiovisual bruto en analytics estructurados, contenido derivado automático y predicciones de tendencias.",
+      "stats": {
+        "streamsProcessed": "Streams Procesados",
+        "streamsValue": "70+ streams indexados",
+        "topicsIndexed": "Topics Indexados",
+        "topicsValue": "640+ topics en Cognee",
+        "apiEndpoints": "API Endpoints",
+        "phasesComplete": "Fases Completas"
+      },
+      "systemCapabilities": {
+        "title": "Capacidades del Sistema",
+        "dualTranscription": {
+          "title": "Transcripción Dual",
+          "item1": "AWS Transcribe (videos < 4 horas)",
+          "item2": "OpenAI Whisper (videos > 4 horas)",
+          "item3": "Auto-switching inteligente",
+          "item4": "Diarización de speakers"
+        },
+        "contentGeneration": {
+          "title": "Generación de Contenido",
+          "item1": "DALL-E 3 imágenes (scene-first)",
+          "item2": "Resúmenes: conciso, completo, crítica",
+          "item3": "Tweets 280 chars con CTA",
+          "item4": "SEO descriptions optimizadas"
+        },
+        "videoProcessing": {
+          "title": "Procesamiento de Video",
+          "item1": "YouTube Shorts (9:16, max 60s)",
+          "item2": "TikTok format (9:16, max 180s)",
+          "item3": "Instagram Reels (9:16, max 90s)",
+          "item4": "Audio normalización LUFS -20"
+        },
+        "multiLanguage": {
+          "title": "Multi-Idioma",
+          "item1": "10+ idiomas: ES, PT, FR, DE, IT, JA, KO, ZH, RU, AR",
+          "item2": "Adaptación cultural de modismos",
+          "item3": "Preserva markdown y SEO keywords",
+          "item4": "Límite de caracteres (Twitter 280)"
+        },
+        "semanticSearch": {
+          "title": "Búsqueda Semántica",
+          "item1": "Cognee Framework integrado",
+          "item2": "Natural language queries",
+          "item3": "Multi-hop reasoning (3 saltos)",
+          "item4": "Knowledge graph 500+ nodos"
+        },
+        "predictiveAnalytics": {
+          "title": "Analytics Predictivo",
+          "item1": "Trending topics (7-30 días forecast)",
+          "item2": "Engagement predictions LSTM",
+          "item3": "Optimal posting times",
+          "item4": "Content saturation alerts"
+        }
+      },
+      "techStack": {
+        "title": "Stack Tecnológico",
+        "backendAI": {
+          "title": "Backend & AI",
+          "item1": "Python 3.9+ / Flask",
+          "item2": "OpenAI GPT-4o-2024-08-06",
+          "item3": "Cognee Framework 0.3.4",
+          "item4": "PyTorch LSTM networks"
+        },
+        "processing": {
+          "title": "Procesamiento",
+          "item1": "AWS Transcribe + Whisper",
+          "item2": "FFmpeg video editing",
+          "item3": "DALL-E 3 imágenes",
+          "item4": "OpenCV computer vision"
+        },
+        "infrastructure": {
+          "title": "Infrastructure",
+          "item1": "SQLite / PostgreSQL",
+          "item2": "WebSocket real-time",
+          "item3": "JWT + RBAC auth",
+          "item4": "75+ API endpoints"
+        }
+      },
+      "competitiveAdvantages": {
+        "title": "Ventajas Competitivas",
+        "fullStack": {
+          "title": "Full-Stack Intelligence",
+          "desc": "Procesamiento end-to-end: download → analytics → content"
+        },
+        "automation": {
+          "title": "Automation-First",
+          "desc": "Auto ETL, Cognee indexing, content generation, predictions"
+        },
+        "semantic": {
+          "title": "Semantic Layer",
+          "desc": "Natural language search, knowledge graph, multi-hop reasoning"
+        },
+        "multiFormat": {
+          "title": "Multi-Format Output",
+          "desc": "Blogs, threads, clips, imágenes, audio, data exports"
+        },
+        "predictive": {
+          "title": "Predictive & Proactive",
+          "desc": "Trending forecasting, engagement predictions, recommendations"
+        },
+        "enterprise": {
+          "title": "Enterprise-Ready",
+          "desc": "JWT + RBAC, WebSocket analytics, multi-usuario, audit trail"
+        }
       }
     },
     "events": {
@@ -1517,7 +1670,12 @@
         "sponsorCTA": "Patrocina el próximo evento"
       }
     },
-    "contact": "¿Interesado en nuestros servicios? Contáctanos para más información"
+    "contact": "¿Interesado en nuestros servicios? Contáctanos para más información",
+    "educationalVideos": {
+      "title": "Contenido Educativo",
+      "description": "Accede a nuestros videos y cursos gratuitos sobre blockchain, Web3 y tecnologías descentralizadas",
+      "viewAll": "Ver todos los videos en YouTube"
+    }
   },
   "nft": {
     "title": "Colecciones NFT",
