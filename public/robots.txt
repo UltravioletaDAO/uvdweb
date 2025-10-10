@@ -22,6 +22,9 @@ Allow: /services
 Allow: /services#karma-hello
 Allow: /services#abracadabra
 Allow: /nft
+Allow: /nfts
+Allow: /stream-summaries
+Allow: /stream-summaries/*
 Disallow: /api/
 Disallow: /admin/
 Disallow: /twitch-callback
@@ -150,6 +153,7 @@ User-agent: *
 Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid
 
 # Sitemap locations
+Sitemap: https://ultravioleta.xyz/sitemap-index.xml
 Sitemap: https://ultravioleta.xyz/sitemap.xml
 Sitemap: https://ultravioleta.xyz/sitemap-blog.xml
 Sitemap: https://ultravioleta.xyz/sitemap-images.xml

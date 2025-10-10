@@ -5,8 +5,6 @@ import {
   Bars3Icon,
   XMarkIcon,
   HomeIcon,
-  LinkIcon,
-  AcademicCapIcon,
   CurrencyDollarIcon,
   UsersIcon,
   ShieldCheckIcon,
@@ -15,8 +13,8 @@ import {
   ArrowTrendingUpIcon,
   InformationCircleIcon,
   PlayCircleIcon,
-  CalendarIcon,
   PhotoIcon,
+  DocumentTextIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -67,6 +65,13 @@ const HamburgerMenu = () => {
       path: "/services",
       isExternal: false,
       description: t('navigation.descriptions.services'),
+    },
+    {
+      name: t('navigation.streamSummaries'),
+      icon: DocumentTextIcon,
+      path: "/stream-summaries",
+      isExternal: false,
+      description: t('navigation.descriptions.streamSummaries'),
     },
     {
       name: t('navigation.nft'),
@@ -344,7 +349,7 @@ const HamburgerMenu = () => {
               <div className="flex items-center justify-center mb-3">
                 <img 
                   src="/uvd.png" 
-                  alt="Ultravioleta DAO"
+                  alt={t('common.logo_alt')}
                   className="h-16 !w-[18%] !max-w-[18%]"
                 />
               </div>

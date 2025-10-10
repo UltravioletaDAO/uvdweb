@@ -7,6 +7,7 @@ import {
   ClipboardDocumentCheckIcon
 } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const Delegations = () => {
   const navigate = useNavigate();
@@ -33,14 +34,19 @@ const Delegations = () => {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="min-h-screen bg-background py-16 px-4"
-    >
-      <div className="container mx-auto">
+    <>
+      <SEO
+        title={t('delegations.title')}
+        description={t('delegations.beam_validator.join_message')}
+      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="min-h-screen bg-background py-16 px-4"
+      >
+        <div className="container mx-auto">
         <motion.button
           onClick={handleReturn}
           className="inline-flex items-center space-x-2 text-text-secondary
@@ -159,8 +165,9 @@ const Delegations = () => {
             </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+        </div>
+      </motion.div>
+    </>
   );
 };
 

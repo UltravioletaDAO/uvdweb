@@ -8,16 +8,17 @@ class StreamSummariesService {
   constructor() {
     this.cache = new Map();
     this.cacheExpiry = 5 * 60 * 1000; // 5 minutes cache
-    this.currentLanguage = 'es'; // Default language
+    this.currentLanguage = 'es'; // Default language (always use 2-letter codes: es, en, pt, fr)
   }
 
   /**
    * Set current language for fetching summaries
-   * @param {string} language - Language code (es, en, pt, fr)
+   * @param {string} language - Language code (es, en, pt, fr) or full locale (en-US, es-MX, etc.)
    */
   setLanguage(language) {
-    this.currentLanguage = language;
-    this.log(`Language set to: ${language}`);
+    // Normalize language code: extract just the first 2 letters (en-US → en, es-MX → es, etc.)
+    this.currentLanguage = language.split('-')[0].toLowerCase();
+    this.log(`Language normalized: ${language} → ${this.currentLanguage}`);
   }
 
   log(message, data = null) {
@@ -118,52 +119,35 @@ class StreamSummariesService {
         return cached;
       }
 
-      // Try S3 first: stream-summaries/{streamer}/{fecha_stream}/{video_id}.{language}.json
-      if (videoId && fechaStream) {
-        const s3Url = `${S3_BASE_URL}/stream-summaries/${streamer}/${fechaStream}/${videoId}.${this.currentLanguage}.json`;
-        this.log('Attempting to fetch summary from S3', { url: s3Url });
-
-        try {
-          const s3Response = await fetch(s3Url);
-
-          if (s3Response.ok) {
-            const data = await s3Response.json();
-            this.log('✅ Summary data fetched successfully from S3', {
-              streamer: data.metadata?.streamer,
-              video_id: data.metadata?.video_id,
-              language: this.currentLanguage
-            });
-            this.setCache(cacheKey, data);
-            return data;
-          } else {
-            this.log('❌ S3 summary fetch failed with status', { status: s3Response.status, statusText: s3Response.statusText });
-          }
-        } catch (s3Error) {
-          this.log('❌ S3 summary fetch failed with error', { error: s3Error.message, type: s3Error.name });
-        }
-      } else {
-        this.log('⚠️ Missing parameters for S3 fetch', { videoId, fechaStream });
+      // Fetch from S3: stream-summaries/{streamer}/{fecha_stream}/{video_id}.{language}.json
+      if (!videoId || !fechaStream) {
+        const errorMsg = `Missing required parameters for S3 fetch - videoId: ${videoId}, fechaStream: ${fechaStream}`;
+        this.log('❌ ' + errorMsg);
+        throw new Error(errorMsg);
       }
 
-      // Fallback to local file (language-agnostic for now)
-      const localUrl = `/stream-summaries/resumen_${streamer}_example.json`;
-      this.log('⚠️ Using LOCAL FALLBACK for summary', { url: localUrl });
-      const response = await fetch(localUrl);
+      const s3Url = `${S3_BASE_URL}/stream-summaries/${streamer}/${fechaStream}/${videoId}.${this.currentLanguage}.json`;
+      this.log('Fetching summary from S3', { url: s3Url });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      const s3Response = await fetch(s3Url);
+
+      if (!s3Response.ok) {
+        const errorMsg = `S3 fetch failed with status ${s3Response.status}: ${s3Response.statusText} - URL: ${s3Url}`;
+        this.log('❌ ' + errorMsg);
+        throw new Error(errorMsg);
       }
 
-      const data = await response.json();
-      this.log('Summary data fetched successfully from local', {
+      const data = await s3Response.json();
+      this.log('✅ Summary fetched successfully from S3', {
         streamer: data.metadata?.streamer,
-        video_id: data.metadata?.video_id
+        video_id: data.metadata?.video_id,
+        language: this.currentLanguage
       });
 
       this.setCache(cacheKey, data);
       return data;
     } catch (error) {
-      this.log('Error fetching summary (both S3 and local failed)', error);
+      this.log('Error fetching summary from S3', error);
       throw error;
     }
   }
@@ -245,4 +229,5 @@ class StreamSummariesService {
   }
 }
 
-export default new StreamSummariesService();
+const streamSummariesServiceInstance = new StreamSummariesService();
+export default streamSummariesServiceInstance;

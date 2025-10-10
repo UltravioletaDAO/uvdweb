@@ -139,7 +139,7 @@ const SEOEnhanced = ({
           '@type': 'FinancialProduct',
           name: 'Treasury Multisig Wallet',
           description: 'Multi-signature treasury on Avalanche blockchain',
-          identifier: '0x80ae3B3847E4e8Bd27A389f7686486CAC9C3f3e8'
+          identifier: '0x52110a2Cc8B6bBf846101265edAAe34E753f3389'
         }
       },
       {
@@ -534,7 +534,7 @@ const SEOEnhanced = ({
       schemas.push({
         '@context': 'https://schema.org',
         '@type': 'CollectionPage',
-        '@id': `${siteUrl}/nft#collection`,
+        '@id': `${siteUrl}/nfts#collection`,
         name: 'Echoes NFT Collection - UltraVioleta DAO',
         description: '80 unique NFT artworks with exclusive benefits for Karma Hello Chat-to-Earn system, providing 2x rewards multiplier',
         mainEntity: {
@@ -847,12 +847,16 @@ const SEOEnhanced = ({
     description: 'Core contributors and community members building UltraVioleta DAO'
   } : null;
 
-  // Aggregate all JSON-LD schemas
+  // Aggregate JSON-LD schemas based on page context
+  // Only include organization, website, and DAO schemas on homepage
   const allJsonLd = [
-    organizationJsonLd,
-    websiteJsonLd,
-    daoJsonLd,
+    // Core schemas only on homepage
+    pathname === '/' ? organizationJsonLd : null,
+    pathname === '/' ? websiteJsonLd : null,
+    (pathname === '/' || pathname === '/about') ? daoJsonLd : null,
+    // Include breadcrumb on all pages except homepage
     breadcrumbJsonLd,
+    // Page-specific schemas
     localBusinessJsonLd,
     datasetJsonLd,
     howToJsonLd,
@@ -873,16 +877,30 @@ const SEOEnhanced = ({
       {/* Canonical and Alternate URLs */}
       <link rel="canonical" href={fullUrl} />
 
-      {/* Hreflang tags for all language versions */}
-      {Object.entries(languageAlternates).map(([lang, locale]) => (
-        <link
-          key={lang}
-          rel="alternate"
-          hrefLang={lang}
-          href={`${siteUrl}${pathname}?lang=${lang}`}
-        />
-      ))}
-      <link rel="alternate" hrefLang="x-default" href={fullUrl} />
+      {/* Hreflang tags for all language versions - Path-based routing */}
+      {(() => {
+        // Strip any existing language prefix from pathname to get base path
+        const basePath = pathname.replace(/^\/(es|en|pt|fr)/, '') || '/';
+
+        return (
+          <>
+            {Object.keys(languageAlternates).map((lang) => {
+              // English is the default (no prefix), others get language prefix
+              const langPath = lang === 'en' ? basePath : `/${lang}${basePath}`;
+              return (
+                <link
+                  key={lang}
+                  rel="alternate"
+                  hrefLang={lang}
+                  href={`${siteUrl}${langPath}`}
+                />
+              );
+            })}
+            {/* x-default points to English version */}
+            <link rel="alternate" hrefLang="x-default" href={`${siteUrl}${basePath}`} />
+          </>
+        );
+      })()}
 
       {/* Open Graph Meta Tags */}
       <meta property="og:type" content={article ? 'article' : type} />
@@ -958,11 +976,6 @@ const SEOEnhanced = ({
       <meta name="apple-mobile-web-app-capable" content="yes" />
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       <meta name="mobile-web-app-capable" content="yes" />
-
-      {/* Verification meta tags */}
-      <meta name="google-site-verification" content="your-google-verification-code" />
-      <meta name="msvalidate.01" content="your-bing-verification-code" />
-      <meta name="yandex-verification" content="your-yandex-verification-code" />
 
       {/* Preload critical fonts */}
       {preloadFonts.map((font, index) => (

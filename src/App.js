@@ -24,6 +24,7 @@ import MetricsDashboard from "./pages/MetricsDashboard";
 import ServicesPage from "./pages/ServicesPage";
 import NFTPage from "./pages/NFTPage";
 import StreamSummaries from "./pages/StreamSummaries";
+import Events from "./pages/Events";
 
 const queryClient = new QueryClient();
 
@@ -57,6 +58,7 @@ function App() {
                 <Route path="/services" element={<ServicesPage />} />
                 <Route path="/nfts" element={<NFTPage />} />
                 <Route path="/stream-summaries" element={<StreamSummaries />} />
+                <Route path="/events" element={<Events />} />
               </Routes>
             </div>
           </Router>

@@ -457,7 +457,7 @@ const SwapWidget = () => {
       const interval = setInterval(updateBalances, 10000);
       return () => clearInterval(interval);
     }
-  }, [fromAmount, fromToken, toToken, activeAccount]);
+  }, [fromAmount, fromToken, toToken, activeAccount, refreshQuote, updateBalances]);
 
   // Swap tokens
   const handleSwapTokens = () => {

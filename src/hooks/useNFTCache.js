@@ -1,6 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
 
-const CACHE_NAME = 'uvd-nft-cache-v1';
 const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
 const MEMORY_CACHE = new Map();
 const PRELOAD_QUEUE = new Set();

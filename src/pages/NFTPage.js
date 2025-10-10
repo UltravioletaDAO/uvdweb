@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import SEOEnhanced from '../components/SEOEnhanced';
@@ -6,12 +6,11 @@ import OptimizedNFTCard from '../components/OptimizedNFTCard';
 import { useNFTCache } from '../hooks/useNFTCache';
 
 const NFTPage = () => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const [echoesNFTs, setEchoesNFTs] = useState([]);
-  const [selectedCollection, setSelectedCollection] = useState('echoes');
+  const [selectedCollection] = useState('echoes');
   const [loading, setLoading] = useState(true);
-  const [loadedNFTs, setLoadedNFTs] = useState(new Set());
-  const { getCachedUrl, preloadImages, markAsLoaded, isLoaded } = useNFTCache();
+  const { getCachedUrl, preloadImages, markAsLoaded } = useNFTCache();
 
   // Register service worker for offline caching
   useEffect(() => {
@@ -108,7 +107,6 @@ const NFTPage = () => {
   }, [echoesNFTs, loading, preloadImages]);
 
   const handleNFTLoad = useCallback((nftId) => {
-    setLoadedNFTs(prev => new Set(prev).add(nftId));
     markAsLoaded(nftId);
   }, [markAsLoaded]);
 
@@ -129,36 +127,7 @@ const NFTPage = () => {
         priority={isPriority}
       />
     );
-  }, [getCachedUrl, handleNFTLoad]);
-
-  const CollectionStats = ({ collection }) => (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-      {collection.totalSupply && (
-        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-          <div className="text-sm text-gray-500 dark:text-gray-400">{t('nft.totalSupply')}</div>
-          <div className="text-2xl font-bold text-purple-600">{collection.totalSupply}</div>
-        </div>
-      )}
-      {collection.stats.uniqueOwners && (
-        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-          <div className="text-sm text-gray-500 dark:text-gray-400">{t('nft.uniqueOwners')}</div>
-          <div className="text-2xl font-bold text-purple-600">{collection.stats.uniqueOwners}</div>
-        </div>
-      )}
-      {collection.chain && (
-        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-          <div className="text-sm text-gray-500 dark:text-gray-400">{t('nft.chain')}</div>
-          <div className="text-2xl font-bold text-purple-600">{collection.chain}</div>
-        </div>
-      )}
-      {collection.stats.royalty && (
-        <div className="bg-white dark:bg-gray-800 p-4 rounded-lg">
-          <div className="text-sm text-gray-500 dark:text-gray-400">{t('nft.royalty')}</div>
-          <div className="text-2xl font-bold text-purple-600">{collection.stats.royalty}</div>
-        </div>
-      )}
-    </div>
-  );
+  }, [getCachedUrl, handleNFTLoad, fibonacciNumbers]);
 
   return (
     <>

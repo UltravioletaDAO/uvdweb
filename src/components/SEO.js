@@ -384,10 +384,10 @@ const SEO = ({
     ]
   } : null;
 
-  const nftJsonLd = pathname === '/nft' ? {
+  const nftJsonLd = (pathname === '/nfts' || pathname === '/nft') ? {
     '@context': 'https://schema.org',
     '@type': 'CollectionPage',
-    '@id': `${siteUrl}/nft`,
+    '@id': `${siteUrl}/nfts`,
     name: 'Echoes NFT Collection - UltraVioleta DAO',
     description: '80 unique NFT artworks with exclusive benefits for Karma Hello Chat-to-Earn system',
     mainEntity: {
@@ -436,7 +436,7 @@ const SEO = ({
           '@type': 'ListItem',
           position: 2,
           name: 'NFT Collection',
-          item: `${siteUrl}/nft`
+          item: `${siteUrl}/nfts`
         }
       ]
     }

@@ -3,8 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   HomeIcon,
-  LinkIcon,
-  AcademicCapIcon,
   UsersIcon,
   ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
@@ -13,7 +11,6 @@ import {
   InformationCircleIcon,
   CurrencyDollarIcon,
   PlayCircleIcon,
-  CalendarIcon,
   PhotoIcon,
   DocumentTextIcon,
 } from "@heroicons/react/24/outline";
@@ -126,7 +123,7 @@ const Header = () => {
               <Link to="/" className="flex items-center group">
                 <img 
                   src="/uvd.png" 
-                  alt="Ultravioleta DAO"
+                  alt={t('common.logo_alt')}
                   className="h-12 w-12 max-w-[89%] transition-transform duration-200 group-hover:scale-105"
                 />
               </Link>

@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { 
-  CheckCircleIcon, 
-  ClockIcon, 
+import {
+  CheckCircleIcon,
+  ClockIcon,
   DocumentMagnifyingGlassIcon,
   XMarkIcon,
-  ArrowLeftIcon 
+  ArrowLeftIcon
 } from '@heroicons/react/24/outline';
 import { debugLog } from '../lib/utils';
 import { useTranslation } from 'react-i18next';
+import SEO from '../components/SEO';
 
 const ApplicationStatus = () => {
   const [email, setEmail] = useState('');
@@ -123,8 +124,13 @@ const ApplicationStatus = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background py-16 px-4">
-      <div className="max-w-xl mx-auto space-y-8">
+    <>
+      <SEO
+        title={t('applicationStatus.title')}
+        description={t('applicationStatus.instructions')}
+      />
+      <div className="min-h-screen bg-background py-16 px-4">
+        <div className="max-w-xl mx-auto space-y-8">
         <Link
           to="/"
           className="inline-flex items-center space-x-2 text-text-secondary
@@ -202,8 +208,9 @@ const ApplicationStatus = () => {
         )}
 
         {status && <StatusDisplay status={status} />}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

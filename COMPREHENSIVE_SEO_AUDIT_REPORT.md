@@ -197,7 +197,7 @@ This report documents the exhaustive SEO audit and advanced optimizations perfor
    <meta name="crypto:chain_id" content="43114">
    <meta name="web3:wallet_connect" content="true">
    <meta name="web3:ens_domain" content="ultravioletadao.eth">
-   <meta name="dao:treasury" content="0x80ae3B3847E4e8Bd27A389f7686486CAC9C3f3e8">
+   <meta name="dao:treasury" content="0x52110a2Cc8B6bBf846101265edAAe34E753f3389">
    ```
 
 2. **DeFi Protocol Schema**
