@@ -1,8 +1,7 @@
 // Configuración de Web3 para UltraVioleta DAO
 
-// Dirección del contrato del token de gobernanza UVT
-// IMPORTANTE: Reemplazar con la dirección real del contrato
-export const GOVERNANCE_TOKEN_ADDRESS = '0x...'; // Dirección del token UVT
+// Dirección del contrato del token de gobernanza UVD en Avalanche
+export const GOVERNANCE_TOKEN_ADDRESS = '0x4Ffe7e01832243e03668E090706F17726c26d6B2'; // Token UVD en Avalanche C-Chain
 
 // ABI del token de gobernanza (funciones básicas)
 export const GOVERNANCE_TOKEN_ABI = [
@@ -38,6 +37,17 @@ export const GOVERNANCE_TOKEN_ABI = [
 
 // Configuración de redes soportadas
 export const SUPPORTED_NETWORKS = {
+  '0xa86a': {
+    name: 'Avalanche C-Chain',
+    chainId: 43114,
+    rpcUrl: 'https://api.avax.network/ext/bc/C/rpc',
+    explorer: 'https://snowtrace.io',
+    nativeCurrency: {
+      name: 'Avalanche',
+      symbol: 'AVAX',
+      decimals: 18
+    }
+  },
   '0x1': {
     name: 'Ethereum Mainnet',
     chainId: 1,

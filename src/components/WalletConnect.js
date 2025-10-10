@@ -57,7 +57,8 @@ const WalletConnect = ({ onWalletConnected }) => {
       await fetchENS(address, ethersProvider);
       if (onWalletConnected) {
         const network = await ethersProvider.getNetwork();
-        onWalletConnected(address, network.chainId);
+        // Pasar también el provider para validaciones de tokens
+        onWalletConnected(address, network.chainId, ethersProvider);
       }
       instance.on && instance.on('disconnect', disconnectWallet);
     } catch (err) {

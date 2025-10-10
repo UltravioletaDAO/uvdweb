@@ -498,5 +498,14 @@
     "no_submissions_to_vote": "No submissions to vote on",
     "connect_wallet_to_vote": "Connect Wallet to Vote",
     "wallet_required_message": "You need to connect your wallet to participate in decentralized voting."
+  },
+  "bountyCreation": {
+    "title": "Create Bounty",
+    "description": "Create a new bounty for the community. Make sure to clearly describe the objectives and rewards.",
+    "connect_wallet_message": "Connect your wallet to verify if you have access to create bounties",
+    "checking_access": "Verifying access permissions...",
+    "no_access_title": "Restricted Access",
+    "no_access_message": "Your wallet does not meet the requirements to create bounties.",
+    "access_granted": "Access Verified!"
   }
 } 

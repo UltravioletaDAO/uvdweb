@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon, GiftIcon, UsersIcon, BoltIcon, UserCircleIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, GiftIcon, UsersIcon, BoltIcon, UserCircleIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
-import AdminLoginModal from '../components/AdminLoginModal';
 import BountyForm from '../components/BountyForm';
 import SubmissionList from '../components/SubmissionList';
 import WalletConnect from '../components/WalletConnect';
 import { parseISO } from 'date-fns';
 import { ethers } from 'ethers';
+import { validateWhitelist, WHITELIST_CONFIG } from '../utils/tokenValidation';
 
 const initialTasks = [];
 
@@ -37,12 +37,7 @@ const Bounties = () => {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const [tasks, setTasks] = useState([]);
-  const [isAdminModalOpen, setIsAdminModalOpen] = useState(false);
-  const [adminLoading, setAdminLoading] = useState(false);
-  const [adminError, setAdminError] = useState('');
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [authToken, setAuthToken] = useState(null);
-  const [isCurrentUserAdmin, setIsCurrentUserAdmin] = useState(false);
+  const [isCurrentUserAdmin, setIsCurrentUserAdmin] = useState(false); // Solo para admins reales con acceso especial
   const [bountyFormLoading, setBountyFormLoading] = useState(false);
   const [bountyFormError, setBountyFormError] = useState('');
   const [loadingBounties, setLoadingBounties] = useState(true);
@@ -64,6 +59,12 @@ const Bounties = () => {
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [isWalletHover, setIsWalletHover] = useState(false);
   const [ensName, setEnsName] = useState(null);
+  
+  // Estados para whitelist de tokens
+  const [isWhitelisted, setIsWhitelisted] = useState(false);
+  const [whitelistDetails, setWhitelistDetails] = useState(null);
+  const [checkingWhitelist, setCheckingWhitelist] = useState(false);
+  const [web3Provider, setWeb3Provider] = useState(null);
 
   // Al montar, intenta restaurar la wallet desde localStorage
   useEffect(() => {
@@ -93,14 +94,23 @@ const Bounties = () => {
     }
   }, [walletAddress]);
 
-  // Al cargar la app, recuperar el token de localStorage:
+  // Verificar si hay admin token guardado (solo para admins especiales)
   useEffect(() => {
-    const savedToken = localStorage.getItem('authToken');
-    if (savedToken) {
-      setAuthToken(savedToken);
-      setIsLoggedIn(true);
-      // Opcional: podrías verificar el rol con una petición al backend
-      setIsCurrentUserAdmin(true); // O verifica con /auth/verify si quieres más seguridad
+    const adminToken = localStorage.getItem('adminToken');
+    if (adminToken) {
+      // Verificar si el token es válido y es admin
+      fetch(`${process.env.REACT_APP_API_URL}/auth/verify`, {
+        headers: { 'Authorization': `Bearer ${adminToken}` }
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.user && data.user.role === 'admin') {
+            setIsCurrentUserAdmin(true);
+          }
+        })
+        .catch(() => {
+          localStorage.removeItem('adminToken');
+        });
     }
   }, []);
 
@@ -178,58 +188,37 @@ const Bounties = () => {
     }
   }, [tasks, selectedBounty]); // Depende de tasks y selectedBounty para re-sincronizar
 
-  const handleAdminLogin = async ({ username, password }) => {
-    setAdminLoading(true);
-    setAdminError('');
-    try {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: username, password })
-      });
-      const data = await response.json();
-      if (!response.ok) throw new Error(data.error || 'Error de autenticación');
-
-      // No verificar rol aquí, cualquier login válido es suficiente para isLoggedIn
-      setIsLoggedIn(true);
-      setAuthToken(data.token);
-      localStorage.setItem('authToken', data.token);
-      setIsCurrentUserAdmin(data.user.role === 'admin'); // Establece si el usuario actual es admin
-      setIsAdminModalOpen(false);
-    } catch (err) {
-      setAdminError(err.message);
-    } finally {
-      setAdminLoading(false);
-    }
-  };
-
-  // Función para cerrar sesión
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    setAuthToken(null);
-    setIsCurrentUserAdmin(false);
-    localStorage.removeItem('authToken');
-  };
 
   const handleCreateBounty = async (bountyData) => {
     setBountyFormLoading(true);
     setBountyFormError('');
     try {
-      if (!authToken) { // Asegúrate de que hay un token de autenticación
-        throw new Error(t('adminPanel.error_not_logged_in'));
+      if (!walletConnected || !walletAddress) {
+        throw new Error('Debes conectar tu wallet para crear una bounty');
       }
+      
+      if (!isWhitelisted) {
+        throw new Error('No tienes suficientes tokens UVD para crear bounties');
+      }
+
+      // Agregar la wallet del creador a los datos de la bounty
+      const bountyDataWithWallet = {
+        ...bountyData,
+        createdBy: walletAddress,
+        creatorWallet: walletAddress
+      };
+
       const response = await fetch(`${process.env.REACT_APP_API_URL}/bounties`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}` // Envía el token de cualquier usuario logueado
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(bountyData)
+        body: JSON.stringify(bountyDataWithWallet)
       });
 
       const data = await response.json();
       if (!response.ok) {
-        throw new Error(data.error || t('bountyForm.error_creating_bounty')); // Nueva clave de traducción
+        throw new Error(data.error || t('bountyForm.error_creating_bounty'));
       }
 
       alert(t('bountyForm.success_message', { title: bountyData.title }));
@@ -278,18 +267,44 @@ const Bounties = () => {
   };
 
   // Funciones para Web3 y votación
-  const handleWalletConnected = (address, chainId) => {
+  const handleWalletConnected = async (address, chainId, provider) => {
     setWalletConnected(true);
     setWalletAddress(address);
-    setTokenBalance(100); // Valor de ejemplo
+    setWeb3Provider(provider);
     setIsWalletModalOpen(false); // Cierra el modal al conectar
     localStorage.setItem('walletAddress', address); // Guarda en localStorage
+    
+    // Validar whitelist basada en token
+    await checkWhitelistStatus(address, provider);
+  };
+  
+  // Función para verificar si el usuario está en la whitelist
+  const checkWhitelistStatus = async (address, provider) => {
+    setCheckingWhitelist(true);
+    try {
+      const result = await validateWhitelist(address, provider);
+      setIsWhitelisted(result.isWhitelisted);
+      setWhitelistDetails(result.details);
+      
+      if (result.details.balance) {
+        setTokenBalance(parseFloat(result.details.balance));
+      }
+    } catch (error) {
+      console.error('Error checking whitelist:', error);
+      setIsWhitelisted(false);
+      setWhitelistDetails({ error: error.message });
+    } finally {
+      setCheckingWhitelist(false);
+    }
   };
 
   const handleWalletDisconnect = () => {
     setWalletConnected(false);
     setWalletAddress(null);
     setTokenBalance(0);
+    setWeb3Provider(null);
+    setIsWhitelisted(false);
+    setWhitelistDetails(null);
     localStorage.removeItem('walletAddress');
   };
 
@@ -345,49 +360,26 @@ const Bounties = () => {
       className="min-h-screen bg-background py-16 px-4"
     >
       <div className="container mx-auto relative">
-        {/* Botón de acceso admin / Login / Logout */}
+        {/* Botón de Wallet - Único método de acceso */}
         <div className="absolute top-0 right-0 mt-4 mr-4 z-20 flex flex-col items-end gap-4">
           <div className="flex flex-row items-center gap-3">
-            {/* Botón de acceso admin / Login / Logout */}
-            {!isLoggedIn ? (
-              <button
-                onClick={() => setIsAdminModalOpen(true)}
-                className="px-4 py-2 bg-ultraviolet text-white rounded-lg font-semibold shadow hover:bg-ultraviolet-dark transition-colors"
-              >
-                {t('auth.access_button')}
-              </button>
-            ) : (
-              <button
-                onClick={handleLogout}
-                className="px-4 py-2 bg-red-600 text-white rounded-lg font-semibold shadow hover:bg-red-700 transition-colors flex items-center gap-2"
-              >
-                <ArrowRightOnRectangleIcon className="w-5 h-5" /> {t('auth.logout_button')}
-              </button>
-            )}
-            <AdminLoginModal
-              isOpen={isAdminModalOpen}
-              onClose={() => setIsAdminModalOpen(false)}
-              onLogin={handleAdminLogin}
-              loading={adminLoading}
-              error={adminError}
-            />
-            {/* Botón de Wallet compacto con hover para desconectar */}
+            {/* Botón de Wallet - Acceso principal */}
             {!walletConnected ? (
               <button
                 onClick={() => setIsWalletModalOpen(true)}
-                className="px-4 py-2 bg-ultraviolet text-white rounded-lg font-semibold shadow hover:bg-ultraviolet-dark transition-colors"
+                className="px-6 py-3 bg-ultraviolet text-white rounded-lg font-semibold shadow-lg hover:bg-ultraviolet-dark transition-all hover:scale-105"
               >
-                Conectar Wallet
+                🔐 Conectar Wallet
               </button>
             ) : (
               <button
                 className={`px-4 py-2 rounded-lg font-semibold shadow flex items-center gap-2 transition-colors
-                  ${isWalletHover ? 'bg-red-600 text-white' : 'bg-ultraviolet text-white'}`}
+                  ${isWalletHover ? 'bg-red-600 text-white' : 'bg-green-600 text-white'}`}
                 onMouseEnter={() => setIsWalletHover(true)}
                 onMouseLeave={() => setIsWalletHover(false)}
                 onClick={() => { if (isWalletHover) handleWalletDisconnect(); }}
               >
-                {isWalletHover ? 'Desconectar' : formatAddress(walletAddress || 'F3l1p2')}
+                {isWalletHover ? '❌ Desconectar' : `✅ ${formatAddress(walletAddress)}`}
               </button>
             )}
           </div>
@@ -438,6 +430,182 @@ const Bounties = () => {
                 loading={bountyFormLoading}
                 error={bountyFormError}
               />
+            </div>
+          )}
+
+          {/* Panel de creación de bounties - Acceso solo con wallet y UVD */}
+          {!isCurrentUserAdmin && (
+            <div className="mb-8 p-6 bg-background-lighter border border-ultraviolet/10 rounded-xl shadow-lg">
+              <div className="flex items-center gap-3 mb-4">
+                <GiftIcon className="w-8 h-8 text-ultraviolet" />
+                <h2 className="text-2xl font-bold text-ultraviolet">
+                  {t('bountyCreation.title') || 'Crear Bounty'}
+                </h2>
+              </div>
+              
+              {/* Estado: Wallet no conectada */}
+              {!walletConnected && (
+                <div className="text-center py-8">
+                  <div className="mb-4">
+                    <UserCircleIcon className="w-16 h-16 mx-auto text-text-secondary opacity-50" />
+                  </div>
+                  <h3 className="text-xl font-bold text-text-primary mb-2">
+                    Conecta tu Wallet para Crear Bounties
+                  </h3>
+                  <p className="text-text-secondary mb-4">
+                    {t('bountyCreation.connect_wallet_message') || 'Necesitas conectar tu wallet y tener al menos 1,000,000 UVD para crear bounties'}
+                  </p>
+                  <div className="bg-ultraviolet/10 rounded-lg p-4 mb-6 max-w-md mx-auto">
+                    <p className="text-sm text-text-secondary">
+                      <strong className="text-ultraviolet">Requisito:</strong> 1,000,000 UVD
+                    </p>
+                    <p className="text-xs text-text-secondary mt-2">
+                      Token: UltraVioleta DAO (UVD)
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => setIsWalletModalOpen(true)}
+                    className="px-8 py-4 bg-ultraviolet text-white rounded-lg font-bold shadow-lg hover:bg-ultraviolet-dark transition-all hover:scale-105"
+                  >
+                    🔐 Conectar Wallet
+                  </button>
+                </div>
+              )}
+
+              {/* Estado: Verificando whitelist */}
+              {walletConnected && checkingWhitelist && (
+                <div className="text-center py-8">
+                  <div className="mb-4">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-ultraviolet mx-auto"></div>
+                  </div>
+                  <p className="text-text-secondary">
+                    {t('bountyCreation.checking_access') || 'Verificando permisos de acceso...'}
+                  </p>
+                </div>
+              )}
+
+              {/* Estado: Wallet conectada pero NO en whitelist */}
+              {walletConnected && !checkingWhitelist && !isWhitelisted && (
+                <div className="text-center py-8">
+                  <div className="mb-4">
+                    <XCircleIcon className="w-16 h-16 mx-auto text-red-500" />
+                  </div>
+                  <h3 className="text-xl font-bold text-text-primary mb-2">
+                    {whitelistDetails?.wrongNetwork ? 
+                      '❌ Red Incorrecta' : 
+                      (t('bountyCreation.no_access_title') || 'Acceso Restringido')
+                    }
+                  </h3>
+                  
+                  {whitelistDetails?.wrongNetwork ? (
+                    <div className="max-w-md mx-auto">
+                      <p className="text-text-secondary mb-4">
+                        Tu wallet está conectada a una red incorrecta.
+                      </p>
+                      <div className="bg-red-900/20 border border-red-500/30 rounded-lg p-4 mb-4">
+                        <p className="text-sm text-text-secondary mb-2">
+                          <strong className="text-red-400">Red Actual:</strong> Chain ID {whitelistDetails.currentChainId}
+                        </p>
+                        <p className="text-sm text-text-secondary">
+                          <strong className="text-green-400">Red Requerida:</strong> Avalanche C-Chain (Chain ID 43114)
+                        </p>
+                      </div>
+                      <div className="bg-background rounded-lg p-4">
+                        <p className="text-sm text-text-secondary mb-3">
+                          <strong>¿Cómo cambiar a Avalanche?</strong>
+                        </p>
+                        <ol className="text-left text-sm text-text-secondary space-y-2 list-decimal list-inside">
+                          <li>Abre tu wallet (MetaMask, Rabby, etc.)</li>
+                          <li>Haz clic en el selector de red</li>
+                          <li>Selecciona "Avalanche C-Chain"</li>
+                          <li>Si no aparece, agrégala manualmente con Chain ID: 43114</li>
+                        </ol>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <p className="text-text-secondary mb-4">
+                        {t('bountyCreation.no_access_message') || 'Tu wallet no cumple con los requisitos para crear bounties.'}
+                      </p>
+                      
+                      {whitelistDetails && whitelistDetails.type === 'token' && (
+                        <div className="bg-background rounded-lg p-4 max-w-md mx-auto">
+                          <p className="text-sm text-text-secondary mb-2">
+                            <strong>Requisito:</strong> Poseer al menos{' '}
+                            <span className="text-ultraviolet font-bold">
+                              {whitelistDetails.minRequired?.toLocaleString()} {whitelistDetails.tokenName || WHITELIST_CONFIG.GOVERNANCE_TOKEN.symbol}
+                            </span>
+                          </p>
+                          <p className="text-sm text-text-secondary">
+                            <strong>Tu balance:</strong>{' '}
+                            <span className="text-text-primary">
+                              {parseFloat(whitelistDetails.balance || 0).toLocaleString()} {whitelistDetails.tokenName || WHITELIST_CONFIG.GOVERNANCE_TOKEN.symbol}
+                            </span>
+                          </p>
+                          {whitelistDetails.chainId && (
+                            <p className="text-xs text-text-secondary mt-2">
+                              Red: {whitelistDetails.networkName || 'Avalanche'} (Chain ID: {whitelistDetails.chainId})
+                            </p>
+                          )}
+                        </div>
+                      )}
+
+                      {whitelistDetails && whitelistDetails.type === 'nft' && (
+                        <div className="bg-background rounded-lg p-4 max-w-md mx-auto">
+                          <p className="text-sm text-text-secondary mb-2">
+                            <strong>Requisito:</strong> Poseer al menos 1{' '}
+                            <span className="text-ultraviolet font-bold">
+                              {whitelistDetails.nftName || WHITELIST_CONFIG.MEMBERSHIP_NFT.name}
+                            </span>
+                          </p>
+                          <p className="text-sm text-text-secondary">
+                            <strong>Tu balance:</strong>{' '}
+                            <span className="text-text-primary">{whitelistDetails.balance} NFTs</span>
+                          </p>
+                        </div>
+                      )}
+                    </>
+                  )}
+
+                  {whitelistDetails?.error && !whitelistDetails?.wrongNetwork && (
+                    <p className="text-xs text-red-400 mt-4">
+                      Error: {whitelistDetails.error}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Estado: Wallet conectada Y en whitelist - Mostrar formulario */}
+              {walletConnected && !checkingWhitelist && isWhitelisted && (
+                <>
+                  <div className="mb-6 p-4 bg-green-900/20 border border-green-500/30 rounded-lg flex items-center gap-3">
+                    <CheckCircleIcon className="w-8 h-8 text-green-500 flex-shrink-0" />
+                    <div>
+                      <p className="text-green-400 font-semibold">
+                        {t('bountyCreation.access_granted') || '¡Acceso Verificado!'}
+                      </p>
+                      <p className="text-sm text-text-secondary">
+                        {whitelistDetails?.type === 'token' && (
+                          <>Balance: {whitelistDetails.balance} {whitelistDetails.tokenName}</>
+                        )}
+                        {whitelistDetails?.type === 'nft' && (
+                          <>Posees {whitelistDetails.balance} NFTs de {whitelistDetails.nftName}</>
+                        )}
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <p className="text-text-secondary mb-6">
+                    {t('bountyCreation.description') || 'Crea una nueva bounty para la comunidad. Asegúrate de describir claramente los objetivos y recompensas.'}
+                  </p>
+                  
+                  <BountyForm 
+                    onSubmit={handleCreateBounty}
+                    loading={bountyFormLoading}
+                    error={bountyFormError}
+                  />
+                </>
+              )}
             </div>
           )}
 
