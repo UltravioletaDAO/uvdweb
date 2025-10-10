@@ -201,6 +201,7 @@
     "metrics": "Métricas",
     "events": "Eventos",
     "services": "Productos y Servicios",
+    "streamSummaries": "Resúmenes",
     "nft": "Colecciones NFT",
     "categories": {
       "main": "Principal",
@@ -1734,5 +1735,30 @@
     "meta": {
       "description": "Explora las colecciones NFT exclusivas de UltraVioleta DAO - Echoes video NFTs en Avalanche y colecciones artísticas en Ethereum."
     }
+  },
+  "streamSummaries": {
+    "seoTitle": "Resúmenes de Streams - Abracadabra AI",
+    "seoDescription": "Explora resúmenes generados por IA de streams de programación, Web3 y tecnología. Resúmenes automáticos de 0xultravioleta, karenngo, elbitterx, herniep y más.",
+    "title": "Resúmenes de Streams",
+    "subtitle": "Resúmenes generados automáticamente por IA de streams de programación, Web3 y tecnología en español",
+    "loading": "Cargando resúmenes de streams...",
+    "loadingSummary": "Cargando resumen...",
+    "errorTitle": "Error al cargar resúmenes",
+    "errorMessage": "No se pudieron cargar los resúmenes. Intenta nuevamente más tarde.",
+    "totalStreams": "streams analizados",
+    "streamersCount": "streamers",
+    "filterAll": "Todos",
+    "watchOnTwitch": "Ver en Twitch",
+    "expand": "Ver resumen",
+    "collapse": "Ocultar resumen",
+    "webSummary": "Resumen del Stream",
+    "summaryTitle": "Resumen Conciso",
+    "fullSummaryTitle": "Resumen Completo",
+    "noSummaries": "No se encontraron resúmenes",
+    "aboutTitle": "¿Qué es Abracadabra?",
+    "aboutDescription": "Abracadabra es un sistema de análisis automático de streams que genera resúmenes detallados usando inteligencia artificial. Cada resumen incluye highlights del stream, temas técnicos discutidos, ideas innovadoras y momentos destacados.",
+    "aboutIntro": "Los resúmenes que verás a continuación fueron generados automáticamente por Abracadabra, nuestro sistema de análisis de streams impulsado por inteligencia artificial. Cada resumen captura los puntos clave, decisiones técnicas, y momentos destacados de cada transmisión.",
+    "learnMore": "Conoce más sobre Abracadabra →",
+    "poweredBy": "Powered by Claude AI & Cognee Memory"
   }
 } 

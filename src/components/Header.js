@@ -15,6 +15,7 @@ import {
   PlayCircleIcon,
   CalendarIcon,
   PhotoIcon,
+  DocumentTextIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -55,6 +56,13 @@ const Header = () => {
       path: "/services",
       isExternal: false,
       customStyle: "text-purple-400 hover:text-purple-300",
+    },
+    {
+      name: t('navigation.streamSummaries'),
+      icon: DocumentTextIcon,
+      path: "/stream-summaries",
+      isExternal: false,
+      customStyle: "text-violet-400 hover:text-violet-300",
     },
     {
       name: t('navigation.nft'),

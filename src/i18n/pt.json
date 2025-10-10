@@ -160,6 +160,7 @@
     "metrics": "Métricas",
     "events": "Eventos",
     "services": "Produtos e Serviços",
+    "streamSummaries": "Resumos",
     "nft": "Coleções NFT",
     "categories": {
       "main": "Principal",
@@ -1477,5 +1478,30 @@
     "meta": {
       "description": "Explore as coleções NFT exclusivas do UltraVioleta DAO - Echoes NFTs de vídeo no Avalanche e coleções artísticas no Ethereum."
     }
+  },
+  "streamSummaries": {
+    "seoTitle": "Resumos de Streams - Abracadabra AI",
+    "seoDescription": "Explore resumos gerados por IA de streams de programação, Web3 e tecnologia. Resumos automáticos de 0xultravioleta, karenngo, elbitterx, herniep e mais.",
+    "title": "Resumos de Streams",
+    "subtitle": "Resumos gerados automaticamente por IA de streams de programação, Web3 e tecnologia em espanhol",
+    "loading": "Carregando resumos de streams...",
+    "loadingSummary": "Carregando resumo...",
+    "errorTitle": "Erro ao carregar resumos",
+    "errorMessage": "Não foi possível carregar os resumos. Tente novamente mais tarde.",
+    "totalStreams": "streams analisados",
+    "streamersCount": "streamers",
+    "filterAll": "Todos",
+    "watchOnTwitch": "Assistir no Twitch",
+    "expand": "Ver resumo",
+    "collapse": "Ocultar resumo",
+    "webSummary": "Resumo do Stream",
+    "summaryTitle": "Resumo Conciso",
+    "fullSummaryTitle": "Resumo Completo",
+    "noSummaries": "Nenhum resumo encontrado",
+    "aboutTitle": "O que é Abracadabra?",
+    "aboutDescription": "Abracadabra é um sistema de análise automática de streams que gera resumos detalhados usando inteligência artificial. Cada resumo inclui highlights do stream, tópicos técnicos discutidos, ideias inovadoras e momentos destacados.",
+    "aboutIntro": "Os resumos abaixo foram gerados automaticamente pelo Abracadabra, nosso sistema de análise de streams com inteligência artificial. Cada resumo captura pontos-chave, decisões técnicas e destaques de cada transmissão.",
+    "learnMore": "Saiba mais sobre Abracadabra →",
+    "poweredBy": "Powered by Claude AI & Cognee Memory"
   }
 }
