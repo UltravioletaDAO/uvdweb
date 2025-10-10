@@ -23,7 +23,7 @@ Policy: https://ultravioleta.xyz/security-policy
 # - Steps to reproduce
 # - Potential impact
 
-# DAO Treasury: 0x80ae3B3847E4e8Bd27A389f7686486CAC9C3f3e8
+# DAO Treasury: 0x52110a2Cc8B6bBf846101265edAAe34E753f3389
 # UVD Token: 0x4Ffe7e01832243e03668E090706F17726c26d6B2
 
 # PGP Key Fingerprint: [TO BE ADDED]

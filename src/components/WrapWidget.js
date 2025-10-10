@@ -312,7 +312,7 @@ const WrapWidget = () => {
       const interval = setInterval(updateBalances, 10000);
       return () => clearInterval(interval);
     }
-  }, [activeAccount]);
+  }, [activeAccount, updateBalances]);
 
   // Execute unwrap
   const handleUnwrap = async () => {

@@ -26,12 +26,10 @@ import {
   Flame,
   Video,
   Search,
-  Brain,
   Database,
   Languages,
   FileText,
-  Image,
-  Zap
+  Image
 } from 'lucide-react';
 
 const ServicesPage = () => {
@@ -442,7 +440,7 @@ const ServicesPage = () => {
                     i18nKey="services.karmaHelloExpanded.learnMoreLinks"
                     components={{
                       uvdToken: <Link to="/token" className="text-purple-400 hover:text-purple-300 underline" title="UVD Token Information" />,
-                      echoesNFT: <Link to="/nft" className="text-purple-400 hover:text-purple-300 underline" title="Echoes NFT Collections" />,
+                      echoesNFT: <Link to="/nfts" className="text-purple-400 hover:text-purple-300 underline" title="Echoes NFT Collections" />,
                       daoMetrics: <Link to="/metrics" className="text-purple-400 hover:text-purple-300 underline" title="DAO Metrics Dashboard" />,
                       community: <Link to="/aplicar" className="text-purple-400 hover:text-purple-300 underline" title="Apply to Join UltraVioleta DAO" />
                     }}
@@ -1360,7 +1358,7 @@ const ServicesPage = () => {
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <img
                     src="/images/ultraevento-2025-promo.jpg"
-                    alt="Ultra Evento 2025 Promotional Banner - Premier Web3 blockchain conference August 24 2025 in Medellín Colombia at Hash House featuring 212 registered attendees and 10 sponsors including Avalanche Uniswap Pyth Network"
+                    alt={t('common.ultraevento_promo_alt')}
                     className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => window.open('/images/ultraevento-2025-promo.jpg', '_blank')}
                     loading="lazy"
@@ -1371,7 +1369,7 @@ const ServicesPage = () => {
                   />
                   <img
                     src="/images/ultraevento-2025.jpg"
-                    alt="Ultra Evento 2025 Main Event Photo - Latin America Web3 DAO blockchain conference with 144 attendees networking and learning about DeFi NFTs and decentralized governance in Spanish"
+                    alt={t('common.ultraevento_main_alt')}
                     className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => window.open('/images/ultraevento-2025.jpg', '_blank')}
                     loading="lazy"
@@ -1381,7 +1379,7 @@ const ServicesPage = () => {
                   />
                   <img
                     src="/images/quedada-medellin-2025.jpg"
-                    alt="Ultra Quedada Medellín 2025 Community Meetup - Web3 crypto blockchain community gathering UltraVioleta DAO members networking event Latin America LATAM"
+                    alt={t('common.ultraquedada_alt')}
                     className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                     onClick={() => window.open('/images/quedada-medellin-2025.jpg', '_blank')}
                     loading="lazy"

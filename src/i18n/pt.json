@@ -438,7 +438,11 @@
     "locale": "pt_BR",
     "close": "Fechar",
     "auto": "Auto",
-    "profile": "Perfil"
+    "profile": "Perfil",
+    "logo_alt": "Ultravioleta DAO",
+    "ultraevento_promo_alt": "Banner Promocional Ultra Evento 2025 - Conferência Premier de Web3 blockchain 24 de agosto 2025 em Medellín Colômbia na Hash House com 212 participantes registrados e 10 patrocinadores incluindo Avalanche Uniswap Pyth Network",
+    "ultraevento_main_alt": "Ultra Evento 2025 Evento Principal - Conferência Web3 DAO blockchain na América Latina com 144 participantes conectando e aprendendo sobre DeFi NFTs e governança descentralizada em espanhol",
+    "ultraquedada_alt": "Ultra Quedada Medellín 2025 Encontro Comunitário - Reunião da comunidade Web3 crypto blockchain de membros da UltraVioleta DAO evento de networking América Latina LATAM"
   },
   "courses": {
     "title": "Nossos Cursos"
@@ -1492,6 +1496,7 @@
     "streamersCount": "streamers",
     "filterAll": "Todos",
     "watchOnTwitch": "Assistir no Twitch",
+    "characters": "caracteres",
     "expand": "Ver resumo",
     "collapse": "Ocultar resumo",
     "webSummary": "Resumo do Stream",

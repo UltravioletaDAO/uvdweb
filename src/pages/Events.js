@@ -329,19 +329,19 @@ const Events = () => {
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <img
                       src="/images/ultraevento-2025-promo.jpg"
-                      alt="Ultra Evento 2025 Promo"
+                      alt={t('common.ultraevento_promo_alt')}
                       className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                       onClick={() => window.open('/images/ultraevento-2025-promo.jpg', '_blank')}
                     />
                     <img
                       src="/images/ultraevento-2025.jpg"
-                      alt="Ultra Evento 2025"
+                      alt={t('common.ultraevento_main_alt')}
                       className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                       onClick={() => window.open('/images/ultraevento-2025.jpg', '_blank')}
                     />
                     <img
                       src="/images/quedada-medellin-2025.jpg"
-                      alt="Ultra Quedada 2025"
+                      alt={t('common.ultraquedada_alt')}
                       className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
                       onClick={() => window.open('/images/quedada-medellin-2025.jpg', '_blank')}
                     />

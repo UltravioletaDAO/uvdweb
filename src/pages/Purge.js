@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getInactiveUsers } from "../services/purge/Purge";
 import { useTranslation } from "react-i18next";
+import SEO from "../components/SEO";
 
 const Purge = () => {
   const navigate = useNavigate();
@@ -27,13 +28,18 @@ const Purge = () => {
   }, []);
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      className="maxs-h-screen bg-background container mx-auto py-16 px-4"
-    >
+    <>
+      <SEO
+        title={t('purge.title')}
+        description="UltraVioleta DAO inactive users list and purge management"
+      />
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        className="maxs-h-screen bg-background container mx-auto py-16 px-4"
+      >
       <motion.button
         onClick={handleReturn}
         className="inline-flex items-center space-x-2 text-text-secondary
@@ -91,7 +97,8 @@ const Purge = () => {
           </tbody>
         </motion.table>
       </div>
-    </motion.div>
+      </motion.div>
+    </>
   );
 };
 

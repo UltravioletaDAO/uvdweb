@@ -54,7 +54,7 @@ const Token = () => {
         <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 sm:gap-4">
-              <img src="/logo.png" alt="UltravioletaDAO" className="w-8 h-8 sm:w-10 sm:h-10" />
+              <img src="/logo.png" alt={t('common.logo_alt')} className="w-8 h-8 sm:w-10 sm:h-10" />
               <h1 className="text-xl sm:text-2xl font-bold text-text-primary">
           {t('token.title')}
         </h1>

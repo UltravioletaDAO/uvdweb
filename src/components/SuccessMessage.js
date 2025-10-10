@@ -1,11 +1,10 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CheckCircleIcon } from '@heroicons/react/24/outline';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 
 const SuccessMessage = ({ onClose }) => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
   return (

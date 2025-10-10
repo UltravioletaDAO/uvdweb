@@ -325,4 +325,5 @@ class AudioCacheService {
   }
 }
 
-export default new AudioCacheService();
+const audioCacheServiceInstance = new AudioCacheService();
+export default audioCacheServiceInstance;

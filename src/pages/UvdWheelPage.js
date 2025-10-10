@@ -516,13 +516,14 @@ const UvdWheelPage = () => {
     if (autoUpdateTwitch && twitchAccessToken) {
       // Carga inicial de participantes
       loadTwitchRewards(true);
-      
+
       return () => {
         clearCheckInterval();
       };
     } else {
       clearCheckInterval();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoUpdateTwitch, twitchAccessToken]);
 
   // Efecto separado para manejar la verificación periódica cuando la lista está vacía
@@ -539,7 +540,7 @@ const UvdWheelPage = () => {
       checkIntervalRef.current = setInterval(() => {
         loadTwitchRewards(true);
       }, 10000); // Verificar cada 10 segundos
-      
+
       return () => {
         if (checkIntervalRef.current) {
           clearInterval(checkIntervalRef.current);
@@ -551,6 +552,7 @@ const UvdWheelPage = () => {
       clearInterval(checkIntervalRef.current);
       checkIntervalRef.current = null;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [autoUpdateTwitch, twitchAccessToken, participants.length]);
 
   // Manejar el auto-spin
@@ -1192,6 +1194,7 @@ const UvdWheelPage = () => {
       getTokenBalance(walletAddress, token);
       checkTokenApproval();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [walletAddress, token]);
 
   // Escuchar cambios de cuenta
@@ -1237,6 +1240,7 @@ const UvdWheelPage = () => {
         window.ethereum.removeListener('chainChanged', handleChainChanged);
       };
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

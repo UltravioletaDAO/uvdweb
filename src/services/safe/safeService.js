@@ -160,10 +160,12 @@ export const calculateOwnerStats = (transactions, owners) => {
   return statsArray.sort((a, b) => a.signatureCount - b.signatureCount);
 };
 
-export default {
+const safeService = {
   getMultisigTransactions,
   getSafeOwners,
   calculateOwnerStats,
   filterTransactionsByDateRange,
   formatTransactionDate
-}; 
+};
+
+export default safeService; 

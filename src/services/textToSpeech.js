@@ -101,7 +101,7 @@ class TextToSpeechService {
         clearTimeout(timeoutId);
 
         if (!response.ok) {
-          const errorText = await response.text();
+          await response.text(); // Read and discard error text
           this.log(`API error: ${response.status}`);
           throw new Error(`ElevenLabs API error: ${response.status}`);
         }
@@ -317,4 +317,5 @@ class TextToSpeechService {
   }
 }
 
-export default new TextToSpeechService();
+const textToSpeechServiceInstance = new TextToSpeechService();
+export default textToSpeechServiceInstance;
