@@ -65,7 +65,7 @@ const StreamSummaryCard = ({ summary }) => {
             {t('streamSummaries.webSummary', 'Resumen del Stream')}
           </h4>
           <span className="text-xs text-text-secondary/60">
-            {webSummary.longitud} caracteres
+            {webSummary.longitud} {t('streamSummaries.characters', 'caracteres')}
           </span>
         </div>
 

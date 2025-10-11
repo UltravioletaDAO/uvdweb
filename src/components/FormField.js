@@ -44,7 +44,7 @@ const FormField = ({
             className={`${commonProps.className} resize-none`}
           />
           <div className="flex justify-end mt-1 text-sm text-text-secondary">
-            <span>{value.length} {maxLength && `/ ${maxLength}`} caracteres</span>
+            <span>{value.length} {maxLength && `/ ${maxLength}`} {t('form.characters')}</span>
           </div>
         </div>
       );

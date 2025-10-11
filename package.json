@@ -39,14 +39,19 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@craco/craco": "^7.1.0",
     "autoprefixer": "^10.4.18",
+    "compression-webpack-plugin": "^11.1.0",
+    "image-webpack-loader": "^8.1.0",
     "postcss": "^8.4.35",
-    "tailwindcss": "^3.4.1"
+    "sharp": "^0.34.4",
+    "tailwindcss": "^3.4.1",
+    "webpack-bundle-analyzer": "^4.10.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
     "eject": "react-scripts eject",
     "update:applicants": "node scripts/updateApplicantsApproved.js",
     "generate:sitemap": "node scripts/generateSitemap.js",

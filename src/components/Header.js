@@ -13,6 +13,7 @@ import {
   PlayCircleIcon,
   PhotoIcon,
   DocumentTextIcon,
+  BeakerIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -61,6 +62,14 @@ const Header = () => {
       isExternal: false,
       customStyle: "text-violet-400 hover:text-violet-300",
     },
+    // EXPERIMENTS - Temporarily hidden from navigation
+    // {
+    //   name: t('navigation.experiments'),
+    //   icon: BeakerIcon,
+    //   path: "/experiments",
+    //   isExternal: false,
+    //   customStyle: "text-emerald-400 hover:text-emerald-300",
+    // },
     {
       name: t('navigation.nft'),
       icon: PhotoIcon,
@@ -83,13 +92,6 @@ const Header = () => {
       path: "/snapshot",
       isExternal: false,
       customStyle: "text-[#FFAC33] hover:text-[#FFB74D]",
-    },
-    {
-      name: t('navigation.multisig'),
-      icon: ShieldCheckIcon,
-      path: "https://app.safe.global/home?safe=avax:0x52110a2Cc8B6bBf846101265edAAe34E753f3389",
-      isExternal: true,
-      customStyle: "text-emerald-400 hover:text-emerald-300",
     },
     {
       name: t('navigation.contributors'),

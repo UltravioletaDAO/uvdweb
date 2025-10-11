@@ -218,6 +218,63 @@ cd server
 npm start
 ```
 
+## 🧪 Testing y Performance
+
+### Performance Testing con Lighthouse
+
+Para analizar el rendimiento, accesibilidad, mejores prácticas y SEO de la aplicación:
+
+```bash
+# Instalar Lighthouse globalmente (si no está instalado)
+npm install -g lighthouse
+
+# Ejecutar Lighthouse en el servidor de desarrollo
+npx lighthouse http://localhost:3000 --view
+
+# Ejecutar en producción
+npx lighthouse https://ultravioletadao.xyz --view
+
+# Generar reporte específico (performance, accessibility, best-practices, seo)
+npx lighthouse http://localhost:3000 --only-categories=performance --view
+
+# Generar reporte en formato JSON
+npx lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-report.json
+
+# Ejecutar múltiples auditorías y promediar resultados
+npx lighthouse http://localhost:3000 --output=html --output-path=./report.html --chrome-flags="--headless"
+```
+
+### Lighthouse CI (Integración Continua)
+
+Para automatizar las pruebas de performance en CI/CD:
+
+```bash
+# Instalar Lighthouse CI
+npm install -g @lhci/cli
+
+# Ejecutar auditoría de CI
+lhci autorun --collect.url=http://localhost:3000
+```
+
+### Métricas Clave de Performance
+
+El proyecto está optimizado para alcanzar las siguientes métricas:
+- **FCP (First Contentful Paint)**: < 1.8s
+- **LCP (Largest Contentful Paint)**: < 2.5s
+- **TBT (Total Blocking Time)**: < 200ms
+- **CLS (Cumulative Layout Shift)**: < 0.1
+- **SI (Speed Index)**: < 3.4s
+
+### Optimizaciones Implementadas
+
+- Lazy loading de imágenes con componente `OptimizedImage`
+- Code splitting con React.lazy y Suspense
+- Compresión de assets estáticos
+- Minificación de CSS y JavaScript
+- Caché de respuestas de API con React Query
+- Optimización de fuentes web
+- Reducción de JavaScript no utilizado
+
 ## 🔧 Variables de Entorno
 
 ### Frontend (.env)

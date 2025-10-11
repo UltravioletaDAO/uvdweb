@@ -22,6 +22,7 @@ const staticRoutes = [
   { path: '/events', priority: 0.8, changefreq: 'weekly' },
   { path: '/services', priority: 0.8, changefreq: 'monthly' },
   { path: '/stream-summaries', priority: 0.9, changefreq: 'daily' }, // NEW - High priority for fresh content
+  { path: '/experiments', priority: 0.8, changefreq: 'monthly' }, // NEW - Community experiments
   { path: '/nfts', priority: 0.7, changefreq: 'weekly' }, // NEW
 ];
 
