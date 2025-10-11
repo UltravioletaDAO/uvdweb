@@ -108,14 +108,6 @@ const HamburgerMenu = () => {
       isExternal: false,
       customStyle: "text-[#FFAC33] group-hover:text-[#FFB74D]",
       description: t('navigation.descriptions.snapshot'),
-    },
-    {
-      name: t('navigation.multisig'),
-      icon: ShieldCheckIcon,
-      path: "https://app.safe.global/home?safe=avax:0x52110a2Cc8B6bBf846101265edAAe34E753f3389",
-      isExternal: true,
-      customStyle: "text-emerald-400 group-hover:text-emerald-300",
-      description: t('navigation.descriptions.multisig'),
     }
   ];
 

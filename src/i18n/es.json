@@ -202,6 +202,7 @@
     "events": "Eventos",
     "services": "Productos y Servicios",
     "streamSummaries": "Resúmenes",
+    "experiments": "Experimentos",
     "nft": "Colecciones NFT",
     "categories": {
       "main": "Principal",
@@ -224,6 +225,8 @@
       "metrics": "Dashboard de métricas",
       "events": "Eventos y actividades del DAO",
       "services": "Explora nuestros productos y servicios",
+      "streamSummaries": "Resúmenes generados por IA de streams de programación y Web3",
+      "experiments": "Experimentos comunitarios y de investigación",
       "nft": "Navega nuestras colecciones NFT"
     },
     "aria": {
@@ -357,6 +360,7 @@
     "title": "Formulario de Postulación",
     "subtitle": "Únete a nuestra comunidad y sé parte del futuro de Web3",
     "optional": "opcional",
+    "characters": "caracteres",
     "steps": {
       "personal": "Datos Personales",
       "social": "Redes Sociales",
@@ -1752,6 +1756,7 @@
     "errorMessage": "No se pudieron cargar los resúmenes. Intenta nuevamente más tarde.",
     "totalStreams": "streams analizados",
     "streamersCount": "streamers",
+    "updateFrequency": "actualizaciones",
     "filterAll": "Todos",
     "watchOnTwitch": "Ver en Twitch",
     "characters": "caracteres",
@@ -1767,6 +1772,75 @@
     "learnMore": "Conoce más sobre Abracadabra →",
     "poweredBy": "Powered by Claude AI, GPT-4o & Cognee Memory Framework",
     "karmaHelloLink": "Ver Karma Hello Chat-to-Earn →",
-    "metricsLink": "Dashboard de Métricas →"
+    "metricsLink": "Dashboard de Métricas →",
+    "aria": {
+      "streamStats": "Estadísticas de streams",
+      "learnMore": "Conoce más sobre la plataforma Abracadabra IA",
+      "filterByStreamer": "Filtrar streams por streamer",
+      "showAllStreams": "Mostrar todos los streams ({{count}} en total)",
+      "showStreamerStreams": "Mostrar streams de {{streamer}} ({{count}} en total)",
+      "summariesList": "Lista de resúmenes de streams",
+      "streamSummary": "Resumen del stream: {{title}}",
+      "streamBy": "Stream de {{streamer}}",
+      "pagination": "Navegación de paginación"
+    }
+  },
+  "experiments": {
+    "seoTitle": "Experimentos Comunitarios - UltraVioleta DAO",
+    "seoDescription": "Explora los experimentos innovadores realizados por la comunidad de UltraVioleta DAO. Desde investigación en salud hasta experimentos de gobernanza, descubre cómo probamos y aprendemos juntos.",
+    "hero": {
+      "title": "Experimentos Comunitarios",
+      "subtitle": "Innovación descentralizada a través de la experimentación colaborativa"
+    },
+    "stats": {
+      "totalExperiments": "Total Experimentos",
+      "participants": "Participantes",
+      "ongoing": "En Curso",
+      "completed": "Completados"
+    },
+    "categories": {
+      "all": "Todos",
+      "research": "Investigación",
+      "governance": "Gobernanza",
+      "community": "Comunidad"
+    },
+    "status": {
+      "completed": "Completado",
+      "ongoing": "En Curso",
+      "upcoming": "Próximamente"
+    },
+    "labels": {
+      "summary": "Resumen",
+      "participants": "Participantes",
+      "budget": "Presupuesto",
+      "results": "Resultados"
+    },
+    "items": {
+      "operacionCamaleon": {
+        "date": "Enero 2023",
+        "title": "Operación Camaleón",
+        "description": "Investigación comunitaria sobre tipos de aceites utilizados en restaurantes mediante crowdsourcing descentralizado.",
+        "summary": "7 miembros de la comunidad investigaron 35+ restaurantes en diferentes ciudades para identificar los tipos de aceites utilizados en la preparación de alimentos, recibiendo pagos en USDC en Polygon.",
+        "results": {
+          "item1": "Encuestados 35+ restaurantes en múltiples ciudades",
+          "item2": "Identificados patrones en el uso de aceites de semilla vs. aceites saludables",
+          "item3": "Pagos transparentes en blockchain (Polygon) a participantes"
+        },
+        "links": {
+          "transaction": "Ver Transacción en Polygon"
+        }
+      },
+      "comingSoon": {
+        "title": "Más Experimentos Próximamente",
+        "description": "Estamos constantemente explorando nuevas formas de colaborar e innovar. Mantente atento para más experimentos comunitarios.",
+        "date": "2025",
+        "details": "Detalles próximamente..."
+      }
+    },
+    "cta": {
+      "title": "¿Tienes una Idea para un Experimento?",
+      "description": "La innovación comienza con la comunidad. Propón tu experimento en nuestro espacio de gobernanza.",
+      "button": "Crear Propuesta"
+    }
   }
 } 

@@ -9,7 +9,7 @@
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://ultravioleta.xyz/es/</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/"/>
@@ -17,20 +17,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/logo.png</image:loc>
-      <image:title>UltraVioleta DAO Logo</image:title>
-      <image:caption>Official logo of UltraVioleta DAO - Leading Web3 DAO in Latin America</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/og-image.png</image:loc>
-      <image:title>UltraVioleta DAO</image:title>
-      <image:caption>UltraVioleta DAO - Building Web3 in Latin America</image:caption>
-    </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/"/>
@@ -41,17 +31,15 @@
     <image:image>
       <image:loc>https://ultravioleta.xyz/logo.png</image:loc>
       <image:title>UltraVioleta DAO Logo</image:title>
-      <image:caption>Official logo of UltraVioleta DAO - Leading Web3 DAO in Latin America</image:caption>
     </image:image>
     <image:image>
       <image:loc>https://ultravioleta.xyz/og-image.png</image:loc>
       <image:title>UltraVioleta DAO</image:title>
-      <image:caption>UltraVioleta DAO - Building Web3 in Latin America</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/"/>
@@ -59,20 +47,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/logo.png</image:loc>
-      <image:title>UltraVioleta DAO Logo</image:title>
-      <image:caption>Official logo of UltraVioleta DAO - Leading Web3 DAO in Latin America</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/og-image.png</image:loc>
-      <image:title>UltraVioleta DAO</image:title>
-      <image:caption>UltraVioleta DAO - Building Web3 in Latin America</image:caption>
-    </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/"/>
@@ -80,20 +58,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/logo.png</image:loc>
-      <image:title>UltraVioleta DAO Logo</image:title>
-      <image:caption>Official logo of UltraVioleta DAO - Leading Web3 DAO in Latin America</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/og-image.png</image:loc>
-      <image:title>UltraVioleta DAO</image:title>
-      <image:caption>UltraVioleta DAO - Building Web3 in Latin America</image:caption>
-    </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/about</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/about"/>
@@ -104,7 +72,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/about</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/about"/>
@@ -115,7 +83,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/about</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/about"/>
@@ -126,7 +94,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/about</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/about"/>
@@ -137,7 +105,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/aplicar</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/aplicar"/>
@@ -148,7 +116,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/aplicar</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/aplicar"/>
@@ -159,7 +127,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/aplicar</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/aplicar"/>
@@ -170,7 +138,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/aplicar</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/aplicar"/>
@@ -181,7 +149,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/metrics</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/metrics"/>
@@ -192,7 +160,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/metrics</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/metrics"/>
@@ -203,7 +171,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/metrics</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/metrics"/>
@@ -214,7 +182,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/metrics</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/metrics"/>
@@ -225,7 +193,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/token</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/token"/>
@@ -233,15 +201,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/token"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/token"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/token"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/uvd.png</image:loc>
-      <image:title>UVD Token</image:title>
-      <image:caption>UVD Governance Token on Avalanche Blockchain</image:caption>
-    </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/token</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/token"/>
@@ -252,12 +215,11 @@
     <image:image>
       <image:loc>https://ultravioleta.xyz/uvd.png</image:loc>
       <image:title>UVD Token</image:title>
-      <image:caption>UVD Governance Token on Avalanche Blockchain</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/token</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/token"/>
@@ -265,15 +227,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/token"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/token"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/token"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/uvd.png</image:loc>
-      <image:title>UVD Token</image:title>
-      <image:caption>UVD Governance Token on Avalanche Blockchain</image:caption>
-    </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/token</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/token"/>
@@ -281,15 +238,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/token"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/token"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/token"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/uvd.png</image:loc>
-      <image:title>UVD Token</image:title>
-      <image:caption>UVD Governance Token on Avalanche Blockchain</image:caption>
-    </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/snapshot</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/snapshot"/>
@@ -300,7 +252,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/snapshot</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/snapshot"/>
@@ -311,7 +263,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/snapshot</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/snapshot"/>
@@ -322,7 +274,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/snapshot</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/snapshot"/>
@@ -333,7 +285,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/contributors</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/contributors"/>
@@ -344,7 +296,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/contributors</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/contributors"/>
@@ -355,7 +307,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/contributors</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/contributors"/>
@@ -366,7 +318,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/contributors</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/contributors"/>
@@ -377,7 +329,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/courses</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/courses"/>
@@ -388,7 +340,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/courses</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/courses"/>
@@ -399,7 +351,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/courses</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/courses"/>
@@ -410,7 +362,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/courses</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/courses"/>
@@ -421,7 +373,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/blog</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/blog"/>
@@ -432,7 +384,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/blog</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/blog"/>
@@ -443,7 +395,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/blog</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/blog"/>
@@ -454,7 +406,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/blog</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/blog"/>
@@ -465,7 +417,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/links</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/links"/>
@@ -476,7 +428,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/links</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/links"/>
@@ -487,7 +439,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/links</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/links"/>
@@ -498,7 +450,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/links</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/links"/>
@@ -509,7 +461,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/safestats</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/safestats"/>
@@ -520,7 +472,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/safestats</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/safestats"/>
@@ -531,7 +483,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/safestats</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/safestats"/>
@@ -542,7 +494,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/safestats</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/safestats"/>
@@ -553,7 +505,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/wheel</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/wheel"/>
@@ -564,7 +516,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/wheel</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/wheel"/>
@@ -575,7 +527,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/wheel</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/wheel"/>
@@ -586,7 +538,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/wheel</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/wheel"/>
@@ -597,7 +549,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/events</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/events"/>
@@ -608,7 +560,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/events</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/events"/>
@@ -619,7 +571,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/events</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/events"/>
@@ -630,7 +582,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/events</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/events"/>
@@ -641,7 +593,7 @@
   </url>
   <url>
     <loc>https://ultravioleta.xyz/es/services</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/services"/>
@@ -649,20 +601,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/services"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/services"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/services"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/karma-hello-dashboard.jpg</image:loc>
-      <image:title>Karma Hello Chat-to-Earn</image:title>
-      <image:caption>Revolutionary AI-powered chat rewards system</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/abracadabra-dashboard.jpg</image:loc>
-      <image:title>Abracadabra Stream Intelligence</image:title>
-      <image:caption>AI-powered stream content analysis platform</image:caption>
-    </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/services</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/services"/>
@@ -670,20 +612,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/services"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/services"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/services"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/karma-hello-dashboard.jpg</image:loc>
-      <image:title>Karma Hello Chat-to-Earn</image:title>
-      <image:caption>Revolutionary AI-powered chat rewards system</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/abracadabra-dashboard.jpg</image:loc>
-      <image:title>Abracadabra Stream Intelligence</image:title>
-      <image:caption>AI-powered stream content analysis platform</image:caption>
-    </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/pt/services</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/services"/>
@@ -691,20 +623,10 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/services"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/services"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/services"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/karma-hello-dashboard.jpg</image:loc>
-      <image:title>Karma Hello Chat-to-Earn</image:title>
-      <image:caption>Revolutionary AI-powered chat rewards system</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/abracadabra-dashboard.jpg</image:loc>
-      <image:title>Abracadabra Stream Intelligence</image:title>
-      <image:caption>AI-powered stream content analysis platform</image:caption>
-    </image:image>
   </url>
   <url>
     <loc>https://ultravioleta.xyz/fr/services</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
+    <lastmod>2025-10-11T14:35:51.177Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/services"/>
@@ -712,123 +634,5 @@
     <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/services"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/services"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/services"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/karma-hello-dashboard.jpg</image:loc>
-      <image:title>Karma Hello Chat-to-Earn</image:title>
-      <image:caption>Revolutionary AI-powered chat rewards system</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/abracadabra-dashboard.jpg</image:loc>
-      <image:title>Abracadabra Stream Intelligence</image:title>
-      <image:caption>AI-powered stream content analysis platform</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ultravioleta.xyz/es/stream-summaries</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/stream-summaries"/>
-  </url>
-  <url>
-    <loc>https://ultravioleta.xyz/stream-summaries</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/stream-summaries"/>
-  </url>
-  <url>
-    <loc>https://ultravioleta.xyz/pt/stream-summaries</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/stream-summaries"/>
-  </url>
-  <url>
-    <loc>https://ultravioleta.xyz/fr/stream-summaries</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/stream-summaries"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/stream-summaries"/>
-  </url>
-  <url>
-    <loc>https://ultravioleta.xyz/es/nfts</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/nfts"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/nfts"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/nfts"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/nfts"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/nfts"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/echoes-nft-collection.jpg</image:loc>
-      <image:title>Echoes NFT Collection</image:title>
-      <image:caption>80 unique NFTs with 2x Chat-to-Earn rewards</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ultravioleta.xyz/nfts</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/nfts"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/nfts"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/nfts"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/nfts"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/nfts"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/echoes-nft-collection.jpg</image:loc>
-      <image:title>Echoes NFT Collection</image:title>
-      <image:caption>80 unique NFTs with 2x Chat-to-Earn rewards</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ultravioleta.xyz/pt/nfts</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/nfts"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/nfts"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/nfts"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/nfts"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/nfts"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/echoes-nft-collection.jpg</image:loc>
-      <image:title>Echoes NFT Collection</image:title>
-      <image:caption>80 unique NFTs with 2x Chat-to-Earn rewards</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://ultravioleta.xyz/fr/nfts</loc>
-    <lastmod>2025-10-10T16:55:29.914Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/nfts"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/nfts"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/nfts"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/nfts"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/nfts"/>
-    <image:image>
-      <image:loc>https://ultravioleta.xyz/images/echoes-nft-collection.jpg</image:loc>
-      <image:title>Echoes NFT Collection</image:title>
-      <image:caption>80 unique NFTs with 2x Chat-to-Earn rewards</image:caption>
-    </image:image>
   </url>
 </urlset>

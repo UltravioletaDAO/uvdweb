@@ -161,6 +161,7 @@
     "events": "Événements",
     "services": "Produits et Services",
     "streamSummaries": "Résumés",
+    "experiments": "Expériences",
     "nft": "Collections NFT",
     "categories": {
       "main": "Principal",
@@ -183,6 +184,8 @@
       "metrics": "Tableau de bord des métriques",
       "events": "Événements et activités du DAO",
       "services": "Découvrez nos produits et services",
+      "streamSummaries": "Résumés générés par IA de streams de programmation et Web3",
+      "experiments": "Expériences communautaires et recherche",
       "nft": "Parcourez nos collections NFT"
     },
     "aria": {
@@ -431,6 +434,12 @@
       "description": "Rejoignez la communauté Web3 la plus active d'Amérique latine et construisez avec nous l'avenir décentralisé.",
       "button": "Postuler au DAO"
     }
+  },
+  "form": {
+    "title": "Formulaire d'Inscription",
+    "subtitle": "Rejoignez notre communauté et faites partie de l'avenir Web3",
+    "optional": "optionnel",
+    "characters": "caractères"
   },
   "common": {
     "cancel": "Annuler",
@@ -1491,6 +1500,7 @@
     "errorMessage": "Impossible de charger les résumés. Veuillez réessayer plus tard.",
     "totalStreams": "streams analysés",
     "streamersCount": "streamers",
+    "updateFrequency": "mises à jour",
     "filterAll": "Tous",
     "watchOnTwitch": "Regarder sur Twitch",
     "characters": "caractères",
@@ -1504,6 +1514,75 @@
     "aboutDescription": "Abracadabra est un système d'analyse automatique de streams qui génère des résumés détaillés en utilisant l'intelligence artificielle. Chaque résumé inclut des highlights du stream, des sujets techniques discutés, des idées innovantes et des moments marquants.",
     "aboutIntro": "Les résumés ci-dessous ont été générés automatiquement par Abracadabra, notre système d'analyse de streams alimenté par l'IA. Chaque résumé capture les points clés, les décisions techniques et les moments forts de chaque diffusion.",
     "learnMore": "En savoir plus sur Abracadabra →",
-    "poweredBy": "Powered by Claude AI & Cognee Memory"
+    "poweredBy": "Powered by Claude AI & Cognee Memory",
+    "aria": {
+      "streamStats": "Statistiques des streams",
+      "learnMore": "En savoir plus sur la plateforme Abracadabra IA",
+      "filterByStreamer": "Filtrer les streams par streamer",
+      "showAllStreams": "Afficher tous les streams ({{count}} au total)",
+      "showStreamerStreams": "Afficher les streams de {{streamer}} ({{count}} au total)",
+      "summariesList": "Liste des résumés de streams",
+      "streamSummary": "Résumé du stream: {{title}}",
+      "streamBy": "Stream de {{streamer}}",
+      "pagination": "Navigation de pagination"
+    }
+  },
+  "experiments": {
+    "seoTitle": "Expériences Communautaires - UltraVioleta DAO",
+    "seoDescription": "Explorez les expériences innovantes menées par la communauté UltraVioleta DAO. De la recherche en santé aux expériences de gouvernance, découvrez comment nous testons et apprenons ensemble.",
+    "hero": {
+      "title": "Expériences Communautaires",
+      "subtitle": "Innovation décentralisée par l'expérimentation collaborative"
+    },
+    "stats": {
+      "totalExperiments": "Total d'Expériences",
+      "participants": "Participants",
+      "ongoing": "En Cours",
+      "completed": "Complétées"
+    },
+    "categories": {
+      "all": "Toutes",
+      "research": "Recherche",
+      "governance": "Gouvernance",
+      "community": "Communauté"
+    },
+    "status": {
+      "completed": "Complétée",
+      "ongoing": "En Cours",
+      "upcoming": "À Venir"
+    },
+    "labels": {
+      "summary": "Résumé",
+      "participants": "Participants",
+      "budget": "Budget",
+      "results": "Résultats"
+    },
+    "items": {
+      "operacionCamaleon": {
+        "date": "Janvier 2023",
+        "title": "Opération Caméléon",
+        "description": "Recherche communautaire sur les types d'huiles utilisées dans les restaurants via le crowdsourcing décentralisé.",
+        "summary": "7 membres de la communauté ont enquêté sur 35+ restaurants dans différentes villes pour identifier les types d'huiles utilisées dans la préparation des aliments, recevant des paiements en USDC sur Polygon.",
+        "results": {
+          "item1": "Enquête sur 35+ restaurants dans plusieurs villes",
+          "item2": "Identification de modèles dans l'utilisation d'huiles de graines vs. huiles saines",
+          "item3": "Paiements transparents sur blockchain (Polygon) aux participants"
+        },
+        "links": {
+          "transaction": "Voir la Transaction sur Polygon"
+        }
+      },
+      "comingSoon": {
+        "title": "Plus d'Expériences à Venir",
+        "description": "Nous explorons constamment de nouvelles façons de collaborer et d'innover. Restez à l'écoute pour plus d'expériences communautaires.",
+        "date": "2025",
+        "details": "Détails à venir..."
+      }
+    },
+    "cta": {
+      "title": "Vous Avez une Idée d'Expérience?",
+      "description": "L'innovation commence avec la communauté. Proposez votre expérience dans notre espace de gouvernance.",
+      "button": "Créer une Proposition"
+    }
   }
 }

@@ -191,3 +191,7 @@ Tests should focus on:
 - **SEO**: Use React Helmet for meta tags and ensure all pages have proper SEO configuration
 - **Error Handling**: Implement fallbacks for all external API calls
 - **Performance**: Use React.memo for expensive components and implement lazy loading where appropriate
+- **File Organization**:
+  - All `.md` documentation files must go in the `/docs/` folder to avoid main directory pollution
+  - All test files must go in the `/tests/` folder
+  - All utility scripts (data massaging, automation, etc.) must go in the `/scripts/` folder

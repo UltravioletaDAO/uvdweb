@@ -16,18 +16,28 @@
     <link rel="dns-prefetch" href="https://cloudflare-eth.com">
     <link rel="dns-prefetch" href="https://api.avax.network">
 
-    <!-- Preload critical resources -->
+    <!-- Preload critical resources (but NOT hero images - they're lazy loaded) -->
     <link rel="preload" href="%PUBLIC_URL%/logo.png" as="image" type="image/png">
     <link rel="preload" href="%PUBLIC_URL%/manifest.json" as="fetch" crossorigin="anonymous">
-    
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-R2HHE9BR62"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      gtag('config', 'G-R2HHE9BR62');
+    <!-- Prefetch API data that will be needed soon -->
+    <link rel="prefetch" href="https://hub.snapshot.org/graphql" as="fetch" crossorigin="anonymous">
+    <link rel="prefetch" href="https://api.coingecko.com/api/v3/simple/price" as="fetch" crossorigin="anonymous">
+    
+    <!-- Google tag (gtag.js) - Deferred for performance -->
+    <script>
+      // Defer Google Analytics until after page load
+      window.addEventListener('load', function() {
+        var script = document.createElement('script');
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-R2HHE9BR62';
+        script.async = true;
+        document.head.appendChild(script);
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-R2HHE9BR62');
+      });
     </script>
     
     <!-- Favicons -->
@@ -60,7 +70,48 @@
 
     <!-- Critical CSS for above-the-fold content -->
     <style>
-      body{margin:0;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#0a0a0a;color:#fff}#root{min-height:100vh}.loading-spinner{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border:3px solid rgba(106,0,255,0.3);border-top-color:#6a00ff;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+      /* Reset and base styles */
+      *{margin:0;padding:0;box-sizing:border-box}
+      body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Oxygen','Ubuntu','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;background:#0a0a0a;color:#fff;line-height:1.5}
+      #root{min-height:100vh}
+
+      /* Hero section critical styles */
+      .min-h-screen{min-height:100vh}
+      .relative{position:relative}
+      .absolute{position:absolute}
+      .inset-0{top:0;right:0;bottom:0;left:0}
+      .z-10{z-index:10}
+      .overflow-hidden{overflow:hidden}
+      .bg-background{background-color:#0a0a0a}
+      .text-center{text-align:center}
+      .container{width:100%;padding:0 1rem;margin:0 auto;max-width:1200px}
+      .text-5xl{font-size:3rem}
+      .text-xl{font-size:1.25rem}
+      .font-bold{font-weight:700}
+      .text-white{color:#fff}
+      .mb-6{margin-bottom:1.5rem}
+      .mb-12{margin-bottom:3rem}
+
+      /* Button styles */
+      .bg-ultraviolet-darker{background-color:#6a00ff}
+      .px-8{padding-left:2rem;padding-right:2rem}
+      .py-4{padding-top:1rem;padding-bottom:1rem}
+      .rounded-lg{border-radius:0.5rem}
+      .font-semibold{font-weight:600}
+      .text-lg{font-size:1.125rem}
+
+      /* Loading spinner */
+      .loading-spinner{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border:3px solid rgba(106,0,255,0.3);border-top-color:#6a00ff;border-radius:50%;animation:spin 1s linear infinite}
+      @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+
+      /* Prevent layout shift */
+      .hero-placeholder{min-height:40vh;background:linear-gradient(135deg,#0a0a0a 0%,#1a0033 100%)}
+
+      /* Mobile responsive */
+      @media(min-width:768px){
+        .text-5xl{font-size:3.75rem}
+        .text-xl{font-size:1.5rem}
+      }
     </style>
   </head>
   <body>
@@ -90,6 +141,20 @@
           if (loader) loader.style.display = 'none';
         }, 100);
       });
+
+      // Register Service Worker for offline support and caching
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js').then(
+            function(registration) {
+              console.log('ServiceWorker registered:', registration.scope);
+            },
+            function(err) {
+              console.log('ServiceWorker registration failed:', err);
+            }
+          );
+        });
+      }
     </script>
   </body>
 </html> 
