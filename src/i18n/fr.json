@@ -2,6 +2,77 @@
   "seo": {
     "defaultDescription": "Construire l'avenir du Web3 en Amérique latine grâce à la gouvernance décentralisée, l'innovation communautaire et la gestion collaborative du trésor."
   },
+  "features": {
+    "community": {
+      "title": "Rejoignez Notre Communauté",
+      "description": "Connectez-vous avec des constructeurs, créateurs et innovateurs Web3 à travers l'Amérique latine",
+      "button": "Rejoindre Maintenant"
+    },
+    "token": {
+      "title": "Token UVD",
+      "description": "Token natif de gouvernance et d'utilité qui alimente l'écosystème UltraVioleta",
+      "button": "En Savoir Plus"
+    },
+    "raffles": {
+      "title": "Tirages au Sort Communautaires",
+      "description": "Tirages exclusifs et récompenses pour les membres actifs de la DAO"
+    }
+  },
+  "benefits": {
+    "title": "Pourquoi Rejoindre UltraVioleta DAO?",
+    "experts": {
+      "title": "Apprenez des Experts",
+      "description": "Accédez à des ateliers exclusifs, des cours et du mentorat de leaders Web3"
+    },
+    "networking": {
+      "title": "Réseau et Collaboration",
+      "description": "Connectez-vous avec des constructeurs partageant les mêmes idées et créez ensemble des projets impactants"
+    },
+    "alphas": {
+      "title": "Accès Anticipé et Alphas",
+      "description": "Obtenez un accès anticipé aux nouveaux projets, airdrops et informations alpha"
+    }
+  },
+  "footer": {
+    "legal_entity": "Ultravioleta DAO LLC",
+    "address": "2232 Dell Range Blvd. Suite 245-3305",
+    "city_state_zip": "Cheyenne, WY 82009",
+    "country": "États-Unis",
+    "all_rights_reserved": "Tous droits réservés",
+    "quick_links": "Liens Rapides",
+    "community": "Communauté",
+    "legal": "Légal",
+    "brand": {
+      "tagline": "Collectif Web3",
+      "description": "Nous concevons des systèmes de gouvernance, des expériences de membres et des moteurs de croissance pour des communautés on-chain. UltraVioleta DAO réunit builders, stratèges et opérateurs pour lancer des écosystèmes tokenisés aux résultats mesurables."
+    },
+    "navigation_title": "Navigation",
+    "links": {
+      "title": "Restez Connectés",
+      "twitter": "Twitter / X",
+      "discord": "Discord",
+      "github": "GitHub",
+      "linktree": "Linktree"
+    },
+    "registered_label": "Entité enregistrée",
+    "operations": {
+      "title": "Opérations",
+      "items": [
+        "Systèmes et stratégie de gouvernance",
+        "Activation communautaire et événements",
+        "Conception de token et d'adhésion"
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "hola@ultravioletadao.xyz",
+      "note": "Pour des partenariats, des demandes médias ou l'onboarding de membres, contactez notre core team par email ou via l'un des canaux officiels ci-dessus."
+    },
+    "legal_links": {
+      "privacy": "Politique de Confidentialité",
+      "terms": "Conditions d'Utilisation"
+    }
+  },
   "home": {
     "seoTitle": "Accueil - DAO leader du Web3 en Amérique latine",
     "seoDescription": "Rejoignez UltraVioleta DAO - Construire l'avenir du Web3 en Amérique latine grâce à la gouvernance décentralisée, l'innovation communautaire et la gestion collaborative du trésor.",

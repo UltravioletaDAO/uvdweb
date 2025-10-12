@@ -3,13 +3,16 @@ const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
+// Check if we're in production mode
+const isProduction = process.env.NODE_ENV === 'production';
+
 module.exports = {
   webpack: {
     configure: (webpackConfig) => {
-      // Optimization settings
+      // Optimization settings (only in production)
       webpackConfig.optimization = {
         ...webpackConfig.optimization,
-        minimize: true,
+        minimize: isProduction,
         minimizer: [
           new TerserPlugin({
             terserOptions: {
@@ -90,16 +93,16 @@ module.exports = {
       // Plugins
       webpackConfig.plugins = [
         ...webpackConfig.plugins,
-        // Add compression plugin
-        new CompressionPlugin({
+        // Add compression plugins (production only)
+        isProduction && new CompressionPlugin({
           filename: '[path][base].gz',
           algorithm: 'gzip',
           test: /\.(js|css|html|svg)$/,
           threshold: 8192,
           minRatio: 0.8,
         }),
-        // Add Brotli compression
-        new CompressionPlugin({
+        // Add Brotli compression (production only)
+        isProduction && new CompressionPlugin({
           filename: '[path][base].br',
           algorithm: 'brotliCompress',
           test: /\.(js|css|html|svg)$/,
@@ -134,49 +137,51 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json'],
       };
 
-      // Module rules optimization
-      webpackConfig.module.rules = webpackConfig.module.rules.map(rule => {
-        if (rule.oneOf) {
-          rule.oneOf = rule.oneOf.map(loader => {
-            // Optimize image loading
-            if (loader.test && loader.test.toString().includes('png|jpg|jpeg|gif|svg')) {
-              loader.use = [
-                {
-                  loader: require.resolve('url-loader'),
-                  options: {
-                    limit: 10000,
-                    name: 'static/media/[name].[hash:8].[ext]',
-                  },
-                },
-                {
-                  loader: require.resolve('image-webpack-loader'),
-                  options: {
-                    mozjpeg: {
-                      progressive: true,
-                      quality: 65,
-                    },
-                    optipng: {
-                      enabled: true,
-                    },
-                    pngquant: {
-                      quality: [0.65, 0.90],
-                      speed: 4,
-                    },
-                    gifsicle: {
-                      interlaced: false,
-                    },
-                    webp: {
-                      quality: 75,
+      // Module rules optimization (production only)
+      if (isProduction) {
+        webpackConfig.module.rules = webpackConfig.module.rules.map(rule => {
+          if (rule.oneOf) {
+            rule.oneOf = rule.oneOf.map(loader => {
+              // Optimize image loading (production only)
+              if (loader.test && loader.test.toString().includes('png|jpg|jpeg|gif|svg')) {
+                loader.use = [
+                  {
+                    loader: require.resolve('url-loader'),
+                    options: {
+                      limit: 10000,
+                      name: 'static/media/[name].[hash:8].[ext]',
                     },
                   },
-                },
-              ];
-            }
-            return loader;
-          });
-        }
-        return rule;
-      });
+                  {
+                    loader: require.resolve('image-webpack-loader'),
+                    options: {
+                      mozjpeg: {
+                        progressive: true,
+                        quality: 65,
+                      },
+                      optipng: {
+                        enabled: true,
+                      },
+                      pngquant: {
+                        quality: [0.65, 0.90],
+                        speed: 4,
+                      },
+                      gifsicle: {
+                        interlaced: false,
+                      },
+                      webp: {
+                        quality: 75,
+                      },
+                    },
+                  },
+                ];
+              }
+              return loader;
+            });
+          }
+          return rule;
+        });
+      }
 
       return webpackConfig;
     },

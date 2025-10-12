@@ -49,9 +49,9 @@
     "webpack-bundle-analyzer": "^4.10.2"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "react-scripts start",
     "build": "craco build",
-    "test": "craco test",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
     "update:applicants": "node scripts/updateApplicantsApproved.js",
     "generate:sitemap": "node scripts/generateSitemap.js",
