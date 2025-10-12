@@ -310,7 +310,7 @@ const SnapshotSection = () => {
               ) : (
                 <div className="p-5 rounded-xl border border-snapshot/15 bg-gradient-to-br from-snapshot/5 to-transparent">
                   <p className="text-muted-foreground text-center py-8">
-                    {t('metricsDashboard.snapshot.no_proposals_message', 'No hay propuestas activas en este momento')}
+                    {t('metricsDashboard.snapshot.no_proposals_message')}
                   </p>
                 </div>
               )}

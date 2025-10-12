@@ -38,8 +38,8 @@ function StreamSummaries() {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
       '@id': 'https://ultravioleta.xyz/stream-summaries',
-      name: t('streamSummaries.seoTitle', 'AI-Generated Stream Summaries - Abracadabra by UltraVioleta DAO'),
-      description: t('streamSummaries.seoDescription', 'Explore AI-generated summaries of programming and Web3 streams in Spanish/LATAM. Powered by Abracadabra AI with Claude and Cognee Memory. Real-time analysis of Twitch streams.'),
+      name: t('streamSummaries.seoTitle'),
+      description: t('streamSummaries.seoDescription'),
       url: 'https://ultravioleta.xyz/stream-summaries',
       isPartOf: {
         '@type': 'WebSite',
@@ -257,7 +257,7 @@ function StreamSummaries() {
               <div className="text-center">
                 <div className="animate-spin rounded-full h-12 w-12 border-b-4 border-violet-400 mx-auto mb-4"></div>
                 <p className="text-text-secondary">
-                  {t('streamSummaries.loading', 'Cargando resúmenes de streams...')}
+                  {t('streamSummaries.loading')}
                 </p>
               </div>
             </div>
@@ -286,10 +286,10 @@ function StreamSummaries() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <h2 className="text-lg font-bold text-red-400 mb-2">
-                  {t('streamSummaries.errorTitle', 'Error al cargar resúmenes')}
+                  {t('streamSummaries.errorTitle')}
                 </h2>
                 <p className="text-text-secondary text-sm">
-                  {error?.message || t('streamSummaries.errorMessage', 'No se pudieron cargar los resúmenes. Intenta nuevamente más tarde.')}
+                  {error?.message || t('streamSummaries.errorMessage')}
                 </p>
               </div>
             </div>
@@ -317,10 +317,10 @@ function StreamSummaries() {
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
               <div>
                 <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-2">
-                  {t('streamSummaries.title', 'Resúmenes de Streams con IA')}
+                  {t('streamSummaries.title')}
                 </h1>
                 <p className="text-text-secondary text-sm md:text-base max-w-2xl">
-                  {t('streamSummaries.subtitle', 'Resúmenes generados automáticamente por Abracadabra AI de streams de programación, Web3 y tecnología en español')}
+                  {t('streamSummaries.subtitle')}
                 </p>
               </div>
 
@@ -329,15 +329,15 @@ function StreamSummaries() {
                 <div className="flex flex-wrap items-center gap-3" role="region" aria-label={t('streamSummaries.aria.streamStats')}>
                   <div className="bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700 flex items-center gap-2">
                     <span className="text-violet-400 font-bold text-xl">{summariesData.totalSummaries}</span>
-                    <span className="text-text-secondary text-xs">{t('streamSummaries.totalStreams', 'streams')}</span>
+                    <span className="text-text-secondary text-xs">{t('streamSummaries.totalStreams')}</span>
                   </div>
                   <div className="bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700 flex items-center gap-2">
                     <span className="text-violet-400 font-bold text-xl">{Object.keys(summariesData.streamers || {}).length}</span>
-                    <span className="text-text-secondary text-xs">{t('streamSummaries.streamersCount', 'streamers')}</span>
+                    <span className="text-text-secondary text-xs">{t('streamSummaries.streamersCount')}</span>
                   </div>
                   <div className="bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700 flex items-center gap-2">
                     <span className="text-violet-400 font-bold text-xl">24h</span>
-                    <span className="text-text-secondary text-xs">{t('streamSummaries.updateFrequency', 'updates')}</span>
+                    <span className="text-text-secondary text-xs">{t('streamSummaries.updateFrequency')}</span>
                   </div>
                 </div>
               )}
@@ -356,11 +356,11 @@ function StreamSummaries() {
                     <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                   </svg>
                   <span className="font-semibold">
-                    {t('streamSummaries.poweredBy', 'Powered by Claude AI & Cognee Memory')}
+                    {t('streamSummaries.poweredBy')}
                   </span>
                 </div>
                 <span className="text-text-secondary/60 text-xs hidden md:inline">
-                  • {t('streamSummaries.aboutIntro', 'Resúmenes automáticos con análisis semántico avanzado')}
+                  • {t('streamSummaries.aboutIntro')}
                 </span>
               </div>
               <Link
@@ -368,7 +368,7 @@ function StreamSummaries() {
                 className="text-violet-400 hover:text-violet-300 text-sm font-medium whitespace-nowrap transition-colors flex items-center gap-1"
                 aria-label={t('streamSummaries.aria.learnMore')}
               >
-                {t('streamSummaries.learnMore', 'Conoce más')}
+                {t('streamSummaries.learnMore')}
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -394,7 +394,7 @@ function StreamSummaries() {
                   aria-pressed={selectedStreamer === 'all'}
                   aria-label={t('streamSummaries.aria.showAllStreams', { count: summariesData.totalSummaries })}
                 >
-                  {t('streamSummaries.filterAll', 'Todos')} ({summariesData.totalSummaries})
+                  {t('streamSummaries.filterAll')} ({summariesData.totalSummaries})
                 </button>
                 {Object.entries(summariesData.streamers).map(([streamer, count]) => (
                   <button
@@ -434,7 +434,7 @@ function StreamSummaries() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <p className="text-lg">
-                  {t('streamSummaries.noSummaries', 'No se encontraron resúmenes')}
+                  {t('streamSummaries.noSummaries')}
                 </p>
               </div>
             )}

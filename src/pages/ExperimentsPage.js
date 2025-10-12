@@ -130,8 +130,8 @@ const ExperimentsPage = () => {
   return (
     <>
       <SEO
-        title={t('experiments.seoTitle', 'Community Experiments - UltraVioleta DAO')}
-        description={t('experiments.seoDescription', 'Explore the innovative experiments conducted by UltraVioleta DAO community. From health research to governance experiments, discover how we test and learn together.')}
+        title={t('experiments.seoTitle')}
+        description={t('experiments.seoDescription')}
         keywords="DAO experiments, community research, Web3 experiments, decentralized research, blockchain experiments, crowdsourcing, DAO innovation"
       />
 

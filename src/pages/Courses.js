@@ -25,8 +25,8 @@ const Courses = () => {
   return (
     <>
       <SEO
-        title={t('courses.seoTitle', 'Web3 Courses & Blockchain Education')}
-        description={t('courses.seoDescription', 'Learn Web3 development, smart contracts, DeFi protocols, and blockchain technology with UltraVioleta DAO. Free courses and workshops for the Latin American community.')}
+        title={t('courses.seoTitle')}
+        description={t('courses.seoDescription')}
         keywords="Web3 courses, blockchain education, smart contract tutorials, DeFi learning, crypto education LATAM, DAO workshops, Solidity courses, Web3 development"
         type="Course"
       />

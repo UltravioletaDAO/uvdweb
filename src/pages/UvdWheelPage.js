@@ -1246,8 +1246,8 @@ const UvdWheelPage = () => {
   return (
     <>
       <SEO
-        title={t('wheel.seoTitle', 'UVD Rewards Wheel - Spin & Win Crypto')}
-        description={t('wheel.seoDescription', 'Spin the UltraVioleta DAO rewards wheel and win UVD tokens. Connect your wallet, spin the wheel, and claim your rewards instantly on Avalanche blockchain.')}
+        title={t('wheel.seoTitle')}
+        description={t('wheel.seoDescription')}
         keywords="UVD rewards wheel, crypto rewards, spin to win tokens, DAO rewards, Avalanche tokens, Web3 gamification, crypto giveaway"
       />
       <PageTransition>

@@ -73,8 +73,8 @@ const SocialNetworks = () => {
   return (
     <>
       <SEO
-        title={t('socialnetworks.seoTitle', 'Social Media & Community Links')}
-        description={t('socialnetworks.seoDescription', 'Connect with UltraVioleta DAO across all social platforms. Join our community on Twitter, Discord, Telegram, GitHub, and more.')}
+        title={t('socialnetworks.seoTitle')}
+        description={t('socialnetworks.seoDescription')}
         keywords="UltraVioleta social media, DAO community links, Web3 social networks, crypto community, blockchain social platforms"
       />
       <motion.div

@@ -83,8 +83,8 @@ const SafeStats = () => {
   return (
     <>
       <SEO
-        title={t('safestats.seoTitle', 'Safe Multisig Statistics & Analytics')}
-        description={t('safestats.seoDescription', 'Real-time analytics and statistics for UltraVioleta DAO multisig treasury. Track transactions, owner activity, and governance decisions on the blockchain.')}
+        title={t('safestats.seoTitle')}
+        description={t('safestats.seoDescription')}
         keywords="Safe multisig stats, DAO treasury analytics, blockchain governance metrics, multisig transactions, crypto treasury management, Web3 analytics"
       />
       <motion.div

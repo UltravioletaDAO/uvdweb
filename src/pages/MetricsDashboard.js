@@ -12,9 +12,9 @@ const MetricsDashboard = () =>{
   
   return (
     <>
-      <SEO 
-        title={t('metricsDashboard.seoTitle', 'Metrics Dashboard - Real-time DAO Analytics')}
-        description={t('metricsDashboard.seoDescription', 'Track UltraVioleta DAO performance with real-time metrics. View governance participation, treasury balance, token analytics, community growth, and member rewards.')}
+      <SEO
+        title={t('metricsDashboard.seoTitle')}
+        description={t('metricsDashboard.seoDescription')}
         keywords="DAO Metrics, UltraVioleta Analytics, Treasury Dashboard, Governance Metrics, Token Analytics, Community Growth, DAO Performance, Blockchain Analytics, LATAM Web3 Metrics"
       />
       <div className="min-h-screen bg-background overflow-x-hidden">

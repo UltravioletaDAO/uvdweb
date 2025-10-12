@@ -27,7 +27,7 @@ const SEO = ({
   const siteUrl = 'https://ultravioleta.xyz';
   const defaultImage = `${siteUrl}/og-image.png`;
   const defaultTitle = 'UltraVioleta DAO - Leading Web3 DAO in Latin America | Avalanche Ecosystem';
-  const defaultDescription = t('seo.defaultDescription', 'UltraVioleta DAO: Premier decentralized autonomous organization building Web3 infrastructure in Latin America. Join 500+ members governing treasury, DeFi protocols, and community initiatives on Avalanche blockchain.');
+  const defaultDescription = t('seo.defaultDescription');
   const defaultKeywords = 'UltraVioleta DAO, Latin America DAO, Web3 LATAM, Avalanche DAO, DeFi Latin America, UVD token, blockchain governance, decentralized treasury, Snapshot voting, crypto DAO, Web3 community, Latin American blockchain, DeFi protocols, smart contracts, DAO governance token, Avalanche ecosystem, LATAM crypto, decentralized finance, DAO treasury management, Web3 development';
   
   const fullTitle = title ? `${title} | UltraVioleta DAO` : defaultTitle;

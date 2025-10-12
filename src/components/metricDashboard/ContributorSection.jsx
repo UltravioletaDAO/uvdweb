@@ -23,7 +23,7 @@ const currentDaoMembers = [
   "Luis0xz", "Alx Dlarch", "daniiel_zp", "Crashxh", "PitBullPrime", "Mario Peña Alcazar", 
   "Crew", "Shelteer", "Alexis Cedeño", "Daniel S Morales", "Carza", 
   "Andres92", "Zircon", "alejojc", "IZ", "Danieeel", "Loaiza", "juanpkante", "0xsoulavax", "JFQ", "Sandusky",
-  "cabomarzo", "0xj4an", "San Valencia","Dev Cristobal"
+"cabomarzo", "0xj4an", "San Valencia","Dev Cristobal"
 ];
 
 // Utility function to shuffle array randomly

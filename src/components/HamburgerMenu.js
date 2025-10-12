@@ -15,6 +15,7 @@ import {
   PlayCircleIcon,
   PhotoIcon,
   DocumentTextIcon,
+  CalendarIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -72,6 +73,13 @@ const HamburgerMenu = () => {
       path: "/stream-summaries",
       isExternal: false,
       description: t('navigation.descriptions.streamSummaries'),
+    },
+    {
+      name: t('navigation.events'),
+      icon: CalendarIcon,
+      path: "/events",
+      isExternal: false,
+      description: t('navigation.descriptions.events'),
     },
     {
       name: t('navigation.nft'),
