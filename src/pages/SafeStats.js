@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon, ClipboardIcon, ClipboardDocumentCheckIcon, CalendarIcon } from '@heroicons/react/24/outline';
+import { ClipboardIcon, ClipboardDocumentCheckIcon, CalendarIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import {
@@ -14,7 +13,6 @@ import {
 const SAFE_ADDRESS = '0x52110a2Cc8B6bBf846101265edAAe34E753f3389';
 
 const SafeStats = () => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
   const [loading, setLoading] = useState(true);
   const [owners, setOwners] = useState([]);
@@ -57,10 +55,6 @@ const SafeStats = () => {
     await fetchAndFilter();
   };
 
-  const handleReturn = () => {
-    navigate('/', { replace: true });
-  };
-
   const handleCopyAddress = async (address) => {
     try {
       await navigator.clipboard.writeText(address);
@@ -95,15 +89,6 @@ const SafeStats = () => {
       className="min-h-screen bg-background py-16 px-4"
     >
       <div className="container mx-auto">
-        <motion.button
-          onClick={handleReturn}
-          className="inline-flex items-center space-x-2 text-ultraviolet-dark hover:text-ultraviolet transition-all duration-200 mb-8 hover:translate-x-[-5px]"
-          whileTap={{ scale: 0.95 }}
-        >
-          <ArrowLeftIcon className="w-5 h-5" />
-          <span>{t('success.back_home')}</span>
-        </motion.button>
-
         <div className="max-w-4xl mx-auto space-y-10">
           {/* Main Title Section */}
           <div className="text-center">
