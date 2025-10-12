@@ -152,7 +152,7 @@ const OptimizedNFTCard = memo(({
               ) : (
                 <img
                   src={mediaUrl}
-                  alt={`Echo #${nft.collectionNumber}`}
+                  alt={`Echo NFT #${nft.collectionNumber} UltraVioleta DAO digital art collectible blockchain Web3 ${isFibonacci ? 'Fibonacci special edition' : ''} ${isReserved ? 'treasury reserved' : ''}`}
                   className={`w-full h-full object-cover transition-opacity duration-500 ${
                     imageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}

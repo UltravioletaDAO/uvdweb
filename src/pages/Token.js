@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
 import {
   ArrowLeftIcon
 } from '@heroicons/react/24/outline';
@@ -50,6 +51,7 @@ const Token = () => {
       transition={{ duration: 0.3 }}
       className="min-h-screen bg-background py-16 px-4"
     >
+      <Breadcrumbs />
       <div className="border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
           <div className="flex justify-between items-center">

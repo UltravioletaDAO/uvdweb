@@ -66,7 +66,7 @@ const HeroImage = () => {
       {imageSrc && (
         <img
           src={imageSrc}
-          alt="UltraVioleta DAO Hero"
+          alt="UltraVioleta DAO Web3 Latin America blockchain community governance"
           className="absolute inset-0 w-full h-full object-cover object-center"
           style={{
             opacity: imageLoaded ? 1 : 0,
