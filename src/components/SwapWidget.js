@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useActiveAccount, useReadContract, useSendTransaction, useWaitForReceipt } from 'thirdweb/react';
 import { createThirdwebClient, getContract, prepareContractCall, toWei, toEther, getRpcClient, eth_getBalance, readContract } from 'thirdweb';
@@ -112,7 +112,7 @@ const TokenImage = ({ token, className }) => {
     <div className={`${className} flex items-center justify-center overflow-hidden`}>
       <img 
         src={getTokenImage(token)}
-        alt={`${token} logo`}
+        alt={token === 'AVAX' ? 'Avalanche AVAX cryptocurrency logo' : 'UVD token UltraVioleta DAO governance logo'}
         className="w-full h-full object-cover"
         onError={() => setImageError(true)}
       />
@@ -199,7 +199,7 @@ const SwapWidget = () => {
   });
 
   // Function to update balances
-  const updateBalances = async () => {
+  const updateBalances = useCallback(async () => {
     if (!activeAccount?.address) {
       setAvaxBalance('0.0');
       setUvdBalance('0.0');
@@ -231,7 +231,7 @@ const SwapWidget = () => {
     } catch (error) {
       console.error('Error updating balances:', error);
     }
-  };
+  }, [activeAccount, rpcClient, uvdContract]);
 
   // Get AVAX balance
   useEffect(() => {
@@ -419,7 +419,7 @@ const SwapWidget = () => {
   };
 
   // Refresh quote function
-  const refreshQuote = async () => {
+  const refreshQuote = useCallback(async () => {
     if (fromAmount && parseFloat(fromAmount) > 0) {
       setIsRefreshing(true);
       try {
@@ -445,7 +445,7 @@ const SwapWidget = () => {
         setIsRefreshing(false);
       }
     }
-  };
+  }, [fromAmount, fromToken, activeAccount, updateBalances]);
 
   // Auto-refresh quote and balances every 5 seconds
   useEffect(() => {
@@ -616,6 +616,7 @@ const SwapWidget = () => {
             onClick={handleClose}
             className="p-1 hover:bg-white/10 rounded-full transition-colors"
             title={t('common.close')}
+            aria-label={t('common.close')}
           >
             <XMarkIcon className="w-4 h-4 text-text-secondary hover:text-text-primary" />
           </button>
@@ -713,6 +714,8 @@ const SwapWidget = () => {
             onClick={() => setShowSettings(!showSettings)}
             className="p-2 hover:bg-background-input rounded-lg transition-colors"
             title={t('swap.settings')}
+            aria-label={t('swap.settings')}
+            aria-expanded={showSettings}
           >
             <CogIcon className="w-5 h-5 text-text-secondary hover:text-ultraviolet" />
           </button>
@@ -807,24 +810,28 @@ const SwapWidget = () => {
               <button
                 onClick={() => handleFromAmountChange((parseFloat(currentBalance) * 0.25).toString())}
                 className="px-2 py-1 bg-ultraviolet-darker/20 hover:bg-ultraviolet-darker/40 rounded-lg text-xs text-white transition-colors"
+                aria-label="Use 25% of balance"
               >
                 25%
               </button>
               <button
                 onClick={() => handleFromAmountChange((parseFloat(currentBalance) * 0.5).toString())}
                 className="px-2 py-1 bg-ultraviolet-darker/20 hover:bg-ultraviolet-darker/40 rounded-lg text-xs text-white transition-colors"
+                aria-label="Use 50% of balance"
               >
                 50%
               </button>
               <button
                 onClick={() => handleFromAmountChange((parseFloat(currentBalance) * 0.75).toString())}
                 className="px-2 py-1 bg-ultraviolet-darker/20 hover:bg-ultraviolet-darker/40 rounded-lg text-xs text-white transition-colors"
+                aria-label="Use 75% of balance"
               >
                 75%
               </button>
               <button
                 onClick={() => handleFromAmountChange(currentBalance)}
                 className="px-2 py-1 bg-ultraviolet-darker/20 hover:bg-ultraviolet-darker/40 rounded-lg text-xs text-white transition-colors"
+                aria-label="Use maximum balance"
               >
                 MAX
               </button>
@@ -838,6 +845,8 @@ const SwapWidget = () => {
         <button
           onClick={handleSwapTokens}
           className="p-2 bg-background-input hover:bg-ultraviolet-darker/20 border border-ultraviolet-darker/20 rounded-xl transition-colors"
+          aria-label="Switch tokens"
+          title="Switch tokens"
         >
           <ArrowsUpDownIcon className="w-5 h-5 text-white" />
         </button>

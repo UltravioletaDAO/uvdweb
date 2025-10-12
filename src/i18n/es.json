@@ -2,6 +2,83 @@
   "seo": {
     "defaultDescription": "Construyendo el futuro de Web3 en América Latina a través de gobernanza descentralizada, innovación impulsada por la comunidad y gestión colaborativa del tesoro."
   },
+  "nav": {
+    "home": "Inicio",
+    "about": "Acerca de",
+    "metrics": "Métricas",
+    "services": "Servicios"
+  },
+  "features": {
+    "community": {
+      "title": "Únete a Nuestra Comunidad",
+      "description": "Conéctate con constructores, creadores e innovadores de Web3 en América Latina",
+      "button": "Únete Ahora"
+    },
+    "token": {
+      "title": "Token UVD",
+      "description": "Token nativo de gobernanza y utilidad que impulsa el ecosistema UltraVioleta",
+      "button": "Conoce Más"
+    },
+    "raffles": {
+      "title": "Sorteos Comunitarios",
+      "description": "Sorteos exclusivos y recompensas para miembros activos de la DAO"
+    }
+  },
+  "benefits": {
+    "title": "¿Por Qué Unirse a UltraVioleta DAO?",
+    "experts": {
+      "title": "Aprende de Expertos",
+      "description": "Accede a talleres exclusivos, cursos y mentoría de líderes en Web3"
+    },
+    "networking": {
+      "title": "Networking y Colaboración",
+      "description": "Conéctate con constructores afines y crea proyectos de impacto juntos"
+    },
+    "alphas": {
+      "title": "Acceso Anticipado y Alphas",
+      "description": "Obtén acceso anticipado a nuevos proyectos, airdrops e información alpha"
+    }
+  },
+  "footer": {
+    "legal_entity": "Ultravioleta DAO LLC",
+    "address": "2232 Dell Range Blvd. Suite 245-3305",
+    "city_state_zip": "Cheyenne, WY 82009",
+    "country": "EE.UU.",
+    "all_rights_reserved": "Todos los derechos reservados",
+    "quick_links": "Enlaces Rápidos",
+    "community": "Comunidad",
+    "legal": "Legal",
+    "brand": {
+      "tagline": "Colectivo Web3",
+      "description": "Diseñamos sistemas de gobernanza, experiencias de membresía y motores de crecimiento para comunidades on-chain. UltraVioleta DAO une builders, estrategas y operadores para lanzar ecosistemas tokenizados con resultados medibles."
+    },
+    "navigation_title": "Navegación",
+    "links": {
+      "title": "Mantente Conectado",
+      "twitter": "Twitter / X",
+      "discord": "Discord",
+      "github": "GitHub",
+      "linktree": "Linktree"
+    },
+    "registered_label": "Entidad Registrada",
+    "operations": {
+      "title": "Operaciones",
+      "items": [
+        "Sistemas y estrategia de gobernanza",
+        "Activación comunitaria y eventos",
+        "Diseño de token y membresías"
+      ]
+    },
+    "contact": {
+      "title": "Contacto",
+      "email": "ultravioletadao@gmail.com",
+      "note": "Para alianzas, prensa o onboarding de miembros, contacta con nuestro core team por email o cualquiera de los canales oficiales listados arriba."
+    },
+    "legal_links": {
+      "privacy": "Política de Privacidad",
+      "terms": "Términos del Servicio"
+    }
+  },
   "home": {
     "seoTitle": "Inicio - DAO líder de Web3 en América Latina",
     "seoDescription": "Únete a UltraVioleta DAO - Construyendo el futuro de Web3 en América Latina mediante gobernanza descentralizada, innovación comunitaria y gestión colaborativa del tesoro.",
@@ -236,20 +313,21 @@
       "change_language": "Cambiar idioma"
     }
   },
-  "features": {
+  "valueProps": {
+    "title": "¿Por qué unirte a UltraVioleta?",
     "community": {
-      "title": "Comunidad Activa",
-      "description": "Somos una de las comunidades más activas de Web3 en Latinoamérica",
+      "title": "Comunidad Web3 Activa en Latinoamérica",
+      "description": "Únete a una de las comunidades Web3 más activas de América Latina. Accede a nuestro grupo privado de Telegram, conecta con expertos en múltiples áreas y colabora con líderes y desarrolladores clave del ecosistema.",
       "button": "Conócenos"
     },
     "token": {
-      "title": "$UVD: nuestro token de gobernanza",
-      "description": "Participa en el crecimiento y la toma de decisiones con nuestro token de gobernanza UVD",
+      "title": "Token de Gobernanza $UVD",
+      "description": "Participa en el crecimiento y la toma de decisiones con nuestro token de gobernanza UVD. Vota en propuestas, gestiona la tesorería y accede a sorteos exclusivos para holders.",
       "button": "Ver Token"
     },
-    "raffles": {
-      "title": "Sorteos Periódicos",
-      "description": "Participa en nuestros sorteos exclusivos para holders de UVD y miembros de la comunidad"
+    "opportunities": {
+      "title": "Oportunidades Alpha Exclusivas",
+      "description": "Obtén acceso exclusivo a información estratégica y oportunidades tempranas en Web3. Mantente adelante con los mejores alphas e insights del ecosistema."
     }
   },
   "token": {
@@ -341,21 +419,6 @@
       "future": "Operaciones futuras"
     }
   },
-  "benefits": {
-    "title": "Beneficios de Unirte",
-    "experts": {
-      "title": "Grupo privado de expertos",
-      "description": "Acceso a un grupo privado en Telegram con expertos en múltiples áreas"
-    },
-    "networking": {
-      "title": "Nuevas relaciones y oportunidades",
-      "description": "Conoce y colabora con líderes y desarrolladores clave del ecosistema Web3"
-    },
-    "alphas": {
-      "title": "Los mejores alphas",
-      "description": "Obtén acceso exclusivo a información y oportunidades estratégicas en Web3"
-    }
-  },
   "form": {
     "title": "Formulario de Postulación",
     "subtitle": "Únete a nuestra comunidad y sé parte del futuro de Web3",
@@ -432,7 +495,12 @@
   },
   "links": {
     "title": "Nuestros Links",
-    "swap_token": "Swap Token"
+    "swap_token": "Swap Token",
+    "joinCommunity": "Únete a la Comunidad",
+    "subtitle": "Conéctate con nosotros en nuestros canales oficiales y forma parte de la comunidad Web3 más activa de LATAM",
+    "followUs": "Síguenos en Twitter",
+    "joinArena": "Únete en Arena",
+    "viewTreasury": "Ver Tesorería"
   },
   "purge": {
     "title": "Purga",
@@ -1012,8 +1080,8 @@
     }
   },
   "navigation_extra": {
-    "multisig_alt": "Icono de Multifirma",
-    "swap_token_alt": "Icono de Swap Token"
+    "multisig_alt": "Safe Multisig billetera UltraVioleta DAO tesorería Avalanche blockchain almacenamiento seguro cripto gobernanza",
+    "swap_token_alt": "Intercambiar token UVD exchange DEX trading Avalanche DeFi criptomoneda Web3 finanzas descentralizadas"
   },
   "events": {
     "seo": {
@@ -1021,6 +1089,8 @@
       "description": "Eventos y actividades de la comunidad UltraVioleta DAO. Conferencias, meetups, hackathons y más en América Latina."
     },
     "title": "Eventos UVD",
+    "description": "Eventos de interés para la comunidad a los que se recomienda asistir. ¡No te los pierdas!",
+    "image_alt_placeholder": "Imagen de evento",
     "ultraevento": {
       "title": "Ultra Evento 2025",
       "date": {

@@ -2,6 +2,83 @@
   "seo": {
     "defaultDescription": "Construire l'avenir du Web3 en Amérique latine grâce à la gouvernance décentralisée, l'innovation communautaire et la gestion collaborative du trésor."
   },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "metrics": "Métriques",
+    "services": "Services"
+  },
+  "features": {
+    "community": {
+      "title": "Rejoignez Notre Communauté",
+      "description": "Connectez-vous avec des constructeurs, créateurs et innovateurs Web3 à travers l'Amérique latine",
+      "button": "Rejoindre Maintenant"
+    },
+    "token": {
+      "title": "Token UVD",
+      "description": "Token natif de gouvernance et d'utilité qui alimente l'écosystème UltraVioleta",
+      "button": "En Savoir Plus"
+    },
+    "raffles": {
+      "title": "Tirages au Sort Communautaires",
+      "description": "Tirages exclusifs et récompenses pour les membres actifs de la DAO"
+    }
+  },
+  "benefits": {
+    "title": "Pourquoi Rejoindre UltraVioleta DAO?",
+    "experts": {
+      "title": "Apprenez des Experts",
+      "description": "Accédez à des ateliers exclusifs, des cours et du mentorat de leaders Web3"
+    },
+    "networking": {
+      "title": "Réseau et Collaboration",
+      "description": "Connectez-vous avec des constructeurs partageant les mêmes idées et créez ensemble des projets impactants"
+    },
+    "alphas": {
+      "title": "Accès Anticipé et Alphas",
+      "description": "Obtenez un accès anticipé aux nouveaux projets, airdrops et informations alpha"
+    }
+  },
+  "footer": {
+    "legal_entity": "Ultravioleta DAO LLC",
+    "address": "2232 Dell Range Blvd. Suite 245-3305",
+    "city_state_zip": "Cheyenne, WY 82009",
+    "country": "États-Unis",
+    "all_rights_reserved": "Tous droits réservés",
+    "quick_links": "Liens Rapides",
+    "community": "Communauté",
+    "legal": "Légal",
+    "brand": {
+      "tagline": "Collectif Web3",
+      "description": "Nous concevons des systèmes de gouvernance, des expériences de membres et des moteurs de croissance pour des communautés on-chain. UltraVioleta DAO réunit builders, stratèges et opérateurs pour lancer des écosystèmes tokenisés aux résultats mesurables."
+    },
+    "navigation_title": "Navigation",
+    "links": {
+      "title": "Restez Connectés",
+      "twitter": "Twitter / X",
+      "discord": "Discord",
+      "github": "GitHub",
+      "linktree": "Linktree"
+    },
+    "registered_label": "Entité enregistrée",
+    "operations": {
+      "title": "Opérations",
+      "items": [
+        "Systèmes et stratégie de gouvernance",
+        "Activation communautaire et événements",
+        "Conception de token et d'adhésion"
+      ]
+    },
+    "contact": {
+      "title": "Contact",
+      "email": "ultravioletadao@gmail.com",
+      "note": "Pour des partenariats, des demandes médias ou l'onboarding de membres, contactez notre core team par email ou via l'un des canaux officiels ci-dessus."
+    },
+    "legal_links": {
+      "privacy": "Politique de Confidentialité",
+      "terms": "Conditions d'Utilisation"
+    }
+  },
   "home": {
     "seoTitle": "Accueil - DAO leader du Web3 en Amérique latine",
     "seoDescription": "Rejoignez UltraVioleta DAO - Construire l'avenir du Web3 en Amérique latine grâce à la gouvernance décentralisée, l'innovation communautaire et la gestion collaborative du trésor.",
@@ -199,35 +276,21 @@
     "register": "Postuler à Ultravioleta DAO",
     "login": "Connexion"
   },
-  "features": {
+  "valueProps": {
+    "title": "Pourquoi Rejoindre UltraVioleta?",
     "community": {
-      "title": "Communauté Active",
-      "description": "Nous sommes l'une des communautés Web3 les plus actives d'Amérique latine",
+      "title": "Communauté Web3 Active en Amérique Latine",
+      "description": "Rejoignez l'une des communautés Web3 les plus actives d'Amérique latine. Obtenez un accès privé à Telegram, connectez-vous avec des experts dans plusieurs domaines et collaborez avec des leaders et développeurs clés de l'écosystème.",
       "button": "Rejoignez-nous"
     },
     "token": {
-      "title": "$UVD : notre token de gouvernance",
-      "description": "Participez à la croissance et à la prise de décision avec notre token de gouvernance UVD",
+      "title": "Token de Gouvernance $UVD",
+      "description": "Participez à la croissance et à la prise de décision avec notre token de gouvernance UVD. Votez sur les propositions, gérez la trésorerie et accédez à des tirages exclusifs pour les détenteurs.",
       "button": "Voir le Token"
     },
-    "raffles": {
-      "title": "Tirages Périodiques",
-      "description": "Participez à nos tirages exclusifs pour les détenteurs d'UVD et les membres de la communauté"
-    }
-  },
-  "benefits": {
-    "title": "Avantages de Rejoindre",
-    "experts": {
-      "title": "Groupe Privé d'Experts",
-      "description": "Accès à un groupe Telegram privé avec des experts dans plusieurs domaines"
-    },
-    "networking": {
-      "title": "Nouvelles Relations et Opportunités",
-      "description": "Rencontrez et collaborez avec des leaders et développeurs clés de l'écosystème Web3"
-    },
-    "alphas": {
-      "title": "Les Meilleurs Alphas",
-      "description": "Obtenez un accès exclusif aux informations et opportunités stratégiques en Web3"
+    "opportunities": {
+      "title": "Opportunités Alpha Exclusives",
+      "description": "Obtenez un accès exclusif aux informations stratégiques et aux opportunités précoces dans Web3. Restez en avance avec les meilleurs alphas et insights de l'écosystème."
     }
   },
   "about": {
@@ -700,7 +763,12 @@
   },
   "links": {
     "title": "Nos Liens",
-    "swap_token": "Échanger Token"
+    "swap_token": "Échanger Token",
+    "joinCommunity": "Rejoindre la Communauté",
+    "subtitle": "Connectez-vous avec nous sur nos canaux officiels et faites partie de la communauté Web3 la plus active de LATAM",
+    "followUs": "Suivez-nous sur Twitter",
+    "joinArena": "Rejoignez-nous sur Arena",
+    "viewTreasury": "Voir le Trésor"
   },
   "snapshot": {
     "title": "Propositions de Gouvernance Ultravioleta DAO",
@@ -749,6 +817,8 @@
       "description": "Événements et activités de la communauté UltraVioleta DAO. Conférences, rencontres, hackathons et plus en Amérique latine."
     },
     "title": "Événements UVD",
+    "description": "Événements d'intérêt communautaire recommandés à ne pas manquer!",
+    "image_alt_placeholder": "Image de l'événement",
     "ultraevento": {
       "title": "Ultra Événement 2025",
       "date": {

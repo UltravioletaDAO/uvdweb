@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { UserGroupIcon, CurrencyDollarIcon, UserGroupIcon as GroupIcon, SparklesIcon, LightBulbIcon, GiftIcon, MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import { getEvents } from '../services/events/Events';
 import { useCombinedSnapshotData } from '../hooks/useCombinedSnapshotData';
@@ -43,48 +43,6 @@ const Home = () => {
 
     return () => clearTimeout(timer);
   }, []);
-
-  const features = [
-    {
-      title: t('features.community.title'),
-      description: t('features.community.description'),
-      icon: UserGroupIcon,
-      link: "https://linktr.ee/UltravioletaDAO",
-      buttonText: t('features.community.button')
-    },
-    {
-      title: t('features.token.title'),
-      description: t('features.token.description'),
-      isInternal: true,
-      icon: CurrencyDollarIcon,
-      path: "/token",
-      buttonText: t('features.token.button')
-    },
-    {
-      title: t('features.raffles.title'),
-      description: t('features.raffles.description'),
-      icon: GiftIcon,
-      isComingSoon: true
-    }
-  ];
-
-  const benefits = [
-    {
-      title: t('benefits.experts.title'),
-      description: t('benefits.experts.description'),
-      icon: GroupIcon
-    },
-    {
-      title: t('benefits.networking.title'),
-      description: t('benefits.networking.description'),
-      icon: SparklesIcon
-    },
-    {
-      title: t('benefits.alphas.title'),
-      description: t('benefits.alphas.description'),
-      icon: LightBulbIcon
-    }
-  ];
 
   return (
     <>
@@ -300,140 +258,6 @@ const Home = () => {
           </Link>
         </div>
       </div>
-
-      {/* Features Section - Without heavy animations */}
-      <section className="py-16 bg-background-lighter">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((feature) => (
-              <div
-                key={feature.title}
-                className="p-6 rounded-xl bg-background border border-ultraviolet-darker/20
-                  hover:border-ultraviolet-darker transition-all duration-300
-                  hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]
-                  hover:bg-background/80 group flex flex-col h-full"
-              >
-                <div className="flex-grow">
-                  <feature.icon className="w-12 h-12 text-white mb-4
-                    drop-shadow-[0_0_8px_rgba(106,0,255,0.5)]
-                    transition-all duration-300
-                    group-hover:drop-shadow-[0_0_12px_rgba(106,0,255,0.8)]" />
-                  <h3 className="text-xl font-semibold text-text-primary mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-text-secondary mb-4">
-                    {feature.description}
-                  </p>
-                </div>
-                {!feature.isComingSoon && (
-                  <div className="mt-auto pt-4">
-                    {feature.isInternal ? (
-                      <Link
-                        to={feature.path}
-                        className="inline-block px-4 py-2 bg-ultraviolet-darker text-text-primary rounded-lg
-                          hover:bg-ultraviolet-dark transition-colors duration-200 w-full text-center"
-                      >
-                        {feature.buttonText}
-                      </Link>
-                    ) : (
-                      <a
-                        href={feature.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block px-4 py-2 bg-ultraviolet-darker text-text-primary rounded-lg
-                          hover:bg-ultraviolet-dark transition-colors duration-200 w-full text-center"
-                      >
-                        {feature.buttonText}
-                      </a>
-                    )}
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Important Links */}
-      <section className="py-12 bg-background-lighter">
-        <div className="container mx-auto px-4">
-          <h2 className="text-2xl font-bold text-text-primary text-center mb-8">
-            {t('links.title', 'Enlaces Importantes')}
-          </h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a
-              href="https://twitter.com/UltravioletaDAO"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-black/40 border border-gray-700 rounded-lg hover:border-[#1DA1F2] hover:scale-105 transition-all"
-            >
-              <svg viewBox="0 0 24 24" className="w-5 h-5">
-                <path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-              </svg>
-              <span className="text-white">Twitter/X</span>
-            </a>
-
-            <a
-              href="https://arena.social/UltravioletaDAO"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-black/40 border border-gray-700 rounded-lg hover:border-[#FF5CAA] hover:scale-105 transition-all"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 42" fill="none" className="w-5 h-5">
-                <g fill="white" clipPath="url(#a)">
-                  <path d="M31.463 15.472V42h-.678V17.454c0-8.154-6.64-14.794-14.794-14.794-8.153 0-14.776 6.623-14.776 14.794V42H.537V15.472C.537 6.919 7.455 0 16.009 0c8.552 0 15.454 6.919 15.454 15.472Z"/>
-                  <path d="M28.768 16.984v22.513h-.678V18.705c0-6.675-5.423-12.099-12.099-12.099-6.675 0-12.1 5.406-12.1 12.082v20.791h-.677V16.967c0-7.058 5.72-12.777 12.777-12.777 7.058 0 12.777 5.719 12.777 12.777v.017Z"/>
-                </g>
-                <defs><clipPath id="a"><rect width="30.9263" height="42" fill="white" transform="translate(0.536621)"/></clipPath></defs>
-              </svg>
-              <span className="text-white">The Arena</span>
-            </a>
-
-            <a
-              href="https://app.safe.global/home?safe=avax:0x52110a2Cc8B6bBf846101265edAAe34E753f3389"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-6 py-3 bg-black/40 border border-gray-700 rounded-lg hover:border-emerald-400 hover:scale-105 transition-all"
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l7 4.5-7 4.5z" fill="currentColor"/>
-              </svg>
-              <span className="text-white">{t('navigation.multisig', 'Multisig')}</span>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits */}
-      <section className="py-16">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-text-primary text-center mb-12">
-            {t('benefits.title')}
-          </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit) => (
-              <div
-                key={benefit.title}
-                className="p-6 rounded-xl bg-background-lighter border border-ultraviolet-darker/20
-                  hover:border-ultraviolet-darker transition-all duration-300
-                  hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]
-                  hover:bg-background-lighter/90 group"
-              >
-                <benefit.icon className="w-12 h-12 text-white mb-4
-                  drop-shadow-[0_0_8px_rgba(106,0,255,0.5)]
-                  transition-all duration-300
-                  group-hover:drop-shadow-[0_0_12px_rgba(106,0,255,0.8)]" />
-                <h3 className="text-xl font-semibold text-text-primary mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-text-secondary">
-                  {benefit.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Events Section - Lazy loaded */}
       {showEventsSection && (

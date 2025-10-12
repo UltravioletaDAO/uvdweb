@@ -20,8 +20,8 @@ function BlogList() {
   return (
     <>
       <SEO
-        title={t('blog.seoTitle', 'Blog - Web3 Insights & DAO Updates')}
-        description={t('blog.seoDescription', 'Explore the latest articles, updates, and insights from UltraVioleta DAO. Learn about Web3, DeFi, governance, and blockchain technology in Latin America.')}
+        title={t('blog.seoTitle')}
+        description={t('blog.seoDescription')}
         keywords="UltraVioleta blog, Web3 articles, DAO updates, blockchain news LATAM, DeFi insights, crypto governance, Web3 education, Latin America blockchain blog"
         type="blog"
       />

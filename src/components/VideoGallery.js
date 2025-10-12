@@ -133,7 +133,7 @@ const VideoGallery = ({ videos = [] }) => {
 
               <img
                 src={getYoutubeThumbnail(video.youtubeId)}
-                alt={video.title}
+                alt={`${video.title} - UltraVioleta DAO video tutorial Web3 blockchain education ${video.category} LATAM cryptocurrency`}
                 itemProp="thumbnailUrl"
                 loading="lazy"
                 onLoad={() => handleThumbnailLoad(video.id)}

@@ -1,3 +1,4 @@
+/* global gtag */
 import React, { useEffect, useState, lazy, Suspense } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
@@ -51,8 +52,8 @@ const ServicesPage = () => {
   const toggleKarmaFaq = (index) => {
     setKarmaFaqsOpen(prev => prev.map((open, i) => i === index ? !open : open));
     // Track FAQ interaction for analytics
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'faq_interaction', {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'faq_interaction', {
         faq_type: 'karma_hello',
         question_index: index,
         language: currentLang
@@ -62,8 +63,8 @@ const ServicesPage = () => {
 
   const toggleAbracadabraFaq = (index) => {
     setAbracadabraFaqsOpen(prev => prev.map((open, i) => i === index ? !open : open));
-    if (typeof gtag !== 'undefined') {
-      gtag('event', 'faq_interaction', {
+    if (typeof window.gtag !== 'undefined') {
+      window.gtag('event', 'faq_interaction', {
         faq_type: 'abracadabra',
         question_index: index,
         language: currentLang
@@ -1024,8 +1025,194 @@ const ServicesPage = () => {
             </div>
           </section>
 
-          {/* Rest of the existing content continues... */}
-          {/* Keep all existing sections but add lazy loading for images */}
+          {/* Ultra Evento 2025 Section */}
+          <section
+            id="ultra-evento"
+            aria-labelledby="ultra-evento-heading"
+            itemScope
+            itemType="https://schema.org/Event"
+            className="mb-16"
+          >
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+            >
+              <div className="bg-gradient-to-r from-purple-600 to-pink-600 rounded-2xl p-1">
+                <article className="bg-black rounded-2xl p-4 sm:p-6 lg:p-8">
+                  <header className="flex flex-col lg:flex-row items-center justify-between mb-6">
+                    <h2
+                      id="ultra-evento-heading"
+                      className="text-3xl font-bold text-white mb-4 md:mb-0"
+                      itemProp="name"
+                    >
+                      {t('services.events.ultraevento.title')}
+                    </h2>
+                    <div className="flex items-center gap-2 text-purple-400">
+                      <Sparkles className="w-6 h-6" aria-hidden="true" />
+                      <span className="font-semibold" itemProp="eventStatus">
+                        {t('services.events.ultraevento.flagship')}
+                      </span>
+                    </div>
+                  </header>
+
+                  <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+                    <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
+                      <Calendar className="w-5 h-5 text-purple-400 mr-3" />
+                      <div>
+                        <p className="text-gray-400 text-xs">{t('services.events.ultraevento.date.label')}</p>
+                        <p className="text-white font-semibold">{t('services.events.ultraevento.date.value')}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
+                      <Clock className="w-5 h-5 text-purple-400 mr-3" />
+                      <div>
+                        <p className="text-gray-400 text-xs">{t('services.events.ultraevento.time.label')}</p>
+                        <p className="text-white font-semibold">{t('services.events.ultraevento.time.value')}</p>
+                      </div>
+                    </div>
+
+                    <div className="flex items-center bg-gray-900/50 rounded-lg p-3">
+                      <MapPin className="w-5 h-5 text-purple-400 mr-3" />
+                      <div>
+                        <p className="text-gray-400 text-xs">{t('services.events.ultraevento.location.label')}</p>
+                        <p className="text-white font-semibold">{t('services.events.ultraevento.location.value')}</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <p className="text-gray-300 mb-6">
+                    {t('services.events.ultraevento.description')}
+                  </p>
+
+                  {/* Event Stats */}
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                    <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                      <p className="text-2xl font-bold text-purple-400">212</p>
+                      <p className="text-gray-400 text-xs">{t('services.events.ultraevento.stats.registered')}</p>
+                    </div>
+                    <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                      <p className="text-2xl font-bold text-purple-400">144</p>
+                      <p className="text-gray-400 text-xs">{t('services.events.ultraevento.stats.attendees')}</p>
+                    </div>
+                    <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                      <p className="text-2xl font-bold text-purple-400">10</p>
+                      <p className="text-gray-400 text-xs">{t('services.events.ultraevento.stats.sponsors')}</p>
+                    </div>
+                    <div className="bg-gray-900/50 rounded-lg p-3 text-center">
+                      <p className="text-2xl font-bold text-purple-400">8h</p>
+                      <p className="text-gray-400 text-xs">{t('services.events.ultraevento.stats.duration')}</p>
+                    </div>
+                  </div>
+
+                  {/* Event Images Gallery */}
+                  <div className="mb-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <img
+                        src="/images/ultraevento-2025-promo.jpg"
+                        alt={t('common.ultraevento_promo_alt')}
+                        className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => window.open('/images/ultraevento-2025-promo.jpg', '_blank')}
+                        loading="lazy"
+                        width="400"
+                        height="192"
+                        itemProp="image"
+                      />
+                      <img
+                        src="/images/ultraevento-2025.jpg"
+                        alt={t('common.ultraevento_main_alt')}
+                        className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => window.open('/images/ultraevento-2025.jpg', '_blank')}
+                        loading="lazy"
+                        width="400"
+                        height="192"
+                      />
+                      <img
+                        src="/images/quedada-medellin-2025.jpg"
+                        alt={t('common.ultraquedada_alt')}
+                        className="rounded-lg w-full h-48 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                        onClick={() => window.open('/images/quedada-medellin-2025.jpg', '_blank')}
+                        loading="lazy"
+                        width="400"
+                        height="192"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Sponsors with Links */}
+                  <div className="border-t border-gray-800 pt-6">
+                    <div className="flex items-center justify-center gap-2 mb-4">
+                      <Heart className="w-5 h-5 text-pink-500 animate-pulse" />
+                      <h3 className="text-lg font-semibold text-white">
+                        {t('services.events.ultraevento.sponsors.title')}
+                      </h3>
+                      <Heart className="w-5 h-5 text-pink-500 animate-pulse" />
+                    </div>
+
+                    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                      {[
+                        { name: 'Avalanche', twitter: '@AvaxTeam1', video: 'https://x.com/UltravioletaDAO/status/1961197588389953629' },
+                        { name: 'Rekt', twitter: '@RektHQ', video: 'https://x.com/UltravioletaDAO/status/1961077187227844906' },
+                        { name: 'Celo Colombia', twitter: '@Celo_Col', video: 'https://x.com/UltravioletaDAO/status/1961113800574189779' },
+                        { name: 'Self', twitter: '@selfprotocol', video: 'https://x.com/UltravioletaDAO/status/1961544954301616209' },
+                        { name: 'Uniswap', twitter: '@Uniswap', video: 'https://x.com/UltravioletaDAO/status/1961535762828333124' },
+                        { name: 'Pyth Network', twitter: '@PythNetwork', video: 'https://x.com/UltravioletaDAO/status/1961567997509738889' },
+                        { name: 'Heroes Of Cipher', twitter: '@HeroesOfCipher', video: 'https://x.com/UltravioletaDAO/status/1961177432419193181' },
+                        { name: 'deBridge', twitter: '@debridge', video: 'https://x.com/UltravioletaDAO/status/1961424459929092283' },
+                        { name: 'Superfluid', twitter: '@Superfluid_HQ', video: 'https://x.com/UltravioletaDAO/status/1961617646970970208' },
+                        { name: 'Magic Eden', twitter: '@Eden_Magico', video: 'https://x.com/UltravioletaDAO/status/1961271683995640236' }
+                      ].map((sponsor, idx) => (
+                        <div key={idx} className="bg-gray-900/50 rounded-lg p-3 text-center border border-purple-500/20 hover:border-purple-500/50 transition-all">
+                          <p className="text-white font-medium text-sm mb-2">{sponsor.name}</p>
+                          <div className="flex justify-center gap-2">
+                            <a
+                              href={`https://x.com/${sponsor.twitter.substring(1)}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-gray-400 hover:text-white transition-colors"
+                              title={sponsor.twitter}
+                            >
+                              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                              </svg>
+                            </a>
+                            <a
+                              href={sponsor.video}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-purple-400 hover:text-purple-300 transition-colors"
+                              title={t('services.events.ultraevento.sponsors.watchVideo')}
+                            >
+                              <PlayCircle className="w-4 h-4" />
+                            </a>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+
+                    <p className="text-center text-gray-400 text-xs mt-4">
+                      {t('services.events.ultraevento.sponsors.gratitude')}
+                    </p>
+                  </div>
+
+                  {/* CTA Button */}
+                  <footer className="mt-6 text-center">
+                    <p className="text-gray-300 mb-4">
+                      {t('services.events.ultraevento.brandRepresentation')}
+                    </p>
+                    <a
+                      href="mailto:ultravioletadao@gmail.com"
+                      className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg transition-all"
+                    >
+                      <Users className="w-5 h-5 mr-2" />
+                      {t('services.events.ultraevento.sponsorCTA')}
+                    </a>
+                  </footer>
+                </article>
+              </div>
+            </motion.div>
+          </section>
 
         </div>
       </main>

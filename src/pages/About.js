@@ -172,9 +172,9 @@ const About = () => {
 
   return (
     <>
-      <SEO 
-        title={t('about.seoTitle', 'About Us - Learn About UltraVioleta DAO')}
-        description={t('about.seoDescription', 'Discover UltraVioleta DAO - A decentralized community building Web3 infrastructure in Latin America. Learn about our mission, vision, values, and journey since 2022.')}
+      <SEO
+        title={t('about.seoTitle')}
+        description={t('about.seoDescription')}
         keywords="About UltraVioleta DAO, Web3 Latin America, DAO Mission, Decentralized Community, Blockchain LATAM, DAO Values, Web3 Education, Community Governance"
       />
       <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
