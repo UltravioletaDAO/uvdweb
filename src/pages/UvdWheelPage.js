@@ -1266,20 +1266,8 @@ const UvdWheelPage = () => {
           theme="light"
           limit={3}
         />
-        
-        <div className="flex justify-between items-center mb-6">
-          <div className="flex items-center gap-4">
-            <button
-              onClick={() => window.location.href = '/'}
-              className="flex items-center gap-2 text-white-600 hover:text-purple-800 transition-colors"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-              </svg>
-              {t('success.back_home')}
-            </button>
-          </div>
-          
+
+        <div className="flex justify-end items-center mb-6">
           {/* Botón de conectar wallet siempre visible en la parte superior */}
           <div>
             {!walletAddress ? (

@@ -1,11 +1,6 @@
 import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
-import Breadcrumbs from '../components/Breadcrumbs';
-import {
-  ArrowLeftIcon
-} from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import SwapWidget from '../components/SwapWidget';
 import WrapWidget from '../components/WrapWidget';
@@ -25,16 +20,11 @@ const wallets = [
 ];
 
 const Token = () => {
-  const navigate = useNavigate();
   const { t } = useTranslation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  const handleReturn = () => {
-    navigate('/', { replace: true });
-  };
 
 
   return (
@@ -51,7 +41,6 @@ const Token = () => {
       transition={{ duration: 0.3 }}
       className="min-h-screen bg-background py-16 px-4"
     >
-      <Breadcrumbs />
       <div className="border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
           <div className="flex justify-between items-center">
@@ -96,16 +85,6 @@ const Token = () => {
         </div>
       </div>
       <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
-        <motion.button
-          onClick={handleReturn}
-          className="inline-flex items-center space-x-2 text-text-secondary
-            hover:text-text-primary transition-all duration-200 mb-8
-            hover:translate-x-[-5px]"
-          whileTap={{ scale: 0.95 }}
-        >
-          <ArrowLeftIcon className="w-5 h-5" />
-          <span>{t('success.back_home')}</span>
-        </motion.button>
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

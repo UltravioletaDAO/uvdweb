@@ -1020,18 +1020,6 @@ const Snapshot = () => {
         </div>
       </div>
 
-      <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
-        <a
-          href="/"
-          className="inline-flex items-center gap-2 text-text-tertiary hover:text-ultraviolet transition-colors"
-        >
-          <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-          </svg>
-          {t('success.back_home')}
-        </a>
-      </div>
-
       {account && (
         <div className="border-b border-gray-800 bg-background-lighter">
           <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">

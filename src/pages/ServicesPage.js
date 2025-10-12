@@ -599,24 +599,6 @@ const ServicesPage = () => {
 
       <main className="min-h-screen bg-black text-white py-20">
         <div className="container mx-auto px-4">
-          {/* Enhanced Breadcrumb Navigation with Schema */}
-          <nav aria-label="Breadcrumb" className="mb-8">
-            <ol className="flex items-center space-x-2 text-sm text-gray-400" itemScope itemType="https://schema.org/BreadcrumbList">
-              <li itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                <Link to="/" className="hover:text-purple-400 transition-colors" itemProp="item">
-                  <span itemProp="name">{t('nav.home', 'Home')}</span>
-                </Link>
-                <meta itemProp="position" content="1" />
-              </li>
-              <li className="before:content-['/'] before:mx-2" itemProp="itemListElement" itemScope itemType="https://schema.org/ListItem">
-                <span className="text-white" aria-current="page" itemProp="item">
-                  <span itemProp="name">{t('services.title', 'Services')}</span>
-                </span>
-                <meta itemProp="position" content="2" />
-              </li>
-            </ol>
-          </nav>
-
           {/* Enhanced Header with Trust Signals */}
           <header className="text-center mb-12">
             <motion.div
