@@ -1,129 +1,128 @@
-const webpack = require('webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
-// Check if we're in production mode
 const isProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
   webpack: {
     configure: (webpackConfig) => {
-      // Optimization settings (only in production)
-      webpackConfig.optimization = {
-        ...webpackConfig.optimization,
-        minimize: isProduction,
-        minimizer: [
-          new TerserPlugin({
-            terserOptions: {
-              parse: {
-                ecma: 8,
+      if (isProduction) {
+        // Production-only optimizations that slow down dev builds if always enabled
+        webpackConfig.optimization = {
+          ...webpackConfig.optimization,
+          minimize: true,
+          minimizer: [
+            new TerserPlugin({
+              terserOptions: {
+                parse: {
+                  ecma: 8,
+                },
+                compress: {
+                  ecma: 5,
+                  warnings: false,
+                  comparisons: false,
+                  inline: 2,
+                  drop_console: true,
+                  drop_debugger: true,
+                  pure_funcs: ['console.log', 'console.debug', 'console.warn'],
+                },
+                mangle: {
+                  safari10: true,
+                },
+                output: {
+                  ecma: 5,
+                  comments: false,
+                  ascii_only: true,
+                },
               },
-              compress: {
-                ecma: 5,
-                warnings: false,
-                comparisons: false,
-                inline: 2,
-                drop_console: true,
-                drop_debugger: true,
-                pure_funcs: ['console.log', 'console.debug', 'console.warn'],
+            }),
+          ],
+          splitChunks: {
+            chunks: 'all',
+            maxAsyncRequests: 10,
+            maxInitialRequests: 5,
+            minSize: 20000,
+            cacheGroups: {
+              default: false,
+              vendors: false,
+              // Core React vendor bundle
+              react: {
+                test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom|@tanstack)[\\/]/,
+                name: 'react-vendor',
+                priority: 40,
+                enforce: true,
               },
-              mangle: {
-                safari10: true,
+              // Web3 libraries (load on demand)
+              web3: {
+                test: /[\\/]node_modules[\\/](ethers|@ethersproject|thirdweb|@thirdweb-dev|@snapshot-labs)[\\/]/,
+                name: 'web3-vendor',
+                priority: 30,
+                chunks: 'async',
               },
-              output: {
-                ecma: 5,
-                comments: false,
-                ascii_only: true,
+              // UI libraries
+              ui: {
+                test: /[\\/]node_modules[\\/](framer-motion|@heroicons|lucide-react|@radix-ui|tailwind)[\\/]/,
+                name: 'ui-vendor',
+                priority: 25,
+              },
+              // Other vendors
+              vendor: {
+                test: /[\\/]node_modules[\\/]/,
+                name: 'vendor',
+                priority: 10,
+              },
+              // Common chunks
+              common: {
+                name: 'common',
+                minChunks: 2,
+                priority: 5,
+                reuseExistingChunk: true,
               },
             },
+          },
+          runtimeChunk: {
+            name: 'runtime',
+          },
+          usedExports: true,
+          // sideEffects disabled - causes issues with Web3 libraries
+          // sideEffects: false,
+        };
+
+        // Plugins that should only run for production bundles
+        webpackConfig.plugins = [
+          ...webpackConfig.plugins,
+          new CompressionPlugin({
+            filename: '[path][base].gz',
+            algorithm: 'gzip',
+            test: /\.(js|css|html|svg)$/,
+            threshold: 8192,
+            minRatio: 0.8,
           }),
-        ],
-        splitChunks: {
-          chunks: 'all',
-          maxAsyncRequests: 10,
-          maxInitialRequests: 5,
-          minSize: 20000,
-          cacheGroups: {
-            default: false,
-            vendors: false,
-            // Core React vendor bundle
-            react: {
-              test: /[\\/]node_modules[\\/](react|react-dom|react-router|react-router-dom|@tanstack)[\\/]/,
-              name: 'react-vendor',
-              priority: 40,
-              enforce: true,
+          new CompressionPlugin({
+            filename: '[path][base].br',
+            algorithm: 'brotliCompress',
+            test: /\.(js|css|html|svg)$/,
+            compressionOptions: {
+              level: 11,
             },
-            // Web3 libraries (load on demand)
-            web3: {
-              test: /[\\/]node_modules[\\/](ethers|@ethersproject|thirdweb|@thirdweb-dev|@snapshot-labs)[\\/]/,
-              name: 'web3-vendor',
-              priority: 30,
-              chunks: 'async',
-            },
-            // UI libraries
-            ui: {
-              test: /[\\/]node_modules[\\/](framer-motion|@heroicons|lucide-react|@radix-ui|tailwind)[\\/]/,
-              name: 'ui-vendor',
-              priority: 25,
-            },
-            // Other vendors
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendor',
-              priority: 10,
-            },
-            // Common chunks
-            common: {
-              name: 'common',
-              minChunks: 2,
-              priority: 5,
-              reuseExistingChunk: true,
-            },
-          },
-        },
-        runtimeChunk: {
-          name: 'runtime',
-        },
-        usedExports: true,
-        // sideEffects disabled - causes issues with Web3 libraries
-        // sideEffects: false,
-      };
+            threshold: 8192,
+            minRatio: 0.8,
+          }),
+          process.env.ANALYZE && new BundleAnalyzerPlugin(),
+        ].filter(Boolean);
 
-      // Plugins
-      webpackConfig.plugins = [
-        ...webpackConfig.plugins,
-        // Add compression plugins (production only)
-        isProduction && new CompressionPlugin({
-          filename: '[path][base].gz',
-          algorithm: 'gzip',
-          test: /\.(js|css|html|svg)$/,
-          threshold: 8192,
-          minRatio: 0.8,
-        }),
-        // Add Brotli compression (production only)
-        isProduction && new CompressionPlugin({
-          filename: '[path][base].br',
-          algorithm: 'brotliCompress',
-          test: /\.(js|css|html|svg)$/,
-          compressionOptions: {
-            level: 11,
-          },
-          threshold: 8192,
-          minRatio: 0.8,
-        }),
-        // Module concatenation plugin disabled - conflicts with code splitting
-        // new webpack.optimize.ModuleConcatenationPlugin(),
-        // Add bundle analyzer only in analyze mode
-        process.env.ANALYZE && new BundleAnalyzerPlugin(),
-      ].filter(Boolean);
-
-      // Performance hints
-      webpackConfig.performance = {
-        hints: 'warning',
-        maxEntrypointSize: 512000,
-        maxAssetSize: 512000,
-      };
+        webpackConfig.performance = {
+          hints: 'warning',
+          maxEntrypointSize: 512000,
+          maxAssetSize: 512000,
+        };
+      } else if (process.env.ANALYZE) {
+        webpackConfig.plugins = [
+          ...webpackConfig.plugins,
+          new BundleAnalyzerPlugin(),
+        ];
+      }
 
       // Resolve optimizations
       webpackConfig.resolve = {
@@ -137,12 +136,12 @@ module.exports = {
         extensions: ['.js', '.jsx', '.json'],
       };
 
-      // Module rules optimization (production only)
+      // Module rules optimization
       if (isProduction) {
         webpackConfig.module.rules = webpackConfig.module.rules.map(rule => {
           if (rule.oneOf) {
             rule.oneOf = rule.oneOf.map(loader => {
-              // Optimize image loading (production only)
+              // Optimize image loading
               if (loader.test && loader.test.toString().includes('png|jpg|jpeg|gif|svg')) {
                 loader.use = [
                   {

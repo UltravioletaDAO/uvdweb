@@ -1,23 +1,17 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
   const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
-  const internalLinks = [
-    { label: t('nav.home'), to: '/' },
-    { label: t('nav.about'), to: '/about' },
-    { label: t('nav.metrics'), to: '/metrics' },
-    { label: t('nav.services'), to: '/services' },
-  ];
-
   const externalLinks = [
     { label: t('footer.links.twitter'), href: 'https://twitter.com/UltravioletaDAO' },
     { label: t('footer.links.discord'), href: 'https://discord.gg/ultravioletadao' },
     { label: t('footer.links.github'), href: 'https://github.com/ultravioletadao' },
     { label: t('footer.links.linktree'), href: 'https://linktr.ee/UltravioletaDAO' },
+    { label: 'The Arena', href: 'https://arena.social/UltravioletaDAO' },
+    { label: t('navigation.multisig', 'Multisig'), href: 'https://app.safe.global/home?safe=avax:0x52110a2Cc8B6bBf846101265edAAe34E753f3389' },
   ];
 
   const operations = t('footer.operations.items', { returnObjects: true });
@@ -25,7 +19,7 @@ const Footer = () => {
   return (
     <footer className="bg-[#0b0613] text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 space-y-4">
             <div className="flex items-center space-x-3">
               <span className="text-3xl font-black uppercase tracking-wider">
@@ -38,24 +32,6 @@ const Footer = () => {
             <p className="text-sm text-gray-300 leading-relaxed max-w-xl">
               {t('footer.brand.description')}
             </p>
-          </div>
-
-          <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-purple-200">
-              {t('footer.navigation_title')}
-            </h3>
-            <ul className="space-y-2 text-sm text-gray-300">
-              {internalLinks.map((link) => (
-                <li key={link.to}>
-                  <Link
-                    to={link.to}
-                    className="transition-colors duration-200 hover:text-purple-200"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
           </div>
 
           <div className="space-y-3">
@@ -104,7 +80,7 @@ const Footer = () => {
             <p className="text-sm text-gray-300">{t('footer.contact.title')}</p>
             <p className="mt-3 text-sm text-gray-300">
               <a
-                href="mailto:hola@ultravioletadao.xyz"
+                href="mailto:ultravioletadao@gmail.com"
                 className="transition-colors duration-200 hover:text-purple-200"
               >
                 {t('footer.contact.email')}
@@ -116,10 +92,11 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-center gap-4">
           <p className="text-xs text-gray-400">
             © {currentYear} {t('footer.legal_entity')}. {t('footer.all_rights_reserved')}.
           </p>
+          {/* Privacy and Terms links temporarily hidden
           <div className="flex items-center gap-6 text-xs text-gray-400">
             <Link to="/privacy" className="transition-colors duration-200 hover:text-purple-200">
               {t('footer.legal_links.privacy')}
@@ -128,6 +105,7 @@ const Footer = () => {
               {t('footer.legal_links.terms')}
             </Link>
           </div>
+          */}
         </div>
       </div>
     </footer>

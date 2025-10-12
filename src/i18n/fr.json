@@ -2,6 +2,12 @@
   "seo": {
     "defaultDescription": "Construire l'avenir du Web3 en Amérique latine grâce à la gouvernance décentralisée, l'innovation communautaire et la gestion collaborative du trésor."
   },
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "metrics": "Métriques",
+    "services": "Services"
+  },
   "features": {
     "community": {
       "title": "Rejoignez Notre Communauté",
@@ -65,7 +71,7 @@
     },
     "contact": {
       "title": "Contact",
-      "email": "hola@ultravioletadao.xyz",
+      "email": "ultravioletadao@gmail.com",
       "note": "Pour des partenariats, des demandes médias ou l'onboarding de membres, contactez notre core team par email ou via l'un des canaux officiels ci-dessus."
     },
     "legal_links": {
@@ -509,15 +515,6 @@
     "ultraevento_promo_alt": "Bannière Promotionnelle Ultra Evento 2025 - Conférence Premier Web3 blockchain 24 août 2025 à Medellín Colombie à Hash House avec 212 participants inscrits et 10 sponsors incluant Avalanche Uniswap Pyth Network",
     "ultraevento_main_alt": "Ultra Evento 2025 Événement Principal - Conférence Web3 DAO blockchain en Amérique Latine avec 144 participants réseautant et apprenant sur DeFi NFTs et gouvernance décentralisée en espagnol",
     "ultraquedada_alt": "Ultra Quedada Medellín 2025 Rencontre Communautaire - Rassemblement de la communauté Web3 crypto blockchain des membres d'UltraVioleta DAO événement de réseautage Amérique Latine LATAM"
-  },
-  "footer": {
-    "legal_entity": "Organisation Autonome Décentralisée à Responsabilité Limitée",
-    "jurisdiction": "Juridiction",
-    "registered": "Enregistré",
-    "quick_links": "Liens Rapides",
-    "connect": "Connectez-vous",
-    "all_rights_reserved": "Tous droits réservés",
-    "legal_info": "Informations Légales"
   },
   "courses": {
     "title": "Nos Cours"
