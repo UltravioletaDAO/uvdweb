@@ -199,35 +199,21 @@
     "register": "Postuler à Ultravioleta DAO",
     "login": "Connexion"
   },
-  "features": {
+  "valueProps": {
+    "title": "Pourquoi Rejoindre UltraVioleta?",
     "community": {
-      "title": "Communauté Active",
-      "description": "Nous sommes l'une des communautés Web3 les plus actives d'Amérique latine",
+      "title": "Communauté Web3 Active en Amérique Latine",
+      "description": "Rejoignez l'une des communautés Web3 les plus actives d'Amérique latine. Obtenez un accès privé à Telegram, connectez-vous avec des experts dans plusieurs domaines et collaborez avec des leaders et développeurs clés de l'écosystème.",
       "button": "Rejoignez-nous"
     },
     "token": {
-      "title": "$UVD : notre token de gouvernance",
-      "description": "Participez à la croissance et à la prise de décision avec notre token de gouvernance UVD",
+      "title": "Token de Gouvernance $UVD",
+      "description": "Participez à la croissance et à la prise de décision avec notre token de gouvernance UVD. Votez sur les propositions, gérez la trésorerie et accédez à des tirages exclusifs pour les détenteurs.",
       "button": "Voir le Token"
     },
-    "raffles": {
-      "title": "Tirages Périodiques",
-      "description": "Participez à nos tirages exclusifs pour les détenteurs d'UVD et les membres de la communauté"
-    }
-  },
-  "benefits": {
-    "title": "Avantages de Rejoindre",
-    "experts": {
-      "title": "Groupe Privé d'Experts",
-      "description": "Accès à un groupe Telegram privé avec des experts dans plusieurs domaines"
-    },
-    "networking": {
-      "title": "Nouvelles Relations et Opportunités",
-      "description": "Rencontrez et collaborez avec des leaders et développeurs clés de l'écosystème Web3"
-    },
-    "alphas": {
-      "title": "Les Meilleurs Alphas",
-      "description": "Obtenez un accès exclusif aux informations et opportunités stratégiques en Web3"
+    "opportunities": {
+      "title": "Opportunités Alpha Exclusives",
+      "description": "Obtenez un accès exclusif aux informations stratégiques et aux opportunités précoces dans Web3. Restez en avance avec les meilleurs alphas et insights de l'écosystème."
     }
   },
   "about": {
@@ -452,6 +438,15 @@
     "ultraevento_promo_alt": "Bannière Promotionnelle Ultra Evento 2025 - Conférence Premier Web3 blockchain 24 août 2025 à Medellín Colombie à Hash House avec 212 participants inscrits et 10 sponsors incluant Avalanche Uniswap Pyth Network",
     "ultraevento_main_alt": "Ultra Evento 2025 Événement Principal - Conférence Web3 DAO blockchain en Amérique Latine avec 144 participants réseautant et apprenant sur DeFi NFTs et gouvernance décentralisée en espagnol",
     "ultraquedada_alt": "Ultra Quedada Medellín 2025 Rencontre Communautaire - Rassemblement de la communauté Web3 crypto blockchain des membres d'UltraVioleta DAO événement de réseautage Amérique Latine LATAM"
+  },
+  "footer": {
+    "legal_entity": "Organisation Autonome Décentralisée à Responsabilité Limitée",
+    "jurisdiction": "Juridiction",
+    "registered": "Enregistré",
+    "quick_links": "Liens Rapides",
+    "connect": "Connectez-vous",
+    "all_rights_reserved": "Tous droits réservés",
+    "legal_info": "Informations Légales"
   },
   "courses": {
     "title": "Nos Cours"
@@ -700,7 +695,12 @@
   },
   "links": {
     "title": "Nos Liens",
-    "swap_token": "Échanger Token"
+    "swap_token": "Échanger Token",
+    "joinCommunity": "Rejoindre la Communauté",
+    "subtitle": "Connectez-vous avec nous sur nos canaux officiels et faites partie de la communauté Web3 la plus active de LATAM",
+    "followUs": "Suivez-nous sur Twitter",
+    "joinArena": "Rejoignez-nous sur Arena",
+    "viewTreasury": "Voir le Trésor"
   },
   "snapshot": {
     "title": "Propositions de Gouvernance Ultravioleta DAO",
@@ -749,6 +749,8 @@
       "description": "Événements et activités de la communauté UltraVioleta DAO. Conférences, rencontres, hackathons et plus en Amérique latine."
     },
     "title": "Événements UVD",
+    "description": "Événements d'intérêt communautaire recommandés à ne pas manquer!",
+    "image_alt_placeholder": "Image de l'événement",
     "ultraevento": {
       "title": "Ultra Événement 2025",
       "date": {

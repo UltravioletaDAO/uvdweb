@@ -199,35 +199,21 @@
     "register": "Candidatar-se ao Ultravioleta DAO",
     "login": "Entrar"
   },
-  "features": {
+  "valueProps": {
+    "title": "Por Que Participar do UltraVioleta?",
     "community": {
-      "title": "Comunidade Ativa",
-      "description": "Somos uma das comunidades Web3 mais ativas da América Latina",
+      "title": "Comunidade Web3 Ativa na América Latina",
+      "description": "Junte-se a uma das comunidades Web3 mais ativas da América Latina. Obtenha acesso privado ao Telegram, conecte-se com especialistas em múltiplas áreas e colabore com líderes e desenvolvedores chave do ecossistema.",
       "button": "Junte-se a nós"
     },
     "token": {
-      "title": "$UVD: nosso token de governança",
-      "description": "Participe do crescimento e da tomada de decisões com nosso token de governança UVD",
+      "title": "Token de Governança $UVD",
+      "description": "Participe do crescimento e da tomada de decisões com nosso token de governança UVD. Vote em propostas, gerencie o tesouro e tenha acesso a sorteios exclusivos para detentores.",
       "button": "Ver Token"
     },
-    "raffles": {
-      "title": "Sorteios Periódicos",
-      "description": "Participe de nossos sorteios exclusivos para detentores de UVD e membros da comunidade"
-    }
-  },
-  "benefits": {
-    "title": "Benefícios de Participar",
-    "experts": {
-      "title": "Grupo Privado de Especialistas",
-      "description": "Acesso a um grupo privado no Telegram com especialistas em múltiplas áreas"
-    },
-    "networking": {
-      "title": "Novas Relações e Oportunidades",
-      "description": "Conheça e colabore com líderes e desenvolvedores chave do ecossistema Web3"
-    },
-    "alphas": {
-      "title": "Os Melhores Alphas",
-      "description": "Obtenha acesso exclusivo a informações e oportunidades estratégicas em Web3"
+    "opportunities": {
+      "title": "Oportunidades Alpha Exclusivas",
+      "description": "Obtenha acesso exclusivo a informações estratégicas e oportunidades precoces na Web3. Mantenha-se à frente com os melhores alphas e insights do ecossistema."
     }
   },
   "about": {
@@ -452,6 +438,15 @@
     "ultraevento_promo_alt": "Banner Promocional Ultra Evento 2025 - Conferência Premier de Web3 blockchain 24 de agosto 2025 em Medellín Colômbia na Hash House com 212 participantes registrados e 10 patrocinadores incluindo Avalanche Uniswap Pyth Network",
     "ultraevento_main_alt": "Ultra Evento 2025 Evento Principal - Conferência Web3 DAO blockchain na América Latina com 144 participantes conectando e aprendendo sobre DeFi NFTs e governança descentralizada em espanhol",
     "ultraquedada_alt": "Ultra Quedada Medellín 2025 Encontro Comunitário - Reunião da comunidade Web3 crypto blockchain de membros da UltraVioleta DAO evento de networking América Latina LATAM"
+  },
+  "footer": {
+    "legal_entity": "Organização Autônoma Descentralizada de Responsabilidade Limitada",
+    "jurisdiction": "Jurisdição",
+    "registered": "Registrado",
+    "quick_links": "Links Rápidos",
+    "connect": "Conecte-se",
+    "all_rights_reserved": "Todos os direitos reservados",
+    "legal_info": "Informações Legais"
   },
   "courses": {
     "title": "Nossos Cursos"
@@ -703,7 +698,12 @@
   },
   "links": {
     "title": "Nossos Links",
-    "swap_token": "Trocar Token"
+    "swap_token": "Trocar Token",
+    "joinCommunity": "Junte-se à Comunidade",
+    "subtitle": "Conecte-se conosco em nossos canais oficiais e faça parte da comunidade Web3 mais ativa da LATAM",
+    "followUs": "Siga-nos no Twitter",
+    "joinArena": "Junte-se a nós na Arena",
+    "viewTreasury": "Ver Tesouro"
   },
   "snapshot": {
     "title": "Propostas de Governança Ultravioleta DAO",
@@ -752,6 +752,8 @@
       "description": "Eventos e atividades da comunidade UltraVioleta DAO. Conferências, encontros, hackathons e mais na América Latina."
     },
     "title": "Eventos UVD",
+    "description": "Eventos de interesse da comunidade recomendados para participar. Não perca!",
+    "image_alt_placeholder": "Imagem do evento",
     "ultraevento": {
       "title": "Ultra Evento 2025",
       "date": {

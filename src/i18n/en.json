@@ -294,20 +294,21 @@
       "change_language": "Change language"
     }
   },
-  "features": {
+  "valueProps": {
+    "title": "Why Join UltraVioleta?",
     "community": {
-      "title": "Active Community",
-      "description": "We are one of the most active Web3 communities in Latin America",
+      "title": "Active Latin American Web3 Community",
+      "description": "Join one of the most active Web3 communities in Latin America. Get private Telegram access, connect with experts across multiple areas, and collaborate with key leaders and developers in the ecosystem.",
       "button": "Join Us"
     },
     "token": {
-      "title": "$UVD: our governance token",
-      "description": "Participate in growth and decision-making with our UVD governance token",
+      "title": "$UVD Governance Token",
+      "description": "Participate in growth and decision-making with our UVD governance token. Vote on proposals, manage treasury, and get access to exclusive raffles for holders.",
       "button": "View Token"
     },
-    "raffles": {
-      "title": "Periodic Raffles",
-      "description": "Participate in our exclusive raffles for UVD holders and community members"
+    "opportunities": {
+      "title": "Exclusive Alpha Opportunities",
+      "description": "Get exclusive access to strategic information and early opportunities in Web3. Stay ahead with the best alphas and insights from the ecosystem."
     }
   },
   "token": {
@@ -399,21 +400,6 @@
       "future": "Future operations"
     }
   },
-  "benefits": {
-    "title": "Benefits of Joining",
-    "experts": {
-      "title": "Private Expert Group",
-      "description": "Access to a private Telegram group with experts in multiple areas"
-    },
-    "networking": {
-      "title": "New Relationships and Opportunities",
-      "description": "Meet and collaborate with key leaders and developers in the Web3 ecosystem"
-    },
-    "alphas": {
-      "title": "Best Alphas",
-      "description": "Get exclusive access to strategic information and opportunities in Web3"
-    }
-  },
   "form": {
     "title": "Application Form",
     "subtitle": "Join our community and be part of the Web3 future",
@@ -502,7 +488,12 @@
   },
   "links": {
     "title": "Our Links",
-    "swap_token": "Swap Token"
+    "swap_token": "Swap Token",
+    "joinCommunity": "Join the Community",
+    "subtitle": "Connect with us on our official channels and become part of the most active Web3 community in LATAM",
+    "followUs": "Follow us on Twitter",
+    "joinArena": "Join us on Arena",
+    "viewTreasury": "View Treasury"
   },
   "blog": {
     "title": "Paila News",
@@ -581,6 +572,15 @@
     "ultraevento_promo_alt": "Ultra Evento 2025 Promotional Banner - Premier Web3 blockchain conference August 24 2025 in Medellín Colombia at Hash House featuring 212 registered attendees and 10 sponsors including Avalanche Uniswap Pyth Network",
     "ultraevento_main_alt": "Ultra Evento 2025 Main Event - Latin America Web3 DAO blockchain conference with 144 attendees networking and learning about DeFi NFTs and decentralized governance in Spanish",
     "ultraquedada_alt": "Ultra Quedada Medellín 2025 Community Meetup - Web3 crypto blockchain community gathering UltraVioleta DAO members networking event Latin America LATAM"
+  },
+  "footer": {
+    "legal_entity": "Decentralized Autonomous Organization Limited Liability Company",
+    "jurisdiction": "Jurisdiction",
+    "registered": "Registered",
+    "quick_links": "Quick Links",
+    "connect": "Connect",
+    "all_rights_reserved": "All rights reserved",
+    "legal_info": "Legal Information"
   },
   "courses": {
     "title": "Our Courses"
@@ -1250,6 +1250,8 @@
       "description": "UltraVioleta DAO community events and activities. Conferences, meetups, hackathons and more in Latin America."
     },
     "title": "UVD Events",
+    "description": "Community events of interest that are recommended to attend. Don't miss them!",
+    "image_alt_placeholder": "Event placeholder",
     "ultraevento": {
       "title": "Ultra Event 2025",
       "date": {
