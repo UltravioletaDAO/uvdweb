@@ -1,3 +1,4 @@
+const path = require('path');
 const TerserPlugin = require('terser-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
@@ -129,6 +130,8 @@ module.exports = {
         ...webpackConfig.resolve,
         alias: {
           ...webpackConfig.resolve.alias,
+          // Path alias for shadcn/ui components
+          '@': path.resolve(__dirname, 'src'),
           // Alias heavy libraries to lighter alternatives if needed
           'moment': 'date-fns',
         },
