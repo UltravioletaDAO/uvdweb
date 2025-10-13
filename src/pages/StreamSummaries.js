@@ -415,10 +415,10 @@ function StreamSummaries() {
             </nav>
           )}
 
-          {/* Summaries List - Modern Grid Layout */}
+          {/* Summaries List - Full Width Layout */}
           <section aria-label={t('streamSummaries.aria.summariesList')}>
             {filteredSummaries.length > 0 ? (
-              <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="space-y-6">
                 {filteredSummaries.map((summary) => (
                   <article
                     key={`${summary.video_id}-${summary.streamer}`}

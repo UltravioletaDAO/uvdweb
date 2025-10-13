@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import { useTranslation } from 'react-i18next';
-import SwapWidget from '../components/SwapWidget';
+import SwapWidgetV2 from '../components/SwapWidgetV2';
 import WrapWidget from '../components/WrapWidget';
 import { createThirdwebClient } from "thirdweb";
 import { ConnectButton } from "thirdweb/react";
@@ -109,9 +109,9 @@ const Token = () => {
           transition={{ delay: 0.2 }}
           className="mb-8 flex flex-col lg:flex-row justify-center gap-6"
         >
-          
+
           <WrapWidget />
-          <SwapWidget />
+          <SwapWidgetV2 />
         </motion.div>
         {/* Dexscreener Embed */}
         <motion.div
