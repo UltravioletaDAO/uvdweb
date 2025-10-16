@@ -1321,10 +1321,14 @@
         "api": "API: 56+ REST endpoints"
       },
       "stats": {
-        "streams": "70+ Streams",
-        "topics": "640+ Topics",
-        "endpoints": "56+ Endpoints",
-        "phases": "5 Fases Completas"
+        "streams": "70+",
+        "topics": "640+",
+        "endpoints": "56+",
+        "phases": "5",
+        "streamsLabel": "Streams Processados",
+        "topicsLabel": "Topics Indexados",
+        "endpointsLabel": "API Endpoints",
+        "phasesLabel": "Fases Completas"
       },
       "capabilities": {
         "title": "Capacidades Principais",
@@ -1378,14 +1382,6 @@
         }
       },
       "fullDescription": "Abracadabra é uma plataforma empresarial de inteligência de conteúdo que utiliza inteligência artificial avançada para transformar vídeos e streams em conteúdo processável, buscas semânticas e análise preditiva. Sistema completo end-to-end que converte conteúdo audiovisual bruto em análises estruturadas, conteúdo derivado automaticamente e previsões de tendências.",
-      "stats": {
-        "streamsProcessed": "Streams Processados",
-        "streamsValue": "70+ streams indexados",
-        "topicsIndexed": "Topics Indexados",
-        "topicsValue": "640+ topics no Cognee",
-        "apiEndpoints": "API Endpoints",
-        "phasesComplete": "Fases Completas"
-      },
       "systemCapabilities": {
         "title": "Capacidades do Sistema",
         "dualTranscription": {
