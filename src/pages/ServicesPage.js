@@ -49,6 +49,20 @@ const ServicesPage = () => {
       .catch(err => console.error('Error loading courses:', err));
   }, []);
 
+  // Handle scroll to section on page load if hash is present in URL
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      // Wait a bit for the page to fully render
+      setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
+
   const getYoutubeThumbnail = (url) => {
     const match = url.match(
       /(?:youtu\.be\/|youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/
