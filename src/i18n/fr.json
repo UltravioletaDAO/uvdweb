@@ -139,18 +139,18 @@
       "viewHistory": "Voir toute notre histoire",
       "validator": {
         "title": "Premier Validateur avec Délégation",
-        "date": "18 Octobre 2024",
+        "date": "18 Octobre 2025",
         "description": "Nous avons reçu notre premier validateur avec délégation grâce à Meta Pool dans le programme Node Studio Cohort 2."
       },
       "facilitator": {
         "title": "Lancement du Facilitateur x402",
-        "date": "26 Octobre 2024",
+        "date": "26 Octobre 2025",
         "description": "Nous avons lancé le Facilitateur x402 pour les transactions inter-chaînes sur Avalanche, Celo et Base.",
         "link": "Visiter le Facilitateur"
       },
       "competition": {
         "title": "Vainqueurs de la Coupe du Monde Web3",
-        "date": "28 Octobre 2024",
+        "date": "28 Octobre 2025",
         "description": "Nous avons remporté la compétition de la Coupe du Monde des Communautés Web3 en espagnol.",
         "link": "Voir l'Annonce"
       }
@@ -370,17 +370,17 @@
         "description": "10 membres du DAO participent au summit. Développement de Karma Hello et Abracadabra v2 avec Cursor AI."
       },
       "october18_2024": {
-        "date": "18 Octobre 2024",
+        "date": "18 Octobre 2025",
         "title": "Premier Validateur avec Délégation",
         "description": "Nous avons reçu notre premier validateur avec délégation grâce à Meta Pool, dans le cadre du programme Node Studio Cohort 2. Une étape importante dans notre infrastructure technique."
       },
       "october26_2024": {
-        "date": "26 Octobre 2024",
+        "date": "26 Octobre 2025",
         "title": "Lancement du Facilitateur x402",
         "description": "Nous avons lancé le Facilitateur x402, un outil pour faciliter les transactions inter-chaînes. Fonctionne actuellement sur Avalanche, Celo et Base (mainnet et testnet)."
       },
       "october28_2024": {
-        "date": "28 Octobre 2024",
+        "date": "28 Octobre 2025",
         "title": "Vainqueurs de la Coupe du Monde des Communautés Web3",
         "description": "UltraVioleta DAO remporte la compétition de la Coupe du Monde des Communautés Web3 en espagnol, consolidant notre position de leader dans la communauté Web3 latino-américaine."
       },

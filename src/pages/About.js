@@ -312,7 +312,9 @@ const About = () => {
                               key={idx}
                               src={image}
                               alt={`${milestone.title} ${idx + 1}`}
-                              className="rounded-lg w-full h-32 object-cover cursor-pointer hover:opacity-90 transition-opacity"
+                              className={`rounded-lg w-full cursor-pointer hover:opacity-90 transition-opacity ${
+                                image.includes('x402-facilitator') ? 'h-auto object-contain' : 'h-32 object-cover'
+                              }`}
                               onClick={() => window.open(image, '_blank')}
                             />
                           ))}
