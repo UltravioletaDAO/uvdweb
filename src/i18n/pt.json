@@ -132,6 +132,28 @@
       "pause_audio": "Pausar",
       "resume_audio": "Retomar",
       "loading_audio": "Carregando áudio..."
+    },
+    "achievements": {
+      "title": "Conquistas Recentes",
+      "subtitle": "Marcos importantes alcançados por nossa comunidade",
+      "viewHistory": "Ver toda nossa história",
+      "validator": {
+        "title": "Primeiro Validador com Delegação",
+        "date": "18 de Outubro 2024",
+        "description": "Recebemos nosso primeiro validador com delegação graças ao Meta Pool no programa Node Studio Cohort 2."
+      },
+      "facilitator": {
+        "title": "Lançamento do Facilitador x402",
+        "date": "26 de Outubro 2024",
+        "description": "Lançamos o Facilitador x402 para transações cross-chain em Avalanche, Celo e Base.",
+        "link": "Visitar Facilitador"
+      },
+      "competition": {
+        "title": "Vencedores da Copa do Mundo Web3",
+        "date": "28 de Outubro 2024",
+        "description": "Vencemos a competição da Copa do Mundo de Comunidades Web3 em Espanhol.",
+        "link": "Ver Anúncio"
+      }
     }
   },
   "metricsDashboard": {
@@ -346,6 +368,21 @@
         "date": "Outubro 2024",
         "title": "Avalanche Summit Argentina",
         "description": "10 membros do DAO participam do summit. Desenvolvimento de Karma Hello e Abracadabra v2 com Cursor AI."
+      },
+      "october18_2024": {
+        "date": "18 de Outubro 2024",
+        "title": "Primeiro Validador com Delegação",
+        "description": "Recebemos nosso primeiro validador com delegação graças ao Meta Pool, no programa Node Studio Cohort 2. Um marco importante em nossa infraestrutura técnica."
+      },
+      "october26_2024": {
+        "date": "26 de Outubro 2024",
+        "title": "Lançamento do Facilitador x402",
+        "description": "Lançamos o Facilitador x402, uma ferramenta para facilitar transações cross-chain. Atualmente funciona em Avalanche, Celo e Base (mainnet e testnet)."
+      },
+      "october28_2024": {
+        "date": "28 de Outubro 2024",
+        "title": "Vencedores da Copa do Mundo de Comunidades Web3",
+        "description": "UltraVioleta DAO vence a competição da Copa do Mundo de Comunidades Web3 em Espanhol, consolidando nossa posição como líder na comunidade Web3 latino-americana."
       },
       "december2024": {
         "date": "Dezembro 2024",

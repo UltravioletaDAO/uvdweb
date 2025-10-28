@@ -97,6 +97,25 @@ const About = () => {
       ]
     },
     {
+      date: t('about.timeline.october18_2024.date'),
+      title: t('about.timeline.october18_2024.title'),
+      description: t('about.timeline.october18_2024.description'),
+      icon: ChartBarIcon
+    },
+    {
+      date: t('about.timeline.october26_2024.date'),
+      title: t('about.timeline.october26_2024.title'),
+      description: t('about.timeline.october26_2024.description'),
+      icon: BeakerIcon,
+      images: ['/images/x402-facilitator.png']
+    },
+    {
+      date: t('about.timeline.october28_2024.date'),
+      title: t('about.timeline.october28_2024.title'),
+      description: t('about.timeline.october28_2024.description'),
+      icon: FireIcon
+    },
+    {
       date: t('about.timeline.december2024.date'),
       title: t('about.timeline.december2024.title'),
       description: t('about.timeline.december2024.description'),
