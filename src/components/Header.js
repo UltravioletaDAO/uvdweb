@@ -56,6 +56,13 @@ const Header = () => {
       customStyle: "text-purple-400 hover:text-purple-300",
     },
     {
+      name: t('navigation.facilitator'),
+      icon: BeakerIcon,
+      path: "https://facilitator.ultravioletadao.xyz/",
+      isExternal: true,
+      customStyle: "text-emerald-400 hover:text-emerald-300",
+    },
+    {
       name: t('navigation.streamSummaries'),
       icon: DocumentTextIcon,
       path: "/stream-summaries",

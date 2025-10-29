@@ -35,6 +35,7 @@ const NFTPage = lazy(() => import("./pages/NFTPage"));
 const StreamSummaries = lazy(() => import("./pages/StreamSummaries"));
 const Events = lazy(() => import("./pages/Events"));
 const ExperimentsPage = lazy(() => import("./pages/ExperimentsPage"));
+const FacilitatorPage = lazy(() => import("./pages/FacilitatorPage"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -78,6 +79,7 @@ function App() {
                   <Route path="/stream-summaries" element={<StreamSummaries />} />
                   <Route path="/events" element={<Events />} />
                   <Route path="/experiments" element={<ExperimentsPage />} />
+                  <Route path="/facilitator" element={<FacilitatorPage />} />
                 </Routes>
               </Suspense>
               <Footer />

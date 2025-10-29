@@ -6,16 +6,22 @@ const LANGUAGES = ['es', 'en', 'pt', 'fr'];
 
 const staticRoutes = [
   { path: '/', priority: 1.0, changefreq: 'daily' },
+  { path: '/facilitator', priority: 0.95, changefreq: 'weekly' }, // x402 Facilitator - high priority for SEO
   { path: '/about', priority: 0.9, changefreq: 'weekly' },
   { path: '/aplicar', priority: 0.9, changefreq: 'monthly' },
+  { path: '/services', priority: 0.9, changefreq: 'weekly' }, // Services page with x402
   { path: '/metrics', priority: 0.8, changefreq: 'daily' },
   { path: '/token', priority: 0.8, changefreq: 'weekly' },
   { path: '/snapshot', priority: 0.8, changefreq: 'daily' },
   { path: '/contributors', priority: 0.7, changefreq: 'weekly' },
   { path: '/courses', priority: 0.7, changefreq: 'weekly' },
   { path: '/blog', priority: 0.7, changefreq: 'weekly' },
+  { path: '/nfts', priority: 0.7, changefreq: 'weekly' },
+  { path: '/events', priority: 0.7, changefreq: 'weekly' },
+  { path: '/experiments', priority: 0.6, changefreq: 'weekly' },
   { path: '/links', priority: 0.6, changefreq: 'monthly' },
   { path: '/safestats', priority: 0.6, changefreq: 'daily' },
+  { path: '/stream-summaries', priority: 0.6, changefreq: 'weekly' },
   { path: '/wheel', priority: 0.5, changefreq: 'weekly' },
 ];
 

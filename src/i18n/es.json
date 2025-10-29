@@ -1,6 +1,11 @@
 {
   "seo": {
-    "defaultDescription": "Construyendo el futuro de Web3 en América Latina a través de gobernanza descentralizada, innovación impulsada por la comunidad y gestión colaborativa del tesoro."
+    "defaultDescription": "Construyendo el futuro de Web3 en América Latina con el Facilitador x402 para pagos sin gas de agentes IA, gobernanza descentralizada y gestión colaborativa del tesoro. Habilita meta-transacciones cross-chain con EIP-3009.",
+    "facilitator": {
+      "title": "Facilitador x402 - Pagos Sin Gas para Agentes IA",
+      "description": "Permite que los agentes IA realicen transacciones autónomas sin tarifas de gas usando el protocolo x402 con meta-transacciones EIP-3009 en las redes Avalanche, Base, Celo y HyperEVM.",
+      "keywords": "facilitador x402, transacciones sin gas, EIP-3009, meta-transacciones, pagos agentes IA, pagos cross-chain, pagos sin estado, pagos HTTP, protocolo x402, Web3 sin gas, agentes autónomos, firmas EIP-712, transferWithAuthorization, Avalanche sin gas, Base sin gas, Celo sin gas, HyperEVM sin gas, cero tarifas gas, pagos confiables, liquidación instantánea"
+    }
   },
   "nav": {
     "home": "Inicio",
@@ -132,6 +137,30 @@
       "pause_audio": "Pausar",
       "resume_audio": "Reanudar",
       "loading_audio": "Cargando audio..."
+    },
+    "achievements": {
+      "title": "Logros Recientes",
+      "subtitle": "Hitos importantes alcanzados por nuestra comunidad",
+      "viewHistory": "Ver toda nuestra historia",
+      "validator": {
+        "title": "Primer Validador con Delegación",
+        "date": "18 de Octubre 2025",
+        "description": "Recibimos nuestro primer validador con delegación gracias a Meta Pool en el programa Node Studio Cohort 2.",
+        "announcement": "Ver Anuncio",
+        "viewValidator": "Ver Validador en NEAR"
+      },
+      "facilitator": {
+        "title": "Lanzamiento Facilitador x402",
+        "date": "26 de Octubre 2025",
+        "description": "Lanzamos el Facilitador x402 para transacciones cross-chain en Avalanche, Celo y Base.",
+        "link": "Visitar Facilitador"
+      },
+      "competition": {
+        "title": "Ganadores Mundiales Web3",
+        "date": "28 de Octubre 2025",
+        "description": "Ganamos la competencia de Mundiales de Comunidades Web3 en Español.",
+        "link": "Ver Anuncio"
+      }
     }
   },
   "metricsDashboard": {
@@ -278,6 +307,7 @@
     "metrics": "Métricas",
     "events": "Eventos",
     "services": "Productos y Servicios",
+    "facilitator": "Facilitador",
     "streamSummaries": "Resúmenes",
     "experiments": "Experimentos",
     "nft": "Colecciones NFT",
@@ -841,6 +871,43 @@
         "date": "Octubre 2024",
         "title": "Avalanche Summit Argentina",
         "description": "10 miembros del DAO asisten al summit. Desarrollo de Karma Hello y Abracadabra v2 con Cursor AI."
+      },
+      "october18_2024": {
+        "date": "18 de Octubre 2025",
+        "title": "Primer Validador con Delegación",
+        "description": "Recibimos nuestro primer validador con delegación gracias a Meta Pool, en el programa Node Studio Cohort 2. Un hito importante en nuestra infraestructura técnica.",
+        "links": [
+          {
+            "label": "Ver Anuncio",
+            "url": "https://x.com/UltravioletaDAO/status/1979685948977037629"
+          },
+          {
+            "label": "Ver Validador en NEAR",
+            "url": "https://nearblocks.io/address/ultravioletadao.pool.near"
+          }
+        ]
+      },
+      "october26_2024": {
+        "date": "26 de Octubre 2025",
+        "title": "Lanzamiento Facilitador x402",
+        "description": "Lanzamos el Facilitador x402, una herramienta para facilitar transacciones cross-chain. Actualmente funciona en Avalanche, Celo y Base (mainnet y testnet).",
+        "links": [
+          {
+            "label": "Usar Facilitador",
+            "url": "https://facilitator.ultravioletadao.xyz/"
+          }
+        ]
+      },
+      "october28_2024": {
+        "date": "28 de Octubre 2025",
+        "title": "Ganadores Mundiales de Comunidades Web3",
+        "description": "UltraVioleta DAO gana la competencia de Mundiales de Comunidades Web3 en Español, consolidando nuestra posición como líder en la comunidad Web3 latinoamericana.",
+        "links": [
+          {
+            "label": "Ver Anuncio",
+            "url": "https://x.com/soymaikoldev/status/1983244934963433521"
+          }
+        ]
       },
       "december2024": {
         "date": "Diciembre 2024",

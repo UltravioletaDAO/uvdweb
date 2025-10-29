@@ -1,6 +1,11 @@
 {
   "seo": {
-    "defaultDescription": "Building the future of Web3 in Latin America through decentralized governance, community-driven innovation, and collaborative treasury management."
+    "defaultDescription": "Building the future of Web3 in Latin America with x402 Facilitator for gasless AI agent payments, decentralized governance, and collaborative treasury management. Enable cross-chain meta-transactions with EIP-3009.",
+    "facilitator": {
+      "title": "x402 Facilitator - Gasless Payments for AI Agents",
+      "description": "Enable AI agents to transact autonomously without gas fees using x402 protocol with EIP-3009 meta-transactions on Avalanche, Base, Celo, and HyperEVM networks.",
+      "keywords": "x402 facilitator, gasless transactions, EIP-3009, meta-transactions, AI agent payments, cross-chain payments, stateless payments, HTTP payments, x402 protocol, gasless Web3, autonomous agents, EIP-712 signatures, transferWithAuthorization, Avalanche gasless, Base gasless, Celo gasless, HyperEVM gasless, zero gas fees, trustless payments, instant settlement"
+    }
   },
   "nav": {
     "home": "Home",
@@ -22,6 +27,18 @@
     "raffles": {
       "title": "Community Raffles",
       "description": "Exclusive raffles and rewards for active DAO members"
+    },
+    "facilitator": {
+      "title": "x402 Facilitator",
+      "subtitle": "Gasless Payments for the Agentic Economy",
+      "description": "Revolutionary cross-chain payment infrastructure enabling AI agents to transact without gas fees using x402 protocol and EIP-3009 meta-transactions",
+      "button": "Launch Facilitator",
+      "stats": {
+        "networks": "8 Networks",
+        "gasless": "$0 Gas Fees",
+        "settlement": "~2s Settlement",
+        "trustless": "100% Trustless"
+      }
     }
   },
   "benefits": {
@@ -132,6 +149,31 @@
       "pause_audio": "Pause",
       "resume_audio": "Resume",
       "loading_audio": "Loading audio..."
+    },
+    "achievements": {
+      "title": "Recent Achievements",
+      "subtitle": "Major milestones reached by our community",
+      "viewHistory": "View our full history",
+      "validator": {
+        "title": "First Validator with Delegation",
+        "date": "October 18, 2025",
+        "description": "We received our first validator with delegation thanks to Meta Pool in the Node Studio Cohort 2 program.",
+        "announcement": "View Announcement",
+        "viewValidator": "View Validator on NEAR"
+      },
+      "facilitator": {
+        "title": "x402 Facilitator Launch - Gasless AI Agent Payments",
+        "date": "October 26, 2025",
+        "description": "Launched revolutionary x402 Facilitator enabling gasless payments for AI agents using EIP-3009 meta-transactions. Now live on Avalanche, Base, Celo, and HyperEVM with instant settlement and zero gas fees for autonomous agents.",
+        "link": "Launch x402 Facilitator",
+        "features": "Gasless transactions, EIP-712 signatures, trustless design, ~2s settlement"
+      },
+      "competition": {
+        "title": "Web3 World Cup Winners",
+        "date": "October 28, 2025",
+        "description": "We won the Spanish Web3 Communities World Cup competition.",
+        "link": "View Announcement"
+      }
     }
   },
   "metricsDashboard": {
@@ -336,6 +378,7 @@
     "metrics": "Metrics",
     "events": "Events",
     "services": "Products & Services",
+    "facilitator": "Facilitator",
     "streamSummaries": "Summaries",
     "experiments": "Experiments",
     "nft": "NFT Collections",
@@ -1123,6 +1166,43 @@
         "date": "October 2024",
         "title": "Avalanche Summit Argentina",
         "description": "10 DAO members attend the summit. Development of Karma Hello and Abracadabra v2 with Cursor AI."
+      },
+      "october18_2024": {
+        "date": "October 18, 2025",
+        "title": "First Validator with Delegation",
+        "description": "We received our first validator with delegation thanks to Meta Pool, as part of the Node Studio Cohort 2 program. An important milestone in our technical infrastructure.",
+        "links": [
+          {
+            "label": "View Announcement",
+            "url": "https://x.com/UltravioletaDAO/status/1979685948977037629"
+          },
+          {
+            "label": "View Validator on NEAR",
+            "url": "https://nearblocks.io/address/ultravioletadao.pool.near"
+          }
+        ]
+      },
+      "october26_2024": {
+        "date": "October 26, 2025",
+        "title": "x402 Facilitator Launch",
+        "description": "We launched the x402 Facilitator, a tool to facilitate cross-chain transactions. Currently works on Avalanche, Celo, and Base (mainnet and testnet).",
+        "links": [
+          {
+            "label": "Use Facilitator",
+            "url": "https://facilitator.ultravioletadao.xyz/"
+          }
+        ]
+      },
+      "october28_2024": {
+        "date": "October 28, 2025",
+        "title": "Web3 Communities World Cup Winners",
+        "description": "UltraVioleta DAO wins the Spanish Web3 Communities World Cup competition, consolidating our position as a leader in the Latin American Web3 community.",
+        "links": [
+          {
+            "label": "View Announcement",
+            "url": "https://x.com/soymaikoldev/status/1983244934963433521"
+          }
+        ]
       },
       "december2024": {
         "date": "December 2024",
@@ -2157,6 +2237,83 @@
       "title": "Have an Idea for an Experiment?",
       "description": "Innovation starts with the community. Propose your experiment in our governance space.",
       "button": "Create Proposal"
+    }
+  },
+  "facilitatorPage": {
+    "seoTitle": "x402 Facilitator - Gasless Payments for AI Agents | UltraVioleta DAO",
+    "seoDescription": "Enable AI agents to transact autonomously without gas fees. x402 Facilitator provides gasless cross-chain payments using EIP-3009 meta-transactions on Avalanche, Base, Celo, and HyperEVM.",
+    "hero": {
+      "title": "x402 Facilitator",
+      "subtitle": "Gasless Payments for the Agentic Economy",
+      "description": "Enable AI agents to transact autonomously without gas fees using x402 protocol with EIP-3009 meta-transactions",
+      "cta": "Launch Facilitator",
+      "docs": "View Documentation"
+    },
+    "features": {
+      "title": "Revolutionary Features",
+      "gasless": {
+        "title": "Zero Gas Fees",
+        "description": "Agents never need AVAX, ETH, or any native token for gas. The facilitator executes transferWithAuthorization via EIP-3009."
+      },
+      "trustless": {
+        "title": "100% Trustless",
+        "description": "EIP-712 signature verification ensures cryptographically valid payments. No middleman, no custody, pure trustless execution."
+      },
+      "multichain": {
+        "title": "Multi-Network Support",
+        "description": "Live on 4 mainnets (Avalanche, Base, Celo, HyperEVM) and 4 testnets for maximum flexibility."
+      },
+      "instant": {
+        "title": "Instant Settlement",
+        "description": "~2-3 seconds end-to-end transaction time. Lightning fast for real-time agent interactions."
+      }
+    },
+    "networks": {
+      "title": "Supported Networks",
+      "mainnets": "Mainnets",
+      "testnets": "Testnets",
+      "avalanche": "Avalanche C-Chain",
+      "base": "Base",
+      "celo": "Celo",
+      "hyperEvm": "HyperEVM",
+      "avalancheFuji": "Avalanche Fuji",
+      "baseSepolia": "Base Sepolia",
+      "celoSepolia": "Celo Sepolia",
+      "hyperEvmTestnet": "HyperEVM Testnet"
+    },
+    "technical": {
+      "title": "Technical Implementation",
+      "protocol": "Protocol: x402 (stateless, per-request payments over HTTP)",
+      "standard": "Standard: EIP-3009 meta-transactions",
+      "framework": "Framework: Hono middleware",
+      "verification": "Verification: EIP-712 signatures",
+      "api": {
+        "title": "API Endpoints",
+        "health": "GET /health - Status verification",
+        "supported": "GET /supported - Lists payment schemes",
+        "verify": "POST /verify - Validates signatures",
+        "settle": "POST /settle - Executes on-chain payments"
+      }
+    },
+    "addresses": {
+      "title": "Facilitator Addresses",
+      "mainnet": "Mainnet",
+      "testnet": "Testnet",
+      "copy": "Copy Address"
+    },
+    "stats": {
+      "title": "Live Statistics",
+      "transactions": "Total Transactions",
+      "volume": "Total Volume",
+      "agents": "Active Agents",
+      "uptime": "Uptime"
+    },
+    "cta": {
+      "title": "Ready to Enable Gasless Payments?",
+      "description": "Join the agentic economy revolution. Enable your AI agents to transact without gas fees.",
+      "launch": "Launch Facilitator",
+      "github": "View on GitHub",
+      "discord": "Get Support"
     }
   }
 } 

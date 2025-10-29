@@ -1,6 +1,6 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPinIcon, ClockIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon, ClockIcon, TrophyIcon, RocketLaunchIcon, FireIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import { getEvents } from '../services/events/Events';
 import { useCombinedSnapshotData } from '../hooks/useCombinedSnapshotData';
@@ -47,9 +47,9 @@ const Home = () => {
   return (
     <>
       <SEO
-        title={t('home.seoTitle', 'Home')}
-        description={t('home.seoDescription', 'Join UltraVioleta DAO - Building the future of Web3 in Latin America through decentralized governance, community innovation, and collaborative treasury management.')}
-        keywords="UltraVioleta DAO, Web3 LATAM, Latin America Blockchain, DAO Community, Decentralized Governance, Avalanche, Snapshot Voting, Web3 Development, DeFi Latin America"
+        title={t('home.seoTitle', 'Home - x402 Facilitator & Latin America Web3 DAO')}
+        description={t('home.seoDescription', 'UltraVioleta DAO - Pioneers of x402 Facilitator for gasless AI agent payments. Building Web3 in Latin America with EIP-3009 meta-transactions, decentralized governance, and collaborative treasury management on Avalanche, Base, Celo.')}
+        keywords="x402 facilitator, gasless payments, AI agent transactions, EIP-3009, meta-transactions, UltraVioleta DAO, Web3 LATAM, Latin America Blockchain, DAO Community, Decentralized Governance, Avalanche, Base, Celo, HyperEVM, Snapshot Voting, Web3 Development, DeFi Latin America, zero gas fees, trustless payments, cross-chain infrastructure, autonomous agents"
       />
       <div className="min-h-screen bg-background">
       {/* Hero Section - Simplified without animations */}
@@ -258,6 +258,134 @@ const Home = () => {
           </Link>
         </div>
       </div>
+
+      {/* Recent Achievements Section */}
+      <section className="py-16 bg-gradient-to-b from-[#0a0a1b] to-background-lighter">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold text-text-primary mb-4">
+              {t('home.achievements.title')}
+            </h2>
+            <p className="text-text-secondary text-lg">
+              {t('home.achievements.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {/* Validator Achievement */}
+            <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 hover:border-purple-400/60 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300">
+              <div className="flex items-center justify-center w-14 h-14 bg-purple-600/20 rounded-full mb-4 mx-auto">
+                <RocketLaunchIcon className="h-8 w-8 text-purple-400" />
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {t('home.achievements.validator.title')}
+                </h3>
+                <p className="text-sm text-purple-400 mb-3">
+                  {t('home.achievements.validator.date')}
+                </p>
+                <p className="text-gray-300 text-sm mb-4">
+                  {t('home.achievements.validator.description')}
+                </p>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href="https://x.com/UltravioletaDAO/status/1979685948977037629"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 text-sm text-purple-400 hover:text-purple-300 font-semibold"
+                  >
+                    {t('home.achievements.validator.announcement')}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://nearblocks.io/address/ultravioletadao.pool.near"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 text-sm text-purple-400 hover:text-purple-300 font-semibold"
+                  >
+                    {t('home.achievements.validator.viewValidator')}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* Facilitator Achievement */}
+            <div className="bg-gradient-to-br from-blue-900/20 to-cyan-900/20 backdrop-blur-sm border border-blue-500/30 rounded-xl p-6 hover:border-blue-400/60 hover:shadow-lg hover:shadow-blue-500/20 transition-all duration-300">
+              <div className="flex items-center justify-center w-14 h-14 bg-blue-600/20 rounded-full mb-4 mx-auto">
+                <FireIcon className="h-8 w-8 text-blue-400" />
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {t('home.achievements.facilitator.title')}
+                </h3>
+                <p className="text-sm text-blue-400 mb-3">
+                  {t('home.achievements.facilitator.date')}
+                </p>
+                <p className="text-gray-300 text-sm mb-4">
+                  {t('home.achievements.facilitator.description')}
+                </p>
+                <a
+                  href="https://facilitator.ultravioletadao.xyz/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-blue-400 hover:text-blue-300 font-semibold"
+                >
+                  {t('home.achievements.facilitator.link')}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Competition Achievement */}
+            <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 backdrop-blur-sm border border-amber-500/30 rounded-xl p-6 hover:border-amber-400/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-300">
+              <div className="flex items-center justify-center w-14 h-14 bg-amber-600/20 rounded-full mb-4 mx-auto">
+                <TrophyIcon className="h-8 w-8 text-amber-400" />
+              </div>
+              <div className="text-center">
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {t('home.achievements.competition.title')}
+                </h3>
+                <p className="text-sm text-amber-400 mb-3">
+                  {t('home.achievements.competition.date')}
+                </p>
+                <p className="text-gray-300 text-sm mb-4">
+                  {t('home.achievements.competition.description')}
+                </p>
+                <a
+                  href="https://x.com/soymaikoldev/status/1983244934963433521"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm text-amber-400 hover:text-amber-300 font-semibold"
+                >
+                  {t('home.achievements.competition.link')}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12">
+            <Link
+              to="/about"
+              className="inline-flex items-center gap-2 text-sm text-white hover:text-ultraviolet-light transition-colors duration-200"
+            >
+              <span>{t('home.achievements.viewHistory')}</span>
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* Events Section - Lazy loaded */}
       {showEventsSection && (
