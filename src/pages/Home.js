@@ -47,9 +47,9 @@ const Home = () => {
   return (
     <>
       <SEO
-        title={t('home.seoTitle', 'Home')}
-        description={t('home.seoDescription', 'Join UltraVioleta DAO - Building the future of Web3 in Latin America through decentralized governance, community innovation, and collaborative treasury management.')}
-        keywords="UltraVioleta DAO, Web3 LATAM, Latin America Blockchain, DAO Community, Decentralized Governance, Avalanche, Snapshot Voting, Web3 Development, DeFi Latin America"
+        title={t('home.seoTitle', 'Home - x402 Facilitator & Latin America Web3 DAO')}
+        description={t('home.seoDescription', 'UltraVioleta DAO - Pioneers of x402 Facilitator for gasless AI agent payments. Building Web3 in Latin America with EIP-3009 meta-transactions, decentralized governance, and collaborative treasury management on Avalanche, Base, Celo.')}
+        keywords="x402 facilitator, gasless payments, AI agent transactions, EIP-3009, meta-transactions, UltraVioleta DAO, Web3 LATAM, Latin America Blockchain, DAO Community, Decentralized Governance, Avalanche, Base, Celo, HyperEVM, Snapshot Voting, Web3 Development, DeFi Latin America, zero gas fees, trustless payments, cross-chain infrastructure, autonomous agents"
       />
       <div className="min-h-screen bg-background">
       {/* Hero Section - Simplified without animations */}
@@ -284,9 +284,33 @@ const Home = () => {
                 <p className="text-sm text-purple-400 mb-3">
                   {t('home.achievements.validator.date')}
                 </p>
-                <p className="text-gray-300 text-sm">
+                <p className="text-gray-300 text-sm mb-4">
                   {t('home.achievements.validator.description')}
                 </p>
+                <div className="flex flex-col gap-2">
+                  <a
+                    href="https://x.com/UltravioletaDAO/status/1979685948977037629"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 text-sm text-purple-400 hover:text-purple-300 font-semibold"
+                  >
+                    {t('home.achievements.validator.announcement')}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://nearblocks.io/address/ultravioletadao.pool.near"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 text-sm text-purple-400 hover:text-purple-300 font-semibold"
+                  >
+                    {t('home.achievements.validator.viewValidator')}
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
 

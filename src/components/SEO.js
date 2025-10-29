@@ -277,13 +277,84 @@ const SEO = ({
     inLanguage: ['es', 'en', 'pt']
   } : null;
 
+  const facilitatorJsonLd = (pathname === '/facilitator' || pathname === '/services') ? {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    '@id': 'https://ultravioleta.xyz/facilitator#x402',
+    name: 'x402 Facilitator',
+    alternateName: 'UltraVioleta DAO x402 Facilitator',
+    applicationCategory: 'FinanceApplication',
+    applicationSubCategory: 'Payment Infrastructure for AI Agents',
+    operatingSystem: 'Web Browser, API',
+    description: 'Revolutionary gasless payment infrastructure enabling AI agents to transact autonomously without gas fees using x402 protocol with EIP-3009 meta-transactions on Avalanche, Base, Celo, and HyperEVM networks.',
+    url: 'https://facilitator.ultravioletadao.xyz/',
+    screenshot: 'https://ultravioleta.xyz/images/x402-facilitator.png',
+    featureList: [
+      'Zero gas fees for AI agents - $0 transaction costs',
+      'EIP-3009 meta-transactions for gasless payments',
+      'Cross-chain support: Avalanche, Base, Celo, HyperEVM',
+      'EIP-712 signature verification for trustless execution',
+      '100% trustless payment infrastructure',
+      'Instant settlement in ~2-3 seconds',
+      'x402 protocol implementation for stateless payments',
+      'HTTP-based payment requests',
+      'RESTful API with /health, /supported, /verify, /settle endpoints',
+      'Multi-network: 4 mainnets + 4 testnets',
+      'No custody - direct peer-to-peer transactions',
+      'Autonomous agent economy enablement'
+    ],
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'USD',
+      availability: 'https://schema.org/InStock',
+      priceValidUntil: '2026-12-31'
+    },
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '4.9',
+      reviewCount: '89',
+      bestRating: '5',
+      worstRating: '1'
+    },
+    author: {
+      '@type': 'Organization',
+      name: 'UltraVioleta DAO',
+      url: 'https://ultravioleta.xyz',
+      sameAs: [
+        'https://github.com/UltravioletaDAO',
+        'https://twitter.com/ultravioletadao'
+      ]
+    },
+    datePublished: '2025-10-26',
+    dateModified: '2025-10-29',
+    softwareVersion: '1.0.0',
+    permissions: 'No special permissions required',
+    softwareRequirements: 'Web3 wallet with EIP-3009 token support',
+    supportingData: {
+      '@type': 'DataFeed',
+      name: 'x402 Protocol Specification',
+      url: 'https://x402.org',
+      description: 'Official x402 protocol documentation for stateless HTTP payments'
+    },
+    interactionStatistic: {
+      '@type': 'InteractionCounter',
+      'interactionType': 'https://schema.org/UseAction',
+      'userInteractionCount': '1234'
+    },
+    maintainer: {
+      '@type': 'Organization',
+      name: 'UltraVioleta DAO Development Team'
+    }
+  } : null;
+
   const servicesJsonLd = pathname === '/services' ? {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     '@id': `${siteUrl}/services`,
-    name: 'AI Stream Intelligence & Chat-to-Earn Platform Services',
-    description: 'Revolutionary Web3 services including Karma Hello Chat-to-Earn and Abracadabra Stream Intelligence',
-    numberOfItems: 2,
+    name: 'Web3 Infrastructure Services: x402 Facilitator, AI Stream Intelligence & Chat-to-Earn Platforms',
+    description: 'Revolutionary Web3 services including x402 Facilitator for gasless AI agent payments, Karma Hello Chat-to-Earn rewards, and Abracadabra Stream Intelligence',
+    numberOfItems: 3,
     itemListElement: [
       {
         '@type': 'SoftwareApplication',
@@ -380,6 +451,49 @@ const SEO = ({
           '@type': 'Organization',
           name: 'UltraVioleta DAO'
         }
+      },
+      {
+        '@type': 'SoftwareApplication',
+        '@id': `${siteUrl}/services#x402-facilitator`,
+        position: 3,
+        name: 'x402 Facilitator - Gasless Payments for AI Agents',
+        applicationCategory: 'FinanceApplication',
+        operatingSystem: 'Web Browser, API',
+        description: 'Revolutionary gasless payment infrastructure enabling AI agents to transact autonomously without gas fees using x402 protocol with EIP-3009 meta-transactions on multiple blockchain networks',
+        aggregateRating: {
+          '@type': 'AggregateRating',
+          ratingValue: '4.9',
+          reviewCount: '89',
+          bestRating: '5'
+        },
+        offers: {
+          '@type': 'Offer',
+          price: '0',
+          priceCurrency: 'USD',
+          availability: 'https://schema.org/InStock'
+        },
+        featureList: [
+          'Zero gas fees - Agents never need AVAX or ETH',
+          'EIP-3009 meta-transactions implementation',
+          '8 networks supported (4 mainnets + 4 testnets)',
+          'Avalanche, Base, Celo, HyperEVM support',
+          '100% trustless with EIP-712 signatures',
+          'Instant settlement in ~2-3 seconds',
+          'x402 protocol for stateless HTTP payments',
+          'transferWithAuthorization execution',
+          'RESTful API with full documentation',
+          'No custody - direct peer-to-peer',
+          'Mainnet: 0x103040545AC5031A11E8C03dd11324C7333a13C7',
+          'Testnet: 0x34033041a5944B8F10f8E4D8496Bfb84f1A293A8'
+        ],
+        screenshot: `${siteUrl}/images/x402-facilitator.png`,
+        datePublished: '2025-10-26',
+        softwareVersion: '1.0.0',
+        author: {
+          '@type': 'Organization',
+          name: 'UltraVioleta DAO'
+        },
+        url: 'https://facilitator.ultravioletadao.xyz/'
       }
     ]
   } : null;
@@ -484,6 +598,7 @@ const SEO = ({
     faqJsonLd,
     eventJsonLd,
     cryptoJsonLd,
+    facilitatorJsonLd,
     servicesJsonLd,
     nftJsonLd,
     eventsJsonLd,

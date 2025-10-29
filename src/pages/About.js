@@ -148,20 +148,23 @@ const About = () => {
       date: t('about.timeline.october18_2024.date'),
       title: t('about.timeline.october18_2024.title'),
       description: t('about.timeline.october18_2024.description'),
-      icon: ChartBarIcon
+      icon: ChartBarIcon,
+      links: t('about.timeline.october18_2024.links', { returnObjects: true })
     },
     {
       date: t('about.timeline.october26_2024.date'),
       title: t('about.timeline.october26_2024.title'),
       description: t('about.timeline.october26_2024.description'),
       icon: BeakerIcon,
-      images: ['/images/x402-facilitator.png']
+      images: ['/images/x402-facilitator.png'],
+      links: t('about.timeline.october26_2024.links', { returnObjects: true })
     },
     {
       date: t('about.timeline.october28_2024.date'),
       title: t('about.timeline.october28_2024.title'),
       description: t('about.timeline.october28_2024.description'),
-      icon: FireIcon
+      icon: FireIcon,
+      links: t('about.timeline.october28_2024.links', { returnObjects: true })
     },
     {
       date: t('about.timeline.current.date'),
@@ -298,6 +301,26 @@ const About = () => {
                     <p className="text-gray-700 dark:text-gray-300 mb-4">
                       {milestone.description}
                     </p>
+
+                    {/* Links Section */}
+                    {milestone.links && milestone.links.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {milestone.links.map((link, idx) => (
+                          <a
+                            key={idx}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
+                          >
+                            {link.label}
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                            </svg>
+                          </a>
+                        ))}
+                      </div>
+                    )}
 
                     {/* Images Gallery */}
                     {milestone.images && milestone.images.length > 0 && (
