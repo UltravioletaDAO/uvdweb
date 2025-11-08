@@ -6,14 +6,13 @@ const DEBUG_ENABLED = process.env.REACT_APP_DEBUG_ENABLED === 'true';
 const API_BASE_URL = process.env.REACT_APP_STREAM_SUMMARIES_API;
 const S3_BASE_URL = 'https://ultravioletadao.s3.us-east-1.amazonaws.com';
 
-// Log configuration at startup
-if (DEBUG_ENABLED) {
-  console.log('🔧 StreamSummaries Service Configuration:', {
-    API_BASE_URL,
-    hasAPI: !!API_BASE_URL,
-    S3_BASE_URL
-  });
-}
+// Log configuration at startup - CRITICAL: Verifies env vars are loaded
+console.log('🔧 StreamSummaries Service Configuration:', {
+  API_BASE_URL: API_BASE_URL || 'NOT_SET',
+  hasAPI: !!API_BASE_URL,
+  S3_BASE_URL,
+  buildTimestamp: '2025-11-08T20:45:00Z'
+});
 
 // x402 Payment Error
 class PaymentRequiredError extends Error {
