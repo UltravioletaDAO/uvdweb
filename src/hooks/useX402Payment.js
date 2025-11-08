@@ -34,7 +34,7 @@ export function useX402Payment() {
 
   // Create fetch with payment wrapper
   const fetchWithPayment = useMemo(() => {
-    if (!walletClient) return fetch;
+    if (!walletClient) return null; // Return null if no wallet
     return wrapFetchWithPayment(fetch, walletClient);
   }, [walletClient]);
 
