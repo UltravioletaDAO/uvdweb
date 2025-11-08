@@ -55,7 +55,22 @@ export function useStreamSummary(streamer, videoId, fechaStream, enabled = false
 
   return useQuery({
     queryKey: ['streamSummaries', 'detail', streamer, videoId, fechaStream, currentLanguage, paymentProof?.txHash],
-    queryFn: () => streamSummariesService.fetchSummary(streamer, videoId, fechaStream, paymentProof),
+    queryFn: async () => {
+      try {
+        console.log('🔵 useStreamSummary: Fetching summary for', { streamer, videoId, fechaStream });
+        const result = await streamSummariesService.fetchSummary(streamer, videoId, fechaStream, paymentProof);
+        console.log('🔵 useStreamSummary: Fetch successful');
+        return result;
+      } catch (error) {
+        console.log('🔵 useStreamSummary: Fetch failed with error:', {
+          name: error.name,
+          message: error.message,
+          paymentDetails: error.paymentDetails,
+          isPaymentRequiredError: error.name === 'PaymentRequiredError'
+        });
+        throw error;
+      }
+    },
     staleTime: 10 * 60 * 1000, // 10 minutes
     cacheTime: 30 * 60 * 1000, // 30 minutes
     retry: false, // Don't retry 402 errors automatically

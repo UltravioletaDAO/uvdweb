@@ -45,6 +45,7 @@ function StreamSummaries() {
 
   // Handle payment required - open paywall modal
   const handlePaymentRequired = (paymentDetails) => {
+    console.log('🟢 StreamSummaries: handlePaymentRequired called with:', paymentDetails);
     setPaywallData({
       videoId: paymentDetails.videoId,
       title: paymentDetails.title,
@@ -52,6 +53,7 @@ function StreamSummaries() {
       receivingWallet: paymentDetails.receivingWallet
     });
     setShowPaywall(true);
+    console.log('🟢 StreamSummaries: PaywallModal should now be visible');
   };
 
   // Handle payment modal close - payment will happen automatically via x402-fetch

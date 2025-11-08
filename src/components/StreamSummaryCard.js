@@ -22,9 +22,20 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
 
   // Handle payment required error
   useEffect(() => {
+    console.log('🟡 StreamSummaryCard: Error changed:', {
+      hasError: !!error,
+      errorName: error?.name,
+      errorMessage: error?.message,
+      paymentDetails: error?.paymentDetails,
+      hasOnPaymentRequired: !!onPaymentRequired
+    });
+
     if (error && error.name === 'PaymentRequiredError') {
+      console.log('🟢 StreamSummaryCard: PaymentRequiredError detected! Calling onPaymentRequired');
       if (onPaymentRequired) {
         onPaymentRequired(error.paymentDetails);
+      } else {
+        console.error('🔴 onPaymentRequired callback is not defined!');
       }
     }
   }, [error, onPaymentRequired]);

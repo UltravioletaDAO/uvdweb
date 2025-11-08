@@ -244,15 +244,16 @@ class StreamSummariesService {
 
           // Handle 402 Payment Required
           if (apiResponse.status === 402) {
-            this.log('💳 Payment required for this content');
+            console.log('🔴 402 PAYMENT REQUIRED - Service detected 402 response');
             const errorData = await apiResponse.json();
+            console.log('🔴 402 Response data:', errorData);
 
             // Parse x402-express format response
             const accepts = errorData.accepts?.[0] || {};
             const maxAmount = accepts.maxAmountRequired || '50000'; // USDC has 6 decimals
             const priceUSD = (parseInt(maxAmount) / 1000000).toString(); // Convert to USD
 
-            throw new PaymentRequiredError('Payment required to access this content', {
+            const paymentDetails = {
               videoId,
               streamer,
               price: priceUSD,
@@ -265,7 +266,14 @@ class StreamSummariesService {
                 maxAmountRequired: accepts.maxAmountRequired,
                 resource: accepts.resource
               }
-            });
+            };
+
+            console.log('🔴 Throwing PaymentRequiredError with details:', paymentDetails);
+            const error = new PaymentRequiredError('Payment required to access this content', paymentDetails);
+            console.log('🔴 PaymentRequiredError created:', error);
+            console.log('🔴 Error.name:', error.name);
+            console.log('🔴 Error instanceof PaymentRequiredError:', error instanceof PaymentRequiredError);
+            throw error;
           }
 
           if (apiResponse.ok) {
