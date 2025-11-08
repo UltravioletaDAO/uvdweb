@@ -26,11 +26,20 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
       hasError: !!error,
       errorName: error?.name,
       errorMessage: error?.message,
+      errorStatus: error?.status,
       paymentDetails: error?.paymentDetails,
-      hasOnPaymentRequired: !!onPaymentRequired
+      hasOnPaymentRequired: !!onPaymentRequired,
+      fullError: error
     });
 
-    if (error && error.name === 'PaymentRequiredError') {
+    // Check for payment required error by multiple conditions
+    const isPaymentRequired = error && (
+      error.name === 'PaymentRequiredError' ||
+      error.status === 402 ||
+      error.paymentDetails
+    );
+
+    if (isPaymentRequired) {
       console.log('🟢 StreamSummaryCard: PaymentRequiredError detected! Calling onPaymentRequired');
       if (onPaymentRequired) {
         onPaymentRequired(error.paymentDetails);
@@ -76,7 +85,13 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
     }
 
     // Handle payment required error
-    if (error && error.name === 'PaymentRequiredError') {
+    const isPaymentRequired = error && (
+      error.name === 'PaymentRequiredError' ||
+      error.status === 402 ||
+      error.paymentDetails
+    );
+
+    if (isPaymentRequired) {
       return (
         <div className="text-text-secondary text-sm p-6 bg-gradient-to-r from-violet-900/20 to-purple-900/20 rounded-lg border border-violet-700/30">
           <div className="flex items-center justify-center space-x-2">
@@ -90,7 +105,7 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
     }
 
     // Handle other errors
-    if (error && error.name !== 'PaymentRequiredError') {
+    if (error && !isPaymentRequired) {
       return (
         <div className="text-text-secondary text-sm p-6 bg-red-900/20 rounded-lg border border-red-700/30">
           <div className="flex items-center justify-center space-x-2">
