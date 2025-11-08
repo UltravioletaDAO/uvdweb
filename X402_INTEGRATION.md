@@ -13,180 +13,93 @@
 2. `src/components/PaywallModal.jsx` - Modal de pago
 3. `src/components/NetworkSelector.jsx` - Selector de redes
 
-## 🔧 Integración en StreamSummaries.js
+## 🏗️ Backend: ECS Fargate
 
-### 1. Importar componentes
+El servicio corre en **ECS Fargate** (no Lambda) con ALB:
+- **ALB URL**: http://stream-summaries-alb-1343657707.us-east-2.elb.amazonaws.com
+- **Region**: us-east-2
+- **Endpoints**:
+  - `GET /summaries?lang=es` - Índice de resúmenes
+  - `GET /summaries/latest?lang=es` - Último resumen (gratis)
+  - `GET /summaries/:videoId?lang=es` - Resumen específico (puede requerir pago)
+
+## 🔧 Integración Completada
+
+### ✅ Archivos Modificados
+
+1. **`src/services/streamSummaries.js`**
+   - ✅ Agregada clase `PaymentRequiredError`
+   - ✅ Modificado para intentar ECS API primero, luego S3
+   - ✅ Soporte para header `X-PAYMENT` con payment proof
+   - ✅ Manejo de respuestas 402
+
+2. **`src/hooks/useStreamSummaries.js`**
+   - ✅ Hook `useStreamSummary` acepta `paymentProof`
+   - ✅ Deshabilita retries automáticos para errores 402
+
+3. **`src/components/StreamSummaryCard.js`**
+   - ✅ Props `onPaymentRequired` y `paymentProof`
+   - ✅ Detección y manejo de `PaymentRequiredError`
+   - ✅ UI para estado de pago requerido
+
+4. **`src/pages/StreamSummaries.js`**
+   - ✅ Integrado `PaywallModal`
+   - ✅ Estado de paywall y payment proofs
+   - ✅ Handlers para pago exitoso
+
+### 2. Configuración de URL del API
 
 ```javascript
-import { useState } from 'react';
-import PaywallModal from '../components/PaywallModal';
-import useX402Payment from '../hooks/useX402Payment';
+// En src/services/streamSummaries.js:
+const API_BASE_URL = process.env.REACT_APP_STREAM_SUMMARIES_API;
+
+// En .env (AGREGAR):
+REACT_APP_STREAM_SUMMARIES_API=http://stream-summaries-alb-1343657707.us-east-2.elb.amazonaws.com
 ```
 
-### 2. Cambiar URL del API
+### 3. Flujo de Pago Implementado
 
 ```javascript
-// ANTES (S3 directo):
-const S3_BASE_URL = 'https://ultravioletadao.s3.us-east-1.amazonaws.com';
-
-// DESPUÉS (Lambda API):
-const API_BASE_URL = process.env.REACT_APP_STREAM_SUMMARIES_API ||
-  'TU_URL_DEL_TERRAFORM_AQUI'; // La URL que te da terraform apply
-```
-
-### 3. Agregar estado para paywall
-
-```javascript
-const [showPaywall, setShowPaywall] = useState(false);
-const [paywallData, setPaywallData] = useState(null);
-const { markAsPaid } = useX402Payment();
-```
-
-### 4. Modificar fetch de índice
-
-```javascript
-// En streamSummariesService.js - método fetchIndex()
-
-const apiUrl = `${API_BASE_URL}/summaries?lang=${language}`;
-const response = await fetch(apiUrl);
-
-if (!response.ok) {
-  throw new Error(`Failed to fetch: ${response.status}`);
-}
-
-const { success, data } = await response.json();
-
-// Transformar al formato existente
-return {
-  ultima_actualizacion: data.ultima_actualizacion,
-  total_resumenes: data.total_streams,
-  streamers: data.streamers,
-  resumenes: data.streams
-};
-```
-
-### 5. Modificar fetch de resumen individual
-
-```javascript
-// En streamSummariesService.js - método fetchSummary()
-
-const apiUrl = `${API_BASE_URL}/summaries/${videoId}?lang=${language}`;
-const response = await fetch(apiUrl);
-
-// Si es 402 Payment Required
-if (response.status === 402) {
-  // Mostrar paywall
-  throw new Error('PAYMENT_REQUIRED');
-}
-
-if (!response.ok) {
-  throw new Error(`Failed to fetch: ${response.status}`);
-}
-
-const { success, data } = await response.json();
-return data;
-```
-
-### 6. Manejar error de pago en componente
-
-```javascript
-// En el componente que llama fetchSummary
-
-try {
-  const summary = await streamSummariesService.fetchSummary(streamer, videoId, fecha);
-  // Mostrar resumen
-} catch (error) {
-  if (error.message === 'PAYMENT_REQUIRED') {
-    // Abrir paywall
-    setPaywallData({
-      videoId,
-      title: `Resumen - ${streamer}`,
-      price: '0.05',
-      receivingWallet: '0x52110a2Cc8B6bBf846101265edAAe34E753f3389'
-    });
-    setShowPaywall(true);
-  } else {
-    // Otro error
-    console.error(error);
-  }
-}
-```
-
-### 7. Callback después del pago
-
-```javascript
-const handlePaymentSuccess = async (paymentProof) => {
-  try {
-    // Reintentar fetch con proof de pago
-    const apiUrl = `${API_BASE_URL}/summaries/${paywallData.videoId}?lang=${language}`;
-
-    const response = await fetch(apiUrl, {
-      headers: {
-        'X-PAYMENT': JSON.stringify(paymentProof)
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed after payment');
-    }
-
-    const { data } = await response.json();
-
-    // Marcar como pagado
-    markAsPaid(paywallData.videoId, paymentProof);
-
-    // Mostrar resumen
-    setCurrentSummary(data);
-    setShowPaywall(false);
-
-  } catch (error) {
-    console.error('Error loading paid content:', error);
-    alert('Error cargando el contenido. Intenta de nuevo.');
-  }
-};
-```
-
-### 8. Renderizar modal
-
-```javascript
-return (
-  <>
-    {/* Tu contenido existente */}
-    <main>
-      {/* ... */}
-    </main>
-
-    {/* Paywall Modal */}
-    <PaywallModal
-      isOpen={showPaywall}
-      onClose={() => setShowPaywall(false)}
-      content={paywallData}
-      onPaymentSuccess={handlePaymentSuccess}
-    />
-  </>
-);
+// Cuando un resumen requiere pago (402):
+1. StreamSummaryCard detecta PaymentRequiredError
+2. Llama onPaymentRequired(paymentDetails)
+3. StreamSummaries.js abre PaywallModal
+4. Usuario paga con MetaMask
+5. handlePaymentSuccess guarda proof
+6. Se re-fetch con header X-PAYMENT
+7. Contenido se muestra completo
 ```
 
 ## 🚀 Deployment
 
-### 1. Deploy Backend (Lambda)
+### 1. Backend ya desplegado ✅
 
-```bash
-cd z:\ultravioleta\code\web\uvd-backend\environments\prod
-terraform init
-terraform apply
-```
-
-Anota la URL que muestra terraform (ej: `https://xxx.execute-api.us-east-2.amazonaws.com/prod`)
+- **Servicio**: ECS Fargate en us-east-2
+- **ALB URL**: http://stream-summaries-alb-1343657707.us-east-2.elb.amazonaws.com
+- **Estado**: Running
 
 ### 2. Configurar Frontend
 
 Agrega a `.env`:
-```
-REACT_APP_STREAM_SUMMARIES_API=https://tu-url-del-terraform
+```bash
+REACT_APP_STREAM_SUMMARIES_API=http://stream-summaries-alb-1343657707.us-east-2.elb.amazonaws.com
 ```
 
-### 3. Hacer S3 Privado
+### 3. Verificar Integración
+
+Prueba los endpoints manualmente:
+```bash
+# Índice
+curl "http://stream-summaries-alb-1343657707.us-east-2.elb.amazonaws.com/summaries?lang=es"
+
+# Último resumen (gratis)
+curl "http://stream-summaries-alb-1343657707.us-east-2.elb.amazonaws.com/summaries/latest?lang=es"
+
+# Resumen específico (puede requerir pago)
+curl "http://stream-summaries-alb-1343657707.us-east-2.elb.amazonaws.com/summaries/2378088381?lang=es"
+```
+
+### 4. Hacer S3 Privado
 
 **Solo después de verificar que funciona:**
 

@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import StreamSummaryCard from '../components/StreamSummaryCard';
 import Pagination from '../components/Pagination';
 import SEO from '../components/SEO';
+import PaywallModal from '../components/PaywallModal';
+import useX402Payment from '../hooks/useX402Payment';
 import { useStreamSummariesPaginated } from '../hooks/useStreamSummaries';
 
 function StreamSummaries() {
@@ -11,6 +13,12 @@ function StreamSummaries() {
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedStreamer, setSelectedStreamer] = useState('all');
   const summariesPerPage = 12;
+
+  // x402 Payment System
+  const [showPaywall, setShowPaywall] = useState(false);
+  const [paywallData, setPaywallData] = useState(null);
+  const [paymentProofs, setPaymentProofs] = useState({}); // Store payment proofs by videoId
+  const { markAsPaid } = useX402Payment();
 
   // Fetch paginated data
   const {
@@ -23,6 +31,35 @@ function StreamSummaries() {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Handle payment required - open paywall modal
+  const handlePaymentRequired = (paymentDetails) => {
+    setPaywallData({
+      videoId: paymentDetails.videoId,
+      title: paymentDetails.title,
+      price: paymentDetails.price,
+      receivingWallet: paymentDetails.receivingWallet
+    });
+    setShowPaywall(true);
+  };
+
+  // Handle successful payment - store proof and close modal
+  const handlePaymentSuccess = (paymentProof) => {
+    // Mark content as paid in localStorage
+    if (paywallData?.videoId) {
+      markAsPaid(paywallData.videoId, paymentProof);
+
+      // Store payment proof in state for this session
+      setPaymentProofs(prev => ({
+        ...prev,
+        [paywallData.videoId]: paymentProof
+      }));
+    }
+
+    // Close modal
+    setShowPaywall(false);
+    setPaywallData(null);
   };
 
   // Filter summaries by streamer
@@ -424,7 +461,11 @@ function StreamSummaries() {
                     key={`${summary.video_id}-${summary.streamer}`}
                     aria-label={summary.title ? t('streamSummaries.aria.streamSummary', { title: summary.title }) : t('streamSummaries.aria.streamBy', { streamer: summary.streamer })}
                   >
-                    <StreamSummaryCard summary={summary} />
+                    <StreamSummaryCard
+                      summary={summary}
+                      onPaymentRequired={handlePaymentRequired}
+                      paymentProof={paymentProofs[summary.video_id]}
+                    />
                   </article>
                 ))}
               </div>
@@ -456,6 +497,14 @@ function StreamSummaries() {
           )}
         </div>
       </main>
+
+      {/* Paywall Modal */}
+      <PaywallModal
+        isOpen={showPaywall}
+        onClose={() => setShowPaywall(false)}
+        content={paywallData}
+        onPaymentSuccess={handlePaymentSuccess}
+      />
     </>
   );
 }

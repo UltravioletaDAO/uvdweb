@@ -36,13 +36,15 @@ export function useStreamSummariesPaginated(page = 1, perPage = 10) {
 }
 
 /**
- * Hook to fetch a specific stream summary by streamer name, video ID, and date from S3
+ * Hook to fetch a specific stream summary by streamer name, video ID, and date
+ * Supports x402 payment system - handles PaymentRequiredError
  * @param {string} streamer - Streamer username (e.g., '0xultravioleta')
  * @param {string} videoId - Twitch video ID
  * @param {string} fechaStream - Stream date in YYYYMMDD format
  * @param {boolean} enabled - Whether to fetch the data (useful for lazy loading)
+ * @param {Object} paymentProof - Optional payment proof for x402 access
  */
-export function useStreamSummary(streamer, videoId, fechaStream, enabled = false) {
+export function useStreamSummary(streamer, videoId, fechaStream, enabled = false, paymentProof = null) {
   const { i18n } = useTranslation();
   const currentLanguage = i18n.language;
 
@@ -52,11 +54,11 @@ export function useStreamSummary(streamer, videoId, fechaStream, enabled = false
   }, [currentLanguage]);
 
   return useQuery({
-    queryKey: ['streamSummaries', 'detail', streamer, videoId, fechaStream, currentLanguage],
-    queryFn: () => streamSummariesService.fetchSummary(streamer, videoId, fechaStream),
+    queryKey: ['streamSummaries', 'detail', streamer, videoId, fechaStream, currentLanguage, paymentProof?.txHash],
+    queryFn: () => streamSummariesService.fetchSummary(streamer, videoId, fechaStream, paymentProof),
     staleTime: 10 * 60 * 1000, // 10 minutes
     cacheTime: 30 * 60 * 1000, // 30 minutes
-    retry: 2,
+    retry: false, // Don't retry 402 errors automatically
     refetchOnWindowFocus: false,
     enabled: !!streamer && !!videoId && !!fechaStream && enabled, // Only fetch when enabled and all params exist
   });
