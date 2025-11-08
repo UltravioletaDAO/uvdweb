@@ -84,9 +84,27 @@ class StreamSummariesService {
             if (success) {
               // Count streams per streamer
               const streamersCount = {};
-              data.streams.forEach(stream => {
+
+              // Transform streams to include missing fields
+              const transformedStreams = data.streams.map(stream => {
                 const streamer = stream.streamer;
                 streamersCount[streamer] = (streamersCount[streamer] || 0) + 1;
+
+                // Generate titulo_stream from streamer name
+                const titulo = `Stream de ${streamer}`;
+
+                // Transform fecha_stream (YYYYMMDD) to fecha_formateada (DD/MM/YYYY)
+                const fechaStr = stream.fecha_stream;
+                const year = fechaStr.substring(0, 4);
+                const month = fechaStr.substring(4, 6);
+                const day = fechaStr.substring(6, 8);
+                const fecha_formateada = `${day}/${month}/${year}`;
+
+                return {
+                  ...stream,
+                  titulo_stream: titulo,
+                  fecha_formateada: fecha_formateada
+                };
               });
 
               // Transform to match expected frontend format
@@ -94,7 +112,7 @@ class StreamSummariesService {
                 ultima_actualizacion: data.ultima_actualizacion,
                 total_resumenes: data.total_streams,
                 streamers: streamersCount,
-                resumenes: data.streams
+                resumenes: transformedStreams
               };
 
               this.log('Index fetched successfully from ECS Fargate API', {
@@ -123,9 +141,25 @@ class StreamSummariesService {
 
           // Count streams per streamer
           const streamersCount = {};
-          data.streams.forEach(stream => {
+
+          // Transform streams to include missing fields (if not present)
+          const transformedStreams = data.streams.map(stream => {
             const streamer = stream.streamer;
             streamersCount[streamer] = (streamersCount[streamer] || 0) + 1;
+
+            // Add missing fields if not present
+            if (!stream.titulo_stream) {
+              stream.titulo_stream = `Stream de ${streamer}`;
+            }
+            if (!stream.fecha_formateada && stream.fecha_stream) {
+              const fechaStr = stream.fecha_stream;
+              const year = fechaStr.substring(0, 4);
+              const month = fechaStr.substring(4, 6);
+              const day = fechaStr.substring(6, 8);
+              stream.fecha_formateada = `${day}/${month}/${year}`;
+            }
+
+            return stream;
           });
 
           // Transform to match expected frontend format
@@ -133,7 +167,7 @@ class StreamSummariesService {
             ultima_actualizacion: data.ultima_actualizacion,
             total_resumenes: data.total_streams,
             streamers: streamersCount,
-            resumenes: data.streams
+            resumenes: transformedStreams
           };
 
           this.log('Global index fetched successfully from S3', {
