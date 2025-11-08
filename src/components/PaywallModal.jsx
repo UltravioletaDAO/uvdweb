@@ -13,11 +13,11 @@ function PaywallModal({ isOpen, onClose, content, onPaymentSuccess }) {
     account,
     isWalletConnected,
     connectWallet,
-    makePayment,
-    paymentState
+    switchNetwork,
+    selectedNetwork,
+    setSelectedNetwork,
+    isConnecting
   } = useX402Payment();
-
-  const [selectedNetwork, setSelectedNetwork] = useState('base');
 
   if (!isOpen) return null;
 
@@ -29,19 +29,19 @@ function PaywallModal({ isOpen, onClose, content, onPaymentSuccess }) {
     }
   };
 
-  const handlePayment = async () => {
+  const handleProceed = async () => {
     try {
-      const paymentProof = await makePayment(
-        content.receivingWallet || '0x52110a2Cc8B6bBf846101265edAAe34E753f3389',
-        content.price || '0.05',
-        selectedNetwork
-      );
+      // Switch to selected network first
+      await switchNetwork(selectedNetwork);
 
+      // Close modal - payment will happen automatically via x402-fetch
+      // when the content is fetched again
       if (onPaymentSuccess) {
-        onPaymentSuccess(paymentProof);
+        onPaymentSuccess();
       }
+      onClose();
     } catch (error) {
-      console.error('Payment failed:', error);
+      console.error('Network switch failed:', error);
     }
   };
 
@@ -120,7 +120,7 @@ function PaywallModal({ isOpen, onClose, content, onPaymentSuccess }) {
             <NetworkSelector
               selectedNetwork={selectedNetwork}
               onSelectNetwork={setSelectedNetwork}
-              disabled={paymentState.isPaying}
+              disabled={isConnecting}
             />
           )}
 
@@ -134,20 +134,11 @@ function PaywallModal({ isOpen, onClose, content, onPaymentSuccess }) {
             </div>
           )}
 
-          {/* Errors */}
-          {paymentState.error && (
-            <div className="mt-4 bg-red-900/20 border border-red-600 rounded-lg p-4">
-              <p className="font-semibold text-red-400">Error de Pago</p>
-              <p className="text-sm text-red-300 mt-1">{paymentState.error}</p>
-            </div>
-          )}
-
-          {/* Success */}
-          {paymentState.txHash && (
-            <div className="mt-4 bg-green-900/20 border border-green-600 rounded-lg p-4">
-              <p className="font-semibold text-green-400">¡Pago Exitoso!</p>
-              <p className="text-sm text-green-300 mt-1 font-mono break-all">
-                Tx: {paymentState.txHash}
+          {/* Info about x402 payment */}
+          {isWalletConnected && (
+            <div className="mt-4 p-3 bg-blue-900/20 border border-blue-600 rounded-lg text-sm">
+              <p className="text-blue-300">
+                💡 El pago se procesará automáticamente a través del facilitador x402. Solo necesitas estar en la red correcta.
               </p>
             </div>
           )}
@@ -158,35 +149,26 @@ function PaywallModal({ isOpen, onClose, content, onPaymentSuccess }) {
           {!isWalletConnected ? (
             <button
               onClick={handleConnect}
-              className="w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all shadow-lg"
+              disabled={isConnecting}
+              className="w-full px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Conectar Wallet
+              {isConnecting ? 'Conectando...' : 'Conectar Wallet'}
             </button>
           ) : (
             <div className="flex gap-3">
               <button
                 onClick={onClose}
                 className="flex-1 px-6 py-3 bg-zinc-700 hover:bg-zinc-600 text-text-primary font-semibold rounded-lg transition-colors"
-                disabled={paymentState.isPaying}
+                disabled={isConnecting}
               >
                 Cancelar
               </button>
               <button
-                onClick={handlePayment}
-                disabled={paymentState.isPaying || !selectedNetwork}
+                onClick={handleProceed}
+                disabled={isConnecting || !selectedNetwork}
                 className="flex-1 px-6 py-3 bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white font-semibold rounded-lg transition-all shadow-lg disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {paymentState.isPaying ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Procesando...
-                  </span>
-                ) : (
-                  `Pagar ${content.price || '0.05'} USDC`
-                )}
+                Continuar (${content.price || '0.05'} USDC)
               </button>
             </div>
           )}

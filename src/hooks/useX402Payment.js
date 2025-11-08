@@ -1,64 +1,46 @@
-import { useState, useCallback, useEffect } from 'react';
-import { ethers } from 'ethers';
+import { useState, useCallback, useEffect, useMemo } from 'react';
+import { createWalletClient, custom } from 'viem';
+import { base, optimism, polygon, avalanche, celo } from 'viem/chains';
+import { wrapFetchWithPayment } from 'x402-fetch';
 
 // Supported networks configuration
 const NETWORKS = {
-  optimism: {
-    chainId: '0xa',
-    name: 'Optimism',
-    rpcUrl: 'https://mainnet.optimism.io',
-    usdcAddress: '0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85'
-  },
-  base: {
-    chainId: '0x2105',
-    name: 'Base',
-    rpcUrl: 'https://mainnet.base.org',
-    usdcAddress: '0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913'
-  },
-  polygon: {
-    chainId: '0x89',
-    name: 'Polygon',
-    rpcUrl: 'https://polygon-rpc.com',
-    usdcAddress: '0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359'
-  },
-  avalanche: {
-    chainId: '0xa86a',
-    name: 'Avalanche',
-    rpcUrl: 'https://api.avax.network/ext/bc/C/rpc',
-    usdcAddress: '0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E'
-  },
-  celo: {
-    chainId: '0xa4ec',
-    name: 'Celo',
-    rpcUrl: 'https://forno.celo.org',
-    usdcAddress: '0xcebA9300f2b948710d2653dD7B07f33A8B32118C'
-  }
+  base: { chain: base, name: 'Base' },
+  optimism: { chain: optimism, name: 'Optimism' },
+  polygon: { chain: polygon, name: 'Polygon' },
+  avalanche: { chain: avalanche, name: 'Avalanche' },
+  celo: { chain: celo, name: 'Celo' }
 };
 
-// ERC20 ABI (minimal - only transfer)
-const USDC_ABI = [
-  'function transfer(address to, uint256 amount) returns (bool)'
-];
-
 /**
- * Hook for x402 payments with ethers.js
- * Simple integration without thirdweb
+ * Hook for x402 payments using viem + x402-fetch
+ * Automatically handles 402 responses and payment through facilitator
  */
 export function useX402Payment() {
   const [account, setAccount] = useState(null);
-  const [provider, setProvider] = useState(null);
-  const [paymentState, setPaymentState] = useState({
-    isPaying: false,
-    error: null,
-    txHash: null
-  });
+  const [selectedNetwork, setSelectedNetwork] = useState('base');
+  const [isConnecting, setIsConnecting] = useState(false);
+
+  // Create viem wallet client
+  const walletClient = useMemo(() => {
+    if (!account || !window.ethereum) return null;
+
+    return createWalletClient({
+      account,
+      chain: NETWORKS[selectedNetwork].chain,
+      transport: custom(window.ethereum)
+    });
+  }, [account, selectedNetwork]);
+
+  // Create fetch with payment wrapper
+  const fetchWithPayment = useMemo(() => {
+    if (!walletClient) return fetch;
+    return wrapFetchWithPayment(fetch, walletClient);
+  }, [walletClient]);
 
   // Connect wallet
   useEffect(() => {
     if (window.ethereum) {
-      const web3Provider = new ethers.providers.Web3Provider(window.ethereum);
-      setProvider(web3Provider);
-
       // Get current account
       window.ethereum.request({ method: 'eth_accounts' })
         .then(accounts => {
@@ -71,6 +53,11 @@ export function useX402Payment() {
       window.ethereum.on('accountsChanged', (accounts) => {
         setAccount(accounts[0] || null);
       });
+
+      // Listen for chain changes
+      window.ethereum.on('chainChanged', () => {
+        window.location.reload();
+      });
     }
   }, []);
 
@@ -79,6 +66,7 @@ export function useX402Payment() {
       throw new Error('No wallet detected. Please install MetaMask.');
     }
 
+    setIsConnecting(true);
     try {
       const accounts = await window.ethereum.request({
         method: 'eth_requestAccounts'
@@ -88,6 +76,8 @@ export function useX402Payment() {
     } catch (error) {
       console.error('Failed to connect wallet:', error);
       throw error;
+    } finally {
+      setIsConnecting(false);
     }
   }, []);
 
@@ -95,93 +85,33 @@ export function useX402Payment() {
     const network = NETWORKS[networkKey];
     if (!network) throw new Error(`Network ${networkKey} not supported`);
 
+    const chainId = `0x${network.chain.id.toString(16)}`;
+
     try {
       await window.ethereum.request({
         method: 'wallet_switchEthereumChain',
-        params: [{ chainId: network.chainId }],
+        params: [{ chainId }],
       });
+      setSelectedNetwork(networkKey);
     } catch (error) {
       // Network not added, try to add it
       if (error.code === 4902) {
         await window.ethereum.request({
           method: 'wallet_addEthereumChain',
           params: [{
-            chainId: network.chainId,
-            chainName: network.name,
-            rpcUrls: [network.rpcUrl],
+            chainId,
+            chainName: network.chain.name,
+            nativeCurrency: network.chain.nativeCurrency,
+            rpcUrls: network.chain.rpcUrls.default.http,
+            blockExplorerUrls: network.chain.blockExplorers?.default ? [network.chain.blockExplorers.default.url] : undefined
           }],
         });
+        setSelectedNetwork(networkKey);
       } else {
         throw error;
       }
     }
   }, []);
-
-  const makePayment = useCallback(async (recipientAddress, amountUSD, networkKey) => {
-    if (!account) {
-      throw new Error('Wallet not connected');
-    }
-
-    const network = NETWORKS[networkKey];
-    if (!network) {
-      throw new Error(`Network ${networkKey} not supported`);
-    }
-
-    setPaymentState({ isPaying: true, error: null, txHash: null });
-
-    try {
-      // Switch to correct network
-      await switchNetwork(networkKey);
-
-      // Get signer
-      const signer = provider.getSigner();
-
-      // Get USDC contract
-      const usdcContract = new ethers.Contract(
-        network.usdcAddress,
-        USDC_ABI,
-        signer
-      );
-
-      // Convert USD to USDC (6 decimals)
-      const usdcAmount = ethers.utils.parseUnits(amountUSD, 6);
-
-      // Send transaction
-      const tx = await usdcContract.transfer(recipientAddress, usdcAmount);
-
-      console.log('[x402] Transaction sent:', tx.hash);
-
-      // Wait for confirmation
-      const receipt = await tx.wait();
-
-      console.log('[x402] Transaction confirmed:', receipt.transactionHash);
-
-      setPaymentState({
-        isPaying: false,
-        error: null,
-        txHash: receipt.transactionHash
-      });
-
-      // Return payment proof for x402
-      return {
-        network: networkKey,
-        txHash: receipt.transactionHash,
-        from: account,
-        to: recipientAddress,
-        amount: usdcAmount.toString(),
-        timestamp: Date.now()
-      };
-
-    } catch (error) {
-      console.error('[x402] Payment error:', error);
-      setPaymentState({
-        isPaying: false,
-        error: error.message || 'Payment failed',
-        txHash: null
-      });
-      throw error;
-    }
-  }, [account, provider, switchNetwork]);
 
   const hasPaid = useCallback((contentId) => {
     if (!account) return false;
@@ -201,12 +131,16 @@ export function useX402Payment() {
   return {
     account,
     isWalletConnected: !!account,
+    isConnecting,
     connectWallet,
-    makePayment,
+    switchNetwork,
+    selectedNetwork,
+    setSelectedNetwork,
     hasPaid,
     markAsPaid,
-    paymentState,
-    supportedNetworks: Object.keys(NETWORKS)
+    supportedNetworks: Object.keys(NETWORKS),
+    fetchWithPayment,  // Use this instead of regular fetch for x402-protected resources
+    walletClient
   };
 }
 

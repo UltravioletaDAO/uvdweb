@@ -7,6 +7,7 @@ import SEO from '../components/SEO';
 import PaywallModal from '../components/PaywallModal';
 import useX402Payment from '../hooks/useX402Payment';
 import { useStreamSummariesPaginated } from '../hooks/useStreamSummaries';
+import streamSummariesService from '../services/streamSummaries';
 
 function StreamSummaries() {
   const { t, i18n } = useTranslation();
@@ -18,7 +19,16 @@ function StreamSummaries() {
   const [showPaywall, setShowPaywall] = useState(false);
   const [paywallData, setPaywallData] = useState(null);
   const [paymentProofs, setPaymentProofs] = useState({}); // Store payment proofs by videoId
-  const { markAsPaid } = useX402Payment();
+  const { markAsPaid, fetchWithPayment, isWalletConnected } = useX402Payment();
+
+  // Configure service to use x402-fetch when wallet is connected
+  React.useEffect(() => {
+    if (isWalletConnected && fetchWithPayment) {
+      streamSummariesService.setFetchFunction(fetchWithPayment);
+    } else {
+      streamSummariesService.setFetchFunction(null); // Use native fetch
+    }
+  }, [isWalletConnected, fetchWithPayment]);
 
   // Fetch paginated data
   const {
@@ -44,20 +54,9 @@ function StreamSummaries() {
     setShowPaywall(true);
   };
 
-  // Handle successful payment - store proof and close modal
-  const handlePaymentSuccess = (paymentProof) => {
-    // Mark content as paid in localStorage
-    if (paywallData?.videoId) {
-      markAsPaid(paywallData.videoId, paymentProof);
-
-      // Store payment proof in state for this session
-      setPaymentProofs(prev => ({
-        ...prev,
-        [paywallData.videoId]: paymentProof
-      }));
-    }
-
-    // Close modal
+  // Handle payment modal close - payment will happen automatically via x402-fetch
+  const handlePaymentSuccess = () => {
+    // Close modal - x402-fetch will handle payment automatically on next fetch
     setShowPaywall(false);
     setPaywallData(null);
   };

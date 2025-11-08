@@ -21,6 +21,22 @@ class StreamSummariesService {
     this.cache = new Map();
     this.cacheExpiry = 5 * 60 * 1000; // 5 minutes cache
     this.currentLanguage = 'es'; // Default language (always use 2-letter codes: es, en, pt, fr)
+    this.customFetch = null; // Will be set to fetchWithPayment for x402 support
+  }
+
+  /**
+   * Set custom fetch function (e.g., x402-fetch wrapper)
+   * @param {Function} fetchFn - Custom fetch function
+   */
+  setFetchFunction(fetchFn) {
+    this.customFetch = fetchFn;
+  }
+
+  /**
+   * Get the fetch function to use (custom or native)
+   */
+  getFetch() {
+    return this.customFetch || fetch;
   }
 
   /**
@@ -60,7 +76,7 @@ class StreamSummariesService {
           const apiUrl = `${API_BASE_URL}/summaries?lang=${this.currentLanguage}`;
           this.log('Fetching index from ECS Fargate API', { url: apiUrl });
 
-          const apiResponse = await fetch(apiUrl);
+          const apiResponse = await this.getFetch()(apiUrl);
 
           if (apiResponse.ok) {
             const { success, data } = await apiResponse.json();
@@ -100,7 +116,7 @@ class StreamSummariesService {
       this.log('Fetching global index from S3', { url: s3Url });
 
       try {
-        const s3Response = await fetch(s3Url);
+        const s3Response = await this.getFetch()(s3Url);
 
         if (s3Response.ok) {
           const data = await s3Response.json();
@@ -135,7 +151,7 @@ class StreamSummariesService {
       // Fallback to local file
       const localUrl = '/stream-summaries/index.json';
       this.log('Fetching index.json from local fallback', { url: localUrl });
-      const response = await fetch(localUrl);
+      const response = await this.getFetch()(localUrl);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -190,7 +206,7 @@ class StreamSummariesService {
             this.log('Including payment proof in request', { txHash: paymentProof.txHash });
           }
 
-          const apiResponse = await fetch(apiUrl, { headers });
+          const apiResponse = await this.getFetch()(apiUrl, { headers });
 
           // Handle 402 Payment Required
           if (apiResponse.status === 402) {
@@ -245,7 +261,7 @@ class StreamSummariesService {
       const s3Url = `${S3_BASE_URL}/stream-summaries/${streamer}/${fechaStream}/${videoId}.${this.currentLanguage}.json`;
       this.log('Fetching summary from S3', { url: s3Url });
 
-      const s3Response = await fetch(s3Url);
+      const s3Response = await this.getFetch()(s3Url);
 
       if (!s3Response.ok) {
         const errorMsg = `S3 fetch failed with status ${s3Response.status}: ${s3Response.statusText} - URL: ${s3Url}`;
