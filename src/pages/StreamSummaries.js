@@ -4,13 +4,31 @@ import { useTranslation } from 'react-i18next';
 import StreamSummaryCard from '../components/StreamSummaryCard';
 import Pagination from '../components/Pagination';
 import SEO from '../components/SEO';
+import PaywallModal from '../components/PaywallModal';
+import useX402Payment from '../hooks/useX402Payment';
 import { useStreamSummariesPaginated } from '../hooks/useStreamSummaries';
+import streamSummariesService from '../services/streamSummaries';
 
 function StreamSummaries() {
   const { t, i18n } = useTranslation();
   const [currentPage, setCurrentPage] = useState(1);
   const [selectedStreamer, setSelectedStreamer] = useState('all');
   const summariesPerPage = 12;
+
+  // x402 Payment System
+  const [showPaywall, setShowPaywall] = useState(false);
+  const [paywallData, setPaywallData] = useState(null);
+  const [paymentProofs, setPaymentProofs] = useState({}); // Store payment proofs by videoId
+  const { markAsPaid, fetchWithPayment, isWalletConnected } = useX402Payment();
+
+  // Configure service to use x402-fetch when wallet is connected
+  React.useEffect(() => {
+    if (isWalletConnected && fetchWithPayment) {
+      streamSummariesService.setFetchFunction(fetchWithPayment);
+    } else {
+      streamSummariesService.setFetchFunction(null); // Use native fetch
+    }
+  }, [isWalletConnected, fetchWithPayment]);
 
   // Fetch paginated data
   const {
@@ -23,6 +41,26 @@ function StreamSummaries() {
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Handle payment required - open paywall modal
+  const handlePaymentRequired = (paymentDetails) => {
+    console.log('🟢 StreamSummaries: handlePaymentRequired called with:', paymentDetails);
+    setPaywallData({
+      videoId: paymentDetails.videoId,
+      title: paymentDetails.title,
+      price: paymentDetails.price,
+      receivingWallet: paymentDetails.receivingWallet
+    });
+    setShowPaywall(true);
+    console.log('🟢 StreamSummaries: PaywallModal should now be visible');
+  };
+
+  // Handle payment modal close - payment will happen automatically via x402-fetch
+  const handlePaymentSuccess = () => {
+    // Close modal - x402-fetch will handle payment automatically on next fetch
+    setShowPaywall(false);
+    setPaywallData(null);
   };
 
   // Filter summaries by streamer
@@ -424,7 +462,11 @@ function StreamSummaries() {
                     key={`${summary.video_id}-${summary.streamer}`}
                     aria-label={summary.title ? t('streamSummaries.aria.streamSummary', { title: summary.title }) : t('streamSummaries.aria.streamBy', { streamer: summary.streamer })}
                   >
-                    <StreamSummaryCard summary={summary} />
+                    <StreamSummaryCard
+                      summary={summary}
+                      onPaymentRequired={handlePaymentRequired}
+                      paymentProof={paymentProofs[summary.video_id]}
+                    />
                   </article>
                 ))}
               </div>
@@ -456,6 +498,14 @@ function StreamSummaries() {
           )}
         </div>
       </main>
+
+      {/* Paywall Modal */}
+      <PaywallModal
+        isOpen={showPaywall}
+        onClose={() => setShowPaywall(false)}
+        content={paywallData}
+        onPaymentSuccess={handlePaymentSuccess}
+      />
     </>
   );
 }

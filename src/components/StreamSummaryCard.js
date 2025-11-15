@@ -1,22 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useStreamSummary } from '../hooks/useStreamSummaries';
+import { PaymentRequiredError } from '../services/streamSummaries';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-const StreamSummaryCard = ({ summary }) => {
+const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
   const { t } = useTranslation();
   const [isCardOpen, setIsCardOpen] = useState(false);
 
   // Only fetch full summary when card is opened
-  // Fetches from S3: stream-summaries/{streamer}/{fecha_stream}/{video_id}.{language}.json
-  const { data: fullSummary, isLoading: isLoadingSummary } = useStreamSummary(
+  // Supports x402 payment system - will throw PaymentRequiredError if payment needed
+  const { data: fullSummary, isLoading: isLoadingSummary, error } = useStreamSummary(
     summary.streamer,
     summary.video_id,
     summary.fecha_stream,
-    isCardOpen
+    isCardOpen,
+    paymentProof
   );
+
+  // Handle payment required error
+  useEffect(() => {
+    console.log('🟡 StreamSummaryCard: Error changed:', {
+      hasError: !!error,
+      errorName: error?.name,
+      errorMessage: error?.message,
+      errorStatus: error?.status,
+      paymentDetails: error?.paymentDetails,
+      hasOnPaymentRequired: !!onPaymentRequired,
+      fullError: error
+    });
+
+    // Check for payment required error by multiple conditions
+    const isPaymentRequired = error && (
+      error.name === 'PaymentRequiredError' ||
+      error.status === 402 ||
+      error.paymentDetails
+    );
+
+    if (isPaymentRequired) {
+      console.log('🟢 StreamSummaryCard: PaymentRequiredError detected! Calling onPaymentRequired');
+      if (onPaymentRequired) {
+        onPaymentRequired(error.paymentDetails);
+      } else {
+        console.error('🔴 onPaymentRequired callback is not defined!');
+      }
+    }
+  }, [error, onPaymentRequired]);
 
   const toggleCard = () => {
     setIsCardOpen(!isCardOpen);
@@ -48,6 +79,54 @@ const StreamSummaryCard = ({ summary }) => {
           <div className="flex items-center justify-center space-x-2">
             <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-violet-400"></div>
             <span>{t('streamSummaries.loadingSummary')}</span>
+          </div>
+        </div>
+      );
+    }
+
+    // Handle payment required error
+    const isPaymentRequired = error && (
+      error.name === 'PaymentRequiredError' ||
+      error.status === 402 ||
+      error.paymentDetails
+    );
+
+    if (isPaymentRequired) {
+      return (
+        <div className="text-text-secondary text-sm p-6 bg-gradient-to-r from-violet-900/20 to-purple-900/20 rounded-lg border border-violet-700/30">
+          <div className="flex items-center justify-center space-x-2">
+            <span className="text-2xl">💎</span>
+            <span className="text-violet-400 font-semibold">
+              {t('streamSummaries.paymentRequired', 'Este contenido requiere pago. Abriendo modal de pago...')}
+            </span>
+          </div>
+        </div>
+      );
+    }
+
+    // Handle other errors
+    if (error && !isPaymentRequired) {
+      return (
+        <div className="text-text-secondary text-sm p-6 bg-red-900/20 rounded-lg border border-red-700/30">
+          <div className="flex flex-col space-y-2">
+            <div className="flex items-center justify-center space-x-2">
+              <svg className="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-red-400">
+                {t('streamSummaries.errorLoadingSummary', 'Error cargando el resumen. Intenta de nuevo más tarde.')}
+              </span>
+            </div>
+            {/* DEBUG: Show error details */}
+            <div className="text-xs text-yellow-300 bg-black/30 p-2 rounded font-mono">
+              <div>Name: {error?.name || 'unknown'}</div>
+              <div>Status: {error?.status || 'N/A'}</div>
+              <div>Message: {error?.message || 'N/A'}</div>
+              <div>Has paymentDetails: {error?.paymentDetails ? 'YES' : 'NO'}</div>
+              {error?.paymentDetails && (
+                <div>Price: {error.paymentDetails.price} USDC</div>
+              )}
+            </div>
           </div>
         </div>
       );

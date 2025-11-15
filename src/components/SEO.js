@@ -177,29 +177,42 @@ const SEO = ({
   const faqJsonLd = pathname === '/about' ? {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
+    '@id': `${siteUrl}/about#faq`,
     mainEntity: [
       {
         '@type': 'Question',
+        '@id': `${siteUrl}/about#faq-what-is`,
         name: 'What is UltraVioleta DAO?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'UltraVioleta DAO is a decentralized autonomous organization focused on building Web3 infrastructure and community in Latin America.'
+          text: 'UltraVioleta DAO is a decentralized autonomous organization focused on building Web3 infrastructure and community in Latin America. We are a DUNA LLC registered in Wyoming with 500+ members building the future of Web3 in LATAM.'
         }
       },
       {
         '@type': 'Question',
+        '@id': `${siteUrl}/about#faq-how-to-join`,
         name: 'How can I join UltraVioleta DAO?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'You can apply to join through our application form at ultravioleta.xyz/aplicar. We review applications regularly and welcome builders, creators, and Web3 enthusiasts.'
+          text: 'You can apply to join through our application form at ultravioleta.xyz/aplicar. We review applications regularly and welcome builders, creators, and Web3 enthusiasts from all backgrounds.'
         }
       },
       {
         '@type': 'Question',
+        '@id': `${siteUrl}/about#faq-blockchain`,
         name: 'What blockchain does UltraVioleta use?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'UltraVioleta DAO operates primarily on the Avalanche network for treasury management and uses Snapshot for decentralized governance voting.'
+          text: 'UltraVioleta DAO operates primarily on the Avalanche C-Chain network for treasury management (Safe multisig at 0x52110a2Cc8B6bBf846101265edAAe34E753f3389) and uses Snapshot for decentralized governance voting.'
+        }
+      },
+      {
+        '@type': 'Question',
+        '@id': `${siteUrl}/about#faq-token`,
+        name: 'What is the UVD token?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'UVD is the governance token of UltraVioleta DAO deployed on Avalanche C-Chain (0x4Ffe7e01832243e03668E090706F17726c26d6B2). It enables voting on proposals and participation in our chat-to-earn ecosystem.'
         }
       }
     ]
@@ -560,18 +573,25 @@ const SEO = ({
     '@context': 'https://schema.org',
     '@type': 'Event',
     name: 'Ultra Evento 2025 - Web3 Summit Latin America',
-    startDate: '2025-10-15T09:00:00-05:00',
-    endDate: '2025-10-15T18:00:00-05:00',
-    eventStatus: 'EventScheduled',
-    eventAttendanceMode: 'OfflineEventAttendanceMode',
+    startDate: '2025-08-23T13:00:00-05:00',
+    endDate: '2025-08-23T21:00:00-05:00',
+    eventStatus: 'https://schema.org/EventScheduled',
+    eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
     location: {
       '@type': 'Place',
       name: 'Medellín, Colombia',
       address: {
         '@type': 'PostalAddress',
+        streetAddress: 'Calle 10 Sur #48-62',
         addressLocality: 'Medellín',
         addressRegion: 'Antioquia',
+        postalCode: '050022',
         addressCountry: 'CO'
+      },
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: '6.2442',
+        longitude: '-75.5812'
       }
     },
     organizer: {
@@ -579,14 +599,60 @@ const SEO = ({
       name: 'UltraVioleta DAO',
       url: siteUrl
     },
-    description: 'Premier Web3 event in Latin America featuring workshops, networking, and blockchain innovation',
+    description: 'Premier Web3 event in Latin America featuring workshops, networking, and blockchain innovation. Join 200+ attendees, 10 sponsors, and 8 hours of Web3 content including presentations, raffles, airdrops, and community networking.',
+    image: `${siteUrl}/images/ultraevento-2025.jpg`,
     offers: {
       '@type': 'Offer',
       price: '0',
       priceCurrency: 'USD',
-      availability: 'InStock',
-      url: `${siteUrl}/events`
-    }
+      availability: 'https://schema.org/InStock',
+      url: `${siteUrl}/events`,
+      validFrom: '2025-01-01T00:00:00-05:00'
+    },
+    performer: [
+      {
+        '@type': 'Organization',
+        name: 'Avalanche'
+      },
+      {
+        '@type': 'Organization',
+        name: 'Rekt'
+      },
+      {
+        '@type': 'Organization',
+        name: 'Uniswap'
+      },
+      {
+        '@type': 'Organization',
+        name: 'Pyth Network'
+      },
+      {
+        '@type': 'Organization',
+        name: 'deBridge'
+      },
+      {
+        '@type': 'Organization',
+        name: 'Superfluid'
+      },
+      {
+        '@type': 'Organization',
+        name: 'Magic Eden'
+      },
+      {
+        '@type': 'Organization',
+        name: 'Celo Colombia'
+      },
+      {
+        '@type': 'Organization',
+        name: 'Heroes of Cipher'
+      },
+      {
+        '@type': 'Organization',
+        name: 'Self'
+      }
+    ],
+    attendeeCount: 144,
+    maximumAttendeeCapacity: 212
   } : null;
 
   const allJsonLd = [

@@ -294,6 +294,7 @@ const SEOEnhanced = ({
         mainEntity: [
           {
             '@type': 'Question',
+            '@id': `${fullUrl}#faq-what-is`,
             name: 'What is UltraVioleta DAO?',
             acceptedAnswer: {
               '@type': 'Answer',
@@ -302,6 +303,7 @@ const SEOEnhanced = ({
           },
           {
             '@type': 'Question',
+            '@id': `${fullUrl}#faq-how-to-join`,
             name: 'How can I join UltraVioleta DAO?',
             acceptedAnswer: {
               '@type': 'Answer',
@@ -310,6 +312,7 @@ const SEOEnhanced = ({
           },
           {
             '@type': 'Question',
+            '@id': `${fullUrl}#faq-uvd-token`,
             name: 'What is the UVD token?',
             acceptedAnswer: {
               '@type': 'Answer',
@@ -318,6 +321,7 @@ const SEOEnhanced = ({
           },
           {
             '@type': 'Question',
+            '@id': `${fullUrl}#faq-blockchain`,
             name: 'What blockchain does UltraVioleta use?',
             acceptedAnswer: {
               '@type': 'Answer',
@@ -326,6 +330,7 @@ const SEOEnhanced = ({
           },
           {
             '@type': 'Question',
+            '@id': `${fullUrl}#faq-karma-hello`,
             name: 'What is Karma Hello Chat-to-Earn?',
             acceptedAnswer: {
               '@type': 'Answer',
