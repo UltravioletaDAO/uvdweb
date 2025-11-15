@@ -485,6 +485,7 @@ const ServicesPage = () => {
                       <li>• {t('services.karmaHelloExpanded.features.chatToEarn.detail1')}</li>
                       <li>• {t('services.karmaHelloExpanded.features.chatToEarn.detail2')}</li>
                       <li>• {t('services.karmaHelloExpanded.features.chatToEarn.detail3')}</li>
+                      <li>• {t('services.karmaHelloExpanded.features.chatToEarn.detail5')}</li>
                     </ul>
                   </div>
 

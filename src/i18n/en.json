@@ -1616,11 +1616,11 @@
     "karmaHelloExpanded": {
       "title": "Karma Hello",
       "subtitle": "Chat-to-Earn System with Multi-Agent AI",
-      "description": "Karma Hello is an advanced Twitch bot that rewards users with UVD tokens for contributing quality messages to the chat. The system uses real artificial intelligence to evaluate each message and assign rewards based on a quality scale.",
+      "description": "Karma Hello is an advanced Twitch bot that rewards users with UVD tokens and USDC micropayments for contributing quality messages to the chat. The system uses real artificial intelligence to evaluate each message and assign rewards based on a quality scale. Additionally, it coordinates multi-chain payments via our x402 facilitator, connecting Avalanche (C-Chain) and Base so that a single message can generate payments on different networks.",
       "whatIsKarmaHello": "What is Karma Hello?",
       "learnMoreLinks": "Learn more about our <uvdToken>UVD Token</uvdToken>, <echoesNFT>Echoes NFT collections</echoesNFT>, and <daoMetrics>DAO metrics</daoMetrics>. Join our <community>community</community> to participate!",
       "channel": "Channel: twitch.tv/0xultravioleta",
-      "blockchain": "Blockchain: Avalanche (C-Chain)",
+      "blockchain": "Blockchain: Avalanche (C-Chain) · Base (L2 via x402)",
       "features": {
         "chatToEarn": {
           "title": "Chat-to-Earn (C2E)",
@@ -1628,7 +1628,8 @@
           "detail1": "Quality evaluation by real AI (OpenAI, Anthropic, Ollama)",
           "detail2": "Distribution based on Fibonacci sequence",
           "detail3": "Anti-farming system with advanced ML",
-          "detail4": "90% of messages receive 0 points - only exceptional quality wins"
+          "detail4": "90% of messages receive 0 points - only exceptional quality wins",
+          "detail5": "Multi-chain micropayments: UVD on Avalanche + USDC on Base via x402"
         },
         "multiAgent": {
           "title": "Multi-Agent AI",
@@ -1732,7 +1733,7 @@
         "agents": "18+ Agents",
         "evaluation": "Real AI Evaluation",
         "burning": "Automatic Burning",
-        "blockchain": "Avalanche C-Chain"
+        "blockchain": "Avalanche C-Chain & Base (L2 via x402)"
       },
       "cta": {
         "watchLive": "Watch Live",

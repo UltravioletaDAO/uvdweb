@@ -1095,11 +1095,11 @@
     "karmaHelloExpanded": {
       "title": "Karma Hello",
       "subtitle": "Système Chat-to-Earn avec Multi-Agents IA",
-      "description": "Karma Hello est un bot Twitch avancé qui récompense les utilisateurs avec des tokens UVD pour contribuer des messages de qualité au chat. Le système utilise l'intelligence artificielle réelle pour évaluer chaque message et attribuer des récompenses basées sur une échelle de qualité.",
+      "description": "Karma Hello est un bot Twitch avancé qui récompense les utilisateurs avec des tokens UVD et des micropaiements en USDC pour contribuer des messages de qualité au chat. Le système utilise l'intelligence artificielle réelle pour évaluer chaque message et attribuer des récompenses basées sur une échelle de qualité. De plus, il coordonne des paiements multi-chaînes via notre facilitateur x402, connectant Avalanche (C-Chain) et Base afin qu'un même message puisse générer des paiements sur différents réseaux.",
       "whatIsKarmaHello": "Qu'est-ce que Karma Hello ?",
       "learnMoreLinks": "En savoir plus sur notre <uvdToken>Token UVD</uvdToken>, <echoesNFT>collections NFT Echoes</echoesNFT>, et <daoMetrics>métriques du DAO</daoMetrics>. Rejoignez notre <community>communauté</community> pour participer !",
       "channel": "Chaîne: twitch.tv/0xultravioleta",
-      "blockchain": "Blockchain: Avalanche (C-Chain)",
+      "blockchain": "Blockchain: Avalanche (C-Chain) · Base (L2 via x402)",
       "features": {
         "chatToEarn": {
           "title": "Chat-to-Earn (C2E)",
@@ -1107,7 +1107,8 @@
           "detail1": "Évaluation de qualité par IA réelle (OpenAI, Anthropic, Ollama)",
           "detail2": "Distribution basée sur la séquence de Fibonacci",
           "detail3": "Système anti-farming avec ML avancé",
-          "detail4": "90% des messages reçoivent 0 point - seule la qualité exceptionnelle gagne"
+          "detail4": "90% des messages reçoivent 0 point - seule la qualité exceptionnelle gagne",
+          "detail5": "Micropaiements multi-chaînes: UVD sur Avalanche + USDC sur Base via x402"
         },
         "multiAgent": {
           "title": "Multi-Agent IA",
@@ -1211,7 +1212,7 @@
         "agents": "18+ Agents",
         "evaluation": "Évaluation IA Réelle",
         "burning": "Brûlage Automatique",
-        "blockchain": "Avalanche C-Chain"
+        "blockchain": "Avalanche C-Chain & Base (L2 via x402)"
       },
       "cta": {
         "watchLive": "Regarder en Direct",
