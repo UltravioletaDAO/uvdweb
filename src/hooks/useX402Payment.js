@@ -1,15 +1,15 @@
 import { useState, useCallback, useEffect, useMemo } from 'react';
 import { createWalletClient, custom } from 'viem';
 import { base, optimism, polygon, avalanche, celo } from 'viem/chains';
-import { wrapFetchWithPayment } from 'x402-fetch';
+import { wrapFetchWithPayment, createSigner } from 'x402-fetch';
 
 // Supported networks configuration
 const NETWORKS = {
-  base: { chain: base, name: 'Base' },
-  optimism: { chain: optimism, name: 'Optimism' },
-  polygon: { chain: polygon, name: 'Polygon' },
-  avalanche: { chain: avalanche, name: 'Avalanche' },
-  celo: { chain: celo, name: 'Celo' }
+  base: { chain: base, name: 'Base', x402Name: 'base' },
+  optimism: { chain: optimism, name: 'Optimism', x402Name: 'optimism' },
+  polygon: { chain: polygon, name: 'Polygon', x402Name: 'polygon' },
+  avalanche: { chain: avalanche, name: 'Avalanche', x402Name: 'avalanche' },
+  celo: { chain: celo, name: 'Celo', x402Name: 'celo' }
 };
 
 /**
