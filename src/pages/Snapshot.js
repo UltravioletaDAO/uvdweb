@@ -62,7 +62,7 @@ const fetchProposalsFromAPI = async (space, setProposals, setLoading, setError, 
     });
 
     const json = await response.json();
-    
+
     if (json.errors) {
       throw new Error(json.errors[0].message);
     }
@@ -127,11 +127,10 @@ const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
               {new Date(proposal.end * 1000).toLocaleDateString()}
             </span>
           </div>
-          <span className={`px-3 py-1 rounded-full ${
-            proposal.state === 'active'
-              ? 'bg-green-500/10 text-green-500'
-              : 'bg-gray-500/10 text-gray-500'
-          }`}>
+          <span className={`px-3 py-1 rounded-full ${proposal.state === 'active'
+            ? 'bg-green-500/10 text-green-500'
+            : 'bg-gray-500/10 text-gray-500'
+            }`}>
             {t(`snapshot.states.${proposal.state}`)}
           </span>
         </div>
@@ -162,7 +161,7 @@ const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
                   <div className="flex justify-between items-center">
                     <span>{choice}</span>
                     <span className="text-text-tertiary">
-                    {formatVotingPower(Number(voteCount))} $UVD ({votePercentage.toFixed(1)}%)
+                      {formatVotingPower(Number(voteCount))} $UVD ({votePercentage.toFixed(1)}%)
                     </span>
                   </div>
                 </div>
@@ -200,12 +199,11 @@ const StateIcon = ({ state }) => {
 
 const Alert = ({ message, type, onClose }) => (
   <div className="fixed inset-0 flex items-center justify-center z-[60]">
-    <div className={`p-6 rounded-lg shadow-lg border max-w-lg w-full mx-4 ${
-      type === 'error' ? 'bg-background/95 border-red-500/30 text-white' :
+    <div className={`p-6 rounded-lg shadow-lg border max-w-lg w-full mx-4 ${type === 'error' ? 'bg-background/95 border-red-500/30 text-white' :
       type === 'info' ? 'bg-background/95 border-ultraviolet/30 text-white' :
-      type === 'success' ? 'bg-background/95 border-green-500/30 text-white' :
-      'bg-background/95 border-green-500/30 text-white'
-    }`}>
+        type === 'success' ? 'bg-background/95 border-green-500/30 text-white' :
+          'bg-background/95 border-green-500/30 text-white'
+      }`}>
       <div className="flex items-center justify-between gap-6">
         <div className="flex items-center gap-4 flex-grow">
           {type === 'error' ? (
@@ -388,7 +386,7 @@ const VotesModal = ({ proposal, onClose }) => {
           const profilesJson = await profilesResponse.json();
           const names = {};
           const profiles = {};
-          
+
           if (profilesJson.data?.users) {
             profilesJson.data.users.forEach(user => {
               const lowerId = user.id.toLowerCase();
@@ -396,7 +394,7 @@ const VotesModal = ({ proposal, onClose }) => {
               profiles[lowerId] = user;
             });
           }
-          
+
           setVoterNames(names);
           setVoterProfiles(profiles);
         }
@@ -480,10 +478,10 @@ const VotesModal = ({ proposal, onClose }) => {
                   const voterProfile = voterProfiles[vote.voter.toLowerCase()];
                   const voterName = voterNames[vote.voter.toLowerCase()];
                   const displayName = voterName || `${vote.voter.slice(0, 6)}...${vote.voter.slice(-4)}`;
-                  const avatarUrl = voterProfile?.avatar ? 
-                    convertIpfsUrl(voterProfile.avatar) : 
+                  const avatarUrl = voterProfile?.avatar ?
+                    convertIpfsUrl(voterProfile.avatar) :
                     `https://effigy.im/a/${vote.voter}.svg`;
-                  
+
                   return (
                     <div key={vote.id} className="grid grid-cols-[2fr_2fr_1fr_1fr_40px] gap-8 items-center py-4 border-b border-gray-800 last:border-0">
                       <div className="flex items-center gap-3">
@@ -568,7 +566,7 @@ const Snapshot = () => {
     try {
       // Asegurarnos de que las direcciones estén en minúsculas
       const normalizedAddresses = addresses.map(addr => addr.toLowerCase());
-      
+
       const query = `
         query {
           users(
@@ -590,7 +588,7 @@ const Snapshot = () => {
 
       const json = await response.json();
       const names = {};
-      
+
       // Obtener los nombres de los usuarios
       if (json.data?.users) {
         json.data.users.forEach(user => {
@@ -671,7 +669,7 @@ const Snapshot = () => {
   const connectWallet = async () => {
     try {
       setError(null);
-      
+
       if (!provider || !web3Provider) {
         await initializeProvider();
       }
@@ -700,7 +698,7 @@ const Snapshot = () => {
       setAccount(null);
       setUserProfile(null);
       localStorage.removeItem('walletAddress');
-      
+
       // Solicitar nueva conexión
       try {
         const accounts = await provider.request({
@@ -715,7 +713,7 @@ const Snapshot = () => {
         setWeb3Provider(new Web3Provider(provider));
         const signer = new Web3Provider(provider).getSigner();
         const address = await signer.getAddress();
-        
+
         setAccount(address);
         localStorage.setItem('walletAddress', address);
 
@@ -807,7 +805,7 @@ const Snapshot = () => {
     try {
       setIsVoting(true);
       setError(null);
-      
+
       if (!web3Provider) {
         await initializeProvider();
       }
@@ -875,7 +873,7 @@ const Snapshot = () => {
         ]);
       }
     };
-    
+
     init();
   }, []);
 
@@ -889,31 +887,31 @@ const Snapshot = () => {
     const isPastDate = isPast(date);
     const currentLanguage = i18n.language;
     const isSpanish = currentLanguage.startsWith('es');
-    
+
     if (isPastDate) {
       if (isSpanish) {
-        const distance = formatDistanceToNow(date, { 
+        const distance = formatDistanceToNow(date, {
           locale: es,
           addSuffix: true
         });
         return `Finalizada ${distance}`;
       } else {
-        const distance = formatDistanceToNow(date, { 
+        const distance = formatDistanceToNow(date, {
           locale: enUS,
           addSuffix: true
         });
         return `Ended ${distance}`;
       }
     }
-    
+
     if (isSpanish) {
-      const distance = formatDistanceToNow(date, { 
+      const distance = formatDistanceToNow(date, {
         locale: es,
         addSuffix: false
       });
       return `${distance} restantes`;
     } else {
-      const distance = formatDistanceToNow(date, { 
+      const distance = formatDistanceToNow(date, {
         locale: enUS,
         addSuffix: false
       });
@@ -930,7 +928,7 @@ const Snapshot = () => {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-background text-text-primary pt-32 justify-center">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-ultraviolet-darker"></div>
       </div>
     );
@@ -949,211 +947,210 @@ const Snapshot = () => {
         keywords="DAO governance, Snapshot voting, decentralized governance, Web3 voting, DAO proposals, community governance, blockchain voting, Latin America DAO, on-chain governance, governance token voting, DAO decision making, Snapshot.org, Web3 democracy, proposal voting, decentralized voting"
       />
       <div className="min-h-screen bg-background">
-      {alert && (
-        <Alert
-          message={alert.message}
-          type={alert.type}
-          onClose={() => setAlert(null)}
-        />
-      )}
-      {voteData && (
-        <VoteReasonModal
-          choice={voteData.choice}
-          onConfirm={handleVoteConfirm}
-          onClose={() => setVoteData(null)}
-        />
-      )}
-      {selectedVotes && (
-        <VotesModal
-          proposal={selectedVotes}
-          onClose={() => setSelectedVotes(null)}
-        />
-      )}
-      <div className="border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center gap-2 sm:gap-4">
-              <img src="/logo.png" alt={t('common.logo_alt')} className="w-8 h-8 sm:w-10 sm:h-10" />
-              <h1 className="text-xl sm:text-2xl font-bold text-text-primary">
-          {t('snapshot.title')}
-        </h1>
-            </div>
-            
-            <div className="flex items-center gap-2 sm:gap-4">
-              <div className="relative group">
-                <a
-                  href="https://snapshot.box/#/s:ultravioletadao.eth/create/stv2t"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center w-10 h-10 bg-ultraviolet-darker text-white rounded-lg hover:bg-ultraviolet-dark transition-colors"
-                >
-                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                  </svg>
-                </a>
-                <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-ultraviolet-darker text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
-                  {t('snapshot.new_proposal')}
-                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mt-1">
-                    <div className="border-4 border-transparent border-b-gray-900"></div>
-                  </div>
-                </div>
-              </div>
-
-              {account ? (
-                <button
-                  onClick={disconnectWallet}
-                  className="px-3 sm:px-4 py-2 bg-ultraviolet-darker rounded-lg text-white text-sm sm:text-base hover:bg-red-600 transition-colors group"
-                >
-                  <span className="block group-hover:hidden">{`${account.slice(0, 6)}...${account.slice(-4)}`}</span>
-                  <span className="hidden group-hover:block">{t('common.disconnect')}</span>
-                </button>
-              ) : (
-                <button
-                  onClick={connectWallet}
-                  className="px-3 sm:px-6 py-2 bg-ultraviolet-darker text-white text-sm sm:text-base rounded-lg hover:bg-ultraviolet-dark transition-colors"
-                >
-                  {t('snapshot.connect_wallet')}
-                </button>
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {account && (
-        <div className="border-b border-gray-800 bg-background-lighter">
-          <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
-            <div className="flex items-center gap-2 sm:gap-4">
-              <img 
-                src={userProfile?.avatar ? convertIpfsUrl(userProfile.avatar) : `https://effigy.im/a/${account}.svg`} 
-                alt={t('common.profile')} 
-                className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-ultraviolet-darker"
-                onError={(e) => {
-                  e.target.onerror = null;
-                  e.target.src = `https://effigy.im/a/${account}.svg`;
-                }}
-              />
-              <div>
-                <h2 className="text-base sm:text-lg font-semibold text-text-primary">
-                  {userProfile?.name || `${account.slice(0, 6)}...${account.slice(-4)}`}
-                </h2>
-                <div className="text-sm sm:text-base text-text-secondary">
-                  {t('snapshot.voting_power')}: {formatVotingPower(Number(votingPower))} $UVD
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className="max-w-6xl mx-auto px-2 sm:px-4 mt-6">
-        {error && (
-          <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
-            <p className="text-red-500">{error}</p>
-          </div>
-        )}
-        
-        <div className="space-y-4">
-          {proposals.map((proposal) => {
-            const totalVotes = proposal.scores?.reduce((a, b) => a + b, 0) || 0;
-            const quorumPercentage = proposal.quorum > 0 ? ((totalVotes / proposal.quorum) * 100).toFixed(1) : 0;
-
-            return (
-            <div
-              key={proposal.id}
-                className="w-full text-left bg-background-lighter rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
-              >
-                <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
-                  <div 
-                    className="flex-grow cursor-pointer w-full sm:w-auto" 
-                    onClick={() => setSelectedProposal(proposal.id)}
-                  >
-                    <div className="flex items-center gap-2 mb-2">
-                      <StateIcon state={proposal.state} />
-                      <h3 className="text-lg sm:text-xl font-semibold text-text-primary line-clamp-2">
-                {proposal.title}
-              </h3>
-                    </div>
-                    <p className="text-text-secondary text-sm sm:text-base line-clamp-3 mb-4">
-                {proposal.body}
-              </p>
-                    <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-text-tertiary">
-                <span>
-                        {t('snapshot.author')} {authorNames[proposal.author.toLowerCase()] || `${proposal.author.slice(0, 6)}...${proposal.author.slice(-4)}`}
-                      </span>
-                      <span className="hidden sm:inline">•</span>
-                      <span>{formatTimeLeft(proposal.end)}</span>
-                      <span className="hidden sm:inline">•</span>
-                      <span>{t('snapshot.votes_count', { count: proposal.votes })}</span>
-                      <span className="hidden sm:inline">•</span>
-                      <span>{t('snapshot.quorum', { percentage: quorumPercentage })}</span>
-                      {userVotes[proposal.id] && (
-                        <>
-                          <span className="hidden sm:inline">•</span>
-                          <span className="text-ultraviolet">
-                            {t('snapshot.voted')}: {proposal.choices[userVotes[proposal.id].choice - 1]}
-                </span>
-                        </>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <div className="flex flex-row sm:flex-col items-center sm:items-end gap-2 w-full sm:w-auto justify-between sm:justify-start">
-                    <span className={`px-3 py-1 rounded-full text-xs sm:text-sm text-center ${
-                  proposal.state === 'active'
-                    ? 'bg-green-500/10 text-green-500'
-                    : 'bg-gray-500/10 text-gray-500'
-                }`}>
-                      {t(`snapshot.states.${proposal.state}`)}
-                </span>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setSelectedVotes(proposal);
-                      }}
-                      className="px-3 py-1 text-xs sm:text-sm border rounded-lg
-                        text-text-primary bg-ultraviolet-darker hover:bg-ultraviolet-dark transition-colors whitespace-nowrap"
-                    >
-                      {t('snapshot.view_votes')}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {proposals.length === 0 && (
-          <div className="text-center text-text-secondary py-12">
-            <p className="text-xl">{t('snapshot.no_proposals')}</p>
-          </div>
-        )}
-
-        <div className="flex justify-start mt-1">
-          <a
-            href="https://snapshot.box/#/s:ultravioletadao.eth/proposals"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="px-0 py-4 text-white hover:text-ultraviolet-dark text-sm sm:text-base flex items-center gap-2"
-          >
-            {t('snapshot.view_more')}
-            <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-            </svg>
-          </a>
-        </div>
-
-        {selectedProposalData && (
-          <ProposalModal
-            proposal={selectedProposalData}
-            onClose={handleCloseModal}
-            onVote={handleVoteClick}
-            isVoting={isVoting}
-            userVote={userVotes[selectedProposalData.id]}
+        {alert && (
+          <Alert
+            message={alert.message}
+            type={alert.type}
+            onClose={() => setAlert(null)}
           />
         )}
+        {voteData && (
+          <VoteReasonModal
+            choice={voteData.choice}
+            onConfirm={handleVoteConfirm}
+            onClose={() => setVoteData(null)}
+          />
+        )}
+        {selectedVotes && (
+          <VotesModal
+            proposal={selectedVotes}
+            onClose={() => setSelectedVotes(null)}
+          />
+        )}
+        <div className="border-b border-gray-800">
+          <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2 sm:gap-4">
+                <img src="/logo.png" alt={t('common.logo_alt')} className="w-8 h-8 sm:w-10 sm:h-10" />
+                <h1 className="text-xl sm:text-2xl font-bold text-text-primary">
+                  {t('snapshot.title')}
+                </h1>
+              </div>
+
+              <div className="flex items-center gap-2 sm:gap-4">
+                <div className="relative group">
+                  <a
+                    href="https://snapshot.box/#/s:ultravioletadao.eth/create/stv2t"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center w-10 h-10 bg-ultraviolet-darker text-white rounded-lg hover:bg-ultraviolet-dark transition-colors"
+                  >
+                    <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                    </svg>
+                  </a>
+                  <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-1 bg-ultraviolet-darker text-white text-sm rounded-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none">
+                    {t('snapshot.new_proposal')}
+                    <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mt-1">
+                      <div className="border-4 border-transparent border-b-gray-900"></div>
+                    </div>
+                  </div>
+                </div>
+
+                {account ? (
+                  <button
+                    onClick={disconnectWallet}
+                    className="px-3 sm:px-4 py-2 bg-ultraviolet-darker rounded-lg text-white text-sm sm:text-base hover:bg-red-600 transition-colors group"
+                  >
+                    <span className="block group-hover:hidden">{`${account.slice(0, 6)}...${account.slice(-4)}`}</span>
+                    <span className="hidden group-hover:block">{t('common.disconnect')}</span>
+                  </button>
+                ) : (
+                  <button
+                    onClick={connectWallet}
+                    className="px-3 sm:px-6 py-2 bg-ultraviolet-darker text-white text-sm sm:text-base rounded-lg hover:bg-ultraviolet-dark transition-colors"
+                  >
+                    {t('snapshot.connect_wallet')}
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {account && (
+          <div className="border-b border-gray-800 bg-background-lighter">
+            <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
+              <div className="flex items-center gap-2 sm:gap-4">
+                <img
+                  src={userProfile?.avatar ? convertIpfsUrl(userProfile.avatar) : `https://effigy.im/a/${account}.svg`}
+                  alt={t('common.profile')}
+                  className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-ultraviolet-darker"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = `https://effigy.im/a/${account}.svg`;
+                  }}
+                />
+                <div>
+                  <h2 className="text-base sm:text-lg font-semibold text-text-primary">
+                    {userProfile?.name || `${account.slice(0, 6)}...${account.slice(-4)}`}
+                  </h2>
+                  <div className="text-sm sm:text-base text-text-secondary">
+                    {t('snapshot.voting_power')}: {formatVotingPower(Number(votingPower))} $UVD
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="max-w-6xl mx-auto px-2 sm:px-4 mt-6">
+          {error && (
+            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-lg">
+              <p className="text-red-500">{error}</p>
+            </div>
+          )}
+
+          <div className="space-y-4">
+            {proposals.map((proposal) => {
+              const totalVotes = proposal.scores?.reduce((a, b) => a + b, 0) || 0;
+              const quorumPercentage = proposal.quorum > 0 ? ((totalVotes / proposal.quorum) * 100).toFixed(1) : 0;
+
+              return (
+                <div
+                  key={proposal.id}
+                  className="w-full text-left bg-background-lighter rounded-lg p-4 sm:p-6 shadow-lg hover:shadow-xl transition-shadow"
+                >
+                  <div className="flex flex-col sm:flex-row justify-between items-start gap-4">
+                    <div
+                      className="flex-grow cursor-pointer w-full sm:w-auto"
+                      onClick={() => setSelectedProposal(proposal.id)}
+                    >
+                      <div className="flex items-center gap-2 mb-2">
+                        <StateIcon state={proposal.state} />
+                        <h3 className="text-lg sm:text-xl font-semibold text-text-primary line-clamp-2">
+                          {proposal.title}
+                        </h3>
+                      </div>
+                      <p className="text-text-secondary text-sm sm:text-base line-clamp-3 mb-4">
+                        {proposal.body}
+                      </p>
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-text-tertiary">
+                        <span>
+                          {t('snapshot.author')} {authorNames[proposal.author.toLowerCase()] || `${proposal.author.slice(0, 6)}...${proposal.author.slice(-4)}`}
+                        </span>
+                        <span className="hidden sm:inline">•</span>
+                        <span>{formatTimeLeft(proposal.end)}</span>
+                        <span className="hidden sm:inline">•</span>
+                        <span>{t('snapshot.votes_count', { count: proposal.votes })}</span>
+                        <span className="hidden sm:inline">•</span>
+                        <span>{t('snapshot.quorum', { percentage: quorumPercentage })}</span>
+                        {userVotes[proposal.id] && (
+                          <>
+                            <span className="hidden sm:inline">•</span>
+                            <span className="text-ultraviolet">
+                              {t('snapshot.voted')}: {proposal.choices[userVotes[proposal.id].choice - 1]}
+                            </span>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="flex flex-row sm:flex-col items-center sm:items-end gap-2 w-full sm:w-auto justify-between sm:justify-start">
+                      <span className={`px-3 py-1 rounded-full text-xs sm:text-sm text-center ${proposal.state === 'active'
+                        ? 'bg-green-500/10 text-green-500'
+                        : 'bg-gray-500/10 text-gray-500'
+                        }`}>
+                        {t(`snapshot.states.${proposal.state}`)}
+                      </span>
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedVotes(proposal);
+                        }}
+                        className="px-3 py-1 text-xs sm:text-sm border rounded-lg
+                        text-text-primary bg-ultraviolet-darker hover:bg-ultraviolet-dark transition-colors whitespace-nowrap"
+                      >
+                        {t('snapshot.view_votes')}
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {proposals.length === 0 && (
+            <div className="text-center text-text-secondary py-12">
+              <p className="text-xl">{t('snapshot.no_proposals')}</p>
+            </div>
+          )}
+
+          <div className="flex justify-start mt-1">
+            <a
+              href="https://snapshot.box/#/s:ultravioletadao.eth/proposals"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-0 py-4 text-white hover:text-ultraviolet-dark text-sm sm:text-base flex items-center gap-2"
+            >
+              {t('snapshot.view_more')}
+              <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+
+          {selectedProposalData && (
+            <ProposalModal
+              proposal={selectedProposalData}
+              onClose={handleCloseModal}
+              onVote={handleVoteClick}
+              isVoting={isVoting}
+              userVote={userVotes[selectedProposalData.id]}
+            />
+          )}
+        </div>
       </div>
-    </div>
     </>
   );
 };

@@ -7,94 +7,81 @@
 @layer base {
   html {
     font-family: 'Inter', system-ui, sans-serif;
+    scroll-behavior: smooth;
   }
-  :root {
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 0 0% 98%;
 
-    --primary: 142.1 76.2% 36.3%;
-    --primary-foreground: 355.7 100% 97.3%;
+  body {
+    @apply bg-background text-text-primary overflow-x-hidden;
+    background-image:
+      radial-gradient(circle at 15% 50%, rgba(124, 58, 237, 0.08) 0%, transparent 25%),
+      radial-gradient(circle at 85% 30%, rgba(6, 182, 212, 0.08) 0%, transparent 25%);
+  }
 
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 142.1 76.2% 36.3%;
-
-    --radius: 0.75rem;
-
-
-    /* Custom dashboard colors */
-    --snapshot: 220 70% 50%;
-    --snapshot-foreground: 0 0% 98%;
-    
-    --token: 262 83% 58%;
-    --token-foreground: 0 0% 98%;
-    
-    --funds: 32 81% 60%;
-    --funds-foreground: 0 0% 98%;
-    
-    --community: 340 82% 52%;
-    --community-foreground: 0 0% 98%;
-
-    --rewards: 45 93% 58%;
-    --rewards-foreground: 0 0% 98%;
-    
-    /* Chart colors */
-    --chart-1: 142.1 76.2% 36.3%;
-    --chart-2: 220 70% 50%;
-    --chart-3: 262 83% 58%;
-    --chart-4: 32 81% 60%;
-    --chart-5: 340 82% 52%;
+  ::selection {
+    @apply bg-ultraviolet text-white;
   }
 }
 
 @layer components {
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  .glass-panel {
+    @apply bg-background-lighter/40 backdrop-blur-md border border-white/5 shadow-glass rounded-xl;
   }
 
-  .form-input {
-    @apply w-full px-4 py-3 border rounded-lg transition-all duration-200
-      focus:ring-2 focus:ring-indigo-500 focus:border-transparent
-      hover:border-indigo-300;
+  .glass-card {
+    @apply bg-gradient-to-b from-white/10 to-transparent backdrop-blur-sm border border-white/10 rounded-xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply border-ultraviolet-light/30 shadow-neon -translate-y-1;
+  }
+
+  .nav-link {
+    @apply px-3 py-2 rounded-lg text-sm font-medium text-text-secondary transition-all duration-200 hover:text-white hover:bg-white/5;
+  }
+
+  .nav-link.active {
+    @apply text-white bg-white/10;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
   }
 
   .btn-primary {
-    @apply px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600
-      text-white font-semibold rounded-full shadow-lg
-      hover:from-indigo-700 hover:to-purple-700
-      transform transition-all duration-200
-      hover:scale-105 hover:shadow-xl
-      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+    @apply px-6 py-3 bg-ultraviolet hover:bg-ultraviolet-light text-white font-semibold rounded-lg shadow-lg shadow-ultraviolet/20 hover:shadow-ultraviolet/40 transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold rounded-lg backdrop-blur-sm transition-all duration-300;
+  }
+
+  .heading-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-white via-white to-gray-400;
+  }
+
+  .text-gradient-uv {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-ultraviolet-light to-cyan-glow;
+  }
+
+  .loader-wrapper {
+    @apply relative w-16 h-16;
+  }
+
+  .loader-ring {
+    @apply absolute inset-0 rounded-full border-2 border-transparent border-t-ultraviolet border-r-cyan-glow animate-spin;
+  }
+
+  .loader-glow {
+    @apply absolute inset-2 rounded-full bg-ultraviolet/20 blur-md animate-pulse;
   }
 }
 
-/* Animaciones personalizadas */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@keyframes slideIn {
-  from { transform: translateX(-20px); opacity: 0; }
-  to { transform: translateX(0); opacity: 1; }
+::-webkit-scrollbar-track {
+  @apply bg-background;
 }
 
-.animate-fade-in {
-  animation: fadeIn 0.6s ease-out forwards;
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
 }
-
-.animate-slide-in {
-  animation: slideIn 0.5s ease-out forwards;
-} @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } } .animate-bounce { animation: bounce 2s infinite; } .animation-delay-200 { animation-delay: 200ms; }

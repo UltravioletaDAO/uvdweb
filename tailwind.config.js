@@ -8,99 +8,71 @@ module.exports = {
     extend: {
       colors: {
         background: {
-          DEFAULT: '#121212',
-          lighter: '#1e1e1e',
-          input: '#252525',
+          DEFAULT: '#030014', // Deep space blue/black
+          lighter: '#0F0B29', // Slightly lighter for cards/sections
+          input: '#1A1633',
         },
         ultraviolet: {
-          darker: '#320066',
-          dark: '#5a00cc',
-          DEFAULT: '#6a00ff',
-          light: '#7c1fff',
+          darker: '#2E1065',
+          dark: '#5B21B6',
+          DEFAULT: '#7C3AED', // Electric Violet
+          light: '#8B5CF6',
+          glow: '#A78BFA',
+        },
+        cyan: {
+          DEFAULT: '#06b6d4',
+          glow: '#22d3ee',
         },
         text: {
-          primary: '#e0e0e0',
-          secondary: '#a0a0a0',
+          primary: '#F3F4F6', // Gray-100
+          secondary: '#9CA3AF', // Gray-400
+          muted: '#6B7280', // Gray-500
         },
         error: {
-          DEFAULT: '#d32f2f',
-          light: '#ef5350',
+          DEFAULT: '#EF4444',
+          light: '#F87171',
         },
+        success: {
+          DEFAULT: '#10B981',
+          light: '#34D399',
+        },
+        border: 'rgba(255, 255, 255, 0.1)',
 
-        /* Custom dashboard */
-        primary: {
-          DEFAULT: "#18794e",
-          foreground: "#fff1f2",
-        },
-        secondary: {
-          DEFAULT: '#27272f',
-          foreground: '#fafafa',
-        },
-        destructive: {
-          DEFAULT: '#ef4444',
-          foreground: '#fafafa',
-        },
-        muted: {
-          DEFAULT: '#27272f',
-          foreground: '#8c8fa1',
-        },
-        accent: {
-          DEFAULT: '#27272f',
-          foreground: '#fafafa',
-        },
-        popover: {
-          DEFAULT: '#1a1a1f',
-          foreground: '"#fafafa',
-        },
-        border: '#27272f',
-        input: '#27272f',
-        ring: '#18794e',
-
+        // Semantic Application Colors
         snapshot: {
-          DEFAULT: '#2a69d8',
-          foreground: '#fafafa',
+          DEFAULT: '#3B82F6', // Blue-500
+          foreground: '#FFFFFF',
         },
         token: {
-          DEFAULT: '#7c1fff',
-          foreground: '#fafafa',
+          DEFAULT: '#8B5CF6', // Violet-500
+          foreground: '#FFFFFF',
         },
         funds: {
-          DEFAULT: '#f59e0b',
-          foreground: '#fafafa',
+          DEFAULT: '#F59E0B', // Amber-500
+          foreground: '#FFFFFF',
         },
         community: {
-          DEFAULT: '#ef4444',
-          foreground: '#fafafa',
+          DEFAULT: '#EC4899', // Pink-500
+          foreground: '#FFFFFF',
         },
-        rewards: {
-          DEFAULT: '#facc15',
-          foreground: '#fafafa',
-        },
-        chart: {
-          "1": "hsl(var(--chart-1))",
-          "2": "hsl(var(--chart-2))",
-          "3": "hsl(var(--chart-3))",
-          "4": "hsl(var(--chart-4))",
-          "5": "hsl(var(--chart-5))",
-        }
-      },
-      borderRadius: {
-        lg: '12px',
-        md: '10px',
-        sm: '8px',
-      },
-      borderColor: {
-        DEFAULT: '#2a2a2a',
       },
       fontFamily: {
         'inter': ['Inter', 'system-ui', 'sans-serif'],
+        'outfit': ['Outfit', 'sans-serif'], // Optional for headings if we add it
       },
       animation: {
-        'fade-in': 'fadeIn 0.6s ease-out forwards',
+        'fade-in': 'fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'fade-in-up': 'fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'slide-in': 'slideIn 0.5s ease-out forwards',
+        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'glow': 'glow 2s ease-in-out infinite alternate',
       },
       keyframes: {
         fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        fadeInUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
         },
@@ -108,12 +80,22 @@ module.exports = {
           '0%': { transform: 'translateX(-20px)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
         },
-      },
-      boxShadow: {
-        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+        glow: {
+          '0%': { boxShadow: '0 0 5px rgba(124, 58, 237, 0.2), 0 0 10px rgba(124, 58, 237, 0.2)' },
+          '100%': { boxShadow: '0 0 20px rgba(124, 58, 237, 0.6), 0 0 30px rgba(124, 58, 237, 0.4)' },
+        }
       },
       backgroundImage: {
-        'card-image-gradient': "linear-gradient(180deg, rgba(0,0,0,0.13) 0%, rgba(0,0,0,0.13) 99%)"
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        'hero-glow': 'conic-gradient(from 180deg at 50% 50%, #2a8af6 0deg, #a853ba 180deg, #e92a67 360deg)',
+        'card-gradient': 'linear-gradient(180deg, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0.00) 100%)',
+      },
+      boxShadow: {
+        'glass': '0 4px 30px rgba(0, 0, 0, 0.1)',
+        'neon': '0 0 20px rgba(124, 58, 237, 0.3)',
+      },
+      backdropBlur: {
+        'xs': '2px',
       }
     },
   },
