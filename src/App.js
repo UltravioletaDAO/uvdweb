@@ -3,13 +3,17 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThirdwebProvider } from "thirdweb/react";
 
-// Loading component for better UX
+// Loading component with Premium UI
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center">
-    <div className="loading-spinner"></div>
+  <div className="min-h-screen flex items-center justify-center bg-background">
+    <div className="loader-wrapper">
+      <div className="loader-glow"></div>
+      <div className="loader-ring"></div>
+    </div>
   </div>
 );
 
@@ -54,6 +58,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <ThirdwebProvider>
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <ScrollToTop />
             <div className="min-h-screen bg-background text-text-primary flex flex-col">
               <Header />
               <Suspense fallback={<LoadingFallback />}>

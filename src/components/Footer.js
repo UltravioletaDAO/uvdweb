@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const { t } = useTranslation();
@@ -17,95 +18,116 @@ const Footer = () => {
   const operations = t('footer.operations.items', { returnObjects: true });
 
   return (
-    <footer className="bg-[#0b0613] text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-          <div className="lg:col-span-2 space-y-4">
-            <div className="flex items-center space-x-3">
-              <span className="text-3xl font-black uppercase tracking-wider">
-                {t('footer.legal_entity')}
+    <footer className="relative border-t border-white/5 bg-background-lighter/50 backdrop-blur-xl pt-20 pb-10 overflow-hidden">
+      {/* Background decorations */}
+      <div className="absolute top-0 left-1/4 w-64 h-64 bg-ultraviolet/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-cyan/10 rounded-full blur-[100px] pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+          {/* Brand Column */}
+          <div className="lg:col-span-5 space-y-6">
+            <Link to="/" className="flex items-center space-x-3 group">
+              <div className="relative">
+                <div className="absolute inset-0 bg-ultraviolet-light blur opacity-20 group-hover:opacity-40 transition-opacity rounded-full"></div>
+                <img src="/uvd.png" alt="UVD" className="h-10 w-10 relative z-10" />
+              </div>
+              <span className="text-2xl font-bold tracking-wider text-white">
+                ULTRAVIOLETA
               </span>
-              <span className="rounded-full bg-purple-600/20 px-3 py-1 text-xs font-semibold text-purple-200 uppercase">
-                {t('footer.brand.tagline')}
-              </span>
-            </div>
-            <p className="text-sm text-gray-300 leading-relaxed max-w-xl">
+            </Link>
+            <p className="text-text-secondary leading-relaxed max-w-sm">
               {t('footer.brand.description')}
             </p>
+            <div className="flex flex-wrap gap-2">
+              <span className="px-3 py-1 rounded-full bg-ultraviolet/10 border border-ultraviolet/20 text-ultraviolet-light text-xs font-semibold uppercase tracking-wider">
+                {t('footer.legal_entity')}
+              </span>
+              <span className="px-3 py-1 rounded-full bg-cyan/10 border border-cyan/20 text-cyan-glow text-xs font-semibold uppercase tracking-wider">
+                DAO LLC
+              </span>
+            </div>
           </div>
 
-          <div className="space-y-3">
-            <h3 className="text-lg font-semibold text-purple-200">
+          {/* Links Column */}
+          <div className="lg:col-span-3 lg:col-start-7">
+            <h3 className="text-white font-semibold mb-6 flex items-center">
+              <span className="w-1.5 h-1.5 bg-ultraviolet-light rounded-full mr-2"></span>
               {t('footer.links.title')}
             </h3>
-            <ul className="space-y-2 text-sm text-gray-300">
+            <ul className="space-y-3">
               {externalLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors duration-200 hover:text-purple-200"
+                    className="text-text-secondary hover:text-white transition-colors duration-200 flex items-center group"
                   >
+                    <span className="h-px w-0 bg-ultraviolet-light mr-0 group-hover:w-3 group-hover:mr-2 transition-all duration-300"></span>
                     {link.label}
                   </a>
                 </li>
               ))}
             </ul>
           </div>
+
+          {/* Operations Column */}
+          <div className="lg:col-span-3">
+            <h3 className="text-white font-semibold mb-6 flex items-center">
+              <span className="w-1.5 h-1.5 bg-cyan-glow rounded-full mr-2"></span>
+              {t('footer.operations.title')}
+            </h3>
+            <ul className="space-y-3">
+              {Array.isArray(operations) &&
+                operations.map((item) => (
+                  <li key={item} className="text-text-secondary text-sm">
+                    {item}
+                  </li>
+                ))}
+            </ul>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-            <p className="text-sm text-gray-300">{t('footer.registered_label')}</p>
-            <p className="mt-2 text-lg font-semibold text-white">{t('footer.legal_entity')}</p>
-            <div className="mt-3 text-sm text-gray-300 space-y-1">
+        {/* Legal Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+          <div className="glass-panel p-6 hover:border-ultraviolet/30 transition-colors">
+            <h4 className="text-white font-medium mb-3">{t('footer.registered_label')}</h4>
+            <div className="space-y-1 text-sm text-text-muted">
+              <p className="font-semibold text-text-primary">{t('footer.legal_entity')}</p>
               <p>{t('footer.address')}</p>
               <p>{t('footer.city_state_zip')}</p>
               <p>{t('footer.country')}</p>
             </div>
           </div>
 
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-            <p className="text-sm text-gray-300">{t('footer.operations.title')}</p>
-            <ul className="mt-3 space-y-2 text-sm text-gray-300">
-              {Array.isArray(operations) &&
-                operations.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-            </ul>
-          </div>
-
-          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10">
-            <p className="text-sm text-gray-300">{t('footer.contact.title')}</p>
-            <p className="mt-3 text-sm text-gray-300">
+          <div className="glass-panel p-6 hover:border-cyan/30 transition-colors">
+            <h4 className="text-white font-medium mb-3">{t('footer.contact.title')}</h4>
+            <div className="space-y-3">
               <a
                 href="mailto:ultravioletadao@gmail.com"
-                className="transition-colors duration-200 hover:text-purple-200"
+                className="inline-flex items-center text-cyan-glow hover:text-cyan-400 font-medium transition-colors"
               >
-                {t('footer.contact.email')}
+                ultravioletadao@gmail.com
+                <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
               </a>
-            </p>
-            <p className="mt-3 text-xs text-gray-400 leading-relaxed">
-              {t('footer.contact.note')}
-            </p>
+              <p className="text-xs text-text-muted leading-relaxed">
+                {t('footer.contact.note')}
+              </p>
+            </div>
           </div>
         </div>
 
-        <div className="border-t border-white/10 pt-6 flex flex-col md:flex-row items-center justify-center gap-4">
-          <p className="text-xs text-gray-400">
+        {/* Bottom Bar */}
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-text-muted">
             © {currentYear} {t('footer.legal_entity')}. {t('footer.all_rights_reserved')}.
           </p>
-          {/* Privacy and Terms links temporarily hidden
-          <div className="flex items-center gap-6 text-xs text-gray-400">
-            <Link to="/privacy" className="transition-colors duration-200 hover:text-purple-200">
-              {t('footer.legal_links.privacy')}
-            </Link>
-            <Link to="/terms" className="transition-colors duration-200 hover:text-purple-200">
-              {t('footer.legal_links.terms')}
-            </Link>
+          <div className="flex items-center gap-6">
+            <span className="text-xs text-text-muted/50 font-mono">
+              v1.0.0 • Built with ❤️ on Avalanche
+            </span>
           </div>
-          */}
         </div>
       </div>
     </footer>

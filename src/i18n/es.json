@@ -801,7 +801,7 @@
     "approving_tokens": "Aprobando tokens UVD...",
     "processing_swap": "Procesando transacción de swap...",
     "approval_submitted": "Aprobación enviada",
-    "swap_submitted": "Swap enviado", 
+    "swap_submitted": "Swap enviado",
     "approval_pending": "Esperando confirmación de aprobación...",
     "swap_pending": "Esperando confirmación de swap...",
     "approval_confirmed": "¡Aprobación confirmada!",
@@ -1977,4 +1977,4 @@
       "button": "Crear Propuesta"
     }
   }
-} 
+}
