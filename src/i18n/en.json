@@ -2327,6 +2327,8 @@
     "connect_wallet_title": "Connect your Wallet to Create Bounties",
     "connect_wallet_message": "You need to connect your wallet and have at least 1,000,000 UVD to create bounties",
     "requirement": "Requirement",
+    "requirement_label": "Requirement",
+    "your_balance": "Your balance",
     "token_name": "UltraVioleta DAO (UVD)",
     "checking_access": "Verifying access permissions...",
     "no_access_title": "Restricted Access",
@@ -2373,6 +2375,7 @@
       "todo": "To Do",
       "in_review": "In Review",
       "in_voting": "In Voting",
+      "voting": "In Voting",
       "done": "Done"
     },
     "priority_values": {

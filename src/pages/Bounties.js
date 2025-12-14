@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import BountyForm from '../components/BountyForm';
 import SubmissionList from '../components/SubmissionList';
 import WalletConnect from '../components/WalletConnect';
-import LanguageSelector from '../components/LanguageSelector';
 import { ethers } from 'ethers';
 import { bountiesAPI, legacyAPI } from '../services/api';
 import { useBounties, useWhitelist } from '../hooks';
@@ -332,11 +331,8 @@ const Bounties = () => {
               <span>{t('success.back_home')}</span>
             </motion.button>
 
-            {/* Selector de idioma y Wallet */}
+            {/* Botón de Wallet */}
             <div className="flex items-center gap-3">
-              <LanguageSelector />
-
-              {/* Botón de Wallet */}
               {!walletConnected ? (
               <motion.button
                 whileHover={{ scale: 1.05 }}

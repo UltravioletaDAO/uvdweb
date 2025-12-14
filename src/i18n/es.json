@@ -1987,6 +1987,8 @@
     "connect_wallet_title": "Conecta tu Wallet para Crear Bounties",
     "connect_wallet_message": "Necesitas conectar tu wallet y tener al menos 1,000,000 UVD para crear bounties",
     "requirement": "Requisito",
+    "requirement_label": "Requisito",
+    "your_balance": "Tu balance",
     "token_name": "UltraVioleta DAO (UVD)",
     "checking_access": "Verificando permisos de acceso...",
     "no_access_title": "Acceso Restringido",
@@ -2002,7 +2004,7 @@
     "switch_step4": "Si no aparece, agrégala manualmente con Chain ID: 43114",
     "error_wallet_required": "Debes conectar tu wallet para crear una bounty",
     "error_insufficient_tokens": "No tienes suficientes tokens UVD para crear bounties",
-    "responsibility_notice": "Si eres del DAO o simplemente tienes la cantidad de UVD y quieres crear un Bounty, debes hacerte responsable de la recompensa del Bounty. Ponte en contacto con nosotros para concretar el saldo del bounty.",
+    "responsibility_notice": "Si eres miembro del DAO o simplemente tienes la cantidad de 1M de UVD y quieres crear un Bountie, debes hacerte responsable de la recompensa del Bountie.\n\nPuedes crear los Bounties para colocar tareas o metas de desarrollo para que sean implementadas dentro o fuera del DAO, no simplemente para engange. Contamos con los mejores Dev's.\n\nPonte en contacto con nosotros para concretar el saldo del bountie.",
     "contact_us": "Contáctanos"
   },
   "bountyColumns": {
@@ -2033,6 +2035,7 @@
       "todo": "Por Hacer",
       "in_review": "En Revisión",
       "in_voting": "En Votación",
+      "voting": "En Votación",
       "done": "Completada"
     },
     "priority_values": {

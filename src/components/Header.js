@@ -133,21 +133,21 @@ const Header = () => {
     <>
       {/* Desktop Navigation - Hidden on mobile */}
       <nav className="hidden lg:flex fixed top-0 left-0 right-0 z-40 bg-background-lighter/95 backdrop-blur-md border-b border-ultraviolet-darker/20">
-        <div className="max-w-7xl mx-auto px-6 w-full">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo Section - Standalone */}
-            <div className="flex-shrink-0 mr-12">
+        <div className="w-full px-6">
+          <div className="flex items-center justify-center h-14 gap-6">
+            {/* Logo Section */}
+            <div className="flex-shrink-0">
               <Link to="/" className="flex items-center group">
-                <img 
-                  src="/uvd.png" 
+                <img
+                  src="/uvd.png"
                   alt={t('common.logo_alt')}
-                  className="h-12 w-12 max-w-[89%] transition-transform duration-200 group-hover:scale-105"
+                  className="h-9 w-9 transition-transform duration-200 group-hover:scale-105"
                 />
               </Link>
             </div>
 
             {/* Navigation Items */}
-            <div className="flex items-center space-x-1.5">
+            <div className="flex items-center flex-wrap justify-center gap-x-1 gap-y-0.5">
               {mainMenuItems.map((item) => (
                 <div key={item.name}>
                   {item.isExternal ? (
@@ -155,42 +155,31 @@ const Header = () => {
                       href={item.path}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center px-2 py-1 rounded-md text-[10px] leading-none font-normal tracking-wide
+                      className={`flex items-center px-1.5 py-1 rounded text-[11px] leading-none font-medium tracking-wide
                         transition-all duration-200 hover:bg-white/10 hover:text-white
                         ${location.pathname === item.path ? 'bg-white/15 text-white' : ''}
                         ${item.customStyle || 'text-text-primary'}`}
                       aria-label={item.name}
                     >
-                      <item.icon className="w-3 h-3 mr-1" />
-                      <span className="uppercase text-[10px] font-medium whitespace-nowrap leading-none">{item.name}</span>
-                      <ArrowTopRightOnSquareIcon className="w-2.5 h-2.5 ml-1 opacity-50" />
+                      <span className="uppercase whitespace-nowrap">{item.name}</span>
+                      <ArrowTopRightOnSquareIcon className="w-2 h-2 ml-0.5 opacity-50" />
                     </a>
                   ) : (
                     <Link
                       to={item.path}
-                      className={`flex items-center px-2 py-1 rounded-md text-[10px] leading-none font-normal tracking-wide
+                      className={`flex items-center px-1.5 py-1 rounded text-[11px] leading-none font-medium tracking-wide
                         transition-all duration-200 hover:bg-white/10 hover:text-white
                         ${location.pathname === item.path ? 'bg-white/15 text-white' : 'text-text-primary'}`}
                       aria-label={item.name}
                     >
-                      <item.icon className="w-3 h-3 mr-1" />
-                      <span className="uppercase text-[10px] font-medium whitespace-nowrap leading-none">{item.name}</span>
+                      <span className="uppercase whitespace-nowrap">{item.name}</span>
                     </Link>
-                  )}
-                  {location.pathname === item.path && !item.isExternal && (
-                    <motion.div
-                      layoutId="activeNavIndicator"
-                      className="h-0.5 bg-white rounded-full mt-1"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.2 }}
-                    />
                   )}
                 </div>
               ))}
-              
+
               {/* Language Switcher */}
-              <div className="ml-6 pl-4 border-l border-ultraviolet-darker/20">
+              <div className="ml-2 pl-2 border-l border-ultraviolet-darker/20">
                 <LanguageSwitcher />
               </div>
             </div>
@@ -204,7 +193,7 @@ const Header = () => {
       </div>
 
       {/* Spacer for fixed navigation on desktop */}
-      <div className="hidden lg:block h-16"></div>
+      <div className="hidden lg:block h-14"></div>
     </>
   );
 };
