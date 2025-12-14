@@ -6,16 +6,29 @@ const BountyForm = ({ onSubmit, loading, error }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [reward, setReward] = useState('');
-  const [endDate, setEndDate] = useState(''); // Formato YYYY-MM-DD para input type="date"
+  const [endDate, setEndDate] = useState('');
 
-  const handleSubmit = (e) => {
+  const resetForm = () => {
+    setTitle('');
+    setDescription('');
+    setReward('');
+    setEndDate('');
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit({
-      title,
-      description,
-      reward,
-      endDate: endDate || null, // Envía null si está vacío
-    });
+    try {
+      await onSubmit({
+        title,
+        description,
+        reward,
+        endDate: endDate || null,
+      });
+      // Reset form on successful submission
+      resetForm();
+    } catch {
+      // Error is handled by parent component
+    }
   };
 
   return (

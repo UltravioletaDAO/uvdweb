@@ -382,6 +382,7 @@
     "streamSummaries": "Summaries",
     "experiments": "Experiments",
     "nft": "NFT Collections",
+    "bounties": "Bounties",
     "categories": {
       "main": "Main",
       "governance": "Governance",
@@ -405,7 +406,11 @@
       "services": "Explore our products and services",
       "streamSummaries": "AI-generated summaries of programming and Web3 streams",
       "experiments": "Community experiments and research",
-      "nft": "Browse our NFT collections"
+      "nft": "Browse our NFT collections",
+      "bounties": "Community bounties and tasks",
+      "todo": "Bounties ready to be taken by contributors",
+      "in_voting": "Bounties in progress or under review",
+      "finished": "Completed bounties with distributed rewards"
     },
     "aria": {
       "open_menu": "Open menu",
@@ -2316,5 +2321,84 @@
       "github": "View on GitHub",
       "discord": "Get Support"
     }
+  },
+  "bountyCreation": {
+    "title": "Create Ultra Bountie",
+    "connect_wallet_title": "Connect your Wallet to Create Bounties",
+    "connect_wallet_message": "You need to connect your wallet and have at least 1,000,000 UVD to create bounties",
+    "requirement": "Requirement",
+    "token_name": "UltraVioleta DAO (UVD)",
+    "checking_access": "Verifying access permissions...",
+    "no_access_title": "Restricted Access",
+    "no_access_message": "Your wallet does not meet the requirements to create bounties.",
+    "access_granted": "Access Verified!",
+    "wrong_network": "Wrong Network",
+    "current_network": "Current Network",
+    "required_network": "Required Network",
+    "how_to_switch": "How to switch to Avalanche?",
+    "switch_step1": "Open your wallet (MetaMask, Rabby, etc.)",
+    "switch_step2": "Click on the network selector",
+    "switch_step3": "Select \"Avalanche C-Chain\"",
+    "switch_step4": "If not listed, add it manually with Chain ID: 43114",
+    "error_wallet_required": "You must connect your wallet to create a bounty",
+    "error_insufficient_tokens": "You don't have enough UVD tokens to create bounties",
+    "responsibility_notice": "If you are from the DAO or simply have the amount of UVD and want to create a Bounty, you must be responsible for the Bounty reward. Contact us to finalize the bounty balance.",
+    "contact_us": "Contact Us"
+  },
+  "bountyColumns": {
+    "titles": {
+      "todo": "To Do",
+      "in_voting": "In Voting",
+      "finished": "Finished"
+    },
+    "empty_message": "No bounties in this category"
+  },
+  "bountyDetails": {
+    "reward_label": "Reward",
+    "expires_label": "Expires",
+    "status_label": "Status",
+    "priority_label": "Priority",
+    "submissions_count": "submissions",
+    "submit_task_title": "Submit Your Work",
+    "connect_wallet_to_submit": "Connect your wallet to submit your work.",
+    "submitter_name_label": "Submitted by",
+    "submission_content_label": "Submission Content",
+    "submission_placeholder": "Paste the link to your work or describe what you did...",
+    "submitting_button": "Submitting...",
+    "submit_button": "Submit",
+    "submission_success_message": "Your submission has been sent successfully!",
+    "error_bounty_not_selected": "No bounty selected",
+    "vote_on_snapshot": "Vote on Snapshot",
+    "status_values": {
+      "todo": "To Do",
+      "in_review": "In Review",
+      "in_voting": "In Voting",
+      "done": "Done"
+    },
+    "priority_values": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    }
+  },
+  "bountyForm": {
+    "title_label": "Title",
+    "description_label": "Description",
+    "reward_label": "Reward (e.g. 100 UVD)",
+    "endDate_label": "End Date (optional)",
+    "creating_button": "Creating...",
+    "create_button": "Create Bounty",
+    "success_message": "Bounty \"{{title}}\" created successfully!"
+  },
+  "submissionList": {
+    "loading": "Loading submissions...",
+    "no_submissions": "No submissions yet",
+    "submissions_title": "Submissions",
+    "submitted_by": "Submitted by",
+    "view_more": "View more"
+  },
+  "adminPanel": {
+    "title": "Admin Panel",
+    "description": "Create and manage community bounties"
   }
 } 

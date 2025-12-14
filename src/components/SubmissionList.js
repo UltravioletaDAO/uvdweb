@@ -1,14 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { ethers } from 'ethers';
 import Modal from './Modal';
 import { bountiesAPI } from '../services/api';
-
-// Utilidad para abreviar la wallet
-const formatWallet = (wallet) => {
-  if (!wallet) return '';
-  return wallet.slice(0, 6) + '...' + wallet.slice(-4);
-};
 
 const SubmissionList = ({ bountyId }) => {
   const { t } = useTranslation();
@@ -55,7 +48,9 @@ const SubmissionList = ({ bountyId }) => {
           avatar: json.data.user.avatar
         };
       }
-    } catch {}
+    } catch (error) {
+      console.error('Error fetching Snapshot profile:', error);
+    }
     return {};
   };
 
@@ -93,7 +88,7 @@ const SubmissionList = ({ bountyId }) => {
     if (bountyId) {
       fetchSubmissions();
     }
-  }, [bountyId, t]);
+  }, [bountyId]);
 
   if (loading) {
     return <div className="text-center text-text-secondary opacity-60 mt-4">{t('submissionList.loading')}</div>;
@@ -132,7 +127,7 @@ const SubmissionList = ({ bountyId }) => {
                   className="text-ultraviolet hover:underline text-xs mt-1 block"
                   onClick={() => { setShowModal(true); setModalContent({ content: submission.submissionContent, displayName, avatarUrl }); }}
                 >
-                  Ver más
+                  {t('submissionList.view_more')}
                 </button>
               </div>
             </div>

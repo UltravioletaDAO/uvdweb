@@ -14,6 +14,7 @@ import {
   PhotoIcon,
   DocumentTextIcon,
   BeakerIcon,
+  GiftIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -118,6 +119,13 @@ const Header = () => {
       icon: PlayCircleIcon,
       path: "/wheel",
       isExternal: false,
+    },
+    {
+      name: t('navigation.bounties'),
+      icon: GiftIcon,
+      path: "/bounties",
+      isExternal: false,
+      customStyle: "text-amber-400 hover:text-amber-300",
     },
   ];
 
