@@ -1,120 +1,171 @@
 // Service for interacting with SAFE API
-// Using the robust Transaction Service URL directly to avoid redirects
-const SAFE_API_BASE_URL = 'https://api.safe.global/tx-service/avax/api/v1';
+const SAFE_API_BASE_URL = 'https://safe-transaction-avalanche.safe.global/api/v1';
 
 /**
  * Fetches multisig transactions for a specific Safe
- * @param {string} safeAddress
- * @param {number} limit
- * @returns {Promise<{results: Array, count: number}>}
+ * @param {string} safeAddress - The address of the Safe
+ * @param {number} limit - Maximum number of transactions to return
+ * @param {number} offset - Number of transactions to skip
+ * @returns {Promise<Object>} - The API response with transactions data
  */
-export async function getMultisigTransactions(safeAddress, limit = 100) {
+export const getMultisigTransactions = async (safeAddress, limit = 100, offset = 0) => {
   try {
-    const url = `${SAFE_API_BASE_URL}/safes/${safeAddress}/multisig-transactions/?limit=${limit}`;
-    const response = await fetch(url, {
+    const response = await fetch(
+      `${SAFE_API_BASE_URL}/safes/${safeAddress}/multisig-transactions/?limit=${limit}&offset=${offset}`,
+      {
+        method: 'GET',
+        headers: {
+          'Accept': 'application/json',
+          'content-type': 'application/json',
+        },
+      }
+    );
+
+    if (!response.ok) {
+      throw new Error(`API error: ${response.status}`);
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Error fetching multisig transactions:', error);
+    throw error;
+  }
+};
+
+/**
+ * Fetches all owners of a specific Safe
+ * @param {string} safeAddress - The address of the Safe
+ * @returns {Promise<Array<string>>} - Array of owner addresses
+ */
+export const getSafeOwners = async (safeAddress) => {
+  try {
+    const response = await fetch(`${SAFE_API_BASE_URL}/safes/${safeAddress}/`, {
       method: 'GET',
       headers: {
-        'Accept': 'application/json'
-      }
+        'Accept': 'application/json',
+        'content-type': 'application/json',
+      },
     });
 
     if (!response.ok) {
-      throw new Error(`Error fetching transactions: ${response.statusText}`);
+      throw new Error(`API error: ${response.status}`);
     }
 
     const data = await response.json();
-    return data;
+    return data.owners || [];
   } catch (error) {
-    console.error('Error in getMultisigTransactions:', error);
+    console.error('Error fetching Safe owners:', error);
     throw error;
   }
-}
+};
 
 /**
- * Fetches the owners of a specific Safe
- * @param {string} safeAddress
- * @returns {Promise<Array>} List of owner addresses
+ * Filters transactions by date range using exact date comparison (ignores time)
+ * @param {Array} transactions - The list of multisig transactions
+ * @param {string} startDate - Start date in YYYY-MM-DD format
+ * @param {string} endDate - End date in YYYY-MM-DD format
+ * @returns {Array} - Filtered transactions
  */
-export async function getSafeOwners(safeAddress) {
-  try {
-    const url = `${SAFE_API_BASE_URL}/safes/${safeAddress}/`;
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json'
-      }
-    });
+export const filterTransactionsByDateRange = (transactions, startDate, endDate) => {
+  // If no dates are provided, return all transactions
+  if (!startDate && !endDate) {
+    return transactions;
+  }
 
-    if (!response.ok) {
-      throw new Error(`Error fetching owners: ${response.statusText}`);
+  // Convert string dates to Date objects, setting to start of day in local time
+  let start = null;
+  let end = null;
+
+  if (startDate) {
+    start = new Date(startDate);
+    start.setHours(0, 0, 0, 0);
+  }
+
+  if (endDate) {
+    end = new Date(endDate);
+    // Set to end of the selected day
+    end.setHours(23, 59, 59, 999);
+  }
+
+  return transactions.filter(tx => {
+    // Get the execution date
+    if (!tx.executionDate) return false;
+
+    // Convert UTC date to local date for comparison (keep only the date part)
+    const txDateStr = tx.executionDate.split('T')[0]; // Extract YYYY-MM-DD part
+    const txDate = new Date(txDateStr);
+    txDate.setHours(12, 0, 0, 0); // Set to noon to avoid timezone issues
+
+    if (start && end) {
+      return txDate >= start && txDate <= end;
+    } else if (start) {
+      return txDate >= start;
+    } else if (end) {
+      return txDate <= end;
     }
-
-    const data = await response.json();
-    return data.owners;
-  } catch (error) {
-    console.error('Error in getSafeOwners:', error);
-    throw error;
-  }
-}
+    
+    return true;
+  });
+};
 
 /**
- * Calculates statistics for owners based on transactions
- * @param {Array} transactions
- * @param {Array} owners
- * @returns {Array} Stats per owner
+ * Format a transaction date string to YYYY-MM-DD format
+ * @param {string} dateString - Date string in ISO format
+ * @returns {string} - Formatted date
  */
-export function calculateOwnerStats(transactions, owners) {
-  // Initialize stats for all owners
-  const stats = owners.reduce((acc, owner) => {
-    acc[owner] = {
+export const formatTransactionDate = (dateString) => {
+  if (!dateString) return '';
+  return dateString.split('T')[0]; // Extract YYYY-MM-DD part
+};
+
+/**
+ * Calculates signing statistics for each owner
+ * @param {Array} transactions - The list of multisig transactions
+ * @param {Array} owners - The list of Safe owners
+ * @returns {Array} - Owner stats sorted by number of signatures ascending
+ */
+export const calculateOwnerStats = (transactions, owners) => {
+  // Initialize stats for each owner
+  const ownerStats = {};
+  
+  // Make sure all addresses are lowercase for comparison
+  owners.forEach(owner => {
+    ownerStats[owner.toLowerCase()] = {
       address: owner,
       signatureCount: 0,
       percentage: 0
     };
-    return acc;
-  }, {});
+  });
 
-  const normalizeAddress = (addr) => addr ? addr.toLowerCase() : '';
-
-  // Count signatures
+  // Count signatures for each transaction
   transactions.forEach(tx => {
-    if (tx.confirmations) {
-      tx.confirmations.forEach(conf => {
-        const ownerKey = Object.keys(stats).find(key => normalizeAddress(key) === normalizeAddress(conf.owner));
-        if (ownerKey) {
-          stats[ownerKey].signatureCount++;
+    if (tx.confirmations && tx.confirmations.length > 0) {
+      tx.confirmations.forEach(confirmation => {
+        const ownerAddress = confirmation.owner.toLowerCase();
+        if (ownerStats[ownerAddress]) {
+          ownerStats[ownerAddress].signatureCount += 1;
         }
       });
     }
   });
 
-  // Calculate percentages
-  const totalTransactions = transactions.length;
-  Object.values(stats).forEach(stat => {
-    stat.percentage = totalTransactions > 0
-      ? (stat.signatureCount / totalTransactions) * 100
-      : 0;
-  });
+  // Calculate percentages and convert to array
+  const txCount = transactions.length;
+  const statsArray = Object.values(ownerStats).map(stat => ({
+    ...stat,
+    percentage: txCount > 0 ? (stat.signatureCount / txCount) * 100 : 0
+  }));
 
-  return Object.values(stats).sort((a, b) => b.signatureCount - a.signatureCount);
-}
+  // Sort by signature count (ascending - lowest signers first)
+  return statsArray.sort((a, b) => a.signatureCount - b.signatureCount);
+};
 
-/**
- * Filter transactions by date range
- * @param {Array} transactions 
- * @param {string} startDate YYYY-MM-DD
- * @param {string} endDate YYYY-MM-DD
- * @returns {Array} Filtered transactions
- */
-export function filterTransactionsByDateRange(transactions, startDate, endDate) {
-  if (!startDate && !endDate) return transactions;
+const safeService = {
+  getMultisigTransactions,
+  getSafeOwners,
+  calculateOwnerStats,
+  filterTransactionsByDateRange,
+  formatTransactionDate
+};
 
-  const start = startDate ? new Date(startDate).getTime() : 0;
-  // End date should include the entire day, so set to end of that day
-  const end = endDate ? new Date(endDate).setHours(23, 59, 59, 999) : Infinity;
-
-  return transactions.filter(tx => {
-    const txDate = new Date(tx.submissionDate).getTime();
-    return txDate >= start && txDate <= end;
-  });
-}
+export default safeService; 

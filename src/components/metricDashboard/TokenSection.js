@@ -1,7 +1,7 @@
 import { MetricCard } from "../MetricCard";
 import { Button } from "../Button";
-import { LineChart, Line, ResponsiveContainer, Tooltip, XAxis, YAxis, CartesianGrid } from "recharts";
-import { Coins, TrendingUp, Users, Activity, ExternalLink, Flame, ArrowUpRight } from "lucide-react";
+import { LineChart, Line, ResponsiveContainer } from "recharts";
+import { Coins, TrendingUp, Users, Activity, ExternalLink, Flame } from "lucide-react";
 import { useTranslation } from 'react-i18next';
 import { useTokenMetrics } from "../../hooks/useTokenMetrics";
 import { usePriceHistory } from "../../hooks/usePriceEvolution";
@@ -12,45 +12,24 @@ const TokenSection = () => {
   const { uvdPerAvax, uvdPerUsdc } = useTokenMetrics();
   const { history: priceHistory, priceChange30d } = usePriceHistory();
 
-  if (data.error) return <div className="p-4 rounded-lg bg-red-500/10 text-red-500 border border-red-500/20">Error loading Token data: {data.error}</div>;
-
-  const CustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="bg-black/80 border border-white/10 p-3 rounded-lg backdrop-blur-md shadow-xl">
-          <p className="text-gray-400 text-xs mb-1">{label}</p>
-          <p className="text-token font-bold text-sm">
-            ${payload[0].value.toFixed(4)}
-          </p>
-        </div>
-      );
-    }
-    return null;
-  };
+  if (data.error) return <div>Error: {data.error}</div>;
 
   return (
     <div className="space-y-8">
-      {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="p-2.5 rounded-xl bg-gradient-to-br from-token/20 to-token/5 border border-token/20 shadow-lg shadow-token/10">
-              <Coins className="h-6 w-6 text-token" />
+          <h2 className="text-2xl font-bold flex items-center gap-3 mb-2">
+            <div className="p-2 rounded-lg bg-token/15">
+              <Coins className="h-5 w-5 text-token" />
             </div>
-            <h2 className="text-3xl font-bold text-white tracking-tight">{t('home.metrics.token.title_full')}</h2>
-          </div>
-          <p className="text-sm text-gray-400 ml-14 max-w-2xl">
+            <span className="text-token">{t('home.metrics.token.title_full')}</span>
+          </h2>
+          <p className="text-sm text-muted-foreground ml-11">
             {t('metricsDashboard.tokenSection.subtitle')}
           </p>
         </div>
-        <Button variant="glow" size="sm" className="hidden sm:inline-flex" asChild>
-          <a href="https://lfj.gg/avalanche/swap?outputCurrency=AVAX&inputCurrency=0x4Ffe7e01832243e03668E090706F17726c26d6B2" target="_blank" rel="noreferrer">
-            Buy UVD <ArrowUpRight className="ml-2 h-4 w-4" />
-          </a>
-        </Button>
       </div>
 
-      {/* Primary Metrics Grid */}
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
         <MetricCard
           title={t('metricsDashboard.tokenSection.price_usd')}
@@ -71,7 +50,7 @@ const TokenSection = () => {
         <MetricCard
           title={t('metricsDashboard.tokenSection.holders')}
           value={data.holderCount.toLocaleString()}
-          change={`${data.totalTransactions.toLocaleString()} txs`}
+          change={`${data.totalTransactions.toLocaleString()} transacciones`}
           changeType="neutral"
           variant="token"
           icon={<Users className="h-4 w-4" />}
@@ -86,7 +65,7 @@ const TokenSection = () => {
         />
         <MetricCard
           title={t('metricsDashboard.tokenSection.burned_total')}
-          value={data.totalBurnedTokens ? `${data.totalBurnedTokens.toLocaleString(undefined, { maximumFractionDigits: 0 })}` : '0'}
+          value={data.totalBurnedTokens ? `${data.totalBurnedTokens.toLocaleString(undefined, { maximumFractionDigits: 0 })} UVD` : '0 UVD'}
           change={t('metricsDashboard.tokenSection.burned_forever')}
           changeType="negative"
           variant="token"
@@ -94,109 +73,111 @@ const TokenSection = () => {
         />
       </div>
 
-      <div className="grid gap-8 lg:grid-cols-3 mt-8">
-
-        {/* Chart Section */}
-        <div className="lg:col-span-2 space-y-4">
-          <div className="flex items-center justify-between px-1">
-            <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400">{t('metricsDashboard.tokenSection.price_evolution')}</h3>
-            <div className="flex items-center gap-2 text-sm bg-white/5 px-3 py-1 rounded-full border border-white/5">
-              <span className="text-gray-400">30 Days</span>
-              <span className={`font-bold ${priceChange30d >= 0 ? 'text-green-400' : 'text-red-400'}`}>
-                {priceChange30d > 0 ? '+' : ''}{priceChange30d.toFixed(2)}%
-              </span>
+      <div className="grid gap-6 lg:grid-cols-2 mt-8">
+        <div className="space-y-4">
+          <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">{t('metricsDashboard.tokenSection.price_evolution')}</h3>
+          <div className="p-5 rounded-xl border border-token/15 bg-gradient-to-br from-token/5 to-transparent">
+            <div className="h-32 w-full">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={priceHistory}>
+                  <Line
+                    type="monotone"
+                    dataKey="price"
+                    stroke="hsl(var(--token))"
+                    strokeWidth={2}
+                    dot={false}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
-          </div>
-
-          <div className="glass-panel p-6 h-[350px] relative w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={priceHistory} margin={{ top: 5, right: 5, left: -20, bottom: 0 }}>
-                <defs>
-                  <linearGradient id="tokenGradient" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="5%" stopColor="hsl(var(--token))" stopOpacity={0.3} />
-                    <stop offset="95%" stopColor="hsl(var(--token))" stopOpacity={0} />
-                  </linearGradient>
-                </defs>
-                <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="rgba(255,255,255,0.05)" />
-                <XAxis
-                  dataKey="date"
-                  stroke="rgba(255,255,255,0.3)"
-                  tick={{ fontSize: 10 }}
-                  tickLine={false}
-                  axisLine={false}
-                  minTickGap={30}
-                />
-                <YAxis
-                  stroke="rgba(255,255,255,0.3)"
-                  tick={{ fontSize: 10 }}
-                  tickLine={false}
-                  axisLine={false}
-                  tickFormatter={(value) => `$${value}`}
-                />
-                <Tooltip content={<CustomTooltip />} cursor={{ stroke: 'rgba(255,255,255,0.1)', strokeWidth: 2 }} />
-                <Line
-                  type="monotone"
-                  dataKey="price"
-                  stroke="#8B5CF6"
-                  strokeWidth={3}
-                  dot={false}
-                  activeDot={{ r: 6, fill: "#fff", stroke: "#8B5CF6", strokeWidth: 2 }}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+            <div className="flex justify-between items-center mt-4 text-sm">
+              <span className="text-muted-foreground">{t('metricsDashboard.tokenSection.days_ago_30')}</span>
+              <div className="flex items-center gap-2">
+                <span className="text-sm font-medium">
+                  {priceChange30d.toFixed(2)}%
+                </span>
+              </div>
+              <span className="text-muted-foreground">{t('metricsDashboard.tokenSection.today')}</span>
+            </div>
           </div>
         </div>
 
-        {/* Info & Stats Column */}
-        <div className="space-y-6">
-          <h3 className="text-sm font-bold uppercase tracking-widest text-gray-400 px-1">{t('metricsDashboard.tokenSection.info_title')}</h3>
-
-          {/* Contract Address */}
-          <div className="glass-card p-4 hover:border-token/30 transition-colors">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-xs font-bold text-token uppercase">Contract</span>
-              <a href="https://snowscan.xyz/token/0x4Ffe7e01832243e03668E090706F17726c26d6B2" target="_blank" rel="noreferrer" className="text-gray-400 hover:text-white transition-colors">
-                <ExternalLink className="h-3 w-3" />
-              </a>
+        <div className="space-y-4">
+          <h3 className="text-base font-semibold uppercase tracking-wide text-muted-foreground">{t('metricsDashboard.tokenSection.info_title')}</h3>
+          <div className="space-y-2">
+            <div className="p-3 rounded-lg border border-token/10 bg-gradient-to-br from-token/3 to-transparent">
+              <div className="flex justify-between items-center mb-1">
+                  <span className="text-xs font-medium uppercase text-muted-foreground">{t('metricsDashboard.tokenSection.contract_avalanche')}</span>
+                <Button variant="ghost" size="sm" className="h-6 p-1" asChild>
+                  <a
+                    href="https://snowscan.xyz/token/0x4Ffe7e01832243e03668E090706F17726c26d6B2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <ExternalLink className="h-3 w-3" />
+                  </a>
+                </Button>
+              </div>
+              <code className="text-xs text-muted-foreground break-all">
+                0x4Ffe...d6B2
+              </code>
             </div>
-            <code className="text-xs text-gray-300 font-mono break-all block bg-black/30 p-2 rounded border border-white/5 select-all">
-              0x4Ffe7e01832243e03668E090706F17726c26d6B2
-            </code>
+
+            <div className="p-4 rounded-lg border border-token/10 bg-gradient-to-br from-token/3 to-transparent">
+              <div className="space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">{t('metricsDashboard.tokenSection.total_supply')}</span>
+                  <span className="text-sm font-semibold">
+                    {data.totalSupply.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">{t('metricsDashboard.tokenSection.circulating_supply')}</span>
+                  <span className="text-sm font-semibold">
+                    {data.circulatingSupply.toLocaleString()}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">{t('metricsDashboard.tokenSection.burned_total')}</span>
+                  <span className="text-sm font-semibold text-red-500">
+                    {data.totalBurnedTokens ? data.totalBurnedTokens.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '0'} UVD
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">{t('metricsDashboard.tokenSection.market_cap')}</span>
+                  <span className="text-sm font-semibold">
+                    ${data.marketCap.toLocaleString()}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-3 rounded-lg border border-token/10 bg-gradient-to-br from-token/3 to-transparent">
+              <div className="flex justify-between items-center">
+                <span className="text-xs font-medium uppercase text-muted-foreground">{t('metricsDashboard.tokenSection.view_on_dex')}</span>
+                <div className="flex gap-2">
+                  <Button variant="ghost" size="sm" className="h-6 p-1" asChild>
+                    <a
+                      href="https://lfj.gg/avalanche/swap?outputCurrency=AVAX&inputCurrency=0x4Ffe7e01832243e03668E090706F17726c26d6B2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t('metricsDashboard.tokenSection.lfj')}
+                    </a>
+                  </Button>
+                  <Button variant="ghost" size="sm" className="h-6 p-1" asChild>
+                    <a
+                      href="https://arena.trade/token/0x4ffe7e01832243e03668e090706f17726c26d6b2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {t('metricsDashboard.tokenSection.arena_trade')}
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </div>
           </div>
-
-          {/* Supply Stats */}
-          <div className="glass-card p-5 space-y-4">
-            <div className="flex justify-between items-center pb-3 border-b border-white/5">
-              <span className="text-sm text-gray-400">{t('metricsDashboard.tokenSection.total_supply')}</span>
-              <span className="text-sm font-bold text-white tracking-wide">{data.totalSupply.toLocaleString()}</span>
-            </div>
-            <div className="flex justify-between items-center pb-3 border-b border-white/5">
-              <span className="text-sm text-gray-400">{t('metricsDashboard.tokenSection.circulating_supply')}</span>
-              <span className="text-sm font-bold text-white tracking-wide">{data.circulatingSupply.toLocaleString()}</span>
-            </div>
-            <div className="flex justify-between items-center pb-3 border-b border-white/5">
-              <span className="text-sm text-gray-400">{t('metricsDashboard.tokenSection.market_cap')}</span>
-              <span className="text-sm font-bold text-white tracking-wide">${data.marketCap.toLocaleString()}</span>
-            </div>
-          </div>
-
-          {/* DEX Links */}
-          <div className="glass-card p-4">
-            <span className="text-xs font-bold uppercase text-gray-500 mb-3 block">{t('metricsDashboard.tokenSection.view_on_dex')}</span>
-            <div className="grid grid-cols-2 gap-3">
-              <Button variant="outline" size="sm" className="w-full justify-between group hover:border-token/50" asChild>
-                <a href="https://lfj.gg/avalanche/swap?outputCurrency=AVAX&inputCurrency=0x4Ffe7e01832243e03668E090706F17726c26d6B2" target="_blank" rel="noreferrer">
-                  LFJ <ExternalLink className="h-3 w-3 opacity-50 group-hover:opacity-100" />
-                </a>
-              </Button>
-              <Button variant="outline" size="sm" className="w-full justify-between group hover:border-token/50" asChild>
-                <a href="https://arena.trade/token/0x4ffe7e01832243e03668e090706f17726c26d6b2" target="_blank" rel="noreferrer">
-                  Arena <ExternalLink className="h-3 w-3 opacity-50 group-hover:opacity-100" />
-                </a>
-              </Button>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>

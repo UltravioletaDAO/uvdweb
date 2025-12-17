@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import SEOEnhanced from '../components/SEOEnhanced';
 import OptimizedNFTCard from '../components/OptimizedNFTCard';
 import { useNFTCache } from '../hooks/useNFTCache';
-import { Sparkles, Crown, Ticket, ShoppingBag, ExternalLink } from 'lucide-react';
 
 const NFTPage = () => {
   const { t } = useTranslation();
@@ -35,6 +34,18 @@ const NFTPage = () => {
       chain: 'Avalanche',
       contract: '0x6d08557830959b3441d269145b32dab93206b3d2',
       marketplaceUrl: 'https://magiceden.us/collections/avalanche/echoes-by-ultravioleta-dao-806754961',
+      stats: {
+        uniqueOwners: 52,
+        listed: 1,
+        royalty: '5%'
+      }
+    },
+    vulvas: {
+      name: 'Vulvas de Vulvas, Penes de Penes y Baretos de Baret',
+      description: t('nft.vulvas.description'),
+      chain: 'Ethereum',
+      marketplaceUrl: 'https://opensea.io/collection/vulvas-de-vulvas-penes-de-penes-y-baretos-de-baret',
+      stats: {}
     }
   };
 
@@ -68,13 +79,11 @@ const NFTPage = () => {
     }
   }, [selectedCollection]);
 
-  // Use a faster IPFS gateway
   const convertIPFSToGateway = (ipfsUrl) => {
     if (!ipfsUrl) return '';
     if (ipfsUrl.startsWith('ipfs://')) {
       const hash = ipfsUrl.replace('ipfs://', '');
-      // Use Cloudflare or Pinata for better speed/reliability
-      return `https://gateway.pinata.cloud/ipfs/${hash}`;
+      return `https://ipfs.io/ipfs/${hash}`;
     }
     return ipfsUrl;
   };
@@ -107,21 +116,10 @@ const NFTPage = () => {
     const isReserved = nft.collectionNumber > 55;
     const isPriority = index < 8; // First 8 NFTs load immediately
 
-    // Inject the robust IPFS gateway converter into the NFT object or handle it in the card
-    // Since OptimizedNFTCard expects urls, we might need to patch it or pass the converter?
-    // Looking at OptimizedNFTCard usage, it takes 'nft' prop.
-    // We should probably mutate the NFT object here to have resolved URLs or ensure the component handles it.
-    // Let's create a resolved version.
-    const resolvedNFT = {
-      ...nft,
-      image: convertIPFSToGateway(nft.image),
-      animation_url: convertIPFSToGateway(nft.animation_url)
-    };
-
     return (
       <OptimizedNFTCard
         key={nft.id}
-        nft={resolvedNFT}
+        nft={nft}
         isFibonacci={isFibonacci}
         isReserved={isReserved}
         getCachedUrl={getCachedUrl}
@@ -140,108 +138,134 @@ const NFTPage = () => {
         path="/nfts"
       />
 
-      <div className="min-h-screen bg-background pt-28 pb-20">
-        {/* Decorative Background */}
-        <div className="fixed inset-0 z-0 pointer-events-none">
-          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-ultraviolet/10 rounded-full blur-3xl opacity-20"></div>
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-3xl opacity-20"></div>
-        </div>
-
-        <div className="container mx-auto px-4 max-w-7xl relative z-10">
+      <div className="min-h-screen bg-background py-6 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
+            className="text-center mb-6"
           >
-            <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 mb-4">
+            <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-2">
               {t('nft.title')}
             </h1>
-            <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            <p className="text-sm text-text-secondary max-w-2xl mx-auto">
               {t('nft.subtitle')}
             </p>
           </motion.div>
 
+          {/* Collection selector hidden for now - only showing Echoes */}
+          {/*<div className="flex flex-wrap justify-center gap-4 mb-8">
+            {Object.entries(collections).map(([key, collection]) => (
+              <button
+                key={key}
+                onClick={() => setSelectedCollection(key)}
+                className={`px-6 py-3 rounded-lg font-semibold transition-all ${
+                  selectedCollection === key
+                    ? 'bg-purple-600 text-white shadow-lg'
+                    : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:shadow-md'
+                }`}
+              >
+                {collection.name}
+              </button>
+            ))}
+          </div>*/}
+
           {selectedCollection && (
             <motion.div
               key={selectedCollection}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}
-              className="space-y-8"
             >
-              {/* Collection Header Card */}
-              <div className="glass-panel p-8 relative overflow-hidden group">
-                <div className="absolute inset-0 bg-gradient-to-r from-ultraviolet/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+              <div className="bg-background-secondary border border-ultraviolet-darker/20 rounded-xl p-4 mb-4">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
                   <div className="flex-1">
-                    <h2 className="text-3xl font-bold text-white mb-2 tracking-tight">{collections[selectedCollection].name}</h2>
-                    <p className="text-gray-400 text-lg leading-relaxed">{collections[selectedCollection].description}</p>
+                    <h2 className="text-xl font-bold text-text-primary mb-1">{collections[selectedCollection].name}</h2>
+                    <p className="text-sm text-text-secondary">{collections[selectedCollection].description}</p>
                   </div>
-                  <motion.a
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                  <a
                     href={collections[selectedCollection].marketplaceUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center px-6 py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-semibold rounded-xl transition-all hover:border-ultraviolet/50 hover:shadow-[0_0_20px_rgba(168,85,247,0.2)] backdrop-blur-sm"
+                    className="inline-flex items-center px-4 py-2 bg-primary hover:bg-primary-light text-white text-sm font-semibold rounded-lg transition whitespace-nowrap"
                   >
                     {t('nft.viewOnMarketplace')}
-                    <ExternalLink className="w-4 h-4 ml-2" />
-                  </motion.a>
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
                 </div>
               </div>
 
               {selectedCollection === 'echoes' && (
-                <div className="grid gap-6 md:grid-cols-12">
-                  {/* Superpowers Panel */}
-                  <div className="md:col-span-8 glass-card p-6 border-ultraviolet/20">
-                    <div className="flex items-center gap-2 mb-6">
-                      <Sparkles className="text-yellow-400 w-5 h-5" />
-                      <h3 className="text-lg font-bold text-white tracking-wide uppercase">
-                        {t('nft.echoes.superpowers.title')}
-                      </h3>
-                    </div>
-
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                      {[
-                        { icon: "💰", title: "3-Month Airdrop", subtitle: "$UVD Rewards" },
-                        { icon: "🎟️", title: "Priority WL", subtitle: "\"The Order\"" },
-                        { icon: "🎪", title: "Free Event", subtitle: "Aug 24, 2025" },
-                        { icon: "🛍️", title: "13% OFF", subtitle: "Merch" }
-                      ].map((power, idx) => (
-                        <div key={idx} className="bg-white/5 border border-white/5 rounded-xl p-4 hover:border-ultraviolet/30 transition-all hover:-translate-y-1">
-                          <div className="text-2xl mb-2">{power.icon}</div>
-                          <div className="font-bold text-white text-sm">{power.title}</div>
-                          <div className="text-xs text-gray-400">{power.subtitle}</div>
+                <div className="bg-background-secondary border border-ultraviolet-darker/20 rounded-lg p-4 mb-4">
+                  <h3 className="text-sm font-semibold text-text-primary mb-3 text-center">
+                    ✨ {t('nft.echoes.superpowers.title')} ✨
+                  </h3>
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
+                    <div className="bg-background/50 rounded p-2">
+                      <div className="flex items-center text-xs">
+                        <span className="mr-2">💰</span>
+                        <div>
+                          <div className="font-semibold text-text-primary">3-Month Airdrop</div>
+                          <div className="text-text-secondary">$UVD Rewards</div>
                         </div>
-                      ))}
+                      </div>
                     </div>
+                    <div className="bg-background/50 rounded p-2">
+                      <div className="flex items-center text-xs">
+                        <span className="mr-2">🎟️</span>
+                        <div>
+                          <div className="font-semibold text-text-primary">Priority WL</div>
+                          <div className="text-text-secondary">"The Order"</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-background/50 rounded p-2">
+                      <div className="flex items-center text-xs">
+                        <span className="mr-2">🎪</span>
+                        <div>
+                          <div className="font-semibold text-text-primary">Free Event</div>
+                          <div className="text-text-secondary">Aug 24, 2025</div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="bg-background/50 rounded p-2">
+                      <div className="flex items-center text-xs">
+                        <span className="mr-2">🛍️</span>
+                        <div>
+                          <div className="font-semibold text-text-primary">13% OFF</div>
+                          <div className="text-text-secondary">Merch</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-                    <div className="mt-6 p-4 rounded-xl bg-gradient-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/20 text-center">
-                      <span className="font-bold text-yellow-200 text-sm">
+                  <div className="bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 border border-yellow-500/30 rounded p-2">
+                    <div className="text-center text-xs">
+                      <span className="font-bold text-yellow-700 dark:text-yellow-300">
                         🌟 Fibonacci NFTs (2X Rewards): #1, #2, #3, #5, #8, #13, #21, #34, #55
                       </span>
                     </div>
                   </div>
 
-                  {/* Treasury Panel */}
-                  <div className="md:col-span-4 glass-card p-6 flex flex-col justify-center">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 bg-white/5 rounded-xl">
-                        <Crown className="w-6 h-6 text-ultraviolet" />
-                      </div>
-                      <div>
-                        <h3 className="text-lg font-bold text-white mb-2">
-                          {t('nft.echoes.treasury.title')}
-                        </h3>
-                        <p className="text-sm text-gray-400 leading-relaxed">
-                          {t('nft.echoes.treasury.description')}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="mt-6 text-xs text-center text-gray-500 font-mono bg-black/20 p-2 rounded-lg">
-                      Range: #56 - #89
+                  <div className="text-xs text-text-secondary mt-2 text-center">
+                    <span>¹ Venue entry only. ² International shipping not included.</span>
+                  </div>
+                </div>
+              )}
+
+              {selectedCollection === 'echoes' && (
+                <div className="bg-background-secondary border border-ultraviolet-darker/20 rounded-lg p-4 mb-6">
+                  <div className="flex items-start gap-3">
+                    <span className="text-lg">🏛️</span>
+                    <div className="flex-1">
+                      <h3 className="text-sm font-semibold text-text-primary mb-1">
+                        {t('nft.echoes.treasury.title')}
+                      </h3>
+                      <p className="text-xs text-text-secondary">
+                        {t('nft.echoes.treasury.description')}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -251,12 +275,7 @@ const NFTPage = () => {
                 <>
                   {loading ? (
                     <div className="flex justify-center items-center h-64">
-                      <div className="relative">
-                        <div className="w-16 h-16 border-4 border-ultraviolet/20 border-t-ultraviolet rounded-full animate-spin"></div>
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-xs font-mono text-ultraviolet">NFT</span>
-                        </div>
-                      </div>
+                      <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-purple-600"></div>
                     </div>
                   ) : (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -265,6 +284,27 @@ const NFTPage = () => {
                   )}
                 </>
               )}
+
+              {/* Vulvas collection hidden for now */}
+              {/*selectedCollection === 'vulvas' && (
+                <div className="text-center py-12 bg-white dark:bg-gray-800 rounded-xl">
+                  <h3 className="text-2xl font-bold mb-4">{t('nft.vulvas.title')}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
+                    {t('nft.vulvas.info')}
+                  </p>
+                  <a
+                    href={collections.vulvas.marketplaceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center px-6 py-3 bg-purple-600 text-white font-bold rounded-lg hover:bg-purple-700 transition"
+                  >
+                    {t('nft.viewOnOpenSea')}
+                    <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                    </svg>
+                  </a>
+                </div>
+              )*/}
             </motion.div>
           )}
         </div>

@@ -4,26 +4,26 @@ import { Users, Search, Video } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const currentDaoMembers = [
-  "Ultra", "x4", "Colega", "Txntacion", "Alejo", "f3l1p3", "Teddy Saint",
-  "Juan Jumaga", "cdt", "Cyber Paisa", "nezzcold", "Vens", "Yesi", "Fredino",
-  "Waira Tamayo", "DavidZO", "Sindy Arenas", "JuanH", "DatBoi",
-  "Jangx", "David Rodríguez", "Juyan", "DogonPay", "Papossa",
-  "Stov3", "Brandon Heat", "lualjarami", "ACPM", "Roypi", "0xPineda", "SaemTwentyTwo",
-  "Jokker", "Andres", "Cranium", "Palacio", "0xvital.nad", "iEFx", "Detx8", "D R",
-  "Valenciacrypto", "0xSoulAvax", "Paloteroz", "xDream", "Poo", "Fabin",
-  "Allan", "Juliboy", "Mar", "ogsebitas", "Kysaug", "Burgos Σ", "Juan Suarez",
-  "1Nocty", "Sami Madrid", "Nizo", "MichaelGA", "David Barinas", "Juanmansito",
-  "Zeluz", "Mabu", "21", "Julius", "OnlyZ_", "Alejandro Rosero", "Manussa21",
-  "Gathus_", "Bob Cokirow", "JuanCCF", "Kadrez", "0xstiven", "Fixie",
-  "San", "JuanWx_", "sxxneiderxx", "LuismiLabs", "Rehabilitation in Progress",
-  "Bogotá Mag", "athan", "Karenn", "Jorge Toledo", "Ari", "ElBitterX", "r3c",
-  "arracacha", "Hanma", "chocoflow", "Elian", "Pkante", "0xyuls", "Juandi",
-  "painbrayan", "idk", "nich", "David zulodaes", "Agudelo", "collin", "daninft",
-  "Jeinson22", "Jhon Fray", "Dylan Alexander", "knightinstruction", "Freddy Sebastian",
-  "Luis0xz", "Alx Dlarch", "daniiel_zp", "Crashxh", "PitBullPrime", "Mario Peña Alcazar",
-  "Crew", "Shelteer", "Alexis Cedeño", "Daniel S Morales", "Carza",
+  "Ultra", "x4", "Colega", "Txntacion", "Alejo", "f3l1p3", "Teddy Saint", 
+  "Juan Jumaga", "cdt", "Cyber Paisa", "nezzcold", "Vens", "Yesi", "Fredino", 
+  "Waira Tamayo", "DavidZO", "Sindy Arenas", "JuanH", "DatBoi", 
+  "Jangx", "David Rodríguez", "Juyan", "DogonPay", "Papossa", 
+  "Stov3", "Brandon Heat", "lualjarami", "ACPM", "Roypi", "0xPineda", "SaemTwentyTwo", 
+  "Jokker", "Andres", "Cranium", "Palacio", "0xvital.nad", "iEFx", "Detx8", "D R", 
+  "Valenciacrypto", "0xSoulAvax", "Paloteroz", "xDream", "Poo", "Fabin", 
+  "Allan", "Juliboy", "Mar", "ogsebitas", "Kysaug", "Burgos Σ", "Juan Suarez", 
+  "1Nocty", "Sami Madrid", "Nizo", "MichaelGA", "David Barinas", "Juanmansito", 
+  "Zeluz", "Mabu", "21", "Julius", "OnlyZ_", "Alejandro Rosero", "Manussa21", 
+  "Gathus_", "Bob Cokirow", "JuanCCF", "Kadrez", "0xstiven", "Fixie", 
+  "San", "JuanWx_", "sxxneiderxx", "LuismiLabs", "Rehabilitation in Progress", 
+  "Bogotá Mag", "athan", "Karenn", "Jorge Toledo", "Ari", "ElBitterX", "r3c", 
+  "arracacha", "Hanma", "chocoflow", "Elian", "Pkante", "0xyuls", "Juandi", 
+  "painbrayan", "idk", "nich", "David zulodaes", "Agudelo", "collin", "daninft", 
+  "Jeinson22", "Jhon Fray", "Dylan Alexander", "knightinstruction", "Freddy Sebastian", 
+  "Luis0xz", "Alx Dlarch", "daniiel_zp", "Crashxh", "PitBullPrime", "Mario Peña Alcazar", 
+  "Crew", "Shelteer", "Alexis Cedeño", "Daniel S Morales", "Carza", 
   "Andres92", "Zircon", "alejojc", "IZ", "Danieeel", "Loaiza", "juanpkante", "0xsoulavax", "JFQ", "Sandusky",
-  "cabomarzo", "0xj4an", "San Valencia", "Dev Cristobal"
+"cabomarzo", "0xj4an", "San Valencia","Dev Cristobal"
 ];
 
 // Utility function to shuffle array randomly
@@ -70,7 +70,7 @@ export const ContributorSection = () => {
         `${process.env.REACT_APP_API_URL}/apply/all`,
         `${process.env.REACT_APP_API_URL}/applications`
       ];
-
+      
       let allApplications = [];
       // Also attempt to load from local JSON snapshot generated from DB
       try {
@@ -79,18 +79,18 @@ export const ContributorSection = () => {
           const localData = await localResponse.json();
           const normalized = Array.isArray(localData)
             ? localData.map(item => ({
-              telegram: item.telegram || '',
-              twitter: item.twitter || '',
-              x: item.twitter || '',
-              name: item.fullName || '',
-            }))
+                telegram: item.telegram || '',
+                twitter: item.twitter || '',
+                x: item.twitter || '',
+                name: item.fullName || '',
+              }))
             : [];
           allApplications = [...allApplications, ...normalized];
         }
       } catch (e) {
         console.log('Failed to fetch local applicants JSON:', e);
       }
-
+      
       for (const endpoint of endpoints) {
         try {
           const response = await fetch(endpoint);
@@ -106,9 +106,9 @@ export const ContributorSection = () => {
           console.log(`Failed to fetch from ${endpoint}:`, err);
         }
       }
-
+      
       const profiles = {};
-
+      
       // Create a map of names to X profiles
       allApplications.forEach(app => {
         // Get all possible names from the application
@@ -116,7 +116,7 @@ export const ContributorSection = () => {
         const discordName = (app.discord || '').toLowerCase();
         const xProfile = app.twitter || app.x || '';
         const name = (app.name || '').toLowerCase();
-
+        
         // Clean the X profile handle (robust against full URLs and paths)
         const cleanXProfile = (() => {
           if (!xProfile) return '';
@@ -133,7 +133,7 @@ export const ContributorSection = () => {
           s = s.replace(/^@+/, '');
           return s;
         })();
-
+        
         if (cleanXProfile) {
           // Try to find matches in our member list
           currentDaoMembers.forEach(member => {
@@ -141,17 +141,17 @@ export const ContributorSection = () => {
             const telegramClean = telegramName.replace(/[^a-z0-9]/g, '');
             const discordClean = discordName.replace(/[^a-z0-9]/g, '');
             const nameClean = name.replace(/[^a-z0-9]/g, '');
-
+            
             // Check for exact or partial matches
             if ((telegramClean && (memberLower === telegramClean || memberLower.includes(telegramClean) || telegramClean.includes(memberLower))) ||
-              (discordClean && (memberLower === discordClean || memberLower.includes(discordClean) || discordClean.includes(memberLower))) ||
-              (nameClean && (memberLower === nameClean || memberLower.includes(nameClean) || nameClean.includes(memberLower)))) {
+                (discordClean && (memberLower === discordClean || memberLower.includes(discordClean) || discordClean.includes(memberLower))) ||
+                (nameClean && (memberLower === nameClean || memberLower.includes(nameClean) || nameClean.includes(memberLower)))) {
               profiles[member] = cleanXProfile;
             }
           });
         }
       });
-
+      
       console.log('Matched profiles:', profiles);
       // Do not overwrite precomputed map if it already exists
       setMemberProfiles((prev) => (prev && Object.keys(prev).length ? prev : profiles));
@@ -162,7 +162,7 @@ export const ContributorSection = () => {
     }
   };
 
-  const filteredMembers = shuffledMembers.filter(member =>
+  const filteredMembers = shuffledMembers.filter(member => 
     member.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -170,11 +170,11 @@ export const ContributorSection = () => {
   const getMemberData = (member) => {
     const profile = memberProfiles[member];
     if (!profile) return null;
-
+    
     if (typeof profile === 'string') {
       return { twitter: profile, stream: null };
     }
-
+    
     return {
       twitter: profile.twitter || '',
       stream: profile.stream || null
@@ -187,7 +187,7 @@ export const ContributorSection = () => {
       case 'twitch':
         return (
           <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
+            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
           </svg>
         );
       case 'kick':
@@ -199,149 +199,118 @@ export const ContributorSection = () => {
     }
   };
 
-  const handleCardClick = (twitterUrl) => {
-    if (twitterUrl) {
-      const url = twitterUrl.startsWith('http') ? twitterUrl : `https://x.com/${twitterUrl.replace('@', '')}`;
-      window.open(url, '_blank', 'noopener,noreferrer');
-    }
-  };
-
   return (
-    <div className="space-y-8">
-      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+    <div className="space-y-6">
+      <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h2 className="text-3xl font-bold flex items-center gap-3">
-            <span className="text-4xl filter drop-shadow hover:scale-110 transition-transform cursor-default">👥</span>
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-              {shuffledMembers.length} {t('metricsDashboard.contributorSection.title').toUpperCase()}
-            </span>
+          <h2 className="text-2xl font-bold flex items-center gap-3 mb-2">
+            <div className="p-2 rounded-lg bg-primary/15">
+              <Users className="h-5 w-5 text-primary" />
+            </div>
+            <span className="text-primary">{shuffledMembers.length} {t('metricsDashboard.contributorSection.title').toUpperCase()}</span>
           </h2>
-          <p className="text-gray-400 mt-2 text-lg">
+          <p className="text-sm text-muted-foreground ml-11">
             {t('metricsDashboard.contributorSection.subtitle')}
           </p>
         </div>
+      </div>
 
-        <div className="relative w-full md:w-96 group">
-          <div className="absolute inset-0 bg-ultraviolet/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-          <div className="relative bg-background-lighter/50 backdrop-blur-md rounded-2xl border border-white/10 p-1 flex items-center focus-within:border-ultraviolet/50 transition-colors">
-            <Search className="w-5 h-5 text-gray-400 ml-3" />
+
+
+      <div className="bg-background-lighter rounded-xl p-6 border border-ultraviolet-darker/20">
+        <div className="mb-6">
+          <div className="relative max-w-xl">
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-text-secondary" />
             <input
               type="text"
               placeholder={t('metricsDashboard.contributorSection.searchPlaceholder')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-transparent border-none text-white placeholder-gray-500 focus:ring-0 px-3 py-2"
+              className="w-full pl-10 pr-4 py-2 bg-background border border-ultraviolet-darker/20 rounded-lg
+                focus:ring-2 focus:ring-ultraviolet focus:border-transparent
+                text-text-primary placeholder-text-secondary"
             />
           </div>
         </div>
-      </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredMembers.map((member, index) => {
-          const memberData = getMemberData(member);
-          const isStreamer = memberData?.stream;
-          const twitterUrl = memberData?.twitter;
-
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.02 }}
-              onClick={() => handleCardClick(twitterUrl)}
-              className={`
-                relative h-full min-h-[140px] p-6 rounded-2xl transition-all duration-300 group cursor-pointer
-                ${isStreamer
-                  ? 'bg-gradient-to-br from-purple-900/40 to-background border border-purple-500/30 hover:shadow-[0_0_30px_rgba(168,85,247,0.2)]'
-                  : 'glass-card hover:bg-white/5 box-border'
-                }
-                hover:-translate-y-1 hover:border-white/20
-              `}
-            >
-              <div className="flex flex-col h-full justify-between gap-4">
-                <div className="flex justify-between items-start">
-                  <div className="flex items-center gap-3">
-                    <div className={`w-10 h-10 rounded-full flex items-center justify-center text-lg font-bold shadow-inner ${isStreamer
-                      ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30'
-                      : 'bg-white/5 text-gray-300 border border-white/10'
-                      }`}>
-                      {member.charAt(0).toUpperCase()}
-                    </div>
-                    <div>
-                      <h3 className="font-bold text-lg text-white group-hover:text-cyan-400 transition-colors line-clamp-1">
-                        {member}
-                      </h3>
-                      <div className="flex items-center gap-2 text-xs text-gray-400">
-                        {isStreamer ? (
-                          <span className="text-purple-400 flex items-center gap-1">
-                            <span className="relative flex h-2 w-2">
-                              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-purple-400 opacity-75"></span>
-                              <span className="relative inline-flex rounded-full h-2 w-2 bg-purple-500"></span>
-                            </span>
-                            Streamer
-                          </span>
-                        ) : (
-                          <span className="flex items-center gap-1">
-                            <div className="w-1.5 h-1.5 rounded-full bg-green-500/50" />
-                            Contributor
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Top Right Icon */}
-                  {twitterUrl && (
-                    <div className="bg-white/5 p-2 rounded-full text-gray-400 group-hover:text-white group-hover:bg-cyan-500 transition-all">
-                      <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                      </svg>
-                    </div>
-                  )}
-                </div>
-
-                {/* Additional Links Row */}
-                <div className="pt-4 mt-auto border-t border-white/5 flex items-center justify-between">
-                  <div className="text-xs text-gray-500 font-mono">
-                    {twitterUrl ? `@${twitterUrl.replace(/^@/, '')}` : 'No visuals'}
-                  </div>
-
-                  {isStreamer && memberData.stream && (
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const url = memberData.stream.url.startsWith('http') ? memberData.stream.url : `https://${memberData.stream.url}`;
-                        window.open(url, '_blank', 'noopener,noreferrer');
-                      }}
-                      className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-purple-500/20 hover:bg-purple-500/40 text-purple-300 text-xs font-semibold uppercase tracking-wider transition-all border border-purple-500/20 hover:border-purple-500/50"
-                    >
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          {filteredMembers.map((member, index) => {
+            const memberData = getMemberData(member);
+            const isStreamer = memberData?.stream;
+            
+            return (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: index * 0.01 }}
+                className={`bg-background rounded-lg px-4 py-4 text-sm text-text-primary
+                  border hover:bg-ultraviolet/5 transition-all cursor-pointer group
+                  flex flex-col items-start min-h-[80px] justify-between relative
+                  ${isStreamer 
+                    ? 'border-purple-500/40 bg-gradient-to-br from-purple-500/5 to-pink-500/5 hover:border-purple-400/60' 
+                    : 'border-ultraviolet-darker/10 hover:border-ultraviolet/30'
+                  }`}
+              >
+                {isStreamer && (
+                  <div className="absolute top-2 right-2">
+                    <div className="flex items-center gap-1 px-2 py-1 bg-purple-500/20 text-purple-300 text-xs rounded-full border border-purple-500/40">
                       {getPlatformIcon(memberData.stream.platform)}
-                      {memberData.stream.platform}
-                    </button>
-                  )}
+                      <span className="uppercase font-semibold">{memberData.stream.platform}</span>
+                    </div>
+                  </div>
+                )}
+                
+                <div className="w-full">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className={`w-2 h-2 rounded-full group-hover:animate-pulse flex-shrink-0 ${
+                      isStreamer ? 'bg-purple-400' : 'bg-green-400'
+                    }`} />
+                    <span className="text-sm font-medium leading-tight break-words">{member}</span>
+                  </div>
+                  
+                  <div className="space-y-1">
+                    {memberData?.twitter && (
+                      <a 
+                        href={memberData.twitter.startsWith('http') ? memberData.twitter : `https://x.com/${memberData.twitter.replace('@', '')}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-ultraviolet hover:text-ultraviolet-light flex items-center gap-1 text-xs"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                        <span className="break-all">@{memberData.twitter.replace(/^@/, '')}</span>
+                      </a>
+                    )}
+                    
+                    {isStreamer && (
+                      <a 
+                        href={memberData.stream.url.startsWith('http') ? memberData.stream.url : `https://${memberData.stream.url}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-purple-400 hover:text-purple-300 flex items-center gap-1 text-xs"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        {getPlatformIcon(memberData.stream.platform)}
+                        <span className="break-all">{memberData.stream.url.replace(/^https?:\/\//, '')}</span>
+                      </a>
+                    )}
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          );
-        })}
-      </div>
+              </motion.div>
+            );
+          })}
+        </div>
 
-      {loading && (
-        <div className="flex justify-center items-center py-20">
-          <div className="relative">
-            <div className="w-16 h-16 border-4 border-ultraviolet/20 border-t-ultraviolet rounded-full animate-spin" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-8 h-8 bg-ultraviolet/10 rounded-full animate-pulse" />
-            </div>
+        {loading && (
+          <div className="flex justify-center items-center py-8">
+            <div className="animate-spin rounded-full h-8 w-8 border-2 border-ultraviolet border-t-transparent" />
           </div>
-        </div>
-      )}
+        )}
 
-      {!loading && filteredMembers.length === 0 && (
-        <div className="text-center py-20 opacity-50">
-          <p className="text-xl text-gray-400">No contributors found matching "{searchTerm}"</p>
-        </div>
-      )}
+      </div>
     </div>
   );
 };
