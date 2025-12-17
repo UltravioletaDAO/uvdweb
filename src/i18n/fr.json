@@ -227,6 +227,7 @@
   },
   "common": {
     "cancel": "Annuler",
+    "anonymous": "Anonyme",
     "disconnect": "Déconnecter"
   },
   "bountyCreation": {
@@ -235,7 +236,7 @@
     "no_access_message": "Votre wallet ne remplit pas les conditions pour créer des bounties.",
     "checking_access": "Vérification des permissions d'accès...",
     "access_granted": "Accès Vérifié!",
-    "responsibility_notice": "Si vous faites partie du DAO ou si vous avez simplement la quantité requise d'UVD et souhaitez créer un Bounty, vous devez assumer la responsabilité de la récompense du Bounty. Contactez-nous pour finaliser le solde du bounty.",
+    "responsibility_notice": "Si vous êtes membre du DAO ou si vous avez simplement 1M d'UVD et souhaitez créer un Bounty, vous devez assumer la responsabilité de la récompense du Bounty.\n\nVous pouvez créer des Bounties pour définir des tâches ou des objectifs de développement à implémenter à l'intérieur ou à l'extérieur du DAO, pas seulement pour l'engagement. Nous avons les meilleurs développeurs.\n\nContactez-nous pour finaliser le solde du bounty.",
     "contact_us": "Contactez-nous",
     "requirement_label": "Exigence",
     "wrong_network_title": "Mauvais Réseau",
@@ -278,7 +279,8 @@
       "in_progress": "En cours",
       "in_review": "En vote",
       "voting": "En vote",
-      "done": "Terminé"
+      "done": "Terminé",
+      "finished": "Terminée"
     },
     "priority_label": "Priorité",
     "priority_values": {
@@ -311,7 +313,10 @@
     "connect_wallet_to_submit": "Vous devez connecter votre wallet pour soumettre une tâche.",
     "voting_in_progress": "Vote en cours",
     "submissions_closed": "Les soumissions sont fermées. Votez pour le gagnant sur Snapshot.",
-    "vote_on_snapshot": "Voter sur Snapshot"
+    "bounty_finished": "Bounty terminée",
+    "bounty_completed_message": "Cette bounty a été complétée et les récompenses distribuées.",
+    "vote_on_snapshot": "Voter sur Snapshot",
+    "view_results_on_snapshot": "Voir les résultats sur Snapshot"
   },
   "submissionList": {
     "loading": "Chargement des soumissions...",

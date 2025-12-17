@@ -783,10 +783,10 @@ const Bounties = () => {
                         </div>
                         <div>
                           <h3 className="text-lg font-semibold text-purple-300">
-                            {t('bountyDetails.voting_in_progress') || 'Votación en progreso'}
+                            {t('bountyDetails.voting_in_progress')}
                           </h3>
                           <p className="text-sm text-purple-200/70">
-                            {t('bountyDetails.submissions_closed') || 'Las entregas están cerradas. Vota por el ganador en Snapshot.'}
+                            {t('bountyDetails.submissions_closed')}
                           </p>
                         </div>
                       </div>
@@ -799,7 +799,39 @@ const Bounties = () => {
                         <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                           <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
                         </svg>
-                        {t('bountyDetails.vote_on_snapshot') || 'Votar en Snapshot'}
+                        {t('bountyDetails.vote_on_snapshot')}
+                      </a>
+                    </div>
+                  )}
+
+                  {/* Mensaje cuando la bounty está terminada */}
+                  {(selectedBounty.status === 'finished' || selectedBounty.status === 'done') && (
+                    <div className="mt-6 p-5 bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl border border-green-500/30">
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className="p-2 bg-green-500/20 rounded-lg">
+                          <svg className="w-6 h-6 text-green-400" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-lg font-semibold text-green-300">
+                            {t('bountyDetails.bounty_finished')}
+                          </h3>
+                          <p className="text-sm text-green-200/70">
+                            {t('bountyDetails.bounty_completed_message')}
+                          </p>
+                        </div>
+                      </div>
+                      <a
+                        href={SNAPSHOT_VOTING_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center justify-center gap-2 w-full py-3 px-4 bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-medium rounded-lg transition-all duration-200"
+                      >
+                        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        {t('bountyDetails.view_results_on_snapshot')}
                       </a>
                     </div>
                   )}

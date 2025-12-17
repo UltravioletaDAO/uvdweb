@@ -449,7 +449,7 @@ const WalletConnect = ({ onWalletConnected, onWalletDisconnected }) => {
             onClick={() => setShowWalletSelector(false)}
             className="w-full mt-3 text-sm text-text-secondary hover:text-text-primary transition-colors"
           >
-            Cancelar
+            {t('common.cancel')}
           </button>
         </div>
       )}

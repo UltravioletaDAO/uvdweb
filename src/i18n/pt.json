@@ -227,6 +227,7 @@
   },
   "common": {
     "cancel": "Cancelar",
+    "anonymous": "Anónimo",
     "disconnect": "Desconectar"
   },
   "bountyCreation": {
@@ -235,7 +236,7 @@
     "no_access_message": "Sua wallet não cumpre os requisitos para criar bounties.",
     "checking_access": "Verificando permissões de acesso...",
     "access_granted": "Acesso Verificado!",
-    "responsibility_notice": "Se você faz parte do DAO ou simplesmente tem a quantidade necessária de UVD e deseja criar um Bounty, você deve assumir a responsabilidade pela recompensa do Bounty. Entre em contato conosco para finalizar o saldo do bounty.",
+    "responsibility_notice": "Se você é membro do DAO ou simplesmente tem 1M de UVD e deseja criar um Bounty, você deve assumir a responsabilidade pela recompensa do Bounty.\n\nVocê pode criar Bounties para definir tarefas ou metas de desenvolvimento a serem implementadas dentro ou fora do DAO, não apenas para engajamento. Contamos com os melhores Devs.\n\nEntre em contato conosco para finalizar o saldo do bounty.",
     "contact_us": "Entre em contato",
     "requirement_label": "Requisito",
     "wrong_network_title": "Rede Incorreta",
@@ -278,7 +279,8 @@
       "in_progress": "Em andamento",
       "in_review": "Em votação",
       "voting": "Em votação",
-      "done": "Concluída"
+      "done": "Concluída",
+      "finished": "Finalizada"
     },
     "priority_label": "Prioridade",
     "priority_values": {
@@ -311,7 +313,10 @@
     "connect_wallet_to_submit": "Você precisa conectar sua wallet para enviar uma tarefa.",
     "voting_in_progress": "Votação em andamento",
     "submissions_closed": "As entregas estão encerradas. Vote no vencedor no Snapshot.",
-    "vote_on_snapshot": "Votar no Snapshot"
+    "bounty_finished": "Bounty finalizada",
+    "bounty_completed_message": "Esta bounty foi completada e as recompensas distribuídas.",
+    "vote_on_snapshot": "Votar no Snapshot",
+    "view_results_on_snapshot": "Ver resultados no Snapshot"
   },
   "submissionList": {
     "loading": "Carregando entregas...",

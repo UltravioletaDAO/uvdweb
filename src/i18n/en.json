@@ -688,6 +688,7 @@
   },
   "common": {
     "cancel": "Cancel",
+    "anonymous": "Anonymous",
     "disconnect": "Disconnect",
     "locale": "en_US",
     "close": "Close",
@@ -2344,7 +2345,7 @@
     "switch_step4": "If not listed, add it manually with Chain ID: 43114",
     "error_wallet_required": "You must connect your wallet to create a bounty",
     "error_insufficient_tokens": "You don't have enough UVD tokens to create bounties",
-    "responsibility_notice": "If you are from the DAO or simply have the amount of UVD and want to create a Bounty, you must be responsible for the Bounty reward. Contact us to finalize the bounty balance.",
+    "responsibility_notice": "If you are a member of the DAO or simply have 1M UVD and want to create a Bounty, you must be responsible for the Bounty reward.\n\nYou can create Bounties to set tasks or development goals to be implemented inside or outside the DAO, not just for engagement. We have the best Devs.\n\nContact us to finalize the bounty balance.",
     "contact_us": "Contact Us"
   },
   "bountyColumns": {
@@ -2353,7 +2354,8 @@
       "in_voting": "In Voting",
       "finished": "Finished"
     },
-    "empty_message": "No bounties in this category"
+    "empty_message": "No bounties in this category",
+    "loading": "Loading..."
   },
   "bountyDetails": {
     "reward_label": "Reward",
@@ -2371,12 +2373,18 @@
     "submission_success_message": "Your submission has been sent successfully!",
     "error_bounty_not_selected": "No bounty selected",
     "vote_on_snapshot": "Vote on Snapshot",
+    "view_results_on_snapshot": "View results on Snapshot",
+    "voting_in_progress": "Voting in progress",
+    "submissions_closed": "Submissions are closed. Vote for the winner on Snapshot.",
+    "bounty_finished": "Bounty finished",
+    "bounty_completed_message": "This bounty has been completed and rewards distributed.",
     "status_values": {
       "todo": "To Do",
       "in_review": "In Review",
       "in_voting": "In Voting",
       "voting": "In Voting",
-      "done": "Done"
+      "done": "Done",
+      "finished": "Finished"
     },
     "priority_values": {
       "low": "Low",

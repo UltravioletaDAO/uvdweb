@@ -106,7 +106,7 @@ const SubmissionList = ({ bountyId }) => {
       <div className="space-y-3">
         {submissions.map((submission) => {
           const profile = profileMap[submission.submitterName] || {};
-          const displayName = profile.name || (submission.submitterName ? submission.submitterName.slice(0, 6) + '...' + submission.submitterName.slice(-4) : 'Anónimo');
+          const displayName = profile.name || (submission.submitterName ? submission.submitterName.slice(0, 6) + '...' + submission.submitterName.slice(-4) : t('common.anonymous'));
           const avatarUrl = profile.avatar ? convertIpfsUrl(profile.avatar) : (submission.submitterName ? `https://effigy.im/a/${submission.submitterName}.svg` : null);
           return (
             <div key={submission._id} className="bg-background/50 p-3 rounded-lg border border-ultraviolet/10 flex items-center gap-3">

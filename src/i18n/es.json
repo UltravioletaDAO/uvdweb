@@ -595,6 +595,7 @@
   },
   "common": {
     "cancel": "Cancelar",
+    "anonymous": "Anónimo",
     "disconnect": "Desconectar",
     "locale": "es_ES",
     "close": "Cerrar",
@@ -2013,7 +2014,8 @@
       "in_voting": "En Votación",
       "finished": "Terminadas"
     },
-    "empty_message": "No hay bounties en esta categoría"
+    "empty_message": "No hay bounties en esta categoría",
+    "loading": "Cargando..."
   },
   "bountyDetails": {
     "reward_label": "Recompensa",
@@ -2031,12 +2033,18 @@
     "submission_success_message": "¡Tu entrega ha sido enviada exitosamente!",
     "error_bounty_not_selected": "Ninguna bounty seleccionada",
     "vote_on_snapshot": "Votar en Snapshot",
+    "view_results_on_snapshot": "Ver resultado en Snapshot",
+    "voting_in_progress": "Votación en progreso",
+    "submissions_closed": "Las entregas están cerradas. Vota por el ganador en Snapshot.",
+    "bounty_finished": "Bounty finalizada",
+    "bounty_completed_message": "Esta bounty ha sido completada y las recompensas distribuidas.",
     "status_values": {
       "todo": "Por Hacer",
       "in_review": "En Revisión",
       "in_voting": "En Votación",
       "voting": "En Votación",
-      "done": "Completada"
+      "done": "Completada",
+      "finished": "Terminada"
     },
     "priority_values": {
       "low": "Baja",
