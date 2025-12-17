@@ -1,841 +1,188 @@
 {
-  "seo": {
-    "defaultDescription": "Construire l'avenir du Web3 en Amérique latine avec le Facilitateur x402 pour les paiements sans gaz des agents IA, la gouvernance décentralisée et la gestion collaborative du trésor. Active les méta-transactions cross-chain avec EIP-3009.",
-    "facilitator": {
-      "title": "Facilitateur x402 - Paiements Sans Gaz pour Agents IA",
-      "description": "Permet aux agents IA d'effectuer des transactions autonomes sans frais de gaz en utilisant le protocole x402 avec des méta-transactions EIP-3009 sur les réseaux Avalanche, Base, Celo et HyperEVM.",
-      "keywords": "facilitateur x402, transactions sans gaz, EIP-3009, méta-transactions, paiements agents IA, paiements cross-chain, paiements sans état, paiements HTTP, protocole x402, Web3 sans gaz, agents autonomes, signatures EIP-712, transferWithAuthorization, Avalanche sans gaz, Base sans gaz, Celo sans gaz, HyperEVM sans gaz, zéro frais gaz, paiements fiables, règlement instantané"
-    }
-  },
-  "nav": {
-    "home": "Accueil",
-    "about": "À propos",
-    "metrics": "Métriques",
-    "services": "Services"
-  },
-  "features": {
-    "community": {
-      "title": "Rejoignez Notre Communauté",
-      "description": "Connectez-vous avec des constructeurs, créateurs et innovateurs Web3 à travers l'Amérique latine",
-      "button": "Rejoindre Maintenant"
-    },
-    "token": {
-      "title": "Token UVD",
-      "description": "Token natif de gouvernance et d'utilité qui alimente l'écosystème UltraVioleta",
-      "button": "En Savoir Plus"
-    },
-    "raffles": {
-      "title": "Tirages au Sort Communautaires",
-      "description": "Tirages exclusifs et récompenses pour les membres actifs de la DAO"
-    }
-  },
-  "benefits": {
-    "title": "Pourquoi Rejoindre UltraVioleta DAO?",
-    "experts": {
-      "title": "Apprenez des Experts",
-      "description": "Accédez à des ateliers exclusifs, des cours et du mentorat de leaders Web3"
-    },
-    "networking": {
-      "title": "Réseau et Collaboration",
-      "description": "Connectez-vous avec des constructeurs partageant les mêmes idées et créez ensemble des projets impactants"
-    },
-    "alphas": {
-      "title": "Accès Anticipé et Alphas",
-      "description": "Obtenez un accès anticipé aux nouveaux projets, airdrops et informations alpha"
-    }
-  },
-  "footer": {
-    "legal_entity": "Ultravioleta DAO LLC",
-    "address": "2232 Dell Range Blvd. Suite 245-3305",
-    "city_state_zip": "Cheyenne, WY 82009",
-    "country": "États-Unis",
-    "all_rights_reserved": "Tous droits réservés",
-    "quick_links": "Liens Rapides",
-    "community": "Communauté",
-    "legal": "Légal",
-    "brand": {
-      "tagline": "Collectif Web3",
-      "description": "Nous concevons des systèmes de gouvernance, des expériences de membres et des moteurs de croissance pour des communautés on-chain. UltraVioleta DAO réunit builders, stratèges et opérateurs pour lancer des écosystèmes tokenisés aux résultats mesurables."
-    },
-    "navigation_title": "Navigation",
-    "links": {
-      "title": "Restez Connectés",
-      "twitter": "Twitter / X",
-      "discord": "Discord",
-      "github": "GitHub",
-      "linktree": "Linktree"
-    },
-    "registered_label": "Entité enregistrée",
-    "operations": {
-      "title": "Opérations",
-      "items": [
-        "Systèmes et stratégie de gouvernance",
-        "Activation communautaire et événements",
-        "Conception de token et d'adhésion"
-      ]
-    },
-    "contact": {
-      "title": "Contact",
-      "email": "ultravioletadao@gmail.com",
-      "note": "Pour des partenariats, des demandes médias ou l'onboarding de membres, contactez notre core team par email ou via l'un des canaux officiels ci-dessus."
-    },
-    "legal_links": {
-      "privacy": "Politique de Confidentialité",
-      "terms": "Conditions d'Utilisation"
-    }
-  },
   "home": {
-    "seoTitle": "Accueil - DAO leader du Web3 en Amérique latine",
-    "seoDescription": "Rejoignez UltraVioleta DAO - Construire l'avenir du Web3 en Amérique latine grâce à la gouvernance décentralisée, l'innovation communautaire et la gestion collaborative du trésor.",
     "title": "Ultravioleta DAO",
-    "subtitle": "La communauté Web3 la plus active d'Amérique latine",
-    "metrics": {
-      "snapshot": {
-        "title": "Gouvernance Snapshot",
-        "proposals": "Propositions",
-        "votes": "Votes",
-        "followers": "Followers",
-        "members_participating": "{{count}} membres participant à la gouvernance",
-        "since": "Depuis juin 2023"
-      },
-      "token": {
-        "title": "Token UVD",
-        "title_full": "TOKEN $UVD",
-        "holders": "Détenteurs",
-        "transactions": "Transactions",
-        "usd_conversion": "{{uvd}} UVD = {{amount}} USD",
-        "total_liquidity": "Liquidité Totale",
-        "total_liquidity_backing": "Liquidité soutenant $UVD",
-        "burned_total": "Total Brûlé",
-        "tooltip": {
-          "usd": "USD",
-          "avax": "AVAX"
-        }
-      },
-      "funds": {
-        "title": "Fonds et Finances",
-        "community_vault": "Coffre Communautaire",
-        "multisig": "Multisig Avalanche",
-        "signers": "Multisignataires disponibles",
-        "required_of": "signatures requises sur",
-        "multisigners": "multisignataires pour exécuter les transactions"
-      },
-      "legal": {
-        "title": "Statut Légal",
-        "jurisdiction": "Wyoming, États-Unis",
-        "registered": "Enregistré le 26 Sept. 2025",
-        "learn_more": "En savoir plus"
-      },
-      "see_more": "Voir plus de métriques",
-      "generating_story": "Génération du résumé...",
-      "story_title": "Comment allons-nous ?",
-      "generating_analysis": "Analyse des métriques du DAO...",
-      "expert_analysis": "Comment allons-nous aujourd'hui",
-      "offline_analysis": "Analyse hors ligne",
-      "ai_generated": "Analyse générée par IA basée sur des métriques en temps réel",
-      "play_audio": "Écouter l'analyse",
-      "pause_audio": "Pause",
-      "resume_audio": "Reprendre",
-      "loading_audio": "Chargement de l'audio..."
-    },
-    "achievements": {
-      "title": "Réalisations Récentes",
-      "subtitle": "Jalons importants atteints par notre communauté",
-      "viewHistory": "Voir toute notre histoire",
-      "validator": {
-        "title": "Premier Validateur avec Délégation",
-        "date": "18 Octobre 2025",
-        "description": "Nous avons reçu notre premier validateur avec délégation grâce à Meta Pool dans le programme Node Studio Cohort 2.",
-        "announcement": "Voir l'Annonce",
-        "viewValidator": "Voir le Validateur sur NEAR"
-      },
-      "facilitator": {
-        "title": "Lancement du Facilitateur x402",
-        "date": "26 Octobre 2025",
-        "description": "Nous avons lancé le Facilitateur x402 pour les transactions inter-chaînes sur Avalanche, Celo et Base.",
-        "link": "Visiter le Facilitateur"
-      },
-      "competition": {
-        "title": "Vainqueurs de la Coupe du Monde Web3",
-        "date": "28 Octobre 2025",
-        "description": "Nous avons remporté la compétition de la Coupe du Monde des Communautés Web3 en espagnol.",
-        "link": "Voir l'Annonce"
-      }
-    }
+    "subtitle": "La communauté Web3 la plus active d'Amérique latine"
   },
-  "metricsDashboard": {
-    "title": "Tableau de Bord des Métriques",
-    "subtitle": "Panneau de métriques avec l'activité, les récompenses et la croissance d'Ultravioleta DAO",
-    "snapshot": {
-      "subtitle": "Propositions et votes de la communauté",
-      "error_loading": "Erreur lors du chargement des données",
-      "retry": "Réessayer",
-      "total_historic": "Total historique",
-      "latest_proposal": "Dernière proposition",
-      "last_proposal": "Dernières Propositions",
-      "no_active_proposals": "Aucune proposition active",
-      "top_voters": "Top votants de la communauté",
-      "see_all": "Voir Tout",
-      "from_proposals": "de propositions",
-      "active_members": "Membres actifs",
-      "view_on_snapshot": "Voir sur Snapshot",
-      "state": "État",
-      "quorum": "Quorum",
-      "leaderboard_no_data": "Pas de données de classement",
-      "no_proposals_message": "Aucune proposition active pour le moment"
-    },
-    "funds": {
-      "subtitle": "Activité de la gestion du trésor communautaire",
-      "multisig_avalanche": "Multisig Avalanche",
-      "multisig_solana": "Multisig Solana",
-      "required_signatures_sol": "Signatures requises SOL",
-      "required_signatures_avax": "Signatures requises AVAX",
-      "to_execute_transactions": "Pour exécuter des transactions",
-      "main_balance": "Solde principal"
-    },
-    "tokenSection": {
-      "subtitle": "Activité et métriques du token UVD",
-      "price_usd": "Prix USD",
-      "price_avax": "Prix AVAX",
-      "holders": "Détenteurs",
-      "transactions": "transactions",
-      "liquidity_total": "Liquidité Totale Backing UVD",
-      "price_evolution": "Évolution du Prix",
-      "days_ago_30": "Il y a 30 jours",
-      "today": "Aujourd'hui",
-      "info_title": "Informations du Token",
-      "contract_avalanche": "Contrat Avalanche",
-      "total_supply": "Total Supply",
-      "circulating_supply": "Supply en Circulation",
-      "burned_supply": "Supply Brûlé",
-      "burned_total": "Total Brûlé",
-      "burned_forever": "Brûlé pour toujours",
-      "market_cap": "Market Cap",
-      "view_on_dex": "Voir sur DEX",
-      "lfj": "LFJ",
-      "arena_trade": "ArenaTrade"
-    },
-    "community": {
-      "title": "Communauté DAO",
-      "subtitle": "Membres actifs et participation communautaire",
-      "num_members": "Nombre de Membres",
-      "events_done": "Événements Réalisés",
-      "events_desc": "Meetups, Workshops...",
-      "members_title": "Membres de la Communauté",
-      "join": "Rejoindre UltravioletaDAO",
-      "view_all_members": "Voir Tous les Membres ({{count}})",
-      "recent_activity": "Activité Récente",
-      "quick_links": "Liens Rapides",
-      "discord": "Serveur Discord",
-      "twitter": "Twitter/X",
-      "the_arena": "The Arena"
-    },
-    "contributorSection": {
-      "title": "Contributeurs DAO",
-      "subtitle": "Membres actifs et collaborateurs de la communauté",
-      "searchPlaceholder": "Chercher des membres...",
-      "stats": {
-        "totalMembers": "Membres Totaux",
-        "activeContributors": "Contributeurs Actifs",
-        "pendingApplications": "Candidatures en Attente",
-        "newThisMonth": "Nouveaux ce Mois"
-      },
-      "footer": {
-        "showingMembers": "Affichage de {{count}} sur {{total}} membres",
-        "viewApplications": "Voir les Candidatures"
-      },
-      "underConstruction": {
-        "title": "Section en construction",
-        "message": "Nous travaillons pour connecter les profils X (Twitter) avec les membres du DAO. Cette fonctionnalité sera bientôt disponible."
-      }
-    }
+  "auth": {
+    "register": "Postuler à UltravioletaDAO",
+    "login": "Connexion",
+    "login_en": "Login",
+    "access_button": "Accéder",
+    "logout_button": "Déconnexion"
   },
   "navigation": {
     "home": "Accueil",
-    "about": "Histoire",
-    "snapshot": "Snapshot",
+    "apply": "Postuler",
     "links": "Liens",
+    "status": "Statut de candidature",
     "courses": "Cours",
-    "blog": "Blog",
+    "purge": "Purge",
     "token": "Token",
-    "contributors": "Contributeurs",
-    "multisig": "Multisig",
-    "watchToEarn": "Watch to Earn",
+    "blog": "Blog",
+    "snapshot": "Snapshot",
+    "wheel": "Roulette UVT",
     "delegations": "Délégations",
-    "safestats": "Multisignataires",
-    "metrics": "Métriques",
-    "events": "Événements",
-    "services": "Produits et Services",
-    "facilitator": "Facilitateur",
-    "streamSummaries": "Résumés",
-    "experiments": "Expériences",
-    "nft": "Collections NFT",
+    "safestats": "Statistiques Safe",
+    "bounties": "Bounties",
     "categories": {
       "main": "Principal",
       "governance": "Gouvernance",
       "admin": "Administration"
     },
     "descriptions": {
-      "home": "Tableau de bord principal d'Ultravioleta DAO",
-      "about": "Histoire et origine d'Ultravioleta DAO",
+      "home": "Tableau de bord principal de Ultravioleta DAO",
       "links": "Liens importants de la communauté",
       "courses": "Cours et matériel éducatif",
       "blog": "Paila News",
-      "token": "Page du token $UVD",
       "snapshot": "Votes et propositions de gouvernance",
-      "multisig": "Multisig pour la gestion des fonds",
-      "contributors": "Membres et contributeurs du DAO",
-      "watchToEarn": "Watch to Earn: échangez avec des points Twitch et recevez des UVD",
-      "delegations": "Stakez et déléguez vos tokens",
-      "safestats": "Statistiques des multisignataires",
-      "metrics": "Tableau de bord des métriques",
-      "events": "Événements et activités du DAO",
-      "services": "Découvrez nos produits et services",
-      "streamSummaries": "Résumés générés par IA de streams de programmation et Web3",
-      "experiments": "Expériences communautaires et recherche",
-      "nft": "Parcourez nos collections NFT"
+      "multisig": "Multi-signature pour la gestion des fonds",
+      "purge": "Gestion des utilisateurs inactifs",
+      "wheel": "Roulette de prix UVD",
+      "delegations": "Staker et déléguer vos tokens",
+      "safestats": "Statistiques des multi-signataires",
+      "bounties": "Tâches et récompenses pour la communauté",
+      "todo": "Bounties prêtes à être prises par les collaborateurs",
+      "in_voting": "Bounties en cours ou en révision",
+      "finished": "Bounties terminées avec récompenses distribuées"
     },
     "aria": {
       "open_menu": "Ouvrir le menu",
       "close_menu": "Fermer le menu",
-      "main_menu": "Menu principal",
-      "change_language": "Changer de langue"
+      "main_menu": "Menu principal"
     }
   },
-  "auth": {
-    "register": "Postuler à Ultravioleta DAO",
-    "login": "Connexion"
-  },
-  "valueProps": {
-    "title": "Pourquoi Rejoindre UltraVioleta?",
+  "features": {
     "community": {
-      "title": "Communauté Web3 Active en Amérique Latine",
-      "description": "Rejoignez l'une des communautés Web3 les plus actives d'Amérique latine. Obtenez un accès privé à Telegram, connectez-vous avec des experts dans plusieurs domaines et collaborez avec des leaders et développeurs clés de l'écosystème.",
-      "button": "Rejoignez-nous"
+      "title": "Communauté Active",
+      "description": "Nous sommes l'une des communautés Web3 les plus actives d'Amérique latine",
+      "button": "Découvrez-nous"
     },
     "token": {
-      "title": "Token de Gouvernance $UVD",
-      "description": "Participez à la croissance et à la prise de décision avec notre token de gouvernance UVD. Votez sur les propositions, gérez la trésorerie et accédez à des tirages exclusifs pour les détenteurs.",
+      "title": "$UVT: notre token de gouvernance",
+      "description": "Participez à la croissance et à la prise de décision avec notre token de gouvernance UVT",
       "button": "Voir le Token"
     },
-    "opportunities": {
-      "title": "Opportunités Alpha Exclusives",
-      "description": "Obtenez un accès exclusif aux informations stratégiques et aux opportunités précoces dans Web3. Restez en avance avec les meilleurs alphas et insights de l'écosystème."
+    "raffles": {
+      "title": "Tirages Périodiques",
+      "description": "Participez à nos tirages exclusifs pour les détenteurs d'UVT et les membres de la communauté"
     }
   },
-  "about": {
-    "hero": {
-      "title": "Histoire d'Ultravioleta DAO",
-      "subtitle": "D'une communauté de streaming au DAO Web3 le plus actif d'Amérique latine"
+  "token": {
+    "title": "Ultravioleta Token",
+    "description_1": "$UVT est le token de gouvernance et d'utilité de UltraVioleta DAO, permettant aux détenteurs de participer à la prise de décision décentralisée et à la gestion de la trésorerie.",
+    "description_2": "À travers $UVT, la DAO maintient une structure transparente et démocratique.",
+    "chart_title": "Graphique $UVT sur Dexscreener",
+    "buttons": {
+      "swap": "Échanger le Token",
+      "swap_alt": "Icône d'échange",
+      "liquidity": "Pool de Liquidité UVT/Avax",
+      "liquidity_alt": "Icône de pool de liquidité"
+    }
+  },
+  "benefits": {
+    "title": "Avantages de Rejoindre",
+    "experts": {
+      "title": "Groupe privé d'experts",
+      "description": "Accès à un groupe privé sur Telegram avec des experts dans plusieurs domaines"
     },
-    "origin": {
-      "title": "Histoire et Origine",
-      "paragraph1": "L'histoire d'Ultravioleta DAO a commencé en mars 2022 sous le nom initial de 'Cuchorapido', une communauté créée à partir de transmissions en direct sur Twitch. L'objectif initial tournait autour des thèmes du Web3, de la technologie décentralisée, de la conscience numérique et de l'exploration pratique de ces outils devant un public actif et participatif.",
-      "paragraph2": "Ce qui a commencé comme une plateforme simple pour discuter de concepts abstraits s'est rapidement transformé en un espace dynamique où le public ne se contentait pas d'écouter, mais intervenait, proposait des idées et prenait de vraies décisions.",
-      "paragraph3": "Au fur et à mesure que la communauté se consolidait, le besoin naturel de s'organiser avec des outils plus sophistiqués est apparu, conduisant au lancement du premier token de gouvernance, CRT, initialement déployé sur Polygon. Cette première étape a servi de laboratoire vivant, permettant de comprendre les processus de gouvernance décentralisée par la pratique.",
-      "paragraph4": "Après deux ans de croissance continue, en juin 2024, la communauté a décidé de franchir une nouvelle étape et de se formaliser en tant qu'Ultravioleta DAO, en conservant le noyau original, mais avec une identité renouvelée reflétant son évolution. Ce changement a marqué la transition définitive vers une organisation décentralisée pleinement opérationnelle et établie, avec un nouveau token appelé UVD, actuellement actif sur le réseau Avalanche."
+    "networking": {
+      "title": "Nouvelles relations et opportunités",
+      "description": "Rencontrez et collaborez avec des leaders et développeurs clés de l'écosystème Web3"
     },
-    "timeline": {
-      "title": "Notre Évolution",
-      "march2022": {
-        "date": "Mars 2022",
-        "title": "Naissance comme Cuchorapido",
-        "description": "Début de la communauté à travers des transmissions en direct sur Twitch, explorant le Web3 et la technologie décentralisée."
-      },
-      "crt": {
-        "date": "2022-2023",
-        "title": "Token CRT et Gouvernance",
-        "description": "Lancement du premier token de gouvernance CRT sur Polygon, puis migré vers Avalanche comme CRT v2."
-      },
-      "partner2022": {
-        "date": "2022",
-        "title": "Partenaire Twitch",
-        "description": "CuchoRapido atteint le statut de Partenaire avec 75 viewers en moyenne. Développement du bot Caldo de Gallina pour l'automatisation."
-      },
-      "september2023": {
-        "date": "Septembre 2023",
-        "title": "Rencontres et Stream Fighters",
-        "description": "Événements en personne à Bogotá et Medellín. Participation à Stream Fighters avec paris NFT. DatBoi embauché pour son leadership."
-      },
-      "january2024": {
-        "date": "Janvier 2024",
-        "title": "Migration vers Avalanche",
-        "description": "Migration complète vers Avalanche C-Chain. 100 portefeuilles Core ouverts en direct. 55 certificats Avalanche Fundamentals complétés."
-      },
-      "june2024": {
-        "date": "Juin 2024",
-        "title": "Transformation en Ultravioleta DAO",
-        "description": "Formalisation en tant qu'Ultravioleta DAO avec une identité renouvelée et lancement du token UVD sur Avalanche."
-      },
-      "july2024": {
-        "date": "Juillet 2024",
-        "title": "Crise et Renaissance",
-        "description": "Token mal configuré, contrat vidé. La communauté reste unie. UVT v2 créé et distribué 1:1."
-      },
-      "october2024": {
-        "date": "Octobre 2024",
-        "title": "Avalanche Summit Argentine",
-        "description": "10 membres du DAO participent au summit. Développement de Karma Hello et Abracadabra v2 avec Cursor AI."
-      },
-      "october18_2024": {
-        "date": "18 Octobre 2025",
-        "title": "Premier Validateur avec Délégation",
-        "description": "Nous avons reçu notre premier validateur avec délégation grâce à Meta Pool, dans le cadre du programme Node Studio Cohort 2. Une étape importante dans notre infrastructure technique.",
-        "links": [
-          {
-            "label": "Voir l'annonce",
-            "url": "https://x.com/UltravioletaDAO/status/1979685948977037629"
-          },
-          {
-            "label": "Voir le validateur sur NEAR",
-            "url": "https://nearblocks.io/address/ultravioletadao.pool.near"
-          }
-        ]
-      },
-      "october26_2024": {
-        "date": "26 Octobre 2025",
-        "title": "Lancement du Facilitateur x402",
-        "description": "Nous avons lancé le Facilitateur x402, un outil pour faciliter les transactions inter-chaînes. Fonctionne actuellement sur Avalanche, Celo et Base (mainnet et testnet).",
-        "links": [
-          {
-            "label": "Utiliser le Facilitateur",
-            "url": "https://facilitator.ultravioletadao.xyz/"
-          }
-        ]
-      },
-      "october28_2024": {
-        "date": "28 Octobre 2025",
-        "title": "Vainqueurs de la Coupe du Monde des Communautés Web3",
-        "description": "UltraVioleta DAO remporte la compétition de la Coupe du Monde des Communautés Web3 en espagnol, consolidant notre position de leader dans la communauté Web3 latino-américaine.",
-        "links": [
-          {
-            "label": "Voir l'annonce",
-            "url": "https://x.com/soymaikoldev/status/1983244934963433521"
-          }
-        ]
-      },
-      "december2024": {
-        "date": "Décembre 2024",
-        "title": "Rencontre Medellín 2024",
-        "description": "Rassemblement communautaire à Medellín avec des membres actifs du DAO, renforçant les liens et planifiant l'avenir."
-      },
-      "january2025": {
-        "date": "Janvier 2025",
-        "title": "Explosion Crypto et UVD",
-        "description": "Migration UVT→UVD sur Arena DEX. LP ATH 22K$. Lancement validateur BEAM. 0xUltravioleta Partenaire Twitch."
-      },
-      "august23_2025": {
-        "date": "23 Août 2025",
-        "title": "Ultra Event 2025",
-        "description": "Premier événement public officiel d'UltraVioleta DAO au Hash House Club, Medellín. Événement historique avec 212 inscrits et 144 participants. Conférences, ateliers et réseautage avec la communauté Web3 latino-américaine."
-      },
-      "august24_2025": {
-        "date": "24 Août 2025",
-        "title": "Ultra Rencontre 2025",
-        "description": "Lendemain de l'Ultra Event, rassemblement communautaire intime pour renforcer les liens entre les membres les plus actifs du DAO. Célébration spéciale avec les participants de l'événement principal."
-      },
-      "duna2025": {
-        "date": "Septembre 2025",
-        "title": "Enregistrement Légal comme DAO LLC",
-        "description": "Formalisation légale en tant que DAO LLC au Wyoming, établissant UltraVioleta comme une Organisation Autonome Décentralisée à Responsabilité Limitée."
-      },
-      "current": {
-        "date": "Présent",
-        "title": "DAO Pleinement Opérationnelle",
-        "description": "176+ propositions exécutées, 5 218+ votes, structure légale DAO LLC établie, et événements présentiels dans plusieurs villes."
-      },
-      "sponsors": {
-        "poweredBy": "Powered by Legends",
-        "thankYou": "Vidéo de remerciement",
-        "gratitude": "Merci à tous nos sponsors d'avoir rendu cet événement légendaire possible",
-        "watchVideo": "Regarder la vidéo de remerciement"
-      }
-    },
-    "vision": {
-      "title": "Vision",
-      "description": "Ultravioleta DAO cherche à se consolider comme une référence latino-américaine dans la création de culture Web3, en promouvant l'éducation ouverte, l'expérimentation technologique et la participation communautaire effective."
-    },
-    "mission": {
-      "title": "Mission",
-      "description": "Maintenir un espace décentralisé d'apprentissage collectif, où l'expérimentation pratique, l'essai-erreur et la prise de décision en temps réel sont au cœur de notre dynamique quotidienne."
-    },
-    "values": {
-      "title": "Nos Valeurs",
-      "learning": {
-        "title": "Apprentissage en Public",
-        "description": "Documenter et partager les succès comme les échecs, renforçant une culture basée sur la transparence radicale."
-      },
-      "community": {
-        "title": "Participation Active",
-        "description": "Chaque membre a une voix et un vote dans les décisions importantes, construisant ensemble l'avenir du DAO."
-      },
-      "transparency": {
-        "title": "Transparence Radicale",
-        "description": "Tout est enregistré, tout peut être audité, et tous peuvent participer à la gouvernance."
-      }
-    },
-    "activities": {
-      "title": "Activités et Initiatives",
-      "education": {
-        "title": "Éducation Continue",
-        "description": "Transmissions quotidiennes sur Twitch, The Arena et X, avec votes et prises de décisions en direct."
-      },
-      "governance": {
-        "title": "Gouvernance Active",
-        "description": "176 propositions de gouvernance exécutées sur Snapshot, avec plus de 5 218 votes réalisés par la communauté."
-      },
-      "economy": {
-        "title": "Économie Gamifiée",
-        "description": "Watch-to-Earn, Chat-to-Earn et Burn-to-Chat : systèmes de récompenses et d'incitations pour la participation active."
-      },
-      "infrastructure": {
-        "title": "Infrastructure Technique",
-        "description": "Administration de nœuds validateurs sur testnets et mainnets, offrant une expérience pratique aux membres."
-      },
-      "events": {
-        "title": "Événements Présentiels",
-        "description": "Rencontres à Bogotá, Medellín et préparation de l'Ultra Evento 2025 avec +100 participants."
-      },
-      "ai": {
-        "title": "IA Communautaire",
-        "description": "Développement d'agents intelligents 'Karma' et 'Hello' pour optimiser les tâches et gérer automatiquement les récompenses."
-      }
-    },
-    "governance": {
-      "title": "Expérience avec le Token de Gouvernance",
-      "paragraph1": "L'implémentation et l'évolution du token de gouvernance ont été clés pour la communauté. Chaque migration, de CRT à UVD, a signifié un saut qualitatif dans les capacités organisationnelles et de prise de décision.",
-      "paragraph2": "Les décisions gérées par le token incluent l'allocation des budgets communautaires, le choix des conférenciers pour les événements, la détermination des récompenses, les paramètres économiques internes et la définition de documents fondateurs comme les manifestes et constitutions du DAO.",
-      "paragraph3": "Le token n'a pas seulement facilité la gouvernance pratique, mais a également aligné les intérêts et créé un fort sentiment de responsabilité et de valeur partagée entre les participants."
-    },
-    "current": {
-      "title": "État Actuel et Projets",
-      "structure": {
-        "title": "Structure Horizontale",
-        "description": "Actuellement, Ultravioleta DAO possède une structure horizontale, sans hiérarchies traditionnelles, où les rôles sont assumés volontairement selon l'affinité et la disponibilité. Notre infrastructure technologique comprend des plateformes robustes comme Snapshot, des multisigs avec plusieurs signataires, des bots spécialisés et des tableaux de bord propriétaires pour le suivi en temps réel."
-      },
-      "projects": {
-        "title": "Ultra Event 2025",
-        "description": "Le principal projet réalisé a été l'Ultra Event 2025, célébré le 24 août à Medellín avec 212 inscrits et 144 participants. Événement historique avec le soutien de sponsors renommés tels qu'Avalanche, Rekt, Celo Colombia, Self, Uniswap, Pyth Network, Heroes Of Cipher, deBridge, Superfluid et Magic Eden. Il a présenté des dynamiques innovantes telles que des airdrops automatiques, des POAPs, des incitations à la vérification d'identité et une couverture complète en streaming."
-      },
-      "legal": {
-        "title": "Statut Légal - DAO LLC",
-        "description": "UltraVioleta DAO a complété avec succès son enregistrement en tant qu'Organisation Autonome Décentralisée à Responsabilité Limitée (DAO LLC) au Wyoming, États-Unis. Cette structure légale pionnière nous permet d'opérer avec une reconnaissance légale tout en maintenant notre nature décentralisée.",
-        "whatIsDuna": "DAO LLC est une structure légale innovante conçue spécifiquement pour les DAOs, permettant aux organisations décentralisées d'obtenir une personnalité juridique sans compromettre leur autonomie. En savoir plus sur",
-        "dunaLinkText": "Wyoming DAO LLC",
-        "details": {
-          "title": "Détails de l'Enregistrement",
-          "entity": "Entité Légale",
-          "entity_value": "Ultravioleta DAO LLC",
-          "jurisdiction": "Juridiction",
-          "jurisdiction_value": "Wyoming, États-Unis",
-          "registered": "Date d'Enregistrement",
-          "registered_value": "26 Septembre 2025",
-          "treasury": "Trésor Multisig",
-          "treasury_value": "0x52110a2Cc8B6bBf846101265edAAe34E753f3389 (Avalanche C-Chain)"
-        },
-        "benefits": "Cette structure légale nous offre une protection de responsabilité limitée pour les membres, une reconnaissance légale pour les contrats et accords, une conformité réglementaire claire, et la capacité de maintenir notre gouvernance décentralisée à travers des votes on-chain et des contrats intelligents."
-      }
-    },
-    "featuredOn": {
-      "title": "Apparitions dans les Médias",
-      "subtitle": "UltraVioleta DAO a été présenté dans les principaux médias spécialisés en blockchain et Web3",
-      "types": {
-        "article": "Article",
-        "podcast": "Podcast",
-        "video": "Vidéo",
-        "interview": "Interview"
-      },
-      "cointelegraph": {
-        "date": "8 Août 2025",
-        "description": "\"La blockchain est un outil de coordination et de transparence radicale\", selon le fondateur Saúl Jaramillo. Article complet sur notre mission, gouvernance et prochaines étapes."
-      },
-      "readMore": "Lire plus",
-      "watchVideo": "Regarder la vidéo",
-      "listenPodcast": "Écouter le podcast",
-      "comingSoon": "Plus de contenu bientôt"
-    },
-    "blockchain": {
-      "title": "Que signifie la technologie blockchain pour Ultravioleta DAO?",
-      "paragraph1": "Blockchain, pour Ultravioleta, est un outil de coordination et de transparence radicale. Elle nous a permis de distribuer de la valeur, de prendre des décisions collectives et d'organiser notre communauté sans hiérarchies. C'est une infrastructure, mais aussi une culture : tout est enregistré, tout peut être audité, et tous peuvent participer.",
-      "paragraph2": "En Amérique latine, où les systèmes traditionnels échouent ou n'arrivent pas toujours, blockchain offre une voie parallèle pour construire la confiance, des économies propres et de nouvelles formes de collaboration. Pour nous, ce n'est pas une promesse future, mais une pratique quotidienne qui génère déjà un impact réel depuis la base et vers l'extérieur."
-    },
-    "cta": {
-      "title": "Voulez-vous faire partie du changement ?",
-      "description": "Rejoignez la communauté Web3 la plus active d'Amérique latine et construisez avec nous l'avenir décentralisé.",
-      "button": "Postuler au DAO"
+    "alphas": {
+      "title": "Les meilleurs alphas",
+      "description": "Obtenez un accès exclusif à des informations et opportunités stratégiques en Web3"
     }
   },
   "form": {
-    "title": "Formulaire d'Inscription",
-    "subtitle": "Rejoignez notre communauté et faites partie de l'avenir Web3",
+    "title": "Formulaire de Candidature",
+    "subtitle": "Rejoignez notre communauté et faites partie de l'avenir du Web3",
     "optional": "optionnel",
-    "characters": "caractères"
+    "steps": {
+      "personal": "Données Personnelles",
+      "social": "Réseaux Sociaux",
+      "experience": "Expérience et Wallet"
+    },
+    "fields": {
+      "fullName": "Nom Complet",
+      "email": "Email",
+      "twitter": "Twitter",
+      "telegram": "Telegram",
+      "twitch": "Twitch (optionnel)",
+      "walletAddress": "Adresse de Wallet",
+      "story": "Quelle est votre histoire?",
+      "purpose": "Quel est votre objectif?",
+      "references": "Références (optionnel)"
+    },
+    "placeholders": {
+      "fullName": "Votre nom complet",
+      "email": "exemple@email.com",
+      "twitter": "@utilisateur",
+      "telegram": "@utilisateur",
+      "twitch": "utilisateur",
+      "walletAddress": "0x...",
+      "story": "Racontez-nous votre histoire...",
+      "purpose": "Racontez-nous votre objectif...",
+      "references": "Qui vous a recommandé?"
+    },
+    "validation": {
+      "email_required": "L'email est requis",
+      "email_format": "L'email doit avoir un format valide",
+      "social_required": "Le nom d'utilisateur {{social}} est requis",
+      "social_format": "Le nom d'utilisateur {{social}} doit commencer par @",
+      "telegram_format": "Le nom d'utilisateur Telegram ne peut pas commencer par un nombre",
+      "wallet_required": "L'adresse du wallet est requise",
+      "wallet_format": "L'adresse du wallet doit être valide",
+      "story_required": "Votre histoire est requise",
+      "story_length": "Minimum 55 caractères (actuel: {{current}})",
+      "story_too_long": "Maximum {{max}} caractères (actuel: {{current}})",
+      "purpose_required": "Votre objectif est requis",
+      "purpose_length": "Minimum 55 caractères (actuel: {{current}})",
+      "purpose_too_long": "Maximum {{max}} caractères (actuel: {{current}})"
+    },
+    "buttons": {
+      "next": "Suivant",
+      "prev": "Précédent",
+      "submit": "Envoyer la Candidature",
+      "submitting": "Envoi en cours..."
+    },
+    "errors": {
+      "api_url_missing": "L'URL du serveur n'est pas configurée",
+      "endpoint_not_found": "Point de terminaison du serveur introuvable",
+      "server_error": "Erreur interne du serveur",
+      "data_error": "Erreur dans les données envoyées",
+      "unexpected_response": "Réponse inattendue du serveur",
+      "processing_error": "Erreur lors du traitement de la demande",
+      "submit_error": "Erreur lors de l'envoi du formulaire. ",
+      "network_error": "Erreur de connexion réseau. Veuillez vérifier votre connexion internet."
+    }
   },
-  "common": {
-    "cancel": "Annuler",
-    "disconnect": "Déconnecter",
-    "locale": "fr_FR",
-    "close": "Fermer",
-    "auto": "Auto",
-    "profile": "Profil",
-    "logo_alt": "Ultravioleta DAO",
-    "ultraevento_promo_alt": "Bannière Promotionnelle Ultra Evento 2025 - Conférence Premier Web3 blockchain 24 août 2025 à Medellín Colombie à Hash House avec 212 participants inscrits et 10 sponsors incluant Avalanche Uniswap Pyth Network",
-    "ultraevento_main_alt": "Ultra Evento 2025 Événement Principal - Conférence Web3 DAO blockchain en Amérique Latine avec 144 participants réseautant et apprenant sur DeFi NFTs et gouvernance décentralisée en espagnol",
-    "ultraquedada_alt": "Ultra Quedada Medellín 2025 Rencontre Communautaire - Rassemblement de la communauté Web3 crypto blockchain des membres d'UltraVioleta DAO événement de réseautage Amérique Latine LATAM"
+  "success": {
+    "title": "Candidature envoyée avec succès!",
+    "message": "Votre candidature a été reçue et est en cours de révision.",
+    "waitlist": "Si le processus de candidature est terminé, vous serez placé sur notre liste d'attente prioritaire.",
+    "thanks": "Merci pour votre intérêt à rejoindre notre communauté!",
+    "back_home": "Retour à l'accueil"
   },
   "courses": {
     "title": "Nos Cours"
   },
-  "token": {
-    "title": "Token Ultravioleta DAO",
-    "description_1": "$UVD est le jeton de gouvernance et d'utilité d'Ultravioleta DAO, qui facilite la participation des membres dans la prise de décisions décentralisées et la gestion de la trésorerie. Il est utilisé pour voter sur les propositions, attribuer des fonds communautaires et soutenir les initiatives des membres.",
-    "description_2": "Grâce à $UVD, la DAO maintient une structure transparente et démocratique, garantissant que ses ressources sont dirigées en fonction de la gouvernance collective."
-  },
-  "tokenomics": {
-    "title": "Tokenomics UVD",
-    "overview": "Vue d'ensemble",
-    "description": "Stratégie d'incitations et de croissance pour Ultravioleta DAO pendant la période 2025-2026, conçue pour optimiser la distribution des récompenses et renforcer la communauté.",
-    "treasury_base": "Trésorerie de base",
-    "supply": {
-      "title": "Aperçu de l'Offre du Token $UVD",
-      "total": "Offre Totale",
-      "launch": "Offre de Lancement",
-      "circulating": "Offre en Circulation",
-      "distribution": "Distribution Initiale",
-      "uvt_holders": "Détenteurs UVT V2",
-      "multisig": "Trésorerie Multisig",
-      "liquidity": "Pool de Liquidité Arena",
-      "airdrop": "Communautés Alliées et Pourboires Arena",
-      "champions": "Champions Arena",
-      "treasury_allocation": "Programmes du Trésor",
-      "period": "Période de Distribution"
-    },
-    "period": "Période",
-    "months": "mois",
-    "period_dates": "Juillet 2025 - Décembre 2026",
-    "allocation": "Allocation",
-    "view_proposal": "Voir la proposition sur Snapshot",
-    "bounties": {
-      "title": "Bounties",
-      "monthly": "Budget mensuel",
-      "frequency": "Fréquence",
-      "per_month": "par mois",
-      "prizes": "Distribution des prix",
-      "first": "1ère Place",
-      "second": "2ème Place",
-      "third": "3ème Place"
-    },
-    "airdrops": {
-      "title": "Airdrops",
-      "monthly": "Par airdrop",
-      "frequency": "Fréquence",
-      "per_month": "mensuel",
-      "objectives": "Objectifs",
-      "obj1": "Récompenser les détenteurs actifs",
-      "obj2": "Encourager la participation à la gouvernance",
-      "obj3": "Attirer de nouveaux détenteurs"
-    },
-    "wheel": {
-      "title": "Roue hebdomadaire",
-      "frequency": "Fréquence",
-      "per_month": "par mois",
-      "total": "Total",
-      "wheels": "roues",
-      "prizes": "Prix principaux"
-    },
-    "savings": {
-      "title": "Fonds d'épargne",
-      "monthly": "Allocation mensuelle",
-      "uses": "Utilisations autorisées",
-      "use1": "Dépenses opérationnelles urgentes",
-      "use2": "Investissement dans des opportunités stratégiques",
-      "use3": "Marketing et partenariats à fort impact"
-    },
-    "event": {
-      "title": "Ultra Événement 2025",
-      "allocation": "Allocation spéciale",
-      "description": "Airdrop exclusif pour les participants de l'Ultra Événement 2025, renforçant le lien entre communauté et écosystème.",
-      "source": "Source de fonds",
-      "july": "Airdrop juillet",
-      "august": "Airdrop août",
-      "complement": "Complément du fonds d'épargne"
-    },
-    "reserve": {
-      "title": "Réserve restante",
-      "amount": "Montant",
-      "percentage": "Pourcentage",
-      "purpose": "Objectif",
-      "future": "Opérations futures"
-    }
-  },
-  "success": {
-    "back_home": "Retour à l'accueil"
-  },
-  "safestats": {
-    "title": "Multisignataires UltravioletaDAO",
-    "filter_options": "Options de filtrage",
-    "start_date": "Date de début",
-    "end_date": "Date de fin",
-    "filter": "Filtrer",
-    "statistics_title": "Statistiques de signatures",
-    "from_to": "({{from}} à {{to}}, {{count}} transactions)",
-    "all_time": "Tout le temps",
-    "errors": {
-      "loading_data": "Erreur lors du chargement des données",
-      "date_required": "Veuillez sélectionner au moins une date"
-    }
-  },
-  "watch_to_earn": {
-    "title": "Watch to Earn",
-    "subtitle": "Gagnez vos points Twitch en direct pour tourner et gagner des récompenses en $UVD. Plus vous participez et regardez le stream, plus vous avez de chances de réclamer et d'être payé directement en notre monnaie communautaire.",
-    "redeem_points": "Échanger avec des points Twitch",
-    "uvd_payment": "Paiement en UVD on-chain",
-    "viewing_rewards": "Récompenses pour regarder le stream",
-    "personalize_wheel": "Personnaliser la Roue",
-    "add_participant": "Ajouter un participant",
-    "click_to_spin": "Cliquez pour tourner"
-  },
-  "wheel": {
-    "title": "Watch to Earn",
-    "description": "Échangez vos points Twitch en direct pour tourner et gagner des récompenses en $UVD. Plus vous participez et regardez le stream, plus vous avez de chances de réclamer et d'être payé directement dans notre monnaie communautaire.",
-    "highlights": {
-      "redeem": "Échanger avec des points Twitch",
-      "paid": "Paiement en UVD on-chain",
-      "watch": "Récompenses pour regarder le stream"
-    },
-    "customize_button": {
-      "show": "Personnaliser la Roue",
-      "hide": "Masquer les options"
-    },
-    "token": {
-      "title": "Token",
-      "placeholder": "Adresse du contrat"
-    },
-    "segments": {
-      "add": {
-        "title": "Ajouter une nouvelle valeur",
-        "value_placeholder": "Valeur",
-        "probability_placeholder": "Probabilité %",
-        "button": "Ajouter"
-      },
-      "current": {
-        "title": "Valeurs actuelles",
-        "probability_suffix": "%",
-        "min_segments_error": "La roue a besoin d'au moins 2 valeurs"
-      },
-      "probability_validation_error": "Les pourcentages doivent totaliser 100%. Veuillez vérifier les valeurs."
-    },
-    "buttons": {
-      "equalize": "Égaliser les probabilités",
-      "reset": "Réinitialiser aux valeurs par défaut"
-    },
-    "participants": {
-      "panel": {
-        "show": "Ajouter un participant",
-        "hide": "Masquer les participants",
-        "clear": "Effacer"
-      },
-      "add": {
-        "title": "Nouveau participant",
-        "wallet_placeholder": "Wallet (obligatoire)",
-        "username_placeholder": "Utilisateur (optionnel)",
-        "button": "Ajouter",
-        "wallet_required": "Le wallet est obligatoire"
-      },
-      "list": {
-        "title": "Participants et Résultats",
-        "headers": {
-          "user": "Utilisateur",
-          "wallet": "Wallet",
-          "result": "Résultat"
-        },
-        "anonymous": "Anonyme",
-        "current_turn": "Tour actuel",
-        "pending": "En attente",
-        "total": "Total",
-        "remove": "Supprimer le participant",
-        "completed": "Résultats"
-      }
-    },
-    "results": {
-      "title": "Résultat",
-      "current_participant": "Participant actuel",
-      "no_more_participants": "Il n'y a plus de participants. Ajoutez-en plus pour continuer",
-      "export": {
-        "button": "Exporter les résultats",
-        "no_results": "Aucun résultat à exporter"
-      },
-      "copy": {
-        "button": "Copier les résultats",
-        "error": "Erreur lors de la copie des résultats"
-      },
-      "send": {
-        "button": "Envoyer les prix"
-      }
-    },
-    "wallet": {
-      "send_rewards": "Airdrop de Prix",
-      "connect_required": "Connectez votre wallet pour envoyer des prix",
-      "connected": "Wallet connecté",
-      "connected_success": "Wallet connecté avec succès!",
-      "balance": "Solde",
-      "connect_button": "Connecter Wallet",
-      "approve_button": "Approuver",
-      "send_button": "Envoyer les Prix",
-      "view_transaction": "Voir la Transaction",
-      "approving": "Approbation",
-      "sending": "Envoi...",
-      "approving_transaction": "Approbation de la transaction...",
-      "sending_transaction": "Traitement de la transaction...",
-      "no_provider": "Aucun wallet EVM détecté. Veuillez installer un wallet compatible.",
-      "user_rejected": "Demande rejetée par l'utilisateur",
-      "connection_error": "Erreur de connexion au wallet",
-      "network_add_error": "Erreur lors de l'ajout du réseau Avalanche",
-      "network_switch_error": "Erreur lors du changement vers le réseau Avalanche",
-      "invalid_state": "État invalide. Vérifiez la connexion et le token",
-      "already_approved": "Tokens déjà approuvés",
-      "approval_success": "Tokens approuvés avec succès!",
-      "approval_error": "Erreur lors de l'approbation des tokens",
-      "insufficient_allowance": "Autorisation de token insuffisante. Veuillez d'abord approuver",
-      "send_success": "Prix envoyés avec succès!",
-      "send_error": "Erreur lors de l'envoi des prix",
-      "info": "Les prix seront envoyés directement depuis votre wallet en utilisant le réseau Avalanche C-Chain.",
-      "total_rewards": "Total des prix"
-    },
-    "spin_button": {
-      "spinning": "Rotation...",
-      "disabled": "Non disponible",
-      "loading": "Chargement des participants...",
-      "ready": "Cliquez pour tourner"
-    },
-    "twitch": {
-      "load": "Charger depuis Twitch",
-      "loading": "Chargement des récompenses...",
-      "load_error": "Erreur lors du chargement des récompenses Twitch",
-      "auth_error": "Erreur d'authentification. Veuillez vous reconnecter",
-      "complete_error": "Erreur lors de la finalisation de la récompense",
-      "no_rewards": "Aucune récompense en attente à charger",
-      "invalid_wallet": "Wallet invalide détecté",
-      "auth_required": "Vous devez vous authentifier avec Twitch",
-      "auth_button": "Se connecter avec Twitch",
-      "redirecting": "Redirection...",
-      "create_reward_error": "Erreur lors de la création de la récompense. Assurez-vous d'être affilié ou partenaire Twitch",
-      "client_id_mismatch": "La récompense a été créée avec une autre application. Veuillez créer une nouvelle récompense depuis cette application",
-      "redemption_error": "Erreur lors de la récupération des rachats. Veuillez réessayer",
-      "auto_update": "Mise à jour automatique"
-    }
-  },
-  "not_found": {
-    "title": "Page non trouvée"
-  },
   "links": {
-    "title": "Nos Liens",
-    "swap_token": "Échanger Token",
-    "joinCommunity": "Rejoindre la Communauté",
-    "subtitle": "Connectez-vous avec nous sur nos canaux officiels et faites partie de la communauté Web3 la plus active de LATAM",
-    "followUs": "Suivez-nous sur Twitter",
-    "joinArena": "Rejoignez-nous sur Arena",
-    "viewTreasury": "Voir le Trésor"
+    "title": "Nos Liens"
+  },
+  "purge": {
+    "title": "Purge",
+    "headers": {
+      "username": "Nom d'utilisateur",
+      "wallet": "Portefeuille",
+      "balance": "Solde actuel",
+      "status": "Statut",
+      "reason": "Raison"
+    }
+  },
+  "events": {
+    "title": "Événements à venir",
+    "description": "Événements d'intérêt communautaire auxquels il est recommandé de participer."
   },
   "snapshot": {
     "title": "Propositions de Gouvernance Ultravioleta DAO",
@@ -851,7 +198,7 @@
       "rejected": "Rejetée",
       "pending": "En attente"
     },
-    "no_proposals": "Il n'y a pas de propositions actives en ce moment",
+    "no_proposals": "Aucune proposition active pour le moment",
     "connect_wallet": "Connecter Wallet",
     "voting_power": "Pouvoir de vote",
     "vote": "Voter",
@@ -861,12 +208,12 @@
     "vote_submitted": "Vote envoyé avec succès!",
     "errors": {
       "no_metamask": "Veuillez installer MetaMask ou un autre fournisseur Ethereum",
-      "connect_wallet": "Veuillez connecter votre wallet pour pouvoir voter",
+      "connect_wallet": "Veuillez connecter votre wallet pour voter",
       "connect_wallet_proposal": "Veuillez connecter votre wallet pour créer une nouvelle proposition",
       "vote_failed": "Erreur lors du vote, veuillez réessayer",
       "insufficient_power": "Vous n'avez pas assez de pouvoir de vote",
-      "user_rejected_connection": "Vous avez rejeté la connexion du wallet",
-      "user_rejected_vote": "Vous avez rejeté la signature du vote",
+      "user_rejected_connection": "Vous avez refusé la connexion du wallet",
+      "user_rejected_vote": "Vous avez refusé la signature du vote",
       "provider_error": "Erreur de connexion avec le fournisseur Ethereum"
     },
     "vote_reason_title": "Raison du vote",
@@ -878,845 +225,149 @@
     "votes": "votes",
     "view_more": "Voir plus"
   },
-  "events": {
-    "seo": {
-      "title": "Événements - UltraVioleta DAO",
-      "description": "Événements et activités de la communauté UltraVioleta DAO. Conférences, rencontres, hackathons et plus en Amérique latine."
-    },
-    "title": "Événements UVD",
-    "description": "Événements d'intérêt communautaire recommandés à ne pas manquer!",
-    "image_alt_placeholder": "Image de l'événement",
-    "ultraevento": {
-      "title": "Ultra Événement 2025",
-      "date": {
-        "label": "Date",
-        "value": "Samedi 23 août"
-      },
-      "time": {
-        "label": "Horaire",
-        "value": "13h00 – 21h00"
-      },
-      "location": {
-        "label": "Lieu",
-        "value": "Hash House Club, Medellín"
-      },
-      "description": "L'événement le plus important de l'année pour la communauté UltraVioleta DAO. Une journée complète de conférences, réseautage, votes et célébration.",
-      "scheduleTitle": "🕐 Programme Officiel",
-      "speakers": "Conférenciers",
-      "schedule": {
-        "registration": {
-          "title": "🟣 Inscription + Activations Initiales",
-          "description": "Inscription et activations initiales",
-          "detail1": "Remise de badges avec 4 jetons par personne (400 total, 100 participants)",
-          "detail2": "Activations : POAP, Self.xyz, photos, musique",
-          "detail3": "Ouverture du stream",
-          "detail4": "Réception des portefeuilles ouverte"
-        },
-        "internal": {
-          "title": "🟣 Présentation Interne du DAO",
-          "description": "Introduction et logistique de l'événement",
-          "detail1": "Instructions générales",
-          "detail2": "Vision du jour",
-          "detail3": "Logistique pour le vote et la participation"
-        },
-        "snack1": {
-          "title": "🟢 Collation #1",
-          "description": "Première collation"
-        },
-        "opening": {
-          "title": "🟣 Ouverture Officielle de l'Ultra Événement",
-          "description": "Cérémonie d'ouverture",
-          "detail1": "Bienvenue générale",
-          "detail2": "Reconnaissance aux sponsors et à la communauté"
-        },
-        "raffle1": {
-          "title": "🎁 Tirage #1 – UVD",
-          "description": "Premier tirage de l'événement",
-          "detail1": "Prix fixe - Incitation initiale pour animer la communauté"
-        },
-        "snack2": {
-          "title": "🟢 Collation #2",
-          "description": "Deuxième collation (15 min)"
-        },
-        "history": {
-          "title": "🟣 Histoire du DAO – Bloc Spécial",
-          "description": "Présentation de l'histoire et de l'évolution du DAO",
-          "detail1": "Origine, vision et évolution du projet UVD",
-          "detail2": "Voix fondatrices"
-        },
-        "community": {
-          "title": "🟠 Bloc Communauté UVD",
-          "description": "Présentations des membres de la communauté",
-          "note": "Transitions de 3 minutes entre les conférences"
-        },
-        "raffle2": {
-          "title": "🎁 Tirage #2 – UVD",
-          "description": "Deuxième tirage avec prix fixe"
-        },
-        "sponsors": {
-          "title": "🟠 Bloc Sponsors et Partenaires",
-          "description": "Présentations des sponsors et partenaires",
-          "note": "Transitions de 3 minutes entre les conférences"
-        },
-        "snack3": {
-          "title": "🟢 Collation #3",
-          "description": "Troisième collation"
-        },
-        "walletClose": {
-          "title": "📤 Clôture de l'Inscription des Portefeuilles + Airdrop Initial",
-          "description": "Clôture de l'inscription et distribution initiale",
-          "detail1": "$1 UVD par portefeuille enregistré",
-          "detail2": "Activation des 16 multisignataires"
-        },
-        "snapshot": {
-          "title": "📤 Lancement de Proposition sur Snapshot",
-          "description": "Vote communautaire",
-          "detail1": "Vote de 10 minutes pour définir le montant du tirage #3"
-        },
-        "ultraguaca": {
-          "title": "🟡 Ultra Guaca – Activation sur Scène",
-          "description": "Activité interactive avec la communauté",
-          "detail1": "Coordonnée par Jangx",
-          "detail2": "Distribution de $120 UVD parmi 12 gagnants",
-          "detail3": "Validation des mots trouvés + livraison en direct"
-        },
-        "demo": {
-          "title": "🟢 Démo Gouvernance + Multisig + Superfluid",
-          "description": "Démonstration des outils du DAO",
-          "detail1": "Clôture du Snapshot",
-          "detail2": "Exécution du tirage #3",
-          "detail3": "Airdrop secondaire : DAO → multisig, Non-DAO → Superfluid"
-        },
-        "raffle3": {
-          "title": "🎁 Tirage #3 – UVD",
-          "description": "Tirage final voté par la communauté",
-          "detail1": "Remise publique du montant voté"
-        },
-        "closing": {
-          "title": "🏁 Clôture Officielle de l'Événement",
-          "description": "Cérémonie de clôture",
-          "detail1": "Remerciements",
-          "detail2": "Reconnaissance aux sponsors, personnel et communauté",
-          "detail3": "Au revoir du stream"
-        },
-        "party": {
-          "title": "🎉 Réseautage + Fête DAO",
-          "description": "Célébration et réseautage",
-          "detail1": "DJ en direct",
-          "detail2": "Boissons",
-          "detail3": "Entrevues",
-          "detail4": "Clôture finale avec la communauté"
-        }
-      },
-      "gallery": "Galerie de l'Événement",
-      "stats": {
-        "registered": "Inscrits",
-        "attendees": "Participants",
-        "sponsors": "Sponsors",
-        "duration": "Durée"
-      },
-      "sponsors": {
-        "title": "Powered by Legends",
-        "thankYou": "Vidéo de remerciement",
-        "gratitude": "Merci à tous nos sponsors d'avoir rendu cet événement légendaire possible",
-        "watchVideo": "Regarder la vidéo de remerciement"
-      }
+  "common": {
+    "cancel": "Annuler",
+    "anonymous": "Anonyme",
+    "disconnect": "Déconnecter"
+  },
+  "bountyCreation": {
+    "connect_wallet_message": "Vous devez connecter votre wallet et avoir au moins 1,000,000 UVD pour créer des bounties",
+    "no_access_title": "Accès Restreint",
+    "no_access_message": "Votre wallet ne remplit pas les conditions pour créer des bounties.",
+    "checking_access": "Vérification des permissions d'accès...",
+    "access_granted": "Accès Vérifié!",
+    "responsibility_notice": "Si vous êtes membre du DAO ou si vous avez simplement 1M d'UVD et souhaitez créer un Bounty, vous devez assumer la responsabilité de la récompense du Bounty.\n\nVous pouvez créer des Bounties pour définir des tâches ou des objectifs de développement à implémenter à l'intérieur ou à l'extérieur du DAO, pas seulement pour l'engagement. Nous avons les meilleurs développeurs.\n\nContactez-nous pour finaliser le solde du bounty.",
+    "contact_us": "Contactez-nous",
+    "requirement_label": "Exigence",
+    "wrong_network_title": "Mauvais Réseau",
+    "wrong_network_message": "Votre wallet est connecté à un réseau incorrect.",
+    "current_network": "Réseau Actuel",
+    "required_network": "Réseau Requis",
+    "your_balance": "Votre solde",
+    "error_wallet_required": "Vous devez connecter votre wallet pour créer un bounty",
+    "error_insufficient_tokens": "Vous n'avez pas assez de tokens UVD pour créer des bounties"
+  },
+  "bountyForm": {
+    "title_label": "Nom du Bounty",
+    "description_label": "Description de la Tâche",
+    "reward_label": "Récompense",
+    "endDate_label": "Date d'Expiration",
+    "create_button": "Créer Bounty",
+    "creating_button": "Création...",
+    "success_message": "Bounty \"{{title}}\" créé avec succès!",
+    "error_creating_bounty": "Erreur lors de la création du bounty. Veuillez vous connecter."
+  },
+  "adminPanel": {
+    "title": "Panneau d'administration des Bounties",
+    "description": "Ici vous pouvez créer de nouveaux bounties et gérer les existants."
+  },
+  "bountyColumns": {
+    "empty_message": "Vide pour l'instant.",
+    "loading": "Chargement...",
+    "titles": {
+      "todo": "À faire",
+      "in_voting": "En vote",
+      "finished": "Terminées"
     }
   },
-  "services": {
-    "title": "Produits et Services",
-    "subtitle": "Nous offrons des produits et services professionnels Web3 pour les communautés, marques et projets en Amérique latine",
-    "hero": {
-      "title": "Services IA et Solutions de Développement Web3",
-      "subtitle": "Outils révolutionnaires propulsés par l'IA pour les streamers, créateurs de contenu et communautés Web3 en Amérique latine"
+  "bountyDetails": {
+    "reward_label": "Récompense",
+    "expires_label": "Expire",
+    "status_label": "Statut",
+    "status_values": {
+      "todo": "À faire",
+      "in_progress": "En cours",
+      "in_review": "En vote",
+      "voting": "En vote",
+      "done": "Terminé",
+      "finished": "Terminée"
     },
-    "quickNav": {
-      "jumpTo": "Aller à la section :",
-      "ultraServicios": "Ultra Services",
-      "karmaHello": "Karma Hello",
-      "chatToEarnReport": "Rapport Chat-to-Earn",
-      "abracadabra": "Abracadabra",
-      "ultraEvento": "Ultra Événement 2025",
-      "productos": "Produits",
-      "contenidoEducativo": "Contenu Éducatif"
+    "priority_label": "Priorité",
+    "priority_values": {
+      "low": "Basse",
+      "medium": "Moyenne",
+      "high": "Haute"
     },
-    "ultraServiciosTitle": "Ultra Services",
-    "products": {
-      "title": "Produits",
-      "book": {
-        "title": "Échos d'Hier : Ce Que le Temps N'a Pas Effacé",
-        "subtitle": "Édition en Espagnol - Kindle Edition",
-        "author": "Par Luis Alfonso Jaramillo Gallego",
-        "editor": "Éditeur : Saul Jaramillo",
-        "memberTag": "Membre d'UltraVioleta DAO (@lualjarami)",
-        "format": "Format : Kindle Edition",
-        "description": "Échos d'Hier : Ce Que le Temps N'a Pas Effacé est un mémoire autobiographique de Luis Alfonso Jaramillo Gallego, qui parcourt avec honnêteté et profondeur les multiples étapes de sa vie : de l'enfance à la vieillesse, en passant par des transformations personnelles, des défis sociaux et des réconciliations spirituelles.",
-        "contentTitle": "Le livre raconte :",
-        "content": {
-          "item1": "Son enfance dans un environnement rural qui a planté les valeurs fondamentales de son caractère.",
-          "item2": "La transition vers l'adolescence et les conflits internes et sociaux qu'il a vécus en ville.",
-          "item3": "Son parcours professionnel comme avocat en Colombie, confronté à un système judiciaire plein de contradictions.",
-          "item4": "L'exil forcé aux États-Unis en raison de la violence, où il a assumé de nouveaux métiers et responsabilités.",
-          "item5": "Son émergence en tant que vendeur et importateur, et son engagement envers la famille.",
-          "item6": "Sa vie en couple, basée sur l'amour, la compréhension, la tolérance et le pardon comme piliers essentiels de la famille.",
-          "item7": "Des expériences limites qui l'ont confronté à la fragilité de la vie et à la valeur de la liberté.",
-          "item8": "Le retour à ses racines juives à maturité dans le cadre d'un processus de guérison intérieure.",
-          "item9": "Réflexions sur les changements technologiques, culturels et spirituels qui ont marqué sa génération."
-        },
-        "conclusion": "Plus qu'une simple autobiographie, cet ouvrage est une invitation à honorer la vie vécue, comprendre le but individuel et accepter que, même dans les moments les plus sombres, il y a toujours une lumière prête à nous guider vers la transformation et la guérison.",
-        "benefit1": "60% des bénéfices vont directement au multisig du DAO",
-        "benefit2": "50% remboursé en tokens UVD (exclusif aux membres du DAO)",
-        "buyButton": "Acheter sur Amazon"
-      }
-    },
-    "ultraServicios": {
-      "description": "Ultra Servicios est notre division professionnelle offrant des solutions complètes pour l'écosystème Web3 en LATAM.",
-      "communities": {
-        "title": "Communautés",
-        "education": "Éducation blockchain et Web3 adaptée au contexte latino-américain",
-        "tokenization": "Tokenisation de communautés et conception d'économies numériques"
-      },
-      "brand": {
-        "title": "Représentation de Marque",
-        "representation": "Représentation de marque en Amérique latine avec approche culturelle",
-        "support": "Support et gestion de communautés en ligne 24/7"
-      },
-      "validation": {
-        "title": "Services de Validation",
-        "professional": "Services professionnels de validation",
-        "blockchains": "Expérience dans plus de 55 blockchains différentes"
-      },
-      "ai": {
-        "title": "Outils IA pour Communautés en Ligne",
-        "karmaHello": "Chat to Earn - Système de récompenses pour la participation au chat",
-        "abracadabra": "Stream to Market - Outils de marketing automatisé pour streamers"
-      }
-    },
-    "karmaHelloExpanded": {
-      "title": "Karma Hello",
-      "subtitle": "Système Chat-to-Earn avec Multi-Agents IA",
-      "description": "Karma Hello est un bot Twitch avancé qui récompense les utilisateurs avec des tokens UVD et des micropaiements en USDC pour contribuer des messages de qualité au chat. Le système utilise l'intelligence artificielle réelle pour évaluer chaque message et attribuer des récompenses basées sur une échelle de qualité. De plus, il coordonne des paiements multi-chaînes via notre facilitateur x402, connectant Avalanche (C-Chain) et Base afin qu'un même message puisse générer des paiements sur différents réseaux.",
-      "whatIsKarmaHello": "Qu'est-ce que Karma Hello ?",
-      "learnMoreLinks": "En savoir plus sur notre <uvdToken>Token UVD</uvdToken>, <echoesNFT>collections NFT Echoes</echoesNFT>, et <daoMetrics>métriques du DAO</daoMetrics>. Rejoignez notre <community>communauté</community> pour participer !",
-      "channel": "Chaîne: twitch.tv/0xultravioleta",
-      "blockchain": "Blockchain: Avalanche (C-Chain) · Base (L2 via x402)",
-      "features": {
-        "chatToEarn": {
-          "title": "Chat-to-Earn (C2E)",
-          "description": "Gagnez des tokens UVD en participant activement au chat",
-          "detail1": "Évaluation de qualité par IA réelle (OpenAI, Anthropic, Ollama)",
-          "detail2": "Distribution basée sur la séquence de Fibonacci",
-          "detail3": "Système anti-farming avec ML avancé",
-          "detail4": "90% des messages reçoivent 0 point - seule la qualité exceptionnelle gagne",
-          "detail5": "Micropaiements multi-chaînes: UVD sur Avalanche + USDC sur Base via x402"
-        },
-        "multiAgent": {
-          "title": "Multi-Agent IA",
-          "description": "Système de 11+ agents spécialisés travaillant ensemble",
-          "detail1": "Architecture Event-driven avec EventBus",
-          "detail2": "Coordination intelligente avec priorités",
-          "detail3": "Auto-recovery et fallback automatique",
-          "detail4": "Déploiement graduel configurable"
-        },
-        "tokenBurning": {
-          "title": "Token Burning",
-          "description": "Mécanisme déflationniste automatique",
-          "detail1": "1 UVD brûlé automatiquement par message",
-          "detail2": "Système d'exceptions pour les bots et commandes",
-          "detail3": "Suivi complet dans MongoDB",
-          "detail4": "Tableau de bord des statistiques de brûlage"
-        },
-        "echoesBonus": {
-          "title": "Bonus pour Détenteurs Echoes",
-          "description": "Avantages exclusifs pour les détenteurs de NFTs Echoes",
-          "detail1": "Paiement double automatique (x2) sur toutes les récompenses",
-          "detail2": "Détection automatique par wallet",
-          "detail3": "Indicateur spécial dans le chat",
-          "detail4": "Suivi des nombres Fibonacci par détenteur"
-        },
-        "twitterBoost": {
-          "title": "Twitter Social Boost",
-          "description": "Multiplicateurs pour mentions positives sur Twitter",
-          "detail1": "Multiplicateur de boost de 1.2x à 5.0x",
-          "detail2": "Bonus x2 pour mentionner la chaîne Twitch",
-          "detail3": "Système de handles Twitter (!setx @utilisateur)",
-          "detail4": "Anti-farming avec analyse de sentiment"
-        },
-        "cognee": {
-          "title": "Cognee Intelligence System",
-          "description": "Système de mémoire basé sur des graphes de connaissance",
-          "detail1": "Profils de risque des utilisateurs",
-          "detail2": "Détection de modèles cross-channel",
-          "detail3": "Audit complet des décisions",
-          "detail4": "API externe pour requêtes"
-        }
-      },
-      "fibonacci": {
-        "title": "Distribution Fibonacci",
-        "description": "Système de récompenses basé sur la séquence de Fibonacci selon le score de qualité (1-21)",
-        "ranges": {
-          "score1_2": "10 946 UVD - Score 1-2 (spam/farming - presque jamais)",
-          "score3_4": "17 711 UVD - Score 3-4 (très rare - faible effort)",
-          "score5_6": "28 657 UVD - Score 5-6 (message viable minimum)",
-          "score7_9": "46 368 UVD - Score 7-9 (contribution décente)",
-          "score10_12": "75 025 UVD - Score 10-12 (bonne contribution)",
-          "score13_15": "121 393 UVD - Score 13-15 (très bonne contribution)",
-          "score16_17": "196 418 UVD - Score 16-17 (excellente contribution)",
-          "score18_19": "317 811 UVD - Score 18-19 (exceptionnel)",
-          "score20": "514 229 UVD - Score 20 (remarquable)",
-          "score21": "832 040 UVD - Score 21 (parfait - extrêmement rare)"
-        }
-      },
-      "qualityEvaluation": {
-        "title": "Système d'Évaluation de Qualité",
-        "description": "Le système utilise l'IA réelle pour évaluer chaque message selon des critères spécifiques",
-        "score0": {
-          "title": "Score 0 (90% des messages)",
-          "examples": "Spam, farming, messages courts, demande de tokens, salutations génériques, emojis seulement"
-        },
-        "score1_5": {
-          "title": "Score 1-5 (Très rare)",
-          "examples": "Contribution minimale mais réelle, réponse simple, commentaire pertinent bref"
-        },
-        "score6_10": {
-          "title": "Score 6-10 (Peu commun)",
-          "examples": "Contribution intéressante, question pertinente, opinion constructive"
-        },
-        "score11_15": {
-          "title": "Score 11-15 (Rare)",
-          "examples": "Contenu très précieux, analyse approfondie, contribution technique, humour intelligent"
-        },
-        "score16_21": {
-          "title": "Score 16-21 (Exceptionnel <1%)",
-          "examples": "Contenu extraordinaire, insights uniques, créativité exceptionnelle"
-        }
-      },
-      "antiFarming": {
-        "title": "Système Anti-Farming Multi-Couches",
-        "description": "Protection avancée contre l'abus du système",
-        "detection1": "Détection de spam et contenu copié",
-        "detection2": "Rate limiting avancé par utilisateur",
-        "detection3": "ML ensemble avec BERT, Isolation Forest et Gradient Boosting",
-        "detection4": "Analyse des modèles comportementaux",
-        "detection5": "Profils de risque avec Cognee Intelligence"
-      },
-      "technology": {
-        "title": "Technologies",
-        "backend": "Backend: Python avec FastAPI",
-        "ai": "IA: OpenAI GPT-4, Anthropic Claude, Ollama",
-        "blockchain": "Blockchain: Avalanche C-Chain avec pool de RPCs",
-        "database": "Bases de Données: MongoDB, Redis",
-        "architecture": "Architecture: Event-driven multi-agent"
-      },
-      "stats": {
-        "agents": "18+ Agents",
-        "evaluation": "Évaluation IA Réelle",
-        "burning": "Brûlage Automatique",
-        "blockchain": "Avalanche C-Chain & Base (L2 via x402)"
-      },
-      "cta": {
-        "watchLive": "Regarder en Direct",
-        "learnMore": "En Savoir Plus"
-      },
-      "faqs": {
-        "title": "Karma Hello - Questions Fréquentes",
-        "q1": {
-          "question": "Qu'est-ce que Chat-to-Earn ?",
-          "answer": "Chat-to-Earn est un concept révolutionnaire Web3 où les utilisateurs gagnent de la cryptomonnaie (tokens UVD) en participant à des interactions de chat de qualité sur Twitch. Karma Hello évalue la qualité des messages en utilisant plus de 18 agents IA et récompense les utilisateurs avec des tokens sur la blockchain Avalanche."
-        },
-        "q2": {
-          "question": "Comment Karma Hello prévient-il le farming et l'abus ?",
-          "answer": "Karma Hello utilise un système anti-farming multi-couches avec des modèles ML avancés incluant BERT pour l'analyse de texte, Isolation Forest pour la détection d'anomalies, et Gradient Boosting pour la classification de fraude. De plus, chaque message brûle 1 token UVD, créant une désincitation économique au spam."
-        },
-        "q3": {
-          "question": "Quels sont les avantages pour les détenteurs de NFTs Echoes ?",
-          "answer": "Les détenteurs de NFTs Echoes reçoivent des récompenses x2 sur tous les tokens UVD gagnés via Karma Hello. Cet avantage exclusif est appliqué automatiquement lorsque le système détecte la propriété du NFT dans le portefeuille connecté de l'utilisateur."
-        },
-        "q4": {
-          "question": "Combien puis-je gagner avec Karma Hello ?",
-          "answer": "Les récompenses suivent une distribution de Fibonacci allant de 10 946 à 832 040 tokens UVD par message de qualité. Avec Twitter Social Boost, les multiplicateurs vont de 1.2x à 5.0x selon votre influence sociale. Les détenteurs de NFTs Echoes obtiennent un multiplicateur supplémentaire x2 sur toutes les récompenses."
-        },
-        "q5": {
-          "question": "Quelle est la différence entre Karma Hello et d'autres bots de chat ?",
-          "answer": "Karma Hello combine de manière unique plus de 18 agents IA (GPT-4, Claude, Ollama) pour évaluer la qualité des messages en temps réel, récompense les utilisateurs avec de la cryptomonnaie réelle (tokens UVD) sur la blockchain Avalanche, implémente des modèles ML anti-farming avancés (BERT, Isolation Forest), et inclut des mécaniques de brûlage de tokens pour la durabilité économique. Aucun autre bot n'offre cette intégration Web3 aussi complète."
-        },
-        "q6": {
-          "question": "Comment puis-je commencer à gagner avec Karma Hello ?",
-          "answer": "Pour commencer à gagner : 1) Rejoignez le canal Twitch sur twitch.tv/0xultravioleta, 2) Connectez votre portefeuille Web3 à la plateforme, 3) Commencez à chatter avec des messages de qualité dans le stream, 4) Recevez automatiquement des récompenses en tokens UVD basées sur l'évaluation IA, 5) Optionnel : Détenez des NFTs Echoes pour des récompenses x2 ou connectez Twitter pour des multiplicateurs de social boost."
-        },
-        "q7": {
-          "question": "Karma Hello est-il disponible en plusieurs langues ?",
-          "answer": "Oui, Karma Hello prend en charge plusieurs langues incluant l'Espagnol (ES), l'Anglais (EN), le Portugais (PT) et le Français (FR). Les agents IA peuvent comprendre et évaluer la qualité des messages dans toutes ces langues, le rendant accessible pour toute la communauté latino-américaine et mondiale."
-        }
-      }
-    },
-    "karmaReports": {
-      "title": "Rapport de Performance Chat-to-Earn",
-      "period": "19 juin - 2 octobre, 2025",
-      "description": "Résultats réels du système Chat-to-Earn de Karma Hello - Premiers 105 jours d'opération sur la blockchain Avalanche",
-      "metrics": {
-        "totalBurned": "Total Brûlé",
-        "totalDistributed": "Total Distribué",
-        "uniqueRecipients": "Utilisateurs Uniques",
-        "totalTransactions": "Total de Transactions",
-        "averagePerUser": "Moyenne par Utilisateur",
-        "operationPeriod": "Période d'Opération",
-        "days": "jours"
-      },
-      "descriptions": {
-        "burnedDesc": "Mécanisme déflationniste actif",
-        "distributedDesc": "Récompenses Chat-to-Earn",
-        "recipientsDesc": "Membres actifs de la communauté",
-        "transactionsDesc": "Interactions on-chain",
-        "averageDesc": "Modèle de distribution équitable",
-        "periodDesc": "19 juin - 2 oct, 2025"
-      },
-      "leaderboard": {
-        "title": "Classement Complet - Top 76 Destinataires",
-        "rank": "Rang",
-        "username": "Utilisateur",
-        "wallet": "Portefeuille",
-        "totalUVD": "Total UVD",
-        "scrollMessage": "Faites défiler pour voir la liste complète • 76 destinataires au total"
-      },
-      "systemHealth": {
-        "title": "Santé du Système et Détails Techniques",
-        "tokenContract": "Contrat du Token",
-        "burnAddress": "Adresse de Brûlage",
-        "network": "Réseau",
-        "botWallet": "Portefeuille du Bot",
-        "networkFull": "Avalanche C-Chain (Chain ID: 43114)",
-        "viewOnSnowTrace": "Voir sur Snowtrace",
-        "viewOnRoutescan": "Voir sur Routescan"
-      }
-    },
-    "abracadabraExpanded": {
-      "title": "Abracadabra",
-      "subtitle": "Système d'Analyse de Streams et Content Intelligence",
-      "description": "Abracadabra est une plateforme complète qui transforme les streams Twitch et vidéos en contenu actionnable, consultable et réutilisable en utilisant l'IA avancée. Avec 5 phases complètes de développement et 56+ API endpoints.",
-      "processed": "70+ Streams Traités",
-      "indexed": "640+ Topics Indexés",
-      "phases": {
-        "phase1": {
-          "title": "Phase 1: Database & Analytics",
-          "description": "Base de données SQLite avec ETL automatique",
-          "detail1": "Dashboard interactif d'analytics",
-          "detail2": "Extraction automatique de topics et entities",
-          "detail3": "Analyse de sentiment par segment"
-        },
-        "phase2": {
-          "title": "Phase 2: Time Machine",
-          "description": "Recherche temporelle avancée",
-          "detail1": "Comparaison de périodes",
-          "detail2": "Détection de tendances temporelles",
-          "detail3": "Timeline view interactive"
-        },
-        "phase3": {
-          "title": "Phase 3: Semantic Search & Knowledge Graph",
-          "description": "Moteur de recherche sémantique avec Cognee",
-          "detail1": "Recherche en langage naturel",
-          "detail2": "Knowledge graph avec 500+ nœuds",
-          "detail3": "Multi-hop reasoning (jusqu'à 3 sauts)"
-        },
-        "phase4": {
-          "title": "Phase 4: Content Intelligence",
-          "description": "Génération automatique de contenu",
-          "detail1": "Blogs automatiques en 4 styles",
-          "detail2": "Twitter threads (280 chars/tweet)",
-          "detail3": "Détection de clips viraux"
-        },
-        "phase5": {
-          "title": "Phase 5: Predictive Analytics",
-          "description": "Prédictions et recommandations",
-          "detail1": "Forecast de trending topics (7 jours)",
-          "detail2": "Recommandations de contenu similaire",
-          "detail3": "Système de scheduling et A/B testing"
-        }
-      },
-      "features": {
-        "processing": {
-          "title": "Traitement Automatique",
-          "description": "Téléchargement, transcription et analyse end-to-end",
-          "detail1": "Transcription double: AWS Transcribe + Whisper",
-          "detail2": "Analyse avec GPT-4o-2024-08-06",
-          "detail3": "Auto-indexing post-traitement"
-        },
-        "generation": {
-          "title": "Génération de Contenu",
-          "description": "Multiples formats de sortie automatique",
-          "detail1": "Blogs markdown (1500+ mots)",
-          "detail2": "Twitter threads avec engagement tips",
-          "detail3": "Images DALL-E 3 / GPT-Image-1"
-        },
-        "video": {
-          "title": "Video Processing",
-          "description": "Édition et extraction avec FFmpeg",
-          "detail1": "Clips avec timestamps précis",
-          "detail2": "Multi-format: YouTube Shorts, TikTok, Reels",
-          "detail3": "Highlight reels avec transitions"
-        },
-        "translation": {
-          "title": "Multi-langue",
-          "description": "Traduction avec adaptation culturelle",
-          "detail1": "10+ langues supportées",
-          "detail2": "Préservation des SEO keywords",
-          "detail3": "Limites de caractères par plateforme"
-        },
-        "intelligence": {
-          "title": "Content Intelligence",
-          "description": "Analyse et recommandations intelligentes",
-          "detail1": "Trending topics forecasting",
-          "detail2": "Similar streams avec 4 algorithmes",
-          "detail3": "Content gap analysis"
-        },
-        "automation": {
-          "title": "Automatisation Complète",
-          "description": "Pipeline end-to-end sans intervention manuelle",
-          "detail1": "Auto ETL + Cognee indexing",
-          "detail2": "Batch processing de streams",
-          "detail3": "Notifications via Telegram"
-        }
-      },
-      "technology": {
-        "title": "Stack Technologique",
-        "backend": "Backend: Python avec Flask",
-        "ai": "IA: OpenAI GPT-4o, Claude Sonnet 4, Whisper",
-        "database": "Bases de Données: SQLite, Cognee vector store",
-        "tools": "Outils: AWS Transcribe, FFmpeg, DALL-E 3",
-        "api": "API: 56+ REST endpoints"
-      },
-      "stats": {
-        "streams": "70+",
-        "topics": "640+",
-        "endpoints": "56+",
-        "phases": "5",
-        "streamsLabel": "Streams Traités",
-        "topicsLabel": "Topics Indexés",
-        "endpointsLabel": "API Endpoints",
-        "phasesLabel": "Phases Complètes"
-      },
-      "capabilities": {
-        "title": "Capacités Principales",
-        "semantic": "Recherche Sémantique",
-        "knowledge": "Knowledge Graph",
-        "content": "Génération de Contenu",
-        "predictions": "Analyse Prédictive",
-        "multiformat": "Export Multi-format",
-        "multilang": "Multi-langue (10+)"
-      },
-      "useCases": {
-        "title": "Cas d'Utilisation",
-        "creators": "Content Creators: Analyse et réutilisation de streams",
-        "marketing": "Marketing Teams: Repurposing multi-plateforme",
-        "research": "Research Teams: Analyse d'évolution de topics",
-        "developers": "Developers: Intégration via REST API"
-      },
-      "cta": {
-        "learnMore": "En Savoir Plus",
-        "viewDemo": "Voir la Démo"
-      },
-      "faqs": {
-        "title": "Abracadabra - Questions Fréquentes",
-        "q1": {
-          "question": "Qu'est-ce qu'Abracadabra?",
-          "answer": "Abracadabra est une plateforme complète d'analyse de streams et de content intelligence qui transforme les vidéos Twitch en contenu actionnable, consultable et réutilisable en utilisant l'IA avancée. Elle comprend 6 phases complètes: Analytics, Time Machine, Semantic Search, Content Intelligence, Predictive Analytics et Multi-Agent System avec WebSocket en temps réel."
-        },
-        "q2": {
-          "question": "Quel type de contenu peut-il générer automatiquement?",
-          "answer": "Abracadabra peut générer automatiquement des blogs en markdown (1500+ mots), des Twitter threads optimisés (280 chars/tweet), des clips vidéo avec FFmpeg dans plusieurs formats (YouTube Shorts, TikTok, Reels), des images avec DALL-E 3, des traductions multilingues (10+ langues) et des résumés personnalisés. Le tout avec 75+ endpoints REST API."
-        },
-        "q3": {
-          "question": "Comment fonctionne la recherche sémantique?",
-          "answer": "Abracadabra utilise le framework Cognee avec les embeddings d'OpenAI pour la recherche en langage naturel. Vous pouvez demander 'Qu'ont-ils dit sur les NFT?' et le système trouve du contenu pertinent en comprenant les synonymes, le contexte et les intentions. Il inclut un knowledge graph avec 500+ nœuds et un multi-hop reasoning jusqu'à 3 sauts."
-        },
-        "q4": {
-          "question": "Quelles données Abracadabra a-t-il traitées?",
-          "answer": "Il a actuellement traité 70+ streams Twitch, indexé 640+ topics dans Cognee et dispose d'un système d'analyse complet avec SQLite + vector store. Le traitement est entièrement automatique: téléchargement, transcription double (AWS Transcribe + Whisper), analyse avec GPT-4o et auto-indexing post-traitement."
-        },
-        "q5": {
-          "question": "Combien coûte Abracadabra?",
-          "answer": "Abracadabra est actuellement en phase de pré-commande avec des prix spéciaux d'accès anticipé pour les membres d'UltraVioleta DAO. La plateforme offrira différents niveaux: Tier gratuit (requêtes limitées), Tier Pro pour les créateurs de contenu et Tier Enterprise pour les agences et les marques. Contactez-nous pour des prix personnalisés et un accès anticipé."
-        },
-        "q6": {
-          "question": "Abracadabra peut-il analyser YouTube ou d'autres plateformes?",
-          "answer": "Bien qu'actuellement axé sur les streams Twitch, l'architecture d'Abracadabra supporte l'expansion multi-plateforme. Le même pipeline d'IA (transcription, analyse sémantique, génération de contenu) peut traiter des vidéos YouTube, des podcasts, des webinaires et tout contenu vidéo/audio. L'expansion vers d'autres plateformes est prévue pour Q2 2025."
-        },
-        "q7": {
-          "question": "Qu'est-ce qui rend la recherche sémantique d'Abracadabra unique?",
-          "answer": "Abracadabra utilise le framework Cognee avec les embeddings d'OpenAI pour comprendre le contexte et le sens, pas seulement les mots-clés. Il dispose d'un knowledge graph avec 500+ nœuds permettant un multi-hop reasoning jusqu'à 3 niveaux de profondeur, des requêtes en langage naturel dans n'importe quelle langue et une recherche temporelle pour trouver du contenu de périodes spécifiques. Cela permet des requêtes comme 'Qu'ont-ils dit sur les NFT le mois dernier?' et d'obtenir des résultats précis et contextuels."
-        }
-      },
-      "fullDescription": "Abracadabra est une plateforme d'intelligence de contenu d'entreprise qui utilise l'intelligence artificielle avancée pour transformer des vidéos et streams en contenu actionnable, recherches sémantiques et analyses prédictives. Système complet end-to-end qui convertit le contenu audiovisuel brut en analyses structurées, contenu dérivé automatiquement et prédictions de tendances.",
-      "systemCapabilities": {
-        "title": "Capacités du Système",
-        "dualTranscription": {
-          "title": "Transcription Double",
-          "item1": "AWS Transcribe (vidéos < 4 heures)",
-          "item2": "OpenAI Whisper (vidéos > 4 heures)",
-          "item3": "Auto-switching intelligent",
-          "item4": "Diarisation des speakers"
-        },
-        "contentGeneration": {
-          "title": "Génération de Contenu",
-          "item1": "Images DALL-E 3 (scene-first)",
-          "item2": "Résumés : concis, complet, critique",
-          "item3": "Tweets 280 chars avec CTA",
-          "item4": "Descriptions SEO optimisées"
-        },
-        "videoProcessing": {
-          "title": "Traitement Vidéo",
-          "item1": "YouTube Shorts (9:16, max 60s)",
-          "item2": "Format TikTok (9:16, max 180s)",
-          "item3": "Instagram Reels (9:16, max 90s)",
-          "item4": "Normalisation audio LUFS -20"
-        },
-        "multiLanguage": {
-          "title": "Multi-Langue",
-          "item1": "10+ langues : ES, PT, FR, DE, IT, JA, KO, ZH, RU, AR",
-          "item2": "Adaptation culturelle des expressions",
-          "item3": "Préserve markdown et SEO keywords",
-          "item4": "Limites de caractères (Twitter 280)"
-        },
-        "semanticSearch": {
-          "title": "Recherche Sémantique",
-          "item1": "Framework Cognee intégré",
-          "item2": "Requêtes en langage naturel",
-          "item3": "Multi-hop reasoning (3 sauts)",
-          "item4": "Knowledge graph 500+ nœuds"
-        },
-        "predictiveAnalytics": {
-          "title": "Analyse Prédictive",
-          "item1": "Trending topics (prévision 7-30 jours)",
-          "item2": "Prédictions d'engagement LSTM",
-          "item3": "Horaires de publication optimaux",
-          "item4": "Alertes de saturation de contenu"
-        }
-      },
-      "techStack": {
-        "title": "Stack Technologique",
-        "backendAI": {
-          "title": "Backend & IA",
-          "item1": "Python 3.9+ / Flask",
-          "item2": "OpenAI GPT-4o-2024-08-06",
-          "item3": "Cognee Framework 0.3.4",
-          "item4": "PyTorch LSTM networks"
-        },
-        "processing": {
-          "title": "Traitement",
-          "item1": "AWS Transcribe + Whisper",
-          "item2": "Édition vidéo FFmpeg",
-          "item3": "Images DALL-E 3",
-          "item4": "OpenCV computer vision"
-        },
-        "infrastructure": {
-          "title": "Infrastructure",
-          "item1": "SQLite / PostgreSQL",
-          "item2": "WebSocket temps réel",
-          "item3": "JWT + RBAC auth",
-          "item4": "75+ API endpoints"
-        }
-      },
-      "competitiveAdvantages": {
-        "title": "Avantages Compétitifs",
-        "fullStack": {
-          "title": "Full-Stack Intelligence",
-          "desc": "Traitement end-to-end : téléchargement → analytics → contenu"
-        },
-        "automation": {
-          "title": "Automation-First",
-          "desc": "Auto ETL, indexation Cognee, génération de contenu, prédictions"
-        },
-        "semantic": {
-          "title": "Couche Sémantique",
-          "desc": "Recherche en langage naturel, knowledge graph, multi-hop reasoning"
-        },
-        "multiFormat": {
-          "title": "Sortie Multi-Format",
-          "desc": "Blogs, threads, clips, images, audio, exports de données"
-        },
-        "predictive": {
-          "title": "Prédictif & Proactif",
-          "desc": "Prévision de tendances, prédictions d'engagement, recommandations"
-        },
-        "enterprise": {
-          "title": "Enterprise-Ready",
-          "desc": "JWT + RBAC, analytics WebSocket, multi-utilisateur, audit trail"
-        }
-      }
-    },
-    "events": {
-      "ultraevento": {
-        "title": "Ultra Evento 2025",
-        "flagship": "Événement Phare",
-        "date": {
-          "label": "Date",
-          "value": "24 Août 2025"
-        },
-        "time": {
-          "label": "Horaire",
-          "value": "13h00 - 21h00"
-        },
-        "location": {
-          "label": "Lieu",
-          "value": "Hash House, Medellín"
-        },
-        "description": "L'événement annuel le plus important d'UltraVioleta DAO, réunissant la communauté Web3 latino-américaine pour des conférences, du réseautage et des célébrations.",
-        "stats": {
-          "registered": "Inscrits",
-          "attendees": "Participants",
-          "sponsors": "Sponsors",
-          "duration": "Durée"
-        },
-        "sponsors": {
-          "title": "Sponsors 2025",
-          "gratitude": "Merci à tous nos sponsors d'avoir rendu cet événement possible!"
-        },
-        "brandRepresentation": "Dans le cadre de nos services de représentation de marque, nous organisons des événements en personne qui connectent les projets Web3 avec la communauté latino-américaine.",
-        "sponsorCTA": "Sponsoriser le prochain événement"
-      }
-    },
-    "contact": "Intéressé par nos services? Contactez-nous pour plus d'informations",
-    "educationalVideos": {
-      "title": "Contenu Éducatif",
-      "description": "Accédez à nos vidéos et cours gratuits sur la blockchain, le Web3 et les technologies décentralisées",
-      "viewAll": "Voir toutes les vidéos sur YouTube"
-    }
+    "requirements_label": "Exigences",
+    "deliverables_label": "Livrables",
+    "created_by": "Créé par",
+    "submit_task_title": "Soumettre Tâche",
+    "submitter_name_label": "Votre nom ou email",
+    "submitter_name_placeholder": "Entrez votre nom ou email",
+    "submission_content_label": "Description de votre livraison",
+    "submission_placeholder": "Décrivez votre travail, incluez des liens, fichiers, etc.",
+    "submitting_button": "Envoi...",
+    "submit_button": "Envoyer Tâche",
+    "submissions": "Soumissions",
+    "submissions_count": "soumissions",
+    "submit_task": "Soumettre Tâche",
+    "your_name": "Votre nom",
+    "name_placeholder": "Entrez votre nom",
+    "submission_description": "Description de votre livraison",
+    "submitting": "Envoi...",
+    "submit": "Envoyer",
+    "error_bounty_not_selected": "Aucun bounty sélectionné",
+    "error_submitting_task": "Erreur lors de l'envoi de la tâche",
+    "error_duplicate_submission": "Vous avez déjà soumis à ce bounty. Une seule soumission par wallet est autorisée.",
+    "submission_success_message": "Tâche envoyée avec succès!",
+    "connect_wallet_to_submit": "Vous devez connecter votre wallet pour soumettre une tâche.",
+    "voting_in_progress": "Vote en cours",
+    "submissions_closed": "Les soumissions sont fermées. Votez pour le gagnant sur Snapshot.",
+    "bounty_finished": "Bounty terminée",
+    "bounty_completed_message": "Cette bounty a été complétée et les récompenses distribuées.",
+    "vote_on_snapshot": "Voter sur Snapshot",
+    "view_results_on_snapshot": "Voir les résultats sur Snapshot"
   },
-  "nft": {
-    "title": "Collections NFT",
-    "subtitle": "Explorez des collections d'art numérique uniques d'UltraVioleta DAO",
-    "totalSupply": "Offre Totale",
-    "uniqueOwners": "Propriétaires Uniques",
-    "chain": "Blockchain",
-    "royalty": "Redevances",
-    "viewOnMarketplace": "Voir sur Marketplace",
-    "viewOnOpenSea": "Voir sur OpenSea",
-    "echoes": {
-      "description": "Echoes est une collection limitée de 89 NFT vidéo qui relient le monde numérique et réel. Chaque pièce débloque des avantages exclusifs au sein du DAO Ultravioleta.",
-      "superpowers": {
-        "title": "Superpouvoirs des Détenteurs Echoes",
-        "airdrop": "Airdrop Mensuel",
-        "whitelist": "Whitelist Prioritaire",
-        "event": "Accès Gratuit à l'Événement",
-        "discount": "Réduction sur le Merch",
-        "fibonacci": {
-          "title": "Pouvoir Spécial Fibonacci",
-          "description": "2X Récompenses dans les systèmes Watch-to-Earn et Chat-to-Earn"
-        },
-        "notes": {
-          "venue": "Entrée au lieu uniquement. Vols, hébergement et autres frais non inclus.",
-          "shipping": "Expédition internationale non incluse."
-        }
-      },
-      "treasuryReserved": "Réservé pour le Trésor Communautaire",
-      "treasury": {
-        "title": "Réserve du Trésor Communautaire",
-        "description": "Les Echoes #56 à #89 sont réservés pour le trésor communautaire d'UltraVioleta DAO. Ces NFTs n'ont pas été vendus au public et sont conservés pour de futures initiatives communautaires, récompenses et partenariats stratégiques."
-      }
-    },
-    "vulvas": {
-      "description": "Une collection artistique célébrant la diversité et l'expression à travers des pièces d'art numérique uniques.",
-      "title": "Collection Vulvas de Vulvas",
-      "info": "Cette collection présente des expressions artistiques uniques. Visitez OpenSea pour explorer la collection complète et découvrir les pièces disponibles."
-    },
-    "meta": {
-      "description": "Explorez les collections NFT exclusives d'UltraVioleta DAO - Echoes NFT vidéo sur Avalanche et collections artistiques sur Ethereum."
-    }
+  "submissionList": {
+    "loading": "Chargement des soumissions...",
+    "error_fetching_submissions": "Erreur lors du chargement des soumissions.",
+    "no_submissions": "Pas encore de soumissions.",
+    "submissions_title": "Soumissions",
+    "submitted_by": "Soumis par",
+    "view_link": "Voir le Lien",
+    "view_more": "Voir plus"
   },
-  "streamSummaries": {
-    "seoTitle": "Résumés de Streams - Abracadabra AI",
-    "seoDescription": "Explorez des résumés générés par IA de streams de programmation, Web3 et technologie. Résumés automatiques de 0xultravioleta, karenngo, elbitterx, herniep et plus.",
-    "title": "Résumés de Streams",
-    "subtitle": "Résumés générés automatiquement par IA de streams de programmation, Web3 et technologie en espagnol",
-    "loading": "Chargement des résumés de streams...",
-    "loadingSummary": "Chargement du résumé...",
-    "errorTitle": "Erreur lors du chargement des résumés",
-    "errorMessage": "Impossible de charger les résumés. Veuillez réessayer plus tard.",
-    "totalStreams": "streams analysés",
-    "streamersCount": "streamers",
-    "updateFrequency": "mises à jour",
-    "filterAll": "Tous",
-    "watchOnTwitch": "Regarder sur Twitch",
-    "characters": "caractères",
-    "expand": "Voir le résumé",
-    "collapse": "Masquer le résumé",
-    "webSummary": "Résumé du Stream",
-    "summaryTitle": "Résumé Concis",
-    "fullSummaryTitle": "Résumé Complet",
-    "noSummaries": "Aucun résumé trouvé",
-    "aboutTitle": "Qu'est-ce qu'Abracadabra?",
-    "aboutDescription": "Abracadabra est un système d'analyse automatique de streams qui génère des résumés détaillés en utilisant l'intelligence artificielle. Chaque résumé inclut des highlights du stream, des sujets techniques discutés, des idées innovantes et des moments marquants.",
-    "aboutIntro": "Les résumés ci-dessous ont été générés automatiquement par Abracadabra, notre système d'analyse de streams alimenté par l'IA. Chaque résumé capture les points clés, les décisions techniques et les moments forts de chaque diffusion.",
-    "learnMore": "En savoir plus sur Abracadabra →",
-    "poweredBy": "Powered by Claude AI & Cognee Memory",
-    "aria": {
-      "streamStats": "Statistiques des streams",
-      "learnMore": "En savoir plus sur la plateforme Abracadabra IA",
-      "filterByStreamer": "Filtrer les streams par streamer",
-      "showAllStreams": "Afficher tous les streams ({{count}} au total)",
-      "showStreamerStreams": "Afficher les streams de {{streamer}} ({{count}} au total)",
-      "summariesList": "Liste des résumés de streams",
-      "streamSummary": "Résumé du stream: {{title}}",
-      "streamBy": "Stream de {{streamer}}",
-      "pagination": "Navigation de pagination"
-    }
+  "wallet": {
+    "voting_panel": "Panneau de Vote",
+    "connect_wallet": "Connecter Wallet",
+    "connect_button": "Connecter Wallet",
+    "connecting": "Connexion...",
+    "connected": "Connecté",
+    "network": "Réseau",
+    "governance_tokens": "Tokens de Gouvernance",
+    "disconnect": "Déconnecter",
+    "switch_wallet": "Changer",
+    "switch_account": "Compte",
+    "change_wallet": "Changer de wallet",
+    "select_provider": "Sélectionnez votre wallet:",
+    "vote": "Voter",
+    "supported_wallets": "MetaMask, Rabby, Core et autres wallets",
+    "no_ethereum_provider": "Aucun wallet détecté. Installez MetaMask, Rabby ou Core.",
+    "unsupported_network": "Réseau non supporté. Changez vers un réseau supporté.",
+    "user_rejected": "Connexion annulée",
+    "connection_error": "Erreur de connexion",
+    "select_different_account": "Sélectionnez un compte différent",
+    "switch_cancelled": "Changement annulé"
   },
-  "experiments": {
-    "seoTitle": "Expériences Communautaires - UltraVioleta DAO",
-    "seoDescription": "Explorez les expériences innovantes menées par la communauté UltraVioleta DAO. De la recherche en santé aux expériences de gouvernance, découvrez comment nous testons et apprenons ensemble.",
-    "hero": {
-      "title": "Expériences Communautaires",
-      "subtitle": "Innovation décentralisée par l'expérimentation collaborative"
-    },
-    "stats": {
-      "totalExperiments": "Total d'Expériences",
-      "participants": "Participants",
-      "ongoing": "En Cours",
-      "completed": "Complétées"
-    },
-    "categories": {
-      "all": "Toutes",
-      "research": "Recherche",
-      "governance": "Gouvernance",
-      "community": "Communauté"
-    },
-    "status": {
-      "completed": "Complétée",
-      "ongoing": "En Cours",
-      "upcoming": "À Venir"
-    },
-    "labels": {
-      "summary": "Résumé",
-      "participants": "Participants",
-      "budget": "Budget",
-      "results": "Résultats"
-    },
-    "items": {
-      "operacionCamaleon": {
-        "date": "Janvier 2023",
-        "title": "Opération Caméléon",
-        "description": "Recherche communautaire sur les types d'huiles utilisées dans les restaurants via le crowdsourcing décentralisé.",
-        "summary": "7 membres de la communauté ont enquêté sur 35+ restaurants dans différentes villes pour identifier les types d'huiles utilisées dans la préparation des aliments, recevant des paiements en USDC sur Polygon.",
-        "results": {
-          "item1": "Enquête sur 35+ restaurants dans plusieurs villes",
-          "item2": "Identification de modèles dans l'utilisation d'huiles de graines vs. huiles saines",
-          "item3": "Paiements transparents sur blockchain (Polygon) aux participants"
-        },
-        "links": {
-          "transaction": "Voir la Transaction sur Polygon"
-        }
-      },
-      "comingSoon": {
-        "title": "Plus d'Expériences à Venir",
-        "description": "Nous explorons constamment de nouvelles façons de collaborer et d'innover. Restez à l'écoute pour plus d'expériences communautaires.",
-        "date": "2025",
-        "details": "Détails à venir..."
-      }
-    },
-    "cta": {
-      "title": "Vous Avez une Idée d'Expérience?",
-      "description": "L'innovation commence avec la communauté. Proposez votre expérience dans notre espace de gouvernance.",
-      "button": "Créer une Proposition"
-    }
+  "voting": {
+    "voting_section": "Système de Vote",
+    "vote_for_winner": "Voter pour le Gagnant",
+    "select_submission": "Sélectionner Soumission",
+    "choose_submission": "Choisissez une soumission pour voter",
+    "vote_amount": "Nombre de Votes",
+    "max": "Max",
+    "available_tokens": "Tokens disponibles",
+    "submit_vote": "Envoyer Vote",
+    "submitting_vote": "Envoi du vote...",
+    "current_results": "Résultats Actuels",
+    "voters": "votants",
+    "missing_requirements": "Conditions requises manquantes",
+    "invalid_amount": "Nombre de votes invalide",
+    "vote_success": "Vote envoyé avec succès!",
+    "vote_error": "Erreur lors de l'envoi du vote",
+    "loading_submissions": "Chargement des soumissions...",
+    "no_submissions_to_vote": "Aucune soumission à voter",
+    "connect_wallet_to_vote": "Connecter Wallet pour Voter",
+    "wallet_required_message": "Vous devez connecter votre wallet pour participer au vote décentralisé."
   }
 }
