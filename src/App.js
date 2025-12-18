@@ -36,6 +36,7 @@ const StreamSummaries = lazy(() => import("./pages/StreamSummaries"));
 const Events = lazy(() => import("./pages/Events"));
 const ExperimentsPage = lazy(() => import("./pages/ExperimentsPage"));
 const FacilitatorPage = lazy(() => import("./pages/FacilitatorPage"));
+const Bounties = lazy(() => import("./pages/Bounties"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -80,6 +81,7 @@ function App() {
                   <Route path="/events" element={<Events />} />
                   <Route path="/experiments" element={<ExperimentsPage />} />
                   <Route path="/facilitator" element={<FacilitatorPage />} />
+                  <Route path="/bounties" element={<Bounties />} />
                 </Routes>
               </Suspense>
               <Footer />

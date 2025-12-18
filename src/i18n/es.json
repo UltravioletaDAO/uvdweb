@@ -311,6 +311,7 @@
     "streamSummaries": "Resúmenes",
     "experiments": "Experimentos",
     "nft": "Colecciones NFT",
+    "bounties": "Bounties",
     "categories": {
       "main": "Principal",
       "governance": "Gobernanza",
@@ -334,7 +335,11 @@
       "services": "Explora nuestros productos y servicios",
       "streamSummaries": "Resúmenes generados por IA de streams de programación y Web3",
       "experiments": "Experimentos comunitarios y de investigación",
-      "nft": "Navega nuestras colecciones NFT"
+      "nft": "Navega nuestras colecciones NFT",
+      "bounties": "Bounties y tareas comunitarias",
+      "todo": "Bounties listas para ser tomadas por colaboradores",
+      "in_voting": "Bounties en progreso o bajo revisión",
+      "finished": "Bounties completadas con recompensas distribuidas"
     },
     "aria": {
       "open_menu": "Abrir menú",
@@ -590,6 +595,7 @@
   },
   "common": {
     "cancel": "Cancelar",
+    "anonymous": "Anónimo",
     "disconnect": "Desconectar",
     "locale": "es_ES",
     "close": "Cerrar",
@@ -599,6 +605,48 @@
     "ultraevento_promo_alt": "Banner Promocional Ultra Evento 2025 - Conferencia Premier de Web3 blockchain 24 de agosto 2025 en Medellín Colombia en Hash House con 212 asistentes registrados y 10 patrocinadores incluyendo Avalanche Uniswap Pyth Network",
     "ultraevento_main_alt": "Ultra Evento 2025 Evento Principal - Conferencia Web3 DAO blockchain en América Latina con 144 asistentes conectando y aprendiendo sobre DeFi NFTs y gobernanza descentralizada en español",
     "ultraquedada_alt": "Ultra Quedada Medellín 2025 Encuentro Comunitario - Reunión de la comunidad Web3 crypto blockchain de miembros de UltraVioleta DAO evento de networking América Latina LATAM"
+  },
+  "wallet": {
+    "voting_panel": "Panel de Votación",
+    "connect_wallet": "Conectar Wallet",
+    "connecting": "Conectando...",
+    "network": "Red",
+    "governance_tokens": "Tokens de Gobernanza",
+    "disconnect": "Desconectar",
+    "switch_wallet": "Cambiar",
+    "switch_account": "Cuenta",
+    "change_wallet": "Cambiar de wallet",
+    "select_provider": "Selecciona tu wallet:",
+    "vote": "Votar",
+    "supported_wallets": "MetaMask, Rabby, Core y otras wallets",
+    "no_ethereum_provider": "No se detectó wallet. Instala MetaMask, Rabby o Core.",
+    "unsupported_network": "Red no soportada. Cambia a una red soportada.",
+    "user_rejected": "Conexión cancelada",
+    "connection_error": "Error de conexión",
+    "select_different_account": "Selecciona una cuenta diferente",
+    "switch_cancelled": "Cambio cancelado",
+    "connect_button": "Conectar Wallet"
+  },
+  "voting": {
+    "voting_section": "Sistema de Votación",
+    "vote_for_winner": "Votar por el Ganador",
+    "select_submission": "Seleccionar Entrega",
+    "choose_submission": "Elige una entrega para votar",
+    "vote_amount": "Cantidad de Votos",
+    "max": "Máx",
+    "available_tokens": "Tokens disponibles",
+    "submit_vote": "Enviar Voto",
+    "submitting_vote": "Enviando voto...",
+    "current_results": "Resultados Actuales",
+    "voters": "votantes",
+    "missing_requirements": "Faltan requisitos para votar",
+    "invalid_amount": "Cantidad de votos inválida",
+    "vote_success": "¡Voto enviado con éxito!",
+    "vote_error": "Error al enviar el voto",
+    "loading_submissions": "Cargando entregas...",
+    "no_submissions_to_vote": "No hay entregas para votar",
+    "connect_wallet_to_vote": "Conectar Wallet para Votar",
+    "wallet_required_message": "Necesitas conectar tu wallet para participar en la votación descentralizada."
   },
   "wheel": {
     "title": "Watch to Earn",
@@ -1976,5 +2024,97 @@
       "description": "La innovación comienza con la comunidad. Propón tu experimento en nuestro espacio de gobernanza.",
       "button": "Crear Propuesta"
     }
+  },
+  "bountyCreation": {
+    "title": "Crear Ultra Bountie",
+    "connect_wallet_title": "Conecta tu Wallet para Crear Bounties",
+    "connect_wallet_message": "Necesitas conectar tu wallet y tener al menos 1,000,000 UVD para crear bounties",
+    "requirement": "Requisito",
+    "requirement_label": "Requisito",
+    "your_balance": "Tu balance",
+    "token_name": "UltraVioleta DAO (UVD)",
+    "checking_access": "Verificando permisos de acceso...",
+    "no_access_title": "Acceso Restringido",
+    "no_access_message": "Tu wallet no cumple con los requisitos para crear bounties.",
+    "access_granted": "¡Acceso Verificado!",
+    "wrong_network": "Red Incorrecta",
+    "wrong_network_title": "Red Incorrecta",
+    "wrong_network_message": "Tu wallet está conectada a una red incorrecta.",
+    "current_network": "Red Actual",
+    "required_network": "Red Requerida",
+    "how_to_switch": "¿Cómo cambiar a Avalanche?",
+    "switch_step1": "Abre tu wallet (MetaMask, Rabby, etc.)",
+    "switch_step2": "Haz clic en el selector de red",
+    "switch_step3": "Selecciona \"Avalanche C-Chain\"",
+    "switch_step4": "Si no aparece, agrégala manualmente con Chain ID: 43114",
+    "error_wallet_required": "Debes conectar tu wallet para crear una bounty",
+    "error_insufficient_tokens": "No tienes suficientes tokens UVD para crear bounties",
+    "responsibility_notice": "Si eres miembro del DAO o simplemente tienes la cantidad de 1M de UVD y quieres crear un Bountie, debes hacerte responsable de la recompensa del Bountie.\n\nPuedes crear los Bounties para colocar tareas o metas de desarrollo para que sean implementadas dentro o fuera del DAO, no simplemente para engange. Contamos con los mejores Dev's.\n\nPonte en contacto con nosotros para concretar el saldo del bountie.",
+    "contact_us": "Contáctanos"
+  },
+  "bountyColumns": {
+    "titles": {
+      "todo": "Por Hacer",
+      "in_voting": "En Votación",
+      "finished": "Terminadas"
+    },
+    "empty_message": "No hay bounties en esta categoría",
+    "loading": "Cargando..."
+  },
+  "bountyDetails": {
+    "reward_label": "Recompensa",
+    "expires_label": "Expira",
+    "status_label": "Estado",
+    "priority_label": "Prioridad",
+    "submissions_count": "entregas",
+    "submit_task_title": "Entregar tu Trabajo",
+    "connect_wallet_to_submit": "Conecta tu wallet para entregar tu trabajo.",
+    "submitter_name_label": "Entregado por",
+    "submission_content_label": "Contenido de la Entrega",
+    "submission_placeholder": "Pega el enlace a tu trabajo o describe lo que hiciste...",
+    "submitting_button": "Enviando...",
+    "submit_button": "Enviar",
+    "submission_success_message": "¡Tu entrega ha sido enviada exitosamente!",
+    "error_duplicate_submission": "Ya has enviado una entrega a este bounty. Solo se permite una por wallet.",
+    "error_bounty_not_selected": "Ninguna bounty seleccionada",
+    "vote_on_snapshot": "Votar en Snapshot",
+    "view_results_on_snapshot": "Ver resultado en Snapshot",
+    "voting_in_progress": "Votación en progreso",
+    "submissions_closed": "Las entregas están cerradas. Vota por el ganador en Snapshot.",
+    "bounty_finished": "Bounty finalizada",
+    "bounty_completed_message": "Esta bounty ha sido completada y las recompensas distribuidas.",
+    "status_values": {
+      "todo": "Por Hacer",
+      "in_review": "En Revisión",
+      "in_voting": "En Votación",
+      "voting": "En Votación",
+      "done": "Completada",
+      "finished": "Terminada"
+    },
+    "priority_values": {
+      "low": "Baja",
+      "medium": "Media",
+      "high": "Alta"
+    }
+  },
+  "bountyForm": {
+    "title_label": "Título",
+    "description_label": "Descripción",
+    "reward_label": "Recompensa (ej. 100 UVD)",
+    "endDate_label": "Fecha de Fin (opcional)",
+    "creating_button": "Creando...",
+    "create_button": "Crear Bounty",
+    "success_message": "¡Bounty \"{{title}}\" creada exitosamente!"
+  },
+  "submissionList": {
+    "loading": "Cargando entregas...",
+    "no_submissions": "Aún no hay entregas",
+    "submissions_title": "Entregas",
+    "submitted_by": "Entregado por",
+    "view_more": "Ver más"
+  },
+  "adminPanel": {
+    "title": "Panel de Administración",
+    "description": "Crear y gestionar bounties comunitarias"
   }
 } 
