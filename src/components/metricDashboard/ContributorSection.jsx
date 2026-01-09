@@ -6,11 +6,11 @@ import { useTranslation } from 'react-i18next';
 const currentDaoMembers = [
   "Ultra", "x4", "Txntacion", "Alejo", "f3l1p3", "Teddy Saint", "zircon", "cabomarzo",
   "Juan Jumaga", "cdt", "Cyber Paisa", "nezzcold", "Vens", "Yesi", "Fredino",
-  "Waira Tamayo", "DavidZO", "Sindy Arenas", "JuanH", "DatBoi",
+  "Waira Tamayo", "DavidZO", "Sindy Arenas", "Cymatix", "DatBoi",
   "Jangx", "David Rodríguez", "Juyan", "DogonPay", "Papossa",
   "Stov3", "Brandon Heat", "lualjarami", "ACPM", "Roypi", "0xPineda", "SaemTwentyTwo",
   "Jokker", "Andres", "0xvital.nad", "iEFx", "Detx8",
-  "Valenciacrypto", "0xSoulAvax", "xDream", "Poo", "Fabin", "Juliboy", "Mar", "ogsebitas", "Kysaug", "Burgos Σ", "Juan Suarez",
+  "Valenciacrypto", "0xSoulChain", "xDream", "Poo", "Fabin", "Juliboy", "Mar", "ogsebitas", "Kysaug", "Burgos Σ", "Juan Suarez",
   "Nizo", "MichaelGA", "Mabu", "21", "OnlyZ_", "Alejandro Rosero", "Manussa21",
   "Gathus_", "Bob Cokirow", "JuanCCF", "Kadrez", "0xstiven", "Fixie", "JuanWx_", "sxxneiderxx", "Rehabilitation in Progress",
   "Bogotá Mag", "athan", "Karenn", "Jorge Toledo", "Ari", "ElBitterX", "r3c", "Hanma", "Pkante", "0xyuls", "Juandi",
