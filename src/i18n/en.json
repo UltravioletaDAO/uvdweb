@@ -75,7 +75,8 @@
       "twitter": "Twitter / X",
       "discord": "Discord",
       "github": "GitHub",
-      "linktree": "Linktree"
+      "linktree": "Linktree",
+      "the_arena": "The Arena"
     },
     "registered_label": "Registered Entity",
     "operations": {
@@ -136,7 +137,8 @@
         "title": "Legal Status",
         "jurisdiction": "Wyoming, United States",
         "registered": "Registered Sep. 26, 2025",
-        "learn_more": "Learn more"
+        "learn_more": "Learn more",
+        "official_filing": "Official Filing"
       },
       "see_more": "See more metrics",
       "generating_story": "Generating summary...",

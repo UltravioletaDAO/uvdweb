@@ -10,7 +10,7 @@ const Footer = () => {
     { label: t('footer.links.discord'), href: 'https://discord.gg/ultravioletadao' },
     { label: t('footer.links.github'), href: 'https://github.com/ultravioletadao' },
     { label: t('footer.links.linktree'), href: 'https://linktr.ee/UltravioletaDAO' },
-    { label: 'The Arena', href: 'https://arena.social/UltravioletaDAO' },
+    { label: t('footer.links.the_arena'), href: 'https://arena.social/UltravioletaDAO' },
     { label: t('navigation.multisig', 'Multisig'), href: 'https://app.safe.global/home?safe=avax:0x52110a2Cc8B6bBf846101265edAAe34E753f3389' },
   ];
 
