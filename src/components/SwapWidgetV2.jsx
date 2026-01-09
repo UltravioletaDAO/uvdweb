@@ -716,9 +716,9 @@ const SwapWidgetV2 = () => {
           ? t('swap.approval_cancelled')
           : t('swap.swap_cancelled');
       } else if (isOdosSignatureError) {
-        finalMessage = `${baseLabel}: Odos no pudo ejecutar esta ruta. Prueba con un monto menor, un slippage un poco más alto o una prioridad de gas normal/rápida.`;
+        finalMessage = `${baseLabel}: ${t('swap.odos_error')}`;
       } else {
-        finalMessage = `${baseLabel}: ${errorMessage || 'Please try again.'}`;
+        finalMessage = `${baseLabel}: ${errorMessage || t('swap.try_again')}`;
       }
 
       setTransactionStatus({
@@ -788,11 +788,13 @@ const SwapWidgetV2 = () => {
           compact: true,
         };
 
-        console.log('Odos getQuote request', {
-          tokenIn,
-          tokenOut,
-          payload,
-        });
+        if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+          console.log('Odos getQuote request', {
+            tokenIn,
+            tokenOut,
+            payload,
+          });
+        }
 
         const response = await fetch('https://api.odos.xyz/sor/quote/v2', {
           method: 'POST',
@@ -810,7 +812,7 @@ const SwapWidgetV2 = () => {
           });
         } else {
           const quote = await response.json();
-          console.log('Odos getQuote response', quote);
+          if (process.env.REACT_APP_DEBUG_ENABLED === 'true') console.log('Odos getQuote response', quote);
           const rawOutAmount =
             (quote.outAmounts && quote.outAmounts[0]) ||
             (quote.outputTokens && quote.outputTokens[0] && quote.outputTokens[0].amount);
@@ -820,7 +822,7 @@ const SwapWidgetV2 = () => {
             const formatted = ethers.utils.formatUnits(rawOutAmount.toString(), outputDecimals);
             return formatted;
           }
-          console.warn('Odos getQuote returned no outAmount, falling back to router');
+          if (process.env.REACT_APP_DEBUG_ENABLED === 'true') console.warn('Odos getQuote returned no outAmount, falling back to router');
         }
       }
 
@@ -1015,11 +1017,13 @@ const SwapWidgetV2 = () => {
           compact: true,
         };
 
-        console.log('Odos swap quote request', {
-          fromToken,
-          toToken,
-          quotePayload,
-        });
+        if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+          console.log('Odos swap quote request', {
+            fromToken,
+            toToken,
+            quotePayload,
+          });
+        }
 
         let usedOdos = false;
 
@@ -1040,7 +1044,7 @@ const SwapWidgetV2 = () => {
             });
           } else {
             const quoteJson = await quoteResponse.json();
-            console.log('Odos swap quote response', quoteJson);
+            if (process.env.REACT_APP_DEBUG_ENABLED === 'true') console.log('Odos swap quote response', quoteJson);
 
             if (!quoteJson.pathId) {
               console.error('Odos swap quote missing pathId');
@@ -1051,7 +1055,7 @@ const SwapWidgetV2 = () => {
                 simulate: false,
               };
 
-              console.log('Odos assemble request', assemblePayload);
+              if (process.env.REACT_APP_DEBUG_ENABLED === 'true') console.log('Odos assemble request', assemblePayload);
 
               const assembleResponse = await fetch('https://api.odos.xyz/sor/assemble', {
                 method: 'POST',
@@ -1069,7 +1073,7 @@ const SwapWidgetV2 = () => {
                 });
               } else {
                 const assembleJson = await assembleResponse.json();
-                console.log('Odos assemble response', assembleJson);
+                if (process.env.REACT_APP_DEBUG_ENABLED === 'true') console.log('Odos assemble response', assembleJson);
                 const tx = assembleJson.transaction;
 
                 if (!tx || !tx.to || !tx.data) {
@@ -1096,10 +1100,12 @@ const SwapWidgetV2 = () => {
           return;
         }
 
-        console.warn('Falling back to router swap for pair expected to use Odos', {
-          fromToken,
-          toToken,
-        });
+        if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+          console.warn('Falling back to router swap for pair expected to use Odos', {
+            fromToken,
+            toToken,
+          });
+        }
       }
 
       let amountIn;
@@ -1249,9 +1255,9 @@ const SwapWidgetV2 = () => {
       let finalMessage;
 
       if (isOdosSignatureError) {
-        finalMessage = `${t('swap.swap_failed')}: Odos no pudo ejecutar esta ruta. Prueba con un monto menor, un slippage un poco más alto o una prioridad de gas normal/rápida.`;
+        finalMessage = `${t('swap.swap_failed')}: ${t('swap.odos_error')}`;
       } else {
-        finalMessage = `${t('swap.swap_failed')}: ${errorMessage || 'Please try again.'}`;
+        finalMessage = `${t('swap.swap_failed')}: ${errorMessage || t('swap.try_again')}`;
       }
 
       setIsLoading(false);

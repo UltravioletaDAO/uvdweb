@@ -63,7 +63,8 @@
       "twitter": "Twitter / X",
       "discord": "Discord",
       "github": "GitHub",
-      "linktree": "Linktree"
+      "linktree": "Linktree",
+      "the_arena": "The Arena"
     },
     "registered_label": "Entidad Registrada",
     "operations": {
@@ -124,7 +125,8 @@
         "title": "Estatus Legal",
         "jurisdiction": "Wyoming, Estados Unidos",
         "registered": "Registrado Sep. 26, 2025",
-        "learn_more": "Conocer más"
+        "learn_more": "Conocer más",
+        "official_filing": "Ver Registro Oficial"
       },
       "see_more": "Ver más métricas",
       "generating_story": "Generando resumen...",
@@ -858,6 +860,8 @@
     "swap_failed": "Swap fallido",
     "approval_cancelled": "Aprobación cancelada por el usuario",
     "swap_cancelled": "Swap cancelado por el usuario",
+    "odos_error": "Odos no pudo ejecutar esta ruta. Prueba con un monto menor, un slippage un poco más alto o una prioridad de gas normal/rápida.",
+    "try_again": "Intenta de nuevo.",
     "view_transaction": "Ver en Snowtrace",
     "settings": "Configuración",
     "refresh_quote": "Actualizar cuotas",
