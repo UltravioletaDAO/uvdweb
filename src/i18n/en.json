@@ -1150,6 +1150,8 @@
     "swap_failed": "Swap failed",
     "approval_cancelled": "Approval was cancelled by user",
     "swap_cancelled": "Swap was cancelled by user",
+    "odos_error": "Odos could not execute this route. Try a smaller amount, slightly higher slippage, or normal/fast gas priority.",
+    "try_again": "Please try again.",
     "view_transaction": "View on Snowtrace",
     "settings": "Settings",
     "refresh_quote": "Update quote",

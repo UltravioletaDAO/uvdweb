@@ -860,6 +860,8 @@
     "swap_failed": "Swap fallido",
     "approval_cancelled": "Aprobación cancelada por el usuario",
     "swap_cancelled": "Swap cancelado por el usuario",
+    "odos_error": "Odos no pudo ejecutar esta ruta. Prueba con un monto menor, un slippage un poco más alto o una prioridad de gas normal/rápida.",
+    "try_again": "Intenta de nuevo.",
     "view_transaction": "Ver en Snowtrace",
     "settings": "Configuración",
     "refresh_quote": "Actualizar cuotas",
