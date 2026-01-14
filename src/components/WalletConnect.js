@@ -407,15 +407,28 @@ const WalletConnect = ({ onWalletConnected, onWalletDisconnected }) => {
    * Renderiza el icono de la wallet (soporta SVG de EIP-6963 o emoji)
    */
   const renderWalletIcon = (icon) => {
-    if (!icon) return '🔐';
+    if (!icon) return <span className="text-2xl">🔐</span>;
 
-    // Si es un data URL (SVG de EIP-6963) o URL de imagen
-    if (icon.startsWith('data:') || icon.startsWith('http')) {
-      return <img src={icon} alt="" className="w-8 h-8 rounded-md" />;
+    // Si es un data URL (SVG/PNG de EIP-6963) o URL de imagen
+    if (typeof icon === 'string' && (icon.startsWith('data:') || icon.startsWith('http'))) {
+      return (
+        <div className="w-8 h-8 flex-shrink-0 overflow-hidden rounded-md bg-white/10">
+          <img
+            src={icon}
+            alt=""
+            className="w-full h-full object-contain"
+            onError={(e) => {
+              // Fallback si la imagen falla al cargar
+              e.target.style.display = 'none';
+              e.target.parentNode.innerHTML = '<span class="text-2xl flex items-center justify-center w-full h-full">🔐</span>';
+            }}
+          />
+        </div>
+      );
     }
 
-    // Si es emoji
-    return <span className="text-2xl">{icon}</span>;
+    // Si es emoji u otro string corto
+    return <span className="text-2xl flex-shrink-0">{icon}</span>;
   };
 
   return (
@@ -438,10 +451,10 @@ const WalletConnect = ({ onWalletConnected, onWalletDisconnected }) => {
                 disabled={isConnecting}
                 className="w-full flex items-center gap-3 p-3 rounded-lg bg-background border border-ultraviolet-darker/10
                   hover:border-ultraviolet-darker/40 hover:bg-ultraviolet-darker/5 transition-all
-                  disabled:opacity-50 disabled:cursor-not-allowed"
+                  disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden"
               >
                 {renderWalletIcon(wallet.icon)}
-                <span className="text-text-primary font-medium">{wallet.name}</span>
+                <span className="text-text-primary font-medium truncate">{wallet.name}</span>
               </button>
             ))}
           </div>

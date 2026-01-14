@@ -2100,11 +2100,13 @@
   "bountyForm": {
     "title_label": "Título",
     "description_label": "Descripción",
-    "reward_label": "Recompensa (ej. 100 UVD)",
+    "reward_label": "Recompensa",
     "endDate_label": "Fecha de Fin (opcional)",
     "creating_button": "Creando...",
     "create_button": "Crear Bounty",
-    "success_message": "¡Bounty \"{{title}}\" creada exitosamente!"
+    "success_message": "¡Bounty \"{{title}}\" creada exitosamente!",
+    "custom_token_placeholder": "Escribe el símbolo del token",
+    "custom_token_label": "Personalizado"
   },
   "submissionList": {
     "loading": "Cargando entregas...",
@@ -2116,5 +2118,41 @@
   "adminPanel": {
     "title": "Panel de Administración",
     "description": "Crear y gestionar bounties comunitarias"
+  },
+  "admin": {
+    "login": "Admin",
+    "logout": "Admin ✓",
+    "connect_wallet_first": "Conecta tu wallet primero",
+    "auth_success": "Autenticado como administrador",
+    "auth_failed": "Error de autenticación",
+    "auth_required": "Debes autenticarte como admin",
+    "status_updated": "Estado actualizado correctamente",
+    "status_error": "Error al cambiar estado",
+    "confirm_delete": "¿Estás seguro de eliminar este bounty? Esta acción no se puede deshacer.",
+    "bounty_deleted": "Bounty eliminado correctamente",
+    "delete_error": "Error al eliminar bounty",
+    "edit_bounty": "Editar Bounty",
+    "bounty_updated": "Bounty actualizado correctamente",
+    "update_error": "Error al actualizar bounty",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "manage_wallets": "Gestionar Wallets Admin",
+    "manage_wallets_desc": "Agregar o remover wallets que pueden gestionar bounties",
+    "no_wallets": "No hay wallets admin configuradas",
+    "add_wallet": "Agregar Wallet Admin",
+    "wallet_address": "Dirección de Wallet",
+    "wallet_name": "Nombre (opcional)",
+    "wallet_role": "Rol",
+    "add": "Agregar",
+    "protected": "Protegida",
+    "remove_wallet": "Remover wallet",
+    "wallet_added": "Wallet agregada correctamente",
+    "wallet_deleted": "Wallet removida correctamente",
+    "error_loading_wallets": "Error cargando wallets",
+    "error_adding_wallet": "Error al agregar wallet",
+    "error_deleting_wallet": "Error al remover wallet",
+    "invalid_wallet_format": "Formato de dirección de wallet inválido",
+    "confirm_delete_wallet": "¿Estás seguro de remover {{wallet}} como admin?",
+    "reconnect_wallet": "Por favor, reconecta tu wallet para firmar"
   }
 } 

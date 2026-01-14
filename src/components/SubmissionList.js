@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import Modal from './Modal';
 import { bountiesAPI } from '../services/api';
+import { LinkifyText } from '../utils/linkify';
 
 const SubmissionList = ({ bountyId }) => {
   const { t } = useTranslation();
@@ -9,8 +10,6 @@ const SubmissionList = ({ bountyId }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [profileMap, setProfileMap] = useState({}); // wallet -> { name, avatar }
-  const [account, setAccount] = useState(null);
-  const [userProfile, setUserProfile] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState(null);
 
@@ -53,15 +52,6 @@ const SubmissionList = ({ bountyId }) => {
     }
     return {};
   };
-
-  // Obtener la wallet conectada desde localStorage (igual que Snapshot)
-  useEffect(() => {
-    const savedAddress = localStorage.getItem('walletAddress');
-    if (savedAddress) {
-      setAccount(savedAddress);
-      fetchSnapshotProfile(savedAddress).then(setUserProfile);
-    }
-  }, []);
 
   // Fetch de submissions por bountyId
   useEffect(() => {
@@ -118,8 +108,13 @@ const SubmissionList = ({ bountyId }) => {
                   onError={e => { e.target.onerror = null; e.target.src = submission.submitterName ? `https://effigy.im/a/${submission.submitterName}.svg` : ''; }}
                 />
               )}
-              <div className="flex-1">
-                <p className="text-sm text-text-primary break-words line-clamp-2">{submission.submissionContent}</p>
+              <div className="flex-1 min-w-0">
+                <LinkifyText
+                  as="p"
+                  className="text-sm text-text-primary break-words line-clamp-2"
+                >
+                  {submission.submissionContent}
+                </LinkifyText>
                 <p className="text-xs text-text-secondary mt-1">
                   {t('submissionList.submitted_by')} {displayName}
                 </p>
@@ -142,9 +137,12 @@ const SubmissionList = ({ bountyId }) => {
             )}
             <span className="font-semibold text-text-primary">{modalContent?.displayName}</span>
           </div>
-          <div className="whitespace-pre-wrap text-text-primary text-base">
+          <LinkifyText
+            as="div"
+            className="whitespace-pre-wrap text-text-primary text-base"
+          >
             {modalContent?.content}
-          </div>
+          </LinkifyText>
         </Modal>
       )}
     </div>

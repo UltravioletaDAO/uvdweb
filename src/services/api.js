@@ -147,6 +147,123 @@ export const applicantsAPI = {
   }
 };
 
+// Admin API Service
+export const adminAPI = {
+  // Check if wallet is admin (public endpoint)
+  isAdmin: async (wallet) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/auth/is-admin/${wallet}`;
+    return makeRequest(url);
+  },
+
+  // Get nonce for signing
+  getNonce: async (wallet) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/auth/nonce`;
+    return makeRequest(url, {
+      method: 'POST',
+      body: JSON.stringify({ wallet }),
+    });
+  },
+
+  // Verify signature and get JWT token
+  verifySignature: async (wallet, signature, message) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/auth/verify`;
+    return makeRequest(url, {
+      method: 'POST',
+      body: JSON.stringify({ wallet, signature, message }),
+    });
+  },
+
+  // Check if current token is valid
+  checkAuth: async (token) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/auth/check`;
+    return makeRequest(url, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+  },
+
+  // Update bounty (admin only)
+  updateBounty: async (id, bountyData, token) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/bounties/${id}`;
+    return makeRequest(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(bountyData),
+    });
+  },
+
+  // Delete bounty (admin only)
+  deleteBounty: async (id, token) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/bounties/${id}`;
+    return makeRequest(url, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+  },
+
+  // Update bounty status (admin only)
+  updateBountyStatus: async (id, status, token) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/bounties/${id}/status`;
+    return makeRequest(url, {
+      method: 'PATCH',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify({ status }),
+    });
+  },
+
+  // Get all admin wallets
+  getAdminWallets: async (token) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/wallets`;
+    return makeRequest(url, {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+  },
+
+  // Add admin wallet
+  addAdminWallet: async (walletData, token) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/wallets`;
+    return makeRequest(url, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(walletData),
+    });
+  },
+
+  // Update admin wallet
+  updateAdminWallet: async (id, walletData, token) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/wallets/${id}`;
+    return makeRequest(url, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(walletData),
+    });
+  },
+
+  // Delete admin wallet
+  deleteAdminWallet: async (id, token) => {
+    const url = `${API_CONFIG.BOUNTIES_API_URL}/admin/wallets/${id}`;
+    return makeRequest(url, {
+      method: 'DELETE',
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+  }
+};
+
 // Legacy API Service (for backward compatibility)
 export const legacyAPI = {
   // Auth endpoints
@@ -188,6 +305,7 @@ export const getAPIConfig = () => API_CONFIG;
 export default {
   bounties: bountiesAPI,
   applicants: applicantsAPI,
+  admin: adminAPI,
   legacy: legacyAPI,
   config: API_CONFIG
 };
