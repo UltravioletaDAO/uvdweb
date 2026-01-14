@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon, GiftIcon, UsersIcon, BoltIcon, UserCircleIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, GiftIcon, UsersIcon, BoltIcon, UserCircleIcon, CheckCircleIcon, XCircleIcon, ChevronDownIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -9,8 +9,11 @@ import BountyForm from '../components/BountyForm';
 import SubmissionList from '../components/SubmissionList';
 import WalletConnect from '../components/WalletConnect';
 import { ethers } from 'ethers';
-import { bountiesAPI, legacyAPI } from '../services/api';
-import { useBounties, useWhitelist } from '../hooks';
+import { bountiesAPI } from '../services/api';
+import { useBounties, useWhitelist, useAdmin } from '../hooks';
+import { LinkifyText } from '../utils/linkify';
+import { TrashIcon, PencilIcon, ShieldCheckIcon, UsersIcon as UserGroupIcon } from '@heroicons/react/24/outline';
+import AdminWalletsModal from '../components/AdminWalletsModal';
 
 // Helper para mostrar notificaciones toast
 const showToast = {
@@ -49,6 +52,17 @@ const showToast = {
   },
 };
 
+// Tokens disponibles para recompensas (igual que en BountyForm)
+const REWARD_TOKENS = [
+  { symbol: 'USDC', label: 'USDC', icon: '💵' },
+  { symbol: 'UVD', label: '$UVD', icon: '🟣' },
+  { symbol: 'AVAX', label: 'AVAX', icon: '🔺' },
+  { symbol: 'POL', label: 'POL', icon: '🟪' },
+  { symbol: 'SOL', label: 'SOL', icon: '◎' },
+  { symbol: 'ETH', label: 'ETH', icon: 'Ξ' },
+  { symbol: 'CUSTOM', labelKey: 'bountyForm.custom_token_label', icon: '✏️' },
+];
+
 // Column keys for Kanban board (titles and descriptions come from i18n)
 const COLUMN_KEYS = ['todo', 'in_voting', 'finished'];
 const COLUMN_ICONS = {
@@ -70,6 +84,7 @@ const Bounties = () => {
     closeBountyDetails,
     fetchBounties,
     getTasksByStatus,
+    isVotingExpired,
   } = useBounties();
 
   const {
@@ -81,8 +96,33 @@ const Bounties = () => {
     resetWhitelist,
   } = useWhitelist();
 
+  // Estados para Web3 y votación (declarados antes de useAdmin)
+  const [walletConnected, setWalletConnected] = useState(false);
+  const [walletAddress, setWalletAddress] = useState(null);
+  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
+  const [isWalletHover, setIsWalletHover] = useState(false);
+  const [ensName, setEnsName] = useState(null);
+  const [web3Provider, setWeb3Provider] = useState(null);
+
+  // Admin hook - se inicializa con null y se actualiza cuando se conecta la wallet
+  const [adminProvider, setAdminProvider] = useState(null);
+  const {
+    isAdmin,
+    isAuthenticated: isAdminAuthenticated,
+    authLoading: adminAuthLoading,
+    error: adminError,
+    authenticate: authenticateAdmin,
+    logout: logoutAdmin,
+    updateBounty: adminUpdateBounty,
+    deleteBounty: adminDeleteBounty,
+    updateBountyStatus: adminUpdateStatus,
+    hasPermission,
+    getAdminWallets,
+    addAdminWallet,
+    deleteAdminWallet,
+  } = useAdmin(walletAddress, adminProvider);
+
   // Local states
-  const [isCurrentUserAdmin, setIsCurrentUserAdmin] = useState(false);
   const [bountyFormLoading, setBountyFormLoading] = useState(false);
   const [bountyFormError, setBountyFormError] = useState('');
 
@@ -91,15 +131,9 @@ const Bounties = () => {
   const [submissionLoading, setSubmissionLoading] = useState(false);
   const [submissionError, setSubmissionError] = useState('');
 
-  // Estados para Web3 y votación
-  const [walletConnected, setWalletConnected] = useState(false);
-  const [walletAddress, setWalletAddress] = useState(null);
+  // Estados para submissions
   const [submissions, setSubmissions] = useState([]);
   const [loadingSubmissions, setLoadingSubmissions] = useState(false);
-  const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
-  const [isWalletHover, setIsWalletHover] = useState(false);
-  const [ensName, setEnsName] = useState(null);
-  const [web3Provider, setWeb3Provider] = useState(null);
 
   // Estado para mostrar/ocultar panel de creación
   const [showCreatePanel, setShowCreatePanel] = useState(false);
@@ -112,22 +146,76 @@ const Bounties = () => {
     Icon: COLUMN_ICONS[key],
   })), [t]);
 
-  // Al montar, intenta restaurar la wallet desde localStorage y verificar whitelist
+  // Al montar, intenta restaurar la wallet usando EIP-6963 para encontrar el provider correcto
   useEffect(() => {
     const restoreWalletAndCheckWhitelist = async () => {
       const savedWallet = localStorage.getItem('walletAddress');
-      if (savedWallet && window.ethereum) {
+      const savedWalletId = localStorage.getItem('walletProviderId');
+
+      if (!savedWallet) return;
+
+      // Usar EIP-6963 para encontrar el provider correcto
+      const eip6963Providers = new Map();
+
+      const handleAnnounceProvider = (event) => {
+        const { info, provider } = event.detail;
+        eip6963Providers.set(info.uuid, { info, provider });
+      };
+
+      window.addEventListener('eip6963:announceProvider', handleAnnounceProvider);
+      window.dispatchEvent(new Event('eip6963:requestProvider'));
+
+      // Esperar un poco para que las wallets respondan
+      await new Promise(resolve => setTimeout(resolve, 300));
+      window.removeEventListener('eip6963:announceProvider', handleAnnounceProvider);
+
+      // Buscar el provider guardado o uno que tenga la cuenta
+      let selectedProvider = null;
+
+      // Primero buscar por ID guardado
+      if (savedWalletId) {
+        for (const [uuid, { info, provider }] of eip6963Providers) {
+          if (uuid === savedWalletId || info.name.toLowerCase().includes(savedWalletId.toLowerCase())) {
+            selectedProvider = provider;
+            break;
+          }
+        }
+      }
+
+      // Si no encontramos por ID, buscar el que tenga la cuenta conectada
+      if (!selectedProvider) {
+        for (const [, { provider }] of eip6963Providers) {
+          try {
+            const accounts = await provider.request({ method: 'eth_accounts' });
+            if (accounts && accounts.some(acc => acc.toLowerCase() === savedWallet.toLowerCase())) {
+              selectedProvider = provider;
+              break;
+            }
+          } catch {
+            // Provider no tiene acceso, continuar
+          }
+        }
+      }
+
+      if (selectedProvider) {
+        try {
+          const ethersProvider = new ethers.providers.Web3Provider(selectedProvider, 'any');
+          setWalletConnected(true);
+          setWalletAddress(savedWallet);
+          setWeb3Provider(ethersProvider);
+          setAdminProvider(ethersProvider);
+          await checkWhitelistStatus(savedWallet, ethersProvider);
+        } catch {
+          // Si falla, limpiar y el usuario deberá reconectar
+          localStorage.removeItem('walletAddress');
+          localStorage.removeItem('walletProviderId');
+        }
+      } else {
+        // No encontramos el provider correcto, mostrar solo la dirección pero sin provider
+        // El usuario deberá reconectar para acciones que requieran firma
         setWalletConnected(true);
         setWalletAddress(savedWallet);
-
-        // Crear provider y verificar whitelist
-        try {
-          const provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
-          setWeb3Provider(provider);
-          await checkWhitelistStatus(savedWallet, provider);
-        } catch {
-          // Si falla, el usuario deberá reconectar manualmente
-        }
+        // No establecemos adminProvider, así el admin auth fallará y pedirá reconectar
       }
     };
 
@@ -152,23 +240,6 @@ const Bounties = () => {
       setEnsName(null);
     }
   }, [walletAddress]);
-
-  // Verificar si hay admin token guardado (solo para admins especiales)
-  useEffect(() => {
-    const adminToken = localStorage.getItem('adminToken');
-    if (adminToken) {
-      // Verificar si el token es válido y es admin
-      legacyAPI.auth.verify(adminToken)
-        .then(data => {
-          if (data.user && data.user.role === 'admin') {
-            setIsCurrentUserAdmin(true);
-          }
-        })
-        .catch(() => {
-          localStorage.removeItem('adminToken');
-        });
-    }
-  }, []);
 
   const handleReturn = () => {
     navigate('/', { replace: true });
@@ -258,6 +329,7 @@ const Bounties = () => {
     setWalletConnected(true);
     setWalletAddress(address);
     setWeb3Provider(provider);
+    setAdminProvider(provider); // Para el hook de admin
     setIsWalletModalOpen(false);
     localStorage.setItem('walletAddress', address);
 
@@ -269,8 +341,11 @@ const Bounties = () => {
     setWalletConnected(false);
     setWalletAddress(null);
     setWeb3Provider(null);
+    setAdminProvider(null);
     resetWhitelist();
+    logoutAdmin(); // Cerrar sesión de admin
     localStorage.removeItem('walletAddress');
+    localStorage.removeItem('walletProviderId');
   };
 
   // Utilidad para abreviar la dirección
@@ -305,6 +380,187 @@ const Bounties = () => {
     }
   }, [selectedBounty]);
 
+  // ==================== FUNCIONES DE ADMIN ====================
+
+  // Estado para editar bounty
+  const [editingBounty, setEditingBounty] = useState(null);
+  const [editFormData, setEditFormData] = useState({});
+  const [adminActionLoading, setAdminActionLoading] = useState(false);
+  const [showAdminWalletsModal, setShowAdminWalletsModal] = useState(false);
+
+  // Estados para selector de token en edición
+  const [editSelectedToken, setEditSelectedToken] = useState(REWARD_TOKENS[0]);
+  const [editCustomToken, setEditCustomToken] = useState('');
+  const [showEditTokenDropdown, setShowEditTokenDropdown] = useState(false);
+  const editDropdownRef = React.useRef(null);
+
+  // Estado para modal de confirmación de eliminación
+  const [deleteConfirmModal, setDeleteConfirmModal] = useState({ show: false, bountyId: null, bountyTitle: '' });
+
+  // Cerrar dropdown de edición al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (editDropdownRef.current && !editDropdownRef.current.contains(event.target)) {
+        setShowEditTokenDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  // Autenticar como admin
+  const handleAdminAuth = async () => {
+    if (!walletConnected) {
+      showToast.error(t('admin.connect_wallet_first') || 'Conecta tu wallet primero');
+      return;
+    }
+    // Si no hay provider (wallet restaurada sin conexión activa), pedir reconectar
+    if (!adminProvider) {
+      showToast.error(t('admin.reconnect_wallet') || 'Por favor, reconecta tu wallet para firmar');
+      setIsWalletModalOpen(true);
+      return;
+    }
+    const success = await authenticateAdmin();
+    if (success) {
+      showToast.success(t('admin.auth_success') || 'Autenticado como admin');
+    } else {
+      showToast.error(adminError || t('admin.auth_failed') || 'Error de autenticación');
+    }
+  };
+
+  // Cambiar estado de bounty
+  const handleStatusChange = async (bountyId, newStatus, e) => {
+    if (e) e.stopPropagation();
+    if (!isAdminAuthenticated) {
+      showToast.error(t('admin.auth_required') || 'Debes autenticarte como admin');
+      return;
+    }
+
+    setAdminActionLoading(true);
+    try {
+      await adminUpdateStatus(bountyId, newStatus);
+      showToast.success(t('admin.status_updated') || 'Estado actualizado');
+      fetchBounties(); // Recargar bounties
+      if (selectedBounty?._id === bountyId) {
+        closeBountyDetails();
+      }
+    } catch (err) {
+      showToast.error(err.message || t('admin.status_error') || 'Error al cambiar estado');
+    } finally {
+      setAdminActionLoading(false);
+    }
+  };
+
+  // Mostrar modal de confirmación para eliminar bounty
+  const handleDeleteBounty = (bountyId, bountyTitle, e) => {
+    if (e) e.stopPropagation();
+    if (!isAdminAuthenticated) {
+      showToast.error(t('admin.auth_required') || 'Debes autenticarte como admin');
+      return;
+    }
+    setDeleteConfirmModal({ show: true, bountyId, bountyTitle });
+  };
+
+  // Confirmar eliminación de bounty
+  const confirmDeleteBounty = async () => {
+    const { bountyId } = deleteConfirmModal;
+    setDeleteConfirmModal({ show: false, bountyId: null, bountyTitle: '' });
+
+    setAdminActionLoading(true);
+    try {
+      await adminDeleteBounty(bountyId);
+      showToast.success(t('admin.bounty_deleted') || 'Bounty eliminado');
+      fetchBounties();
+      if (selectedBounty?._id === bountyId) {
+        closeBountyDetails();
+      }
+    } catch (err) {
+      showToast.error(err.message || t('admin.delete_error') || 'Error al eliminar');
+    } finally {
+      setAdminActionLoading(false);
+    }
+  };
+
+  // Abrir modal de edición
+  const handleEditBounty = (bounty, e) => {
+    if (e) e.stopPropagation();
+    if (!isAdminAuthenticated) {
+      showToast.error(t('admin.auth_required') || 'Debes autenticarte como admin');
+      return;
+    }
+
+    // Parsear el reward existente (ej: "34 USDC" → amount: 34, token: USDC)
+    let rewardAmount = '';
+    let tokenSymbol = 'USDC';
+    if (bounty.reward) {
+      const parts = bounty.reward.trim().split(' ');
+      if (parts.length >= 2) {
+        rewardAmount = parts[0];
+        tokenSymbol = parts.slice(1).join(' ').toUpperCase();
+      } else {
+        rewardAmount = bounty.reward;
+      }
+    }
+
+    // Buscar el token en la lista o marcarlo como custom
+    const foundToken = REWARD_TOKENS.find(t => t.symbol === tokenSymbol);
+    if (foundToken) {
+      setEditSelectedToken(foundToken);
+      setEditCustomToken('');
+    } else {
+      setEditSelectedToken(REWARD_TOKENS.find(t => t.symbol === 'CUSTOM'));
+      setEditCustomToken(tokenSymbol);
+    }
+
+    setEditingBounty(bounty);
+    setEditFormData({
+      title: bounty.title,
+      description: bounty.description,
+      rewardAmount: rewardAmount,
+      endDate: bounty.endDate ? new Date(bounty.endDate).toISOString().split('T')[0] : '',
+    });
+  };
+
+  // Construir reward string para edición
+  const getEditRewardString = () => {
+    const amount = (editFormData.rewardAmount || '').toString().trim();
+    if (!amount) return '';
+    const tokenSymbol = editSelectedToken.symbol === 'CUSTOM' ? editCustomToken.trim() : editSelectedToken.symbol;
+    return tokenSymbol ? `${amount} ${tokenSymbol}` : amount;
+  };
+
+  // Guardar edición
+  const handleSaveEdit = async () => {
+    if (!editingBounty) return;
+
+    setAdminActionLoading(true);
+    try {
+      const dataToSave = {
+        title: editFormData.title,
+        description: editFormData.description,
+        reward: getEditRewardString(),
+        endDate: editFormData.endDate || null,
+      };
+      await adminUpdateBounty(editingBounty._id, dataToSave);
+      showToast.success(t('admin.bounty_updated') || 'Bounty actualizado');
+      setEditingBounty(null);
+      fetchBounties();
+    } catch (err) {
+      showToast.error(err.message || t('admin.update_error') || 'Error al actualizar');
+    } finally {
+      setAdminActionLoading(false);
+    }
+  };
+
+  // Seleccionar token en edición
+  const handleEditTokenSelect = (token) => {
+    setEditSelectedToken(token);
+    setShowEditTokenDropdown(false);
+    if (token.symbol !== 'CUSTOM') {
+      setEditCustomToken('');
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -331,8 +587,42 @@ const Bounties = () => {
               <span>{t('success.back_home')}</span>
             </motion.button>
 
-            {/* Botón de Wallet */}
+            {/* Botón de Wallet y Admin */}
             <div className="flex items-center gap-3">
+              {/* Botón de Admin (solo si es admin) */}
+              {walletConnected && isAdmin && (
+                <div className="flex items-center gap-2">
+                  {/* Botón de gestionar wallets (solo si autenticado y superadmin) */}
+                  {isAdminAuthenticated && hasPermission('manage_admins') && (
+                    <motion.button
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => setShowAdminWalletsModal(true)}
+                      className="p-2 rounded-lg bg-amber-900/30 text-amber-400 border border-amber-500/30 hover:bg-amber-900/50 transition-all duration-200"
+                      title={t('admin.manage_wallets') || 'Manage Admin Wallets'}
+                    >
+                      <UserGroupIcon className="w-5 h-5" />
+                    </motion.button>
+                  )}
+                  <motion.button
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    onClick={isAdminAuthenticated ? logoutAdmin : handleAdminAuth}
+                    disabled={adminAuthLoading}
+                    className={`px-4 py-2 rounded-lg font-semibold flex items-center gap-2 transition-all duration-200
+                      ${isAdminAuthenticated
+                        ? 'bg-amber-900/30 text-amber-400 border border-amber-500/30 hover:bg-amber-900/50'
+                        : 'bg-purple-900/30 text-purple-400 border border-purple-500/30 hover:bg-purple-900/50'}`}
+                  >
+                    <ShieldCheckIcon className="w-5 h-5" />
+                    {adminAuthLoading
+                      ? '...'
+                      : isAdminAuthenticated
+                        ? t('admin.logout') || 'Admin ✓'
+                        : t('admin.login') || 'Admin'}
+                  </motion.button>
+                </div>
+              )}
               {!walletConnected ? (
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -429,7 +719,7 @@ const Bounties = () => {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-7xl mx-auto">
           {/* Botón para mostrar/ocultar panel de creación */}
-          {!isCurrentUserAdmin && (
+          {(
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -586,23 +876,6 @@ const Bounties = () => {
             </motion.div>
           )}
 
-          {/* Panel de admin */}
-          {isCurrentUserAdmin && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="mb-8 p-6 rounded-xl bg-background-lighter border border-ultraviolet-darker/20"
-            >
-              <h2 className="text-2xl font-bold text-ultraviolet mb-4">{t('adminPanel.title')}</h2>
-              <p className="text-text-secondary mb-6">{t('adminPanel.description')}</p>
-              <BountyForm
-                onSubmit={handleCreateBounty}
-                loading={bountyFormLoading}
-                error={bountyFormError}
-              />
-            </motion.div>
-          )}
-
           {/* Columnas de Bounties */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -699,8 +972,8 @@ const Bounties = () => {
                             )}
                           </div>
                         </div>
-                        {/* Link a Snapshot cuando está en votación */}
-                        {task.status === 'voting' && (
+                        {/* Link a Snapshot - diferente según el estado real */}
+                        {task.status === 'voting' && !isVotingExpired(task) && (
                           <a
                             href={SNAPSHOT_VOTING_URL}
                             target="_blank"
@@ -713,6 +986,45 @@ const Bounties = () => {
                             </svg>
                             {t('bountyDetails.vote_on_snapshot') || 'Votar en Snapshot'}
                           </a>
+                        )}
+
+                        {/* Controles de Admin */}
+                        {isAdmin && isAdminAuthenticated && (
+                          <div className="mt-3 pt-3 border-t border-ultraviolet-darker/20">
+                            <div className="flex items-center gap-2">
+                              {/* Selector de estado */}
+                              <select
+                                value={task.status}
+                                onChange={(e) => handleStatusChange(task._id, e.target.value, e)}
+                                onClick={(e) => e.stopPropagation()}
+                                disabled={adminActionLoading}
+                                className="flex-1 text-xs bg-background border border-ultraviolet-darker/30 rounded px-2 py-1.5 text-text-primary focus:border-ultraviolet outline-none"
+                              >
+                                <option value="todo">📋 Todo</option>
+                                <option value="voting">🗳️ Voting</option>
+                                <option value="done">✅ Done</option>
+                                <option value="cancelled">❌ Cancelled</option>
+                              </select>
+                              {/* Botón editar */}
+                              <button
+                                onClick={(e) => handleEditBounty(task, e)}
+                                disabled={adminActionLoading}
+                                className="p-1.5 rounded bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 transition-colors"
+                                title={t('admin.edit') || 'Editar'}
+                              >
+                                <PencilIcon className="w-4 h-4" />
+                              </button>
+                              {/* Botón eliminar */}
+                              <button
+                                onClick={(e) => handleDeleteBounty(task._id, task.title, e)}
+                                disabled={adminActionLoading}
+                                className="p-1.5 rounded bg-red-500/20 hover:bg-red-500/30 text-red-400 transition-colors"
+                                title={t('admin.delete') || 'Eliminar'}
+                              >
+                                <TrashIcon className="w-4 h-4" />
+                              </button>
+                            </div>
+                          </div>
                         )}
                       </motion.div>
                     ))
@@ -759,8 +1071,18 @@ const Bounties = () => {
                       </span>
                     )}
                     {selectedBounty.status && (
-                      <span className="text-xs text-text-secondary bg-background/50 px-3 py-1 rounded-md capitalize">
-                        {t(`bountyDetails.status_values.${selectedBounty.status}`)}
+                      <span className={`text-xs px-3 py-1 rounded-md capitalize ${
+                        selectedBounty.status === 'voting' && isVotingExpired(selectedBounty)
+                          ? 'text-green-400 bg-green-900/30 border border-green-500/20'
+                          : selectedBounty.status === 'voting'
+                            ? 'text-purple-400 bg-purple-900/30 border border-purple-500/20'
+                            : selectedBounty.status === 'done'
+                              ? 'text-green-400 bg-green-900/30 border border-green-500/20'
+                              : 'text-text-secondary bg-background/50'
+                      }`}>
+                        {selectedBounty.status === 'voting' && isVotingExpired(selectedBounty)
+                          ? t('bountyDetails.status_values.done')
+                          : t(`bountyDetails.status_values.${selectedBounty.status}`)}
                       </span>
                     )}
                   </div>
@@ -768,12 +1090,17 @@ const Bounties = () => {
 
                 {/* Contenido scrolleable */}
                 <div className="p-6 overflow-y-auto max-h-[calc(90vh-200px)]">
-                  <p className="text-text-secondary leading-relaxed whitespace-pre-wrap mb-6">{selectedBounty.description}</p>
+                  <LinkifyText
+                    as="p"
+                    className="text-text-secondary leading-relaxed whitespace-pre-wrap mb-6"
+                  >
+                    {selectedBounty.description}
+                  </LinkifyText>
 
                   <SubmissionList bountyId={selectedBounty._id} />
 
-                  {/* Mensaje cuando está en votación - submissions cerradas */}
-                  {selectedBounty.status === 'voting' && (
+                  {/* Mensaje cuando está en votación activa - submissions cerradas */}
+                  {selectedBounty.status === 'voting' && !isVotingExpired(selectedBounty) && (
                     <div className="mt-6 p-5 bg-gradient-to-r from-purple-900/20 to-indigo-900/20 rounded-xl border border-purple-500/30">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="p-2 bg-purple-500/20 rounded-lg">
@@ -804,8 +1131,8 @@ const Bounties = () => {
                     </div>
                   )}
 
-                  {/* Mensaje cuando la bounty está terminada */}
-                  {(selectedBounty.status === 'finished' || selectedBounty.status === 'done') && (
+                  {/* Mensaje cuando la bounty está terminada (status done O votación expirada) */}
+                  {(selectedBounty.status === 'finished' || selectedBounty.status === 'done' || (selectedBounty.status === 'voting' && isVotingExpired(selectedBounty))) && (
                     <div className="mt-6 p-5 bg-gradient-to-r from-green-900/20 to-emerald-900/20 rounded-xl border border-green-500/30">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="p-2 bg-green-500/20 rounded-lg">
@@ -908,6 +1235,228 @@ const Bounties = () => {
           )}
         </div>
       </div>
+
+      {/* Modal de Edición de Bounty (Admin) */}
+      {editingBounty && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setEditingBounty(null)}
+        >
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            className="bg-background-lighter rounded-xl border border-ultraviolet-darker/30 w-full max-w-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-6 border-b border-ultraviolet-darker/20">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-bold text-text-primary flex items-center gap-2">
+                  <PencilIcon className="w-5 h-5 text-ultraviolet" />
+                  {t('admin.edit_bounty') || 'Editar Bounty'}
+                </h2>
+                <button
+                  onClick={() => setEditingBounty(null)}
+                  className="p-2 rounded-lg hover:bg-background transition-colors"
+                >
+                  <XCircleIcon className="w-6 h-6 text-text-secondary" />
+                </button>
+              </div>
+            </div>
+
+            <div className="p-6 space-y-4">
+              <div>
+                <label className="block text-sm text-text-secondary mb-1">
+                  {t('bountyForm.title_label')}
+                </label>
+                <input
+                  type="text"
+                  value={editFormData.title || ''}
+                  onChange={(e) => setEditFormData({ ...editFormData, title: e.target.value })}
+                  className="w-full px-4 py-2 rounded-lg border border-ultraviolet/20 bg-background focus:border-ultraviolet focus:ring-2 focus:ring-ultraviolet outline-none text-text-primary"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-text-secondary mb-1">
+                  {t('bountyForm.description_label')}
+                </label>
+                <textarea
+                  value={editFormData.description || ''}
+                  onChange={(e) => setEditFormData({ ...editFormData, description: e.target.value })}
+                  rows={4}
+                  className="w-full px-4 py-2 rounded-lg border border-ultraviolet/20 bg-background focus:border-ultraviolet focus:ring-2 focus:ring-ultraviolet outline-none text-text-primary resize-none"
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm text-text-secondary mb-1">
+                  {t('bountyForm.reward_label')}
+                </label>
+                <div className="flex gap-2">
+                  {/* Input de cantidad */}
+                  <input
+                    type="number"
+                    min="0"
+                    step="any"
+                    placeholder="0"
+                    value={editFormData.rewardAmount || ''}
+                    onChange={(e) => setEditFormData({ ...editFormData, rewardAmount: e.target.value })}
+                    className="flex-1 px-4 py-2 rounded-lg border border-ultraviolet/20 bg-background focus:border-ultraviolet focus:ring-2 focus:ring-ultraviolet outline-none text-text-primary"
+                  />
+
+                  {/* Selector de token */}
+                  <div className="relative" ref={editDropdownRef}>
+                    <button
+                      type="button"
+                      onClick={() => setShowEditTokenDropdown(!showEditTokenDropdown)}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg border border-ultraviolet/20 bg-background hover:border-ultraviolet/40 focus:border-ultraviolet focus:ring-2 focus:ring-ultraviolet outline-none text-text-primary min-w-[120px] justify-between transition-colors"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span>{editSelectedToken.icon}</span>
+                        <span className="font-medium">{editSelectedToken.labelKey ? t(editSelectedToken.labelKey) : editSelectedToken.label}</span>
+                      </span>
+                      <ChevronDownIcon className={`w-4 h-4 transition-transform ${showEditTokenDropdown ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {/* Dropdown menu */}
+                    {showEditTokenDropdown && (
+                      <div className="absolute top-full right-0 mt-1 w-48 bg-background-lighter border border-ultraviolet/20 rounded-lg shadow-xl z-50 overflow-hidden">
+                        {REWARD_TOKENS.map((token) => (
+                          <button
+                            key={token.symbol}
+                            type="button"
+                            onClick={() => handleEditTokenSelect(token)}
+                            className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-ultraviolet/10 transition-colors ${
+                              editSelectedToken.symbol === token.symbol ? 'bg-ultraviolet/20 text-ultraviolet-light' : 'text-text-primary'
+                            }`}
+                          >
+                            <span className="text-lg">{token.icon}</span>
+                            <span className="font-medium">{token.labelKey ? t(token.labelKey) : token.label}</span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Input para token personalizado */}
+                {editSelectedToken.symbol === 'CUSTOM' && (
+                  <input
+                    type="text"
+                    placeholder={t('bountyForm.custom_token_placeholder') || 'Escribe el símbolo del token'}
+                    className="w-full mt-2 px-4 py-2 rounded-lg border border-ultraviolet/20 bg-background focus:border-ultraviolet focus:ring-2 focus:ring-ultraviolet outline-none text-text-primary text-sm"
+                    value={editCustomToken}
+                    onChange={(e) => setEditCustomToken(e.target.value.toUpperCase())}
+                    maxLength={10}
+                  />
+                )}
+              </div>
+
+              <div>
+                <label className="block text-sm text-text-secondary mb-1">
+                  {t('bountyForm.endDate_label')}
+                </label>
+                <input
+                  type="date"
+                  value={editFormData.endDate || ''}
+                  onChange={(e) => setEditFormData({ ...editFormData, endDate: e.target.value })}
+                  className="w-full px-4 py-2 rounded-lg border border-ultraviolet/20 bg-background focus:border-ultraviolet focus:ring-2 focus:ring-ultraviolet outline-none text-text-primary"
+                />
+              </div>
+            </div>
+
+            <div className="p-6 border-t border-ultraviolet-darker/20 flex justify-end gap-3">
+              <button
+                onClick={() => setEditingBounty(null)}
+                className="px-4 py-2 rounded-lg border border-ultraviolet-darker/30 text-text-secondary hover:bg-background transition-colors"
+              >
+                {t('common.cancel') || 'Cancelar'}
+              </button>
+              <button
+                onClick={handleSaveEdit}
+                disabled={adminActionLoading}
+                className="px-4 py-2 rounded-lg bg-ultraviolet text-white font-medium hover:bg-ultraviolet-dark transition-colors disabled:opacity-50"
+              >
+                {adminActionLoading ? '...' : t('common.save') || 'Guardar'}
+              </button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
+
+      {/* Modal de Gestión de Wallets Admin */}
+      <AdminWalletsModal
+        isOpen={showAdminWalletsModal}
+        onClose={() => setShowAdminWalletsModal(false)}
+        getAdminWallets={getAdminWallets}
+        addAdminWallet={addAdminWallet}
+        deleteAdminWallet={deleteAdminWallet}
+        hasPermission={hasPermission}
+        showToast={showToast}
+      />
+
+      {/* Modal de Confirmación de Eliminación */}
+      {deleteConfirmModal.show && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setDeleteConfirmModal({ show: false, bountyId: null, bountyTitle: '' })}
+        >
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            className="bg-background-lighter rounded-xl border border-red-500/30 w-full max-w-md overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-6 border-b border-red-500/20 bg-gradient-to-r from-red-900/20 to-transparent">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-red-500/20">
+                  <ExclamationTriangleIcon className="w-6 h-6 text-red-400" />
+                </div>
+                <h2 className="text-xl font-bold text-text-primary">
+                  {t('admin.confirm_delete_title') || '¿Eliminar bounty?'}
+                </h2>
+              </div>
+            </div>
+
+            <div className="p-6">
+              <p className="text-text-secondary mb-4">
+                {t('admin.confirm_delete') || '¿Estás seguro de eliminar este bounty? Esta acción no se puede deshacer.'}
+              </p>
+              {deleteConfirmModal.bountyTitle && (
+                <div className="bg-background p-3 rounded-lg border border-ultraviolet-darker/20 mb-4">
+                  <p className="text-sm text-text-secondary">{t('bountyForm.title_label')}:</p>
+                  <p className="text-text-primary font-medium">{deleteConfirmModal.bountyTitle}</p>
+                </div>
+              )}
+            </div>
+
+            <div className="p-6 border-t border-ultraviolet-darker/20 flex justify-end gap-3">
+              <button
+                onClick={() => setDeleteConfirmModal({ show: false, bountyId: null, bountyTitle: '' })}
+                className="px-4 py-2 rounded-lg border border-ultraviolet-darker/30 text-text-secondary hover:bg-background transition-colors"
+              >
+                {t('common.cancel') || 'Cancelar'}
+              </button>
+              <button
+                onClick={confirmDeleteBounty}
+                disabled={adminActionLoading}
+                className="px-4 py-2 rounded-lg bg-red-600 text-white font-medium hover:bg-red-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+              >
+                <TrashIcon className="w-4 h-4" />
+                {adminActionLoading ? '...' : t('admin.delete') || 'Eliminar'}
+              </button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
 
       {/* Toast Container para notificaciones */}
       <ToastContainer

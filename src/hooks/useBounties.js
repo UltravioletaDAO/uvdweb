@@ -29,7 +29,12 @@ const useBounties = () => {
     setFetchBountiesError(null);
     try {
       const data = await bountiesAPI.getAll();
-      setTasks(data.data || data);
+      const allBounties = data.data || data;
+      // Filtrar bounties cancelados e inactivos
+      const activeBounties = allBounties.filter(
+        (b) => b.isActive !== false && b.status !== 'cancelled'
+      );
+      setTasks(activeBounties);
     } catch (err) {
       setFetchBountiesError(err.message);
     } finally {

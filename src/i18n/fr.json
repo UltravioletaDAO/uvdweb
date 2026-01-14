@@ -227,6 +227,8 @@
   },
   "common": {
     "cancel": "Annuler",
+    "save": "Enregistrer",
+    "confirm": "Confirmer",
     "anonymous": "Anonyme",
     "disconnect": "Déconnecter"
   },
@@ -255,7 +257,9 @@
     "create_button": "Créer Bounty",
     "creating_button": "Création...",
     "success_message": "Bounty \"{{title}}\" créé avec succès!",
-    "error_creating_bounty": "Erreur lors de la création du bounty. Veuillez vous connecter."
+    "error_creating_bounty": "Erreur lors de la création du bounty. Veuillez vous connecter.",
+    "custom_token_placeholder": "Entrez le symbole du token",
+    "custom_token_label": "Personnalisé"
   },
   "adminPanel": {
     "title": "Panneau d'administration des Bounties",
@@ -369,5 +373,42 @@
     "no_submissions_to_vote": "Aucune soumission à voter",
     "connect_wallet_to_vote": "Connecter Wallet pour Voter",
     "wallet_required_message": "Vous devez connecter votre wallet pour participer au vote décentralisé."
+  },
+  "admin": {
+    "login": "Admin",
+    "logout": "Admin ✓",
+    "connect_wallet_first": "Connectez d'abord votre wallet",
+    "auth_success": "Authentifié en tant qu'administrateur",
+    "auth_failed": "Erreur d'authentification",
+    "auth_required": "Vous devez vous authentifier en tant qu'admin",
+    "status_updated": "Statut mis à jour avec succès",
+    "status_error": "Erreur lors du changement de statut",
+    "confirm_delete": "Êtes-vous sûr de vouloir supprimer ce bounty ? Cette action est irréversible.",
+    "confirm_delete_title": "Supprimer le bounty ?",
+    "bounty_deleted": "Bounty supprimé avec succès",
+    "delete_error": "Erreur lors de la suppression du bounty",
+    "edit_bounty": "Modifier Bounty",
+    "bounty_updated": "Bounty mis à jour avec succès",
+    "update_error": "Erreur lors de la mise à jour du bounty",
+    "edit": "Modifier",
+    "delete": "Supprimer",
+    "manage_wallets": "Gérer les Wallets Admin",
+    "manage_wallets_desc": "Ajouter ou supprimer des wallets pouvant gérer les bounties",
+    "no_wallets": "Aucun wallet admin configuré",
+    "add_wallet": "Ajouter un Wallet Admin",
+    "wallet_address": "Adresse du Wallet",
+    "wallet_name": "Nom (optionnel)",
+    "wallet_role": "Rôle",
+    "add": "Ajouter",
+    "protected": "Protégé",
+    "remove_wallet": "Supprimer wallet",
+    "wallet_added": "Wallet ajouté avec succès",
+    "wallet_deleted": "Wallet supprimé avec succès",
+    "error_loading_wallets": "Erreur lors du chargement des wallets",
+    "error_adding_wallet": "Erreur lors de l'ajout du wallet",
+    "error_deleting_wallet": "Erreur lors de la suppression du wallet",
+    "invalid_wallet_format": "Format d'adresse wallet invalide",
+    "confirm_delete_wallet": "Êtes-vous sûr de vouloir supprimer {{wallet}} en tant qu'admin ?",
+    "reconnect_wallet": "Veuillez reconnecter votre wallet pour signer"
   }
 }

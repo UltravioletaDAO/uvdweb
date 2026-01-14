@@ -227,6 +227,8 @@
   },
   "common": {
     "cancel": "Cancelar",
+    "save": "Salvar",
+    "confirm": "Confirmar",
     "anonymous": "Anónimo",
     "disconnect": "Desconectar"
   },
@@ -255,7 +257,9 @@
     "create_button": "Criar Bounty",
     "creating_button": "Criando...",
     "success_message": "Bounty \"{{title}}\" criado com sucesso!",
-    "error_creating_bounty": "Erro ao criar bounty. Por favor, faça login."
+    "error_creating_bounty": "Erro ao criar bounty. Por favor, faça login.",
+    "custom_token_placeholder": "Digite o símbolo do token",
+    "custom_token_label": "Personalizado"
   },
   "adminPanel": {
     "title": "Painel de administração de Bounties",
@@ -369,5 +373,42 @@
     "no_submissions_to_vote": "Não há entregas para votar",
     "connect_wallet_to_vote": "Conectar Wallet para Votar",
     "wallet_required_message": "Você precisa conectar sua wallet para participar da votação descentralizada."
+  },
+  "admin": {
+    "login": "Admin",
+    "logout": "Admin ✓",
+    "connect_wallet_first": "Conecte sua wallet primeiro",
+    "auth_success": "Autenticado como administrador",
+    "auth_failed": "Erro de autenticação",
+    "auth_required": "Você deve se autenticar como admin",
+    "status_updated": "Status atualizado com sucesso",
+    "status_error": "Erro ao alterar status",
+    "confirm_delete": "Tem certeza de que deseja excluir este bounty? Esta ação não pode ser desfeita.",
+    "confirm_delete_title": "Excluir bounty?",
+    "bounty_deleted": "Bounty excluído com sucesso",
+    "delete_error": "Erro ao excluir bounty",
+    "edit_bounty": "Editar Bounty",
+    "bounty_updated": "Bounty atualizado com sucesso",
+    "update_error": "Erro ao atualizar bounty",
+    "edit": "Editar",
+    "delete": "Excluir",
+    "manage_wallets": "Gerenciar Wallets Admin",
+    "manage_wallets_desc": "Adicionar ou remover wallets que podem gerenciar bounties",
+    "no_wallets": "Nenhuma wallet admin configurada",
+    "add_wallet": "Adicionar Wallet Admin",
+    "wallet_address": "Endereço da Wallet",
+    "wallet_name": "Nome (opcional)",
+    "wallet_role": "Função",
+    "add": "Adicionar",
+    "protected": "Protegida",
+    "remove_wallet": "Remover wallet",
+    "wallet_added": "Wallet adicionada com sucesso",
+    "wallet_deleted": "Wallet removida com sucesso",
+    "error_loading_wallets": "Erro ao carregar wallets",
+    "error_adding_wallet": "Erro ao adicionar wallet",
+    "error_deleting_wallet": "Erro ao remover wallet",
+    "invalid_wallet_format": "Formato de endereço de wallet inválido",
+    "confirm_delete_wallet": "Tem certeza de que deseja remover {{wallet}} como admin?",
+    "reconnect_wallet": "Por favor, reconecte sua wallet para assinar"
   }
 }
