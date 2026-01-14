@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ethers } from 'ethers';
 import { useActiveAccount, useReadContract, useSendTransaction, useWaitForReceipt } from 'thirdweb/react';
-import { createThirdwebClient, getContract, prepareContractCall, toWei, toEther, getRpcClient, eth_getBalance, readContract } from 'thirdweb';
+import { createThirdwebClient, getContract, prepareContractCall, prepareTransaction, toWei, toEther, getRpcClient, eth_getBalance, readContract } from 'thirdweb';
 import { avalanche } from 'thirdweb/chains';
 import { ArrowDownUp, Settings, RefreshCw, CheckCircle2, XCircle, Clock, X, Info, Zap, TrendingUp } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
@@ -9,7 +10,6 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { Button } from './ui/button';
 import { Badge } from './ui/badge';
 import { Slider } from './ui/slider';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
 import { TokenSelector } from './ui/token-selector';
 import { cn } from '../lib/utils';
 
@@ -19,7 +19,19 @@ const client = createThirdwebClient({
 
 const UVD_ADDRESS = "0x4Ffe7e01832243e03668E090706F17726c26d6B2";
 const WAVAX_ADDRESS = "0xB31f66AA3C1e785363F0875A1B74E27b85FD66c7";
+const USDC_ADDRESS = "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E";
+const USDC_DECIMALS = 6;
 const ARENA_ROUTER_ADDRESS = "0xf56d524d651b90e4b84dc2fffd83079698b9066e";
+const JOE_ROUTER_ADDRESS = "0x60aE616a2155Ee3d9A68541Ba4544862310933d4";
+const ODOS_ROUTER_ADDRESS = "0x88de50B233052e4Fb783d4F6db78Cc34fEa3e9FC";
+
+const TOKEN_OPTIONS = ['AVAX', 'UVD', 'USDC'];
+
+const ALLOWED_SWAP_PAIRS = {
+  AVAX: ['UVD', 'USDC'],
+  UVD: ['AVAX', 'USDC'],
+  USDC: ['UVD', 'AVAX'],
+};
 
 // Minimal ERC20 ABI for UVD token
 const ERC20_ABI = [
@@ -76,14 +88,103 @@ const ARENA_ROUTER_ABI = [
   {
     "inputs": [
       {"internalType": "uint256", "name": "amountIn", "type": "uint256"},
+      {"internalType": "uint256", "name": "amountOutMin", "type": "uint256"},
+      {"internalType": "address[]", "name": "path", "type": "address[]"},
+      {"internalType": "address", "name": "to", "type": "address"},
+      {"internalType": "uint256", "name": "deadline", "type": "uint256"}
+    ],
+    "name": "swapExactTokensForTokens",
+    "outputs": [{"internalType": "uint256[]", "name": "amounts", "type": "uint256[]"}],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "amountIn", "type": "uint256"},
       {"internalType": "address[]", "name": "path", "type": "address[]"}
     ],
     "name": "getAmountsOut",
     "outputs": [{"internalType": "uint256[]", "name": "amounts", "type": "uint256[]"}],
     "stateMutability": "view",
     "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "amountOutMin", "type": "uint256"},
+      {"internalType": "address[]", "name": "path", "type": "address[]"},
+      {"internalType": "address", "name": "to", "type": "address"},
+      {"internalType": "uint256", "name": "deadline", "type": "uint256"}
+    ],
+    "name": "swapExactAVAXForTokensSupportingFeeOnTransferTokens",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "amountIn", "type": "uint256"},
+      {"internalType": "uint256", "name": "amountOutMin", "type": "uint256"},
+      {"internalType": "address[]", "name": "path", "type": "address[]"},
+      {"internalType": "address", "name": "to", "type": "address"},
+      {"internalType": "uint256", "name": "deadline", "type": "uint256"}
+    ],
+    "name": "swapExactTokensForAVAXSupportingFeeOnTransferTokens",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {"internalType": "uint256", "name": "amountIn", "type": "uint256"},
+      {"internalType": "uint256", "name": "amountOutMin", "type": "uint256"},
+      {"internalType": "address[]", "name": "path", "type": "address[]"},
+      {"internalType": "address", "name": "to", "type": "address"},
+      {"internalType": "uint256", "name": "deadline", "type": "uint256"}
+    ],
+    "name": "swapExactTokensForTokensSupportingFeeOnTransferTokens",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
   }
 ];
+
+const getValidSwapPair = (fromToken, toToken, changedSide) => {
+  let nextFrom = fromToken;
+  let nextTo = toToken;
+
+  const allowedTargets = ALLOWED_SWAP_PAIRS[nextFrom] || [];
+
+  if (!allowedTargets.includes(nextTo)) {
+    if (changedSide === 'from') {
+      nextTo = allowedTargets[0];
+    } else {
+      const candidateFrom = TOKEN_OPTIONS.find(
+        (token) => (ALLOWED_SWAP_PAIRS[token] || []).includes(nextTo)
+      );
+      if (candidateFrom) {
+        nextFrom = candidateFrom;
+      }
+    }
+  }
+
+  if (nextFrom === nextTo) {
+    if (changedSide === 'from') {
+      const alternativeTargets = allowedTargets.filter((token) => token !== nextFrom);
+      if (alternativeTargets.length > 0) {
+        nextTo = alternativeTargets[0];
+      }
+    } else {
+      const candidateFrom = TOKEN_OPTIONS.find(
+        (token) => token !== nextTo && (ALLOWED_SWAP_PAIRS[token] || []).includes(nextTo)
+      );
+      if (candidateFrom) {
+        nextFrom = candidateFrom;
+      }
+    }
+  }
+
+  return { fromToken: nextFrom, toToken: nextTo };
+};
 
 // Transaction Status Component
 const TransactionStatus = ({ status, onClose }) => {
@@ -179,7 +280,13 @@ const SwapWidgetV2 = () => {
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [avaxBalance, setAvaxBalance] = useState('0');
   const [uvdBalance, setUvdBalance] = useState('0');
+  const [usdcBalance, setUsdcBalance] = useState('0');
   const [uvdAllowance, setUvdAllowance] = useState('0');
+  const [uvdAllowanceJoe, setUvdAllowanceJoe] = useState('0');
+  const [usdcAllowanceArena, setUsdcAllowanceArena] = useState('0');
+  const [usdcAllowanceJoe, setUsdcAllowanceJoe] = useState('0');
+   const [uvdAllowanceOdos, setUvdAllowanceOdos] = useState('0');
+   const [usdcAllowanceOdos, setUsdcAllowanceOdos] = useState('0');
   const [isApproving, setIsApproving] = useState(false);
   const [transactionStatus, setTransactionStatus] = useState(null);
   const [needsApproval, setNeedsApproval] = useState(false);
@@ -192,19 +299,67 @@ const SwapWidgetV2 = () => {
     abi: ERC20_ABI,
   });
 
-  const routerContract = getContract({
+  const usdcContract = getContract({
+    client,
+    chain: avalanche,
+    address: USDC_ADDRESS,
+    abi: ERC20_ABI,
+  });
+
+  const arenaRouterContract = getContract({
     client,
     chain: avalanche,
     address: ARENA_ROUTER_ADDRESS,
     abi: ARENA_ROUTER_ABI,
   });
 
+  const joeRouterContract = getContract({
+    client,
+    chain: avalanche,
+    address: JOE_ROUTER_ADDRESS,
+    abi: ARENA_ROUTER_ABI, // Compatible ABI
+  });
+
+  const getPath = useCallback((tokenIn, tokenOut) => {
+    if (tokenIn === 'AVAX' && tokenOut === 'UVD') return [WAVAX_ADDRESS, UVD_ADDRESS];
+    if (tokenIn === 'UVD' && tokenOut === 'AVAX') return [UVD_ADDRESS, WAVAX_ADDRESS];
+    if (tokenIn === 'USDC' && tokenOut === 'UVD') return [USDC_ADDRESS, WAVAX_ADDRESS, UVD_ADDRESS];
+    if (tokenIn === 'UVD' && tokenOut === 'USDC') return [UVD_ADDRESS, WAVAX_ADDRESS, USDC_ADDRESS];
+    if (tokenIn === 'AVAX' && tokenOut === 'USDC') return [WAVAX_ADDRESS, USDC_ADDRESS];
+    if (tokenIn === 'USDC' && tokenOut === 'AVAX') return [USDC_ADDRESS, WAVAX_ADDRESS];
+    return [];
+  }, []);
+
+  const selectRouterForPath = useCallback(async (tokenIn, tokenOut, amountIn, path) => {
+    // Force Arena whenever UVD participates to avoid cross-router multi-hop
+    if (tokenIn === 'UVD' || tokenOut === 'UVD') {
+      return { contract: arenaRouterContract, address: ARENA_ROUTER_ADDRESS };
+    }
+    if ((tokenIn === 'AVAX' && tokenOut === 'UVD') || (tokenIn === 'UVD' && tokenOut === 'AVAX')) {
+      return { contract: arenaRouterContract, address: ARENA_ROUTER_ADDRESS };
+    }
+    try {
+      await readContract({
+        contract: arenaRouterContract,
+        method: "getAmountsOut",
+        params: [amountIn, path]
+      });
+      return { contract: arenaRouterContract, address: ARENA_ROUTER_ADDRESS };
+    } catch {
+      await readContract({
+        contract: joeRouterContract,
+        method: "getAmountsOut",
+        params: [amountIn, path]
+      });
+      return { contract: joeRouterContract, address: JOE_ROUTER_ADDRESS };
+    }
+  }, [arenaRouterContract, joeRouterContract]);
+
   const rpcClient = getRpcClient({ client, chain: avalanche });
   const {
     mutate: sendTransaction,
     data: transactionResult,
     isLoading: isTransactionLoading,
-    isSuccess: isTransactionSuccess,
     isError: isTransactionError,
     error: transactionError,
     reset: resetTransaction
@@ -238,11 +393,69 @@ const SwapWidgetV2 = () => {
     queryOptions: { enabled: !!activeAccount }
   });
 
+  const { data: uvdAllowanceJoeData } = useReadContract({
+    contract: uvdContract,
+    method: "allowance",
+    params: [
+      activeAccount?.address || "0x0000000000000000000000000000000000000000",
+      JOE_ROUTER_ADDRESS
+    ],
+    queryOptions: { enabled: !!activeAccount }
+  });
+
+  const { data: usdcBalanceData } = useReadContract({
+    contract: usdcContract,
+    method: "balanceOf",
+    params: [activeAccount?.address || "0x0000000000000000000000000000000000000000"],
+    queryOptions: { enabled: !!activeAccount }
+  });
+
+  const { data: usdcAllowanceArenaData } = useReadContract({
+    contract: usdcContract,
+    method: "allowance",
+    params: [
+      activeAccount?.address || "0x0000000000000000000000000000000000000000",
+      ARENA_ROUTER_ADDRESS
+    ],
+    queryOptions: { enabled: !!activeAccount }
+  });
+
+  const { data: usdcAllowanceJoeData } = useReadContract({
+    contract: usdcContract,
+    method: "allowance",
+    params: [
+      activeAccount?.address || "0x0000000000000000000000000000000000000000",
+      JOE_ROUTER_ADDRESS
+    ],
+    queryOptions: { enabled: !!activeAccount }
+  });
+
+  const { data: uvdAllowanceOdosData } = useReadContract({
+    contract: uvdContract,
+    method: "allowance",
+    params: [
+      activeAccount?.address || "0x0000000000000000000000000000000000000000",
+      ODOS_ROUTER_ADDRESS
+    ],
+    queryOptions: { enabled: !!activeAccount }
+  });
+
+  const { data: usdcAllowanceOdosData } = useReadContract({
+    contract: usdcContract,
+    method: "allowance",
+    params: [
+      activeAccount?.address || "0x0000000000000000000000000000000000000000",
+      ODOS_ROUTER_ADDRESS
+    ],
+    queryOptions: { enabled: !!activeAccount }
+  });
+
   // Update balances
   const updateBalances = useCallback(async () => {
     if (!activeAccount?.address) {
       setAvaxBalance('0.0');
       setUvdBalance('0.0');
+      setUsdcBalance('0.0');
       return;
     }
 
@@ -265,10 +478,31 @@ const SwapWidgetV2 = () => {
         params: [activeAccount.address, ARENA_ROUTER_ADDRESS]
       });
       setUvdAllowance(toEther(uvdAllowance));
+
+      const usdcBalance = await readContract({
+        contract: usdcContract,
+        method: "balanceOf",
+        params: [activeAccount.address]
+      });
+      setUsdcBalance(ethers.utils.formatUnits(usdcBalance, USDC_DECIMALS));
+
+      const usdcAllowanceArena = await readContract({
+        contract: usdcContract,
+        method: "allowance",
+        params: [activeAccount.address, ARENA_ROUTER_ADDRESS]
+      });
+      setUsdcAllowanceArena(ethers.utils.formatUnits(usdcAllowanceArena, USDC_DECIMALS));
+
+      const usdcAllowanceJoe = await readContract({
+        contract: usdcContract,
+        method: "allowance",
+        params: [activeAccount.address, JOE_ROUTER_ADDRESS]
+      });
+      setUsdcAllowanceJoe(ethers.utils.formatUnits(usdcAllowanceJoe, USDC_DECIMALS));
     } catch (error) {
       console.error('Error updating balances:', error);
     }
-  }, [activeAccount, rpcClient, uvdContract]);
+  }, [activeAccount, rpcClient, uvdContract, usdcContract]);
 
   useEffect(() => {
     const fetchAvaxBalance = async () => {
@@ -319,12 +553,106 @@ const SwapWidgetV2 = () => {
   }, [uvdAllowanceData]);
 
   useEffect(() => {
-    if (fromToken === 'UVD' && fromAmount && parseFloat(fromAmount) > 0) {
-      setNeedsApproval(parseFloat(fromAmount) > parseFloat(uvdAllowance));
+    if (uvdAllowanceJoeData) {
+      try {
+        setUvdAllowanceJoe(toEther(uvdAllowanceJoeData));
+      } catch (error) {
+        setUvdAllowanceJoe('0.0');
+      }
     } else {
-      setNeedsApproval(false);
+      setUvdAllowanceJoe('0.0');
     }
-  }, [fromToken, fromAmount, uvdAllowance]);
+  }, [uvdAllowanceJoeData]);
+
+  useEffect(() => {
+    if (usdcAllowanceArenaData) {
+      try {
+        setUsdcAllowanceArena(ethers.utils.formatUnits(usdcAllowanceArenaData, USDC_DECIMALS));
+      } catch (error) {
+        setUsdcAllowanceArena('0.0');
+      }
+    } else {
+      setUsdcAllowanceArena('0.0');
+    }
+  }, [usdcAllowanceArenaData]);
+
+  useEffect(() => {
+    if (usdcAllowanceJoeData) {
+      try {
+        setUsdcAllowanceJoe(ethers.utils.formatUnits(usdcAllowanceJoeData, USDC_DECIMALS));
+      } catch (error) {
+        setUsdcAllowanceJoe('0.0');
+      }
+    } else {
+      setUsdcAllowanceJoe('0.0');
+    }
+  }, [usdcAllowanceJoeData]);
+
+  useEffect(() => {
+    if (uvdAllowanceOdosData) {
+      try {
+        setUvdAllowanceOdos(toEther(uvdAllowanceOdosData));
+      } catch (error) {
+        setUvdAllowanceOdos('0.0');
+      }
+    } else {
+      setUvdAllowanceOdos('0.0');
+    }
+  }, [uvdAllowanceOdosData]);
+
+  useEffect(() => {
+    if (usdcAllowanceOdosData) {
+      try {
+        setUsdcAllowanceOdos(ethers.utils.formatUnits(usdcAllowanceOdosData, USDC_DECIMALS));
+      } catch (error) {
+        setUsdcAllowanceOdos('0.0');
+      }
+    } else {
+      setUsdcAllowanceOdos('0.0');
+    }
+  }, [usdcAllowanceOdosData]);
+
+  useEffect(() => {
+    const evaluateApproval = async () => {
+      if (!(fromAmount && parseFloat(fromAmount) > 0)) {
+        setNeedsApproval(false);
+        return;
+      }
+      if (fromToken === 'UVD' || fromToken === 'USDC') {
+        const isOdosPair =
+          (fromToken === 'USDC' && toToken === 'UVD') ||
+          (fromToken === 'UVD' && toToken === 'USDC');
+        if (isOdosPair) {
+          const allowanceStr = fromToken === 'UVD' ? uvdAllowanceOdos : usdcAllowanceOdos;
+          setNeedsApproval(parseFloat(fromAmount) > parseFloat(allowanceStr));
+          return;
+        }
+        const path = getPath(fromToken, toToken);
+        if (path.length === 0) {
+          setNeedsApproval(false);
+          return;
+        }
+        try {
+          const amountIn = fromToken === 'USDC'
+            ? ethers.utils.parseUnits(fromAmount, USDC_DECIMALS).toString()
+            : toWei(fromAmount);
+          const { address } = await selectRouterForPath(fromToken, toToken, amountIn, path);
+          let allowanceStr = '0';
+          if (fromToken === 'UVD') {
+            allowanceStr = address === ARENA_ROUTER_ADDRESS ? uvdAllowance : uvdAllowanceJoe;
+          } else {
+            allowanceStr = address === ARENA_ROUTER_ADDRESS ? usdcAllowanceArena : usdcAllowanceJoe;
+          }
+          setNeedsApproval(parseFloat(fromAmount) > parseFloat(allowanceStr));
+        } catch {
+          setNeedsApproval(true);
+        }
+      } else {
+        setNeedsApproval(false);
+      }
+    };
+    evaluateApproval();
+  }, [fromToken, toToken, fromAmount, uvdAllowance, uvdAllowanceJoe, usdcAllowanceArena, usdcAllowanceJoe, uvdAllowanceOdos, usdcAllowanceOdos, selectRouterForPath, getPath]);
 
   // Handle transaction status updates
   useEffect(() => {
@@ -367,17 +695,35 @@ const SwapWidgetV2 = () => {
       resetTransaction();
     } else if (isReceiptError || isTransactionError) {
       const error = transactionError || 'Transaction failed';
-      const isUserRejection = error.message?.includes('User rejected') ||
-                              error.message?.includes('user rejected') ||
-                              error.message?.includes('User denied') ||
-                              error.code === 4001 ||
-                              error.code === 'ACTION_REJECTED';
+      const errorCode = typeof error === 'object' && error !== null ? error.code : undefined;
+      const errorMessage = typeof error === 'string' ? error : error?.message || '';
+      const isUserRejection = errorMessage.includes('User rejected') ||
+                              errorMessage.includes('user rejected') ||
+                              errorMessage.includes('User denied') ||
+                              errorCode === 4001 ||
+                              errorCode === 'ACTION_REJECTED';
+      const isOdosSignatureError = errorMessage.includes('0xfb8f41b2') ||
+                                   errorMessage.includes('Encoded error signature');
+
+      const baseLabel = currentTransactionType === 'approval'
+        ? t('swap.approval_failed')
+        : t('swap.swap_failed');
+
+      let finalMessage;
+
+      if (isUserRejection) {
+        finalMessage = currentTransactionType === 'approval'
+          ? t('swap.approval_cancelled')
+          : t('swap.swap_cancelled');
+      } else if (isOdosSignatureError) {
+        finalMessage = `${baseLabel}: ${t('swap.odos_error')}`;
+      } else {
+        finalMessage = `${baseLabel}: ${errorMessage || t('swap.try_again')}`;
+      }
 
       setTransactionStatus({
         type: 'error',
-        message: isUserRejection
-          ? (currentTransactionType === 'approval' ? t('swap.approval_cancelled') : t('swap.swap_cancelled'))
-          : `${currentTransactionType === 'approval' ? t('swap.approval_failed') : t('swap.swap_failed')}: ${error.message || 'Please try again.'}`,
+        message: finalMessage,
         hash: transactionResult?.transactionHash || null
       });
 
@@ -401,25 +747,112 @@ const SwapWidgetV2 = () => {
     updateBalances
   ]);
 
-  // Get quote from Arena router
-  const getQuote = async (inputAmount, isAvaxToUvd) => {
+  // Get quote from router
+  const getQuote = async (inputAmount, tokenIn, tokenOut) => {
     if (!inputAmount || inputAmount === '0') return '0';
 
     try {
-      const amountIn = toWei(inputAmount);
-      const path = isAvaxToUvd
-        ? [WAVAX_ADDRESS, UVD_ADDRESS]
-        : [UVD_ADDRESS, WAVAX_ADDRESS];
+      const isOdosPair =
+        (tokenIn === 'USDC' && tokenOut === 'UVD') ||
+        (tokenIn === 'UVD' && tokenOut === 'USDC');
+
+      if (isOdosPair) {
+        if (!activeAccount?.address) {
+          return '0';
+        }
+
+        const inputAddress = tokenIn === 'USDC' ? USDC_ADDRESS : UVD_ADDRESS;
+        const outputAddress = tokenOut === 'USDC' ? USDC_ADDRESS : UVD_ADDRESS;
+        const amountIn = tokenIn === 'USDC'
+          ? ethers.utils.parseUnits(inputAmount, USDC_DECIMALS).toString()
+          : ethers.utils.parseUnits(inputAmount, 18).toString();
+
+        const payload = {
+          chainId: 43114,
+          inputTokens: [
+            {
+              tokenAddress: inputAddress,
+              amount: amountIn,
+            },
+          ],
+          outputTokens: [
+            {
+              tokenAddress: outputAddress,
+              proportion: 1,
+            },
+          ],
+          userAddr: activeAccount.address,
+          slippageLimitPercent: slippage[0],
+          referralCode: 0,
+          disableRFQs: true,
+          compact: true,
+        };
+
+        if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+          console.log('Odos getQuote request', {
+            tokenIn,
+            tokenOut,
+            payload,
+          });
+        }
+
+        const response = await fetch('https://api.odos.xyz/sor/quote/v2', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(payload),
+        });
+
+        if (!response.ok) {
+          const errorBody = await response.json().catch(() => null);
+          console.error('Odos getQuote HTTP error', {
+            status: response.status,
+            error: errorBody,
+          });
+        } else {
+          const quote = await response.json();
+          if (process.env.REACT_APP_DEBUG_ENABLED === 'true') console.log('Odos getQuote response', quote);
+          const rawOutAmount =
+            (quote.outAmounts && quote.outAmounts[0]) ||
+            (quote.outputTokens && quote.outputTokens[0] && quote.outputTokens[0].amount);
+
+          if (rawOutAmount && rawOutAmount !== '0') {
+            const outputDecimals = tokenOut === 'USDC' ? USDC_DECIMALS : 18;
+            const formatted = ethers.utils.formatUnits(rawOutAmount.toString(), outputDecimals);
+            return formatted;
+          }
+          if (process.env.REACT_APP_DEBUG_ENABLED === 'true') console.warn('Odos getQuote returned no outAmount, falling back to router');
+        }
+      }
+
+      let amountIn;
+      if (tokenIn === 'USDC') {
+        amountIn = ethers.utils.parseUnits(inputAmount, USDC_DECIMALS).toString();
+      } else {
+        amountIn = toWei(inputAmount);
+      }
+
+      const path = getPath(tokenIn, tokenOut);
+      if (path.length === 0) return '0';
+
+      const { contract: router } = await selectRouterForPath(tokenIn, tokenOut, amountIn, path);
 
       const amounts = await readContract({
-        contract: routerContract,
+        contract: router,
         method: "getAmountsOut",
         params: [amountIn, path]
       });
 
-      if (amounts && amounts.length > 1) {
-        const amountOut = toEther(amounts[1]);
-        return parseFloat(amountOut).toFixed(8);
+      if (amounts && amounts.length > 0) {
+        const amountOutRaw = amounts[amounts.length - 1];
+        let amountOut;
+        if (tokenOut === 'USDC') {
+          amountOut = ethers.utils.formatUnits(amountOutRaw.toString(), USDC_DECIMALS);
+        } else {
+          amountOut = toEther(amountOutRaw);
+        }
+        return amountOut;
       }
       return '0';
     } catch (error) {
@@ -431,7 +864,7 @@ const SwapWidgetV2 = () => {
   const handleFromAmountChange = async (value) => {
     setFromAmount(value);
     if (value && parseFloat(value) > 0) {
-      const quote = await getQuote(value, fromToken === 'AVAX');
+      const quote = await getQuote(value, fromToken, toToken);
       setToAmount(quote);
     } else {
       setToAmount('');
@@ -443,7 +876,7 @@ const SwapWidgetV2 = () => {
       setIsRefreshing(true);
       try {
         const [quote] = await Promise.all([
-          getQuote(fromAmount, fromToken === 'AVAX'),
+          getQuote(fromAmount, fromToken, toToken),
           updateBalances()
         ]);
         setToAmount(quote);
@@ -462,7 +895,7 @@ const SwapWidgetV2 = () => {
         setIsRefreshing(false);
       }
     }
-  }, [fromAmount, fromToken, activeAccount, updateBalances]);
+  }, [fromAmount, fromToken, toToken, activeAccount, updateBalances]);
 
   useEffect(() => {
     if (fromAmount && parseFloat(fromAmount) > 0) {
@@ -476,10 +909,22 @@ const SwapWidgetV2 = () => {
 
   const handleSwapTokens = () => {
     const tempToken = fromToken;
+    const tempAmount = fromAmount;
+    
+    // When swapping, we switch tokens. 
+    // If we were swapping AVAX->UVD, now it's UVD->AVAX.
+    // If USDC->UVD, now UVD->USDC.
+    // But if we have specific logic for what is allowed, we might need to adjust.
+    // Here we just swap whatever is there.
     setFromToken(toToken);
     setToToken(tempToken);
+    
+    // Also swap amounts logic
     setFromAmount(toAmount);
-    setToAmount(fromAmount);
+    setToAmount(tempAmount);
+    
+    // Note: getQuote will be triggered by effect if needed, but since we set amounts directly,
+    // we might not need to recalculate immediately unless amounts are empty.
   };
 
   const handleApprove = async () => {
@@ -490,12 +935,38 @@ const SwapWidgetV2 = () => {
     setCurrentTransactionType('approval');
 
     try {
-      const amountToApprove = toWei(fromAmount);
+      let amountToApprove;
+      let contractToApprove;
+
+      let routerAddress = ARENA_ROUTER_ADDRESS;
+      const path = getPath(fromToken, toToken);
+      const isOdosPair =
+        (fromToken === 'USDC' && toToken === 'UVD') ||
+        (fromToken === 'UVD' && toToken === 'USDC');
+      if (isOdosPair) {
+        routerAddress = ODOS_ROUTER_ADDRESS;
+      } else if (path.length > 0) {
+        const amountIn = fromToken === 'USDC'
+          ? ethers.utils.parseUnits(fromAmount, USDC_DECIMALS).toString()
+          : toWei(fromAmount);
+        const { address } = await selectRouterForPath(fromToken, toToken, amountIn, path);
+        routerAddress = address;
+      }
+
+      if (fromToken === 'UVD') {
+        amountToApprove = toWei(fromAmount);
+        contractToApprove = uvdContract;
+      } else if (fromToken === 'USDC') {
+        amountToApprove = ethers.utils.parseUnits(fromAmount, USDC_DECIMALS).toString();
+        contractToApprove = usdcContract;
+      } else {
+        return; // Native token doesn't need approval
+      }
 
       const transaction = prepareContractCall({
-        contract: uvdContract,
+        contract: contractToApprove,
         method: "approve",
-        params: [ARENA_ROUTER_ADDRESS, amountToApprove]
+        params: [routerAddress, amountToApprove]
       });
 
       sendTransaction(transaction);
@@ -514,34 +985,260 @@ const SwapWidgetV2 = () => {
     setCurrentTransactionType('swap');
 
     try {
-      const amountIn = toWei(fromAmount);
-      const minAmountOut = toWei(
-        (parseFloat(toAmount) * (100 - slippage[0]) / 100).toString()
-      );
-      const deadline = Math.floor(Date.now() / 1000) + 60;
+      const isOdosPair =
+        (fromToken === 'USDC' && toToken === 'UVD') ||
+        (fromToken === 'UVD' && toToken === 'USDC');
 
+      if (isOdosPair) {
+        const inputAddress = fromToken === 'USDC' ? USDC_ADDRESS : UVD_ADDRESS;
+        const outputAddress = toToken === 'USDC' ? USDC_ADDRESS : UVD_ADDRESS;
+        const amountInOdos = fromToken === 'USDC'
+          ? ethers.utils.parseUnits(fromAmount, USDC_DECIMALS).toString()
+          : ethers.utils.parseUnits(fromAmount, 18).toString();
+
+        const quotePayload = {
+          chainId: 43114,
+          inputTokens: [
+            {
+              tokenAddress: inputAddress,
+              amount: amountInOdos,
+            },
+          ],
+          outputTokens: [
+            {
+              tokenAddress: outputAddress,
+              proportion: 1,
+            },
+          ],
+          userAddr: activeAccount.address,
+          slippageLimitPercent: slippage[0],
+          referralCode: 0,
+          disableRFQs: true,
+          compact: true,
+        };
+
+        if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+          console.log('Odos swap quote request', {
+            fromToken,
+            toToken,
+            quotePayload,
+          });
+        }
+
+        let usedOdos = false;
+
+        try {
+          const quoteResponse = await fetch('https://api.odos.xyz/sor/quote/v2', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(quotePayload),
+          });
+
+          if (!quoteResponse.ok) {
+            const errorBody = await quoteResponse.json().catch(() => null);
+            console.error('Odos swap quote HTTP error', {
+              status: quoteResponse.status,
+              error: errorBody,
+            });
+          } else {
+            const quoteJson = await quoteResponse.json();
+            if (process.env.REACT_APP_DEBUG_ENABLED === 'true') console.log('Odos swap quote response', quoteJson);
+
+            if (!quoteJson.pathId) {
+              console.error('Odos swap quote missing pathId');
+            } else {
+              const assemblePayload = {
+                userAddr: activeAccount.address,
+                pathId: quoteJson.pathId,
+                simulate: false,
+              };
+
+              if (process.env.REACT_APP_DEBUG_ENABLED === 'true') console.log('Odos assemble request', assemblePayload);
+
+              const assembleResponse = await fetch('https://api.odos.xyz/sor/assemble', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(assemblePayload),
+              });
+
+              if (!assembleResponse.ok) {
+                const errorBody = await assembleResponse.json().catch(() => null);
+                console.error('Odos assemble HTTP error', {
+                  status: assembleResponse.status,
+                  error: errorBody,
+                });
+              } else {
+                const assembleJson = await assembleResponse.json();
+                if (process.env.REACT_APP_DEBUG_ENABLED === 'true') console.log('Odos assemble response', assembleJson);
+                const tx = assembleJson.transaction;
+
+                if (!tx || !tx.to || !tx.data) {
+                  console.error('Odos assemble returned invalid transaction', tx);
+                } else {
+                  const preparedTx = prepareTransaction({
+                    to: tx.to,
+                    data: tx.data,
+                    chain: avalanche,
+                    client,
+                  });
+
+                  sendTransaction(preparedTx);
+                  usedOdos = true;
+                }
+              }
+            }
+          }
+        } catch (odosError) {
+          console.error('Odos swap failed, will try router fallback', odosError);
+        }
+
+        if (usedOdos) {
+          return;
+        }
+
+        if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+          console.warn('Falling back to router swap for pair expected to use Odos', {
+            fromToken,
+            toToken,
+          });
+        }
+      }
+
+      let amountIn;
+      let minAmountOut;
+      let path;
       let transaction;
+      const deadline = Math.floor(Date.now() / 1000) + 300;
+
+      // Calculate minAmountOut based on slippage
+      // Note: toAmount needs to be parsed with correct decimals for the TO token
+      if (toToken === 'USDC') {
+         minAmountOut = ethers.utils.parseUnits(
+            (parseFloat(toAmount) * (100 - slippage[0]) / 100).toFixed(USDC_DECIMALS), 
+            USDC_DECIMALS
+         ).toString();
+      } else {
+         minAmountOut = toWei(
+            (parseFloat(toAmount) * (100 - slippage[0]) / 100).toFixed(18)
+         );
+      }
+
+      let routerContractSelected = arenaRouterContract;
+      const pathForSelection = getPath(fromToken, toToken);
+      if (pathForSelection.length > 0) {
+        const amountForSelection = fromToken === 'USDC'
+          ? ethers.utils.parseUnits(fromAmount, USDC_DECIMALS).toString()
+          : toWei(fromAmount);
+        const { contract } = await selectRouterForPath(fromToken, toToken, amountForSelection, pathForSelection);
+        routerContractSelected = contract;
+      }
+
+      // Build path once and preflight check amounts on selected router
+      path = getPath(fromToken, toToken);
+      if (!path.length) {
+        setIsLoading(false);
+        setCurrentTransactionType(null);
+        return;
+      }
+      amountIn = fromToken === 'USDC'
+        ? ethers.utils.parseUnits(fromAmount, USDC_DECIMALS).toString()
+        : toWei(fromAmount);
+      try {
+        await readContract({
+          contract: routerContractSelected,
+          method: "getAmountsOut",
+          params: [amountIn, path]
+        });
+      } catch (e) {
+        setIsLoading(false);
+        setCurrentTransactionType(null);
+        return;
+      }
 
       if (fromToken === 'AVAX') {
+        amountIn = toWei(fromAmount);
+        
         transaction = prepareContractCall({
-          contract: routerContract,
-          method: "swapExactAVAXForTokens",
+          contract: routerContractSelected,
+          method: "swapExactAVAXForTokensSupportingFeeOnTransferTokens",
           params: [
             minAmountOut,
-            [WAVAX_ADDRESS, UVD_ADDRESS],
+            path,
             activeAccount.address,
             deadline
           ],
           value: amountIn
         });
-      } else {
+      } else if (fromToken === 'UVD' && toToken === 'AVAX') {
+        amountIn = toWei(fromAmount);
+        
         transaction = prepareContractCall({
-          contract: routerContract,
-          method: "swapExactTokensForAVAX",
+          contract: routerContractSelected,
+          method: "swapExactTokensForAVAXSupportingFeeOnTransferTokens",
           params: [
             amountIn,
             minAmountOut,
-            [UVD_ADDRESS, WAVAX_ADDRESS],
+            path,
+            activeAccount.address,
+            deadline
+          ]
+        });
+      } else if (fromToken === 'USDC' && toToken === 'UVD') {
+        amountIn = ethers.utils.parseUnits(fromAmount, USDC_DECIMALS).toString();
+        
+        transaction = prepareContractCall({
+          contract: routerContractSelected,
+          method: "swapExactTokensForTokensSupportingFeeOnTransferTokens",
+          params: [
+            amountIn,
+            minAmountOut,
+            path,
+            activeAccount.address,
+            deadline
+          ]
+        });
+      } else if (fromToken === 'UVD' && toToken === 'USDC') {
+        amountIn = toWei(fromAmount);
+        
+        transaction = prepareContractCall({
+          contract: routerContractSelected,
+          method: "swapExactTokensForTokensSupportingFeeOnTransferTokens",
+          params: [
+            amountIn,
+            minAmountOut,
+            path,
+            activeAccount.address,
+            deadline
+          ]
+        });
+      } else if (fromToken === 'AVAX' && toToken === 'USDC') {
+        amountIn = toWei(fromAmount);
+        
+        transaction = prepareContractCall({
+          contract: routerContractSelected,
+          method: "swapExactAVAXForTokensSupportingFeeOnTransferTokens",
+          params: [
+            minAmountOut,
+            path,
+            activeAccount.address,
+            deadline
+          ],
+          value: amountIn
+        });
+      } else if (fromToken === 'USDC' && toToken === 'AVAX') {
+        amountIn = ethers.utils.parseUnits(fromAmount, USDC_DECIMALS).toString();
+        
+        transaction = prepareContractCall({
+          contract: routerContractSelected,
+          method: "swapExactTokensForAVAXSupportingFeeOnTransferTokens",
+          params: [
+            amountIn,
+            minAmountOut,
+            path,
             activeAccount.address,
             deadline
           ]
@@ -551,12 +1248,33 @@ const SwapWidgetV2 = () => {
       sendTransaction(transaction);
     } catch (error) {
       console.error('Swap failed:', error);
+      const errorMessage = typeof error === 'string' ? error : error?.message || '';
+      const isOdosSignatureError = errorMessage.includes('0xfb8f41b2') ||
+                                   errorMessage.includes('Encoded error signature');
+
+      let finalMessage;
+
+      if (isOdosSignatureError) {
+        finalMessage = `${t('swap.swap_failed')}: ${t('swap.odos_error')}`;
+      } else {
+        finalMessage = `${t('swap.swap_failed')}: ${errorMessage || t('swap.try_again')}`;
+      }
+
       setIsLoading(false);
       setCurrentTransactionType(null);
+      setTransactionStatus({
+        type: 'error',
+        message: finalMessage,
+        hash: null
+      });
     }
   };
 
-  const currentBalance = fromToken === 'AVAX' ? avaxBalance : uvdBalance;
+  let currentBalance = '0';
+  if (fromToken === 'AVAX') currentBalance = avaxBalance;
+  else if (fromToken === 'UVD') currentBalance = uvdBalance;
+  else if (fromToken === 'USDC') currentBalance = usdcBalance;
+
   const isSwapDisabled = !fromAmount ||
     parseFloat(fromAmount) === 0 ||
     isLoading ||
@@ -564,7 +1282,8 @@ const SwapWidgetV2 = () => {
     isTransactionLoading ||
     isReceiptLoading ||
     parseFloat(fromAmount) > parseFloat(currentBalance) ||
-    (fromToken === 'UVD' && needsApproval);
+    (['UVD','USDC'].includes(fromToken) && parseFloat(toAmount || '0') === 0) ||
+    ((fromToken === 'UVD' || fromToken === 'USDC') && needsApproval);
 
   return (
     <motion.div
@@ -585,7 +1304,7 @@ const SwapWidgetV2 = () => {
                 {t('swap.title')}
               </CardTitle>
               <CardDescription>
-                Swap AVAX & UVD tokens instantly
+                Swap AVAX, USDC & UVD tokens instantly
               </CardDescription>
             </div>
             <div className="flex items-center gap-2">
@@ -663,39 +1382,65 @@ const SwapWidgetV2 = () => {
 
           {/* From Token */}
           <TokenSelector
+            label={t('swap.from')}
             token={fromToken}
             amount={fromAmount}
             balance={currentBalance}
             onAmountChange={handleFromAmountChange}
             onMaxClick={() => handleFromAmountChange(currentBalance)}
-            onPercentageClick={(percent) =>
-              handleFromAmountChange((parseFloat(currentBalance) * percent).toString())
-            }
-            label={t('swap.from')}
+            onPercentageClick={(percent) => {
+              const amount = parseFloat(currentBalance) * percent;
+              const decimals = fromToken === 'USDC' ? 6 : 18;
+              handleFromAmountChange(amount.toFixed(decimals));
+            }}
+            onTokenSelect={(token) => {
+              const { fromToken: nextFromToken, toToken: nextToToken } = getValidSwapPair(
+                token,
+                toToken,
+                'from'
+              );
+              setFromToken(nextFromToken);
+              setToToken(nextToToken);
+              setFromAmount('');
+              setToAmount('');
+            }}
+            options={['AVAX', 'UVD', 'USDC']}
             showQuickButtons={true}
           />
 
           {/* Swap Direction Button */}
-          <div className="flex justify-center -my-2 relative z-10">
+          <div className="flex justify-center -my-3 z-10 relative">
             <Button
-              variant="outline"
               size="icon"
+              variant="secondary"
+              className="rounded-full w-10 h-10 shadow-md border border-border/50 hover:scale-110 transition-transform bg-background"
               onClick={handleSwapTokens}
-              className="rounded-full border-2 bg-background hover:bg-ultraviolet hover:text-white hover:border-ultraviolet transition-all"
+              disabled={isLoading || isApproving}
             >
-              <ArrowDownUp className="w-4 h-4" />
+              <ArrowDownUp className="w-5 h-5 text-ultraviolet" />
             </Button>
           </div>
 
           {/* To Token */}
           <TokenSelector
+            label={t('swap.to')}
             token={toToken}
             amount={toAmount}
-            balance={toToken === 'AVAX' ? avaxBalance : uvdBalance}
-            label={t('swap.to')}
+            balance={toToken === 'UVD' ? uvdBalance : (toToken === 'AVAX' ? avaxBalance : usdcBalance)}
             readOnly={true}
             isLoading={isRefreshing}
-            showQuickButtons={false}
+            onTokenSelect={(token) => {
+              const { fromToken: nextFromToken, toToken: nextToToken } = getValidSwapPair(
+                fromToken,
+                token,
+                'to'
+              );
+              setFromToken(nextFromToken);
+              setToToken(nextToToken);
+              setFromAmount('');
+              setToAmount('');
+            }}
+            options={['AVAX', 'UVD', 'USDC']}
           />
 
           {/* Swap Info */}
@@ -725,11 +1470,25 @@ const SwapWidgetV2 = () => {
                       {(parseFloat(toAmount) * (100 - slippage[0]) / 100).toFixed(6)} {toToken}
                     </span>
                   </div>
-                  {fromToken === 'UVD' && (
+                  {(fromToken === 'UVD' || fromToken === 'USDC') && (
                     <div className="flex justify-between text-sm pt-2 border-t border-border/50">
-                      <span className="text-muted-foreground">UVD Allowance</span>
+                      <span className="text-muted-foreground">{fromToken} Allowance</span>
                       <span className="font-medium">
-                        {parseFloat(uvdAllowance).toFixed(6)} UVD
+                        {parseFloat((() => {
+                          const path = getPath(fromToken, toToken);
+                          if (!path.length) return '0';
+                          if (fromToken === 'UVD') {
+                            const a = parseFloat(uvdAllowance);
+                            const j = parseFloat(uvdAllowanceJoe);
+                            const o = parseFloat(uvdAllowanceOdos);
+                            return (Math.max(a, j, o)).toString();
+                          } else {
+                            const a = parseFloat(usdcAllowanceArena);
+                            const j = parseFloat(usdcAllowanceJoe);
+                            const o = parseFloat(usdcAllowanceOdos);
+                            return (Math.max(a, j, o)).toString();
+                          }
+                        })()).toFixed(6)} {fromToken}
                       </span>
                     </div>
                   )}
@@ -749,7 +1508,7 @@ const SwapWidgetV2 = () => {
             </Card>
           ) : (
             <div className="space-y-3">
-              {fromToken === 'UVD' && needsApproval && fromAmount && parseFloat(fromAmount) > 0 && parseFloat(fromAmount) <= parseFloat(currentBalance) && (
+              {(fromToken === 'UVD' || fromToken === 'USDC') && needsApproval && fromAmount && parseFloat(fromAmount) > 0 && parseFloat(fromAmount) <= parseFloat(currentBalance) && (
                 <Button
                   onClick={handleApprove}
                   disabled={isApproving || isTransactionLoading || isReceiptLoading}
@@ -757,7 +1516,7 @@ const SwapWidgetV2 = () => {
                 >
                   {(isApproving || (isTransactionLoading && currentTransactionType === 'approval') || (isReceiptLoading && currentTransactionType === 'approval'))
                     ? 'Approving...'
-                    : 'Approve UVD'}
+                    : `Approve ${fromToken}`}
                 </Button>
               )}
 
@@ -773,6 +1532,10 @@ const SwapWidgetV2 = () => {
                  (fromToken === 'UVD' && needsApproval) ? 'Approve Required' :
                  'Swap Tokens'}
               </Button>
+
+              <p className="text-xs text-muted-foreground text-center">
+                {t('swap.gas_hint')}
+              </p>
             </div>
           )}
         </CardContent>

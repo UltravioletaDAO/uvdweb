@@ -1,10 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
 import {
-  HomeIcon,
   UsersIcon,
-  ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
   ChartBarIcon,
   ArrowTrendingUpIcon,
@@ -25,12 +22,6 @@ const Header = () => {
   const location = useLocation();
 
   const mainMenuItems = [
-    {
-      name: t('navigation.home'),
-      icon: HomeIcon,
-      path: "/",
-      isExternal: false,
-    },
     {
       name: t('navigation.about'),
       icon: InformationCircleIcon,

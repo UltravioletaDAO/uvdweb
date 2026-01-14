@@ -196,3 +196,102 @@ Tests should focus on:
   - All `.md` documentation files must go in the `/docs/` folder to avoid main directory pollution
   - All test files must go in the `/tests/` folder
   - All utility scripts (data massaging, automation, etc.) must go in the `/scripts/` folder
+
+
+   Using Gemini CLI for large codebase analysis
+
+When a task involves many files or directories and might overflow your context window, prefer using the local gemini CLI and then summarize its output. Use gemini -p with the @ path syntax to let Gemini read the files while Claude focuses on planning and editing.
+
+File and directory syntax
+
+Paths are relative to the directory where you run the gemini command, and @ tells Gemini CLI which files or folders to load into context.
+
+Examples
+
+Single file
+
+gemini -p "@src/main.py Describe what this file does and how it is structured."
+
+Multiple files
+
+gemini -p "@package.json @src/index.js Analyze the dependencies and how they are used in the codebase."
+
+One directory
+
+gemini -p "@src/ Summarize the architecture, main modules, and data flow of this codebase."
+
+Several directories
+
+gemini -p "@src/ @tests/ Explain how the test suite covers the source code and where the gaps are."
+
+Whole project tree
+
+gemini -p "@./ Give me a high-level overview of this project: tech stack, structure, and main responsibilities of each area."
+
+Using all tracked files
+
+gemini --all_files -p "Analyze the project layout, build system, and external dependencies."
+
+Implementation checks
+
+Use Gemini CLI to confirm whether specific features or patterns exist across the repo:
+
+Feature present?
+
+gemini -p "@src/ @lib/ Is dark mode implemented? List the relevant files and functions."
+
+Authentication
+
+gemini -p "@src/ @middleware/ How is authentication implemented (e.g. JWT/session)? List auth-related endpoints and middleware."
+
+WebSocket hooks
+
+gemini -p "@src/ Do we have React hooks or utilities that manage WebSocket connections? Show them with file paths."
+
+Error handling
+
+gemini -p "@src/ @api/ Is error handling consistent for API endpoints? Show representative try/catch or error-handling logic."
+
+Rate limiting
+
+gemini -p "@backend/ @middleware/ Is there any rate limiting in place for the API? Describe the implementation."
+
+Caching
+
+gemini -p "@src/ @lib/ @services/ Is Redis (or any cache layer) used? List cache-related functions and how they are used."
+
+Security measures
+
+gemini -p "@src/ @api/ How are inputs sanitized to avoid SQL injection and similar attacks?"
+
+Tests for a feature
+
+gemini -p "@src/payment/ @tests/ How well is the payment module tested? List the main test cases."
+
+When Claude should call Gemini
+
+Prefer calling gemini -p via the bash tool when:
+
+You need to reason about an entire codebase or large folders.
+
+Comparing or scanning many big files at once.
+
+Investigating project-wide patterns, architecture, or cross-cutting concerns.
+
+Total relevant files are likely > 100 KB of text.
+
+Verifying whether specific features, patterns, or security practices exist.
+
+Searching for coding patterns across many files.
+
+Important notes
+
+Treat Gemini CLI output as an external report: read it, then answer in your own words.
+
+@ paths are always relative to the current working directory where gemini is executed.
+
+The CLI injects file contents directly into Gemini’s context, so Claude does not spend its own context window on those files.
+
+For read-only analysis you do not need any destructive flags.
+
+Be explicit in the -p prompt about what you want Gemini to look for; this produces more accurate results.

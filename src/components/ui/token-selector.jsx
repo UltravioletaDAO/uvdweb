@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useRef, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
 import { cn } from '../../lib/utils';
 
@@ -13,6 +13,8 @@ export const TokenImage = ({ token, className }) => {
         return 'https://images.ctfassets.net/gcj8jwzm6086/5VHupNKwnDYJvqMENeV7iJ/3e4b8ff10b69bfa31e70080a4b142cd0/avalanche-avax-logo.svg';
       case 'UVD':
         return 'https://ultravioletadao.xyz/logo_uvd.svg';
+      case 'USDC':
+        return 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg';
       default:
         return '';
     }
@@ -24,6 +26,8 @@ export const TokenImage = ({ token, className }) => {
         return 'from-red-500 to-orange-500';
       case 'UVD':
         return 'from-ultraviolet to-ultraviolet-light';
+      case 'USDC':
+        return 'from-blue-500 to-blue-400';
       default:
         return 'from-gray-500 to-gray-700';
     }
@@ -62,25 +66,49 @@ export const TokenSelector = ({
   onAmountChange,
   onMaxClick,
   onPercentageClick,
+  onTokenSelect,
+  options = [],
   label,
   showQuickButtons = true,
   readOnly = false,
   isLoading = false,
   className
 }) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setShowDropdown(false);
+      }
+    };
+
+    if (showDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      if (showDropdown) {
+        document.removeEventListener('mousedown', handleClickOutside);
+      }
+    };
+  }, [showDropdown]);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
+      ref={dropdownRef}
       className={cn(
-        "relative overflow-hidden rounded-xl border bg-card transition-all duration-200",
+        "relative overflow-visible rounded-xl border bg-card transition-all duration-200",
         "hover:border-ultraviolet/30 focus-within:border-ultraviolet/50",
         "border-border/50",
         className
       )}
     >
       {/* Ambient glow effect */}
-      <div className="absolute inset-0 bg-gradient-to-br from-ultraviolet/5 via-transparent to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-br from-ultraviolet/5 via-transparent to-transparent pointer-events-none rounded-xl" />
 
       <div className="relative p-4 space-y-3">
         {/* Label and Balance Row */}
@@ -135,13 +163,64 @@ export const TokenSelector = ({
             )}
           </div>
 
-          {/* Token Display */}
-          <div className="flex items-center gap-3 px-4 py-2 bg-background/50 rounded-lg border border-border/50">
-            <TokenImage
-              token={token}
-              className="w-8 h-8 rounded-full border-2 border-background"
-            />
-            <span className="text-xl font-bold text-foreground">{token}</span>
+          {/* Token Display / Selector */}
+          <div className="relative">
+            <button
+              onClick={() => options.length > 1 && setShowDropdown(!showDropdown)}
+              className={cn(
+                "flex items-center gap-3 px-4 py-2 rounded-lg border transition-colors",
+                "bg-[#181326] border-ultraviolet/40 shadow-md shadow-black/40",
+                options.length > 1 && "hover:bg-[#221b3a] cursor-pointer"
+              )}
+            >
+              <TokenImage
+                token={token}
+                className="w-8 h-8 rounded-full border-2 border-background"
+              />
+              <span className="text-xl font-bold text-foreground">{token}</span>
+              {options.length > 1 && (
+                <ChevronDown className={cn(
+                  "w-4 h-4 text-muted-foreground transition-transform duration-200",
+                  showDropdown && "rotate-180"
+                )} />
+              )}
+            </button>
+
+            {/* Dropdown Menu */}
+            <AnimatePresence>
+              {showDropdown && options.length > 1 && (
+                <motion.div
+                  initial={{ opacity: 0, y: 8, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.96 }}
+                  className="absolute right-0 top-full mt-2 w-52 z-50 overflow-hidden rounded-xl border border-ultraviolet/40 bg-[#0b0914] shadow-2xl shadow-black/60"
+                >
+                  <div className="p-1">
+                    {options.map((option) => (
+                      <button
+                        key={option}
+                        onClick={() => {
+                          onTokenSelect?.(option);
+                          setShowDropdown(false);
+                        }}
+                        className={cn(
+                          "flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-left transition-colors",
+                          token === option 
+                            ? "bg-ultraviolet/30 text-white" 
+                            : "hover:bg-[#181326] text-foreground"
+                        )}
+                      >
+                        <TokenImage
+                          token={option}
+                          className="w-6 h-6 rounded-full"
+                        />
+                        <span className="font-medium">{option}</span>
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 

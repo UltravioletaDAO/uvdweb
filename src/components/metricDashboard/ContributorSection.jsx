@@ -4,26 +4,18 @@ import { Users, Search, Video } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 const currentDaoMembers = [
-  "Ultra", "x4", "Colega", "Txntacion", "Alejo", "f3l1p3", "Teddy Saint", 
-  "Juan Jumaga", "cdt", "Cyber Paisa", "nezzcold", "Vens", "Yesi", "Fredino", 
-  "Waira Tamayo", "DavidZO", "Sindy Arenas", "JuanH", "DatBoi", 
-  "Jangx", "David Rodríguez", "Juyan", "DogonPay", "Papossa", 
-  "Stov3", "Brandon Heat", "lualjarami", "ACPM", "Roypi", "0xPineda", "SaemTwentyTwo", 
-  "Jokker", "Andres", "Cranium", "Palacio", "0xvital.nad", "iEFx", "Detx8", "D R", 
-  "Valenciacrypto", "0xSoulAvax", "Paloteroz", "xDream", "Poo", "Fabin", 
-  "Allan", "Juliboy", "Mar", "ogsebitas", "Kysaug", "Burgos Σ", "Juan Suarez", 
-  "1Nocty", "Sami Madrid", "Nizo", "MichaelGA", "David Barinas", "Juanmansito", 
-  "Zeluz", "Mabu", "21", "Julius", "OnlyZ_", "Alejandro Rosero", "Manussa21", 
-  "Gathus_", "Bob Cokirow", "JuanCCF", "Kadrez", "0xstiven", "Fixie", 
-  "San", "JuanWx_", "sxxneiderxx", "LuismiLabs", "Rehabilitation in Progress", 
-  "Bogotá Mag", "athan", "Karenn", "Jorge Toledo", "Ari", "ElBitterX", "r3c", 
-  "arracacha", "Hanma", "chocoflow", "Elian", "Pkante", "0xyuls", "Juandi", 
-  "painbrayan", "idk", "nich", "David zulodaes", "Agudelo", "collin", "daninft", 
-  "Jeinson22", "Jhon Fray", "Dylan Alexander", "knightinstruction", "Freddy Sebastian", 
-  "Luis0xz", "Alx Dlarch", "daniiel_zp", "Crashxh", "PitBullPrime", "Mario Peña Alcazar", 
-  "Crew", "Shelteer", "Alexis Cedeño", "Daniel S Morales", "Carza", 
-  "Andres92", "Zircon", "alejojc", "IZ", "Danieeel", "Loaiza", "juanpkante", "0xsoulavax", "JFQ", "Sandusky",
-"cabomarzo", "0xj4an", "San Valencia","Dev Cristobal"
+  "Ultra", "x4", "Txntacion", "Alejo", "f3l1p3", "Teddy Saint", "zircon", "cabomarzo",
+  "Juan Jumaga", "cdt", "Cyber Paisa", "nezzcold", "Vens", "Yesi", "Fredino",
+  "Waira Tamayo", "DavidZO", "Sindy Arenas", "Cymatix", "DatBoi",
+  "Jangx", "David Rodríguez", "Juyan", "DogonPay", "Papossa",
+  "Stov3", "Brandon Heat", "lualjarami", "ACPM", "Roypi", "0xPineda", "SaemTwentyTwo",
+  "Jokker", "Andres", "0xvital.nad", "iEFx", "Detx8",
+  "Valenciacrypto", "0xSoulChain", "xDream", "Poo", "Fabin", "Juliboy", "Mar", "ogsebitas", "Kysaug", "Burgos Σ", "Juan Suarez",
+  "Nizo", "MichaelGA", "Mabu", "21", "OnlyZ_", "Alejandro Rosero", "Manussa21",
+  "Gathus_", "Bob Cokirow", "JuanCCF", "Kadrez", "0xstiven", "Fixie", "JuanWx_", "sxxneiderxx", "Rehabilitation in Progress",
+  "Bogotá Mag", "athan", "Karenn", "Jorge Toledo", "Ari", "ElBitterX", "r3c", "Hanma", "Pkante", "0xyuls", "Juandi",
+  "painbrayan", "idk", "daninft", "Alx Dlarch", "daniiel_zp", "Mario Peña Alcazar", "Carza",
+  "Andres92", "juanpkante", "JFQ", "0xj4an", "San Valencia", "Dev Cristobal"
 ];
 
 // Utility function to shuffle array randomly
@@ -70,7 +62,7 @@ export const ContributorSection = () => {
         `${process.env.REACT_APP_API_URL}/apply/all`,
         `${process.env.REACT_APP_API_URL}/applications`
       ];
-      
+
       let allApplications = [];
       // Also attempt to load from local JSON snapshot generated from DB
       try {
@@ -79,18 +71,18 @@ export const ContributorSection = () => {
           const localData = await localResponse.json();
           const normalized = Array.isArray(localData)
             ? localData.map(item => ({
-                telegram: item.telegram || '',
-                twitter: item.twitter || '',
-                x: item.twitter || '',
-                name: item.fullName || '',
-              }))
+              telegram: item.telegram || '',
+              twitter: item.twitter || '',
+              x: item.twitter || '',
+              name: item.fullName || '',
+            }))
             : [];
           allApplications = [...allApplications, ...normalized];
         }
       } catch (e) {
         console.log('Failed to fetch local applicants JSON:', e);
       }
-      
+
       for (const endpoint of endpoints) {
         try {
           const response = await fetch(endpoint);
@@ -106,9 +98,9 @@ export const ContributorSection = () => {
           console.log(`Failed to fetch from ${endpoint}:`, err);
         }
       }
-      
+
       const profiles = {};
-      
+
       // Create a map of names to X profiles
       allApplications.forEach(app => {
         // Get all possible names from the application
@@ -116,7 +108,7 @@ export const ContributorSection = () => {
         const discordName = (app.discord || '').toLowerCase();
         const xProfile = app.twitter || app.x || '';
         const name = (app.name || '').toLowerCase();
-        
+
         // Clean the X profile handle (robust against full URLs and paths)
         const cleanXProfile = (() => {
           if (!xProfile) return '';
@@ -133,7 +125,7 @@ export const ContributorSection = () => {
           s = s.replace(/^@+/, '');
           return s;
         })();
-        
+
         if (cleanXProfile) {
           // Try to find matches in our member list
           currentDaoMembers.forEach(member => {
@@ -141,17 +133,17 @@ export const ContributorSection = () => {
             const telegramClean = telegramName.replace(/[^a-z0-9]/g, '');
             const discordClean = discordName.replace(/[^a-z0-9]/g, '');
             const nameClean = name.replace(/[^a-z0-9]/g, '');
-            
+
             // Check for exact or partial matches
             if ((telegramClean && (memberLower === telegramClean || memberLower.includes(telegramClean) || telegramClean.includes(memberLower))) ||
-                (discordClean && (memberLower === discordClean || memberLower.includes(discordClean) || discordClean.includes(memberLower))) ||
-                (nameClean && (memberLower === nameClean || memberLower.includes(nameClean) || nameClean.includes(memberLower)))) {
+              (discordClean && (memberLower === discordClean || memberLower.includes(discordClean) || discordClean.includes(memberLower))) ||
+              (nameClean && (memberLower === nameClean || memberLower.includes(nameClean) || nameClean.includes(memberLower)))) {
               profiles[member] = cleanXProfile;
             }
           });
         }
       });
-      
+
       console.log('Matched profiles:', profiles);
       // Do not overwrite precomputed map if it already exists
       setMemberProfiles((prev) => (prev && Object.keys(prev).length ? prev : profiles));
@@ -162,7 +154,7 @@ export const ContributorSection = () => {
     }
   };
 
-  const filteredMembers = shuffledMembers.filter(member => 
+  const filteredMembers = shuffledMembers.filter(member =>
     member.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
@@ -170,11 +162,11 @@ export const ContributorSection = () => {
   const getMemberData = (member) => {
     const profile = memberProfiles[member];
     if (!profile) return null;
-    
+
     if (typeof profile === 'string') {
       return { twitter: profile, stream: null };
     }
-    
+
     return {
       twitter: profile.twitter || '',
       stream: profile.stream || null
@@ -187,7 +179,7 @@ export const ContributorSection = () => {
       case 'twitch':
         return (
           <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
+            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z" />
           </svg>
         );
       case 'kick':
@@ -237,7 +229,7 @@ export const ContributorSection = () => {
           {filteredMembers.map((member, index) => {
             const memberData = getMemberData(member);
             const isStreamer = memberData?.stream;
-            
+
             return (
               <motion.div
                 key={index}
@@ -247,8 +239,8 @@ export const ContributorSection = () => {
                 className={`bg-background rounded-lg px-4 py-4 text-sm text-text-primary
                   border hover:bg-ultraviolet/5 transition-all cursor-pointer group
                   flex flex-col items-start min-h-[80px] justify-between relative
-                  ${isStreamer 
-                    ? 'border-purple-500/40 bg-gradient-to-br from-purple-500/5 to-pink-500/5 hover:border-purple-400/60' 
+                  ${isStreamer
+                    ? 'border-purple-500/40 bg-gradient-to-br from-purple-500/5 to-pink-500/5 hover:border-purple-400/60'
                     : 'border-ultraviolet-darker/10 hover:border-ultraviolet/30'
                   }`}
               >
@@ -260,18 +252,17 @@ export const ContributorSection = () => {
                     </div>
                   </div>
                 )}
-                
+
                 <div className="w-full">
                   <div className="flex items-center gap-2 mb-2">
-                    <div className={`w-2 h-2 rounded-full group-hover:animate-pulse flex-shrink-0 ${
-                      isStreamer ? 'bg-purple-400' : 'bg-green-400'
-                    }`} />
+                    <div className={`w-2 h-2 rounded-full group-hover:animate-pulse flex-shrink-0 ${isStreamer ? 'bg-purple-400' : 'bg-green-400'
+                      }`} />
                     <span className="text-sm font-medium leading-tight break-words">{member}</span>
                   </div>
-                  
+
                   <div className="space-y-1">
                     {memberData?.twitter && (
-                      <a 
+                      <a
                         href={memberData.twitter.startsWith('http') ? memberData.twitter : `https://x.com/${memberData.twitter.replace('@', '')}`}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -279,14 +270,14 @@ export const ContributorSection = () => {
                         onClick={(e) => e.stopPropagation()}
                       >
                         <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                         </svg>
                         <span className="break-all">@{memberData.twitter.replace(/^@/, '')}</span>
                       </a>
                     )}
-                    
+
                     {isStreamer && (
-                      <a 
+                      <a
                         href={memberData.stream.url.startsWith('http') ? memberData.stream.url : `https://${memberData.stream.url}`}
                         target="_blank"
                         rel="noopener noreferrer"
