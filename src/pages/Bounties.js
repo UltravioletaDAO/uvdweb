@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeftIcon, GiftIcon, UsersIcon, BoltIcon, UserCircleIcon, CheckCircleIcon, XCircleIcon } from '@heroicons/react/24/outline';
+import { ArrowLeftIcon, GiftIcon, UsersIcon, BoltIcon, UserCircleIcon, CheckCircleIcon, XCircleIcon, ChevronDownIcon, ExclamationTriangleIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -51,6 +51,17 @@ const showToast = {
     });
   },
 };
+
+// Tokens disponibles para recompensas (igual que en BountyForm)
+const REWARD_TOKENS = [
+  { symbol: 'USDC', label: 'USDC', icon: '💵' },
+  { symbol: 'UVD', label: '$UVD', icon: '🟣' },
+  { symbol: 'AVAX', label: 'AVAX', icon: '🔺' },
+  { symbol: 'POL', label: 'POL', icon: '🟪' },
+  { symbol: 'SOL', label: 'SOL', icon: '◎' },
+  { symbol: 'ETH', label: 'ETH', icon: 'Ξ' },
+  { symbol: 'CUSTOM', labelKey: 'bountyForm.custom_token_label', icon: '✏️' },
+];
 
 // Column keys for Kanban board (titles and descriptions come from i18n)
 const COLUMN_KEYS = ['todo', 'in_voting', 'finished'];
@@ -377,6 +388,26 @@ const Bounties = () => {
   const [adminActionLoading, setAdminActionLoading] = useState(false);
   const [showAdminWalletsModal, setShowAdminWalletsModal] = useState(false);
 
+  // Estados para selector de token en edición
+  const [editSelectedToken, setEditSelectedToken] = useState(REWARD_TOKENS[0]);
+  const [editCustomToken, setEditCustomToken] = useState('');
+  const [showEditTokenDropdown, setShowEditTokenDropdown] = useState(false);
+  const editDropdownRef = React.useRef(null);
+
+  // Estado para modal de confirmación de eliminación
+  const [deleteConfirmModal, setDeleteConfirmModal] = useState({ show: false, bountyId: null, bountyTitle: '' });
+
+  // Cerrar dropdown de edición al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (editDropdownRef.current && !editDropdownRef.current.contains(event.target)) {
+        setShowEditTokenDropdown(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   // Autenticar como admin
   const handleAdminAuth = async () => {
     if (!walletConnected) {
@@ -420,17 +451,20 @@ const Bounties = () => {
     }
   };
 
-  // Eliminar bounty
-  const handleDeleteBounty = async (bountyId, e) => {
+  // Mostrar modal de confirmación para eliminar bounty
+  const handleDeleteBounty = (bountyId, bountyTitle, e) => {
     if (e) e.stopPropagation();
     if (!isAdminAuthenticated) {
       showToast.error(t('admin.auth_required') || 'Debes autenticarte como admin');
       return;
     }
+    setDeleteConfirmModal({ show: true, bountyId, bountyTitle });
+  };
 
-    if (!window.confirm(t('admin.confirm_delete') || '¿Estás seguro de eliminar este bounty?')) {
-      return;
-    }
+  // Confirmar eliminación de bounty
+  const confirmDeleteBounty = async () => {
+    const { bountyId } = deleteConfirmModal;
+    setDeleteConfirmModal({ show: false, bountyId: null, bountyTitle: '' });
 
     setAdminActionLoading(true);
     try {
@@ -454,13 +488,45 @@ const Bounties = () => {
       showToast.error(t('admin.auth_required') || 'Debes autenticarte como admin');
       return;
     }
+
+    // Parsear el reward existente (ej: "34 USDC" → amount: 34, token: USDC)
+    let rewardAmount = '';
+    let tokenSymbol = 'USDC';
+    if (bounty.reward) {
+      const parts = bounty.reward.trim().split(' ');
+      if (parts.length >= 2) {
+        rewardAmount = parts[0];
+        tokenSymbol = parts.slice(1).join(' ').toUpperCase();
+      } else {
+        rewardAmount = bounty.reward;
+      }
+    }
+
+    // Buscar el token en la lista o marcarlo como custom
+    const foundToken = REWARD_TOKENS.find(t => t.symbol === tokenSymbol);
+    if (foundToken) {
+      setEditSelectedToken(foundToken);
+      setEditCustomToken('');
+    } else {
+      setEditSelectedToken(REWARD_TOKENS.find(t => t.symbol === 'CUSTOM'));
+      setEditCustomToken(tokenSymbol);
+    }
+
     setEditingBounty(bounty);
     setEditFormData({
       title: bounty.title,
       description: bounty.description,
-      reward: bounty.reward,
+      rewardAmount: rewardAmount,
       endDate: bounty.endDate ? new Date(bounty.endDate).toISOString().split('T')[0] : '',
     });
+  };
+
+  // Construir reward string para edición
+  const getEditRewardString = () => {
+    const amount = (editFormData.rewardAmount || '').toString().trim();
+    if (!amount) return '';
+    const tokenSymbol = editSelectedToken.symbol === 'CUSTOM' ? editCustomToken.trim() : editSelectedToken.symbol;
+    return tokenSymbol ? `${amount} ${tokenSymbol}` : amount;
   };
 
   // Guardar edición
@@ -469,7 +535,13 @@ const Bounties = () => {
 
     setAdminActionLoading(true);
     try {
-      await adminUpdateBounty(editingBounty._id, editFormData);
+      const dataToSave = {
+        title: editFormData.title,
+        description: editFormData.description,
+        reward: getEditRewardString(),
+        endDate: editFormData.endDate || null,
+      };
+      await adminUpdateBounty(editingBounty._id, dataToSave);
       showToast.success(t('admin.bounty_updated') || 'Bounty actualizado');
       setEditingBounty(null);
       fetchBounties();
@@ -477,6 +549,15 @@ const Bounties = () => {
       showToast.error(err.message || t('admin.update_error') || 'Error al actualizar');
     } finally {
       setAdminActionLoading(false);
+    }
+  };
+
+  // Seleccionar token en edición
+  const handleEditTokenSelect = (token) => {
+    setEditSelectedToken(token);
+    setShowEditTokenDropdown(false);
+    if (token.symbol !== 'CUSTOM') {
+      setEditCustomToken('');
     }
   };
 
@@ -935,7 +1016,7 @@ const Bounties = () => {
                               </button>
                               {/* Botón eliminar */}
                               <button
-                                onClick={(e) => handleDeleteBounty(task._id, e)}
+                                onClick={(e) => handleDeleteBounty(task._id, task.title, e)}
                                 disabled={adminActionLoading}
                                 className="p-1.5 rounded bg-red-500/20 hover:bg-red-500/30 text-red-400 transition-colors"
                                 title={t('admin.delete') || 'Eliminar'}
@@ -1215,12 +1296,64 @@ const Bounties = () => {
                 <label className="block text-sm text-text-secondary mb-1">
                   {t('bountyForm.reward_label')}
                 </label>
-                <input
-                  type="text"
-                  value={editFormData.reward || ''}
-                  onChange={(e) => setEditFormData({ ...editFormData, reward: e.target.value })}
-                  className="w-full px-4 py-2 rounded-lg border border-ultraviolet/20 bg-background focus:border-ultraviolet focus:ring-2 focus:ring-ultraviolet outline-none text-text-primary"
-                />
+                <div className="flex gap-2">
+                  {/* Input de cantidad */}
+                  <input
+                    type="number"
+                    min="0"
+                    step="any"
+                    placeholder="0"
+                    value={editFormData.rewardAmount || ''}
+                    onChange={(e) => setEditFormData({ ...editFormData, rewardAmount: e.target.value })}
+                    className="flex-1 px-4 py-2 rounded-lg border border-ultraviolet/20 bg-background focus:border-ultraviolet focus:ring-2 focus:ring-ultraviolet outline-none text-text-primary"
+                  />
+
+                  {/* Selector de token */}
+                  <div className="relative" ref={editDropdownRef}>
+                    <button
+                      type="button"
+                      onClick={() => setShowEditTokenDropdown(!showEditTokenDropdown)}
+                      className="flex items-center gap-2 px-4 py-2 rounded-lg border border-ultraviolet/20 bg-background hover:border-ultraviolet/40 focus:border-ultraviolet focus:ring-2 focus:ring-ultraviolet outline-none text-text-primary min-w-[120px] justify-between transition-colors"
+                    >
+                      <span className="flex items-center gap-2">
+                        <span>{editSelectedToken.icon}</span>
+                        <span className="font-medium">{editSelectedToken.labelKey ? t(editSelectedToken.labelKey) : editSelectedToken.label}</span>
+                      </span>
+                      <ChevronDownIcon className={`w-4 h-4 transition-transform ${showEditTokenDropdown ? 'rotate-180' : ''}`} />
+                    </button>
+
+                    {/* Dropdown menu */}
+                    {showEditTokenDropdown && (
+                      <div className="absolute top-full right-0 mt-1 w-48 bg-background-lighter border border-ultraviolet/20 rounded-lg shadow-xl z-50 overflow-hidden">
+                        {REWARD_TOKENS.map((token) => (
+                          <button
+                            key={token.symbol}
+                            type="button"
+                            onClick={() => handleEditTokenSelect(token)}
+                            className={`w-full flex items-center gap-3 px-4 py-2.5 text-left hover:bg-ultraviolet/10 transition-colors ${
+                              editSelectedToken.symbol === token.symbol ? 'bg-ultraviolet/20 text-ultraviolet-light' : 'text-text-primary'
+                            }`}
+                          >
+                            <span className="text-lg">{token.icon}</span>
+                            <span className="font-medium">{token.labelKey ? t(token.labelKey) : token.label}</span>
+                          </button>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Input para token personalizado */}
+                {editSelectedToken.symbol === 'CUSTOM' && (
+                  <input
+                    type="text"
+                    placeholder={t('bountyForm.custom_token_placeholder') || 'Escribe el símbolo del token'}
+                    className="w-full mt-2 px-4 py-2 rounded-lg border border-ultraviolet/20 bg-background focus:border-ultraviolet focus:ring-2 focus:ring-ultraviolet outline-none text-text-primary text-sm"
+                    value={editCustomToken}
+                    onChange={(e) => setEditCustomToken(e.target.value.toUpperCase())}
+                    maxLength={10}
+                  />
+                )}
               </div>
 
               <div>
@@ -1265,6 +1398,65 @@ const Bounties = () => {
         hasPermission={hasPermission}
         showToast={showToast}
       />
+
+      {/* Modal de Confirmación de Eliminación */}
+      {deleteConfirmModal.show && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
+          onClick={() => setDeleteConfirmModal({ show: false, bountyId: null, bountyTitle: '' })}
+        >
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.95, opacity: 0 }}
+            className="bg-background-lighter rounded-xl border border-red-500/30 w-full max-w-md overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="p-6 border-b border-red-500/20 bg-gradient-to-r from-red-900/20 to-transparent">
+              <div className="flex items-center gap-3">
+                <div className="p-2 rounded-lg bg-red-500/20">
+                  <ExclamationTriangleIcon className="w-6 h-6 text-red-400" />
+                </div>
+                <h2 className="text-xl font-bold text-text-primary">
+                  {t('admin.confirm_delete_title') || '¿Eliminar bounty?'}
+                </h2>
+              </div>
+            </div>
+
+            <div className="p-6">
+              <p className="text-text-secondary mb-4">
+                {t('admin.confirm_delete') || '¿Estás seguro de eliminar este bounty? Esta acción no se puede deshacer.'}
+              </p>
+              {deleteConfirmModal.bountyTitle && (
+                <div className="bg-background p-3 rounded-lg border border-ultraviolet-darker/20 mb-4">
+                  <p className="text-sm text-text-secondary">{t('bountyForm.title_label')}:</p>
+                  <p className="text-text-primary font-medium">{deleteConfirmModal.bountyTitle}</p>
+                </div>
+              )}
+            </div>
+
+            <div className="p-6 border-t border-ultraviolet-darker/20 flex justify-end gap-3">
+              <button
+                onClick={() => setDeleteConfirmModal({ show: false, bountyId: null, bountyTitle: '' })}
+                className="px-4 py-2 rounded-lg border border-ultraviolet-darker/30 text-text-secondary hover:bg-background transition-colors"
+              >
+                {t('common.cancel') || 'Cancelar'}
+              </button>
+              <button
+                onClick={confirmDeleteBounty}
+                disabled={adminActionLoading}
+                className="px-4 py-2 rounded-lg bg-red-600 text-white font-medium hover:bg-red-700 transition-colors disabled:opacity-50 flex items-center gap-2"
+              >
+                <TrashIcon className="w-4 h-4" />
+                {adminActionLoading ? '...' : t('admin.delete') || 'Eliminar'}
+              </button>
+            </div>
+          </motion.div>
+        </motion.div>
+      )}
 
       {/* Toast Container para notificaciones */}
       <ToastContainer

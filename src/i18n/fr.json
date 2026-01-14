@@ -227,6 +227,8 @@
   },
   "common": {
     "cancel": "Annuler",
+    "save": "Enregistrer",
+    "confirm": "Confirmer",
     "anonymous": "Anonyme",
     "disconnect": "Déconnecter"
   },
@@ -382,6 +384,7 @@
     "status_updated": "Statut mis à jour avec succès",
     "status_error": "Erreur lors du changement de statut",
     "confirm_delete": "Êtes-vous sûr de vouloir supprimer ce bounty ? Cette action est irréversible.",
+    "confirm_delete_title": "Supprimer le bounty ?",
     "bounty_deleted": "Bounty supprimé avec succès",
     "delete_error": "Erreur lors de la suppression du bounty",
     "edit_bounty": "Modifier Bounty",

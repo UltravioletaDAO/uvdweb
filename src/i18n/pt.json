@@ -227,6 +227,8 @@
   },
   "common": {
     "cancel": "Cancelar",
+    "save": "Salvar",
+    "confirm": "Confirmar",
     "anonymous": "Anónimo",
     "disconnect": "Desconectar"
   },
@@ -382,6 +384,7 @@
     "status_updated": "Status atualizado com sucesso",
     "status_error": "Erro ao alterar status",
     "confirm_delete": "Tem certeza de que deseja excluir este bounty? Esta ação não pode ser desfeita.",
+    "confirm_delete_title": "Excluir bounty?",
     "bounty_deleted": "Bounty excluído com sucesso",
     "delete_error": "Erro ao excluir bounty",
     "edit_bounty": "Editar Bounty",

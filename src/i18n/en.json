@@ -690,6 +690,8 @@
   },
   "common": {
     "cancel": "Cancel",
+    "save": "Save",
+    "confirm": "Confirm",
     "anonymous": "Anonymous",
     "disconnect": "Disconnect",
     "locale": "en_US",
@@ -2468,6 +2470,7 @@
     "status_updated": "Status updated successfully",
     "status_error": "Error changing status",
     "confirm_delete": "Are you sure you want to delete this bounty? This action cannot be undone.",
+    "confirm_delete_title": "Delete bounty?",
     "bounty_deleted": "Bounty deleted successfully",
     "delete_error": "Error deleting bounty",
     "edit_bounty": "Edit Bounty",

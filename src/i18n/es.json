@@ -597,6 +597,8 @@
   },
   "common": {
     "cancel": "Cancelar",
+    "save": "Guardar",
+    "confirm": "Confirmar",
     "anonymous": "Anónimo",
     "disconnect": "Desconectar",
     "locale": "es_ES",
@@ -2133,6 +2135,7 @@
     "status_updated": "Estado actualizado correctamente",
     "status_error": "Error al cambiar estado",
     "confirm_delete": "¿Estás seguro de eliminar este bounty? Esta acción no se puede deshacer.",
+    "confirm_delete_title": "¿Eliminar bounty?",
     "bounty_deleted": "Bounty eliminado correctamente",
     "delete_error": "Error al eliminar bounty",
     "edit_bounty": "Editar Bounty",
