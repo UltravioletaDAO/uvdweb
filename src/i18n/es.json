@@ -27,6 +27,18 @@
     "raffles": {
       "title": "Sorteos Comunitarios",
       "description": "Sorteos exclusivos y recompensas para miembros activos de la DAO"
+    },
+    "facilitator": {
+      "title": "Facilitador x402",
+      "subtitle": "Pagos Sin Gas para la Economía Agentica",
+      "description": "Infraestructura revolucionaria de pagos cross-chain que permite a los agentes IA transaccionar sin tarifas de gas usando el protocolo x402 y meta-transacciones EIP-3009",
+      "button": "Lanzar Facilitador",
+      "stats": {
+        "networks": "8 Redes",
+        "gasless": "$0 Tarifas Gas",
+        "settlement": "~2s Liquidación",
+        "trustless": "100% Trustless"
+      }
     }
   },
   "benefits": {
@@ -152,10 +164,11 @@
         "viewValidator": "Ver Validador en NEAR"
       },
       "facilitator": {
-        "title": "Lanzamiento Facilitador x402",
+        "title": "Lanzamiento Facilitador x402 - Pagos Sin Gas para Agentes IA",
         "date": "26 de Octubre 2025",
-        "description": "Lanzamos el Facilitador x402 para transacciones cross-chain en Avalanche, Celo y Base.",
-        "link": "Visitar Facilitador"
+        "description": "Lanzamos el revolucionario Facilitador x402 que permite pagos sin gas para agentes IA usando meta-transacciones EIP-3009. Ya disponible en Avalanche, Base, Celo y HyperEVM con liquidación instantánea y cero tarifas de gas para agentes autónomos.",
+        "link": "Lanzar Facilitador x402",
+        "features": "Transacciones sin gas, firmas EIP-712, diseño trustless, liquidación ~2s"
       },
       "competition": {
         "title": "Ganadores Mundiales Web3",
@@ -623,11 +636,35 @@
     "supported_wallets": "MetaMask, Rabby, Core y otras wallets",
     "no_ethereum_provider": "No se detectó wallet. Instala MetaMask, Rabby o Core.",
     "unsupported_network": "Red no soportada. Cambia a una red soportada.",
-    "user_rejected": "Conexión cancelada",
-    "connection_error": "Error de conexión",
     "select_different_account": "Selecciona una cuenta diferente",
     "switch_cancelled": "Cambio cancelado",
-    "connect_button": "Conectar Wallet"
+    "send_rewards": "Airdrop de Premios",
+    "connect_required": "Conecta tu wallet para enviar premios",
+    "connected": "Wallet conectada",
+    "connected_success": "¡Wallet conectada exitosamente!",
+    "balance": "Balance",
+    "connect_button": "Conectar Wallet",
+    "approve_button": "Aprobar",
+    "send_button": "Enviar Premios",
+    "view_transaction": "Ver Transacción",
+    "approving": "Aprobando",
+    "sending": "Enviando...",
+    "approving_transaction": "Aprobando transacción...",
+    "sending_transaction": "Procesando transacción...",
+    "no_provider": "No se detectó wallet EVM. Por favor instala una wallet compatible.",
+    "user_rejected": "Solicitud rechazada por el usuario",
+    "connection_error": "Error al conectar con la wallet",
+    "network_add_error": "Error al agregar la red Avalanche",
+    "network_switch_error": "Error al cambiar a la red Avalanche",
+    "invalid_state": "Estado inválido. Verifica la conexión y el token",
+    "already_approved": "Tokens ya aprobados",
+    "approval_success": "¡Tokens aprobados con éxito!",
+    "approval_error": "Error al aprobar tokens",
+    "insufficient_allowance": "Permiso de token insuficiente. Por favor aprueba primero",
+    "send_success": "¡Premios enviados con éxito!",
+    "send_error": "Error al enviar premios",
+    "info": "Los premios se enviarán directamente desde tu wallet usando la red Avalanche C-Chain.",
+    "total_rewards": "Total de premios"
   },
   "voting": {
     "voting_section": "Sistema de Votación",
@@ -728,35 +765,6 @@
         "button": "Enviar premios"
       }
     },
-    "wallet": {
-      "send_rewards": "Airdrop de Premios",
-      "connect_required": "Conecta tu wallet para enviar premios",
-      "connected": "Wallet conectada",
-      "connected_success": "¡Wallet conectada exitosamente!",
-      "balance": "Balance",
-      "connect_button": "Conectar Wallet",
-      "approve_button": "Aprobar",
-      "send_button": "Enviar Premios",
-      "view_transaction": "Ver Transacción",
-      "approving": "Aprobando",
-      "sending": "Enviando...",
-      "approving_transaction": "Aprobando transacción...",
-      "sending_transaction": "Procesando transacción...",
-      "no_provider": "No se detectó wallet EVM. Por favor instala una wallet compatible.",
-      "user_rejected": "Solicitud rechazada por el usuario",
-      "connection_error": "Error al conectar con la wallet",
-      "network_add_error": "Error al agregar la red Avalanche",
-      "network_switch_error": "Error al cambiar a la red Avalanche",
-      "invalid_state": "Estado inválido. Verifica la conexión y el token",
-      "already_approved": "Tokens ya aprobados",
-      "approval_success": "¡Tokens aprobados con éxito!",
-      "approval_error": "Error al aprobar tokens",
-      "insufficient_allowance": "Permiso de token insuficiente. Por favor aprueba primero",
-      "send_success": "¡Premios enviados con éxito!",
-      "send_error": "Error al enviar premios",
-      "info": "Los premios se enviarán directamente desde tu wallet usando la red Avalanche C-Chain.",
-      "total_rewards": "Total de premios"
-    },
     "spin_button": {
       "spinning": "Girando...",
       "disabled": "No disponible",
@@ -781,6 +789,16 @@
       "verify_wallet_info": "Verificación de wallet habilitada (configurar REACT_APP_WHEEL_VERIFY_WALLET=false para desactivar)"
     }
   },
+  "watch_to_earn": {
+    "title": "Watch to Earn",
+    "subtitle": "Gana puntos de Twitch en directo para girar y recibir recompensas en $UVD. Mientras más participas y ves el stream, más posibilidades tienes de reclamar y recibir pagos directamente en nuestra moneda comunitaria.",
+    "redeem_points": "Canjear con puntos de Twitch",
+    "uvd_payment": "Pago en UVD on-chain",
+    "viewing_rewards": "Recompensas por ver el stream",
+    "personalize_wheel": "Personalizar Ruleta",
+    "add_participant": "Agregar participante",
+    "click_to_spin": "Click para girar"
+  },
   "delegations": {
     "title": "Delegaciones",
     "beam_validator": {
@@ -798,7 +816,85 @@
       "node_id": "NodeID-83Dx5mVdBzehEn8xomdeMQPLBM9xY2XkZ"
     },
     "tutorial": {
-      "title": "Cómo hacer Stake de BEAM"
+      "title": "Cómo hacer Stake de BEAM",
+      "video_title": "Tutorial: Hacer Staking con Tokens BEAM"
+    }
+  },
+  "facilitatorPage": {
+    "seoTitle": "Facilitador x402 - Pagos Sin Gas para Agentes IA | UltraVioleta DAO",
+    "seoDescription": "Permite que los agentes IA transaccionen de manera autónoma sin tarifas de gas. El Facilitador x402 proporciona pagos cross-chain sin gas usando meta-transacciones EIP-3009 en Avalanche, Base, Celo y HyperEVM.",
+    "hero": {
+      "title": "Facilitador x402",
+      "subtitle": "Pagos Sin Gas para la Economía Agentica",
+      "description": "Permite que los agentes IA transaccionen de manera autónoma sin tarifas de gas usando el protocolo x402 con meta-transacciones EIP-3009",
+      "cta": "Lanzar Facilitador",
+      "docs": "Ver Documentación"
+    },
+    "features": {
+      "title": "Funcionalidades Revolucionarias",
+      "gasless": {
+        "title": "Cero Tarifas de Gas",
+        "description": "Los agentes nunca necesitan AVAX, ETH o cualquier token nativo para gas. El facilitador ejecuta transferWithAuthorization vía EIP-3009."
+      },
+      "trustless": {
+        "title": "100% Trustless",
+        "description": "La verificación de firmas EIP-712 asegura pagos criptográficamente válidos. Sin intermediarios, sin custodia, ejecución puramente trustless."
+      },
+      "multichain": {
+        "title": "Soporte Multi-Red",
+        "description": "Activo en 4 mainnets (Avalanche, Base, Celo, HyperEVM) y 4 testnets para máxima flexibilidad."
+      },
+      "instant": {
+        "title": "Liquidación Instantánea",
+        "description": "Tiempo de transacción end-to-end de ~2-3 segundos. Ultra-rápido para interacciones de agentes en tiempo real."
+      }
+    },
+    "networks": {
+      "title": "Redes Soportadas",
+      "mainnets": "Mainnets",
+      "testnets": "Testnets",
+      "avalanche": "Avalanche C-Chain",
+      "base": "Base",
+      "celo": "Celo",
+      "hyperEvm": "HyperEVM",
+      "avalancheFuji": "Avalanche Fuji",
+      "baseSepolia": "Base Sepolia",
+      "celoSepolia": "Celo Sepolia",
+      "hyperEvmTestnet": "HyperEVM Testnet"
+    },
+    "technical": {
+      "title": "Implementación Técnica",
+      "protocol": "Protocolo: x402 (sin estado, pagos por solicitud sobre HTTP)",
+      "standard": "Estándar: Meta-transacciones EIP-3009",
+      "framework": "Framework: Middleware Hono",
+      "verification": "Verificación: Firmas EIP-712",
+      "api": {
+        "title": "Endpoints API",
+        "health": "GET /health - Verificación de estado",
+        "supported": "GET /supported - Lista esquemas de pago",
+        "verify": "POST /verify - Valida firmas",
+        "settle": "POST /settle - Ejecuta pagos on-chain"
+      }
+    },
+    "addresses": {
+      "title": "Direcciones del Facilitador",
+      "mainnet": "Mainnet",
+      "testnet": "Testnet",
+      "copy": "Copiar Dirección"
+    },
+    "stats": {
+      "title": "Estadísticas en Vivo",
+      "transactions": "Transacciones Totales",
+      "volume": "Volumen Total",
+      "agents": "Agentes Activos",
+      "uptime": "Tiempo de Actividad"
+    },
+    "cta": {
+      "title": "¿Listo para Habilitar Pagos Sin Gas?",
+      "description": "Únete a la revolución de la economía agentica. Permite que tus agentes IA transaccionen sin tarifas de gas.",
+      "launch": "Lanzar Facilitador",
+      "github": "Ver en GitHub",
+      "discord": "Obtener Soporte"
     }
   },
   "safestats": {
@@ -1877,7 +1973,31 @@
     },
     "events": {
       "ultraevento": {
+        "title": "Ultra Evento 2025",
         "flagship": "Evento Insignia",
+        "date": {
+          "label": "Fecha",
+          "value": "24 de agosto de 2025"
+        },
+        "time": {
+          "label": "Horario",
+          "value": "1:00 p.m. – 9:00 p.m."
+        },
+        "location": {
+          "label": "Lugar",
+          "value": "Hash House, Medellín"
+        },
+        "description": "El evento anual más importante de UltraVioleta DAO, reuniendo a la comunidad Web3 latinoamericana para conferencias, networking y celebración.",
+        "stats": {
+          "registered": "Registrados",
+          "attendees": "Asistentes",
+          "sponsors": "Sponsors",
+          "duration": "Duración"
+        },
+        "sponsors": {
+          "title": "Sponsors 2025",
+          "gratitude": "¡Gracias a todos nuestros sponsors por hacer posible este evento!"
+        },
         "brandRepresentation": "Como parte de nuestros servicios de representación de marca, organizamos eventos presenciales que conectan a proyectos Web3 con la comunidad latinoamericana.",
         "sponsorCTA": "Patrocina el próximo evento"
       }
@@ -1931,11 +2051,10 @@
     }
   },
   "streamSummaries": {
-    "seoTitle": "Resúmenes de Streams AI - Abracadabra | Programación & Web3 en Español",
-    "seoDescription": "Descubre resúmenes automáticos generados por IA (Claude AI + GPT-4) de streams de programación, Web3 y tecnología en español. Analiza contenido de 0xultravioleta, karenngo, elbitterx y más streamers tech LATAM. Búsqueda semántica y análisis inteligente de contenido.",
-    "title": "Resúmenes de Streams AI - Abracadabra",
-    "subtitle": "Descubre resúmenes automáticos generados por inteligencia artificial de streams de programación, Web3 y tecnología en español. Análisis semántico con Claude AI, GPT-4 y Cognee para extraer insights clave de contenido en vivo.",
-    "technicalDetails": "Búsqueda semántica | Knowledge Graphs | Temporal Search | Multi-idioma ES/EN/PT/FR",
+    "seoTitle": "Resúmenes de Streams - Abracadabra AI",
+    "seoDescription": "Explora resúmenes generados por IA de streams de programación, Web3 y tecnología. Resúmenes automáticos de 0xultravioleta, karenngo, elbitterx, herniep y más.",
+    "title": "Resúmenes de Streams",
+    "subtitle": "Resúmenes generados por IA de streams de programación, Web3 y tecnología en español",
     "loading": "Cargando resúmenes de streams...",
     "loadingSummary": "Cargando resumen...",
     "errorTitle": "Error al cargar resúmenes",
@@ -1952,13 +2071,11 @@
     "summaryTitle": "Resumen Conciso",
     "fullSummaryTitle": "Resumen Completo",
     "noSummaries": "No se encontraron resúmenes",
-    "aboutTitle": "¿Qué es Abracadabra AI Stream Intelligence?",
+    "aboutTitle": "¿Qué es Abracadabra?",
     "aboutDescription": "Abracadabra es un sistema de análisis automático de streams que genera resúmenes detallados usando inteligencia artificial. Cada resumen incluye highlights del stream, temas técnicos discutidos, ideas innovadoras y momentos destacados.",
-    "aboutIntro": "Los resúmenes que verás a continuación fueron generados automáticamente por Abracadabra, nuestro sistema de análisis inteligente de streams impulsado por inteligencia artificial avanzada. Cada resumen captura los puntos clave, decisiones técnicas, y momentos destacados de cada transmisión mediante procesamiento de lenguaje natural y análisis semántico.",
+    "aboutIntro": "Los resúmenes que verás a continuación fueron generados automáticamente por Abracadabra, nuestro sistema de análisis inteligente de streams impulsado por inteligencia artificial. Cada resumen captura los puntos clave, decisiones técnicas, y momentos destacados de cada transmisión.",
     "learnMore": "Conoce más sobre Abracadabra →",
-    "poweredBy": "Powered by Claude AI, GPT-4o & Cognee Memory Framework",
-    "karmaHelloLink": "Ver Karma Hello Chat-to-Earn →",
-    "metricsLink": "Dashboard de Métricas →",
+    "poweredBy": "Powered by Claude AI & Cognee Memory",
     "aria": {
       "streamStats": "Estadísticas de streams",
       "learnMore": "Conoce más sobre la plataforma Abracadabra IA",
@@ -2187,4 +2304,4 @@
       "button": "Únete al Ecosistema"
     }
   }
-} 
+}
