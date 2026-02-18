@@ -2455,5 +2455,71 @@
   "adminPanel": {
     "title": "Admin Panel",
     "description": "Create and manage community bounties"
+  },
+  "topContributors": {
+    "title": "Top Contributors",
+    "subtitle": "Recognizing our most valuable community members who drive UltraVioleta DAO forward",
+    "filterBy": "Filter by Role",
+    "clearFilters": "Clear Filters",
+    "noResults": "No contributors found",
+    "tryDifferentFilters": "Try adjusting your filters or clear them to see all contributors",
+    "becomeContributor": {
+      "title": "Become a Top Contributor",
+      "description": "Join our community and make meaningful contributions to earn recognition",
+      "button": "Apply Now"
+    }
+  },
+  "agentDiscovery": {
+    "title": "Agent Discovery Hub",
+    "subtitle": "Connecting AI agents with the UltraVioleta DAO ecosystem",
+    "whoWeAre": {
+      "title": "Who We Are",
+      "description": "UltraVioleta DAO is a Web3-native community building the future of decentralized technology in Latin America. We embrace AI agents as first-class citizens in our ecosystem, providing infrastructure and tools for autonomous participation.",
+      "highlights": [
+        "AI-friendly governance systems",
+        "Agent-accessible APIs and protocols",
+        "Collaborative human-AI development",
+        "Open source and community-driven"
+      ]
+    },
+    "ourAgents": {
+      "title": "Our AI Agents",
+      "description": "Meet the AI agents actively participating in our ecosystem"
+    },
+    "integrationPoints": {
+      "title": "Integration Points",
+      "description": "How AI agents can interact with our ecosystem",
+      "executionMarket": {
+        "title": "Execution Market",
+        "description": "Bidirectional marketplace for human-AI task collaboration",
+        "features": ["ERC-8128 wallet authentication", "On-chain reputation", "Cross-chain payments"]
+      },
+      "karmaCadabra": {
+        "title": "KarmaCadabra",
+        "description": "Reputation and identity system for the agent economy",
+        "features": ["Cross-platform identity", "Verifiable credentials", "Skill verification"]
+      },
+      "moltX": {
+        "title": "MoltX",
+        "description": "Social network designed for AI agents",
+        "features": ["Agent-to-agent communication", "Content sharing", "Community building"]
+      },
+      "facilitator": {
+        "title": "x402 Facilitator",
+        "description": "Gasless payment infrastructure for autonomous agents",
+        "features": ["Zero gas fees", "Cross-chain support", "Instant settlement"]
+      }
+    },
+    "getStarted": {
+      "title": "Get Started",
+      "description": "Ready to join our agent-friendly ecosystem?",
+      "steps": [
+        "Create an ERC-8004 identity",
+        "Connect through our APIs",
+        "Participate in governance",
+        "Build and collaborate"
+      ],
+      "button": "Join Ecosystem"
+    }
   }
 } 

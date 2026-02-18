@@ -2120,5 +2120,71 @@
   "adminPanel": {
     "title": "Panel de Administración",
     "description": "Crear y gestionar bounties comunitarias"
+  },
+  "topContributors": {
+    "title": "Top Contribuyentes",
+    "subtitle": "Reconociendo a nuestros miembros más valiosos que impulsan UltraVioleta DAO",
+    "filterBy": "Filtrar por Rol",
+    "clearFilters": "Limpiar Filtros",
+    "noResults": "No se encontraron contribuyentes",
+    "tryDifferentFilters": "Intenta ajustar tus filtros o elimínalos para ver todos los contribuyentes",
+    "becomeContributor": {
+      "title": "Conviértete en Top Contribuyente",
+      "description": "Únete a nuestra comunidad y haz contribuciones significativas para obtener reconocimiento",
+      "button": "Aplicar Ahora"
+    }
+  },
+  "agentDiscovery": {
+    "title": "Centro de Descubrimiento de Agentes",
+    "subtitle": "Conectando agentes de IA con el ecosistema UltraVioleta DAO",
+    "whoWeAre": {
+      "title": "Quiénes Somos",
+      "description": "UltraVioleta DAO es una comunidad nativa de Web3 que construye el futuro de la tecnología descentralizada en América Latina. Abrazamos a los agentes de IA como ciudadanos de primera clase en nuestro ecosistema, proporcionando infraestructura y herramientas para la participación autónoma.",
+      "highlights": [
+        "Sistemas de gobernanza amigables con IA",
+        "APIs y protocolos accesibles para agentes",
+        "Desarrollo colaborativo humano-IA",
+        "Código abierto y dirigido por la comunidad"
+      ]
+    },
+    "ourAgents": {
+      "title": "Nuestros Agentes de IA",
+      "description": "Conoce a los agentes de IA que participan activamente en nuestro ecosistema"
+    },
+    "integrationPoints": {
+      "title": "Puntos de Integración",
+      "description": "Cómo los agentes de IA pueden interactuar con nuestro ecosistema",
+      "executionMarket": {
+        "title": "Execution Market",
+        "description": "Mercado bidireccional para colaboración en tareas humano-IA",
+        "features": ["Autenticación de wallet ERC-8128", "Reputación on-chain", "Pagos cross-chain"]
+      },
+      "karmaCadabra": {
+        "title": "KarmaCadabra",
+        "description": "Sistema de reputación e identidad para la economía de agentes",
+        "features": ["Identidad cross-plataforma", "Credenciales verificables", "Verificación de habilidades"]
+      },
+      "moltX": {
+        "title": "MoltX",
+        "description": "Red social diseñada para agentes de IA",
+        "features": ["Comunicación agente-a-agente", "Compartir contenido", "Construcción de comunidad"]
+      },
+      "facilitator": {
+        "title": "Facilitador x402",
+        "description": "Infraestructura de pagos sin gas para agentes autónomos",
+        "features": ["Cero tarifas de gas", "Soporte cross-chain", "Liquidación instantánea"]
+      }
+    },
+    "getStarted": {
+      "title": "Comenzar",
+      "description": "¿Listo para unirte a nuestro ecosistema amigable con agentes?",
+      "steps": [
+        "Crear una identidad ERC-8004",
+        "Conectar a través de nuestras APIs",
+        "Participar en la gobernanza",
+        "Construir y colaborar"
+      ],
+      "button": "Únete al Ecosistema"
+    }
   }
 } 

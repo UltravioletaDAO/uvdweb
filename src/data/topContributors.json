@@ -1,0 +1,143 @@
+{
+  "topContributors": [
+    {
+      "id": "0xultravioleta",
+      "name": "0xultravioleta",
+      "roles": ["Founder", "Dev"],
+      "badge": {
+        "type": "diamond",
+        "emoji": "⭐",
+        "color": "from-yellow-400 to-orange-500"
+      },
+      "avatar": "/images/contributors/ultravioleta.png",
+      "links": {
+        "twitter": "0xultravioleta",
+        "github": "0xultravioleta"
+      },
+      "contributions": "Platform architecture, smart contracts, and DAO governance",
+      "featured": true
+    },
+    {
+      "id": "0xSoulAvax",
+      "name": "0xSoulAvax",
+      "roles": ["Community Lead", "Artista"],
+      "badge": {
+        "type": "diamond",
+        "emoji": "⭐",
+        "color": "from-purple-400 to-pink-500"
+      },
+      "avatar": "/images/contributors/soulavax.png",
+      "links": {
+        "twitter": "0xSoulAvax"
+      },
+      "contributions": "Community building, creative direction, and content creation",
+      "featured": true
+    },
+    {
+      "id": "clawd",
+      "name": "Clawd",
+      "roles": ["AI Agent", "Dev"],
+      "badge": {
+        "type": "robot",
+        "emoji": "🤖",
+        "color": "from-blue-400 to-cyan-500"
+      },
+      "avatar": "/images/contributors/clawd.png",
+      "links": {
+        "moltx": "UltraClawd",
+        "github": "ultravioletadao"
+      },
+      "contributions": "AI-powered development, automation, and agent integrations",
+      "featured": true
+    },
+    {
+      "id": "contributor-slot-1",
+      "name": "TBD Contributor",
+      "roles": ["Contribuyente"],
+      "badge": {
+        "type": "star",
+        "emoji": "⭐",
+        "color": "from-gray-400 to-gray-600"
+      },
+      "avatar": null,
+      "links": {},
+      "contributions": "Placeholder for future top contributor",
+      "featured": false,
+      "placeholder": true
+    },
+    {
+      "id": "contributor-slot-2",
+      "name": "TBD Artista",
+      "roles": ["Artista"],
+      "badge": {
+        "type": "star",
+        "emoji": "🎨",
+        "color": "from-purple-400 to-violet-500"
+      },
+      "avatar": null,
+      "links": {},
+      "contributions": "Placeholder for future artist contributor",
+      "featured": false,
+      "placeholder": true
+    },
+    {
+      "id": "contributor-slot-3",
+      "name": "TBD Conector",
+      "roles": ["Conector"],
+      "badge": {
+        "type": "star",
+        "emoji": "🔗",
+        "color": "from-green-400 to-emerald-500"
+      },
+      "avatar": null,
+      "links": {},
+      "contributions": "Placeholder for future networking contributor",
+      "featured": false,
+      "placeholder": true
+    }
+  ],
+  "roles": [
+    {
+      "id": "founder",
+      "name": "Founder",
+      "color": "bg-yellow-500/20 text-yellow-300 border-yellow-500/40",
+      "icon": "👑"
+    },
+    {
+      "id": "dev",
+      "name": "Dev",
+      "color": "bg-blue-500/20 text-blue-300 border-blue-500/40",
+      "icon": "💻"
+    },
+    {
+      "id": "community-lead",
+      "name": "Community Lead",
+      "color": "bg-purple-500/20 text-purple-300 border-purple-500/40",
+      "icon": "👥"
+    },
+    {
+      "id": "artista",
+      "name": "Artista",
+      "color": "bg-pink-500/20 text-pink-300 border-pink-500/40",
+      "icon": "🎨"
+    },
+    {
+      "id": "contribuyente",
+      "name": "Contribuyente",
+      "color": "bg-green-500/20 text-green-300 border-green-500/40",
+      "icon": "💎"
+    },
+    {
+      "id": "conector",
+      "name": "Conector",
+      "color": "bg-orange-500/20 text-orange-300 border-orange-500/40",
+      "icon": "🔗"
+    },
+    {
+      "id": "ai-agent",
+      "name": "AI Agent",
+      "color": "bg-cyan-500/20 text-cyan-300 border-cyan-500/40",
+      "icon": "🤖"
+    }
+  ]
+}
