@@ -369,5 +369,138 @@
     "no_submissions_to_vote": "Aucune soumission à voter",
     "connect_wallet_to_vote": "Connecter Wallet pour Voter",
     "wallet_required_message": "Vous devez connecter votre wallet pour participer au vote décentralisé."
+  },
+  "wheel": {
+    "seoTitle": "Watch to Earn - Roulette de Prix UVD | UltraVioleta DAO",
+    "seoDescription": "Échangez vos points de chaîne Twitch pour tourner la roulette et gagner des tokens $UVD. Regardez, participez et soyez payé directement dans notre monnaie communautaire sur Avalanche.",
+    "title": "Watch to Earn",
+    "description": "Échangez vos points de chaîne Twitch en direct pour tourner et gagner des récompenses en $UVD. Plus vous participez et regardez le stream, plus vous avez de chances de réclamer et d'être payé directement dans notre token communautaire.",
+    "highlights": {
+      "redeem": "Échangez avec des points Twitch",
+      "paid": "Payé en UVD on-chain",
+      "watch": "Récompenses pour regarder le stream"
+    },
+    "customize_button": {
+      "show": "Personnaliser la Roulette",
+      "hide": "Masquer les options"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Adresse du contrat"
+    },
+    "segments": {
+      "add": {
+        "title": "Ajouter une nouvelle valeur",
+        "value_placeholder": "Valeur",
+        "probability_placeholder": "Probabilité %",
+        "button": "Ajouter"
+      },
+      "current": {
+        "title": "Valeurs actuelles",
+        "probability_suffix": "%",
+        "min_segments_error": "La roulette nécessite au moins 2 valeurs"
+      },
+      "probability_validation_error": "Les pourcentages doivent totaliser 100%. Veuillez vérifier les valeurs."
+    },
+    "buttons": {
+      "equalize": "Égaliser les probabilités",
+      "reset": "Restaurer les valeurs par défaut"
+    },
+    "participants": {
+      "panel": {
+        "show": "Ajouter un participant",
+        "hide": "Masquer les participants",
+        "clear": "Effacer"
+      },
+      "add": {
+        "title": "Nouveau participant",
+        "wallet_placeholder": "Wallet (requis)",
+        "username_placeholder": "Nom d'utilisateur (optionnel)",
+        "button": "Ajouter",
+        "wallet_required": "Le wallet est requis"
+      },
+      "list": {
+        "title": "Participants et Résultats",
+        "headers": {
+          "user": "Utilisateur",
+          "wallet": "Wallet",
+          "result": "Résultat"
+        },
+        "anonymous": "Anonyme",
+        "current_turn": "Tour actuel",
+        "pending": "En attente",
+        "total": "Total",
+        "remove": "Supprimer le participant",
+        "completed": "Résultats"
+      }
+    },
+    "results": {
+      "title": "Résultat",
+      "current_participant": "Participant actuel",
+      "no_more_participants": "Plus de participants. Ajoutez-en pour continuer",
+      "export": {
+        "button": "Exporter les résultats",
+        "no_results": "Aucun résultat à exporter"
+      },
+      "copy": {
+        "button": "Copier les résultats",
+        "error": "Erreur lors de la copie des résultats"
+      },
+      "send": {
+        "button": "Envoyer les prix"
+      }
+    },
+    "wallet": {
+      "send_rewards": "Airdrop de Prix",
+      "connect_required": "Connectez votre wallet pour envoyer les prix",
+      "connected": "Wallet connecté",
+      "connected_success": "Wallet connecté avec succès!",
+      "balance": "Solde",
+      "total_rewards": "Total des prix",
+      "connect_button": "Connecter Wallet",
+      "approve_button": "Approuver",
+      "send_button": "Envoyer les Prix",
+      "view_transaction": "Voir la Transaction",
+      "approving": "Approbation",
+      "sending": "Envoi...",
+      "approving_transaction": "Approbation de la transaction...",
+      "sending_transaction": "Traitement de la transaction...",
+      "no_provider": "Aucun wallet EVM détecté. Veuillez installer un wallet compatible.",
+      "user_rejected": "Demande rejetée par l'utilisateur",
+      "connection_error": "Erreur de connexion au wallet",
+      "network_add_error": "Erreur lors de l'ajout du réseau Avalanche",
+      "network_switch_error": "Erreur lors du changement vers le réseau Avalanche",
+      "invalid_state": "État invalide. Vérifiez la connexion et le token",
+      "already_approved": "Tokens déjà approuvés",
+      "approval_success": "Tokens approuvés avec succès!",
+      "approval_error": "Erreur lors de l'approbation des tokens",
+      "insufficient_allowance": "Autorisation de token insuffisante. Veuillez approuver d'abord",
+      "send_success": "Prix envoyés avec succès!",
+      "send_error": "Erreur lors de l'envoi des prix",
+      "info": "Les prix seront envoyés directement depuis votre wallet via le réseau Avalanche C-Chain."
+    },
+    "spin_button": {
+      "spinning": "En rotation...",
+      "disabled": "Non disponible",
+      "loading": "Chargement des participants...",
+      "ready": "Cliquez pour tourner"
+    },
+    "twitch": {
+      "load": "Charger depuis Twitch",
+      "loading": "Chargement des récompenses...",
+      "load_error": "Erreur lors du chargement des récompenses Twitch",
+      "auth_error": "Erreur d'authentification. Veuillez vous reconnecter",
+      "complete_error": "Erreur lors de la finalisation de la récompense",
+      "no_rewards": "Aucune récompense en attente à charger",
+      "invalid_wallet": "Wallet invalide détecté",
+      "auth_required": "Authentification Twitch requise",
+      "auth_button": "Se connecter avec Twitch",
+      "redirecting": "Redirection...",
+      "create_reward_error": "Erreur lors de la création de la récompense. Assurez-vous d'être affilié ou partenaire Twitch",
+      "client_id_mismatch": "La récompense a été créée avec une autre application. Veuillez créer une nouvelle récompense depuis cette application",
+      "redemption_error": "Erreur lors de l'obtention des échanges. Veuillez réessayer",
+      "auto_update": "Mise à jour automatique",
+      "verify_wallet_info": "Vérification du wallet activée (configurez REACT_APP_WHEEL_VERIFY_WALLET=false pour désactiver)"
+    }
   }
 }

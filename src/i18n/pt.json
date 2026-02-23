@@ -369,5 +369,138 @@
     "no_submissions_to_vote": "Não há entregas para votar",
     "connect_wallet_to_vote": "Conectar Wallet para Votar",
     "wallet_required_message": "Você precisa conectar sua wallet para participar da votação descentralizada."
+  },
+  "wheel": {
+    "seoTitle": "Watch to Earn - Roleta de Prêmios UVD | UltraVioleta DAO",
+    "seoDescription": "Resgate seus pontos de canal do Twitch para girar a roleta de prêmios e ganhar tokens $UVD. Assista, participe e receba diretamente na nossa moeda da comunidade na Avalanche.",
+    "title": "Watch to Earn",
+    "description": "Resgate seus pontos de canal do Twitch ao vivo para girar e ganhar recompensas em $UVD. Quanto mais você participa e assiste a stream, mais chances tem de resgatar e receber diretamente na nossa moeda da comunidade.",
+    "highlights": {
+      "redeem": "Resgate com pontos do Twitch",
+      "paid": "Pago em UVD on-chain",
+      "watch": "Recompensas por assistir a stream"
+    },
+    "customize_button": {
+      "show": "Personalizar Roleta",
+      "hide": "Ocultar opções"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Endereço do contrato"
+    },
+    "segments": {
+      "add": {
+        "title": "Adicionar novo valor",
+        "value_placeholder": "Valor",
+        "probability_placeholder": "Probabilidade %",
+        "button": "Adicionar"
+      },
+      "current": {
+        "title": "Valores atuais",
+        "probability_suffix": "%",
+        "min_segments_error": "A roleta precisa de pelo menos 2 valores"
+      },
+      "probability_validation_error": "As porcentagens devem somar 100%. Por favor, verifique os valores."
+    },
+    "buttons": {
+      "equalize": "Igualar probabilidades",
+      "reset": "Restaurar valores padrão"
+    },
+    "participants": {
+      "panel": {
+        "show": "Adicionar participante",
+        "hide": "Ocultar participantes",
+        "clear": "Limpar"
+      },
+      "add": {
+        "title": "Novo participante",
+        "wallet_placeholder": "Wallet (obrigatória)",
+        "username_placeholder": "Usuário (opcional)",
+        "button": "Adicionar",
+        "wallet_required": "A wallet é obrigatória"
+      },
+      "list": {
+        "title": "Participantes e Resultados",
+        "headers": {
+          "user": "Usuário",
+          "wallet": "Wallet",
+          "result": "Resultado"
+        },
+        "anonymous": "Anônimo",
+        "current_turn": "Turno atual",
+        "pending": "Pendente",
+        "total": "Total",
+        "remove": "Remover participante",
+        "completed": "Resultados"
+      }
+    },
+    "results": {
+      "title": "Resultado",
+      "current_participant": "Participante atual",
+      "no_more_participants": "Não há mais participantes. Adicione mais para continuar",
+      "export": {
+        "button": "Exportar resultados",
+        "no_results": "Não há resultados para exportar"
+      },
+      "copy": {
+        "button": "Copiar resultados",
+        "error": "Erro ao copiar os resultados"
+      },
+      "send": {
+        "button": "Enviar prêmios"
+      }
+    },
+    "wallet": {
+      "send_rewards": "Airdrop de Prêmios",
+      "connect_required": "Conecte sua wallet para enviar prêmios",
+      "connected": "Wallet conectada",
+      "connected_success": "Wallet conectada com sucesso!",
+      "balance": "Saldo",
+      "total_rewards": "Total de prêmios",
+      "connect_button": "Conectar Wallet",
+      "approve_button": "Aprovar",
+      "send_button": "Enviar Prêmios",
+      "view_transaction": "Ver Transação",
+      "approving": "Aprovando",
+      "sending": "Enviando...",
+      "approving_transaction": "Aprovando transação...",
+      "sending_transaction": "Processando transação...",
+      "no_provider": "Nenhuma wallet EVM detectada. Por favor, instale uma wallet compatível.",
+      "user_rejected": "Solicitação rejeitada pelo usuário",
+      "connection_error": "Erro ao conectar com a wallet",
+      "network_add_error": "Erro ao adicionar a rede Avalanche",
+      "network_switch_error": "Erro ao mudar para a rede Avalanche",
+      "invalid_state": "Estado inválido. Verifique a conexão e o token",
+      "already_approved": "Tokens já aprovados",
+      "approval_success": "Tokens aprovados com sucesso!",
+      "approval_error": "Erro ao aprovar tokens",
+      "insufficient_allowance": "Permissão de token insuficiente. Por favor, aprove primeiro",
+      "send_success": "Prêmios enviados com sucesso!",
+      "send_error": "Erro ao enviar prêmios",
+      "info": "Os prêmios serão enviados diretamente da sua wallet usando a rede Avalanche C-Chain."
+    },
+    "spin_button": {
+      "spinning": "Girando...",
+      "disabled": "Não disponível",
+      "loading": "Carregando participantes...",
+      "ready": "Clique para girar"
+    },
+    "twitch": {
+      "load": "Carregar do Twitch",
+      "loading": "Carregando recompensas...",
+      "load_error": "Erro ao carregar as recompensas do Twitch",
+      "auth_error": "Erro de autenticação. Por favor, conecte-se novamente",
+      "complete_error": "Erro ao completar a recompensa",
+      "no_rewards": "Não há recompensas pendentes para carregar",
+      "invalid_wallet": "Wallet inválida detectada",
+      "auth_required": "Autenticação do Twitch necessária",
+      "auth_button": "Conectar com Twitch",
+      "redirecting": "Redirecionando...",
+      "create_reward_error": "Erro ao criar a recompensa. Certifique-se de ser afiliado ou parceiro do Twitch",
+      "client_id_mismatch": "A recompensa foi criada com outra aplicação. Por favor, crie uma nova recompensa a partir desta aplicação",
+      "redemption_error": "Erro ao obter os resgates. Por favor, tente novamente",
+      "auto_update": "Atualização automática",
+      "verify_wallet_info": "Verificação de wallet ativada (configure REACT_APP_WHEEL_VERIFY_WALLET=false para desativar)"
+    }
   }
 }
