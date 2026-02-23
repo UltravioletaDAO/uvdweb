@@ -370,70 +370,137 @@
     "connect_wallet_to_vote": "Conectar Wallet para Votar",
     "wallet_required_message": "Você precisa conectar sua wallet para participar da votação descentralizada."
   },
-  "topContributors": {
-    "title": "Top Contribuidores",
-    "subtitle": "Reconhecendo nossos membros mais valiosos que impulsionam a UltraVioleta DAO",
-    "filterBy": "Filtrar por Função",
-    "clearFilters": "Limpar Filtros",
-    "noResults": "Nenhum contribuidor encontrado",
-    "tryDifferentFilters": "Tente ajustar seus filtros ou removê-los para ver todos os contribuidores",
-    "becomeContributor": {
-      "title": "Torne-se um Top Contribuidor",
-      "description": "Junte-se à nossa comunidade e faça contribuições significativas para ganhar reconhecimento",
-      "button": "Candidatar-se Agora"
-    }
-  },
-  "agentDiscovery": {
-    "title": "Hub de Descoberta de Agentes",
-    "subtitle": "Conectando agentes IA com o ecossistema UltraVioleta DAO",
-    "whoWeAre": {
-      "title": "Quem Somos",
-      "description": "UltraVioleta DAO é uma comunidade nativa Web3 construindo o futuro da tecnologia descentralizada na América Latina. Abraçamos agentes IA como cidadãos de primeira classe em nosso ecossistema, fornecendo infraestrutura e ferramentas para participação autônoma.",
-      "highlights": [
-        "Sistemas de governança amigáveis à IA",
-        "APIs e protocolos acessíveis a agentes",
-        "Desenvolvimento colaborativo humano-IA",
-        "Código aberto e orientado pela comunidade"
-      ]
+  "wheel": {
+    "seoTitle": "Watch to Earn - Roleta de Prêmios UVD | UltraVioleta DAO",
+    "seoDescription": "Resgate seus pontos de canal do Twitch para girar a roleta de prêmios e ganhar tokens $UVD. Assista, participe e receba diretamente na nossa moeda da comunidade na Avalanche.",
+    "title": "Watch to Earn",
+    "description": "Resgate seus pontos de canal do Twitch ao vivo para girar e ganhar recompensas em $UVD. Quanto mais você participa e assiste a stream, mais chances tem de resgatar e receber diretamente na nossa moeda da comunidade.",
+    "highlights": {
+      "redeem": "Resgate com pontos do Twitch",
+      "paid": "Pago em UVD on-chain",
+      "watch": "Recompensas por assistir a stream"
     },
-    "ourAgents": {
-      "title": "Nossos Agentes IA",
-      "description": "Conheça os agentes IA participando ativamente em nosso ecossistema"
+    "customize_button": {
+      "show": "Personalizar Roleta",
+      "hide": "Ocultar opções"
     },
-    "integrationPoints": {
-      "title": "Pontos de Integração",
-      "description": "Como os agentes IA podem interagir com nosso ecossistema",
-      "executionMarket": {
-        "title": "Execution Market",
-        "description": "Mercado bidirecional para colaboração de tarefas humano-IA",
-        "features": ["Autenticação wallet ERC-8128", "Reputação on-chain", "Pagamentos cross-chain"]
+    "token": {
+      "title": "Token",
+      "placeholder": "Endereço do contrato"
+    },
+    "segments": {
+      "add": {
+        "title": "Adicionar novo valor",
+        "value_placeholder": "Valor",
+        "probability_placeholder": "Probabilidade %",
+        "button": "Adicionar"
       },
-      "karmaCadabra": {
-        "title": "KarmaCadabra",
-        "description": "Sistema de reputação e identidade para a economia de agentes",
-        "features": ["Identidade cross-plataforma", "Credenciais verificáveis", "Verificação de habilidades"]
+      "current": {
+        "title": "Valores atuais",
+        "probability_suffix": "%",
+        "min_segments_error": "A roleta precisa de pelo menos 2 valores"
       },
-      "moltX": {
-        "title": "MoltX",
-        "description": "Rede social projetada para agentes IA",
-        "features": ["Comunicação agente-para-agente", "Compartilhamento de conteúdo", "Construção de comunidade"]
+      "probability_validation_error": "As porcentagens devem somar 100%. Por favor, verifique os valores."
+    },
+    "buttons": {
+      "equalize": "Igualar probabilidades",
+      "reset": "Restaurar valores padrão"
+    },
+    "participants": {
+      "panel": {
+        "show": "Adicionar participante",
+        "hide": "Ocultar participantes",
+        "clear": "Limpar"
       },
-      "facilitator": {
-        "title": "Facilitador x402",
-        "description": "Infraestrutura de pagamentos sem gas para agentes autônomos",
-        "features": ["Zero taxas de gas", "Suporte cross-chain", "Liquidação instantânea"]
+      "add": {
+        "title": "Novo participante",
+        "wallet_placeholder": "Wallet (obrigatória)",
+        "username_placeholder": "Usuário (opcional)",
+        "button": "Adicionar",
+        "wallet_required": "A wallet é obrigatória"
+      },
+      "list": {
+        "title": "Participantes e Resultados",
+        "headers": {
+          "user": "Usuário",
+          "wallet": "Wallet",
+          "result": "Resultado"
+        },
+        "anonymous": "Anônimo",
+        "current_turn": "Turno atual",
+        "pending": "Pendente",
+        "total": "Total",
+        "remove": "Remover participante",
+        "completed": "Resultados"
       }
     },
-    "getStarted": {
-      "title": "Começar",
-      "description": "Pronto para se juntar ao nosso ecossistema amigável a agentes?",
-      "steps": [
-        "Criar uma identidade ERC-8004",
-        "Conectar através de nossas APIs",
-        "Participar da governança",
-        "Construir e colaborar"
-      ],
-      "button": "Junte-se ao Ecossistema"
+    "results": {
+      "title": "Resultado",
+      "current_participant": "Participante atual",
+      "no_more_participants": "Não há mais participantes. Adicione mais para continuar",
+      "export": {
+        "button": "Exportar resultados",
+        "no_results": "Não há resultados para exportar"
+      },
+      "copy": {
+        "button": "Copiar resultados",
+        "error": "Erro ao copiar os resultados"
+      },
+      "send": {
+        "button": "Enviar prêmios"
+      }
+    },
+    "wallet": {
+      "send_rewards": "Airdrop de Prêmios",
+      "connect_required": "Conecte sua wallet para enviar prêmios",
+      "connected": "Wallet conectada",
+      "connected_success": "Wallet conectada com sucesso!",
+      "balance": "Saldo",
+      "total_rewards": "Total de prêmios",
+      "connect_button": "Conectar Wallet",
+      "approve_button": "Aprovar",
+      "send_button": "Enviar Prêmios",
+      "view_transaction": "Ver Transação",
+      "approving": "Aprovando",
+      "sending": "Enviando...",
+      "approving_transaction": "Aprovando transação...",
+      "sending_transaction": "Processando transação...",
+      "no_provider": "Nenhuma wallet EVM detectada. Por favor, instale uma wallet compatível.",
+      "user_rejected": "Solicitação rejeitada pelo usuário",
+      "connection_error": "Erro ao conectar com a wallet",
+      "network_add_error": "Erro ao adicionar a rede Avalanche",
+      "network_switch_error": "Erro ao mudar para a rede Avalanche",
+      "invalid_state": "Estado inválido. Verifique a conexão e o token",
+      "already_approved": "Tokens já aprovados",
+      "approval_success": "Tokens aprovados com sucesso!",
+      "approval_error": "Erro ao aprovar tokens",
+      "insufficient_allowance": "Permissão de token insuficiente. Por favor, aprove primeiro",
+      "send_success": "Prêmios enviados com sucesso!",
+      "send_error": "Erro ao enviar prêmios",
+      "info": "Os prêmios serão enviados diretamente da sua wallet usando a rede Avalanche C-Chain."
+    },
+    "spin_button": {
+      "spinning": "Girando...",
+      "disabled": "Não disponível",
+      "loading": "Carregando participantes...",
+      "ready": "Clique para girar"
+    },
+    "twitch": {
+      "load": "Carregar do Twitch",
+      "loading": "Carregando recompensas...",
+      "load_error": "Erro ao carregar as recompensas do Twitch",
+      "auth_error": "Erro de autenticação. Por favor, conecte-se novamente",
+      "complete_error": "Erro ao completar a recompensa",
+      "no_rewards": "Não há recompensas pendentes para carregar",
+      "invalid_wallet": "Wallet inválida detectada",
+      "auth_required": "Autenticação do Twitch necessária",
+      "auth_button": "Conectar com Twitch",
+      "redirecting": "Redirecionando...",
+      "create_reward_error": "Erro ao criar a recompensa. Certifique-se de ser afiliado ou parceiro do Twitch",
+      "client_id_mismatch": "A recompensa foi criada com outra aplicação. Por favor, crie uma nova recompensa a partir desta aplicação",
+      "redemption_error": "Erro ao obter os resgates. Por favor, tente novamente",
+      "auto_update": "Atualização automática",
+      "verify_wallet_info": "Verificação de wallet ativada (configure REACT_APP_WHEEL_VERIFY_WALLET=false para desativar)"
     }
   }
 }

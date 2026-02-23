@@ -740,6 +740,8 @@
     "click_to_spin": "Click to spin"
   },
   "wheel": {
+    "seoTitle": "Watch to Earn - UVD Rewards Wheel | UltraVioleta DAO",
+    "seoDescription": "Redeem your Twitch channel points to spin the rewards wheel and earn $UVD tokens. Watch, participate and get paid directly in our community token on Avalanche.",
     "title": "Watch to Earn",
     "description": "Redeem your Twitch channel points live to spin and earn rewards in $UVD. The more you participate and watch the stream, the more chances you have to claim and get paid directly in our community token.",
     "highlights": {
@@ -816,6 +818,35 @@
       "send": {
         "button": "Send rewards"
       }
+    },
+    "wallet": {
+      "send_rewards": "Rewards Airdrop",
+      "connect_required": "Connect your wallet to send rewards",
+      "connected": "Connected wallet",
+      "connected_success": "Wallet connected successfully!",
+      "balance": "Balance",
+      "total_rewards": "Total rewards",
+      "connect_button": "Connect Wallet",
+      "approve_button": "Approve",
+      "send_button": "Send Rewards",
+      "view_transaction": "View Transaction",
+      "approving": "Approving",
+      "sending": "Sending...",
+      "approving_transaction": "Approving transaction...",
+      "sending_transaction": "Processing transaction...",
+      "no_provider": "No EVM wallet detected. Please install a compatible wallet.",
+      "user_rejected": "Request rejected by user",
+      "connection_error": "Error connecting to wallet",
+      "network_add_error": "Error adding Avalanche network",
+      "network_switch_error": "Error switching to Avalanche network",
+      "invalid_state": "Invalid state. Please check connection and token",
+      "already_approved": "Tokens already approved",
+      "approval_success": "Tokens approved successfully!",
+      "approval_error": "Error approving tokens",
+      "insufficient_allowance": "Insufficient token allowance. Please approve first",
+      "send_success": "Rewards sent successfully!",
+      "send_error": "Error sending rewards",
+      "info": "Rewards will be sent directly from your wallet using the Avalanche C-Chain network."
     },
     "spin_button": {
       "spinning": "Spinning...",

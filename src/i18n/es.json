@@ -688,6 +688,8 @@
     "wallet_required_message": "Necesitas conectar tu wallet para participar en la votación descentralizada."
   },
   "wheel": {
+    "seoTitle": "Watch to Earn - Ruleta de Premios UVD | UltraVioleta DAO",
+    "seoDescription": "Canjea tus puntos de Twitch para girar la ruleta de premios y ganar tokens $UVD. Mira, participa y cobra directamente en nuestra moneda de la comunidad en Avalanche.",
     "title": "Watch to Earn",
     "description": "Canjea tus puntos de Twitch en vivo para girar y gana recompensas en $UVD. Mientras más participas y ves el stream, más oportunidades tienes de reclamar y ser pagado directamente en nuestra moneda de la comunidad.",
     "highlights": {

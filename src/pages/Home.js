@@ -145,7 +145,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className={`grid grid-cols-1 ${tokenData.priceUsd && parseFloat(tokenData.priceUsd) > 0 && tokenData.holderCount > 0 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-6`}>
 
             {/* Community Vault Box */}
             <div className="bg-emerald-600/5 border border-emerald-600/20 rounded-xl p-6 text-center min-h-[180px] flex flex-col">
@@ -198,34 +198,36 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Token UVD Box */}
+            {/* Token UVD Box - only show when real data is available */}
+            {tokenData.priceUsd && parseFloat(tokenData.priceUsd) > 0 && tokenData.holderCount > 0 && (
             <div className="bg-amber-600/5 border border-amber-600/20 rounded-xl p-6 text-center relative min-h-[180px] flex flex-col group">
               <div className="text-sm text-gray-400 mb-2 uppercase tracking-wider">
                 💰 {t('home.metrics.token.title_full')}
               </div>
               <div className="flex-1 flex flex-col justify-center">
                 <div className="text-2xl font-bold text-white mb-2">
-                  {tokenData.priceUsd ? Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString() : '-'} UVD = $1
+                  {Math.floor(1 / parseFloat(tokenData.priceUsd)).toLocaleString()} UVD = $1
                 </div>
                 <div className="text-xl font-semibold text-white mb-2">
                   {tokenData.priceNative ? Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString() : '-'} UVD = 1 AVAX
                 </div>
                 <div className="text-sm text-purple-500">
-                  {t('home.metrics.token.total_liquidity_backing')}: ${tokenData.liquidity ? parseFloat(tokenData.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 }) : '-'}
+                  {t('home.metrics.token.total_liquidity_backing')}: ${parseFloat(tokenData.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 })}
                 </div>
                 <div className="text-sm text-red-500 mt-1">
                   🔥 {t('home.metrics.token.burned_total')}: {tokenData.totalBurnedTokens ? tokenData.totalBurnedTokens.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '0'} UVD
                 </div>
               </div>
               <div className="text-sm text-gray-600 border-t border-amber-600/10 pt-2 mt-auto">
-                {tokenData.holderCount?.toLocaleString() || '-'} {t('home.metrics.token.holders')} • {tokenData.totalTransactions?.toLocaleString() || '-'} {t('home.metrics.token.transactions')}
+                {tokenData.holderCount?.toLocaleString()} {t('home.metrics.token.holders')} • {tokenData.totalTransactions?.toLocaleString() || '-'} {t('home.metrics.token.transactions')}
               </div>
             </div>
+            )}
           </div>
 
           {/* Lazy load DAO Storyteller */}
           <Suspense fallback={<div className="mt-6 h-32 bg-gray-800/20 rounded-xl animate-pulse" />}>
-            {snapshotMetrics?.proposals && tokenData.holderCount && treasuryTotal && owners?.length && (
+            {snapshotMetrics?.proposals && treasuryTotal && owners?.length && (
               <div className="mt-6">
                 <DaoStoryteller
                   metrics={{
