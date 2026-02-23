@@ -247,7 +247,7 @@ export const generateFallbackAnalysis = (metrics, language) => {
     votes: metrics?.votes || 5000,
     followers: metrics?.followers || 120,
     uvdPrice: metrics?.uvdPrice || 1,
-    holders: metrics?.holders || 500,
+    holders: metrics?.holders || 89,
     transactions: metrics?.transactions || 10000,
     treasury: metrics?.treasury || 1000,
     multisigners: metrics?.multisigners || 5,
