@@ -274,45 +274,32 @@ const Home = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {/* Validator Achievement */}
+            {/* DevConnect Achievement */}
             <div className="bg-gradient-to-br from-purple-900/20 to-blue-900/20 backdrop-blur-sm border border-purple-500/30 rounded-xl p-6 hover:border-purple-400/60 hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300">
               <div className="flex items-center justify-center w-14 h-14 bg-purple-600/20 rounded-full mb-4 mx-auto">
                 <RocketLaunchIcon className="h-8 w-8 text-purple-400" />
               </div>
               <div className="text-center">
                 <h3 className="text-xl font-bold text-white mb-2">
-                  {t('home.achievements.validator.title')}
+                  {t('home.achievements.devconnect.title')}
                 </h3>
                 <p className="text-sm text-purple-400 mb-3">
-                  {t('home.achievements.validator.date')}
+                  {t('home.achievements.devconnect.date')}
                 </p>
                 <p className="text-gray-300 text-sm mb-4">
-                  {t('home.achievements.validator.description')}
+                  {t('home.achievements.devconnect.description')}
                 </p>
-                <div className="flex flex-col gap-2">
-                  <a
-                    href="https://x.com/UltravioletaDAO/status/1979685948977037629"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 text-sm text-purple-400 hover:text-purple-300 font-semibold"
-                  >
-                    {t('home.achievements.validator.announcement')}
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://nearblocks.io/address/ultravioletadao.pool.near"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 text-sm text-purple-400 hover:text-purple-300 font-semibold"
-                  >
-                    {t('home.achievements.validator.viewValidator')}
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                    </svg>
-                  </a>
-                </div>
+                <a
+                  href="https://www.youtube.com/watch?v=7NHG0F7_HJk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 text-sm text-purple-400 hover:text-purple-300 font-semibold"
+                >
+                  {t('home.achievements.devconnect.link')}
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                </a>
               </div>
             </div>
 
@@ -345,28 +332,28 @@ const Home = () => {
               </div>
             </div>
 
-            {/* Competition Achievement */}
+            {/* x402 Hackathon Achievement */}
             <div className="bg-gradient-to-br from-amber-900/20 to-orange-900/20 backdrop-blur-sm border border-amber-500/30 rounded-xl p-6 hover:border-amber-400/60 hover:shadow-lg hover:shadow-amber-500/20 transition-all duration-300">
               <div className="flex items-center justify-center w-14 h-14 bg-amber-600/20 rounded-full mb-4 mx-auto">
                 <TrophyIcon className="h-8 w-8 text-amber-400" />
               </div>
               <div className="text-center">
                 <h3 className="text-xl font-bold text-white mb-2">
-                  {t('home.achievements.competition.title')}
+                  {t('home.achievements.hackathon.title')}
                 </h3>
                 <p className="text-sm text-amber-400 mb-3">
-                  {t('home.achievements.competition.date')}
+                  {t('home.achievements.hackathon.date')}
                 </p>
                 <p className="text-gray-300 text-sm mb-4">
-                  {t('home.achievements.competition.description')}
+                  {t('home.achievements.hackathon.description')}
                 </p>
                 <a
-                  href="https://x.com/soymaikoldev/status/1983244934963433521"
+                  href="https://www.x402hackathon.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 text-sm text-amber-400 hover:text-amber-300 font-semibold"
                 >
-                  {t('home.achievements.competition.link')}
+                  {t('home.achievements.hackathon.link')}
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                   </svg>

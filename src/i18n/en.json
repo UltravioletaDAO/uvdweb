@@ -170,11 +170,17 @@
         "link": "Launch x402 Facilitator",
         "features": "Gasless transactions, EIP-712 signatures, trustless design, ~2s settlement"
       },
-      "competition": {
-        "title": "Web3 World Cup Winners",
-        "date": "October 28, 2025",
-        "description": "We won the Spanish Web3 Communities World Cup competition.",
-        "link": "View Announcement"
+      "hackathon": {
+        "title": "x402 Hackathon - Mentors & Contributors",
+        "date": "December 2025 - January 2026",
+        "description": "Official contributor and partner of the x402 Hackathon. 0xUltravioleta as mentor alongside Ethereum Foundation, Coinbase, Eigen Labs, Polygon, and thirdweb.",
+        "link": "View Hackathon"
+      },
+      "devconnect": {
+        "title": "DevConnect Argentina 2025",
+        "date": "November 2025",
+        "description": "UltraVioleta DAO at Ethereum DevConnect in Buenos Aires, connecting with the global Web3 ecosystem.",
+        "link": "Watch Video"
       }
     }
   },
@@ -1307,10 +1313,26 @@
         "title": "Legal Registration as DAO LLC",
         "description": "Legal formalization as a DAO LLC in Wyoming, establishing UltraVioleta as a Decentralized Autonomous Organization Limited Liability Company."
       },
+      "devconnect2025": {
+        "date": "November 2025",
+        "title": "DevConnect Argentina",
+        "description": "UltraVioleta DAO traveled to Buenos Aires for Ethereum DevConnect 2025, connecting with the global Web3 ecosystem, attending conferences and strengthening alliances with builders from across Latin America and the world."
+      },
+      "x402hackathon": {
+        "date": "December 2025 - January 2026",
+        "title": "x402 Hackathon - Mentors & Contributors",
+        "description": "UltraVioleta DAO was an official contributor and partner of the x402 Hackathon, a 4-week virtual competition building the next era of agents and internet-native payments. 0xUltravioleta served as mentor alongside leaders from Ethereum Foundation, Coinbase, Eigen Labs, Edge & Node, Polygon, thirdweb, and Crossmint.",
+        "links": [
+          {
+            "label": "View Hackathon",
+            "url": "https://www.x402hackathon.com/"
+          }
+        ]
+      },
       "current": {
         "date": "Present",
         "title": "Fully Operational DAO",
-        "description": "176+ executed proposals, 5,218+ votes, DAO LLC legal structure established, and in-person events in multiple cities."
+        "description": "200+ executed proposals, 5,200+ votes, 89 members, DAO LLC legal structure, x402 Hackathon mentors, DevConnect Argentina alumni, and in-person events across multiple cities."
       },
       "sponsors": {
         "poweredBy": "Powered by Legends",
