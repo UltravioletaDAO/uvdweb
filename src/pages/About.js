@@ -167,6 +167,22 @@ const About = () => {
       links: t('about.timeline.october28_2024.links', { returnObjects: true })
     },
     {
+      date: t('about.timeline.devconnect2025.date'),
+      title: t('about.timeline.devconnect2025.title'),
+      description: t('about.timeline.devconnect2025.description'),
+      icon: GlobeAltIcon,
+      videos: [
+        { url: 'https://www.youtube.com/watch?v=7NHG0F7_HJk', title: 'DevConnect Argentina 2025' }
+      ]
+    },
+    {
+      date: t('about.timeline.x402hackathon.date'),
+      title: t('about.timeline.x402hackathon.title'),
+      description: t('about.timeline.x402hackathon.description'),
+      icon: AcademicCapIcon,
+      links: t('about.timeline.x402hackathon.links', { returnObjects: true })
+    },
+    {
       date: t('about.timeline.current.date'),
       title: t('about.timeline.current.title'),
       description: t('about.timeline.current.description'),
