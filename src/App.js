@@ -37,6 +37,7 @@ const Events = lazy(() => import("./pages/Events"));
 const ExperimentsPage = lazy(() => import("./pages/ExperimentsPage"));
 const FacilitatorPage = lazy(() => import("./pages/FacilitatorPage"));
 const Bounties = lazy(() => import("./pages/Bounties"));
+const AgentDiscovery = lazy(() => import("./pages/AgentDiscovery"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -82,6 +83,7 @@ function App() {
                   <Route path="/experiments" element={<ExperimentsPage />} />
                   <Route path="/facilitator" element={<FacilitatorPage />} />
                   <Route path="/bounties" element={<Bounties />} />
+                  <Route path="/agents" element={<AgentDiscovery />} />
                 </Routes>
               </Suspense>
               <Footer />

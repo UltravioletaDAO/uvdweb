@@ -1,5 +1,6 @@
 import React from 'react';
 import { ContributorSection } from '../components/metricDashboard/ContributorSection';
+import TopContributors from '../components/TopContributors';
 import { Users } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
@@ -33,7 +34,10 @@ const Contributors = () => {
         </header>
 
         <main>
-          <ContributorSection />
+          <div className="space-y-12">
+            <TopContributors />
+            <ContributorSection />
+          </div>
         </main>
       </div>
     </div>
