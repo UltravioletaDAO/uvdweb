@@ -247,7 +247,8 @@ export const generateFallbackAnalysis = (metrics, language) => {
     votes: metrics?.votes || 5000,
     followers: metrics?.followers || 120,
     uvdPrice: metrics?.uvdPrice || 1,
-    holders: metrics?.holders || 89,
+    holders: metrics?.holders || 500,
+    members: metrics?.members || 89,
     transactions: metrics?.transactions || 10000,
     treasury: metrics?.treasury || 1000,
     multisigners: metrics?.multisigners || 5,
@@ -256,7 +257,7 @@ export const generateFallbackAnalysis = (metrics, language) => {
   };
 
   if (language === 'es') {
-    return `Te tengo que contar lo que estamos haciendo. Ya somos ${safeMetrics.holders.toLocaleString()} personas en Ultravioleta DAO, y entre todos ya votamos ${safeMetrics.votes.toLocaleString()} veces en nuestras ${safeMetrics.proposals} propuestas. Imagínate, somos miles tomando decisiones juntos sobre el futuro de Web3 en Latinoamérica. Nuestras ${safeMetrics.transactions.toLocaleString()} transacciones del token muestran que esto no es solo charla, estamos moviendo el proyecto todos los días.
+    return `Te tengo que contar lo que estamos haciendo. Somos ${safeMetrics.members} miembros en Ultravioleta DAO, con ${safeMetrics.holders.toLocaleString()} holders del token, y entre todos ya votamos ${safeMetrics.votes.toLocaleString()} veces en nuestras ${safeMetrics.proposals} propuestas. Imagínate, tomando decisiones juntos sobre el futuro de Web3 en Latinoamérica. Nuestras ${safeMetrics.transactions.toLocaleString()} transacciones del token muestran que esto no es solo charla, estamos moviendo el proyecto todos los días.
 
 Lo que nos hace diferentes es que no somos un proyecto más de crypto. Somos una comunidad real con $${safeMetrics.liquidity.toLocaleString()} USD en liquidez y $${safeMetrics.treasury.toLocaleString()} USD en nuestro tesoro comunitario. Para mover estos fondos desde el multisig, necesitamos que una propuesta pase en la gobernanza de Snapshot, y después ${safeMetrics.threshold} de nuestros ${safeMetrics.multisigners} multifirmantes ejecutan la decisión. Acá no hay un CEO ni una empresa detrás. Somos ${safeMetrics.followers} personas activas construyendo algo desde cero, tomando cada decisión entre todos a través de la gobernanza. Esto es Web3 de verdad, no de mentira.
 
@@ -264,7 +265,7 @@ Y mira el timing: con ${safeMetrics.uvdPrice.toLocaleString()} UVD por cada dól
   }
   
   if (language === 'fr') {
-    return `Je dois te raconter ce que nous faisons. Nous sommes déjà ${safeMetrics.holders.toLocaleString()} personnes dans Ultravioleta DAO, et ensemble nous avons voté ${safeMetrics.votes.toLocaleString()} fois sur nos ${safeMetrics.proposals} propositions. Imagine, nous sommes des milliers à prendre des décisions ensemble sur l'avenir du Web3 en Amérique latine. Nos ${safeMetrics.transactions.toLocaleString()} transactions de tokens montrent que ce n'est pas que des paroles, nous faisons avancer le projet tous les jours.
+    return `Je dois te raconter ce que nous faisons. Nous sommes ${safeMetrics.members} membres dans Ultravioleta DAO, avec ${safeMetrics.holders.toLocaleString()} détenteurs du token, et ensemble nous avons voté ${safeMetrics.votes.toLocaleString()} fois sur nos ${safeMetrics.proposals} propositions. Imagine, prendre des décisions ensemble sur l'avenir du Web3 en Amérique latine. Nos ${safeMetrics.transactions.toLocaleString()} transactions de tokens montrent que ce n'est pas que des paroles, nous faisons avancer le projet tous les jours.
 
 Ce qui nous rend différents, c'est que nous ne sommes pas juste un autre projet crypto. Nous sommes une vraie communauté avec $${safeMetrics.liquidity.toLocaleString()} USD en liquidité et $${safeMetrics.treasury.toLocaleString()} USD dans notre trésor communautaire. Pour déplacer ces fonds depuis le multisig, nous avons besoin qu'une proposition passe dans la gouvernance Snapshot, puis ${safeMetrics.threshold} de nos ${safeMetrics.multisigners} multisignataires exécutent la décision. Il n'y a pas de PDG ni d'entreprise derrière. Nous sommes ${safeMetrics.followers} personnes actives construisant quelque chose depuis zéro, prenant chaque décision ensemble à travers la gouvernance. C'est le vrai Web3, pas du faux.
 
@@ -272,14 +273,14 @@ Et regarde le timing : avec ${safeMetrics.uvdPrice.toLocaleString()} UVD par dol
   }
   
   if (language === 'pt') {
-    return `Tenho que te contar o que estamos fazendo. Já somos ${safeMetrics.holders.toLocaleString()} pessoas no Ultravioleta DAO, e juntos já votamos ${safeMetrics.votes.toLocaleString()} vezes em nossas ${safeMetrics.proposals} propostas. Imagine, somos milhares tomando decisões juntos sobre o futuro da Web3 na América Latina. Nossas ${safeMetrics.transactions.toLocaleString()} transações de token mostram que isso não é só conversa, estamos movimentando o projeto todos os dias.
+    return `Tenho que te contar o que estamos fazendo. Somos ${safeMetrics.members} membros no Ultravioleta DAO, com ${safeMetrics.holders.toLocaleString()} holders do token, e juntos já votamos ${safeMetrics.votes.toLocaleString()} vezes em nossas ${safeMetrics.proposals} propostas. Imagine, tomando decisões juntos sobre o futuro da Web3 na América Latina. Nossas ${safeMetrics.transactions.toLocaleString()} transações de token mostram que isso não é só conversa, estamos movimentando o projeto todos os dias.
 
 O que nos torna diferentes é que não somos apenas mais um projeto crypto. Somos uma comunidade real com $${safeMetrics.liquidity.toLocaleString()} USD em liquidez e $${safeMetrics.treasury.toLocaleString()} USD em nosso tesouro comunitário. Para mover esses fundos do multisig, precisamos que uma proposta passe na governança Snapshot, e então ${safeMetrics.threshold} dos nossos ${safeMetrics.multisigners} multiassinantes executam a decisão. Não há CEO nem empresa por trás. Somos ${safeMetrics.followers} pessoas ativas construindo algo do zero, tomando cada decisão juntos através da governança. Isso é Web3 de verdade, não de mentira.
 
 E olha o timing: com ${safeMetrics.uvdPrice.toLocaleString()} UVD por dólar, você está entrando no momento perfeito para se juntar a nós. Não quando já explodiu e está caro, mas agora enquanto estamos construindo. Aqueles que entraram cedo no Bitcoin ou Ethereum hoje são lendas. Esta é sua chance de fazer parte do nosso projeto desde o primeiro dia. Estamos decolando e você ainda pode embarcar.`;
   }
 
-  return `I've got to tell you what we're doing. We're already ${safeMetrics.holders.toLocaleString()} people in Ultravioleta DAO, and together we've voted ${safeMetrics.votes.toLocaleString()} times on our ${safeMetrics.proposals} proposals. Imagine that - we're thousands making decisions together about the future of Web3 in Latin America. Our ${safeMetrics.transactions.toLocaleString()} token transactions show this isn't just talk, we're moving the project forward every day.
+  return `I've got to tell you what we're doing. We're ${safeMetrics.members} members in Ultravioleta DAO, with ${safeMetrics.holders.toLocaleString()} token holders, and together we've voted ${safeMetrics.votes.toLocaleString()} times on our ${safeMetrics.proposals} proposals. Imagine that - making decisions together about the future of Web3 in Latin America. Our ${safeMetrics.transactions.toLocaleString()} token transactions show this isn't just talk, we're moving the project forward every day.
 
 What makes us different is that we're not just another crypto project. We're a real community with $${safeMetrics.liquidity.toLocaleString()} USD in liquidity and $${safeMetrics.treasury.toLocaleString()} USD in our community treasury. To move these funds from the multisig, we need a proposal to pass in Snapshot governance, and then ${safeMetrics.threshold} of our ${safeMetrics.multisigners} multisigners execute the decision. There's no CEO or company behind this. We're ${safeMetrics.followers} active people building something from scratch, making every decision together through governance. This is real Web3, not fake.
 
