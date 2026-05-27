@@ -250,9 +250,9 @@ const AgentDiscovery = () => {
   return (
     <>
       <SEO
-        title="Agent Discovery Hub | AI Agents & Web3 Integration"
-        description="Discover how AI agents can integrate with UltraVioleta DAO's ecosystem. Learn about agent-friendly infrastructure, APIs, and collaboration opportunities in Web3."
-        keywords="AI agents, agent discovery, Web3 agents, autonomous agents, AI integration, agent APIs, ERC-8004, agent identity, agent reputation, blockchain agents, AI DAO participation"
+        title="Agent Discovery Hub | AI Agents & web4 Integration"
+        description="Discover how AI agents can integrate with UltraVioleta DAO's web4 ecosystem. Learn about the agentic economy, x402 gasless payments, ERC-8004, and collaboration opportunities."
+        keywords="AI agents, agent discovery, web4, agentic economy, autonomous agents, x402, ERC-8004, Web3 agents, AI integration, agent APIs, agent identity, agent reputation, blockchain agents, AI DAO participation"
       />
       
       <Helmet>

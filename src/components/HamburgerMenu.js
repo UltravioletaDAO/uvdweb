@@ -16,6 +16,12 @@ import {
   PhotoIcon,
   DocumentTextIcon,
   CalendarIcon,
+  NewspaperIcon,
+  AcademicCapIcon,
+  LinkIcon,
+  CpuChipIcon,
+  BeakerIcon,
+  GiftIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -82,14 +88,49 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.events'),
     },
     {
+      name: t('navigation.blog'),
+      icon: NewspaperIcon,
+      path: "/blog",
+      isExternal: false,
+      description: t('navigation.descriptions.blog'),
+    },
+    {
+      name: t('navigation.courses'),
+      icon: AcademicCapIcon,
+      path: "/courses",
+      isExternal: false,
+      description: t('navigation.descriptions.courses'),
+    },
+    {
+      name: t('navigation.bounties'),
+      icon: GiftIcon,
+      path: "/bounties",
+      isExternal: false,
+      customStyle: "text-amber-400 group-hover:text-amber-300",
+      description: t('navigation.descriptions.bounties'),
+    },
+    {
+      name: t('navigation.agents', 'Agents'),
+      icon: CpuChipIcon,
+      path: "/agents",
+      isExternal: false,
+      description: t('navigation.descriptions.metrics', 'Agent Discovery'),
+    },
+    {
+      name: t('navigation.links'),
+      icon: LinkIcon,
+      path: "/links",
+      isExternal: false,
+      description: t('navigation.descriptions.links'),
+    },
+    {
       name: t('navigation.nft'),
       icon: PhotoIcon,
       path: "/nfts",
       isExternal: false,
       description: t('navigation.descriptions.nft'),
-    }
+    },
     /* Delegations disabled for now (Beam validator was shut down)
-    ,
     {
       name: t('navigation.delegations'),
       icon: CubeTransparentIcon,
@@ -107,14 +148,14 @@ const HamburgerMenu = () => {
           width="20"
           height="20"
           viewBox="0 0 105 126"
-          className="fill-current text-ultraviolet group-hover:text-ultraviolet-light"
+          className="fill-current text-snapshotIcon group-hover:text-snapshotIcon"
         >
           <path d="M104.781694,54.7785 C104.270697,53.41 102.961707,52.5 101.498717,52.5 L59.2365129,52.5 L83.6138421,5.103 C84.3803368,3.612 83.9848395,1.7885 82.6653488,0.7525 C82.0283532,0.2485 81.2618586,0 80.498864,0 C79.6833697,0 78.8678754,0.287 78.21338,0.8505 L52.4990602,23.058 L1.21391953,67.3505 C0.107927276,68.306 -0.291069928,69.8495 0.219926491,71.218 C0.730922911,72.5865 2.03641376,73.5 3.49940351,73.5 L45.7616074,73.5 L21.3842782,120.897 C20.6177836,122.388 21.0132808,124.2115 22.3327715,125.2475 C22.9697671,125.7515 23.7362617,126 24.4992564,126 C25.3147506,126 26.1302449,125.713 26.7847403,125.1495 L52.4990602,102.942 L103.784201,58.6495 C104.893693,57.694 105.28919,56.1505 104.781694,54.7785 L104.781694,54.7785 Z" />
         </svg>
       ),
       path: "/snapshot",
       isExternal: false,
-      customStyle: "text-[#FFAC33] group-hover:text-[#FFB74D]",
+      customStyle: "text-snapshotIcon group-hover:text-snapshotIcon",
       description: t('navigation.descriptions.snapshot'),
     }
   ];
@@ -141,6 +182,24 @@ const HamburgerMenu = () => {
       path: "/wheel",
       isExternal: false,
       description: t('navigation.descriptions.watchToEarn'),
+    },
+    {
+      // C-6: Internal Facilitator landing
+      name: t('navigation.facilitator'),
+      icon: BeakerIcon,
+      path: "/facilitator",
+      isExternal: false,
+      customStyle: "text-emerald-400 group-hover:text-emerald-300",
+      description: t('navigation.descriptions.services', 'Facilitator'),
+    },
+    {
+      // C-6: External "Abrir app" link for Facilitator
+      name: t('navigation.facilitatorApp', 'Abrir app'),
+      icon: BeakerIcon,
+      path: "https://facilitator.ultravioletadao.xyz/",
+      isExternal: true,
+      customStyle: "text-emerald-400 group-hover:text-emerald-300",
+      description: t('navigation.descriptions.services', 'Open Facilitator app'),
     },
   ];
 

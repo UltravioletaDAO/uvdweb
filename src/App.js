@@ -3,8 +3,11 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ThirdwebProvider } from "thirdweb/react";
+import WebMCPProvider from "./components/WebMCPProvider";
+import { WalletProvider } from "./contexts/WalletContext";
 
 // Loading component for better UX
 const LoadingFallback = () => (
@@ -38,12 +41,15 @@ const ExperimentsPage = lazy(() => import("./pages/ExperimentsPage"));
 const FacilitatorPage = lazy(() => import("./pages/FacilitatorPage"));
 const Bounties = lazy(() => import("./pages/Bounties"));
 const AgentDiscovery = lazy(() => import("./pages/AgentDiscovery"));
+const Purge = lazy(() => import("./pages/Purge"));
+const KarmaHelloLanding = lazy(() => import("./pages/KarmaHelloLanding"));
+const Delegations = lazy(() => import("./pages/Delegations"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: 60 * 1000, // 1 minute
-      cacheTime: 5 * 60 * 1000, // 5 minutes
+      gcTime: 5 * 60 * 1000, // 5 minutes
       refetchOnWindowFocus: false,
       retry: 1,
     },
@@ -55,9 +61,12 @@ function App() {
     <HelmetProvider>
       <QueryClientProvider client={queryClient}>
         <ThirdwebProvider>
+          <WalletProvider>
+          <WebMCPProvider />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <div className="min-h-screen bg-background text-text-primary flex flex-col">
               <Header />
+              <ErrorBoundary>
               <Suspense fallback={<LoadingFallback />}>
                 <Routes>
                   <Route path="/" element={<Home />} />
@@ -84,11 +93,16 @@ function App() {
                   <Route path="/facilitator" element={<FacilitatorPage />} />
                   <Route path="/bounties" element={<Bounties />} />
                   <Route path="/agents" element={<AgentDiscovery />} />
+                  <Route path="/purge" element={<Purge />} />
+                  <Route path="/karma-hello" element={<KarmaHelloLanding />} />
+                  <Route path="/delegations" element={<Delegations />} />
                 </Routes>
               </Suspense>
+              </ErrorBoundary>
               <Footer />
             </div>
           </Router>
+          </WalletProvider>
         </ThirdwebProvider>
       </QueryClientProvider>
     </HelmetProvider>

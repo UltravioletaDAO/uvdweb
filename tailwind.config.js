@@ -8,7 +8,7 @@ module.exports = {
     extend: {
       colors: {
         background: {
-          DEFAULT: '#121212',
+          DEFAULT: '#0a0a1b',
           lighter: '#1e1e1e',
           input: '#252525',
         },
@@ -29,8 +29,8 @@ module.exports = {
 
         /* Custom dashboard */
         primary: {
-          DEFAULT: "#18794e",
-          foreground: "#fff1f2",
+          DEFAULT: "#6a00ff",
+          foreground: "#ffffff",
         },
         secondary: {
           DEFAULT: '#27272f',
@@ -50,11 +50,17 @@ module.exports = {
         },
         popover: {
           DEFAULT: '#1a1a1f',
-          foreground: '"#fafafa',
+          foreground: '#fafafa',
         },
         border: '#27272f',
         input: '#27272f',
-        ring: '#18794e',
+        ring: '#6a00ff',
+
+        twitch: {
+          DEFAULT: '#9146FF',
+          dark: '#7C2BFF',
+        },
+        snapshotIcon: '#FFAC33',
 
         snapshot: {
           DEFAULT: '#2a69d8',
@@ -113,7 +119,9 @@ module.exports = {
         'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
       },
       backgroundImage: {
-        'card-image-gradient': "linear-gradient(180deg, rgba(0,0,0,0.13) 0%, rgba(0,0,0,0.13) 99%)"
+        'card-image-gradient': "linear-gradient(180deg, rgba(0,0,0,0.13) 0%, rgba(0,0,0,0.13) 99%)",
+        'brand-gradient': 'linear-gradient(to right, #320066, #6a00ff)',
+        'cta-gradient': 'linear-gradient(to right, #6a00ff, #7c1fff)',
       }
     },
   },

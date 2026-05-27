@@ -5,7 +5,7 @@
  */
 export const generateMetaTags = ({
   title = 'UltraVioleta DAO',
-  description = 'Building the future of Web3 in Latin America',
+  description = 'Latin America at the cutting edge of web4. Building the agentic economy with x402 and ERC-8004.',
   image = 'https://ultravioleta.xyz/og-image.png',
   url = 'https://ultravioleta.xyz',
   type = 'website'

@@ -202,7 +202,7 @@ const SafeStats = () => {
                         <tr 
                           key={owner.address} 
                           className={`${idx % 2 === 0 ? 'bg-ultraviolet/5' : ''} 
-                            ${owner.signatureCount === 0 ? 'bg-red-50 dark:bg-red-900/10' : ''}`}
+                            ${owner.signatureCount === 0 ? 'bg-red-900/10' : ''}`}
                         >
                           <td className="px-6 py-4 text-sm font-medium text-text-secondary">
                             <div className="flex items-center group">
@@ -227,7 +227,7 @@ const SafeStats = () => {
                           </td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm text-text-secondary">
                             <div className="flex items-center">
-                              <div className="w-full bg-ultraviolet/20 rounded-full h-2.5 mr-2 dark:bg-ultraviolet/30">
+                              <div className="w-full bg-ultraviolet/20 rounded-full h-2.5 mr-2">
                                 <div 
                                   className={`h-2.5 rounded-full ${owner.signatureCount === 0 ? 'bg-red-500' : 'bg-ultraviolet'}`}
                                   style={{ width: `${owner.percentage}%` }}

@@ -24,12 +24,12 @@ const LanguageSwitcher = () => {
       className="flex items-center gap-2 px-3 py-2 rounded-lg bg-background/30 hover:bg-background/50 transition-all duration-200"
       whileHover={{ scale: 1.02 }}
       whileTap={{ scale: 0.98 }}
-      aria-label={t('navigation.aria.change_language')}
     >
       <LanguageIcon className="w-5 h-5 text-ultraviolet" />
       <select
         value={(i18n.language || 'es').slice(0, 2)}
         onChange={handleChange}
+        aria-label={t('navigation.aria.change_language')}
         className="bg-transparent font-medium text-text-primary focus:outline-none cursor-pointer"
       >
         {languages.map((lang) => (

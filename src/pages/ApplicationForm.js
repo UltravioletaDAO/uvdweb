@@ -8,6 +8,7 @@ import { debugLog } from '../lib/utils';
 import SEO from '../components/SEO';
 
 const ApplicationForm = ({ isOpen, onClose }) => {
+  const isPage = isOpen === undefined;
   // Estado para manejar los pasos del formulario
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
@@ -48,7 +49,14 @@ const ApplicationForm = ({ isOpen, onClose }) => {
     }, [currentStep]); // Solo se ejecuta cuando cambia el paso
 
     return (
-      <div className="w-full bg-background/50 rounded-full h-2 mb-8 overflow-hidden">
+      <div
+        className="w-full bg-background/50 rounded-full h-2 mb-8 overflow-hidden"
+        role="progressbar"
+        aria-valuenow={currentStep}
+        aria-valuemin={1}
+        aria-valuemax={3}
+        aria-label={t('form.progress.step_label', { current: currentStep, total: 3 })}
+      >
         <div
           ref={progressRef}
           className="h-full bg-gradient-to-r from-ultraviolet-darker to-ultraviolet rounded-full origin-left"
@@ -95,6 +103,14 @@ const ApplicationForm = ({ isOpen, onClose }) => {
     let error = '';
     
     switch (name) {
+      case 'fullName':
+        if (!value.trim()) {
+          error = t('form.validation.fullName_required');
+        } else if (value.trim().length < 3) {
+          error = t('form.validation.fullName_length');
+        }
+        break;
+
       case 'email':
         if (!value) {
           error = t('form.validation.email_required');
@@ -329,12 +345,14 @@ const ApplicationForm = ({ isOpen, onClose }) => {
     </div>
   );
 
-  // Efecto para manejar el scroll del body
+  // Efecto para manejar el scroll del body (solo en modo modal)
   useEffect(() => {
+    if (isPage) return;
+
     if (isOpen) {
       // Guardar la posición actual del scroll
       const scrollY = window.scrollY;
-      
+
       // Bloquear el scroll y mantener la posición
       document.body.style.position = 'fixed';
       document.body.style.top = `-${scrollY}px`;
@@ -345,7 +363,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
       document.body.style.position = '';
       document.body.style.top = '';
       document.body.style.width = '';
-      
+
       if (scrollY) {
         window.scrollTo(0, parseInt(scrollY || '0', 10) * -1);
       }
@@ -357,7 +375,7 @@ const ApplicationForm = ({ isOpen, onClose }) => {
       document.body.style.top = '';
       document.body.style.width = '';
     };
-  }, [isOpen]);
+  }, [isOpen, isPage]);
 
   React.useEffect(() => {
     window.scrollTo(0, 0);
@@ -575,6 +593,26 @@ const ApplicationForm = ({ isOpen, onClose }) => {
       </motion.div>
     </AnimatePresence>
   );
+
+  if (isPage) {
+    return (
+      <div className="min-h-screen py-12 px-4 flex flex-col items-center">
+        <SEO title={t('form.title')} description={t('form.subtitle')} />
+        <div className="w-full max-w-xl">
+          <h1 className="text-3xl font-bold text-text-primary mb-2">{t('form.title')}</h1>
+          <p className="text-text-secondary mb-8">{t('form.subtitle')}</p>
+          {showSuccess ? (
+            <SuccessMessage onClose={() => {}} />
+          ) : (
+            <form onSubmit={handleSubmit} className="w-full">
+              <ProgressBar />
+              {renderStep()}
+            </form>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <Modal

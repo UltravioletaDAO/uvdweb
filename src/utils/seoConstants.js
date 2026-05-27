@@ -13,19 +13,19 @@ export const SEO_DEFAULTS = {
 
 // Web3 and DAO specific keywords for each page
 export const PAGE_KEYWORDS = {
-  home: 'UltraVioleta DAO, Latin America Web3, DAO LATAM, blockchain governance, decentralized organization, Web3 community, Avalanche ecosystem, crypto DAO, DeFi Latin America, governance token',
+  home: 'UltraVioleta DAO, Latin America Web3, DAO LATAM, blockchain governance, decentralized organization, Web3 community, web4, agentic economy, autonomous agents, x402, Avalanche ecosystem, crypto DAO, DeFi Latin America, governance token',
 
   about: 'about UltraVioleta DAO, DAO mission, Web3 vision, Latin America blockchain, decentralized governance model, DAO structure, DUNA LLC, Wyoming DAO, legal DAO framework, Web3 innovation',
 
   token: 'UVD token, governance token, Avalanche token, ERC-20, DeFi token, DAO voting power, token swap, AVAX trading, Arena DEX, cryptocurrency LATAM, Web3 token economics',
 
-  services: 'blockchain development, smart contracts, DeFi protocols, Web3 consulting, DAO setup, tokenization services, NFT development, dApp development, blockchain integration, Latin America Web3 services',
+  services: 'blockchain development, smart contracts, DeFi protocols, Web3 consulting, web4, agentic economy, autonomous agents, x402, DAO setup, tokenization services, NFT development, dApp development, blockchain integration, Latin America Web3 services',
 
   metrics: 'DAO analytics, treasury metrics, governance statistics, token metrics, on-chain data, DAO performance, voting analytics, member growth, treasury value, DeFi metrics',
 
   snapshot: 'DAO voting, Snapshot governance, proposal voting, decentralized decisions, on-chain voting, governance proposals, community voting, Web3 democracy, DAO participation',
 
-  contributors: 'DAO contributors, Web3 builders, blockchain developers, community members, open source contributors, Latin America developers, DAO participants, GitHub contributors',
+  contributors: 'DAO contributors, Web3 builders, web4 builders, agentic economy, blockchain developers, community members, open source contributors, Latin America developers, DAO participants, GitHub contributors',
 
   courses: 'Web3 education, blockchain courses, smart contract tutorials, DeFi learning, DAO education, crypto development, Web3 bootcamp, Latin America blockchain education, developer training',
 

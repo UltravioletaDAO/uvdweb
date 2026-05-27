@@ -1,3 +1,4 @@
+/* global BigInt */
 const PAIR_ID = "0xbff3e2238e545c76f705560bd1677bd9c0e9dab4";
 const CHAIN_ID = "avalanche";
 const TOKEN_ADDRESS = "0x4Ffe7e01832243e03668E090706F17726c26d6B2";
@@ -57,11 +58,14 @@ async function fetchBurnedTokens() {
 
     // Parse the hex results and convert from wei to tokens (divide by 1e18)
     if (deadData?.result) {
-      deadTokens = parseInt(deadData.result, 16) / 1e18;
+      // BUG-14: parseInt pierde precisión con uint256 (supera Number.MAX_SAFE_INTEGER).
+      // BigInt parsea el hex exacto; dividimos primero en la escala de 1e14 con BigInt
+      // para luego dividir el resto (1e4) en float — mantenemos 4 decimales.
+      deadTokens = Number(BigInt(deadData.result) / 10n ** 14n) / 10000;
     }
 
     if (zeroData?.result) {
-      zeroTokens = parseInt(zeroData.result, 16) / 1e18;
+      zeroTokens = Number(BigInt(zeroData.result) / 10n ** 14n) / 10000;
     }
 
     // Updated known minimum value - as of last manual check
@@ -97,16 +101,51 @@ async function fetchBurnedTokens() {
   }
 }
 
+// BUG-13: helper que intenta fetch con AbortController (timeout 8s).
+// Si falla, reintenta sin proxy como fallback; si ese también falla, retorna null.
+async function fetchWithFallback(proxyUrl, directUrl) {
+  const attempt = async (url) => {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 8000);
+    try {
+      const res = await fetch(url, { signal: controller.signal });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.json();
+    } finally {
+      clearTimeout(timer);
+    }
+  };
+
+  try {
+    return await attempt(proxyUrl);
+  } catch (proxyErr) {
+    if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+      console.warn('[TokenMetrics] proxy fetch failed, trying direct:', proxyErr.message);
+    }
+    if (!directUrl) return null;
+    try {
+      return await attempt(directUrl);
+    } catch (directErr) {
+      if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+        console.warn('[TokenMetrics] direct fetch also failed:', directErr.message);
+      }
+      return null;
+    }
+  }
+}
+
 export async function getTokenData() {
 
-  const url1 = `https://corsproxy.io/?https://api.dexscreener.com/latest/dex/pairs/${CHAIN_ID}/${PAIR_ID}`;
-  const res1 = await fetch(url1);
-  const data = await res1.json();
-  const pair = data.pair || data.pairs?.[0] || {};
+  const url1Proxy = `https://corsproxy.io/?https://api.dexscreener.com/latest/dex/pairs/${CHAIN_ID}/${PAIR_ID}`;
+  const url1Direct = `https://api.dexscreener.com/latest/dex/pairs/${CHAIN_ID}/${PAIR_ID}`;
+  // BUG-13: fetch con timeout + fallback directo; si falla, data queda null → degradado limpio
+  const data = await fetchWithFallback(url1Proxy, url1Direct);
+  const pair = data?.pair || data?.pairs?.[0] || {};
 
-  const url2 = `https://corsproxy.io/?https://io.dexscreener.com/dex/pair-details/v3/${CHAIN_ID}/${PAIR_ID}`;
-  const res2 = await fetch(url2);
-  const details = await res2.json();
+  const url2Proxy = `https://corsproxy.io/?https://io.dexscreener.com/dex/pair-details/v3/${CHAIN_ID}/${PAIR_ID}`;
+  const url2Direct = `https://io.dexscreener.com/dex/pair-details/v3/${CHAIN_ID}/${PAIR_ID}`;
+  // BUG-13: ídem url2
+  const details = await fetchWithFallback(url2Proxy, url2Direct);
 
   const url3 = `https://cdn.routescan.io/api/evm/43114/erc20-transfers?count=true&limit=50&tokenAddress=${TOKEN_ADDRESS}`;
   const res3 = await fetch(url3);
@@ -133,11 +172,12 @@ export async function getTokenData() {
     liquidityAvax: liquidityAvax, // Cantidad de AVAX
     liquidityUvd: liquidityUvd, // Cantidad de UVD
     marketCap: pair.marketCap || "N/A",
-    holderCount: details.gp?.holderCount || "N/A",
-    totalSupply: details.su?.totalSupply || "N/A",
-    circulatingSupply: details.su?.circulatingSupply || "N/A",
+    holderCount: details?.gp?.holderCount || "N/A",
+    totalSupply: details?.su?.totalSupply || "N/A",
+    circulatingSupply: details?.su?.circulatingSupply || "N/A",
     totalTransactions: transactionsData.count || "N/A",
-    burnedSupply: details.ds.supplies?.burnedSupply || "N/A",
+    // BUG-01: details.ds sin guard lanzaba TypeError cuando DexScreener falla/429
+    burnedSupply: details?.ds?.supplies?.burnedSupply || "N/A",
     burnedTokens: burnedTokens, // New field with detailed burned token info
     totalBurnedTokens: burnedTokens.total // Total burned tokens from both addresses
   };

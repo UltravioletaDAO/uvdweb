@@ -35,7 +35,7 @@ const Courses = () => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.3 }}
-      className="maxs-h-screen bg-background container mx-auto py-16 px-4"
+      className="min-h-screen bg-background container mx-auto py-16 px-4"
     >
       <motion.button
         onClick={handleReturn}

@@ -22,15 +22,17 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
 
   // Handle payment required error
   useEffect(() => {
-    console.log('🟡 StreamSummaryCard: Error changed:', {
-      hasError: !!error,
-      errorName: error?.name,
-      errorMessage: error?.message,
-      errorStatus: error?.status,
-      paymentDetails: error?.paymentDetails,
-      hasOnPaymentRequired: !!onPaymentRequired,
-      fullError: error
-    });
+    if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+      console.log('StreamSummaryCard: Error changed:', {
+        hasError: !!error,
+        errorName: error?.name,
+        errorMessage: error?.message,
+        errorStatus: error?.status,
+        paymentDetails: error?.paymentDetails,
+        hasOnPaymentRequired: !!onPaymentRequired,
+        fullError: error
+      });
+    }
 
     // Check for payment required error by multiple conditions
     const isPaymentRequired = error && (
@@ -40,11 +42,15 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
     );
 
     if (isPaymentRequired) {
-      console.log('🟢 StreamSummaryCard: PaymentRequiredError detected! Calling onPaymentRequired');
+      if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+        console.log('StreamSummaryCard: PaymentRequiredError detected! Calling onPaymentRequired');
+      }
       if (onPaymentRequired) {
         onPaymentRequired(error.paymentDetails);
       } else {
-        console.error('🔴 onPaymentRequired callback is not defined!');
+        if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+          console.error('onPaymentRequired callback is not defined!');
+        }
       }
     }
   }, [error, onPaymentRequired]);
@@ -117,16 +123,18 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
                 {t('streamSummaries.errorLoadingSummary', 'Error cargando el resumen. Intenta de nuevo más tarde.')}
               </span>
             </div>
-            {/* DEBUG: Show error details */}
-            <div className="text-xs text-yellow-300 bg-black/30 p-2 rounded font-mono">
-              <div>Name: {error?.name || 'unknown'}</div>
-              <div>Status: {error?.status || 'N/A'}</div>
-              <div>Message: {error?.message || 'N/A'}</div>
-              <div>Has paymentDetails: {error?.paymentDetails ? 'YES' : 'NO'}</div>
-              {error?.paymentDetails && (
-                <div>Price: {error.paymentDetails.price} USDC</div>
-              )}
-            </div>
+            {/* DEBUG: Show error details — only in debug mode */}
+            {process.env.REACT_APP_DEBUG_ENABLED === 'true' && (
+              <div className="text-xs text-yellow-300 bg-black/30 p-2 rounded font-mono">
+                <div>Name: {error?.name || 'unknown'}</div>
+                <div>Status: {error?.status || 'N/A'}</div>
+                <div>Message: {error?.message || 'N/A'}</div>
+                <div>Has paymentDetails: {error?.paymentDetails ? 'YES' : 'NO'}</div>
+                {error?.paymentDetails && (
+                  <div>Price: {error.paymentDetails.price} USDC</div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       );
@@ -173,8 +181,11 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
                   : <code className="block bg-zinc-800 text-violet-300 p-3 rounded-lg text-xs font-mono overflow-x-auto my-2" {...props} />,
               pre: ({node, ...props}) => <pre className="bg-zinc-800 rounded-lg overflow-x-auto my-2" {...props} />,
               blockquote: ({node, ...props}) => <blockquote className="border-l-4 border-violet-600 pl-4 italic text-text-secondary/80 my-2" {...props} />,
-              // eslint-disable-next-line jsx-a11y/anchor-has-content
-              a: ({node, ...props}) => <a className="text-violet-400 hover:text-violet-300 underline" {...props} />,
+              a: ({node, href, ...props}) => {
+                const safeHref = href?.startsWith('javascript:') ? '#' : href; // eslint-disable-line no-script-url
+                // eslint-disable-next-line jsx-a11y/anchor-has-content
+                return <a href={safeHref} className="text-violet-400 hover:text-violet-300 underline" {...props} />;
+              },
               strong: ({node, ...props}) => <strong className="font-bold text-violet-300" {...props} />,
               em: ({node, ...props}) => <em className="italic text-violet-300" {...props} />,
               hr: ({node, ...props}) => <hr className="border-zinc-700 my-4" {...props} />,

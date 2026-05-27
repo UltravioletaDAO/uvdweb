@@ -27,6 +27,8 @@ const FormField = ({
       placeholder,
       maxLength,
       tabIndex,
+      required: !optional,
+      'aria-required': !optional,
       className: `
         w-full px-4 py-3 bg-background-input border rounded-lg
         focus:ring-2 focus:ring-ultraviolet focus:border-transparent

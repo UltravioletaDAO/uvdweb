@@ -12,8 +12,8 @@
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 142.1 76.2% 36.3%;
-    --primary-foreground: 355.7 100% 97.3%;
+    --primary: 271 100% 50%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
@@ -29,7 +29,7 @@
 
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 142.1 76.2% 36.3%;
+    --ring: 271 100% 50%;
 
     --radius: 0.75rem;
 
@@ -66,17 +66,17 @@
 
   .form-input {
     @apply w-full px-4 py-3 border rounded-lg transition-all duration-200
-      focus:ring-2 focus:ring-indigo-500 focus:border-transparent
-      hover:border-indigo-300;
+      focus:ring-2 focus:ring-ultraviolet focus:border-transparent
+      hover:border-ultraviolet-light;
   }
 
   .btn-primary {
-    @apply px-8 py-3 bg-gradient-to-r from-indigo-600 to-purple-600
+    @apply px-8 py-3 bg-gradient-to-r from-ultraviolet-darker to-ultraviolet
       text-white font-semibold rounded-full shadow-lg
-      hover:from-indigo-700 hover:to-purple-700
+      hover:from-ultraviolet-dark hover:to-ultraviolet-light
       transform transition-all duration-200
       hover:scale-105 hover:shadow-xl
-      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-ultraviolet;
   }
 }
 

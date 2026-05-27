@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
@@ -11,26 +11,6 @@ import {
 
 const KarmaHelloLanding = () => {
   const { t } = useTranslation();
-  const [stats, setStats] = useState({
-    totalUsers: 2847,
-    messagesProcessed: 1284739,
-    tokensDistributed: 892749283,
-    activeStreams: 47
-  });
-
-  // Simulate real-time stats updates
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setStats(prev => ({
-        totalUsers: prev.totalUsers + Math.floor(Math.random() * 3),
-        messagesProcessed: prev.messagesProcessed + Math.floor(Math.random() * 50),
-        tokensDistributed: prev.tokensDistributed + Math.floor(Math.random() * 10000),
-        activeStreams: 47 + Math.floor(Math.random() * 5)
-      }));
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, []);
 
   const features = [
     {
@@ -177,13 +157,16 @@ const KarmaHelloLanding = () => {
                 Chat smarter, earn instantly, no investment required.
               </p>
 
-              {/* Live Stats */}
+              {/* Demo Stats — illustrative values, not live data */}
+              <div className="mb-2 text-xs text-yellow-400/80 text-center">
+                Demo data · not live
+              </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {[
-                  { label: 'Active Users', value: stats.totalUsers.toLocaleString(), icon: Users },
-                  { label: 'Messages Processed', value: (stats.messagesProcessed / 1000).toFixed(0) + 'K', icon: MessageCircle },
-                  { label: 'UVD Distributed', value: (stats.tokensDistributed / 1000000).toFixed(1) + 'M', icon: Coins },
-                  { label: 'Live Streams', value: stats.activeStreams, icon: PlayCircle }
+                  { label: 'Active Users', value: '2,847', icon: Users },
+                  { label: 'Messages Processed', value: '1,284K', icon: MessageCircle },
+                  { label: 'UVD Distributed', value: '892.7M', icon: Coins },
+                  { label: 'Live Streams', value: '47', icon: PlayCircle }
                 ].map((stat, idx) => (
                   <motion.div
                     key={idx}

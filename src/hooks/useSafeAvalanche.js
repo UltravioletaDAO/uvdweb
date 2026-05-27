@@ -1,8 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { getSafeInfo, getSafeBalances } from "../services/metrics/funds/safeService";
 
 const SAFE_ADDRESS = "0x52110a2Cc8B6bBf846101265edAAe34E753f3389";
-const REFRESH_INTERVAL = 2000;
+const REFRESH_INTERVAL = 30000;
 
 export function useSafeAvalanche() {
   const [owners, setOwners] = useState([]);
@@ -11,9 +11,14 @@ export function useSafeAvalanche() {
   const [tokens, setTokens] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const isFirstFetch = useRef(true);
 
   const fetchInfo = async () => {
-    setLoading(true);
+    // Only show the full loading spinner on the first fetch; subsequent
+    // interval-based refreshes update data silently to avoid flicker.
+    if (isFirstFetch.current) {
+      setLoading(true);
+    }
     try {
       const data = await getSafeInfo(SAFE_ADDRESS);
       setOwners(data.owners || []);
@@ -26,7 +31,10 @@ export function useSafeAvalanche() {
     } catch (err) {
       setError(err.message);
     } finally {
-      setLoading(false);
+      if (isFirstFetch.current) {
+        setLoading(false);
+        isFirstFetch.current = false;
+      }
     }
   };
 
@@ -38,7 +46,7 @@ export function useSafeAvalanche() {
     }, REFRESH_INTERVAL);
 
     return () => clearInterval(interval);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return { owners, threshold, fiatTotal, tokens, loading, error };
 }

@@ -58,6 +58,12 @@ const Delegations = () => {
           <span>{t('success.back_home')}</span>
         </motion.button>
 
+        {/* Discontinued service notice */}
+        <div className="max-w-4xl mx-auto mb-8 rounded-xl border border-yellow-500/50 bg-yellow-500/10 px-6 py-4 text-yellow-300">
+          <p className="font-semibold">{t('delegations.discontinued_notice.title')}</p>
+          <p className="mt-1 text-sm text-yellow-300/80">{t('delegations.discontinued_notice.body')}</p>
+        </div>
+
         <div className="max-w-4xl mx-auto space-y-12">
           {/* Main Title Section */}
           <div className="text-center">

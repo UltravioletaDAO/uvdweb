@@ -11,9 +11,9 @@ const Contributors = () => {
   return (
     <>
       <SEO
-        title="DAO Contributors & Builders | Open Source Web3 Development"
-        description="Meet the builders of UltraVioleta DAO. Join our community of Web3 developers, designers, and contributors building the future of decentralized technology in Latin America."
-        keywords="DAO contributors, Web3 builders, open source contributors, blockchain developers, Latin America developers, GitHub contributors, Web3 community, DAO members, decentralized development, crypto contributors, blockchain builders, community developers"
+        title="DAO Contributors & Builders | web4 & Web3 Development"
+        description="Meet the builders of UltraVioleta DAO. Join our community of web4 and Web3 developers, designers, and contributors building the agentic economy in Latin America."
+        keywords="DAO contributors, Web3 builders, web4 builders, agentic economy, open source contributors, blockchain developers, Latin America developers, GitHub contributors, Web3 community, DAO members, decentralized development, crypto contributors, blockchain builders, community developers"
       />
       <div className="min-h-screen bg-background">
       <div className="container mx-auto px-4 py-12 max-w-7xl">

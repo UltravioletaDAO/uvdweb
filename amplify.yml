@@ -16,6 +16,24 @@ frontend:
     baseDirectory: build
     files:
       - '**/*'
+  customHeaders:
+    - pattern: '/'
+      headers:
+        - key: 'Link'
+          value: >-
+            </.well-known/api-catalog>; rel="api-catalog",
+            </.well-known/mcp/server-card.json>; rel="mcp-server-card",
+            </.well-known/agent-skills/index.json>; rel="agent-skills",
+            </.well-known/oauth-protected-resource>; rel="oauth-protected-resource",
+            </agent-discovery>; rel="service-doc"
+    - pattern: '/**'
+      headers:
+        - key: 'Link'
+          value: '</.well-known/api-catalog>; rel="api-catalog"'
+    - pattern: '/.well-known/api-catalog'
+      headers:
+        - key: 'Content-Type'
+          value: 'application/linkset+json'
 
 
 

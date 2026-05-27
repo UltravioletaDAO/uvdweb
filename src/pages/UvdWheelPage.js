@@ -1514,7 +1514,7 @@ const UvdWheelPage = () => {
                             <button
                               onClick={() => loadTwitchRewards(true)}
                               disabled={isLoadingTwitch}
-                              className="flex-1 flex items-center justify-center gap-2 bg-[#9146FF] hover:bg-[#7C2BFF] text-white font-bold py-2 px-4 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                              className="flex-1 flex items-center justify-center gap-2 bg-twitch hover:bg-twitch-dark text-white font-bold py-2 px-4 rounded transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714Z"/>
@@ -1537,7 +1537,7 @@ const UvdWheelPage = () => {
                             </span>
                             <div 
                               onClick={() => setAutoUpdateTwitch(!autoUpdateTwitch)}
-                              className={`relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full cursor-pointer ${autoUpdateTwitch ? 'bg-[#9146FF]' : 'bg-gray-300'}`}
+                              className={`relative inline-block w-12 h-6 transition duration-200 ease-in-out rounded-full cursor-pointer ${autoUpdateTwitch ? 'bg-twitch' : 'bg-gray-300'}`}
                             >
                               <span
                                 className={`absolute left-1 top-1 w-4 h-4 transition duration-100 ease-in-out transform bg-white rounded-full ${autoUpdateTwitch ? 'translate-x-6' : 'translate-x-0'}`}

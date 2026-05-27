@@ -1,0 +1,103 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "version": "0.2.0",
+  "updated": "2026-05-27T00:00:00Z",
+  "provider": {
+    "name": "UltravioletaDAO",
+    "url": "https://ultravioletadao.xyz",
+    "contact": "mailto:agents@ultravioletadao.xyz"
+  },
+  "skills": [
+    {
+      "name": "apply-dao-membership",
+      "type": "action",
+      "description": "Submit a membership application to UltravioletaDAO. Collects name, email, skills and motivation, then POSTs to the applications API.",
+      "url": "https://ultravioletadao.xyz/.well-known/agent-skills/apply-dao-membership/SKILL.md",
+      "sha256": "PLACEHOLDER_COMPUTE_AFTER_FILE_CREATION",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name", "email", "skills", "motivation"],
+        "properties": {
+          "name": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "skills": { "type": "array", "items": { "type": "string" } },
+          "motivation": { "type": "string" }
+        }
+      },
+      "endpoint": "https://api.ultravioletadao.xyz/apply",
+      "method": "POST",
+      "auth": "none"
+    },
+    {
+      "name": "check-application-status",
+      "type": "query",
+      "description": "Check the status of a UltravioletaDAO membership application using the applicant's email address.",
+      "url": "https://ultravioletadao.xyz/.well-known/agent-skills/check-application-status/SKILL.md",
+      "sha256": "PLACEHOLDER_COMPUTE_AFTER_FILE_CREATION",
+      "inputSchema": {
+        "type": "object",
+        "required": ["email"],
+        "properties": {
+          "email": { "type": "string", "format": "email" }
+        }
+      },
+      "endpoint": "https://api.ultravioletadao.xyz/apply/status/{email}",
+      "method": "GET",
+      "auth": "none"
+    },
+    {
+      "name": "list-bounties",
+      "type": "query",
+      "description": "List available bounties in UltravioletaDAO. Supports filtering by status (open, in_progress, completed).",
+      "url": "https://ultravioletadao.xyz/.well-known/agent-skills/list-bounties/SKILL.md",
+      "sha256": "PLACEHOLDER_COMPUTE_AFTER_FILE_CREATION",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string", "enum": ["open", "in_progress", "completed"] },
+          "limit": { "type": "integer", "default": 10 }
+        }
+      },
+      "endpoint": "https://api.ultravioletadao.xyz/bounties",
+      "method": "GET",
+      "auth": "none"
+    },
+    {
+      "name": "x402-verify-payment",
+      "type": "action",
+      "description": "Verify a gasless EIP-3009 payment authorization via the UltravioletaDAO x402 facilitator. Supports Avalanche, Base, Celo and HyperEVM networks.",
+      "url": "https://ultravioletadao.xyz/.well-known/agent-skills/x402-verify-payment/SKILL.md",
+      "sha256": "PLACEHOLDER_COMPUTE_AFTER_FILE_CREATION",
+      "inputSchema": {
+        "type": "object",
+        "required": ["network", "authorization"],
+        "properties": {
+          "network": { "type": "string", "enum": ["avalanche", "base", "celo", "hyperevm"] },
+          "authorization": { "type": "object" }
+        }
+      },
+      "endpoint": "https://facilitator.ultravioletadao.xyz/verify",
+      "method": "POST",
+      "auth": "none"
+    },
+    {
+      "name": "x402-settle-payment",
+      "type": "action",
+      "description": "Execute settlement of a verified x402 micropayment. Enables autonomous agents to pay for HTTP resources without gas fees.",
+      "url": "https://ultravioletadao.xyz/.well-known/agent-skills/x402-settle-payment/SKILL.md",
+      "sha256": "PLACEHOLDER_COMPUTE_AFTER_FILE_CREATION",
+      "inputSchema": {
+        "type": "object",
+        "required": ["network", "authorization", "signature"],
+        "properties": {
+          "network": { "type": "string" },
+          "authorization": { "type": "object" },
+          "signature": { "type": "string" }
+        }
+      },
+      "endpoint": "https://facilitator.ultravioletadao.xyz/settle",
+      "method": "POST",
+      "auth": "none"
+    }
+  ]
+}

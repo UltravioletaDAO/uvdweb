@@ -98,10 +98,10 @@
     }
   },
   "home": {
-    "seoTitle": "Inicio - DAO líder de Web3 en América Latina",
-    "seoDescription": "Únete a UltraVioleta DAO - Construyendo el futuro de Web3 en América Latina mediante gobernanza descentralizada, innovación comunitaria y gestión colaborativa del tesoro.",
+    "seoTitle": "Inicio - DAO líder de web4 en América Latina",
+    "seoDescription": "Únete a UltraVioleta DAO - Latinoamérica en la vanguardia de web4. Construyendo la economía agentica con x402, ERC-8004, gobernanza descentralizada y gestión colaborativa del tesoro en Avalanche, Base, Celo.",
     "title": "Ultravioleta DAO",
-    "subtitle": "La comunidad Web3 más activa de Latinoamérica",
+    "subtitle": "Latinoamérica en la vanguardia de web4",
     "metrics": {
       "snapshot": {
         "title": "Snapshot Governance",
@@ -199,7 +199,7 @@
       "no_active_proposals": "Sin Propuestas Activas",
       "top_voters": "Top votantes de la comunidad",
       "see_all": "Ver Todo",
-      "from_proposals": "de propuestas",
+      "from_proposals": "De {{count}} propuestas",
       "active_members": "Miembros activos",
       "view_on_snapshot": "Ver en Snapshot",
       "state": "Estado",
@@ -299,7 +299,7 @@
       "events_desc": "Encuentros y charlas realizadas",
       "members_title": "Miembros destacados",
       "join": "Aplica a Ultravioleta DAO",
-      "view_all_members": "Ver todos los miembros",
+      "view_all_members": "Ver todos los miembros ({{count}})",
       "recent_activity": "Actividad Reciente",
       "quick_links": "Enlaces Rápidos",
       "discord": "Discord",
@@ -372,8 +372,8 @@
   "valueProps": {
     "title": "¿Por qué unirte a UltraVioleta?",
     "community": {
-      "title": "Comunidad Web3 Activa en Latinoamérica",
-      "description": "Únete a una de las comunidades Web3 más activas de América Latina. Accede a nuestro grupo privado de Telegram, conecta con expertos en múltiples áreas y colabora con líderes y desarrolladores clave del ecosistema.",
+      "title": "Comunidad web4 Activa en Latinoamérica",
+      "description": "Únete a una de las comunidades web4 más activas de América Latina. Accede a nuestro grupo privado de Telegram, conecta con expertos en múltiples áreas y colabora con líderes y desarrolladores construyendo la economía agentica.",
       "button": "Conócenos"
     },
     "token": {
@@ -508,6 +508,8 @@
       "references": "¿Alguien te recomendó?"
     },
     "validation": {
+      "fullName_required": "El nombre completo es requerido",
+      "fullName_length": "El nombre completo debe tener al menos 3 caracteres",
       "email_required": "El email es requerido",
       "email_format": "El email debe tener un formato válido",
       "social_required": "El usuario de {{social}} es requerido",
@@ -521,6 +523,9 @@
       "purpose_required": "Tu propósito es requerido",
       "purpose_length": "Mínimo 55 caracteres (actual: {{current}})",
       "purpose_too_long": "Máximo {{max}} caracteres (actual: {{current}})"
+    },
+    "progress": {
+      "step_label": "Paso {{current}} de {{total}}"
     },
     "buttons": {
       "next": "Siguiente",
@@ -544,7 +549,8 @@
     "message": "Tu solicitud ha sido recibida y está en proceso de revisión.",
     "waitlist": "Si el proceso de aplicación está completo, serás colocado en nuestra lista de espera con prioridad para futuras oportunidades.",
     "thanks": "¡Gracias por tu interés en formar parte de nuestra comunidad!",
-    "back_home": "Volver al inicio"
+    "back_home": "Volver al inicio",
+    "check_status": "Ver estado de mi aplicación"
   },
   "courses": {
     "title": "Nuestros Cursos"
@@ -553,7 +559,7 @@
     "title": "Nuestros Links",
     "swap_token": "Swap Token",
     "joinCommunity": "Únete a la Comunidad",
-    "subtitle": "Conéctate con nosotros en nuestros canales oficiales y forma parte de la comunidad Web3 más activa de LATAM",
+    "subtitle": "Conéctate con nosotros en nuestros canales oficiales y forma parte de la comunidad web4 más activa de LATAM",
     "followUs": "Síguenos en Twitter",
     "joinArena": "Únete en Arena",
     "viewTreasury": "Ver Tesorería"
@@ -795,6 +801,35 @@
       "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo",
       "auto_update": "Actualización automática",
       "verify_wallet_info": "Verificación de wallet habilitada (configurar REACT_APP_WHEEL_VERIFY_WALLET=false para desactivar)"
+    },
+    "wallet": {
+      "send_rewards": "Airdrop de Premios",
+      "connect_required": "Conecta tu wallet para enviar premios",
+      "connected": "Wallet conectada",
+      "connected_success": "¡Wallet conectada exitosamente!",
+      "balance": "Balance",
+      "total_rewards": "Total de premios",
+      "connect_button": "Conectar Wallet",
+      "approve_button": "Aprobar",
+      "send_button": "Enviar Premios",
+      "view_transaction": "Ver Transacción",
+      "approving": "Aprobando",
+      "sending": "Enviando...",
+      "approving_transaction": "Aprobando transacción...",
+      "sending_transaction": "Procesando transacción...",
+      "no_provider": "No se detectó wallet EVM. Por favor instala una wallet compatible.",
+      "user_rejected": "Solicitud rechazada por el usuario",
+      "connection_error": "Error al conectar con la wallet",
+      "network_add_error": "Error al agregar la red Avalanche",
+      "network_switch_error": "Error al cambiar a la red Avalanche",
+      "invalid_state": "Estado inválido. Verifica la conexión y el token",
+      "already_approved": "Tokens ya aprobados",
+      "approval_success": "¡Tokens aprobados con éxito!",
+      "approval_error": "Error al aprobar tokens",
+      "insufficient_allowance": "Permiso de token insuficiente. Por favor aprueba primero",
+      "send_success": "¡Premios enviados con éxito!",
+      "send_error": "Error al enviar premios",
+      "info": "Los premios se enviarán directamente desde tu wallet usando la red Avalanche C-Chain."
     }
   },
   "watch_to_earn": {
@@ -826,6 +861,10 @@
     "tutorial": {
       "title": "Cómo hacer Stake de BEAM",
       "video_title": "Tutorial: Hacer Staking con Tokens BEAM"
+    },
+    "discontinued_notice": {
+      "title": "Este servicio de delegación fue descontinuado.",
+      "body": "El validador de Beam operado por UltravioletaDAO ya no está activo. Esta página se mantiene solo como referencia."
     }
   },
   "facilitatorPage": {
@@ -1228,7 +1267,7 @@
     },
     "cta": {
       "title": "¿Quieres ser parte del cambio?",
-      "description": "Únete a la comunidad Web3 más activa de Latinoamérica y construye con nosotros el futuro descentralizado.",
+      "description": "Únete a la comunidad web4 más activa de Latinoamérica y construye con nosotros el futuro descentralizado.",
       "button": "Aplicar al DAO"
     }
   },

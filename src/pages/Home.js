@@ -1,12 +1,13 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { Link } from 'react-router-dom';
-import { MapPinIcon, ClockIcon, TrophyIcon, RocketLaunchIcon, FireIcon } from '@heroicons/react/24/outline';
+import { MapPinIcon, ClockIcon, TrophyIcon, RocketLaunchIcon, FireIcon, BanknotesIcon, ChartBarSquareIcon, CurrencyDollarIcon, ScaleIcon } from '@heroicons/react/24/outline';
 import { useTranslation } from 'react-i18next';
 import { getEvents } from '../services/events/Events';
 import { useCombinedSnapshotData } from '../hooks/useCombinedSnapshotData';
 import { useTokenMetrics } from '../hooks/useTokenMetrics';
 import { useSafeAvalanche } from '../hooks/useSafeAvalanche';
 import SEO from '../components/SEO';
+import HeroImage from '../components/HeroImage';
 
 // Lazy load heavy components
 const ApplicationForm = lazy(() => import('./ApplicationForm'));
@@ -47,28 +48,26 @@ const Home = () => {
   return (
     <>
       <SEO
-        title={t('home.seoTitle', 'Home - x402 Facilitator & Latin America Web3 DAO')}
-        description={t('home.seoDescription', 'UltraVioleta DAO - Pioneers of x402 Facilitator for gasless AI agent payments. Building Web3 in Latin America with EIP-3009 meta-transactions, decentralized governance, and collaborative treasury management on Avalanche, Base, Celo.')}
-        keywords="x402 facilitator, gasless payments, AI agent transactions, EIP-3009, meta-transactions, UltraVioleta DAO, Web3 LATAM, Latin America Blockchain, DAO Community, Decentralized Governance, Avalanche, Base, Celo, HyperEVM, Snapshot Voting, Web3 Development, DeFi Latin America, zero gas fees, trustless payments, cross-chain infrastructure, autonomous agents"
+        title={t('home.seoTitle', 'Home - Latin America at the cutting edge of web4 | UltraVioleta DAO')}
+        description={t('home.seoDescription', 'UltraVioleta DAO - Latin America at the cutting edge of web4. Pioneers of x402 Facilitator for gasless AI agent payments, building the agentic economy with EIP-3009, ERC-8004, decentralized governance, and collaborative treasury management on Avalanche, Base, Celo.')}
+        keywords="x402 facilitator, gasless payments, AI agent transactions, EIP-3009, meta-transactions, web4, agentic economy, autonomous agents, x402, ERC-8004, UltraVioleta DAO, Web3 LATAM, Latin America Blockchain, DAO Community, Decentralized Governance, Avalanche, Base, Celo, HyperEVM, Snapshot Voting, Web3 Development, DeFi Latin America, zero gas fees, trustless payments, cross-chain infrastructure"
       />
       <div className="min-h-screen bg-background">
       {/* Hero Section - Simplified without animations */}
-      <section className="relative overflow-hidden min-h-[40vh] flex items-center">
+      <section className="relative overflow-hidden min-h-[70vh] flex items-center">
         <div className="absolute inset-0">
-          <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('/hero-optimized.jpg')`,
-            }}
-          />
+          <HeroImage />
           <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/70 to-background" />
           <div className="absolute inset-0 bg-black/25" />
           <div className="absolute inset-0 bg-ultraviolet-darker/15 mix-blend-overlay" />
         </div>
 
-        <div className="container mx-auto px-4 py-12 relative z-10">
+        {/* Fade gradient to metrics section */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+
+        <div className="container mx-auto px-4 py-20 relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6
+            <h1 className="text-5xl md:text-7xl font-black text-white mb-6
               [text-shadow:_2px_2px_12px_rgba(106,0,255,0.5),_0_0_4px_rgba(106,0,255,0.8)]
               relative z-10">
               {t('home.title')}
@@ -95,13 +94,13 @@ const Home = () => {
       </section>
 
       {/* DAO Metrics - Static rendering for performance */}
-      <div className="bg-[#0a0a1b] py-[60px] px-[20px] border-t border-white/10">
+      <div className="bg-background py-[60px] px-[20px] border-t border-white/10">
         <div className="max-w-[1200px] mx-auto">
 
           {/* DAO LLC Legal Status Box */}
           <div className="bg-purple-600/5 border border-purple-600/20 rounded-xl p-5 mb-6 flex items-center justify-between flex-wrap gap-4">
             <div className="flex items-center gap-6 flex-1">
-              <div className="text-3xl">⚖️</div>
+              <ScaleIcon className="w-8 h-8 text-purple-400 flex-shrink-0" />
               <div>
                 <div className="text-xs text-gray-400 mb-1 uppercase tracking-wider">
                   {t('home.metrics.legal.title')}
@@ -148,9 +147,9 @@ const Home = () => {
           <div className={`grid grid-cols-1 ${tokenData.priceUsd && parseFloat(tokenData.priceUsd) > 0 && tokenData.holderCount > 0 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-6`}>
 
             {/* Community Vault Box */}
-            <div className="bg-emerald-600/5 border border-emerald-600/20 rounded-xl p-6 text-center min-h-[180px] flex flex-col">
-              <div className="text-sm text-gray-400 mb-2 uppercase tracking-wider">
-                🏦 {t('home.metrics.funds.community_vault')}
+            <div className="bg-emerald-600/5 border border-emerald-600/20 rounded-xl p-6 text-center min-h-[180px] flex flex-col transition-all duration-300 hover:border-emerald-500/50 hover:bg-emerald-600/10">
+              <div className="text-sm text-gray-400 mb-2 uppercase tracking-wider flex items-center justify-center gap-1.5">
+                <BanknotesIcon className="w-4 h-4" /> {t('home.metrics.funds.community_vault')}
               </div>
               <div className="flex-1 flex flex-col justify-center">
                 <div className="text-3xl font-bold text-white mb-2">
@@ -166,9 +165,9 @@ const Home = () => {
             </div>
 
             {/* Snapshot Governance Box */}
-            <div className="bg-violet-600/5 border border-violet-600/20 rounded-xl p-6 text-center min-h-[180px] flex flex-col">
-              <div className="text-sm text-gray-400 mb-2 uppercase tracking-wider">
-                🗳️ {t('home.metrics.snapshot.title')}
+            <div className="bg-violet-600/5 border border-violet-600/20 rounded-xl p-6 text-center min-h-[180px] flex flex-col transition-all duration-300 hover:border-violet-500/50 hover:bg-violet-600/10">
+              <div className="text-sm text-gray-400 mb-2 uppercase tracking-wider flex items-center justify-center gap-1.5">
+                <ChartBarSquareIcon className="w-4 h-4" /> {t('home.metrics.snapshot.title')}
               </div>
               <div className="flex-1 flex flex-col justify-center">
                 <div className="flex justify-around mb-2">
@@ -200,9 +199,9 @@ const Home = () => {
 
             {/* Token UVD Box - only show when real data is available */}
             {tokenData.priceUsd && parseFloat(tokenData.priceUsd) > 0 && tokenData.holderCount > 0 && (
-            <div className="bg-amber-600/5 border border-amber-600/20 rounded-xl p-6 text-center relative min-h-[180px] flex flex-col group">
-              <div className="text-sm text-gray-400 mb-2 uppercase tracking-wider">
-                💰 {t('home.metrics.token.title_full')}
+            <div className="bg-amber-600/5 border border-amber-600/20 rounded-xl p-6 text-center relative min-h-[180px] flex flex-col group transition-all duration-300 hover:border-amber-500/50 hover:bg-amber-600/10">
+              <div className="text-sm text-gray-400 mb-2 uppercase tracking-wider flex items-center justify-center gap-1.5">
+                <CurrencyDollarIcon className="w-4 h-4" /> {t('home.metrics.token.title_full')}
               </div>
               <div className="flex-1 flex flex-col justify-center">
                 <div className="text-2xl font-bold text-white mb-2">
