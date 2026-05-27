@@ -845,7 +845,7 @@
     "community": "Communauté",
     "legal": "Mentions légales",
     "brand": {
-      "tagline": "Collectif Web3",
+      "tagline": "Collectif web4",
       "description": "Nous concevons des systèmes de gouvernance, des expériences membres et des moteurs de croissance pour les communautés qui vivent on-chain. Ultravioleta DAO réunit bâtisseurs, stratèges et opérateurs pour lancer des écosystèmes tokenisés avec des résultats mesurables."
     },
     "navigation_title": "Navigation",
@@ -1159,7 +1159,7 @@
       "infrastructure": "Ce nœud n'a pas été construit avec des bâtons et du ruban adhésif :",
       "deployment": "Nous l'avons déployé avec une infrastructure pro, Terraform complet sur AWS, fait avec amour et précision par @0xultravioleta lors de streams Twitch.",
       "reliability": "Ça ne tombera pas. Ça respire communauté et uptime.",
-      "backed": "Soutenu par la communauté Web3 la plus loyale et active en LATAM",
+      "backed": "Soutenu par la communauté web4 la plus loyale et active en LATAM",
       "commitment": "Engagé envers la décentralisation, la transparence et la haute performance",
       "infrastructure_code": "100% Infra-as-Code, prêt à opérer dans plusieurs régions",
       "join_movement": "Vous voulez faire partie du mouvement ?",
