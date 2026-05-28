@@ -1,0 +1,57 @@
+# Frontend CI — UltravioletaDAO (uvdweb)
+# Gate de calidad ANTES de que Amplify despliegue. Branch protection en main
+# debe requerir este workflow (ver docs/PIPELINE_SETUP.md).
+#
+# Nota brownfield: el build corre con CI=false para fallar solo ante ERRORES de
+# compilación (no warnings preexistentes). eslint es informativo al inicio.
+# Endurecer (CI=true / --max-warnings=0) cuando los warnings estén limpios.
+name: Frontend CI
+
+on:
+  push:
+    branches: [develop, main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality-gates:
+    name: Lint, Test & Build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install
+        run: npm ci
+
+      # 1. Lint — informativo (no bloquea por warnings heredados)
+      - name: Lint (informativo)
+        run: npx eslint src/ --ext .js,.jsx || true
+        continue-on-error: true
+
+      # 2. Unit tests — BLOQUEA. passWithNoTests hasta que haya suite real.
+      - name: Unit Tests
+        run: npm test -- --watchAll=false --passWithNoTests
+        env:
+          CI: true
+          REACT_APP_API_URL: http://localhost:3001
+          REACT_APP_DEBUG_ENABLED: 'false'
+
+      # 3. Build — BLOQUEA ante errores de compilación reales.
+      - name: Build verification
+        run: npm run build
+        env:
+          CI: false
+          REACT_APP_API_URL: https://api.ultravioletadao.xyz
+          REACT_APP_DEBUG_ENABLED: 'false'
+          REACT_APP_STREAM_SUMMARIES_API: https://api.ultravioletadao.xyz
+
+      # 4. Health check del artefacto
+      - name: Verificar build
+        run: |
+          test -f build/index.html || { echo "ERROR: falta build/index.html"; exit 1; }
+          SIZE=$(du -sk build | cut -f1)
+          echo "Build size: ${SIZE}KB"

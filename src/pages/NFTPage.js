@@ -243,7 +243,7 @@ const NFTPage = () => {
 
                   <div className="bg-gradient-to-r from-yellow-400/20 to-yellow-600/20 border border-yellow-500/30 rounded p-2">
                     <div className="text-center text-xs">
-                      <span className="font-bold text-yellow-700 dark:text-yellow-300">
+                      <span className="font-bold text-yellow-300">
                         🌟 Fibonacci NFTs (2X Rewards): #1, #2, #3, #5, #8, #13, #21, #34, #55
                       </span>
                     </div>

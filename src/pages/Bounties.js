@@ -11,6 +11,7 @@ import WalletConnect from '../components/WalletConnect';
 import { ethers } from 'ethers';
 import { bountiesAPI, legacyAPI } from '../services/api';
 import { useBounties, useWhitelist } from '../hooks';
+import { useWallet } from '../contexts/WalletContext';
 
 // Helper para mostrar notificaciones toast
 const showToast = {
@@ -61,6 +62,9 @@ const Bounties = () => {
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
 
+  // ── Wallet state from shared context ──────────────────────────────────────
+  const { address: walletAddress, isConnected: walletConnected, provider: web3Provider, syncFromExternal, disconnect: disconnectWalletCtx } = useWallet();
+
   // Custom hooks
   const {
     loadingBounties,
@@ -91,15 +95,12 @@ const Bounties = () => {
   const [submissionLoading, setSubmissionLoading] = useState(false);
   const [submissionError, setSubmissionError] = useState('');
 
-  // Estados para Web3 y votación
-  const [walletConnected, setWalletConnected] = useState(false);
-  const [walletAddress, setWalletAddress] = useState(null);
+  // UI-only wallet states (not connection state — that lives in context)
   const [submissions, setSubmissions] = useState([]);
   const [loadingSubmissions, setLoadingSubmissions] = useState(false);
   const [isWalletModalOpen, setIsWalletModalOpen] = useState(false);
   const [isWalletHover, setIsWalletHover] = useState(false);
   const [ensName, setEnsName] = useState(null);
-  const [web3Provider, setWeb3Provider] = useState(null);
 
   // Estado para mostrar/ocultar panel de creación
   const [showCreatePanel, setShowCreatePanel] = useState(false);
@@ -112,35 +113,20 @@ const Bounties = () => {
     Icon: COLUMN_ICONS[key],
   })), [t]);
 
-  // Al montar, intenta restaurar la wallet desde localStorage y verificar whitelist
+  // Verify whitelist once wallet is connected (context restores address on mount)
   useEffect(() => {
-    const restoreWalletAndCheckWhitelist = async () => {
-      const savedWallet = localStorage.getItem('walletAddress');
-      if (savedWallet && window.ethereum) {
-        setWalletConnected(true);
-        setWalletAddress(savedWallet);
-
-        // Crear provider y verificar whitelist
-        try {
-          const provider = new ethers.providers.Web3Provider(window.ethereum, 'any');
-          setWeb3Provider(provider);
-          await checkWhitelistStatus(savedWallet, provider);
-        } catch {
-          // Si falla, el usuario deberá reconectar manualmente
-        }
-      }
-    };
-
-    restoreWalletAndCheckWhitelist();
-  }, [checkWhitelistStatus]);
+    if (walletConnected && walletAddress && web3Provider) {
+      checkWhitelistStatus(walletAddress, web3Provider);
+    }
+  }, [walletConnected, walletAddress, web3Provider, checkWhitelistStatus]);
 
   // Buscar ENS asociado a la wallet conectada
   useEffect(() => {
     const fetchENSName = async (wallet) => {
       try {
         if (!wallet) return;
-        const provider = new ethers.providers.JsonRpcProvider('https://rpc.ankr.com/eth');
-        const ens = await provider.lookupAddress(wallet);
+        const rpcProvider = new ethers.providers.JsonRpcProvider('https://rpc.ankr.com/eth');
+        const ens = await rpcProvider.lookupAddress(wallet);
         setEnsName(ens);
       } catch {
         setEnsName(null);
@@ -254,23 +240,17 @@ const Bounties = () => {
   };
 
   // Funciones para Web3 y votación
+  // WalletConnect UI component calls this after completing EIP-6963 connection.
+  // We sync the result into shared context so all pages see the same state.
   const handleWalletConnected = async (address, chainId, provider) => {
-    setWalletConnected(true);
-    setWalletAddress(address);
-    setWeb3Provider(provider);
+    syncFromExternal(address, chainId, provider);
     setIsWalletModalOpen(false);
-    localStorage.setItem('walletAddress', address);
-
-    // Validar whitelist usando el hook
     await checkWhitelistStatus(address, provider);
   };
 
   const handleWalletDisconnect = () => {
-    setWalletConnected(false);
-    setWalletAddress(null);
-    setWeb3Provider(null);
+    disconnectWalletCtx();
     resetWhitelist();
-    localStorage.removeItem('walletAddress');
   };
 
   // Utilidad para abreviar la dirección

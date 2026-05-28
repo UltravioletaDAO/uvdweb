@@ -23,4 +23,10 @@ i18n
     }
   });
 
-export default i18n; 
+// F0-3: Sync document lang attribute with active i18n language
+document.documentElement.lang = (i18n.language || 'es').slice(0, 2);
+i18n.on('languageChanged', (lng) => {
+  document.documentElement.lang = (lng || 'es').slice(0, 2);
+});
+
+export default i18n;

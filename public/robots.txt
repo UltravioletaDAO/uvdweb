@@ -152,6 +152,10 @@ Disallow: /
 User-agent: *
 Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid
 
+# Content Signals (https://contentsignals.org/)
+# Declaracion de preferencias de uso de contenido por IA
+Content-Signal: ai-train=no, search=yes, ai-input=yes
+
 # Sitemap locations
 Sitemap: https://ultravioleta.xyz/sitemap-index.xml
 Sitemap: https://ultravioleta.xyz/sitemap.xml

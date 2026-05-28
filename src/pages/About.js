@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import ApplicationForm from './ApplicationForm';
@@ -215,7 +215,7 @@ const About = () => {
         description={t('about.seoDescription')}
         keywords="About UltraVioleta DAO, Web3 Latin America, DAO Mission, Decentralized Community, Blockchain LATAM, DAO Values, Web3 Education, Community Governance"
       />
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white from-background to-background-lighter">
       {/* Hero Section */}
       <motion.section 
         initial={{ opacity: 0 }}
@@ -246,25 +246,25 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="prose prose-lg dark:prose-invert max-w-none"
+            className="prose prose-lg  max-w-none"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 text-text-primary">
               {t('about.origin.title')}
             </h2>
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-4">
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-text-secondary leading-relaxed">
                   {t('about.origin.paragraph1')}
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-text-secondary leading-relaxed">
                   {t('about.origin.paragraph2')}
                 </p>
               </div>
               <div className="space-y-4">
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-text-secondary leading-relaxed">
                   {t('about.origin.paragraph3')}
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-text-secondary leading-relaxed">
                   {t('about.origin.paragraph4')}
                 </p>
               </div>
@@ -274,13 +274,13 @@ const About = () => {
       </section>
 
       {/* Timeline */}
-      <section className="py-16 lg:py-24 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 lg:py-24 bg-gray-50 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900 dark:text-white"
+            className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900 text-text-primary"
           >
             {t('about.timeline.title')}
           </motion.h2>
@@ -304,17 +304,17 @@ const About = () => {
                 }`}
               >
                 <div className={`w-full md:w-1/2 ${index % 2 === 0 ? 'md:pr-8' : 'md:pl-8'}`}>
-                  <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 ml-12 md:ml-0">
+                  <div className="bg-white bg-background-lighter rounded-lg shadow-lg p-6 ml-12 md:ml-0">
                     <div className="flex items-center mb-3">
                       <milestone.icon className="h-6 w-6 text-purple-600 mr-3" />
                       <span className="text-sm font-semibold text-purple-600">
                         {milestone.date}
                       </span>
                     </div>
-                    <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                    <h3 className="text-xl font-bold mb-2 text-gray-900 text-text-primary">
                       {milestone.title}
                     </h3>
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    <p className="text-gray-700 text-text-secondary mb-4">
                       {milestone.description}
                     </p>
 
@@ -428,14 +428,14 @@ const About = () => {
                                     </span>
                                   </div>
                                   <div>
-                                    <h4 className="font-semibold text-sm text-gray-800 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                                    <h4 className="font-semibold text-sm text-gray-800 text-text-primary group-hover:text-purple-600 group-hover:text-ultraviolet-light transition-colors">
                                       {sponsor.name}
                                     </h4>
                                     <a
                                       href={`https://x.com/${sponsor.twitter.substring(1)}`}
                                       target="_blank"
                                       rel="noopener noreferrer"
-                                      className="flex items-center gap-1 text-xs text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                                      className="flex items-center gap-1 text-xs text-gray-600 text-text-secondary hover:text-purple-600 hover:text-ultraviolet-light transition-colors"
                                     >
                                       <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
@@ -458,7 +458,7 @@ const About = () => {
                           ))}
                         </div>
                         <div className="mt-3 text-center">
-                          <p className="text-xs text-gray-500 dark:text-gray-400 italic">
+                          <p className="text-xs text-gray-500 text-text-secondary italic">
                             {t('about.timeline.sponsors.gratitude')}
                           </p>
                         </div>
@@ -468,7 +468,7 @@ const About = () => {
                 </div>
                 
                 {/* Timeline dot */}
-                <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-purple-600 rounded-full border-4 border-white dark:border-gray-900"></div>
+                <div className="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-purple-600 rounded-full border-4 border-white border-background"></div>
               </motion.div>
             ))}
           </motion.div>
@@ -484,10 +484,10 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 text-text-primary">
               {t('about.vision.title')}
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 text-text-secondary max-w-3xl mx-auto">
               {t('about.vision.description')}
             </p>
           </motion.div>
@@ -498,10 +498,10 @@ const About = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900 text-text-primary">
               {t('about.mission.title')}
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 text-text-secondary max-w-3xl mx-auto">
               {t('about.mission.description')}
             </p>
           </motion.div>
@@ -510,7 +510,7 @@ const About = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-900 dark:text-white"
+            className="text-2xl md:text-3xl font-bold mb-8 text-center text-gray-900 text-text-primary"
           >
             {t('about.values.title')}
           </motion.h3>
@@ -526,13 +526,13 @@ const About = () => {
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center"
+                className="bg-white bg-background-lighter rounded-lg shadow-lg p-6 text-center"
               >
                 <value.icon className="h-12 w-12 text-purple-600 mx-auto mb-4" />
-                <h4 className="text-xl font-bold mb-2 text-gray-900 dark:text-white">
+                <h4 className="text-xl font-bold mb-2 text-gray-900 text-text-primary">
                   {value.title}
                 </h4>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-700 text-text-secondary">
                   {value.description}
                 </p>
               </motion.div>
@@ -542,13 +542,13 @@ const About = () => {
       </section>
 
       {/* Activities & Initiatives */}
-      <section className="py-16 lg:py-24 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 lg:py-24 bg-gray-50 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900 dark:text-white"
+            className="text-3xl md:text-4xl font-bold mb-12 text-center text-gray-900 text-text-primary"
           >
             {t('about.activities.title')}
           </motion.h2>
@@ -571,12 +571,12 @@ const About = () => {
               <motion.div
                 key={activity}
                 variants={fadeInUp}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+                className="bg-white bg-background-lighter rounded-lg shadow-lg p-6"
               >
-                <h3 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">
+                <h3 className="text-xl font-bold mb-3 text-gray-900 text-text-primary">
                   {t(`about.activities.${activity}.title`)}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300">
+                <p className="text-gray-700 text-text-secondary">
                   {t(`about.activities.${activity}.description`)}
                 </p>
               </motion.div>
@@ -593,17 +593,17 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 text-text-primary">
               {t('about.governance.title')}
             </h2>
-            <div className="prose prose-lg dark:prose-invert max-w-none">
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
+            <div className="prose prose-lg  max-w-none">
+              <p className="text-gray-700 text-text-secondary mb-4">
                 {t('about.governance.paragraph1')}
               </p>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">
+              <p className="text-gray-700 text-text-secondary mb-4">
                 {t('about.governance.paragraph2')}
               </p>
-              <p className="text-gray-700 dark:text-gray-300">
+              <p className="text-gray-700 text-text-secondary">
                 {t('about.governance.paragraph3')}
               </p>
             </div>
@@ -612,52 +612,52 @@ const About = () => {
       </section>
 
       {/* Current State & Projects */}
-      <section className="py-16 lg:py-24 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 lg:py-24 bg-gray-50 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 text-gray-900 text-text-primary">
               {t('about.current.title')}
             </h2>
             <div className="grid md:grid-cols-2 gap-8 mb-8">
               <div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+                <h3 className="text-xl font-bold mb-4 text-gray-900 text-text-primary">
                   {t('about.current.structure.title')}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                <p className="text-gray-700 text-text-secondary mb-4">
                   {t('about.current.structure.description')}
                 </p>
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">
+                <h3 className="text-xl font-bold mb-4 text-gray-900 text-text-primary">
                   {t('about.current.projects.title')}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4">
+                <p className="text-gray-700 text-text-secondary mb-4">
                   {t('about.current.projects.description')}
                 </p>
               </div>
             </div>
 
             {/* Legal Status Section */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mt-8">
-              <h3 className="text-2xl font-bold mb-6 text-gray-900 dark:text-white flex items-center">
+            <div className="bg-white bg-background-lighter rounded-lg shadow-lg p-8 mt-8">
+              <h3 className="text-2xl font-bold mb-6 text-gray-900 text-text-primary flex items-center">
                 <AcademicCapIcon className="h-8 w-8 text-purple-600 mr-3" />
                 {t('about.current.legal.title')}
               </h3>
               <div className="space-y-4">
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-text-secondary leading-relaxed">
                   {t('about.current.legal.description')}
                 </p>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-text-secondary leading-relaxed">
                   {t('about.current.legal.whatIsDuna')}{' '}
                   <a
                     href="https://a16zcrypto.com/posts/article/duna-for-daos/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-purple-600 hover:text-purple-700 dark:text-purple-400 dark:hover:text-purple-300 underline font-semibold"
+                    className="text-purple-600 hover:text-purple-700 text-ultraviolet-light hover:text-ultraviolet-light underline font-semibold"
                   >
                     {t('about.current.legal.dunaLinkText')}
                   </a>.
@@ -667,7 +667,7 @@ const About = () => {
                   href="https://wyobiz.wyo.gov/business/FilingDetails.aspx?eFNum=231152217007187086250219198232174206067107184230"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-3 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400 border border-green-200 dark:border-green-700 rounded-lg hover:bg-green-100 dark:hover:bg-green-900/30 transition-all"
+                  className="inline-flex items-center gap-2 px-4 py-3 bg-green-50 bg-green-900/20 text-green-700 text-green-400 border border-green-200 border-green-700 rounded-lg hover:bg-green-100 hover:bg-green-900/30 transition-all"
                 >
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -678,18 +678,18 @@ const About = () => {
                   </svg>
                 </a>
 
-                <div className="bg-purple-50 dark:bg-purple-900/20 border-l-4 border-purple-600 p-4 rounded">
-                  <h4 className="font-semibold text-gray-900 dark:text-white mb-2">
+                <div className="bg-purple-50 bg-ultraviolet-darker/20 border-l-4 border-purple-600 p-4 rounded">
+                  <h4 className="font-semibold text-gray-900 text-text-primary mb-2">
                     {t('about.current.legal.details.title')}
                   </h4>
-                  <ul className="space-y-2 text-gray-700 dark:text-gray-300">
+                  <ul className="space-y-2 text-gray-700 text-text-secondary">
                     <li>• <strong>{t('about.current.legal.details.entity')}:</strong> {t('about.current.legal.details.entity_value')}</li>
                     <li>• <strong>{t('about.current.legal.details.jurisdiction')}:</strong> {t('about.current.legal.details.jurisdiction_value')}</li>
                     <li>• <strong>{t('about.current.legal.details.registered')}:</strong> {t('about.current.legal.details.registered_value')}</li>
                     <li className="break-words">• <strong>{t('about.current.legal.details.treasury')}:</strong> <span className="break-all text-sm">{t('about.current.legal.details.treasury_value')}</span></li>
                   </ul>
                 </div>
-                <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
+                <p className="text-gray-700 text-text-secondary leading-relaxed">
                   {t('about.current.legal.benefits')}
                 </p>
               </div>
@@ -706,10 +706,10 @@ const About = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900 dark:text-white">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-gray-900 text-text-primary">
               {t('about.featuredOn.title')}
             </h2>
-            <p className="text-xl text-gray-700 dark:text-gray-300 text-center mb-12 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-700 text-text-secondary text-center mb-12 max-w-3xl mx-auto">
               {t('about.featuredOn.subtitle')}
             </p>
 
@@ -719,7 +719,7 @@ const About = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300"
+                className="bg-white bg-background-lighter rounded-lg shadow-lg overflow-hidden group hover:shadow-xl transition-all duration-300"
               >
                 <div className="relative h-48 bg-gradient-to-br from-purple-600 to-blue-600">
                   <div className="absolute inset-0 flex items-center justify-center">
@@ -732,20 +732,20 @@ const About = () => {
                   </div>
                 </div>
                 <div className="p-6">
-                  <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
+                  <h3 className="text-lg font-bold mb-2 text-gray-900 text-text-primary group-hover:text-purple-600 group-hover:text-ultraviolet-light transition-colors">
                     Cointelegraph
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+                  <p className="text-sm text-gray-600 text-text-secondary mb-3">
                     {t('about.featuredOn.cointelegraph.date')}
                   </p>
-                  <p className="text-gray-700 dark:text-gray-300 mb-4 line-clamp-3">
+                  <p className="text-gray-700 text-text-secondary mb-4 line-clamp-3">
                     {t('about.featuredOn.cointelegraph.description')}
                   </p>
                   <a
                     href="https://es.cointelegraph.com/news/blockchain-es-una-herramienta-de-coordinacion-y-transparencia-radical-segun-ultravioletadao"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 font-semibold"
+                    className="inline-flex items-center text-purple-600 text-ultraviolet-light hover:text-purple-700 hover:text-ultraviolet-light font-semibold"
                   >
                     {t('about.featuredOn.readMore')}
                     <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -763,7 +763,7 @@ const About = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: idx * 0.1 }}
-                  className="bg-gray-100 dark:bg-gray-800/50 rounded-lg shadow-lg overflow-hidden border-2 border-dashed border-gray-300 dark:border-gray-700"
+                  className="bg-gray-100 bg-background-lighter/50 rounded-lg shadow-lg overflow-hidden border-2 border-dashed border-gray-300 border-white/10"
                 >
                   <div className="relative h-48 bg-gradient-to-br from-gray-400 to-gray-500 opacity-20">
                     <div className="absolute inset-0 flex items-center justify-center">
@@ -771,14 +771,14 @@ const About = () => {
                     </div>
                   </div>
                   <div className="p-6">
-                    <div className="h-4 bg-gray-300 dark:bg-gray-700 rounded w-3/4 mb-3"></div>
-                    <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-1/2 mb-3"></div>
+                    <div className="h-4 bg-gray-300 bg-background-lighter rounded w-3/4 mb-3"></div>
+                    <div className="h-3 bg-gray-300 bg-background-lighter rounded w-1/2 mb-3"></div>
                     <div className="space-y-2">
-                      <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded"></div>
-                      <div className="h-3 bg-gray-300 dark:bg-gray-700 rounded w-5/6"></div>
+                      <div className="h-3 bg-gray-300 bg-background-lighter rounded"></div>
+                      <div className="h-3 bg-gray-300 bg-background-lighter rounded w-5/6"></div>
                     </div>
                     <div className="mt-4">
-                      <span className="text-gray-500 dark:text-gray-400 text-sm italic">
+                      <span className="text-gray-500 text-text-secondary text-sm italic">
                         {t('about.featuredOn.comingSoon')}
                       </span>
                     </div>
@@ -791,7 +791,7 @@ const About = () => {
       </section>
 
       {/* Blockchain Meaning */}
-      <section className="py-16 lg:py-24 bg-gray-50 dark:bg-gray-900">
+      <section className="py-16 lg:py-24 bg-gray-50 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -820,10 +820,10 @@ const About = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8"
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 dark:text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gray-900 text-text-primary">
             {t('about.cta.title')}
           </h2>
-          <p className="text-xl text-gray-700 dark:text-gray-300 mb-8">
+          <p className="text-xl text-gray-700 text-text-secondary mb-8">
             {t('about.cta.description')}
           </p>
           <button

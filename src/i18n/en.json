@@ -66,7 +66,7 @@
     "community": "Community",
     "legal": "Legal",
     "brand": {
-      "tagline": "Web3 Collective",
+      "tagline": "web4 Collective",
       "description": "We design governance, membership experiences, and growth engines for communities that live on-chain. UltraVioleta DAO unifies builders, strategists, and operators to launch tokenized ecosystems with measurable outcomes."
     },
     "navigation_title": "Navigation",
@@ -98,10 +98,10 @@
     }
   },
   "home": {
-    "seoTitle": "Home - Latin America's Leading Web3 DAO",
-    "seoDescription": "Join UltraVioleta DAO - Building the future of Web3 in Latin America through decentralized governance, community innovation, and collaborative treasury management.",
+    "seoTitle": "Home - Latin America's Leading web4 DAO",
+    "seoDescription": "Join UltraVioleta DAO - Latin America at the cutting edge of web4. Building the agentic economy through x402, ERC-8004, decentralized governance, and collaborative treasury management on Avalanche, Base, Celo.",
     "title": "Ultravioleta DAO",
-    "subtitle": "The most active Web3 community in Latin America",
+    "subtitle": "Latin America at the cutting edge of web4",
     "metrics": {
       "snapshot": {
         "title": "Snapshot Governance",
@@ -430,8 +430,8 @@
   "valueProps": {
     "title": "Why Join UltraVioleta?",
     "community": {
-      "title": "Active Latin American Web3 Community",
-      "description": "Join one of the most active Web3 communities in Latin America. Get private Telegram access, connect with experts across multiple areas, and collaborate with key leaders and developers in the ecosystem.",
+      "title": "Active Latin American web4 Community",
+      "description": "Join one of the most active web4 communities in Latin America. Get private Telegram access, connect with experts across multiple areas, and collaborate with key leaders and developers building the agentic economy.",
       "button": "Join Us"
     },
     "token": {
@@ -566,6 +566,8 @@
       "references": "Did someone recommend you?"
     },
     "validation": {
+      "fullName_required": "Full name is required",
+      "fullName_length": "Full name must be at least 3 characters",
       "email_required": "Email is required",
       "email_format": "Email must have a valid format",
       "social_required": "{{social}} username is required",
@@ -579,6 +581,9 @@
       "purpose_required": "Your purpose is required",
       "purpose_length": "Minimum 55 characters (current: {{current}})",
       "purpose_too_long": "Maximum {{max}} characters (current: {{current}})"
+    },
+    "progress": {
+      "step_label": "Step {{current}} of {{total}}"
     },
     "buttons": {
       "next": "Next",
@@ -602,7 +607,8 @@
     "message": "Your application has been received and is under review.",
     "waitlist": "If the application process is complete, you will be placed on our priority waitlist for future opportunities.",
     "thanks": "Thank you for your interest in joining our community!",
-    "back_home": "Back to Home"
+    "back_home": "Back to Home",
+    "check_status": "Check my application status"
   },
   "courses": {
     "title": "Our Courses"
@@ -623,7 +629,7 @@
     "title": "Our Links",
     "swap_token": "Swap Token",
     "joinCommunity": "Join the Community",
-    "subtitle": "Connect with us on our official channels and become part of the most active Web3 community in LATAM",
+    "subtitle": "Connect with us on our official channels and become part of the most active web4 community in LATAM",
     "followUs": "Follow us on Twitter",
     "joinArena": "Join us on Arena",
     "viewTreasury": "View Treasury"
@@ -887,7 +893,7 @@
       "infrastructure": "🎯 This node wasn't built with sticks and tape:",
       "deployment": "We've deployed it with pro infrastructure, full Terraform on AWS, made with love and precision by @0xultravioleta during Twitch streams.",
       "reliability": "This won't fall, mate. This breathes community and uptime.",
-      "backed": "🌞 Backed by the most loyal and active Web3 community in LATAM",
+      "backed": "🌞 Backed by the most loyal and active web4 community in LATAM",
       "commitment": "🌎 Committed to decentralization, transparency and high performance",
       "infrastructure_code": "🛠️ 100% Infra-as-Code, ready to operate in multiple regions",
       "join_movement": "🎯 Want to be part of the movement?",
@@ -897,6 +903,10 @@
     "tutorial": {
       "title": "How to Stake BEAM",
       "video_title": "Tutorial: Staking BEAM Tokens"
+    },
+    "discontinued_notice": {
+      "title": "This delegation service has been discontinued.",
+      "body": "The Beam validator operated by UltravioletaDAO is no longer active. This page is kept for reference only."
     }
   },
   "applicationStatus": {
@@ -1451,7 +1461,7 @@
     },
     "cta": {
       "title": "Want to be part of the change?",
-      "description": "Join the most active Web3 community in Latin America and build the decentralized future with us.",
+      "description": "Join the most active web4 community in Latin America and build the decentralized future with us.",
       "button": "Apply to DAO"
     }
   },
@@ -2527,7 +2537,7 @@
     "subtitle": "Connecting AI agents with the UltraVioleta DAO ecosystem",
     "whoWeAre": {
       "title": "Who We Are",
-      "description": "UltraVioleta DAO is a Web3-native community building the future of decentralized technology in Latin America. We embrace AI agents as first-class citizens in our ecosystem, providing infrastructure and tools for autonomous participation.",
+      "description": "UltraVioleta DAO is a web4-native community at the cutting edge of the agentic economy in Latin America. We embrace AI agents as first-class citizens in our ecosystem, providing infrastructure and tools for autonomous participation.",
       "highlights": [
         "AI-friendly governance systems",
         "Agent-accessible APIs and protocols",

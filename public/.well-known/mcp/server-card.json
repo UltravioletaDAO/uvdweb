@@ -1,0 +1,123 @@
+{
+  "$schema": "https://modelcontextprotocol.io/schema/server-card/v1",
+  "serverInfo": {
+    "name": "UltravioletaDAO MCP Server",
+    "version": "1.0.0",
+    "description": "MCP server providing access to UltravioletaDAO's governance data, treasury metrics, bounty system, and x402 payment infrastructure for AI agents operating in the Latin American Web3 ecosystem.",
+    "homepage": "https://ultravioletadao.xyz/agent-discovery",
+    "contact": "mailto:agents@ultravioletadao.xyz",
+    "license": "MIT"
+  },
+  "transport": [
+    {
+      "type": "http",
+      "url": "https://api.ultravioletadao.xyz/mcp",
+      "protocol": "mcp/1.0"
+    }
+  ],
+  "capabilities": {
+    "tools": true,
+    "resources": true,
+    "prompts": false,
+    "sampling": false
+  },
+  "tools": [
+    {
+      "name": "apply_dao_membership",
+      "description": "Submit a membership application to UltravioletaDAO. Returns application ID.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["name", "email", "skills", "motivation"],
+        "properties": {
+          "name": { "type": "string", "description": "Applicant full name" },
+          "email": { "type": "string", "format": "email" },
+          "skills": { "type": "array", "items": { "type": "string" } },
+          "motivation": { "type": "string", "maxLength": 1000 }
+        }
+      }
+    },
+    {
+      "name": "check_application_status",
+      "description": "Check the status of a DAO membership application by email.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["email"],
+        "properties": {
+          "email": { "type": "string", "format": "email" }
+        }
+      }
+    },
+    {
+      "name": "get_bounties",
+      "description": "List available bounties in the UltravioletaDAO ecosystem.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string", "enum": ["open", "in_progress", "completed"] },
+          "limit": { "type": "integer", "default": 10, "maximum": 50 }
+        }
+      }
+    },
+    {
+      "name": "verify_x402_payment",
+      "description": "Verify an x402 gasless payment authorization (EIP-3009) via the UltravioletaDAO facilitator.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["network", "authorization"],
+        "properties": {
+          "network": {
+            "type": "string",
+            "enum": ["avalanche", "base", "celo", "hyperevm"],
+            "description": "Target blockchain network"
+          },
+          "authorization": {
+            "type": "object",
+            "description": "EIP-3009 transferWithAuthorization parameters"
+          }
+        }
+      }
+    },
+    {
+      "name": "settle_x402_payment",
+      "description": "Execute settlement of a verified x402 payment via the UltravioletaDAO facilitator.",
+      "inputSchema": {
+        "type": "object",
+        "required": ["network", "authorization", "signature"],
+        "properties": {
+          "network": { "type": "string" },
+          "authorization": { "type": "object" },
+          "signature": { "type": "string", "description": "EIP-712 signature" }
+        }
+      }
+    }
+  ],
+  "resources": [
+    {
+      "uri": "uvdao://governance/proposals",
+      "name": "Governance Proposals",
+      "description": "Active and past governance proposals from Snapshot (ultravioletadao.eth)",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "uvdao://treasury/balance",
+      "name": "Treasury Balance",
+      "description": "Current treasury holdings from Safe multisig (Avalanche C-Chain)",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "uvdao://token/metrics",
+      "name": "UVD Token Metrics",
+      "description": "UVD token price, supply, and market data",
+      "mimeType": "application/json"
+    }
+  ],
+  "auth": {
+    "type": "none",
+    "description": "Public tools require no authentication. Write operations (apply, settle) use API keys."
+  },
+  "x402": {
+    "facilitator": "https://facilitator.ultravioletadao.xyz",
+    "networks": ["avalanche", "base", "celo", "hyperevm"],
+    "description": "This MCP server supports x402 micropayments for premium tool access"
+  }
+}

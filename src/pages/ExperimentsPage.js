@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
@@ -103,18 +103,18 @@ const ExperimentsPage = () => {
   const getStatusBadge = (status) => {
     const statusConfig = {
       completed: {
-        bg: 'bg-green-100 dark:bg-green-900/30',
-        text: 'text-green-700 dark:text-green-400',
+        bg: 'bg-green-100 bg-green-900/30',
+        text: 'text-green-700 text-green-400',
         label: t('experiments.status.completed')
       },
       ongoing: {
-        bg: 'bg-blue-100 dark:bg-blue-900/30',
-        text: 'text-blue-700 dark:text-blue-400',
+        bg: 'bg-blue-100 bg-blue-900/30',
+        text: 'text-blue-700 text-blue-400',
         label: t('experiments.status.ongoing')
       },
       upcoming: {
-        bg: 'bg-gray-100 dark:bg-gray-700/30',
-        text: 'text-gray-700 dark:text-gray-400',
+        bg: 'bg-gray-100 bg-background-lighter/30',
+        text: 'text-gray-700 text-text-secondary',
         label: t('experiments.status.upcoming')
       }
     };
@@ -135,7 +135,7 @@ const ExperimentsPage = () => {
         keywords="DAO experiments, community research, Web3 experiments, decentralized research, blockchain experiments, crowdsourcing, DAO innovation"
       />
 
-      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+      <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white from-background to-background-lighter">
         {/* Hero Section */}
         <motion.section
           initial={{ opacity: 0 }}
@@ -176,13 +176,13 @@ const ExperimentsPage = () => {
                 <motion.div
                   key={index}
                   variants={fadeInUp}
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center"
+                  className="bg-white bg-background-lighter rounded-lg shadow-lg p-6 text-center"
                 >
                   <stat.icon className="h-8 w-8 mx-auto mb-3 text-purple-600" />
-                  <div className="text-3xl font-bold text-gray-900 dark:text-white mb-1">
+                  <div className="text-3xl font-bold text-gray-900 text-text-primary mb-1">
                     {stat.value}
                   </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-400">
+                  <div className="text-sm text-gray-600 text-text-secondary">
                     {stat.label}
                   </div>
                 </motion.div>
@@ -195,7 +195,7 @@ const ExperimentsPage = () => {
         <section className="py-8">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-center gap-3 flex-wrap">
-              <FunnelIcon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+              <FunnelIcon className="h-5 w-5 text-gray-600 text-text-secondary" />
               {categories.map((category) => (
                 <button
                   key={category.id}
@@ -203,7 +203,7 @@ const ExperimentsPage = () => {
                   className={`flex items-center px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                     selectedCategory === category.id
                       ? 'bg-purple-600 text-white shadow-lg'
-                      : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
+                      : 'bg-white bg-background-lighter text-gray-700 text-text-secondary hover:bg-gray-100 hover:bg-background-lighter'
                   }`}
                 >
                   <category.icon className="h-4 w-4 mr-2" />
@@ -228,8 +228,8 @@ const ExperimentsPage = () => {
                 <motion.div
                   key={experiment.id}
                   variants={fadeInUp}
-                  className={`bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden ${
-                    experiment.status === 'upcoming' ? 'opacity-60 border-2 border-dashed border-gray-300 dark:border-gray-600' : ''
+                  className={`bg-white bg-background-lighter rounded-xl shadow-lg overflow-hidden ${
+                    experiment.status === 'upcoming' ? 'opacity-60 border-2 border-dashed border-gray-300 border-white/10' : ''
                   }`}
                 >
                   {/* Header with gradient */}
@@ -247,15 +247,15 @@ const ExperimentsPage = () => {
 
                   {/* Content */}
                   <div className="p-6">
-                    <p className="text-gray-700 dark:text-gray-300 mb-4">
+                    <p className="text-gray-700 text-text-secondary mb-4">
                       {experiment.description}
                     </p>
 
                     {experiment.status !== 'upcoming' && (
                       <>
                         {experiment.summary && (
-                          <div className="bg-purple-50 dark:bg-purple-900/20 rounded-lg p-4 mb-4">
-                            <p className="text-sm text-gray-700 dark:text-gray-300">
+                          <div className="bg-purple-50 bg-ultraviolet-darker/20 rounded-lg p-4 mb-4">
+                            <p className="text-sm text-gray-700 text-text-secondary">
                               <strong>{t('experiments.labels.summary')}:</strong> {experiment.summary}
                             </p>
                           </div>
@@ -264,19 +264,19 @@ const ExperimentsPage = () => {
                         {/* Metadata */}
                         <div className="grid grid-cols-2 gap-4 mb-4">
                           <div>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">
+                            <p className="text-xs text-gray-500 text-text-secondary uppercase mb-1">
                               {t('experiments.labels.participants')}
                             </p>
-                            <p className="text-sm font-semibold text-gray-900 dark:text-white flex items-center">
+                            <p className="text-sm font-semibold text-gray-900 text-text-primary flex items-center">
                               <UsersIcon className="h-4 w-4 mr-1 text-purple-600" />
                               {experiment.participants}
                             </p>
                           </div>
                           <div>
-                            <p className="text-xs text-gray-500 dark:text-gray-400 uppercase mb-1">
+                            <p className="text-xs text-gray-500 text-text-secondary uppercase mb-1">
                               {t('experiments.labels.budget')}
                             </p>
-                            <p className="text-sm font-semibold text-gray-900 dark:text-white">
+                            <p className="text-sm font-semibold text-gray-900 text-text-primary">
                               {experiment.budget}
                             </p>
                           </div>
@@ -285,12 +285,12 @@ const ExperimentsPage = () => {
                         {/* Results */}
                         {experiment.results.length > 0 && (
                           <div className="mb-4">
-                            <h4 className="text-sm font-bold text-gray-900 dark:text-white mb-2 uppercase">
+                            <h4 className="text-sm font-bold text-gray-900 text-text-primary mb-2 uppercase">
                               {t('experiments.labels.results')}
                             </h4>
                             <ul className="space-y-2">
                               {experiment.results.map((result, idx) => (
-                                <li key={idx} className="flex items-start text-sm text-gray-700 dark:text-gray-300">
+                                <li key={idx} className="flex items-start text-sm text-gray-700 text-text-secondary">
                                   <CheckCircleIcon className="h-5 w-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                                   <span>{result}</span>
                                 </li>
@@ -305,7 +305,7 @@ const ExperimentsPage = () => {
                             {experiment.tags.map((tag, idx) => (
                               <span
                                 key={idx}
-                                className="px-2 py-1 text-xs font-medium bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded"
+                                className="px-2 py-1 text-xs font-medium bg-gray-100 bg-background-lighter text-gray-700 text-text-secondary rounded"
                               >
                                 #{tag}
                               </span>
@@ -315,7 +315,7 @@ const ExperimentsPage = () => {
 
                         {/* Links */}
                         {experiment.links.length > 0 && (
-                          <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
+                          <div className="border-t border-gray-200 border-white/10 pt-4">
                             <div className="space-y-2">
                               {experiment.links.map((link, idx) => (
                                 <a
@@ -323,7 +323,7 @@ const ExperimentsPage = () => {
                                   href={link.url}
                                   target="_blank"
                                   rel="noopener noreferrer"
-                                  className="flex items-center text-sm text-purple-600 dark:text-purple-400 hover:text-purple-700 dark:hover:text-purple-300 transition-colors"
+                                  className="flex items-center text-sm text-purple-600 text-ultraviolet-light hover:text-purple-700 hover:text-ultraviolet-light transition-colors"
                                 >
                                   <LinkIcon className="h-4 w-4 mr-2" />
                                   <span className="truncate">{link.label}</span>
@@ -339,7 +339,7 @@ const ExperimentsPage = () => {
                     {experiment.status === 'upcoming' && (
                       <div className="text-center py-8">
                         <ClockIcon className="h-12 w-12 mx-auto text-gray-400 mb-3" />
-                        <p className="text-gray-500 dark:text-gray-400 italic">
+                        <p className="text-gray-500 text-text-secondary italic">
                           {t('experiments.comingSoon.details')}
                         </p>
                       </div>

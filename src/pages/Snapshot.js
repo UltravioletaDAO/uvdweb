@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
-import { Web3Provider } from '@ethersproject/providers';
 import { formatDistanceToNow, isPast } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { enUS } from 'date-fns/locale';
 import snapshot from '@snapshot-labs/snapshot.js';
-import detectEthereumProvider from '@metamask/detect-provider';
 import { debugError } from '../lib/utils';
+import { useWallet } from '../contexts/WalletContext';
 
 const formatVotingPower = (value) => {
   if (value >= 1000000) {
@@ -103,12 +102,18 @@ const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
   const totalVotes = proposal.scores?.reduce((a, b) => a + b, 0) || 0;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+    <div
+      className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+      role="dialog"
+      aria-modal="true"
+      aria-label={proposal.title}
+    >
       <div className="bg-background max-w-3xl w-full rounded-lg p-6 max-h-[90vh] overflow-y-auto">
         <div className="flex justify-between items-start mb-4">
           <h2 className="text-2xl font-bold text-text-primary">{proposal.title}</h2>
           <button
             onClick={onClose}
+            aria-label="Cerrar propuesta"
             className="p-2 rounded-lg"
           >
             <svg className="w-6 h-6 text-ultraviolet-dark hover:text-red-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -241,12 +246,18 @@ const VoteReasonModal = ({ onConfirm, onClose, choice }) => {
   const [reason, setReason] = useState('');
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-[70]">
+    <div
+      className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-[70]"
+      role="dialog"
+      aria-modal="true"
+      aria-label={t('snapshot.vote_reason_title')}
+    >
       <div className="bg-background max-w-lg w-full rounded-lg p-6">
         <div className="flex justify-between items-start mb-4">
           <h2 className="text-xl font-semibold text-text-primary">{t('snapshot.vote_reason_title')}</h2>
           <button
             onClick={onClose}
+            aria-label="Cerrar razón de voto"
             className="p-2 rounded-lg"
           >
             <svg className="w-6 h-6 text-ultraviolet-dark hover:text-red-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -425,7 +436,12 @@ const VotesModal = ({ proposal, onClose }) => {
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+    <div
+      className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Votos de la propuesta"
+    >
       <div className="bg-background max-w-5xl w-full rounded-lg p-6 max-h-[90vh] overflow-y-auto">
         <div className="flex flex-col gap-6">
           {/* Resultados */}
@@ -463,9 +479,12 @@ const VotesModal = ({ proposal, onClose }) => {
                 <div>{t('snapshot.voting_power')} ↓</div>
                 <button
                   onClick={onClose}
-                  className="text-lg text-ultraviolet hover:text-red-500 transition-colors text-center"
+                  aria-label="Cerrar lista de votos"
+                  className="text-lg text-ultraviolet hover:text-red-500 transition-colors text-center flex items-center justify-center"
                 >
-                  X
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
               </div>
             </div>
@@ -534,17 +553,20 @@ const VotesModal = ({ proposal, onClose }) => {
 
 const Snapshot = () => {
   const { t, i18n } = useTranslation();
+
+  // ── Wallet state from shared context ─────────────────────────────────────
+  // account and web3Provider come from WalletContext — no local duplication.
+  // All signing logic (handleVoteConfirm) uses these directly.
+  const { address: account, provider: web3Provider, connect: connectWalletCtx, disconnect: disconnectWalletCtx } = useWallet();
+
   const [proposals, setProposals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [account, setAccount] = useState(null);
   const [selectedProposal, setSelectedProposal] = useState(null);
   const [votingPower, setVotingPower] = useState('0');
   const [isVoting, setIsVoting] = useState(false);
   const [userVotes, setUserVotes] = useState({});
   const [authorNames, setAuthorNames] = useState({});
-  const [provider, setProvider] = useState(null);
-  const [web3Provider, setWeb3Provider] = useState(null);
   const [alert, setAlert] = useState(null);
   const [voteData, setVoteData] = useState(null);
   const [userProfile, setUserProfile] = useState(null);
@@ -620,23 +642,7 @@ const Snapshot = () => {
     }
   };
 
-  // Función para inicializar el proveedor
-  const initializeProvider = async () => {
-    try {
-      const detectedProvider = await detectEthereumProvider({
-        mustBeMetaMask: false,
-        silent: true,
-        timeout: 3000
-      });
-
-      if (detectedProvider) {
-        setProvider(detectedProvider);
-        setWeb3Provider(new Web3Provider(detectedProvider));
-      }
-    } catch (err) {
-      console.error('Error initializing provider:', err);
-    }
-  };
+  // initializeProvider removed — WalletContext handles provider initialization.
 
   // Función para obtener el perfil del usuario
   const fetchUserProfile = async (address) => {
@@ -667,73 +673,26 @@ const Snapshot = () => {
     }
   };
 
-  // Función para conectar wallet
+  // Función para conectar wallet — delegates to WalletContext (EIP-6963)
   const connectWallet = async () => {
     try {
       setError(null);
-      
-      if (!provider || !web3Provider) {
-        await initializeProvider();
-      }
-
-      if (!provider) {
-        throw new Error(t('snapshot.errors.no_metamask'));
-      }
-
-      // Solicitar permisos y mostrar selector de wallets
-      try {
-        await provider.request({
-          method: 'wallet_requestPermissions',
-          params: [{
-            eth_accounts: {}
-          }]
-        });
-      } catch (err) {
-        debugError('Error requesting permissions:', err);
-        if (err.code === 4001) {
-          throw new Error(t('snapshot.errors.user_rejected_connection'));
-        }
-        throw err;
-      }
-
-      // Limpiar el estado actual
-      setAccount(null);
-      setUserProfile(null);
-      localStorage.removeItem('walletAddress');
-      
-      // Solicitar nueva conexión
-      try {
-        const accounts = await provider.request({
-          method: 'eth_requestAccounts'
-        });
-
-        if (!accounts || accounts.length === 0) {
-          throw new Error(t('snapshot.errors.user_rejected_connection'));
-        }
-
-        // Actualizar el proveedor después de la nueva conexión
-        setWeb3Provider(new Web3Provider(provider));
-        const signer = new Web3Provider(provider).getSigner();
-        const address = await signer.getAddress();
-        
-        setAccount(address);
-        localStorage.setItem('walletAddress', address);
-
-        await Promise.all([
-          fetchVotingPower(address),
-          fetchUserVotes(address),
-          fetchUserProfile(address)
-        ]);
-      } catch (err) {
-        console.error('Error requesting accounts:', err);
-        if (err.code === 4001) {
-          throw new Error(t('snapshot.errors.user_rejected_connection'));
-        }
-        throw new Error(t('snapshot.errors.provider_error'));
-      }
+      const result = await connectWalletCtx();
+      // context has already persisted address; load Snapshot-specific data
+      await Promise.all([
+        fetchVotingPower(result.address),
+        fetchUserVotes(result.address),
+        fetchUserProfile(result.address)
+      ]);
     } catch (err) {
-      console.error('Error connecting wallet:', err);
-      setError(err.message);
+      debugError('Error connecting wallet:', err);
+      if (err.code === 4001) {
+        setError(t('snapshot.errors.user_rejected_connection'));
+      } else if (!err.code) {
+        setError(err.message || t('snapshot.errors.no_metamask'));
+      } else {
+        setError(t('snapshot.errors.provider_error'));
+      }
     }
   };
 
@@ -807,9 +766,11 @@ const Snapshot = () => {
     try {
       setIsVoting(true);
       setError(null);
-      
+
+      // web3Provider comes from WalletContext; it is an ethers.providers.Web3Provider.
       if (!web3Provider) {
-        await initializeProvider();
+        setAlert({ message: t('snapshot.errors.connect_wallet'), type: 'error' });
+        return;
       }
 
       const hub = 'https://hub.snapshot.org';
@@ -861,23 +822,30 @@ const Snapshot = () => {
     }
   };
 
+  // Load proposals on mount (provider init is handled by WalletContext)
   useEffect(() => {
-    const init = async () => {
-      await initializeProvider();
-      await fetchProposalsFromAPI(space, setProposals, setLoading, setError, fetchNames);
-      const savedAddress = localStorage.getItem('walletAddress');
-      if (savedAddress) {
-        setAccount(savedAddress);
-        await Promise.all([
-          fetchVotingPower(savedAddress),
-          fetchUserVotes(savedAddress),
-          fetchUserProfile(savedAddress)
-        ]);
-      }
-    };
-    
-    init();
+    fetchProposalsFromAPI(space, setProposals, setLoading, setError, fetchNames);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // When context restores a wallet (page reload / cross-page navigation),
+  // load Snapshot-specific data for that address.
+  useEffect(() => {
+    if (account) {
+      Promise.all([
+        fetchVotingPower(account),
+        fetchUserVotes(account),
+        fetchUserProfile(account)
+      ]);
+    } else {
+      // Wallet disconnected — reset Snapshot-specific state
+      setVotingPower('0');
+      setUserVotes({});
+      setUserProfile(null);
+    }
+  // fetchVotingPower etc. are stable function declarations, no deps needed
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [account]);
 
   const handleCloseModal = () => {
     setSelectedProposal(null);
@@ -921,11 +889,10 @@ const Snapshot = () => {
     }
   };
 
+  // Disconnect — delegates to WalletContext; local Snapshot state resets via the
+  // account useEffect above (account becomes null → clears votingPower/userVotes).
   const disconnectWallet = () => {
-    setAccount(null);
-    setVotingPower('0');
-    setUserVotes({});
-    localStorage.removeItem('walletAddress');
+    disconnectWalletCtx();
   };
 
   if (loading) {

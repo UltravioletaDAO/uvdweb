@@ -107,7 +107,7 @@ const OptimizedNFTCard = memo(({
       animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 20 }}
       whileHover={{ scale: 1.02 }}
       transition={{ duration: 0.3 }}
-      className={`bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden ${
+      className={`bg-background-lighter rounded-xl shadow-lg overflow-hidden ${
         isFibonacci ? 'ring-4 ring-yellow-400 ring-offset-2' : ''
       }`}
       style={isFibonacci ? {
@@ -115,11 +115,11 @@ const OptimizedNFTCard = memo(({
         padding: '2px'
       } : {}}
     >
-      <div className={isFibonacci ? 'bg-white dark:bg-gray-800 rounded-lg overflow-hidden' : ''}>
-        <div className="aspect-square relative bg-gray-100 dark:bg-gray-700">
+      <div className={isFibonacci ? 'bg-background-lighter rounded-lg overflow-hidden' : ''}>
+        <div className="aspect-square relative bg-background-lighter">
           {/* Loading placeholder */}
           {!imageLoaded && (
-            <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800">
+            <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-gray-700 to-gray-800">
               <div className="flex items-center justify-center h-full">
                 <svg className="w-10 h-10 text-gray-400 animate-spin" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
@@ -193,13 +193,13 @@ const OptimizedNFTCard = memo(({
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               transition={{ repeat: Infinity, duration: 2, repeatType: "reverse" }}
-              className="mb-2 text-xs bg-gradient-to-r from-yellow-100 to-yellow-200 dark:from-yellow-900 dark:to-yellow-800 p-2 rounded"
+              className="mb-2 text-xs bg-gradient-to-r from-yellow-900 to-yellow-800 p-2 rounded"
             >
-              <span className="font-bold text-yellow-900 dark:text-yellow-100">🌟 2X REWARDS</span>
+              <span className="font-bold text-yellow-100">🌟 2X REWARDS</span>
             </motion.div>
           )}
           {isReserved && (
-            <div className="text-xs text-purple-600 dark:text-purple-400">
+            <div className="text-xs text-ultraviolet-light">
               Reserved for Community Treasury
             </div>
           )}

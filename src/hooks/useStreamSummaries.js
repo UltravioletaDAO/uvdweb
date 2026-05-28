@@ -1,5 +1,5 @@
 import React from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, keepPreviousData } from '@tanstack/react-query';
 import { useTranslation } from 'react-i18next';
 import streamSummariesService from '../services/streamSummaries';
 
@@ -12,7 +12,7 @@ export function useStreamSummariesIndex() {
     queryKey: ['streamSummaries', 'index'],
     queryFn: () => streamSummariesService.fetchIndex(),
     staleTime: 5 * 60 * 1000, // 5 minutes
-    cacheTime: 10 * 60 * 1000, // 10 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes
     retry: 2,
     refetchOnWindowFocus: false,
   });
@@ -28,10 +28,10 @@ export function useStreamSummariesPaginated(page = 1, perPage = 10) {
     queryKey: ['streamSummaries', 'paginated', page, perPage],
     queryFn: () => streamSummariesService.fetchPaginatedSummaries(page, perPage),
     staleTime: 5 * 60 * 1000, // 5 minutes
-    cacheTime: 10 * 60 * 1000, // 10 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes
     retry: 2,
     refetchOnWindowFocus: false,
-    keepPreviousData: true, // Keep previous page data while loading next page
+    placeholderData: keepPreviousData, // Keep previous page data while loading next page (RQ5)
   });
 }
 
@@ -72,7 +72,7 @@ export function useStreamSummary(streamer, videoId, fechaStream, enabled = false
       }
     },
     staleTime: 10 * 60 * 1000, // 10 minutes
-    cacheTime: 30 * 60 * 1000, // 30 minutes
+    gcTime: 30 * 60 * 1000, // 30 minutes
     retry: false, // Don't retry 402 errors automatically
     refetchOnWindowFocus: false,
     enabled: !!streamer && !!videoId && !!fechaStream && enabled, // Only fetch when enabled and all params exist
@@ -89,7 +89,7 @@ export function useStreamSummariesByStreamer(streamer, enabled = true) {
     queryKey: ['streamSummaries', 'byStreamer', streamer],
     queryFn: () => streamSummariesService.fetchByStreamer(streamer),
     staleTime: 5 * 60 * 1000, // 5 minutes
-    cacheTime: 10 * 60 * 1000, // 10 minutes
+    gcTime: 10 * 60 * 1000, // 10 minutes
     retry: 2,
     refetchOnWindowFocus: false,
     enabled: !!streamer && enabled,

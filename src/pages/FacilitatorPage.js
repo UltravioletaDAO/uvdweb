@@ -144,7 +144,7 @@ const FacilitatorPage = () => {
       <SEO
         title={t('facilitatorPage.seoTitle')}
         description={t('facilitatorPage.seoDescription')}
-        keywords="x402 facilitator, gasless transactions, EIP-3009, meta-transactions, AI agent payments, cross-chain payments, stateless payments, HTTP payments, x402 protocol, gasless Web3, autonomous agents, EIP-712 signatures, transferWithAuthorization, Avalanche gasless, Base gasless, Celo gasless, HyperEVM gasless, zero gas fees, trustless payments, instant settlement, UltraVioleta DAO, Web3 infrastructure, Latin America blockchain, agentic economy"
+        keywords="x402 facilitator, gasless transactions, EIP-3009, meta-transactions, AI agent payments, cross-chain payments, stateless payments, HTTP payments, x402 protocol, gasless Web3, web4, agentic economy, autonomous agents, ERC-8004, EIP-712 signatures, transferWithAuthorization, Avalanche gasless, Base gasless, Celo gasless, HyperEVM gasless, zero gas fees, trustless payments, instant settlement, UltraVioleta DAO, Web3 infrastructure, Latin America blockchain"
         customJsonLd={facilitatorSchema}
       />
 

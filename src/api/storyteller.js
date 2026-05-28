@@ -240,51 +240,101 @@ Write 3 medium paragraphs, simple and exciting. USE THE EXACT NUMBERS I gave you
 };
 
 export const generateFallbackAnalysis = (metrics, language) => {
-  // Provide reasonable minimum values when metrics haven't loaded
-  // These floors prevent the text from showing "0 members" or "0 proposals"
-  const safeMetrics = {
-    proposals: metrics?.proposals || 200,
-    votes: metrics?.votes || 5000,
-    followers: metrics?.followers || 120,
-    uvdPrice: metrics?.uvdPrice || 1,
-    holders: metrics?.holders || 500,
-    members: metrics?.members || 89,
-    transactions: metrics?.transactions || 10000,
-    treasury: metrics?.treasury || 1000,
-    multisigners: metrics?.multisigners || 5,
-    threshold: metrics?.threshold || 3,
-    liquidity: metrics?.liquidity || 5000
-  };
+  // Solo se narran números REALES (llegan desde las APIs en Home.js).
+  // Sin floors inventados: si un dato no cargó, se omite esa frase — nada de cifras alucinadas.
+  // members = conteo real de miembros del DAO. followers son seguidores de Snapshot (alcance),
+  // NO se presentan como "miembros activos" (eso causaba la contradicción 89 vs 122).
+  const m = (metrics && typeof metrics === 'object') ? metrics : {};
+  const lang = ['es', 'fr', 'pt'].includes(language) ? language : 'en';
+  const has = (v) => typeof v === 'number' && isFinite(v) && v > 0;
+  const n = (v) => Number(v).toLocaleString('en-US', { maximumFractionDigits: 0 });
+  // Números grandes/volátiles se muestran como "10k+" para no afirmar falsa precisión.
+  const kPlus = (v) => !has(v) ? null : (v >= 1000 ? `${Math.floor(v / 1000)}k+` : n(v));
+  const sentence = (parts) => parts.filter(Boolean).join(' ');
 
-  if (language === 'es') {
-    return `Te tengo que contar lo que estamos haciendo. Somos ${safeMetrics.members} miembros en Ultravioleta DAO, con ${safeMetrics.holders.toLocaleString()} holders del token, y entre todos ya votamos ${safeMetrics.votes.toLocaleString()} veces en nuestras ${safeMetrics.proposals} propuestas. Imagínate, tomando decisiones juntos sobre el futuro de Web3 en Latinoamérica. Nuestras ${safeMetrics.transactions.toLocaleString()} transacciones del token muestran que esto no es solo charla, estamos moviendo el proyecto todos los días.
+  const members = has(m.members) ? n(m.members) : '89'; // 89 = conteo actual confirmado del DAO
+  const holders = has(m.holders) ? n(m.holders) : null;
+  const proposals = has(m.proposals) ? n(m.proposals) : null;
+  const votes = has(m.votes) ? n(m.votes) : null;
+  const txns = kPlus(m.transactions);
+  const treasury = has(m.treasury) ? n(m.treasury) : null;
+  const liquidity = has(m.liquidity) ? n(m.liquidity) : null;
+  const signers = has(m.multisigners) ? m.multisigners : null;
+  const threshold = has(m.threshold) ? m.threshold : null;
+  const funds = [
+    treasury ? { es: `un tesoro comunitario de $${treasury} USD`, en: `a community treasury of $${treasury} USD`, fr: `une trésorerie communautaire de $${treasury} USD`, pt: `um tesouro comunitário de $${treasury} USD` } : null,
+    liquidity ? { es: `$${liquidity} USD en liquidez`, en: `$${liquidity} USD in liquidity`, fr: `$${liquidity} USD de liquidité`, pt: `$${liquidity} USD em liquidez` } : null,
+  ].filter(Boolean);
 
-Lo que nos hace diferentes es que no somos un proyecto más de crypto. Somos una comunidad real con $${safeMetrics.liquidity.toLocaleString()} USD en liquidez y $${safeMetrics.treasury.toLocaleString()} USD en nuestro tesoro comunitario. Para mover estos fondos desde el multisig, necesitamos que una propuesta pase en la gobernanza de Snapshot, y después ${safeMetrics.threshold} de nuestros ${safeMetrics.multisigners} multifirmantes ejecutan la decisión. Acá no hay un CEO ni una empresa detrás. Somos ${safeMetrics.followers} personas activas construyendo algo desde cero, tomando cada decisión entre todos a través de la gobernanza. Esto es Web3 de verdad, no de mentira.
-
-Y mira el timing: con ${safeMetrics.uvdPrice.toLocaleString()} UVD por cada dólar, estás entrando en el momento perfecto para unirte a nosotros. No cuando ya explotó y está caro, sino ahora que lo estamos armando. Los que entraron temprano en Bitcoin o Ethereum hoy son leyendas. Esta es tu chance de ser parte de nuestro proyecto desde el día uno. Estamos despegando y todavía podés subirte.`;
+  if (lang === 'es') {
+    const p1 = sentence([
+      `Te tengo que contar lo que estamos construyendo: somos ${members} miembros en Ultravioleta DAO`,
+      holders ? `junto a ${holders} holders del token UVD` : null,
+      (votes && proposals) ? `y ya votamos ${votes} veces en nuestras ${proposals} propuestas.` : (proposals ? `con ${proposals} propuestas en nuestra gobernanza.` : 'construyendo en comunidad.'),
+      'Tomamos cada decisión juntos sobre el futuro de web4 en Latinoamérica.',
+      txns ? `Nuestras ${txns} transacciones del token muestran que esto no es solo charla.` : null,
+    ]);
+    const p2 = sentence([
+      'Lo que nos hace diferentes es que somos una comunidad real, no un proyecto más de crypto.',
+      funds.length ? `Gestionamos ${funds.map((x) => x.es).join(' y ')}.` : null,
+      `Para mover fondos desde el multisig, una propuesta debe aprobarse en la gobernanza de Snapshot${(signers && threshold) ? `, y luego ${threshold} de nuestros ${signers} multifirmantes la ejecutan` : ''}.`,
+      'Acá no hay un CEO ni una empresa detrás: las decisiones son de todos.',
+    ]);
+    const p3 = 'Y este es el momento de unirte: no cuando ya explotó, sino ahora que lo estamos armando desde cero. Esta es tu chance de ser parte de algo grande desde el día uno. Sigue la luz y construyamos juntos.';
+    return `${p1}\n\n${p2}\n\n${p3}`;
   }
-  
-  if (language === 'fr') {
-    return `Je dois te raconter ce que nous faisons. Nous sommes ${safeMetrics.members} membres dans Ultravioleta DAO, avec ${safeMetrics.holders.toLocaleString()} détenteurs du token, et ensemble nous avons voté ${safeMetrics.votes.toLocaleString()} fois sur nos ${safeMetrics.proposals} propositions. Imagine, prendre des décisions ensemble sur l'avenir du Web3 en Amérique latine. Nos ${safeMetrics.transactions.toLocaleString()} transactions de tokens montrent que ce n'est pas que des paroles, nous faisons avancer le projet tous les jours.
 
-Ce qui nous rend différents, c'est que nous ne sommes pas juste un autre projet crypto. Nous sommes une vraie communauté avec $${safeMetrics.liquidity.toLocaleString()} USD en liquidité et $${safeMetrics.treasury.toLocaleString()} USD dans notre trésor communautaire. Pour déplacer ces fonds depuis le multisig, nous avons besoin qu'une proposition passe dans la gouvernance Snapshot, puis ${safeMetrics.threshold} de nos ${safeMetrics.multisigners} multisignataires exécutent la décision. Il n'y a pas de PDG ni d'entreprise derrière. Nous sommes ${safeMetrics.followers} personnes actives construisant quelque chose depuis zéro, prenant chaque décision ensemble à travers la gouvernance. C'est le vrai Web3, pas du faux.
-
-Et regarde le timing : avec ${safeMetrics.uvdPrice.toLocaleString()} UVD par dollar, tu entres au moment parfait pour nous rejoindre. Pas quand c'est déjà explosé et cher, mais maintenant pendant qu'on le construit. Ceux qui sont entrés tôt dans Bitcoin ou Ethereum sont des légendes aujourd'hui. C'est ta chance de faire partie de notre projet depuis le premier jour. Nous décollons et tu peux encore monter à bord.`;
+  if (lang === 'fr') {
+    const p1 = sentence([
+      `Je dois te raconter ce que nous construisons : nous sommes ${members} membres dans Ultravioleta DAO`,
+      holders ? `aux côtés de ${holders} détenteurs du token UVD` : null,
+      (votes && proposals) ? `et nous avons déjà voté ${votes} fois sur nos ${proposals} propositions.` : (proposals ? `avec ${proposals} propositions dans notre gouvernance.` : 'en construisant en communauté.'),
+      "Nous prenons chaque décision ensemble sur l'avenir du web4 en Amérique latine.",
+      txns ? `Nos ${txns} transactions de tokens montrent que ce ne sont pas que des paroles.` : null,
+    ]);
+    const p2 = sentence([
+      "Ce qui nous rend différents, c'est que nous sommes une vraie communauté, pas juste un autre projet crypto.",
+      funds.length ? `Nous gérons ${funds.map((x) => x.fr).join(' et ')}.` : null,
+      `Pour déplacer des fonds depuis le multisig, une proposition doit être approuvée dans la gouvernance Snapshot${(signers && threshold) ? `, puis ${threshold} de nos ${signers} multisignataires l'exécutent` : ''}.`,
+      "Il n'y a ni PDG ni entreprise derrière : les décisions sont à nous tous.",
+    ]);
+    const p3 = "Et c'est le moment de nous rejoindre : pas une fois que tout a explosé, mais maintenant pendant que nous le construisons depuis zéro. C'est ta chance de faire partie de quelque chose de grand dès le premier jour. Suis la lumière et construisons ensemble.";
+    return `${p1}\n\n${p2}\n\n${p3}`;
   }
-  
-  if (language === 'pt') {
-    return `Tenho que te contar o que estamos fazendo. Somos ${safeMetrics.members} membros no Ultravioleta DAO, com ${safeMetrics.holders.toLocaleString()} holders do token, e juntos já votamos ${safeMetrics.votes.toLocaleString()} vezes em nossas ${safeMetrics.proposals} propostas. Imagine, tomando decisões juntos sobre o futuro da Web3 na América Latina. Nossas ${safeMetrics.transactions.toLocaleString()} transações de token mostram que isso não é só conversa, estamos movimentando o projeto todos os dias.
 
-O que nos torna diferentes é que não somos apenas mais um projeto crypto. Somos uma comunidade real com $${safeMetrics.liquidity.toLocaleString()} USD em liquidez e $${safeMetrics.treasury.toLocaleString()} USD em nosso tesouro comunitário. Para mover esses fundos do multisig, precisamos que uma proposta passe na governança Snapshot, e então ${safeMetrics.threshold} dos nossos ${safeMetrics.multisigners} multiassinantes executam a decisão. Não há CEO nem empresa por trás. Somos ${safeMetrics.followers} pessoas ativas construindo algo do zero, tomando cada decisão juntos através da governança. Isso é Web3 de verdade, não de mentira.
-
-E olha o timing: com ${safeMetrics.uvdPrice.toLocaleString()} UVD por dólar, você está entrando no momento perfeito para se juntar a nós. Não quando já explodiu e está caro, mas agora enquanto estamos construindo. Aqueles que entraram cedo no Bitcoin ou Ethereum hoje são lendas. Esta é sua chance de fazer parte do nosso projeto desde o primeiro dia. Estamos decolando e você ainda pode embarcar.`;
+  if (lang === 'pt') {
+    const p1 = sentence([
+      `Tenho que te contar o que estamos construindo: somos ${members} membros no Ultravioleta DAO`,
+      holders ? `junto a ${holders} holders do token UVD` : null,
+      (votes && proposals) ? `e já votamos ${votes} vezes em nossas ${proposals} propostas.` : (proposals ? `com ${proposals} propostas em nossa governança.` : 'construindo em comunidade.'),
+      'Tomamos cada decisão juntos sobre o futuro da web4 na América Latina.',
+      txns ? `Nossas ${txns} transações de token mostram que isto não é só conversa.` : null,
+    ]);
+    const p2 = sentence([
+      'O que nos torna diferentes é que somos uma comunidade real, não apenas mais um projeto crypto.',
+      funds.length ? `Gerimos ${funds.map((x) => x.pt).join(' e ')}.` : null,
+      `Para mover fundos do multisig, uma proposta deve ser aprovada na governança Snapshot${(signers && threshold) ? `, e então ${threshold} dos nossos ${signers} multiassinantes a executam` : ''}.`,
+      'Não há CEO nem empresa por trás: as decisões são de todos nós.',
+    ]);
+    const p3 = 'E este é o momento de se juntar: não quando já explodiu, mas agora enquanto construímos do zero. Esta é a sua chance de fazer parte de algo grande desde o primeiro dia. Siga a luz e vamos construir juntos.';
+    return `${p1}\n\n${p2}\n\n${p3}`;
   }
 
-  return `I've got to tell you what we're doing. We're ${safeMetrics.members} members in Ultravioleta DAO, with ${safeMetrics.holders.toLocaleString()} token holders, and together we've voted ${safeMetrics.votes.toLocaleString()} times on our ${safeMetrics.proposals} proposals. Imagine that - making decisions together about the future of Web3 in Latin America. Our ${safeMetrics.transactions.toLocaleString()} token transactions show this isn't just talk, we're moving the project forward every day.
-
-What makes us different is that we're not just another crypto project. We're a real community with $${safeMetrics.liquidity.toLocaleString()} USD in liquidity and $${safeMetrics.treasury.toLocaleString()} USD in our community treasury. To move these funds from the multisig, we need a proposal to pass in Snapshot governance, and then ${safeMetrics.threshold} of our ${safeMetrics.multisigners} multisigners execute the decision. There's no CEO or company behind this. We're ${safeMetrics.followers} active people building something from scratch, making every decision together through governance. This is real Web3, not fake.
-
-And look at the timing: with ${safeMetrics.uvdPrice.toLocaleString()} UVD per dollar, you're getting in at the perfect moment to join us. Not when it's already exploded and expensive, but now while we're building it. Those who got into Bitcoin or Ethereum early are legends today. This is your chance to be part of our project from day one. We're taking off and you can still get on board.`;
+  const p1 = sentence([
+    `Let me tell you what we're building: we're ${members} members in Ultravioleta DAO`,
+    holders ? `alongside ${holders} UVD token holders` : null,
+    (votes && proposals) ? `and together we've already voted ${votes} times across our ${proposals} proposals.` : (proposals ? `with ${proposals} proposals in our governance.` : 'building together as a community.'),
+    'We make every decision together about the future of web4 in Latin America.',
+    txns ? `Our ${txns} token transactions show this isn't just talk.` : null,
+  ]);
+  const p2 = sentence([
+    "What makes us different is that we're a real community, not just another crypto project.",
+    funds.length ? `We steward ${funds.map((x) => x.en).join(' and ')}.` : null,
+    `To move funds from the multisig, a proposal must pass in Snapshot governance${(signers && threshold) ? `, and then ${threshold} of our ${signers} multisigners execute it` : ''}.`,
+    "There's no CEO or company behind this — every decision is ours, together.",
+  ]);
+  const p3 = "And this is the moment to join: not after it's already exploded, but now while we're building it from scratch. This is your chance to be part of something big from day one. Follow the light and let's build together.";
+  return `${p1}\n\n${p2}\n\n${p3}`;
 };
 
 export const cacheAnalysis = (() => {

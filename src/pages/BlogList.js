@@ -22,7 +22,7 @@ function BlogList() {
       <SEO
         title={t('blog.seoTitle')}
         description={t('blog.seoDescription')}
-        keywords="UltraVioleta blog, Web3 articles, DAO updates, blockchain news LATAM, DeFi insights, crypto governance, Web3 education, Latin America blockchain blog"
+        keywords="UltraVioleta blog, Web3 articles, web4, agentic economy, autonomous agents, x402, DAO updates, blockchain news LATAM, DeFi insights, crypto governance, Web3 education, Latin America blockchain blog"
         type="blog"
       />
       <main className="min-h-screen bg-background text-text-primary py-8 px-4 md:px-8">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useActiveAccount, useReadContract, useSendTransaction, useWaitForReceipt } from 'thirdweb/react';
 import { createThirdwebClient, getContract, prepareContractCall, toWei, toEther, getRpcClient, eth_getBalance, readContract } from 'thirdweb';
@@ -141,6 +141,7 @@ const SwapWidget = () => {
   const [transactionStatus, setTransactionStatus] = useState(null);
   const [needsApproval, setNeedsApproval] = useState(false);
   const [currentTransactionType, setCurrentTransactionType] = useState(null); // 'approval' | 'swap'
+  const quoteDebounceRef = useRef(null);
 
   const uvdContract = getContract({
     client,
@@ -404,15 +405,23 @@ const SwapWidget = () => {
       return '0';
     } catch (error) {
       console.error('Error getting quote from router:', error);
+      return null;
     }
   };
 
-  // Handle input change
-  const handleFromAmountChange = async (value) => {
+  // Handle input change — debounced 300ms to prevent quote race conditions (BUG-11)
+  const handleFromAmountChange = (value) => {
     setFromAmount(value);
+    // Clear any pending quote request before scheduling a new one
+    if (quoteDebounceRef.current) {
+      clearTimeout(quoteDebounceRef.current);
+    }
     if (value && parseFloat(value) > 0) {
-      const quote = await getQuote(value, fromToken === 'AVAX');
-      setToAmount(quote);
+      quoteDebounceRef.current = setTimeout(async () => {
+        const quote = await getQuote(value, fromToken === 'AVAX');
+        // F0-7: getQuote returns null on error; fall back to empty string to avoid NaN downstream
+        setToAmount(quote != null ? quote : '');
+      }, 300);
     } else {
       setToAmount('');
     }
@@ -428,7 +437,8 @@ const SwapWidget = () => {
           getQuote(fromAmount, fromToken === 'AVAX'),
           updateBalances()
         ]);
-        setToAmount(quote);
+        // F0-7: guard against null from failed quote
+        setToAmount(quote != null ? quote : '');
       } catch (error) {
         console.error('Error refreshing quote:', error);
       } finally {
@@ -499,6 +509,14 @@ const SwapWidget = () => {
   const handleSwap = async () => {
     if (!activeAccount || !fromAmount || parseFloat(fromAmount) === 0) return;
 
+    // F0-7: validate amounts are finite numbers before calling toWei to prevent NaN
+    const parsedFrom = parseFloat(fromAmount);
+    const parsedTo = parseFloat(toAmount);
+    if (!Number.isFinite(parsedFrom) || parsedFrom <= 0 || !Number.isFinite(parsedTo) || parsedTo <= 0) {
+      setTransactionStatus({ type: 'error', message: 'Monto inválido. Ingresa una cantidad válida para continuar.' });
+      return;
+    }
+
     // Clear previous transaction status
     setTransactionStatus(null);
     setIsLoading(true);
@@ -507,7 +525,7 @@ const SwapWidget = () => {
     try {
       const amountIn = toWei(fromAmount);
       const minAmountOut = toWei(
-        (parseFloat(toAmount) * (100 - slippage) / 100).toString()
+        (parsedTo * (100 - slippage) / 100).toString()
       );
       const deadline = Math.floor(Date.now() / 1000) + 60; // 1 minutes
 

@@ -17,7 +17,7 @@ const Footer = () => {
   const operations = t('footer.operations.items', { returnObjects: true });
 
   return (
-    <footer className="bg-[#0b0613] text-white">
+    <footer className="bg-background text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           <div className="lg:col-span-2 space-y-4">

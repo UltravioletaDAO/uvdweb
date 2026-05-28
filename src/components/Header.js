@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   UsersIcon,
@@ -12,6 +12,12 @@ import {
   DocumentTextIcon,
   BeakerIcon,
   GiftIcon,
+  CalendarIcon,
+  NewspaperIcon,
+  AcademicCapIcon,
+  LinkIcon,
+  CpuChipIcon,
+  ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "./LanguageSwitcher";
@@ -20,6 +26,24 @@ import HamburgerMenu from "./HamburgerMenu";
 const Header = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const [moreOpen, setMoreOpen] = useState(false);
+  const moreRef = useRef(null);
+
+  // Close "More" dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (moreRef.current && !moreRef.current.contains(e.target)) {
+        setMoreOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  // Close "More" dropdown on route change
+  useEffect(() => {
+    setMoreOpen(false);
+  }, [location.pathname]);
 
   const mainMenuItems = [
     {
@@ -48,10 +72,11 @@ const Header = () => {
       customStyle: "text-purple-400 hover:text-purple-300",
     },
     {
+      // C-6: Internal landing page; "Abrir app" secondary link lives in moreMenuItems
       name: t('navigation.facilitator'),
       icon: BeakerIcon,
-      path: "https://facilitator.ultravioletadao.xyz/",
-      isExternal: true,
+      path: "/facilitator",
+      isExternal: false,
       customStyle: "text-emerald-400 hover:text-emerald-300",
     },
     {
@@ -90,7 +115,8 @@ const Header = () => {
       ),
       path: "/snapshot",
       isExternal: false,
-      customStyle: "text-[#FFAC33] hover:text-[#FFB74D]",
+      // C-4 snapshot icon token
+      customStyle: "text-snapshotIcon hover:text-snapshotIcon",
     },
     {
       name: t('navigation.contributors'),
@@ -117,6 +143,48 @@ const Header = () => {
       path: "/bounties",
       isExternal: false,
       customStyle: "text-amber-400 hover:text-amber-300",
+    },
+    {
+      name: t('navigation.events'),
+      icon: CalendarIcon,
+      path: "/events",
+      isExternal: false,
+    },
+  ];
+
+  // C-5: Secondary items grouped under "More" dropdown to avoid desktop nav saturation
+  const moreMenuItems = [
+    {
+      name: t('navigation.blog'),
+      icon: NewspaperIcon,
+      path: "/blog",
+      isExternal: false,
+    },
+    {
+      name: t('navigation.courses'),
+      icon: AcademicCapIcon,
+      path: "/courses",
+      isExternal: false,
+    },
+    {
+      name: t('navigation.agents', 'Agents'),
+      icon: CpuChipIcon,
+      path: "/agents",
+      isExternal: false,
+    },
+    {
+      name: t('navigation.links'),
+      icon: LinkIcon,
+      path: "/links",
+      isExternal: false,
+    },
+    {
+      // C-6: External "Abrir app" secondary link for Facilitator
+      name: t('navigation.facilitatorApp', 'Abrir app'),
+      icon: BeakerIcon,
+      path: "https://facilitator.ultravioletadao.xyz/",
+      isExternal: true,
+      customStyle: "text-emerald-400 hover:text-emerald-300",
     },
   ];
 
@@ -146,7 +214,7 @@ const Header = () => {
                       href={item.path}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className={`flex items-center px-1.5 py-1 rounded text-[11px] leading-none font-medium tracking-wide
+                      className={`flex items-center px-1.5 py-1 rounded text-xs leading-none font-medium tracking-wide
                         transition-all duration-200 hover:bg-white/10 hover:text-white
                         ${location.pathname === item.path ? 'bg-white/15 text-white' : ''}
                         ${item.customStyle || 'text-text-primary'}`}
@@ -158,9 +226,10 @@ const Header = () => {
                   ) : (
                     <Link
                       to={item.path}
-                      className={`flex items-center px-1.5 py-1 rounded text-[11px] leading-none font-medium tracking-wide
+                      className={`flex items-center px-1.5 py-1 rounded text-xs leading-none font-medium tracking-wide
                         transition-all duration-200 hover:bg-white/10 hover:text-white
-                        ${location.pathname === item.path ? 'bg-white/15 text-white' : 'text-text-primary'}`}
+                        ${location.pathname === item.path ? 'bg-white/15 text-white' : 'text-text-primary'}
+                        ${item.customStyle || ''}`}
                       aria-label={item.name}
                     >
                       <span className="uppercase whitespace-nowrap">{item.name}</span>
@@ -168,6 +237,54 @@ const Header = () => {
                   )}
                 </div>
               ))}
+
+              {/* C-5: "More" dropdown for secondary nav items */}
+              <div className="relative" ref={moreRef}>
+                <button
+                  onClick={() => setMoreOpen((o) => !o)}
+                  className={`flex items-center gap-0.5 px-1.5 py-1 rounded text-xs leading-none font-medium tracking-wide
+                    transition-all duration-200 hover:bg-white/10 hover:text-white
+                    ${moreMenuItems.some((i) => location.pathname === i.path) ? 'bg-white/15 text-white' : 'text-text-primary'}`}
+                  aria-haspopup="true"
+                  aria-expanded={moreOpen}
+                >
+                  <span className="uppercase whitespace-nowrap">More</span>
+                  <ChevronDownIcon className={`w-3 h-3 transition-transform duration-200 ${moreOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {moreOpen && (
+                  <div className="absolute right-0 top-full mt-1 w-44 bg-background-lighter border border-ultraviolet-darker/20 rounded-lg shadow-xl z-50 py-1">
+                    {moreMenuItems.map((item) => (
+                      item.isExternal ? (
+                        <a
+                          key={item.name}
+                          href={item.path}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`flex items-center gap-2 px-3 py-2 text-xs font-medium
+                            hover:bg-white/10 hover:text-white transition-all duration-200
+                            ${item.customStyle || 'text-text-primary'}`}
+                          onClick={() => setMoreOpen(false)}
+                        >
+                          <span className="uppercase whitespace-nowrap">{item.name}</span>
+                          <ArrowTopRightOnSquareIcon className="w-3 h-3 opacity-50 ml-auto flex-shrink-0" />
+                        </a>
+                      ) : (
+                        <Link
+                          key={item.name}
+                          to={item.path}
+                          className={`flex items-center px-3 py-2 text-xs font-medium
+                            hover:bg-white/10 hover:text-white transition-all duration-200
+                            ${location.pathname === item.path ? 'bg-white/15 text-white' : ''}
+                            ${item.customStyle || 'text-text-primary'}`}
+                          onClick={() => setMoreOpen(false)}
+                        >
+                          <span className="uppercase whitespace-nowrap">{item.name}</span>
+                        </Link>
+                      )
+                    ))}
+                  </div>
+                )}
+              </div>
 
               {/* Language Switcher */}
               <div className="ml-2 pl-2 border-l border-ultraviolet-darker/20">

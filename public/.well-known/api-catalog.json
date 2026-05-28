@@ -1,0 +1,52 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://api.ultravioletadao.xyz",
+      "service-desc": [
+        {
+          "href": "https://ultravioletadao.xyz/.well-known/openapi/uvdao-api.json",
+          "type": "application/vnd.oai.openapi+json;version=3.0"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://github.com/UltravioletaDAO/x402-facilitator#api",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.ultravioletadao.xyz/health",
+          "type": "application/json"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://ultravioletadao.xyz/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://facilitator.ultravioletadao.xyz",
+      "service-desc": [
+        {
+          "href": "https://ultravioletadao.xyz/.well-known/openapi/facilitator-api.json",
+          "type": "application/vnd.oai.openapi+json;version=3.0"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://github.com/UltravioletaDAO/x402-facilitator",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://facilitator.ultravioletadao.xyz/health",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}

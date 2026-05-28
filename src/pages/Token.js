@@ -89,7 +89,7 @@ const Token = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-1xl font-bold text-text-primary mb-1 text-justify"
+          className="text-xl font-bold text-text-primary mb-1 text-left"
         >
           {t('token.description_1')}
         </motion.p>
@@ -98,7 +98,7 @@ const Token = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="text-1xl font-bold text-text-primary mb-5 text-justify"
+          className="text-xl font-bold text-text-primary mb-5 text-left"
         >
           {t('token.description_2')}
         </motion.p>
