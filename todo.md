@@ -1,3 +1,19 @@
+## 🔄 PENDIENTE INFRA — Cron del conocimiento del DAO (decisión Saul 2026-07-21: manual por ahora)
+
+Automatizar el refresh de las dos fuentes vivas que hoy se corren A MANO:
+1. **uv-watch + briefings de gobernanza** (`/snapshot`): `karmakadabra/scripts/kk/uv_watch.py`
+   actualiza `vault/knowledge/uvd/` por hash; los briefings en español se regeneran cuando hay
+   proposal nueva y se suben a `s3://ultravioletadao/governance/briefings.json`.
+2. **Índice de búsqueda del stream** (`/stream-summaries`): `scripts/build_stream_search_index.py`
+   + upload a `s3://ultravioletadao/stream-search/search.db` (ver `docs/STREAM_SEARCH.md`).
+
+Diseño del cron cuando se decida: EventBridge → ecs:RunTask one-shot clonando
+`karmakadabra/terraform/selfimprove/` (stack propio `terraform/uv-knowledge/`, IAM mínimo).
+Relación: fila "Ultravioleta Intelligence Engine" en `karmakadabra/docs/planning/BACKLOG.md`
+y plan `karmakadabra/plans/ULTRAVIOLETA_INTELLIGENCE_ENGINE_MASTER_PLAN.md` (Pilar A, gate A1).
+
+---
+
 - ~~en metricas donde dice ultima propuesta, debería de decir Ultimas Propuestas e ir mostrando las ultimas propuestas en pop up o un carrusel, que vayan mostrandose y escondiendose, y va saliendo la otra propuesta, y top votantes podría hacer un scroll , si alguna multisig es menos a 1 dolar que no se muestre en las metricas~~ ✅ IMPLEMENTADO
 
 seria bueno que coloques una badge de top contributors y meterlos como en una lista aparte ahi mismo en los miembros, que tengan una badge de un diamante o una estrella, y que solo esten personas que han aportado al dao en temas de artes, programación, dinero, algo asi, 
