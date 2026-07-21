@@ -103,7 +103,7 @@ const TestimonialsSection = () => {
   const generateReviewSchema = (testimonial) => {
     return {
       "@type": "Review",
-      "@id": `https://ultravioleta.xyz/services#${testimonial.id}`,
+      "@id": `https://ultravioletadao.xyz/services#${testimonial.id}`,
       "itemReviewed": {
         "@type": "SoftwareApplication",
         "name": testimonial.product

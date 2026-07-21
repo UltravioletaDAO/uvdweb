@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const SITE_URL = 'https://ultravioleta.xyz';
+const SITE_URL = 'https://ultravioletadao.xyz';
 const LANGUAGES = ['es', 'en', 'pt', 'fr'];
 const DEFAULT_LANG = 'en';
 
@@ -317,7 +317,7 @@ const generateVideoSitemap = () => {
         xml += '      <video:tag>DAO</video:tag>\n';
         xml += '      <video:tag>Blockchain</video:tag>\n';
         xml += '      <video:category>Technology</video:category>\n';
-        xml += '      <video:uploader info="https://ultravioleta.xyz">UltraVioleta DAO</video:uploader>\n';
+        xml += '      <video:uploader info="https://ultravioletadao.xyz">UltraVioleta DAO</video:uploader>\n';
         xml += '    </video:video>\n';
         xml += '  </url>\n';
       });

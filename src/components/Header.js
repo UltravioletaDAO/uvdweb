@@ -137,13 +137,14 @@ const Header = () => {
       path: "/wheel",
       isExternal: false,
     },
-    {
+    // Bounties backend is offline; hidden until REACT_APP_BOUNTIES_ENABLED=true
+    ...(process.env.REACT_APP_BOUNTIES_ENABLED === 'true' ? [{
       name: t('navigation.bounties'),
       icon: GiftIcon,
       path: "/bounties",
       isExternal: false,
       customStyle: "text-amber-400 hover:text-amber-300",
-    },
+    }] : []),
     {
       name: t('navigation.events'),
       icon: CalendarIcon,

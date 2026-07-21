@@ -6,8 +6,8 @@
 export const generateMetaTags = ({
   title = 'UltraVioleta DAO',
   description = 'Latin America at the cutting edge of web4. Building the agentic economy with x402 and ERC-8004.',
-  image = 'https://ultravioleta.xyz/og-image.png',
-  url = 'https://ultravioleta.xyz',
+  image = 'https://ultravioletadao.xyz/og-image.png',
+  url = 'https://ultravioletadao.xyz',
   type = 'website'
 }) => {
   return {
@@ -83,12 +83,12 @@ export const generateEventSchema = ({
     eventStatus: 'https://schema.org/EventScheduled',
     location: {
       '@type': 'VirtualLocation',
-      url: 'https://ultravioleta.xyz/courses'
+      url: 'https://ultravioletadao.xyz/courses'
     },
     organizer: {
       '@type': 'Organization',
       name: organizer,
-      url: 'https://ultravioleta.xyz'
+      url: 'https://ultravioletadao.xyz'
     }
   };
 };
@@ -126,7 +126,7 @@ export const generateArticleSchema = ({
       name: 'UltraVioleta DAO',
       logo: {
         '@type': 'ImageObject',
-        url: 'https://ultravioleta.xyz/logo.png'
+        url: 'https://ultravioletadao.xyz/logo.png'
       }
     }
   };
@@ -196,7 +196,7 @@ export const extractKeywords = (text, maxKeywords = 10) => {
  * Generate hreflang tags for multi-language support
  */
 export const generateHreflangTags = (currentPath, languages = ['es', 'en', 'pt', 'fr']) => {
-  const baseUrl = 'https://ultravioleta.xyz';
+  const baseUrl = 'https://ultravioletadao.xyz';
   return languages.map(lang => ({
     rel: 'alternate',
     hreflang: lang,
@@ -228,7 +228,7 @@ export const generateOGImageUrl = ({
 }) => {
   // This could be connected to an OG image generation service
   // For now, return static image
-  return 'https://ultravioleta.xyz/og-image.png';
+  return 'https://ultravioletadao.xyz/og-image.png';
 };
 
 export default {

@@ -24,7 +24,7 @@ const SEO = ({
   const { i18n, t } = useTranslation();
   const currentLang = i18n.language;
   
-  const siteUrl = 'https://ultravioleta.xyz';
+  const siteUrl = 'https://ultravioletadao.xyz';
   const defaultImage = `${siteUrl}/og-image.png`;
   const defaultTitle = 'UltraVioleta DAO - Leading Web3 DAO in Latin America | Avalanche Ecosystem';
   const defaultDescription = t('seo.defaultDescription');
@@ -194,7 +194,7 @@ const SEO = ({
         name: 'How can I join UltraVioleta DAO?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'You can apply to join through our application form at ultravioleta.xyz/aplicar. We review applications regularly and welcome builders, creators, and Web3 enthusiasts from all backgrounds.'
+          text: 'You can apply to join through our application form at ultravioletadao.xyz/aplicar. We review applications regularly and welcome builders, creators, and Web3 enthusiasts from all backgrounds.'
         }
       },
       {
@@ -293,7 +293,7 @@ const SEO = ({
   const facilitatorJsonLd = (pathname === '/facilitator' || pathname === '/services') ? {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    '@id': 'https://ultravioleta.xyz/facilitator#x402',
+    '@id': 'https://ultravioletadao.xyz/facilitator#x402',
     name: 'x402 Facilitator',
     alternateName: 'UltraVioleta DAO x402 Facilitator',
     applicationCategory: 'FinanceApplication',
@@ -301,7 +301,7 @@ const SEO = ({
     operatingSystem: 'Web Browser, API',
     description: 'Revolutionary gasless payment infrastructure enabling AI agents to transact autonomously without gas fees using x402 protocol with EIP-3009 meta-transactions on Avalanche, Base, Celo, and HyperEVM networks.',
     url: 'https://facilitator.ultravioletadao.xyz/',
-    screenshot: 'https://ultravioleta.xyz/images/x402-facilitator.png',
+    screenshot: 'https://ultravioletadao.xyz/images/x402-facilitator.png',
     featureList: [
       'Zero gas fees for AI agents - $0 transaction costs',
       'EIP-3009 meta-transactions for gasless payments',
@@ -333,7 +333,7 @@ const SEO = ({
     author: {
       '@type': 'Organization',
       name: 'UltraVioleta DAO',
-      url: 'https://ultravioleta.xyz',
+      url: 'https://ultravioletadao.xyz',
       sameAs: [
         'https://github.com/UltravioletaDAO',
         'https://twitter.com/ultravioletadao'

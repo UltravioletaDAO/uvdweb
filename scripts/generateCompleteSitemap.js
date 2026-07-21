@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SITE_URL = 'https://ultravioleta.xyz';
+const SITE_URL = 'https://ultravioletadao.xyz';
 const LANGUAGES = ['es', 'en', 'pt', 'fr'];
 const DEFAULT_LANG = 'en';
 
@@ -47,12 +47,12 @@ function generateImageTags(path) {
   if (path === '/') {
     images.push(
       '    <image:image>',
-      '      <image:loc>https://ultravioleta.xyz/logo.png</image:loc>',
+      '      <image:loc>https://ultravioletadao.xyz/logo.png</image:loc>',
       '      <image:title>UltraVioleta DAO Logo</image:title>',
       '      <image:caption>Official logo of UltraVioleta DAO - Leading Web3 DAO in Latin America</image:caption>',
       '    </image:image>',
       '    <image:image>',
-      '      <image:loc>https://ultravioleta.xyz/og-image.png</image:loc>',
+      '      <image:loc>https://ultravioletadao.xyz/og-image.png</image:loc>',
       '      <image:title>UltraVioleta DAO</image:title>',
       '      <image:caption>UltraVioleta DAO - Building Web3 in Latin America</image:caption>',
       '    </image:image>'
@@ -60,7 +60,7 @@ function generateImageTags(path) {
   } else if (path === '/token') {
     images.push(
       '    <image:image>',
-      '      <image:loc>https://ultravioleta.xyz/uvd.png</image:loc>',
+      '      <image:loc>https://ultravioletadao.xyz/uvd.png</image:loc>',
       '      <image:title>UVD Token</image:title>',
       '      <image:caption>UVD Governance Token on Avalanche Blockchain</image:caption>',
       '    </image:image>'
@@ -68,7 +68,7 @@ function generateImageTags(path) {
   } else if (path === '/nfts') {
     images.push(
       '    <image:image>',
-      '      <image:loc>https://ultravioleta.xyz/images/echoes-nft-collection.jpg</image:loc>',
+      '      <image:loc>https://ultravioletadao.xyz/images/echoes-nft-collection.jpg</image:loc>',
       '      <image:title>Echoes NFT Collection</image:title>',
       '      <image:caption>80 unique NFTs with 2x Chat-to-Earn rewards</image:caption>',
       '    </image:image>'
@@ -76,12 +76,12 @@ function generateImageTags(path) {
   } else if (path === '/services') {
     images.push(
       '    <image:image>',
-      '      <image:loc>https://ultravioleta.xyz/images/karma-hello-dashboard.jpg</image:loc>',
+      '      <image:loc>https://ultravioletadao.xyz/images/karma-hello-dashboard.jpg</image:loc>',
       '      <image:title>Karma Hello Chat-to-Earn</image:title>',
       '      <image:caption>Revolutionary AI-powered chat rewards system</image:caption>',
       '    </image:image>',
       '    <image:image>',
-      '      <image:loc>https://ultravioleta.xyz/images/abracadabra-dashboard.jpg</image:loc>',
+      '      <image:loc>https://ultravioletadao.xyz/images/abracadabra-dashboard.jpg</image:loc>',
       '      <image:title>Abracadabra Stream Intelligence</image:title>',
       '      <image:caption>AI-powered stream content analysis platform</image:caption>',
       '    </image:image>'

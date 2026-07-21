@@ -26,7 +26,7 @@ const SEOEnhanced = ({
   const { i18n, t } = useTranslation();
   const currentLang = i18n.language;
 
-  const siteUrl = 'https://ultravioleta.xyz';
+  const siteUrl = 'https://ultravioletadao.xyz';
   const defaultImage = `${siteUrl}/og-image.png`;
   const defaultTitle = 'UltraVioleta DAO - Premier Web3 DAO in Latin America | Avalanche Ecosystem';
   const defaultDescription = t('seo.defaultDescription');
@@ -120,7 +120,7 @@ const SEOEnhanced = ({
       value: '500+',
       unitText: 'DAO members'
     },
-    email: 'contact@ultravioleta.xyz',
+    email: 'contact@ultravioletadao.xyz',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer service',
@@ -307,7 +307,7 @@ const SEOEnhanced = ({
             name: 'How can I join UltraVioleta DAO?',
             acceptedAnswer: {
               '@type': 'Answer',
-              text: 'Apply through our application form at ultravioleta.xyz/aplicar. We welcome builders, creators, developers, and Web3 enthusiasts. Applications are reviewed regularly by our community.'
+              text: 'Apply through our application form at ultravioletadao.xyz/aplicar. We welcome builders, creators, developers, and Web3 enthusiasts. Applications are reviewed regularly by our community.'
             }
           },
           {

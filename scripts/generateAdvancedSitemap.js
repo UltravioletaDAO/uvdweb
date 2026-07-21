@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Configuration
-const SITE_URL = 'https://ultravioleta.xyz';
+const SITE_URL = 'https://ultravioletadao.xyz';
 const LANGUAGES = ['es', 'en', 'pt', 'fr'];
 const DEFAULT_LANG = 'en';
 

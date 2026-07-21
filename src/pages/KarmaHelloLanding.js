@@ -83,7 +83,7 @@ const KarmaHelloLanding = () => {
     "@graph": [
       {
         "@type": "SoftwareApplication",
-        "@id": "https://ultravioleta.xyz/karma-hello",
+        "@id": "https://ultravioletadao.xyz/karma-hello",
         "name": "Karma Hello - Revolutionary Chat-to-Earn Platform",
         "applicationCategory": "CommunicationApplication",
         "operatingSystem": "Web Browser",
@@ -129,7 +129,7 @@ const KarmaHelloLanding = () => {
         description="Transform your Twitch chat into crypto earnings with Karma Hello. 18+ AI agents reward quality interactions with UVD tokens on Avalanche blockchain. Join 2,800+ users earning daily."
         keywords="Karma Hello, chat to earn, Twitch crypto rewards, UVD tokens, AI chat evaluation, Web3 streaming, Avalanche blockchain, chat monetization, stream engagement, crypto earnings Twitch"
         customJsonLd={jsonLd}
-        canonicalUrl="https://ultravioleta.xyz/karma-hello"
+        canonicalUrl="https://ultravioletadao.xyz/karma-hello"
       />
 
       <main className="min-h-screen bg-black text-white">

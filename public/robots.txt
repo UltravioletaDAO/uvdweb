@@ -1,5 +1,5 @@
 # Robots.txt for UltraVioleta DAO
-# https://ultravioleta.xyz
+# https://ultravioletadao.xyz
 # Last updated: 2025-10-02
 
 # Default rules for all bots
@@ -157,10 +157,10 @@ Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gcli
 Content-Signal: ai-train=no, search=yes, ai-input=yes
 
 # Sitemap locations
-Sitemap: https://ultravioleta.xyz/sitemap-index.xml
-Sitemap: https://ultravioleta.xyz/sitemap.xml
-Sitemap: https://ultravioleta.xyz/sitemap-blog.xml
-Sitemap: https://ultravioleta.xyz/sitemap-images.xml
+Sitemap: https://ultravioletadao.xyz/sitemap-index.xml
+Sitemap: https://ultravioletadao.xyz/sitemap.xml
+Sitemap: https://ultravioletadao.xyz/sitemap-blog.xml
+Sitemap: https://ultravioletadao.xyz/sitemap-images.xml
 
 # Host directive for preferred domain
-Host: https://ultravioleta.xyz
+Host: https://ultravioletadao.xyz

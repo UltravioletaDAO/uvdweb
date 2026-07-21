@@ -3,9 +3,9 @@
 
 export const SEO_DEFAULTS = {
   siteName: 'UltraVioleta DAO',
-  siteUrl: 'https://ultravioleta.xyz',
+  siteUrl: 'https://ultravioletadao.xyz',
   twitterHandle: '@ultravioletadao',
-  defaultImage: 'https://ultravioleta.xyz/og-image.png',
+  defaultImage: 'https://ultravioletadao.xyz/og-image.png',
   themeColor: '#6A00FF',
   locale: 'es-ES',
   type: 'website',

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SITE_URL = 'https://ultravioleta.xyz';
+const SITE_URL = 'https://ultravioletadao.xyz';
 const LANGUAGES = ['es', 'en', 'pt', 'fr'];
 
 const staticRoutes = [

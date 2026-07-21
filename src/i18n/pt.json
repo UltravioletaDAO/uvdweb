@@ -1406,7 +1406,8 @@
         "title": "Não Aprovada",
         "description": "Infelizmente, sua candidatura não foi aprovada neste momento."
       }
-    }
+    },
+    "service_unavailable": "A consulta de status está temporariamente indisponível. Fale conosco nos canais da comunidade (Discord/Telegram) e verificamos sua aplicação."
   },
   "safestats": {
     "title": "Multi-assinantes UltravioletaDAO",

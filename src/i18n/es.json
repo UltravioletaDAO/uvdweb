@@ -1331,6 +1331,7 @@
     "title": "Estado de tu Aplicación",
     "instructions": "Ingresa el email con el que aplicaste para verificar el estado",
     "email_placeholder": "tu@email.com",
+    "service_unavailable": "La consulta de estado no está disponible temporalmente. Escríbenos por los canales de la comunidad (Discord/Telegram) y revisamos tu aplicación.",
     "checking": "Consultando...",
     "check_button": "Verificar Estado",
     "last_update": "Última actualización:",
