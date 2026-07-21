@@ -2115,6 +2115,17 @@
     }
   },
   "streamSummaries": {
+    "search": {
+        "title": "Busca en la memoria de los streams — cada frase dicha, con su momento exacto",
+        "placeholder": "¿De qué habló Ultra...? (ej: execution market)",
+        "button": "Buscar",
+        "searching": "Buscando…",
+        "resultsCount": "{{count}} momentos encontrados.",
+        "noResults": "Sin resultados para",
+        "disclaimer": "Los VODs viejos pueden haber expirado en Twitch — la cita y la fecha siguen valiendo.",
+        "error": "La búsqueda no está disponible en este momento.",
+        "openVod": "Ver en Twitch"
+      },
     "seoTitle": "Resúmenes de Streams - Abracadabra AI",
     "seoDescription": "Explora resúmenes generados por IA de streams de programación, Web3 y tecnología. Resúmenes automáticos de 0xultravioleta, karenngo, elbitterx, herniep y más.",
     "title": "Resúmenes de Streams",

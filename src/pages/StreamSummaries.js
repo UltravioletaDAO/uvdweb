@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import StreamSummaryCard from '../components/StreamSummaryCard';
+import StreamSearch from '../components/StreamSearch';
 import Pagination from '../components/Pagination';
 import SEO from '../components/SEO';
 import PaywallModal from '../components/PaywallModal';
@@ -413,6 +414,9 @@ function StreamSummaries() {
               </Link>
             </div>
           </section>
+
+          {/* Full-text search over the transcript corpus (visible when the API is configured) */}
+          <StreamSearch />
 
           {/* Streamer Filter - Compact horizontal layout */}
           {summariesData?.streamers && (

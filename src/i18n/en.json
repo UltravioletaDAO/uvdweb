@@ -2256,6 +2256,17 @@
     }
   },
   "streamSummaries": {
+    "search": {
+        "title": "Search the stream memory — every phrase ever said, with its exact moment",
+        "placeholder": "What did Ultra talk about...? (e.g. execution market)",
+        "button": "Search",
+        "searching": "Searching…",
+        "resultsCount": "{{count}} moments found.",
+        "noResults": "No results for",
+        "disclaimer": "Older VODs may have expired on Twitch — the quote and date remain valid.",
+        "error": "Search is temporarily unavailable.",
+        "openVod": "Watch on Twitch"
+      },
     "seoTitle": "Stream Summaries - Abracadabra AI",
     "seoDescription": "Explore AI-generated summaries of programming, Web3, and technology streams. Automatic summaries from 0xultravioleta, karenngo, elbitterx, herniep and more.",
     "title": "Stream Summaries",
