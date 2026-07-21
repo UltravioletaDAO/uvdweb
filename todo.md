@@ -1,3 +1,13 @@
+## 🖼️ PENDIENTE — Embeber el observatorio KarmaKadabra (plan listo, decisión Saul: después)
+
+Iframe del observatorio 3D (`karmakadabra.ultravioletadao.xyz`) en la página `/agents`
+con facade click-to-load (sin costo WebGL/WS para el visitante que no lo abre).
+Factibilidad VERIFICADA (2026-07-21): el dashboard no manda X-Frame-Options ni CSP →
+iframeable hoy sin tocar KK. Plan completo: `docs/KARMAKADABRA_EMBED_PLAN.md`
+(~medio día de trabajo). Relación: backlog de karmakadabra.
+
+---
+
 ## 🔄 PENDIENTE INFRA — Cron del conocimiento del DAO (decisión Saul 2026-07-21: manual por ahora)
 
 Automatizar el refresh de las dos fuentes vivas que hoy se corren A MANO:
