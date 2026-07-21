@@ -6,6 +6,12 @@
     "seoDescription": "Junte-se à UltraVioleta DAO - A América Latina na vanguarda da web4. Construindo a economia agêntica através de x402, ERC-8004, governança descentralizada e gestão colaborativa do tesouro na Avalanche, Base, Celo.",
     "metrics": {
       "snapshot": {
+        "briefing": {
+            "title": "Briefing em espanhol",
+            "quorumReached": "Quórum atingido",
+            "quorumMissed": "Quórum não atingido",
+            "credit": "Gerado pelo KarmaKadabra a partir do texto da proposta — não substitui a leitura."
+          },
         "title": "Governança Snapshot",
         "proposals": "Propostas",
         "votes": "Votos",

@@ -6,6 +6,12 @@
     "seoDescription": "Rejoignez Ultravioleta DAO - L'Amérique latine à la pointe du web4. Construire l'économie agentique grâce à x402, ERC-8004, la gouvernance décentralisée et la gestion collaborative de la trésorerie sur Avalanche, Base, Celo.",
     "metrics": {
       "snapshot": {
+        "briefing": {
+            "title": "Briefing en espagnol",
+            "quorumReached": "Quorum atteint",
+            "quorumMissed": "Quorum non atteint",
+            "credit": "Généré par KarmaKadabra à partir du texte de la proposition — ne remplace pas sa lecture."
+          },
         "title": "Gouvernance Snapshot",
         "proposals": "Propositions",
         "votes": "Votes",

@@ -104,6 +104,12 @@
     "subtitle": "Latinoamérica en la vanguardia de web4",
     "metrics": {
       "snapshot": {
+        "briefing": {
+            "title": "Briefing en español",
+            "quorumReached": "Quórum alcanzado",
+            "quorumMissed": "Quórum no alcanzado",
+            "credit": "Generado por KarmaKadabra a partir del texto de la propuesta — no sustituye leerla."
+          },
         "title": "Snapshot Governance",
         "proposals": "Propuestas",
         "votes": "Votos",
