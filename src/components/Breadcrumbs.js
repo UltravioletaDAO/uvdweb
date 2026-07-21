@@ -61,13 +61,13 @@ const Breadcrumbs = ({ customItems = [] }) => {
         '@type': 'ListItem',
         'position': 1,
         'name': t('navigation.home'),
-        'item': 'https://ultravioleta.xyz'
+        'item': 'https://ultravioletadao.xyz'
       },
       ...items.map((item, index) => ({
         '@type': 'ListItem',
         'position': index + 2,
         'name': item.label,
-        'item': `https://ultravioleta.xyz${item.href}`
+        'item': `https://ultravioletadao.xyz${item.href}`
       }))
     ]
   };

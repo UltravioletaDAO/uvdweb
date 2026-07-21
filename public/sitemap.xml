@@ -8,631 +8,631 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
-    <loc>https://ultravioleta.xyz/es/</loc>
-    <lastmod>2026-05-27T17:07:20.240Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/</loc>
+    <lastmod>2026-07-21T19:39:06.492Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/</loc>
-    <lastmod>2026-05-27T17:07:20.240Z</lastmod>
+    <loc>https://ultravioletadao.xyz/</loc>
+    <lastmod>2026-07-21T19:39:06.492Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/"/>
     <image:image>
-      <image:loc>https://ultravioleta.xyz/logo.png</image:loc>
+      <image:loc>https://ultravioletadao.xyz/logo.png</image:loc>
       <image:title>UltraVioleta DAO Logo</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://ultravioleta.xyz/og-image.png</image:loc>
+      <image:loc>https://ultravioletadao.xyz/og-image.png</image:loc>
       <image:title>UltraVioleta DAO</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/</loc>
-    <lastmod>2026-05-27T17:07:20.240Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/</loc>
+    <lastmod>2026-07-21T19:39:06.492Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/</loc>
-    <lastmod>2026-05-27T17:07:20.240Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/</loc>
+    <lastmod>2026-07-21T19:39:06.492Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/about</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/about</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/about"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/about"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/about"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/about</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/about</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/about"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/about"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/about"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/about</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/about</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/about"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/about"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/about"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/about</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/about</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/about"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/about"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/about"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/about"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/about"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/about"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/about"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/about"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/about"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/aplicar</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/aplicar</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/aplicar"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/aplicar</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/aplicar</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/aplicar"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/aplicar</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/aplicar</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/aplicar"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/aplicar</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/aplicar</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/aplicar"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/aplicar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/aplicar"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/metrics</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/metrics</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/metrics"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/metrics"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/metrics"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/metrics"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/metrics"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/metrics"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/metrics"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/metrics"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/metrics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/metrics"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/metrics</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/metrics</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/metrics"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/metrics"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/metrics"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/metrics"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/metrics"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/metrics"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/metrics"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/metrics"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/metrics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/metrics"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/metrics</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/metrics</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/metrics"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/metrics"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/metrics"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/metrics"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/metrics"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/metrics"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/metrics"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/metrics"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/metrics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/metrics"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/metrics</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/metrics</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/metrics"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/metrics"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/metrics"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/metrics"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/metrics"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/metrics"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/metrics"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/metrics"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/metrics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/metrics"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/token</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/token"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/token"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/token"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/token"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/token"/>
-  </url>
-  <url>
-    <loc>https://ultravioleta.xyz/token</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/token</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/token"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/token"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/token"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/token"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/token"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/token"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/token"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/token"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/token"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/token"/>
+  </url>
+  <url>
+    <loc>https://ultravioletadao.xyz/token</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/token"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/token"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/token"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/token"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/token"/>
     <image:image>
-      <image:loc>https://ultravioleta.xyz/uvd.png</image:loc>
+      <image:loc>https://ultravioletadao.xyz/uvd.png</image:loc>
       <image:title>UVD Token</image:title>
     </image:image>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/token</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/token</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/token"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/token"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/token"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/token"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/token"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/token"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/token"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/token"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/token"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/token"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/token</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/token</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/token"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/token"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/token"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/token"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/token"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/token"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/token"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/token"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/token"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/token"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/snapshot</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/snapshot</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/snapshot"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/snapshot</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/snapshot</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/snapshot"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/snapshot</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/snapshot</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/snapshot"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/snapshot</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/snapshot</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/snapshot"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/snapshot"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/snapshot"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/contributors</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/contributors</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/contributors"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/contributors"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/contributors"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/contributors"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/contributors"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/contributors"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/contributors"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/contributors"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/contributors"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/contributors"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/contributors</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/contributors</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/contributors"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/contributors"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/contributors"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/contributors"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/contributors"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/contributors"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/contributors"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/contributors"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/contributors"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/contributors"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/contributors</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/contributors</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/contributors"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/contributors"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/contributors"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/contributors"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/contributors"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/contributors"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/contributors"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/contributors"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/contributors"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/contributors"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/contributors</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/contributors</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/contributors"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/contributors"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/contributors"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/contributors"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/contributors"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/contributors"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/contributors"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/contributors"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/contributors"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/contributors"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/courses</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/courses</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/courses"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/courses"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/courses"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/courses"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/courses"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/courses"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/courses"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/courses"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/courses"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/courses"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/courses</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/courses</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/courses"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/courses"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/courses"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/courses"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/courses"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/courses"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/courses"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/courses"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/courses"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/courses"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/courses</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/courses</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/courses"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/courses"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/courses"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/courses"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/courses"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/courses"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/courses"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/courses"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/courses"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/courses"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/courses</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/courses</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/courses"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/courses"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/courses"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/courses"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/courses"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/courses"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/courses"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/courses"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/courses"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/courses"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/blog</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/blog</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/blog"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/blog"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/blog"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/blog"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/blog"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/blog"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/blog</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/blog</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/blog"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/blog"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/blog"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/blog"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/blog"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/blog"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/blog</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/blog</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/blog"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/blog"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/blog"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/blog"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/blog"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/blog"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/blog</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/blog</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/blog"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/blog"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/blog"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/blog"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/blog"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/blog"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/blog"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/blog"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/blog"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/blog"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/links</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/links</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/links"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/links"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/links"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/links"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/links"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/links"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/links"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/links"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/links"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/links"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/links</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/links</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/links"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/links"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/links"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/links"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/links"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/links"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/links"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/links"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/links"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/links"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/links</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/links</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/links"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/links"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/links"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/links"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/links"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/links"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/links"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/links"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/links"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/links"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/links</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/links</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/links"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/links"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/links"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/links"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/links"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/links"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/links"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/links"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/links"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/links"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/safestats</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/safestats</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/safestats"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/safestats"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/safestats"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/safestats"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/safestats"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/safestats"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/safestats"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/safestats"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/safestats"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/safestats"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/safestats</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/safestats</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/safestats"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/safestats"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/safestats"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/safestats"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/safestats"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/safestats"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/safestats"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/safestats"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/safestats"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/safestats"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/safestats</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/safestats</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/safestats"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/safestats"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/safestats"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/safestats"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/safestats"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/safestats"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/safestats"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/safestats"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/safestats"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/safestats"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/safestats</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/safestats</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/safestats"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/safestats"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/safestats"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/safestats"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/safestats"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/safestats"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/safestats"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/safestats"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/safestats"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/safestats"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/wheel</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/wheel</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/wheel"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/wheel"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/wheel"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/wheel"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/wheel"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/wheel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/wheel"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/wheel"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/wheel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/wheel"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/wheel</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/wheel</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/wheel"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/wheel"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/wheel"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/wheel"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/wheel"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/wheel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/wheel"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/wheel"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/wheel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/wheel"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/wheel</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/wheel</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/wheel"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/wheel"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/wheel"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/wheel"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/wheel"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/wheel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/wheel"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/wheel"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/wheel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/wheel"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/wheel</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/wheel</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/wheel"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/wheel"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/wheel"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/wheel"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/wheel"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/wheel"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/wheel"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/wheel"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/wheel"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/wheel"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/events</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/events</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/events"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/events"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/events"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/events"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/events"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/events"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/events"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/events"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/events</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/events</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/events"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/events"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/events"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/events"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/events"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/events"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/events"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/events"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/events</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/events</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/events"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/events"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/events"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/events"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/events"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/events"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/events"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/events"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/events</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/events</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/events"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/events"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/events"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/events"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/events"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/events"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/events"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/events"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/events"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/events"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/es/services</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/es/services</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/services"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/services"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/services"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/services"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/services"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/services"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/services"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/services"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/services</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/services</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/services"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/services"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/services"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/services"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/services"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/services"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/services"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/services"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/pt/services</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/pt/services</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/services"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/services"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/services"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/services"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/services"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/services"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/services"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/services"/>
   </url>
   <url>
-    <loc>https://ultravioleta.xyz/fr/services</loc>
-    <lastmod>2026-05-27T17:07:20.241Z</lastmod>
+    <loc>https://ultravioletadao.xyz/fr/services</loc>
+    <lastmod>2026-07-21T19:39:06.493Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioleta.xyz/es/services"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioleta.xyz/services"/>
-    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioleta.xyz/pt/services"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioleta.xyz/fr/services"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioleta.xyz/services"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://ultravioletadao.xyz/es/services"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://ultravioletadao.xyz/services"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://ultravioletadao.xyz/pt/services"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://ultravioletadao.xyz/fr/services"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://ultravioletadao.xyz/services"/>
   </url>
 </urlset>

@@ -91,7 +91,9 @@ function App() {
                   <Route path="/events" element={<Events />} />
                   <Route path="/experiments" element={<ExperimentsPage />} />
                   <Route path="/facilitator" element={<FacilitatorPage />} />
-                  <Route path="/bounties" element={<Bounties />} />
+                  {process.env.REACT_APP_BOUNTIES_ENABLED === 'true' && (
+                    <Route path="/bounties" element={<Bounties />} />
+                  )}
                   <Route path="/agents" element={<AgentDiscovery />} />
                   <Route path="/purge" element={<Purge />} />
                   <Route path="/karma-hello" element={<KarmaHelloLanding />} />

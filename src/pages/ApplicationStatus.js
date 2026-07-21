@@ -69,6 +69,13 @@ const ApplicationStatus = () => {
       });
 
       debugLog('Respuesta del servidor:', response.status);
+
+      // Backend endpoint offline/not deployed: show a friendly message instead of a raw error
+      if (response.status === 404 || response.status === 503) {
+        setError(t('applicationStatus.service_unavailable'));
+        return;
+      }
+
       const data = await response.json();
       debugLog('Datos recibidos:', data);
 
@@ -79,7 +86,12 @@ const ApplicationStatus = () => {
       setStatus(data.data);
     } catch (error) {
       console.error('Error completo:', error);
-      setError(`Error: ${error.message}`);
+      if (error instanceof TypeError) {
+        // Network-level failure (DNS/connection)
+        setError(t('applicationStatus.service_unavailable'));
+      } else {
+        setError(`Error: ${error.message}`);
+      }
     } finally {
       setLoading(false);
     }

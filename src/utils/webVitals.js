@@ -98,7 +98,7 @@ export const preloadCriticalAssets = () => {
   const criticalAssets = [
     { href: '/fonts/inter-var.woff2', as: 'font', type: 'font/woff2', crossorigin: true },
     { href: '/logo.png', as: 'image' },
-    { href: 'https://ultravioleta.xyz/og-image.png', as: 'image' }
+    { href: 'https://ultravioletadao.xyz/og-image.png', as: 'image' }
   ];
 
   criticalAssets.forEach(asset => {

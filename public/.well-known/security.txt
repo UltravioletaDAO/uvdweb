@@ -2,14 +2,14 @@
 # This file helps security researchers report security vulnerabilities.
 # Learn more: https://securitytxt.org/
 
-Contact: mailto:security@ultravioleta.xyz
+Contact: mailto:security@ultravioletadao.xyz
 Contact: https://discord.gg/ultravioleta
 Expires: 2027-01-01T00:00:00.000Z
-Encryption: https://ultravioleta.xyz/.well-known/pgp-key.txt
-Acknowledgments: https://ultravioleta.xyz/security/thanks
+Encryption: https://ultravioletadao.xyz/.well-known/pgp-key.txt
+Acknowledgments: https://ultravioletadao.xyz/security/thanks
 Preferred-Languages: en, es, pt, fr
 Canonical: https://ultravioletadao.xyz/.well-known/security.txt
-Policy: https://ultravioleta.xyz/security-policy
+Policy: https://ultravioletadao.xyz/security-policy
 
 # Bug Bounty Program
 # We value security researchers and offer rewards for responsibly disclosed vulnerabilities.
@@ -28,4 +28,4 @@ Policy: https://ultravioleta.xyz/security-policy
 
 # PGP Key Fingerprint: [TO BE ADDED]
 # Organization: UltraVioleta DAO
-# Website: https://ultravioleta.xyz
+# Website: https://ultravioletadao.xyz

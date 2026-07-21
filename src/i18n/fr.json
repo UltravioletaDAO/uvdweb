@@ -6,6 +6,12 @@
     "seoDescription": "Rejoignez Ultravioleta DAO - L'Amérique latine à la pointe du web4. Construire l'économie agentique grâce à x402, ERC-8004, la gouvernance décentralisée et la gestion collaborative de la trésorerie sur Avalanche, Base, Celo.",
     "metrics": {
       "snapshot": {
+        "briefing": {
+            "title": "Briefing en espagnol",
+            "quorumReached": "Quorum atteint",
+            "quorumMissed": "Quorum non atteint",
+            "credit": "Généré par KarmaKadabra à partir du texte de la proposition — ne remplace pas sa lecture."
+          },
         "title": "Gouvernance Snapshot",
         "proposals": "Propositions",
         "votes": "Votes",
@@ -1203,7 +1209,8 @@
         "title": "Non approuvée",
         "description": "Désolé, votre candidature n'a pas été approuvée pour l'instant."
       }
-    }
+    },
+    "service_unavailable": "La consultation du statut est temporairement indisponible. Contactez-nous sur les canaux de la communauté (Discord/Telegram) et nous vérifierons votre candidature."
   },
   "navigation_extra": {
     "multisig_alt": "Portefeuille Safe Multisig trésorerie Ultravioleta DAO blockchain Avalanche stockage crypto sécurisé gouvernance",
@@ -2146,6 +2153,17 @@
     }
   },
   "streamSummaries": {
+    "search": {
+        "title": "Cherchez dans la mémoire des streams — chaque phrase dite, avec son moment exact",
+        "placeholder": "De quoi Ultra a-t-il parlé...? (ex: execution market)",
+        "button": "Chercher",
+        "searching": "Recherche…",
+        "resultsCount": "{{count}} moments trouvés.",
+        "noResults": "Aucun résultat pour",
+        "disclaimer": "Les anciens VODs peuvent avoir expiré sur Twitch — la citation et la date restent valables.",
+        "error": "La recherche est temporairement indisponible.",
+        "openVod": "Voir sur Twitch"
+      },
     "seoTitle": "Résumés de streams - Abracadabra IA",
     "seoDescription": "Explorez des résumés générés par IA de streams de programmation, Web3 et technologie. Résumés automatiques de 0xultravioleta, karenngo, elbitterx, herniep et plus.",
     "title": "Résumés de streams",

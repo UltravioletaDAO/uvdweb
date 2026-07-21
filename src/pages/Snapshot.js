@@ -7,6 +7,7 @@ import { enUS } from 'date-fns/locale';
 import snapshot from '@snapshot-labs/snapshot.js';
 import { debugError } from '../lib/utils';
 import { useWallet } from '../contexts/WalletContext';
+import useGovernanceBriefing from '../hooks/useGovernanceBriefings';
 
 const formatVotingPower = (value) => {
   if (value >= 1000000) {
@@ -83,6 +84,7 @@ const fetchProposalsFromAPI = async (space, setProposals, setLoading, setError, 
 
 const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
   const { t } = useTranslation();
+  const briefing = useGovernanceBriefing(proposal?.id);
 
   useEffect(() => {
     const handleEscapeKey = (e) => {
@@ -140,6 +142,29 @@ const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
             {t(`snapshot.states.${proposal.state}`)}
           </span>
         </div>
+
+        {briefing?.resumen_es && (
+          <div className="mt-4 bg-violet-900/15 border border-violet-700/30 rounded-lg p-4">
+            <div className="flex items-center justify-between gap-2 mb-2">
+              <span className="text-violet-400 font-semibold text-sm">
+                {t('snapshot.briefing.title')}
+              </span>
+              {typeof briefing.quorum_alcanzado === 'boolean' && (
+                <span className={`text-xs px-2 py-0.5 rounded-full ${
+                  briefing.quorum_alcanzado
+                    ? 'bg-green-500/10 text-green-400'
+                    : 'bg-amber-500/10 text-amber-400'
+                }`}>
+                  {briefing.quorum_alcanzado
+                    ? t('snapshot.briefing.quorumReached')
+                    : t('snapshot.briefing.quorumMissed')}
+                </span>
+              )}
+            </div>
+            <p className="text-sm text-text-secondary leading-relaxed">{briefing.resumen_es}</p>
+            <p className="text-xs text-text-secondary/50 mt-2">{t('snapshot.briefing.credit')}</p>
+          </div>
+        )}
 
         <div className="prose prose-invert max-w-none mt-4">
           <div className="whitespace-pre-wrap">{proposal.body}</div>

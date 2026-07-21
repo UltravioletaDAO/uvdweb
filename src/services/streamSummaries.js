@@ -7,12 +7,14 @@ const API_BASE_URL = process.env.REACT_APP_STREAM_SUMMARIES_API;
 const S3_BASE_URL = 'https://ultravioletadao.s3.us-east-1.amazonaws.com';
 
 // Log configuration at startup - CRITICAL: Verifies env vars are loaded
-console.log('🔧 StreamSummaries Service Configuration:', {
-  API_BASE_URL: API_BASE_URL || 'NOT_SET',
-  hasAPI: !!API_BASE_URL,
-  S3_BASE_URL,
-  buildTimestamp: '2025-11-08T20:45:00Z'
-});
+if (DEBUG_ENABLED) {
+  console.log('🔧 StreamSummaries Service Configuration:', {
+    API_BASE_URL: API_BASE_URL || 'NOT_SET',
+    hasAPI: !!API_BASE_URL,
+    S3_BASE_URL,
+    buildTimestamp: '2025-11-08T20:45:00Z'
+  });
+}
 
 // x402 Payment Error
 class PaymentRequiredError extends Error {
@@ -30,6 +32,7 @@ class StreamSummariesService {
     this.cacheExpiry = 5 * 60 * 1000; // 5 minutes cache
     this.currentLanguage = 'es'; // Default language (always use 2-letter codes: es, en, pt, fr)
     this.customFetch = null; // Will be set to fetchWithPayment for x402 support
+    this.apiUnavailable = false; // Set on network-level API failure so we go straight to S3 afterwards
   }
 
   /**
@@ -78,8 +81,8 @@ class StreamSummariesService {
         return cached;
       }
 
-      // Try ECS Fargate API first (if configured)
-      if (API_BASE_URL) {
+      // Try ECS Fargate API first (if configured and not known-dead)
+      if (API_BASE_URL && !this.apiUnavailable) {
         try {
           const apiUrl = `${API_BASE_URL}/summaries?lang=${this.currentLanguage}`;
           this.log('Fetching index from ECS Fargate API', { url: apiUrl });
@@ -133,6 +136,10 @@ class StreamSummariesService {
             }
           }
         } catch (apiError) {
+          if (apiError instanceof TypeError) {
+            // Network-level failure (DNS/connection): stop retrying the API this session
+            this.apiUnavailable = true;
+          }
           this.log('ECS Fargate API index fetch failed, falling back to S3', apiError);
         }
       }
@@ -236,8 +243,8 @@ class StreamSummariesService {
         throw new Error(errorMsg);
       }
 
-      // Try ECS Fargate API first (if configured)
-      if (API_BASE_URL) {
+      // Try ECS Fargate API first (if configured and not known-dead)
+      if (API_BASE_URL && !this.apiUnavailable) {
         try {
           const apiUrl = `${API_BASE_URL}/summaries/${videoId}?lang=${this.currentLanguage}`;
           this.log('Fetching summary from ECS Fargate API', { url: apiUrl });
@@ -302,6 +309,10 @@ class StreamSummariesService {
           // Re-throw PaymentRequiredError
           if (error instanceof PaymentRequiredError) {
             throw error;
+          }
+          if (error instanceof TypeError) {
+            // Network-level failure (DNS/connection): stop retrying the API this session
+            this.apiUnavailable = true;
           }
           this.log('ECS Fargate API summary fetch failed, falling back to S3', error);
         }

@@ -131,7 +131,7 @@ const ServicesPage = () => {
               "position": 1,
               "item": {
                 "@type": "SoftwareApplication",
-                "@id": "https://ultravioleta.xyz/services#karma-hello",
+                "@id": "https://ultravioletadao.xyz/services#karma-hello",
                 "name": "Karma Hello - Chat-to-Earn AI Multi-Agent System",
                 "alternateName": ["Karma Hello Bot", "Chat2Earn", "C2E Bot"],
                 "applicationCategory": "CommunicationApplication",
@@ -147,8 +147,8 @@ const ServicesPage = () => {
                 "provider": {
                   "@type": "Organization",
                   "name": "UltraVioleta DAO",
-                  "url": "https://ultravioleta.xyz",
-                  "@id": "https://ultravioleta.xyz#organization"
+                  "url": "https://ultravioletadao.xyz",
+                  "@id": "https://ultravioletadao.xyz#organization"
                 },
                 "offers": {
                   "@type": "Offer",
@@ -171,8 +171,8 @@ const ServicesPage = () => {
                   "Multi-language support (ES, EN, PT, FR)"
                 ],
                 "screenshot": [
-                  "https://ultravioleta.xyz/images/karma-hello-screenshot.jpg",
-                  "https://ultravioleta.xyz/images/karma-hello-dashboard.jpg"
+                  "https://ultravioletadao.xyz/images/karma-hello-screenshot.jpg",
+                  "https://ultravioletadao.xyz/images/karma-hello-dashboard.jpg"
                 ],
                 "aggregateRating": {
                   "@type": "AggregateRating",
@@ -206,23 +206,22 @@ const ServicesPage = () => {
               "position": 2,
               "item": {
                 "@type": "SoftwareApplication",
-                "@id": "https://ultravioleta.xyz/services#abracadabra",
+                "@id": "https://ultravioletadao.xyz/services#abracadabra",
                 "name": "Abracadabra - AI Stream Content Intelligence Platform",
                 "alternateName": ["Abracadabra AI", "Stream Intelligence", "Content Analysis Platform"],
                 "applicationCategory": "BusinessApplication",
                 "applicationSubCategory": "Content Analysis Tool",
                 "operatingSystem": "Web-based Platform",
-                "url": "https://abracadabra.ultravioleta.xyz",
+                "url": "https://ultravioletadao.xyz/services#abracadabra",
                 "sameAs": [
-                  "https://github.com/UltravioletaDAO/abracadabra",
-                  "https://api.abracadabra.ultravioleta.xyz/docs"
+                  "https://github.com/UltravioletaDAO/abracadabra"
                 ],
                 "description": "Comprehensive stream analysis and content intelligence platform that transforms Twitch videos into actionable, searchable, and reusable content. Features 5 development phases: Analytics, Time Machine, Semantic Search, Content Intelligence, and Predictive Analytics.",
                 "provider": {
                   "@type": "Organization",
                   "name": "UltraVioleta DAO",
-                  "url": "https://ultravioleta.xyz",
-                  "@id": "https://ultravioleta.xyz#organization"
+                  "url": "https://ultravioletadao.xyz",
+                  "@id": "https://ultravioletadao.xyz#organization"
                 },
                 "offers": {
                   "@type": "Offer",
@@ -249,8 +248,8 @@ const ServicesPage = () => {
                   "Interactive analytics dashboard"
                 ],
                 "screenshot": [
-                  "https://ultravioleta.xyz/images/abracadabra-dashboard.jpg",
-                  "https://ultravioleta.xyz/images/abracadabra-search.jpg"
+                  "https://ultravioletadao.xyz/images/abracadabra-dashboard.jpg",
+                  "https://ultravioletadao.xyz/images/abracadabra-search.jpg"
                 ],
                 "aggregateRating": {
                   "@type": "AggregateRating",

@@ -90,14 +90,14 @@ const FacilitatorPage = () => {
   const facilitatorSchema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    '@id': 'https://ultravioleta.xyz/facilitator#x402',
+    '@id': 'https://ultravioletadao.xyz/facilitator#x402',
     name: 'x402 Facilitator',
     alternateName: 'UltraVioleta DAO x402 Facilitator',
     applicationCategory: 'FinanceApplication',
     operatingSystem: 'Web Browser, API',
     description: t('facilitatorPage.seoDescription'),
     url: 'https://facilitator.ultravioletadao.xyz/',
-    screenshot: 'https://ultravioleta.xyz/images/x402-facilitator.png',
+    screenshot: 'https://ultravioletadao.xyz/images/x402-facilitator.png',
     featureList: [
       'Gasless transactions for AI agents',
       'EIP-3009 meta-transactions',
@@ -125,7 +125,7 @@ const FacilitatorPage = () => {
     author: {
       '@type': 'Organization',
       name: 'UltraVioleta DAO',
-      url: 'https://ultravioleta.xyz'
+      url: 'https://ultravioletadao.xyz'
     },
     datePublished: '2025-10-26',
     softwareVersion: '1.0',

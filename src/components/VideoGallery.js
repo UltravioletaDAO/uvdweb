@@ -57,7 +57,7 @@ const VideoGallery = ({ videos = [] }) => {
   const generateVideoSchema = (video) => {
     return {
       "@type": "VideoObject",
-      "@id": `https://ultravioleta.xyz/services#video-${video.id}`,
+      "@id": `https://ultravioletadao.xyz/services#video-${video.id}`,
       "name": video.title,
       "description": video.description,
       "thumbnailUrl": getYoutubeThumbnail(video.youtubeId),
@@ -75,7 +75,7 @@ const VideoGallery = ({ videos = [] }) => {
         "name": "UltraVioleta DAO",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://ultravioleta.xyz/logo.png"
+          "url": "https://ultravioletadao.xyz/logo.png"
         }
       }
     };

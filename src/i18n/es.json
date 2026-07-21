@@ -104,6 +104,12 @@
     "subtitle": "Latinoamérica en la vanguardia de web4",
     "metrics": {
       "snapshot": {
+        "briefing": {
+            "title": "Briefing en español",
+            "quorumReached": "Quórum alcanzado",
+            "quorumMissed": "Quórum no alcanzado",
+            "credit": "Generado por KarmaKadabra a partir del texto de la propuesta — no sustituye leerla."
+          },
         "title": "Snapshot Governance",
         "proposals": "Propuestas",
         "votes": "Votos",
@@ -1331,6 +1337,7 @@
     "title": "Estado de tu Aplicación",
     "instructions": "Ingresa el email con el que aplicaste para verificar el estado",
     "email_placeholder": "tu@email.com",
+    "service_unavailable": "La consulta de estado no está disponible temporalmente. Escríbenos por los canales de la comunidad (Discord/Telegram) y revisamos tu aplicación.",
     "checking": "Consultando...",
     "check_button": "Verificar Estado",
     "last_update": "Última actualización:",
@@ -2114,6 +2121,17 @@
     }
   },
   "streamSummaries": {
+    "search": {
+        "title": "Busca en la memoria de los streams — cada frase dicha, con su momento exacto",
+        "placeholder": "¿De qué habló Ultra...? (ej: execution market)",
+        "button": "Buscar",
+        "searching": "Buscando…",
+        "resultsCount": "{{count}} momentos encontrados.",
+        "noResults": "Sin resultados para",
+        "disclaimer": "Los VODs viejos pueden haber expirado en Twitch — la cita y la fecha siguen valiendo.",
+        "error": "La búsqueda no está disponible en este momento.",
+        "openVod": "Ver en Twitch"
+      },
     "seoTitle": "Resúmenes de Streams - Abracadabra AI",
     "seoDescription": "Explora resúmenes generados por IA de streams de programación, Web3 y tecnología. Resúmenes automáticos de 0xultravioleta, karenngo, elbitterx, herniep y más.",
     "title": "Resúmenes de Streams",

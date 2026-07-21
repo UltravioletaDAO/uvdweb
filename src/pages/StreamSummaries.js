@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import StreamSummaryCard from '../components/StreamSummaryCard';
+import StreamSearch from '../components/StreamSearch';
 import Pagination from '../components/Pagination';
 import SEO from '../components/SEO';
 import PaywallModal from '../components/PaywallModal';
@@ -75,13 +76,13 @@ function StreamSummaries() {
     const baseSchema = {
       '@context': 'https://schema.org',
       '@type': 'CollectionPage',
-      '@id': 'https://ultravioleta.xyz/stream-summaries',
+      '@id': 'https://ultravioletadao.xyz/stream-summaries',
       name: t('streamSummaries.seoTitle'),
       description: t('streamSummaries.seoDescription'),
-      url: 'https://ultravioleta.xyz/stream-summaries',
+      url: 'https://ultravioletadao.xyz/stream-summaries',
       isPartOf: {
         '@type': 'WebSite',
-        '@id': 'https://ultravioleta.xyz#website',
+        '@id': 'https://ultravioletadao.xyz#website',
         name: 'UltraVioleta DAO'
       },
       about: {
@@ -93,7 +94,7 @@ function StreamSummaries() {
         creator: {
           '@type': 'Organization',
           name: 'UltraVioleta DAO',
-          url: 'https://ultravioleta.xyz'
+          url: 'https://ultravioletadao.xyz'
         }
       },
       mainEntity: {
@@ -109,25 +110,25 @@ function StreamSummaries() {
             '@type': 'ListItem',
             position: 1,
             name: 'Home',
-            item: 'https://ultravioleta.xyz'
+            item: 'https://ultravioletadao.xyz'
           },
           {
             '@type': 'ListItem',
             position: 2,
             name: 'Products & Services',
-            item: 'https://ultravioleta.xyz/services'
+            item: 'https://ultravioletadao.xyz/services'
           },
           {
             '@type': 'ListItem',
             position: 3,
             name: 'Stream Summaries',
-            item: 'https://ultravioleta.xyz/stream-summaries'
+            item: 'https://ultravioletadao.xyz/stream-summaries'
           }
         ]
       },
       potentialAction: {
         '@type': 'ViewAction',
-        target: 'https://ultravioleta.xyz/stream-summaries',
+        target: 'https://ultravioletadao.xyz/stream-summaries',
         name: 'View AI Stream Summaries'
       }
     };
@@ -137,7 +138,7 @@ function StreamSummaries() {
       baseSchema.mainEntity.itemListElement = filteredSummaries.slice(0, 10).map((summary, index) => ({
         '@type': 'VideoObject',
         position: index + 1,
-        '@id': `https://ultravioleta.xyz/stream-summaries#${summary.video_id}`,
+        '@id': `https://ultravioletadao.xyz/stream-summaries#${summary.video_id}`,
         name: summary.title || `Stream by ${summary.streamer}`,
         description: summary.summary ? summary.summary.substring(0, 160) + '...' : 'AI-generated stream summary',
         creator: {
@@ -145,7 +146,7 @@ function StreamSummaries() {
           name: summary.streamer,
           url: `https://twitch.tv/${summary.streamer}`
         },
-        thumbnailUrl: summary.thumbnail_url || 'https://ultravioleta.xyz/og-image.png',
+        thumbnailUrl: summary.thumbnail_url || 'https://ultravioletadao.xyz/og-image.png',
         uploadDate: summary.created_at,
         duration: summary.duration || 'PT1H',
         embedUrl: `https://www.twitch.tv/videos/${summary.video_id}`,
@@ -212,13 +213,13 @@ function StreamSummaries() {
     const serviceSchema = {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      '@id': 'https://ultravioleta.xyz/services#abracadabra',
+      '@id': 'https://ultravioletadao.xyz/services#abracadabra',
       name: 'Abracadabra Stream Intelligence',
       description: 'AI-powered stream content analysis with semantic search and automated summaries',
       provider: {
         '@type': 'Organization',
         name: 'UltraVioleta DAO',
-        url: 'https://ultravioleta.xyz'
+        url: 'https://ultravioletadao.xyz'
       },
       serviceType: 'AI Content Analysis',
       areaServed: {
@@ -227,7 +228,7 @@ function StreamSummaries() {
       },
       availableChannel: {
         '@type': 'ServiceChannel',
-        serviceUrl: 'https://ultravioleta.xyz/stream-summaries',
+        serviceUrl: 'https://ultravioletadao.xyz/stream-summaries',
         servicePhone: '',
         serviceSmsNumber: ''
       },
@@ -345,7 +346,7 @@ function StreamSummaries() {
         keywords={localizedMeta.keywords}
         type="website"
         customJsonLd={generateStreamSummariesJsonLd()}
-        image="https://ultravioleta.xyz/images/abracadabra-banner.jpg"
+        image="https://ultravioletadao.xyz/images/abracadabra-banner.jpg"
       />
 
       <main className="min-h-screen bg-background text-text-primary py-6 px-4 md:px-6 lg:px-8">
@@ -413,6 +414,9 @@ function StreamSummaries() {
               </Link>
             </div>
           </section>
+
+          {/* Full-text search over the transcript corpus (visible when the API is configured) */}
+          <StreamSearch />
 
           {/* Streamer Filter - Compact horizontal layout */}
           {summariesData?.streamers && (

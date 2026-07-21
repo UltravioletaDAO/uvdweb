@@ -6,6 +6,12 @@
     "seoDescription": "Junte-se à UltraVioleta DAO - A América Latina na vanguarda da web4. Construindo a economia agêntica através de x402, ERC-8004, governança descentralizada e gestão colaborativa do tesouro na Avalanche, Base, Celo.",
     "metrics": {
       "snapshot": {
+        "briefing": {
+            "title": "Briefing em espanhol",
+            "quorumReached": "Quórum atingido",
+            "quorumMissed": "Quórum não atingido",
+            "credit": "Gerado pelo KarmaKadabra a partir do texto da proposta — não substitui a leitura."
+          },
         "title": "Governança Snapshot",
         "proposals": "Propostas",
         "votes": "Votos",
@@ -1406,7 +1412,8 @@
         "title": "Não Aprovada",
         "description": "Infelizmente, sua candidatura não foi aprovada neste momento."
       }
-    }
+    },
+    "service_unavailable": "A consulta de status está temporariamente indisponível. Fale conosco nos canais da comunidade (Discord/Telegram) e verificamos sua aplicação."
   },
   "safestats": {
     "title": "Multi-assinantes UltravioletaDAO",
@@ -1594,6 +1601,17 @@
     }
   },
   "streamSummaries": {
+    "search": {
+        "title": "Busque na memória das streams — cada frase dita, com seu momento exato",
+        "placeholder": "Sobre o que Ultra falou...? (ex: execution market)",
+        "button": "Buscar",
+        "searching": "Buscando…",
+        "resultsCount": "{{count}} momentos encontrados.",
+        "noResults": "Sem resultados para",
+        "disclaimer": "VODs antigos podem ter expirado na Twitch — a citação e a data continuam válidas.",
+        "error": "A busca está temporariamente indisponível.",
+        "openVod": "Ver na Twitch"
+      },
     "seoTitle": "Resumos de Stream - Abracadabra AI",
     "seoDescription": "Explore resumos gerados por IA de streams de programação, Web3 e tecnologia. Resumos automáticos de 0xultravioleta, karenngo, elbitterx, herniep e mais.",
     "title": "Resumos de Stream",
