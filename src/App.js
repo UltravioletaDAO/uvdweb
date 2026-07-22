@@ -44,6 +44,7 @@ const AgentDiscovery = lazy(() => import("./pages/AgentDiscovery"));
 const Purge = lazy(() => import("./pages/Purge"));
 const KarmaHelloLanding = lazy(() => import("./pages/KarmaHelloLanding"));
 const Delegations = lazy(() => import("./pages/Delegations"));
+const SystemLanding = lazy(() => import("./pages/SystemLanding"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -93,6 +94,8 @@ function AppRoutes() {
           <Route path="/purge" element={<Purge />} />
           <Route path="/karma-hello" element={<KarmaHelloLanding />} />
           <Route path="/delegations" element={<Delegations />} />
+          {/* Nueva landing agentica (docs/PLAN.md). Vive aqui hasta el swap de Home (D3). */}
+          <Route path="/sistema" element={<SystemLanding />} />
         </Routes>
       </Suspense>
     </ErrorBoundary>

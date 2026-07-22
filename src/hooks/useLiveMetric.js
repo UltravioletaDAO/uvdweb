@@ -89,6 +89,15 @@ export function useLiveMetric({
     };
   }, []);
 
+  // select() is held in a ref and deliberately kept OUT of the fetch effect's
+  // dependencies. Callers naturally pass an inline arrow, whose identity changes
+  // every render — as a dependency that would re-run the effect forever and
+  // hammer the upstream API.
+  const selectRef = useRef(select);
+  useEffect(() => {
+    selectRef.current = select;
+  }, [select]);
+
   const settleToFallback = useCallback(() => {
     if (!mounted.current) return;
     setState((prev) => {
@@ -123,7 +132,8 @@ export function useLiveMetric({
         // select() runs on untrusted upstream shape — never let it escape.
         let value;
         try {
-          value = typeof select === 'function' ? select(json) : json;
+          const fn = selectRef.current;
+          value = typeof fn === 'function' ? fn(json) : json;
         } catch (e) {
           debug('select() threw for', url, e);
           throw new Error('select failed');
@@ -149,7 +159,7 @@ export function useLiveMetric({
       clearTimeout(timer);
       controller.abort();
     };
-  }, [url, key, select, timeoutMs, enabled, settleToFallback]);
+  }, [url, key, timeoutMs, enabled, settleToFallback]);
 
   return state;
 }
