@@ -16,6 +16,15 @@ class ErrorBoundary extends React.Component {
     }
   }
 
+  componentDidUpdate(prevProps) {
+    // Reset the boundary when the route changes. Without this, a crash on a
+    // single page keeps the "Algo salió mal" screen stuck for the ENTIRE app
+    // until a full reload, making every nav link look broken.
+    if (this.state.hasError && prevProps.resetKey !== this.props.resetKey) {
+      this.setState({ hasError: false, error: null });
+    }
+  }
+
   render() {
     if (this.state.hasError) {
       return (

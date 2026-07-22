@@ -74,7 +74,7 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
       'elbitterx': 'bg-blue-600',
       'herniep': 'bg-green-600',
     };
-    return colors[streamer.toLowerCase()] || 'bg-gray-600';
+    return colors[streamer?.toLowerCase()] || 'bg-gray-600';
   };
 
   // Render summary content based on what's loaded

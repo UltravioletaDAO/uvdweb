@@ -13,7 +13,6 @@ import {
   BeakerIcon,
   GiftIcon,
   CalendarIcon,
-  NewspaperIcon,
   AcademicCapIcon,
   LinkIcon,
   CpuChipIcon,
@@ -45,6 +44,7 @@ const Header = () => {
     setMoreOpen(false);
   }, [location.pathname]);
 
+  // Curated top bar: only the 7 core destinations. Everything else lives in "More".
   const mainMenuItems = [
     {
       name: t('navigation.about'),
@@ -65,43 +65,6 @@ const Header = () => {
       isExternal: false,
     },
     {
-      name: t('navigation.services'),
-      icon: PlayCircleIcon,
-      path: "/services",
-      isExternal: false,
-      customStyle: "text-purple-400 hover:text-purple-300",
-    },
-    {
-      // C-6: Internal landing page; "Abrir app" secondary link lives in moreMenuItems
-      name: t('navigation.facilitator'),
-      icon: BeakerIcon,
-      path: "/facilitator",
-      isExternal: false,
-      customStyle: "text-emerald-400 hover:text-emerald-300",
-    },
-    {
-      name: t('navigation.streamSummaries'),
-      icon: DocumentTextIcon,
-      path: "/stream-summaries",
-      isExternal: false,
-      customStyle: "text-violet-400 hover:text-violet-300",
-    },
-    // EXPERIMENTS - Temporarily hidden from navigation
-    // {
-    //   name: t('navigation.experiments'),
-    //   icon: BeakerIcon,
-    //   path: "/experiments",
-    //   isExternal: false,
-    //   customStyle: "text-emerald-400 hover:text-emerald-300",
-    // },
-    {
-      name: t('navigation.nft'),
-      icon: PhotoIcon,
-      path: "/nfts",
-      isExternal: false,
-      customStyle: "text-pink-400 hover:text-pink-300",
-    },
-    {
       name: t('navigation.snapshot'),
       icon: () => (
         <svg
@@ -119,6 +82,60 @@ const Header = () => {
       customStyle: "text-snapshotIcon hover:text-snapshotIcon",
     },
     {
+      name: t('navigation.services'),
+      icon: PlayCircleIcon,
+      path: "/services",
+      isExternal: false,
+      customStyle: "text-purple-400 hover:text-purple-300",
+    },
+    {
+      name: t('navigation.events'),
+      icon: CalendarIcon,
+      path: "/events",
+      isExternal: false,
+    },
+    {
+      name: t('navigation.watchToEarn'),
+      icon: PlayCircleIcon,
+      path: "/wheel",
+      isExternal: false,
+    },
+  ];
+
+  // C-5: Secondary items grouped under "More" dropdown to avoid desktop nav saturation.
+  // BLOG removed from nav (posts.js is empty). Bounties only appears when its flag is on.
+  const moreMenuItems = [
+    {
+      // C-6: Internal Facilitator landing page
+      name: t('navigation.facilitator'),
+      icon: BeakerIcon,
+      path: "/facilitator",
+      isExternal: false,
+      customStyle: "text-emerald-400 hover:text-emerald-300",
+    },
+    {
+      // C-6: External "Abrir app" secondary link for Facilitator
+      name: t('navigation.facilitatorApp', 'Abrir app'),
+      icon: BeakerIcon,
+      path: "https://facilitator.ultravioletadao.xyz/",
+      isExternal: true,
+      customStyle: "text-emerald-400 hover:text-emerald-300",
+    },
+    {
+      name: t('navigation.streamSummaries'),
+      icon: DocumentTextIcon,
+      path: "/stream-summaries",
+      isExternal: false,
+      customStyle: "text-violet-400 hover:text-violet-300",
+    },
+    {
+      name: t('navigation.nft'),
+      icon: PhotoIcon,
+      path: "/nfts",
+      isExternal: false,
+      customStyle: "text-pink-400 hover:text-pink-300",
+    },
+    {
       name: t('navigation.contributors'),
       icon: UsersIcon,
       path: "/contributors",
@@ -130,36 +147,6 @@ const Header = () => {
       path: "/safestats",
       isExternal: false,
       customStyle: "text-blue-400 hover:text-blue-300",
-    },
-    {
-      name: t('navigation.watchToEarn'),
-      icon: PlayCircleIcon,
-      path: "/wheel",
-      isExternal: false,
-    },
-    // Bounties backend is offline; hidden until REACT_APP_BOUNTIES_ENABLED=true
-    ...(process.env.REACT_APP_BOUNTIES_ENABLED === 'true' ? [{
-      name: t('navigation.bounties'),
-      icon: GiftIcon,
-      path: "/bounties",
-      isExternal: false,
-      customStyle: "text-amber-400 hover:text-amber-300",
-    }] : []),
-    {
-      name: t('navigation.events'),
-      icon: CalendarIcon,
-      path: "/events",
-      isExternal: false,
-    },
-  ];
-
-  // C-5: Secondary items grouped under "More" dropdown to avoid desktop nav saturation
-  const moreMenuItems = [
-    {
-      name: t('navigation.blog'),
-      icon: NewspaperIcon,
-      path: "/blog",
-      isExternal: false,
     },
     {
       name: t('navigation.courses'),
@@ -179,14 +166,14 @@ const Header = () => {
       path: "/links",
       isExternal: false,
     },
-    {
-      // C-6: External "Abrir app" secondary link for Facilitator
-      name: t('navigation.facilitatorApp', 'Abrir app'),
-      icon: BeakerIcon,
-      path: "https://facilitator.ultravioletadao.xyz/",
-      isExternal: true,
-      customStyle: "text-emerald-400 hover:text-emerald-300",
-    },
+    // Bounties backend is offline; only appears when REACT_APP_BOUNTIES_ENABLED=true
+    ...(process.env.REACT_APP_BOUNTIES_ENABLED === 'true' ? [{
+      name: t('navigation.bounties'),
+      icon: GiftIcon,
+      path: "/bounties",
+      isExternal: false,
+      customStyle: "text-amber-400 hover:text-amber-300",
+    }] : []),
   ];
 
   return (

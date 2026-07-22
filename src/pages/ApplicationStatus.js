@@ -107,7 +107,9 @@ const ApplicationStatus = () => {
   };
 
   const StatusDisplay = ({ status }) => {
-    const config = statusConfig[status.status];
+    // Fall back to 'pending' if the API returns an unknown status key,
+    // otherwise config would be undefined and config.icon would throw.
+    const config = statusConfig[status?.status] || statusConfig.pending;
     const Icon = config.icon;
 
     return (

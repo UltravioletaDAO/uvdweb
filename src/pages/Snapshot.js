@@ -879,6 +879,8 @@ const Snapshot = () => {
 
   const formatTimeLeft = (timestamp) => {
     const date = new Date(timestamp * 1000);
+    // date-fns throws "Invalid time value" on a NaN date (missing/malformed end)
+    if (isNaN(date.getTime())) return '';
     const isPastDate = isPast(date);
     const currentLanguage = i18n.language;
     const isSpanish = currentLanguage.startsWith('es');
@@ -1071,7 +1073,7 @@ const Snapshot = () => {
               </p>
                     <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-text-tertiary">
                 <span>
-                        {t('snapshot.author')} {authorNames[proposal.author.toLowerCase()] || `${proposal.author.slice(0, 6)}...${proposal.author.slice(-4)}`}
+                        {t('snapshot.author')} {proposal.author ? (authorNames[proposal.author.toLowerCase()] || `${proposal.author.slice(0, 6)}...${proposal.author.slice(-4)}`) : '—'}
                       </span>
                       <span className="hidden sm:inline">•</span>
                       <span>{formatTimeLeft(proposal.end)}</span>

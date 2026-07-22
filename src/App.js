@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -56,6 +56,49 @@ const queryClient = new QueryClient({
   },
 });
 
+// Route content wrapped in an ErrorBoundary keyed by pathname, so a crash on
+// one page is contained to that page instead of cascading across the whole app.
+function AppRoutes() {
+  const { pathname } = useLocation();
+  return (
+    <ErrorBoundary resetKey={pathname}>
+      <Suspense fallback={<LoadingFallback />}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/aplicar" element={<ApplicationForm />} />
+          <Route path="/links" element={<SocialNetworks />} />
+          <Route path="/status" element={<ApplicationStatus />} />
+          <Route path="/courses" element={<Courses />} />
+          <Route path="/contributors" element={<Contributors />} />
+          <Route path="/token" element={<Token />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="*" element={<NotFound />} />
+          <Route path="/snapshot" element={<Snapshot />} />
+          <Route path="/wheel" element={<UvdWheel />} />
+          <Route path="/twitch-callback" element={<TwitchCallback />} />
+          <Route path="/safestats" element={<SafeStats />} />
+          <Route path="/metrics" element={<MetricsDashboard />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/nfts" element={<NFTPage />} />
+          <Route path="/stream-summaries" element={<StreamSummaries />} />
+          <Route path="/events" element={<Events />} />
+          <Route path="/experiments" element={<ExperimentsPage />} />
+          <Route path="/facilitator" element={<FacilitatorPage />} />
+          {process.env.REACT_APP_BOUNTIES_ENABLED === 'true' && (
+            <Route path="/bounties" element={<Bounties />} />
+          )}
+          <Route path="/agents" element={<AgentDiscovery />} />
+          <Route path="/purge" element={<Purge />} />
+          <Route path="/karma-hello" element={<KarmaHelloLanding />} />
+          <Route path="/delegations" element={<Delegations />} />
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
+  );
+}
+
 function App() {
   return (
     <HelmetProvider>
@@ -66,41 +109,7 @@ function App() {
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
             <div className="min-h-screen bg-background text-text-primary flex flex-col">
               <Header />
-              <ErrorBoundary>
-              <Suspense fallback={<LoadingFallback />}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/about" element={<About />} />
-                  <Route path="/aplicar" element={<ApplicationForm />} />
-                  <Route path="/links" element={<SocialNetworks />} />
-                  <Route path="/status" element={<ApplicationStatus />} />
-                  <Route path="/courses" element={<Courses />} />
-                  <Route path="/contributors" element={<Contributors />} />
-                  <Route path="/token" element={<Token />} />
-                  <Route path="/blog" element={<Blog />} />
-                  <Route path="/blog/:slug" element={<BlogPost />} />
-                  <Route path="*" element={<NotFound />} />
-                  <Route path="/snapshot" element={<Snapshot />} />
-                  <Route path="/wheel" element={<UvdWheel />} />
-                  <Route path="/twitch-callback" element={<TwitchCallback />} />
-                  <Route path="/safestats" element={<SafeStats />} />
-                  <Route path="/metrics" element={<MetricsDashboard />} />
-                  <Route path="/services" element={<ServicesPage />} />
-                  <Route path="/nfts" element={<NFTPage />} />
-                  <Route path="/stream-summaries" element={<StreamSummaries />} />
-                  <Route path="/events" element={<Events />} />
-                  <Route path="/experiments" element={<ExperimentsPage />} />
-                  <Route path="/facilitator" element={<FacilitatorPage />} />
-                  {process.env.REACT_APP_BOUNTIES_ENABLED === 'true' && (
-                    <Route path="/bounties" element={<Bounties />} />
-                  )}
-                  <Route path="/agents" element={<AgentDiscovery />} />
-                  <Route path="/purge" element={<Purge />} />
-                  <Route path="/karma-hello" element={<KarmaHelloLanding />} />
-                  <Route path="/delegations" element={<Delegations />} />
-                </Routes>
-              </Suspense>
-              </ErrorBoundary>
+              <AppRoutes />
               <Footer />
             </div>
           </Router>

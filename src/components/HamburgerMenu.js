@@ -7,7 +7,6 @@ import {
   HomeIcon,
   CurrencyDollarIcon,
   UsersIcon,
-  ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
   ChartBarIcon,
   ArrowTrendingUpIcon,
@@ -16,7 +15,6 @@ import {
   PhotoIcon,
   DocumentTextIcon,
   CalendarIcon,
-  NewspaperIcon,
   AcademicCapIcon,
   LinkIcon,
   CpuChipIcon,
@@ -88,27 +86,23 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.events'),
     },
     {
-      name: t('navigation.blog'),
-      icon: NewspaperIcon,
-      path: "/blog",
-      isExternal: false,
-      description: t('navigation.descriptions.blog'),
-    },
-    {
       name: t('navigation.courses'),
       icon: AcademicCapIcon,
       path: "/courses",
       isExternal: false,
       description: t('navigation.descriptions.courses'),
     },
-    {
+    // Bounties backend is offline; hidden unless REACT_APP_BOUNTIES_ENABLED=true.
+    // The /bounties route is only registered under the same flag (App.js), so
+    // showing it unconditionally here produced a dead link (NotFound) on mobile.
+    ...(process.env.REACT_APP_BOUNTIES_ENABLED === 'true' ? [{
       name: t('navigation.bounties'),
       icon: GiftIcon,
       path: "/bounties",
       isExternal: false,
       customStyle: "text-amber-400 group-hover:text-amber-300",
       description: t('navigation.descriptions.bounties'),
-    },
+    }] : []),
     {
       name: t('navigation.agents', 'Agents'),
       icon: CpuChipIcon,
