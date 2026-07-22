@@ -19,7 +19,6 @@ const Home = () => {
   const [showEventsSection, setShowEventsSection] = useState(false);
 
   const { t } = useTranslation();
-  const showButtons = process.env.REACT_APP_SHOW_SIGNUP_BUTTONS === 'true';
 
   // Metrics hooks
   const { metrics: snapshotMetrics } = useCombinedSnapshotData();
@@ -76,19 +75,6 @@ const Home = () => {
               {t('home.subtitle')}
             </p>
 
-            {showButtons && (
-              <div className="flex flex-col sm:flex-row justify-center gap-4 mt-12">
-                <button
-                  onClick={() => setIsFormOpen(true)}
-                  className="px-8 py-4 bg-ultraviolet-darker text-text-primary rounded-lg
-                    hover:bg-ultraviolet-dark transition-colors duration-200
-                    font-semibold text-lg shadow-lg shadow-ultraviolet-darker/20
-                    backdrop-blur-sm transform hover:scale-105 active:scale-95"
-                >
-                  {t('auth.register')}
-                </button>
-              </div>
-            )}
           </div>
         </div>
       </section>
