@@ -52,15 +52,50 @@ const EDGES = [
   { from: 'kk', to: 'em', type: 'data', tKey: 'kkToEm', label: 'publish / apply / submit' },
   { from: 'kk', to: 'mr', type: 'data', tKey: 'kkToMr', label: 'negocian en IRC' },
   { from: 'em', to: 'kk', type: 'identity', tKey: 'emToKk', label: 'escrow_tx + ERC-8004' },
-  { from: 'ab', to: 'kk', type: 'data', tKey: 'abToKk', label: 'corpus de transcripciones', planned: true },
-  { from: 'kh', to: 'kk', type: 'data', tKey: 'khToKk', label: 'logs de chat crudos', planned: true },
+  // `bend` routes the two long diagonals around the OUTSIDE of the diagram.
+  // Drawn straight they cut through the middle, where every other label lives.
+  { from: 'ab', to: 'kk', type: 'data', tKey: 'abToKk', label: 'corpus de transcripciones', planned: true, bend: 170 },
+  { from: 'kh', to: 'kk', type: 'data', tKey: 'khToKk', label: 'logs de chat crudos', planned: true, bend: -170 },
 ];
+
+/**
+ * Geometry for one edge: the path, and where its label sits.
+ *
+ * Labels are pushed perpendicular to the line rather than dropped on it —
+ * centred labels get struck through by their own edge — and placed at 38%
+ * instead of the midpoint so opposing edges don't stack their text.
+ */
+function edgeGeometry(a, b, e, bendScale) {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const len = Math.hypot(dx, dy) || 1;
+  const px = -dy / len; // unit perpendicular
+  const py = dx / len;
+
+  if (e.bend) {
+    const bend = e.bend * bendScale;
+    const cx = (a.x + b.x) / 2 + px * bend;
+    const cy = (a.y + b.y) / 2 + py * bend;
+    // Point on the quadratic at t = 0.5, nudged off the stroke.
+    const lx = 0.25 * a.x + 0.5 * cx + 0.25 * b.x;
+    const ly = 0.25 * a.y + 0.5 * cy + 0.25 * b.y;
+    return { d: `M ${a.x} ${a.y} Q ${cx} ${cy} ${b.x} ${b.y}`, lx, ly: ly - 7 };
+  }
+
+  const t = 0.38;
+  return {
+    d: `M ${a.x} ${a.y} L ${b.x} ${b.y}`,
+    lx: a.x + dx * t + px * 12,
+    ly: a.y + dy * t + py * 12,
+  };
+}
 
 const LAYOUTS = {
   wide: {
-    viewBox: '0 0 1000 680',
+    viewBox: '-70 -10 1140 700',
     node: { w: 190, h: 64 },
     labels: true,
+    bendScale: 1,
     pos: {
       kk: { x: 500, y: 78 },
       em: { x: 288, y: 252 },
@@ -75,6 +110,7 @@ const LAYOUTS = {
     viewBox: '0 0 420 1000',
     node: { w: 170, h: 60 },
     labels: false,
+    bendScale: 0.42,
     pos: {
       kk: { x: 210, y: 62 },
       em: { x: 106, y: 244 },
@@ -121,6 +157,16 @@ function SystemMap({ layout = 'wide', className = '' }) {
   const nodeSub = (n) => t(`landing.map.nodes.${n.tKey}.sub`, n.sub);
   const edgeLabel = (e) => t(`landing.map.edges.${e.tKey}`, e.label);
 
+  // Geometry computed once and shared: the strokes draw UNDER the node boxes,
+  // the labels draw OVER them. Rendering labels in the edge group let an opaque
+  // node box clip them ("UVD en Avalanche" came out as "D en Avalanche").
+  const geos = EDGES.map((e) => {
+    const a = L.pos[e.from];
+    const b = L.pos[e.to];
+    if (!a || !b) return null;
+    return { e, geo: edgeGeometry(a, b, e, L.bendScale), ch: CHANNEL[e.type] || CHANNEL.data };
+  }).filter(Boolean);
+
   return (
     <div ref={containerRef} className={className}>
       <svg
@@ -149,45 +195,22 @@ function SystemMap({ layout = 'wide', className = '' }) {
           ))}
         </defs>
 
-        {/* Edges first so the opaque node boxes mask their endpoints */}
+        {/* Edge strokes first, so the opaque node boxes mask their endpoints */}
         <g className="uvd-map__edges">
-          {EDGES.map((e, i) => {
-            const a = L.pos[e.from];
-            const b = L.pos[e.to];
-            if (!a || !b) return null;
-            const ch = CHANNEL[e.type] || CHANNEL.data;
-            const mx = (a.x + b.x) / 2;
-            const my = (a.y + b.y) / 2;
-            return (
-              <g key={`${e.from}-${e.to}-${i}`} style={{ transitionDelay: `${140 + i * 45}ms` }} className="uvd-map__edge">
-                <line
-                  x1={a.x}
-                  y1={a.y}
-                  x2={b.x}
-                  y2={b.y}
-                  stroke={ch.stroke}
-                  strokeWidth={e.planned ? 1.4 : 2}
-                  strokeOpacity={e.planned ? 0.5 : 0.8}
-                  strokeDasharray={e.planned ? '6 6' : undefined}
-                  markerEnd={`url(#uvd-arrow-${e.type}-${layout})`}
-                  markerStart={e.bidirectional ? `url(#uvd-arrow-${e.type}-${layout})` : undefined}
-                />
-                {L.labels && (
-                  <text
-                    x={mx}
-                    y={my - 6}
-                    textAnchor="middle"
-                    className="uvd-map__edge-label"
-                    fill={ch.stroke}
-                    fontSize="11"
-                  >
-                    {edgeLabel(e)}
-                    {e.planned ? ` · ${t('landing.map.planned', 'planeado')}` : ''}
-                  </text>
-                )}
-              </g>
-            );
-          })}
+          {geos.map(({ e, geo, ch }, i) => (
+            <g key={`${e.from}-${e.to}-${i}`} style={{ transitionDelay: `${140 + i * 45}ms` }} className="uvd-map__edge">
+              <path
+                d={geo.d}
+                fill="none"
+                stroke={ch.stroke}
+                strokeWidth={e.planned ? 1.4 : 2}
+                strokeOpacity={e.planned ? 0.5 : 0.8}
+                strokeDasharray={e.planned ? '6 6' : undefined}
+                markerEnd={`url(#uvd-arrow-${e.type}-${layout})`}
+                markerStart={e.bidirectional ? `url(#uvd-arrow-${e.type}-${layout})` : undefined}
+              />
+            </g>
+          ))}
         </g>
 
         <g className="uvd-map__nodes">
@@ -221,6 +244,27 @@ function SystemMap({ layout = 'wide', className = '' }) {
             );
           })}
         </g>
+
+        {/* Edge labels last: they must sit ON TOP of the node boxes, never under */}
+        {L.labels && (
+          <g className="uvd-map__edge-labels">
+            {geos.map(({ e, geo, ch }, i) => (
+              <text
+                key={`lbl-${e.from}-${e.to}-${i}`}
+                x={geo.lx}
+                y={geo.ly}
+                textAnchor="middle"
+                className="uvd-map__edge uvd-map__edge-label"
+                style={{ transitionDelay: `${140 + i * 45}ms` }}
+                fill={ch.stroke}
+                fontSize="11"
+              >
+                {edgeLabel(e)}
+                {e.planned ? ` · ${t('landing.map.planned', 'planeado')}` : ''}
+              </text>
+            ))}
+          </g>
+        )}
       </svg>
 
       {/* Mobile degradation: edge labels are illegible at this width, so the
