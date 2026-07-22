@@ -98,3 +98,37 @@
 .animate-slide-in {
   animation: slideIn 0.5s ease-out forwards;
 } @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } } .animate-bounce { animation: bounce 2s infinite; } .animation-delay-200 { animation-delay: 200ms; }
+
+/* ── System map reveal (docs/PLAN.md §5) ──────────────────────────────
+   Motion budget: opacity + transform ONLY. Never layout-triggering props.
+   Node position lives on an outer <g> attribute; these classes animate an
+   inner <g>, so the reveal cannot displace the box. */
+.uvd-map__node,
+.uvd-map__edge {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 520ms ease-out, transform 520ms ease-out;
+}
+
+.uvd-map.is-revealed .uvd-map__node,
+.uvd-map.is-revealed .uvd-map__edge {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.uvd-map__edge-label {
+  paint-order: stroke;
+  stroke: #0a0a1b;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .uvd-map__node,
+  .uvd-map__edge {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    transition-delay: 0ms !important;
+  }
+}
