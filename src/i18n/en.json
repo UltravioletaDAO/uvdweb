@@ -190,187 +190,6 @@
       }
     }
   },
-  "metricsDashboard": {
-    "seoTitle": "Metrics Dashboard - Real-time DAO Analytics",
-    "seoDescription": "Track UltraVioleta DAO performance with real-time metrics. View governance participation, treasury balance, token analytics, community growth, and member rewards.",
-    "title": "Metrics Dashboard",
-    "subtitle": "Metrics panel with activity, rewards and growth of Ultravioleta DAO",
-    "snapshot": {
-      "subtitle": "Community proposals and votes",
-      "error_loading": "Error loading data",
-      "retry": "Retry",
-      "total_historic": "Total historic",
-      "latest_proposal": "Latest proposal",
-      "last_proposal": "Latest Proposals",
-      "no_active_proposals": "No Active Proposals",
-      "top_voters": "Top voters from community",
-      "see_all": "See All",
-      "from_proposals": "from proposals",
-      "active_members": "Active members",
-      "view_on_snapshot": "View on Snapshot",
-      "state": "State",
-      "quorum": "Quorum",
-      "leaderboard_no_data": "No leaderboard data"
-    },
-    "tokenSection": {
-      "subtitle": "Activity and metrics of UVD token",
-      "price_usd": "Price USD",
-      "price_avax": "Price AVAX",
-      "holders": "Holders",
-      "transactions": "transactions",
-      "liquidity_total": "Total Liquidity Backing UVD",
-      "price_evolution": "Price Evolution",
-      "days_ago_30": "30 days ago",
-      "today": "Today",
-      "info_title": "Token Information",
-      "contract_avalanche": "Contract Avalanche",
-      "total_supply": "Total Supply",
-      "circulating_supply": "Circulating Supply",
-      "burned_supply": "Burned Supply",
-      "burned_total": "Total Burned",
-      "burned_forever": "Burned forever",
-      "market_cap": "Market Cap",
-      "view_on_dex": "View on DEX",
-      "lfj": "LFJ",
-      "arena_trade": "ArenaTrade"
-    },
-    "community": {
-      "title": "DAO Community",
-      "subtitle": "Active members and community participation",
-      "num_members": "Number of Members",
-      "events_done": "Events Held",
-      "events_desc": "Meetups, Workshops...",
-      "members_title": "Community Members",
-      "join": "Join UltravioletaDAO",
-      "view_all_members": "View All Members ({{count}})",
-      "recent_activity": "Recent Activity",
-      "quick_links": "Quick Links",
-      "discord": "Discord Server",
-      "twitter": "Twitter/X",
-      "the_arena": "The Arena"
-    },
-    "seoTitle": "Metrics Dashboard - Real-time DAO Analytics",
-    "seoDescription": "Track UltraVioleta DAO performance with real-time metrics. View governance participation, treasury balance, token analytics, community growth, and member rewards.",
-    "title": "Metrics Dashboard",
-    "subtitle": "Metrics panel with activity, rewards and growth of Ultravioleta DAO",
-    "snapshot": {
-      "subtitle": "Community proposals and voting",
-      "error_loading": "Error loading data",
-      "retry": "Retry",
-      "total_historic": "Total historic",
-      "latest_proposal": "Latest proposal",
-      "last_proposal": "Latest Proposals",
-      "no_active_proposals": "No Active Proposals",
-      "top_voters": "Top community voters",
-      "see_all": "See All",
-      "from_proposals": "from proposals",
-      "active_members": "Active members",
-      "view_on_snapshot": "View on Snapshot",
-      "state": "State",
-      "quorum": "Quorum",
-      "leaderboard_no_data": "No leaderboard data",
-      "no_proposals_message": "No active proposals at the moment"
-    },
-    "funds": {
-      "subtitle": "Community treasury management activity",
-      "multisig_avalanche": "Avalanche Multisig",
-      "multisig_solana": "Solana Multisig",
-      "required_signatures_sol": "Required Signatures SOL",
-      "required_signatures_avax": "Required Signatures AVAX",
-      "to_execute_transactions": "to execute transactions",
-      "main_balance": "Main balance"
-    },
-    "contributorSection": {
-      "title": "DAO Contributors",
-      "subtitle": "Active members and community collaborators",
-      "searchPlaceholder": "Search members...",
-      "stats": {
-        "totalMembers": "Total Members",
-        "activeContributors": "Active Contributors",
-        "pendingApplications": "Pending Applications",
-        "newThisMonth": "New This Month"
-      },
-      "footer": {
-        "showingMembers": "Showing {{count}} of {{total}} members",
-        "viewApplications": "View Applications"
-      },
-      "underConstruction": {
-        "title": "Section under construction",
-        "message": "We're working on connecting X (Twitter) profiles with DAO members. This feature will be available soon."
-      }
-    },
-    "tokenSection": {
-      "subtitle": "UVD token activity and metrics",
-      "price_usd": "USD Price",
-      "price_avax": "AVAX Price",
-      "holders": "Holders",
-      "transactions": "transactions",
-      "liquidity_total": "Total Liquidity Backing UVD",
-      "price_evolution": "Price Evolution",
-      "days_ago_30": "30 days ago",
-      "today": "Today",
-      "info_title": "Token Information",
-      "contract_avalanche": "Avalanche Contract",
-      "total_supply": "Total Supply",
-      "circulating_supply": "Circulating Supply",
-      "burned_supply": "Burned Supply",
-      "burned_total": "Total Burned",
-      "burned_forever": "Burned forever",
-      "market_cap": "Market Cap",
-      "view_on_dex": "View on DEX",
-      "lfj": "LFJ",
-      "arena_trade": "ArenaTrade"
-    },
-    "rewards": {
-      "title": "Watch to Earn",
-      "subtitle": "Rewards for participation and roulettes",
-      "cards": {
-        "active_users": "Active Users (Roulettes)",
-        "total_claimed": "Total Claimed (Roulettes)",
-        "uvd_distributed": "UVD distributed",
-        "airdrops_delivered": "Airdrops Delivered",
-        "total_emitted": "Total Amount Emitted"
-      },
-      "info": {
-        "title": "Roulette Information",
-        "daily_limit": "Daily Roulette Limit",
-        "cooldown": "Roulette Cooldown",
-        "cooldown_value": "1 week (every Friday)",
-        "min_max_reward": "Min/Max Reward"
-      },
-      "types": {
-        "title": "Active Roulette Types",
-        "roulette_x": "Roulette X",
-        "roulette_y": "Roulette Y",
-        "last_participants": "Last Participants",
-        "avg_reward": "Average Reward"
-      },
-      "distribution": {
-        "title": "Rewards Distribution",
-        "ruletas": "Roulettes",
-        "airdrops": "Airdrops"
-      },
-      "recent_activity": {
-        "title": "Recent Activity",
-        "view_history": "View Full History"
-      }
-    },
-    "community": {
-      "title": "Community Hub",
-      "subtitle": "Community activity central",
-      "num_members": "{{count}} Members",
-      "events_done": "{{count}} Events Completed",
-      "events_desc": "Meetings and talks held",
-      "members_title": "Featured members",
-      "join": "Apply to Ultravioleta DAO",
-      "view_all_members": "View all members",
-      "recent_activity": "Recent Activity",
-      "quick_links": "Quick Links",
-      "discord": "Discord",
-      "twitter": "Twitter",
-      "the_arena": "The Arena"
-    }
-  },
   "auth": {
     "register": "Apply to Ultravioleta DAO",
     "login": "Login",
@@ -448,18 +267,6 @@
     "opportunities": {
       "title": "Exclusive Alpha Opportunities",
       "description": "Get exclusive access to strategic information and early opportunities in Web3. Stay ahead with the best alphas and insights from the ecosystem."
-    }
-  },
-  "token": {
-    "title": "Ultravioleta DAO Token",
-    "description_1": "$UVD is the governance and utility token of Ultravioleta DAO, which empowers holders to participate in decentralized decision-making and treasury management. It is used to vote on proposals, allocate community funds, and support member initiatives.",
-    "description_2": "Through $UVD, the DAO maintains a transparent and democratic structure, ensuring that its resources are directed based on collective governance.",
-    "chart_title": "Dexscreener $UVD Chart",
-    "buttons": {
-      "swap": "Swap Token",
-      "swap_alt": "SwapToken Icon",
-      "liquidity": "Liquidity Pool UVD",
-      "liquidity_alt": "Liquidity Pool Icon"
     }
   },
   "tokenomics": {
@@ -608,20 +415,6 @@
       "network_error": "Network connection error. Please check your internet connection."
     }
   },
-  "success": {
-    "title": "Application Submitted Successfully!",
-    "message": "Your application has been received and is under review.",
-    "waitlist": "If the application process is complete, you will be placed on our priority waitlist for future opportunities.",
-    "thanks": "Thank you for your interest in joining our community!",
-    "back_home": "Back to Home",
-    "check_status": "Check my application status"
-  },
-  "courses": {
-    "title": "Our Courses"
-  },
-  "links": {
-    "title": "Our Links"
-  },
   "newsletter": {
     "title": "Stay up to date",
     "subtitle": "Subscribe and receive the latest updates",
@@ -640,7 +433,13 @@
     "joinArena": "Join us on Arena",
     "viewTreasury": "View Treasury"
   },
+  "socialnetworks": {
+    "seoTitle": "Social Networks - Connect with UltraVioleta DAO",
+    "seoDescription": "Follow UltraVioleta DAO on Twitter and Arena, check the multisig treasury and swap the UVD token. All the official community links in one place."
+  },
   "blog": {
+    "seoTitle": "Blog - Web3 News and Articles from UltraVioleta DAO",
+    "seoDescription": "Read the UltraVioleta DAO blog: governance, DeFi, x402, AI agents and Web3 building from Latin America. News and lessons learned from the community.",
     "title": "Paila News",
     "no_posts": "No posts available at the moment",
     "not_found": "The requested post was not found",
@@ -660,12 +459,38 @@
       "reason": "Reason"
     }
   },
-  "events": {
-    "title": "Upcoming events",
-    "description": "Community events of interest that are recommended to attend. Don't miss them!",
-    "image_alt_placeholder": "Event placeholder"
+  "common": {
+    "cancel": "Cancel",
+    "anonymous": "Anonymous",
+    "disconnect": "Disconnect",
+    "locale": "en_US",
+    "close": "Close",
+    "auto": "Auto",
+    "profile": "Profile",
+    "logo_alt": "Ultravioleta DAO",
+    "ultraevento_promo_alt": "Ultra Evento 2025 Promotional Banner - Premier Web3 blockchain conference August 24 2025 in Medellín Colombia at Hash House featuring 212 registered attendees and 10 sponsors including Avalanche Uniswap Pyth Network",
+    "ultraevento_main_alt": "Ultra Evento 2025 Main Event - Latin America Web3 DAO blockchain conference with 144 attendees networking and learning about DeFi NFTs and decentralized governance in Spanish",
+    "ultraquedada_alt": "Ultra Quedada Medellín 2025 Community Meetup - Web3 crypto blockchain community gathering UltraVioleta DAO members networking event Latin America LATAM"
+  },
+  "courses": {
+    "seoTitle": "Courses - Learn Web3 with UltraVioleta DAO",
+    "seoDescription": "Blockchain, DeFi and Web3 development courses created by the UltraVioleta DAO community. Learn at your own pace and build on the Avalanche ecosystem.",
+    "title": "Our Courses"
+  },
+  "token": {
+    "title": "Ultravioleta DAO Token",
+    "description_1": "$UVD is the governance and utility token of Ultravioleta DAO, which facilitates member participation in decentralized decision-making and treasury management. It's used to vote on proposals, allocate community funds, and support member initiatives.",
+    "description_2": "Through $UVD, the DAO maintains a transparent and democratic structure, ensuring its resources are directed based on collective governance.",
+    "chart_title": "Dexscreener $UVD Chart",
+    "buttons": {
+      "swap": "Swap Token",
+      "swap_alt": "SwapToken Icon",
+      "liquidity": "Liquidity Pool UVD",
+      "liquidity_alt": "Liquidity Pool Icon"
+    }
   },
   "snapshot": {
+    "connect_wallet": "Connect Wallet",
     "title": "Ultravioleta DAO Governance Proposals",
     "view_votes": "View votes",
     "new_proposal": "New proposal",
@@ -680,7 +505,6 @@
       "pending": "Pending"
     },
     "no_proposals": "No active proposals at this time",
-    "connect_wallet": "Connect Wallet",
     "voting_power": "Voting power",
     "vote": "Vote",
     "choices": "Choices",
@@ -706,46 +530,13 @@
     "votes": "votes",
     "view_more": "See more"
   },
-  "common": {
-    "cancel": "Cancel",
-    "anonymous": "Anonymous",
-    "disconnect": "Disconnect",
-    "locale": "en_US",
-    "close": "Close",
-    "auto": "Auto",
-    "profile": "Profile",
-    "logo_alt": "Ultravioleta DAO",
-    "ultraevento_promo_alt": "Ultra Evento 2025 Promotional Banner - Premier Web3 blockchain conference August 24 2025 in Medellín Colombia at Hash House featuring 212 registered attendees and 10 sponsors including Avalanche Uniswap Pyth Network",
-    "ultraevento_main_alt": "Ultra Evento 2025 Main Event - Latin America Web3 DAO blockchain conference with 144 attendees networking and learning about DeFi NFTs and decentralized governance in Spanish",
-    "ultraquedada_alt": "Ultra Quedada Medellín 2025 Community Meetup - Web3 crypto blockchain community gathering UltraVioleta DAO members networking event Latin America LATAM"
-  },
-  "courses": {
-    "title": "Our Courses"
-  },
-  "token": {
-    "title": "Ultravioleta DAO Token",
-    "description_1": "$UVD is the governance and utility token of Ultravioleta DAO, which facilitates member participation in decentralized decision-making and treasury management. It's used to vote on proposals, allocate community funds, and support member initiatives.",
-    "description_2": "Through $UVD, the DAO maintains a transparent and democratic structure, ensuring its resources are directed based on collective governance."
-  },
-  "snapshot": {
-    "connect_wallet": "Connect Wallet"
-  },
   "success": {
-    "back_home": "Back home"
-  },
-  "safestats": {
-    "title": "UltravioletaDAO Multisigners",
-    "filter_options": "Filter options",
-    "start_date": "Start date",
-    "end_date": "End date",
-    "filter": "Filter",
-    "statistics_title": "Signature statistics",
-    "from_to": "({{from}} to {{to}}, {{count}} transactions)",
-    "all_time": "All time",
-    "errors": {
-      "loading_data": "Error loading data",
-      "date_required": "Please select at least one date"
-    }
+    "back_home": "Back home",
+    "title": "Application Submitted Successfully!",
+    "message": "Your application has been received and is under review.",
+    "waitlist": "If the application process is complete, you will be placed on our priority waitlist for future opportunities.",
+    "thanks": "Thank you for your interest in joining our community!",
+    "check_status": "Check my application status"
   },
   "watch_to_earn": {
     "title": "Watch to Earn",
@@ -957,11 +748,13 @@
     "title": "Metrics Dashboard",
     "subtitle": "Metrics panel with activity, rewards and growth of Ultravioleta DAO",
     "funds": {
-      "multisig_solana": "Solana Multisig",
-      "required_signatures_sol": "Required Signatures SOL",
+      "main_balance": "Main Balance",
       "required_signatures_avax": "Required Signatures AVAX",
+      "required_signatures_sol": "Required Signatures SOL",
       "to_execute_transactions": "To execute transactions",
-      "main_balance": "Main Balance"
+      "multisig_solana": "Solana Multisig",
+      "subtitle": "Community treasury management activity",
+      "multisig_avalanche": "Avalanche Multisig"
     },
     "rewards": {
       "title": "Watch to Earn",
@@ -1038,13 +831,6 @@
       "lfj": "LFJ",
       "arena_trade": "ArenaTrade"
     },
-    "funds": {
-      "main_balance": "Main Balance",
-      "required_signatures_avax": "Required Signatures AVAX",
-      "required_signatures_sol": "Required Signatures SOL",
-      "to_execute_transactions": "To execute transactions",
-      "multisig_solana": "Solana Multisig"
-    },
     "snapshot": {
       "subtitle": "Community proposals and votes",
       "error_loading": "Error loading data",
@@ -1060,7 +846,8 @@
       "view_on_snapshot": "View on Snapshot",
       "state": "State",
       "quorum": "Quorum",
-      "leaderboard_no_data": "No leaderboard data"
+      "leaderboard_no_data": "No leaderboard data",
+      "no_proposals_message": "No active proposals at the moment"
     },
     "community": {
       "title": "DAO Community",
@@ -1146,6 +933,8 @@
     "wallet_required_message": "You need to connect your wallet to participate in decentralized voting."
   },
   "safestats": {
+    "seoTitle": "SafeStats - Multisig Signature Statistics",
+    "seoDescription": "Browse the UltraVioleta DAO multisig signature statistics: activity per signer, date-range filters and treasury transactions on Avalanche.",
     "title": "UltravioletaDAO Multisigners",
     "filter": {
       "title": "Filter Options",
@@ -1171,7 +960,12 @@
       "date_required": "Please enter at least one date for filtering."
     },
     "copy": "Copy address",
-    "copied": "Address copied!"
+    "copied": "Address copied!",
+    "filter_options": "Filter options",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "statistics_title": "Signature statistics",
+    "from_to": "({{from}} to {{to}}, {{count}} transactions)"
   },
   "swap": {
     "title": "Swap",
@@ -2311,6 +2105,12 @@
     }
   },
   "experiments": {
+    "comingSoon": {
+      "title": "More Experiments Coming Soon",
+      "date": "2025",
+      "description": "We are constantly exploring new ways to collaborate and innovate. Stay tuned for more community experiments.",
+      "details": "Details coming soon..."
+    },
     "seoTitle": "Community Experiments - UltraVioleta DAO",
     "seoDescription": "Explore innovative experiments conducted by the UltraVioleta DAO community. From health research to governance experiments, discover how we test and learn together.",
     "hero": {

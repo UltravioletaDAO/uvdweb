@@ -20,10 +20,6 @@
     <link rel="preload" href="%PUBLIC_URL%/logo.png" as="image" type="image/png">
     <link rel="preload" href="%PUBLIC_URL%/manifest.json" as="fetch" crossorigin="anonymous">
 
-    <!-- Prefetch API data that will be needed soon -->
-    <link rel="prefetch" href="https://hub.snapshot.org/graphql" as="fetch" crossorigin="anonymous">
-    <link rel="prefetch" href="https://api.coingecko.com/api/v3/simple/price" as="fetch" crossorigin="anonymous">
-    
     <!-- Google tag (gtag.js) - Deferred for performance -->
     <script>
       // Defer Google Analytics until after page load
@@ -48,6 +44,7 @@
     
     <!-- PWA and Mobile Optimization -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="ai-catalog" href="/.well-known/ai-catalog.json" />
     <meta name="theme-color" content="#6A00FF" />
     <meta name="msapplication-TileColor" content="#6A00FF" />
     <meta name="mobile-web-app-capable" content="yes">
@@ -59,7 +56,6 @@
 
     <!-- Security Headers -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 

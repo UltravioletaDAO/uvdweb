@@ -3,8 +3,6 @@ const path = require('path');
 
 // Configuration
 const SITE_URL = 'https://ultravioletadao.xyz';
-const LANGUAGES = ['es', 'en', 'pt', 'fr'];
-const DEFAULT_LANG = 'en';
 
 // Define all routes with their metadata
 const routes = [
@@ -64,12 +62,6 @@ const routes = [
     lastmod: new Date().toISOString()
   },
   {
-    path: '/blog',
-    priority: 0.8,
-    changefreq: 'daily',
-    lastmod: new Date().toISOString()
-  },
-  {
     path: '/links',
     priority: 0.6,
     changefreq: 'monthly',
@@ -96,6 +88,48 @@ const routes = [
   {
     path: '/services',
     priority: 0.8,
+    changefreq: 'monthly',
+    lastmod: new Date().toISOString()
+  },
+  {
+    path: '/nfts',
+    priority: 0.7,
+    changefreq: 'weekly',
+    lastmod: new Date().toISOString()
+  },
+  {
+    path: '/stream-summaries',
+    priority: 0.8,
+    changefreq: 'daily',
+    lastmod: new Date().toISOString()
+  },
+  {
+    path: '/experiments',
+    priority: 0.7,
+    changefreq: 'weekly',
+    lastmod: new Date().toISOString()
+  },
+  {
+    path: '/facilitator',
+    priority: 0.8,
+    changefreq: 'weekly',
+    lastmod: new Date().toISOString()
+  },
+  {
+    path: '/agents',
+    priority: 0.8,
+    changefreq: 'weekly',
+    lastmod: new Date().toISOString()
+  },
+  {
+    path: '/karma-hello',
+    priority: 0.7,
+    changefreq: 'weekly',
+    lastmod: new Date().toISOString()
+  },
+  {
+    path: '/delegations',
+    priority: 0.5,
     changefreq: 'monthly',
     lastmod: new Date().toISOString()
   }
@@ -137,44 +171,27 @@ const generateMainSitemap = () => {
   xml += '        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n';
   xml += '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"\n';
   xml += '        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"\n';
-  xml += '        xmlns:xhtml="http://www.w3.org/1999/xhtml"\n';
   xml += '        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9\n';
   xml += '                            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">\n';
 
   allRoutes.forEach(route => {
-    // For each route, generate entries for all languages
-    LANGUAGES.forEach(lang => {
-      const url = lang === DEFAULT_LANG
-        ? `${SITE_URL}${route.path}`
-        : `${SITE_URL}/${lang}${route.path}`;
+    xml += '  <url>\n';
+    xml += `    <loc>${SITE_URL}${route.path}</loc>\n`;
+    xml += `    <lastmod>${route.lastmod}</lastmod>\n`;
+    xml += `    <changefreq>${route.changefreq}</changefreq>\n`;
+    xml += `    <priority>${route.priority}</priority>\n`;
 
-      xml += '  <url>\n';
-      xml += `    <loc>${url}</loc>\n`;
-      xml += `    <lastmod>${route.lastmod}</lastmod>\n`;
-      xml += `    <changefreq>${route.changefreq}</changefreq>\n`;
-      xml += `    <priority>${route.priority}</priority>\n`;
-
-      // Add hreflang links
-      LANGUAGES.forEach(altLang => {
-        const altUrl = altLang === DEFAULT_LANG
-          ? `${SITE_URL}${route.path}`
-          : `${SITE_URL}/${altLang}${route.path}`;
-        xml += `    <xhtml:link rel="alternate" hreflang="${altLang}" href="${altUrl}"/>\n`;
+    // Add images if present
+    if (route.images) {
+      route.images.forEach(image => {
+        xml += '    <image:image>\n';
+        xml += `      <image:loc>${SITE_URL}${image.loc}</image:loc>\n`;
+        xml += `      <image:title>${image.title}</image:title>\n`;
+        xml += '    </image:image>\n';
       });
-      xml += `    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${route.path}"/>\n`;
+    }
 
-      // Add images if present
-      if (route.images && lang === DEFAULT_LANG) {
-        route.images.forEach(image => {
-          xml += '    <image:image>\n';
-          xml += `      <image:loc>${SITE_URL}${image.loc}</image:loc>\n`;
-          xml += `      <image:title>${image.title}</image:title>\n`;
-          xml += '    </image:image>\n';
-        });
-      }
-
-      xml += '  </url>\n';
-    });
+    xml += '  </url>\n';
   });
 
   xml += '</urlset>';

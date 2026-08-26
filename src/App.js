@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from "react-router-dom";
 import { HelmetProvider } from 'react-helmet-async';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -90,6 +90,7 @@ function AppRoutes() {
             <Route path="/bounties" element={<Bounties />} />
           )}
           <Route path="/agents" element={<AgentDiscovery />} />
+          <Route path="/agent-discovery" element={<Navigate to="/agents" replace />} />
           <Route path="/purge" element={<Purge />} />
           <Route path="/karma-hello" element={<KarmaHelloLanding />} />
           <Route path="/delegations" element={<Delegations />} />

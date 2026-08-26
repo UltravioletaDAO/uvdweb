@@ -165,7 +165,7 @@ const AgentDiscovery = () => {
     "@type": "Organization",
     "name": "UltraVioleta DAO",
     "description": "Web3-native community building the future of decentralized technology in Latin America",
-    "url": "https://ultravioletadao.io",
+    "url": "https://ultravioletadao.xyz",
     "sameAs": [
       "https://x.com/UltravioletaDAO",
       "https://github.com/ultravioletadao",

@@ -35,8 +35,7 @@ function StreamSummaries() {
   const {
     data: summariesData,
     isLoading,
-    isError,
-    error
+    isError
   } = useStreamSummariesPaginated(currentPage, summariesPerPage);
 
   const paginate = (pageNumber) => {
@@ -232,12 +231,6 @@ function StreamSummaries() {
         servicePhone: '',
         serviceSmsNumber: ''
       },
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: '4.9',
-        reviewCount: '145',
-        bestRating: '5'
-      },
       offers: {
         '@type': 'Offer',
         price: '0',
@@ -280,6 +273,40 @@ function StreamSummaries() {
 
   const localizedMeta = getLocalizedMeta();
 
+  // Compact Hero Section - Single line with inline stats (shared by the success and error states)
+  const pageHeader = (
+    <header className="mb-8 mt-8">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
+        <div>
+          <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-2">
+            {t('streamSummaries.title')}
+          </h1>
+          <p className="text-text-secondary text-sm md:text-base max-w-2xl">
+            {t('streamSummaries.subtitle')}
+          </p>
+        </div>
+
+        {/* Inline Stats */}
+        {summariesData && (
+          <div className="flex flex-wrap items-center gap-3" role="region" aria-label={t('streamSummaries.aria.streamStats')}>
+            <div className="bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700 flex items-center gap-2">
+              <span className="text-violet-400 font-bold text-xl">{summariesData.totalSummaries}</span>
+              <span className="text-text-secondary text-xs">{t('streamSummaries.totalStreams')}</span>
+            </div>
+            <div className="bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700 flex items-center gap-2">
+              <span className="text-violet-400 font-bold text-xl">{Object.keys(summariesData.streamers || {}).length}</span>
+              <span className="text-text-secondary text-xs">{t('streamSummaries.streamersCount')}</span>
+            </div>
+            <div className="bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700 flex items-center gap-2">
+              <span className="text-violet-400 font-bold text-xl">24h</span>
+              <span className="text-text-secondary text-xs">{t('streamSummaries.updateFrequency')}</span>
+            </div>
+          </div>
+        )}
+      </div>
+    </header>
+  );
+
   // Loading state
   if (isLoading) {
     return (
@@ -319,7 +346,12 @@ function StreamSummaries() {
         />
         <main className="min-h-screen bg-background text-text-primary py-6 px-4 md:px-6 lg:px-8">
           <div className="max-w-screen-2xl mx-auto">
-            <div className="flex items-center justify-center min-h-[70vh]">
+            {pageHeader}
+
+            {/* Search runs against its own API, so it keeps working while the summaries index is down */}
+            <StreamSearch />
+
+            <div className="flex items-center justify-center mt-12 mb-20">
               <div className="text-center bg-red-900/20 border border-red-600 rounded-lg p-6 max-w-md">
                 <svg className="w-12 h-12 text-red-500 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -328,7 +360,7 @@ function StreamSummaries() {
                   {t('streamSummaries.errorTitle')}
                 </h2>
                 <p className="text-text-secondary text-sm">
-                  {error?.message || t('streamSummaries.errorMessage')}
+                  {t('streamSummaries.errorMessage')}
                 </p>
               </div>
             </div>
@@ -346,42 +378,12 @@ function StreamSummaries() {
         keywords={localizedMeta.keywords}
         type="website"
         customJsonLd={generateStreamSummariesJsonLd()}
-        image="https://ultravioletadao.xyz/images/abracadabra-banner.jpg"
+        image="https://ultravioletadao.xyz/uvd.png"
       />
 
       <main className="min-h-screen bg-background text-text-primary py-6 px-4 md:px-6 lg:px-8">
         <div className="max-w-screen-2xl mx-auto">
-          {/* Compact Hero Section - Single line with inline stats */}
-          <header className="mb-8 mt-8">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
-              <div>
-                <h1 className="text-3xl md:text-4xl font-bold text-text-primary mb-2">
-                  {t('streamSummaries.title')}
-                </h1>
-                <p className="text-text-secondary text-sm md:text-base max-w-2xl">
-                  {t('streamSummaries.subtitle')}
-                </p>
-              </div>
-
-              {/* Inline Stats */}
-              {summariesData && (
-                <div className="flex flex-wrap items-center gap-3" role="region" aria-label={t('streamSummaries.aria.streamStats')}>
-                  <div className="bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700 flex items-center gap-2">
-                    <span className="text-violet-400 font-bold text-xl">{summariesData.totalSummaries}</span>
-                    <span className="text-text-secondary text-xs">{t('streamSummaries.totalStreams')}</span>
-                  </div>
-                  <div className="bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700 flex items-center gap-2">
-                    <span className="text-violet-400 font-bold text-xl">{Object.keys(summariesData.streamers || {}).length}</span>
-                    <span className="text-text-secondary text-xs">{t('streamSummaries.streamersCount')}</span>
-                  </div>
-                  <div className="bg-zinc-800/50 px-3 py-1.5 rounded-lg border border-zinc-700 flex items-center gap-2">
-                    <span className="text-violet-400 font-bold text-xl">24h</span>
-                    <span className="text-text-secondary text-xs">{t('streamSummaries.updateFrequency')}</span>
-                  </div>
-                </div>
-              )}
-            </div>
-          </header>
+          {pageHeader}
 
           {/* Minimal Collapsible Abracadabra Banner */}
           <section

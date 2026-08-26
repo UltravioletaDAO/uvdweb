@@ -291,9 +291,12 @@
     "message": "Votre candidature a été reçue et est en cours de révision.",
     "waitlist": "Si le processus de candidature est terminé, vous serez placé sur notre liste d'attente prioritaire.",
     "thanks": "Merci pour votre intérêt à rejoindre notre communauté!",
-    "back_home": "Retour à l'accueil"
+    "back_home": "Retour à l'accueil",
+    "check_status": "Voir l'état de ma candidature"
   },
   "courses": {
+    "seoTitle": "Cours - Apprenez le Web3 avec UltraVioleta DAO",
+    "seoDescription": "Cours de blockchain, DeFi et développement Web3 créés par la communauté UltraVioleta DAO. Apprenez à votre rythme et construisez sur l'écosystème Avalanche.",
     "title": "Nos Cours"
   },
   "links": {
@@ -579,6 +582,7 @@
       "todo": "À faire",
       "in_progress": "En cours",
       "in_review": "En vote",
+      "in_voting": "En vote",
       "voting": "En vote",
       "done": "Terminé",
       "finished": "Terminée"
@@ -1111,7 +1115,13 @@
       "future": "Opérations futures"
     }
   },
+  "socialnetworks": {
+    "seoTitle": "Réseaux Sociaux - Connectez-vous à UltraVioleta DAO",
+    "seoDescription": "Suivez UltraVioleta DAO sur Twitter et Arena, consultez le trésor multisig et échangez le token UVD. Tous les liens officiels de la communauté au même endroit."
+  },
   "blog": {
+    "seoTitle": "Blog - Actualités et Articles Web3 d'UltraVioleta DAO",
+    "seoDescription": "Lisez le blog d'UltraVioleta DAO : gouvernance, DeFi, x402, agents IA et construction Web3 depuis l'Amérique latine. Actualités et retours de la communauté.",
     "title": "Paila News",
     "no_posts": "Aucun article disponible pour l'instant",
     "not_found": "L'article demandé est introuvable",
@@ -1119,6 +1129,8 @@
     "related": "Vous pourriez aussi être intéressé..."
   },
   "safestats": {
+    "seoTitle": "SafeStats - Statistiques de Signatures du Multisig",
+    "seoDescription": "Consultez les statistiques de signatures du multisig d'UltraVioleta DAO : activité par signataire, filtres par date et transactions du trésor sur Avalanche.",
     "title": "Multisignataires UltravioletaDAO",
     "filter": {
       "title": "Options de filtrage",
@@ -2202,6 +2214,12 @@
     }
   },
   "experiments": {
+    "comingSoon": {
+      "title": "Plus d'expériences à venir",
+      "date": "2025",
+      "description": "Nous explorons constamment de nouvelles façons de collaborer et d'innover. Restez à l'écoute pour plus d'expériences communautaires.",
+      "details": "Détails à venir..."
+    },
     "seoTitle": "Expériences communautaires - Ultravioleta DAO",
     "seoDescription": "Explorez les expériences innovantes menées par la communauté Ultravioleta DAO. De la recherche en santé aux expériences de gouvernance, découvrez comment nous testons et apprenons ensemble.",
     "hero": {

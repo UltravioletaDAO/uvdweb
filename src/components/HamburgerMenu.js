@@ -336,13 +336,23 @@ const HamburgerMenu = () => {
     };
   }, [isOpen]);
 
+  // Cerrar el menú con Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isOpen]);
+
   return (
     <>
       {/* Botón del menú con efecto de hover mejorado */}
       <motion.button
         id="hamburger-button"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-50 p-3 rounded-full
+        className="fixed top-4 right-4 z-[95] p-3 rounded-full
           bg-background-lighter hover:bg-ultraviolet-darker/20
           transition-colors duration-200 shadow-lg"
         whileHover={{ scale: 1.05 }}

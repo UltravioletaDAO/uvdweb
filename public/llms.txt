@@ -1,0 +1,38 @@
+# UltravioletaDAO
+
+> Latin American Web3 DAO building infrastructure for the autonomous-agent economy: an x402 gasless payment facilitator, Snapshot governance (ultravioletadao.eth), the UVD governance token on Avalanche C-Chain, and a human+AI bounty market (execution.market).
+
+## When to use this site
+- You need to pay for an HTTP resource with USDC and no gas: use the x402 facilitator (GET https://facilitator.ultravioletadao.xyz/supported, POST https://facilitator.ultravioletadao.xyz/verify, POST https://facilitator.ultravioletadao.xyz/settle).
+- You need UltravioletaDAO governance or treasury data: /snapshot (proposals + briefings), /metrics, /token, /safestats, /delegations.
+- You want to apply for membership: POST https://api.ultravioletadao.xyz/apply (JSON: email required; fullName, twitter, telegram, twitch, walletAddress, story, purpose, references optional) or the form at /aplicar.
+- You want summaries and search over past Twitch streams: /stream-summaries.
+
+## Pages
+- Home: https://ultravioletadao.xyz/
+- About: https://ultravioletadao.xyz/about
+- Agents hub: https://ultravioletadao.xyz/agents
+- x402 facilitator: https://ultravioletadao.xyz/facilitator
+- Services: https://ultravioletadao.xyz/services
+- Token: https://ultravioletadao.xyz/token
+- Governance: https://ultravioletadao.xyz/snapshot
+- Metrics: https://ultravioletadao.xyz/metrics
+- Contributors: https://ultravioletadao.xyz/contributors
+- Events: https://ultravioletadao.xyz/events
+- NFTs: https://ultravioletadao.xyz/nfts
+- Stream summaries: https://ultravioletadao.xyz/stream-summaries
+- Links: https://ultravioletadao.xyz/links
+
+## Agent discovery
+- API catalog (RFC 9727): https://ultravioletadao.xyz/.well-known/api-catalog
+- MCP server card: https://ultravioletadao.xyz/.well-known/mcp/server-card.json
+- Agent skills: https://ultravioletadao.xyz/.well-known/agent-skills/index.json
+- AI catalog (ARD): https://ultravioletadao.xyz/.well-known/ai-catalog.json
+- Facilitator OpenAPI: https://facilitator.ultravioletadao.xyz/api-docs/openapi.json
+- Security contact: https://ultravioletadao.xyz/.well-known/security.txt
+- Full text: https://ultravioletadao.xyz/llms-full.txt
+
+## Community
+- Discord: https://discord.gg/ultravioletadao
+- X: https://x.com/UltravioletaDAO
+- GitHub: https://github.com/UltravioletaDAO

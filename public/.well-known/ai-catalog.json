@@ -1,0 +1,40 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "UltravioletaDAO",
+    "identifier": "did:web:ultravioletadao.xyz"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:ultravioletadao.xyz:server:uvdao-mcp",
+      "displayName": "UltravioletaDAO MCP Server Card",
+      "type": "application/mcp-server-card+json",
+      "url": "https://ultravioletadao.xyz/.well-known/mcp/server-card.json",
+      "representativeQueries": [
+        "apply for UltravioletaDAO membership",
+        "verify an x402 payment with the UltravioletaDAO facilitator",
+        "settle a gasless USDC payment on Avalanche"
+      ]
+    },
+    {
+      "identifier": "urn:air:ultravioletadao.xyz:skills:index",
+      "displayName": "UltravioletaDAO Agent Skills",
+      "type": "application/json",
+      "url": "https://ultravioletadao.xyz/.well-known/agent-skills/index.json",
+      "representativeQueries": [
+        "what can an agent do with UltravioletaDAO",
+        "x402 facilitator skill"
+      ]
+    },
+    {
+      "identifier": "urn:air:ultravioletadao.xyz:api:catalog",
+      "displayName": "UltravioletaDAO API Catalog (RFC 9727)",
+      "type": "application/linkset+json",
+      "url": "https://ultravioletadao.xyz/.well-known/api-catalog",
+      "representativeQueries": [
+        "which HTTP APIs does UltravioletaDAO expose",
+        "OpenAPI spec of the UltravioletaDAO x402 facilitator"
+      ]
+    }
+  ]
+}

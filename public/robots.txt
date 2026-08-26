@@ -1,6 +1,6 @@
 # Robots.txt for UltraVioleta DAO
 # https://ultravioletadao.xyz
-# Last updated: 2025-10-02
+# Last updated: 2026-08-26
 
 # Default rules for all bots
 User-agent: *
@@ -21,20 +21,20 @@ Allow: /events
 Allow: /services
 Allow: /services#karma-hello
 Allow: /services#abracadabra
-Allow: /nft
 Allow: /nfts
 Allow: /stream-summaries
 Allow: /stream-summaries/*
+Allow: /.well-known/
 Disallow: /api/
 Disallow: /admin/
 Disallow: /twitch-callback
 Disallow: /status
 Disallow: /purge
-Disallow: /*.json$
+Disallow: /db/
 Disallow: /*?*sort=
 Disallow: /*?*filter=
 Disallow: /*?*page=
-Allow: /*?lang=
+Allow: /*?lng=
 
 # Crawl-delay for general bots (in seconds)
 Crawl-delay: 1
@@ -99,25 +99,29 @@ User-agent: EtherscanBot
 Allow: /
 Crawl-delay: 2
 
-# AI and GPT bots (for Web3 AI tools)
+# AI bots and agents (OpenAI, Anthropic, Google, Perplexity, Common Crawl)
+# RFC 9309 s2.2.1: a bot only reads the group that names it, so this group
+# repeats the Disallow rules of "*" instead of a bare "Allow: /".
 User-agent: GPTBot
-Allow: /
-Crawl-delay: 2
-
 User-agent: ChatGPT-User
-Allow: /
-Crawl-delay: 2
-
+User-agent: OAI-SearchBot
 User-agent: CCBot
+User-agent: ClaudeBot
+User-agent: Claude-User
+User-agent: Claude-SearchBot
+User-agent: Google-Extended
+User-agent: PerplexityBot
 Allow: /
-Crawl-delay: 2
-
-User-agent: anthropic-ai
-Allow: /
-Crawl-delay: 2
-
-User-agent: Claude-Web
-Allow: /
+Allow: /.well-known/
+Disallow: /api/
+Disallow: /admin/
+Disallow: /twitch-callback
+Disallow: /status
+Disallow: /purge
+Disallow: /db/
+Disallow: /*?*sort=
+Disallow: /*?*filter=
+Disallow: /*?*page=
 Crawl-delay: 2
 
 # Block bad bots and scrapers
@@ -148,8 +152,7 @@ Disallow: /
 User-agent: ByteSpider
 Disallow: /
 
-# Performance and caching directives
-User-agent: *
+# Yandex Clean-param (intersectional directive, applies file-wide)
 Clean-param: utm_source&utm_medium&utm_campaign&utm_term&utm_content&fbclid&gclid
 
 # Content Signals (https://contentsignals.org/)
@@ -161,6 +164,9 @@ Sitemap: https://ultravioletadao.xyz/sitemap-index.xml
 Sitemap: https://ultravioletadao.xyz/sitemap.xml
 Sitemap: https://ultravioletadao.xyz/sitemap-blog.xml
 Sitemap: https://ultravioletadao.xyz/sitemap-images.xml
+
+# Agentic Resource Discovery (https://agenticresourcediscovery.org/)
+Agentmap: https://ultravioletadao.xyz/.well-known/ai-catalog.json
 
 # Host directive for preferred domain
 Host: https://ultravioletadao.xyz
