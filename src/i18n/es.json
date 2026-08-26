@@ -559,6 +559,8 @@
     "check_status": "Ver estado de mi aplicación"
   },
   "courses": {
+    "seoTitle": "Cursos - Aprende Web3 con UltraVioleta DAO",
+    "seoDescription": "Cursos de blockchain, DeFi y desarrollo Web3 creados por la comunidad de UltraVioleta DAO. Aprende a tu ritmo y construye en el ecosistema Avalanche.",
     "title": "Nuestros Cursos"
   },
   "links": {
@@ -579,11 +581,6 @@
       "status": "Estado",
       "reason": "Razón"
     }
-  },
-  "events": {
-    "title": "Próximos eventos",
-    "description": "Eventos de interés para la comunidad a los que se recomienda asistir. ¡No te los pierdas!",
-    "image_alt_placeholder": "Imagen de evento"
   },
   "snapshot": {
     "title": "Propuestas Gobernanza Ultravioleta DAO",
@@ -951,6 +948,8 @@
     }
   },
   "safestats": {
+    "seoTitle": "SafeStats - Estadísticas de Firmas del Multisig",
+    "seoDescription": "Consulta las estadísticas de firmas del multisig de UltraVioleta DAO: actividad por firmante, filtros por fecha y transacciones de la tesorería en Avalanche.",
     "title": "Multifirmantes UltravioletaDAO",
     "filter": {
       "title": "Opciones de filtrado",
@@ -1323,7 +1322,13 @@
   "not_found": {
     "title": "Página no encontrada"
   },
+  "socialnetworks": {
+    "seoTitle": "Redes Sociales - Conecta con UltraVioleta DAO",
+    "seoDescription": "Sigue a UltraVioleta DAO en Twitter y Arena, revisa la tesorería multisig y haz swap del token UVD. Todos los enlaces oficiales en un solo lugar."
+  },
   "blog": {
+    "seoTitle": "Blog - Noticias y Artículos Web3 de UltraVioleta DAO",
+    "seoDescription": "Lee el blog de UltraVioleta DAO: gobernanza, DeFi, x402, agentes IA y construcción Web3 desde América Latina. Novedades y aprendizajes de la comunidad.",
     "title": "Paila News",
     "no_posts": "No hay posts disponibles en este momento",
     "not_found": "No se encontró el post solicitado",
@@ -2170,6 +2175,12 @@
     }
   },
   "experiments": {
+    "comingSoon": {
+      "title": "Más Experimentos Próximamente",
+      "date": "2025",
+      "description": "Estamos constantemente explorando nuevas formas de colaborar e innovar. Mantente atento para más experimentos comunitarios.",
+      "details": "Detalles próximamente..."
+    },
     "seoTitle": "Experimentos Comunitarios - UltraVioleta DAO",
     "seoDescription": "Explora los experimentos innovadores realizados por la comunidad de UltraVioleta DAO. Desde investigación en salud hasta experimentos de gobernanza, descubre cómo probamos y aprendemos juntos.",
     "hero": {
