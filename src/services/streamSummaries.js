@@ -68,7 +68,7 @@ class StreamSummariesService {
 
   /**
    * Fetch global stream summaries index
-   * Tries ECS Fargate API first (if configured), then S3, then local fallback
+   * Tries ECS Fargate API first (if configured), then S3
    * @returns {Promise<Object>} Index data with all summaries
    */
   async fetchIndex() {
@@ -148,69 +148,53 @@ class StreamSummariesService {
       const s3Url = `${S3_BASE_URL}/stream-summaries/index_${this.currentLanguage}.json`;
       this.log('Fetching global index from S3', { url: s3Url });
 
-      try {
-        const s3Response = await this.getFetch()(s3Url);
+      const s3Response = await this.getFetch()(s3Url);
 
-        if (s3Response.ok) {
-          const data = await s3Response.json();
+      if (!s3Response.ok) {
+        // Surface the real S3 status (e.g. 403 from a bucket-policy change) instead of masking it
+        throw new Error(`S3 index fetch failed with status ${s3Response.status}: ${s3Url}`);
+      }
 
-          // Count streams per streamer
-          const streamersCount = {};
+      const data = await s3Response.json();
 
-          // Transform streams to include missing fields (if not present)
-          const transformedStreams = data.streams.map(stream => {
-            const streamer = stream.streamer;
-            streamersCount[streamer] = (streamersCount[streamer] || 0) + 1;
+      // Count streams per streamer
+      const streamersCount = {};
 
-            // Add missing fields if not present
-            if (!stream.titulo_stream) {
-              stream.titulo_stream = `Stream de ${streamer}`;
-            }
-            if (!stream.fecha_formateada && stream.fecha_stream) {
-              const fechaStr = stream.fecha_stream;
-              const year = fechaStr.substring(0, 4);
-              const month = fechaStr.substring(4, 6);
-              const day = fechaStr.substring(6, 8);
-              stream.fecha_formateada = `${day}/${month}/${year}`;
-            }
+      // Transform streams to include missing fields (if not present)
+      const transformedStreams = data.streams.map(stream => {
+        const streamer = stream.streamer;
+        streamersCount[streamer] = (streamersCount[streamer] || 0) + 1;
 
-            return stream;
-          });
-
-          // Transform to match expected frontend format
-          const transformedData = {
-            ultima_actualizacion: data.ultima_actualizacion,
-            total_resumenes: data.total_streams,
-            streamers: streamersCount,
-            resumenes: transformedStreams
-          };
-
-          this.log('Global index fetched successfully from S3', {
-            total: transformedData.total_resumenes,
-            streamers: Object.keys(streamersCount).length
-          });
-
-          this.setCache(cacheKey, transformedData);
-          return transformedData;
+        // Add missing fields if not present
+        if (!stream.titulo_stream) {
+          stream.titulo_stream = `Stream de ${streamer}`;
         }
-      } catch (s3Error) {
-        this.log('S3 global index fetch failed, trying local fallback', s3Error);
-      }
+        if (!stream.fecha_formateada && stream.fecha_stream) {
+          const fechaStr = stream.fecha_stream;
+          const year = fechaStr.substring(0, 4);
+          const month = fechaStr.substring(4, 6);
+          const day = fechaStr.substring(6, 8);
+          stream.fecha_formateada = `${day}/${month}/${year}`;
+        }
 
-      // Fallback to local file
-      const localUrl = '/stream-summaries/index.json';
-      this.log('Fetching index.json from local fallback', { url: localUrl });
-      const response = await this.getFetch()(localUrl);
+        return stream;
+      });
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
+      // Transform to match expected frontend format
+      const transformedData = {
+        ultima_actualizacion: data.ultima_actualizacion,
+        total_resumenes: data.total_streams,
+        streamers: streamersCount,
+        resumenes: transformedStreams
+      };
 
-      const data = await response.json();
-      this.log('Index data fetched successfully from local', { total: data.total_resumenes });
+      this.log('Global index fetched successfully from S3', {
+        total: transformedData.total_resumenes,
+        streamers: Object.keys(streamersCount).length
+      });
 
-      this.setCache(cacheKey, data);
-      return data;
+      this.setCache(cacheKey, transformedData);
+      return transformedData;
     } catch (error) {
       this.log('Error fetching index (all sources failed)', error);
       throw error;
