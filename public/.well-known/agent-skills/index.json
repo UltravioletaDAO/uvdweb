@@ -1,27 +1,33 @@
 {
-  "$schema": "https://agentskills.io/schema/v0.2.0/index.json",
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
   "version": "0.2.0",
-  "updated": "2026-05-27T00:00:00Z",
+  "updated": "2026-08-26T00:00:00Z",
   "provider": {
     "name": "UltravioletaDAO",
     "url": "https://ultravioletadao.xyz",
-    "contact": "mailto:agents@ultravioletadao.xyz"
+    "contact": "mailto:ultravioletadao@gmail.com"
   },
   "skills": [
     {
       "name": "apply-dao-membership",
-      "type": "action",
-      "description": "Submit a membership application to UltravioletaDAO. Collects name, email, skills and motivation, then POSTs to the applications API.",
+      "type": "skill-md",
+      "description": "Submit a membership application to UltravioletaDAO. POSTs a JSON body (email required; fullName, twitter, telegram, twitch, walletAddress, story, purpose, references optional) to the applications API.",
       "url": "https://ultravioletadao.xyz/.well-known/agent-skills/apply-dao-membership/SKILL.md",
-      "sha256": "PLACEHOLDER_COMPUTE_AFTER_FILE_CREATION",
+      "digest": "sha256:3bcc0171d61ecbb3dd06dd9e133cb797a526db9d388f932c79240310e9464a1d",
       "inputSchema": {
         "type": "object",
-        "required": ["name", "email", "skills", "motivation"],
+        "required": ["email"],
         "properties": {
-          "name": { "type": "string" },
           "email": { "type": "string", "format": "email" },
-          "skills": { "type": "array", "items": { "type": "string" } },
-          "motivation": { "type": "string" }
+          "fullName": { "type": "string" },
+          "twitter": { "type": "string" },
+          "telegram": { "type": "string" },
+          "twitch": { "type": "string" },
+          "walletAddress": { "type": "string" },
+          "story": { "type": "string" },
+          "purpose": { "type": "string" },
+          "references": { "type": "string" },
+          "timestamp": { "type": "integer" }
         }
       },
       "endpoint": "https://api.ultravioletadao.xyz/apply",
@@ -29,51 +35,17 @@
       "auth": "none"
     },
     {
-      "name": "check-application-status",
-      "type": "query",
-      "description": "Check the status of a UltravioletaDAO membership application using the applicant's email address.",
-      "url": "https://ultravioletadao.xyz/.well-known/agent-skills/check-application-status/SKILL.md",
-      "sha256": "PLACEHOLDER_COMPUTE_AFTER_FILE_CREATION",
-      "inputSchema": {
-        "type": "object",
-        "required": ["email"],
-        "properties": {
-          "email": { "type": "string", "format": "email" }
-        }
-      },
-      "endpoint": "https://api.ultravioletadao.xyz/apply/status/{email}",
-      "method": "GET",
-      "auth": "none"
-    },
-    {
-      "name": "list-bounties",
-      "type": "query",
-      "description": "List available bounties in UltravioletaDAO. Supports filtering by status (open, in_progress, completed).",
-      "url": "https://ultravioletadao.xyz/.well-known/agent-skills/list-bounties/SKILL.md",
-      "sha256": "PLACEHOLDER_COMPUTE_AFTER_FILE_CREATION",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "status": { "type": "string", "enum": ["open", "in_progress", "completed"] },
-          "limit": { "type": "integer", "default": 10 }
-        }
-      },
-      "endpoint": "https://api.ultravioletadao.xyz/bounties",
-      "method": "GET",
-      "auth": "none"
-    },
-    {
       "name": "x402-verify-payment",
-      "type": "action",
-      "description": "Verify a gasless EIP-3009 payment authorization via the UltravioletaDAO x402 facilitator. Supports Avalanche, Base, Celo and HyperEVM networks.",
+      "type": "skill-md",
+      "description": "Verify an x402 v1 payment authorization (EIP-3009, scheme exact) via the UltravioletaDAO facilitator. Supported networks and tokens are listed live at https://facilitator.ultravioletadao.xyz/supported.",
       "url": "https://ultravioletadao.xyz/.well-known/agent-skills/x402-verify-payment/SKILL.md",
-      "sha256": "PLACEHOLDER_COMPUTE_AFTER_FILE_CREATION",
+      "digest": "sha256:ff1683fc25587bf57b33548891eca903c45fb06f2eae8f4ac116c34a7c9cfe62",
       "inputSchema": {
         "type": "object",
-        "required": ["network", "authorization"],
+        "required": ["paymentPayload", "paymentRequirements"],
         "properties": {
-          "network": { "type": "string", "enum": ["avalanche", "base", "celo", "hyperevm"] },
-          "authorization": { "type": "object" }
+          "paymentPayload": { "type": "object" },
+          "paymentRequirements": { "type": "object" }
         }
       },
       "endpoint": "https://facilitator.ultravioletadao.xyz/verify",
@@ -82,17 +54,16 @@
     },
     {
       "name": "x402-settle-payment",
-      "type": "action",
-      "description": "Execute settlement of a verified x402 micropayment. Enables autonomous agents to pay for HTTP resources without gas fees.",
+      "type": "skill-md",
+      "description": "Settle a verified x402 payment on-chain via the UltravioletaDAO facilitator, which pays the gas. Enables autonomous agents to pay for HTTP resources without native tokens.",
       "url": "https://ultravioletadao.xyz/.well-known/agent-skills/x402-settle-payment/SKILL.md",
-      "sha256": "PLACEHOLDER_COMPUTE_AFTER_FILE_CREATION",
+      "digest": "sha256:5b89c3ebfc5248d39c701c118cf085938a2b5ae22810090bb226833683ddf9ae",
       "inputSchema": {
         "type": "object",
-        "required": ["network", "authorization", "signature"],
+        "required": ["paymentPayload", "paymentRequirements"],
         "properties": {
-          "network": { "type": "string" },
-          "authorization": { "type": "object" },
-          "signature": { "type": "string" }
+          "paymentPayload": { "type": "object" },
+          "paymentRequirements": { "type": "object" }
         }
       },
       "endpoint": "https://facilitator.ultravioletadao.xyz/settle",
