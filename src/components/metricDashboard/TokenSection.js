@@ -12,7 +12,7 @@ const TokenSection = () => {
   const { uvdPerAvax, uvdPerUsdc } = useTokenMetrics();
   const { history: priceHistory, priceChange30d } = usePriceHistory();
 
-  if (data.error) return <div>Error: {data.error}</div>;
+  if (data.error) return <p className="text-sm text-red-400">{t('metricsDashboard.snapshot.error_loading')}</p>;
 
   return (
     <div className="space-y-8">
@@ -33,7 +33,7 @@ const TokenSection = () => {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
         <MetricCard
           title={t('metricsDashboard.tokenSection.price_usd')}
-          value={`${parseFloat(uvdPerUsdc).toLocaleString()} UVD`}
+          value={uvdPerUsdc === 'N/A' ? 'N/A' : `${parseFloat(uvdPerUsdc).toLocaleString()} UVD`}
           change="= $1 USD"
           changeType="neutral"
           variant="token"
@@ -41,7 +41,7 @@ const TokenSection = () => {
         />
         <MetricCard
           title={t('metricsDashboard.tokenSection.price_avax')}
-          value={`${parseFloat(uvdPerAvax).toLocaleString()} UVD`}
+          value={uvdPerAvax === 'N/A' ? 'N/A' : `${parseFloat(uvdPerAvax).toLocaleString()} UVD`}
           change="= 1 AVAX"
           changeType="neutral"
           variant="token"

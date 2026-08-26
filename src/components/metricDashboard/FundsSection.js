@@ -14,7 +14,7 @@ export function FundsSection() {
   const { t } = useTranslation();
   const { owners, threshold, fiatTotal, tokens, error } = useSafeAvalanche();
 
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <p className="text-sm text-red-400">{t('metricsDashboard.snapshot.error_loading')}</p>;
 
   return (
     <div className="space-y-8">

@@ -40,8 +40,13 @@ export function useTokenMetrics() {
   }, []);
 
   // Calculo de cuántos UVD se obtiene por 1 AVAX y 1 USDC
-  const uvdPerAvax = data.priceNative !== "0.00" ? (1 / parseFloat(data.priceNative)).toFixed(2) : "N/A";
-  const uvdPerUsdc = data.priceUsd !== "0.00" ? (1 / parseFloat(data.priceUsd)).toFixed(2): "N/A";
+  // "N/A" cuando el precio no es un número > 0 (estado inicial "0.00" o DexScreener caído)
+  const safeInv = (v) => {
+    const n = parseFloat(v);
+    return Number.isFinite(n) && n > 0 ? (1 / n).toFixed(2) : "N/A";
+  };
+  const uvdPerAvax = safeInv(data.priceNative);
+  const uvdPerUsdc = safeInv(data.priceUsd);
 
   return { ...data, uvdPerAvax, uvdPerUsdc };
 }

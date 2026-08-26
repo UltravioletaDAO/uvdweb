@@ -136,15 +136,16 @@ async function fetchWithFallback(proxyUrl, directUrl) {
 
 export async function getTokenData() {
 
-  const url1Proxy = `https://corsproxy.io/?https://api.dexscreener.com/latest/dex/pairs/${CHAIN_ID}/${PAIR_ID}`;
-  // BUG-13: fetch con timeout + degradado limpio a null si corsproxy falla.
-  // Sin fallback directo: los endpoints de DexScreener no envían headers CORS al browser
-  // (generaban errores CORS en consola). Un proxy en el backend es el fix real (ver plan backend).
-  const data = await fetchWithFallback(url1Proxy, null);
+  // api.dexscreener.com sí envía CORS (access-control-allow-origin: *), se consulta directo.
+  // corsproxy.io responde 403 keyless_legacy_url de forma permanente, ya no sirve como proxy.
+  // BUG-13: fetch con timeout + degradado limpio a null si DexScreener falla.
+  const url1 = `https://api.dexscreener.com/latest/dex/pairs/${CHAIN_ID}/${PAIR_ID}`;
+  const data = await fetchWithFallback(url1, null);
   const pair = data?.pair || data?.pairs?.[0] || {};
 
-  const url2Proxy = `https://corsproxy.io/?https://io.dexscreener.com/dex/pair-details/v3/${CHAIN_ID}/${PAIR_ID}`;
-  const details = await fetchWithFallback(url2Proxy, null);
+  // io.dexscreener.com/dex/pair-details/v3 fue retirado (403 sin CORS): sin fuente para
+  // holders/supply; los campos gp/su/ds caen a "N/A" via optional chaining.
+  const details = null;
 
   const url3 = `https://cdn.routescan.io/api/evm/43114/erc20-transfers?count=true&limit=50&tokenAddress=${TOKEN_ADDRESS}`;
   const res3 = await fetch(url3);
