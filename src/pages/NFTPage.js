@@ -132,7 +132,7 @@ const NFTPage = () => {
   return (
     <>
       <SEOEnhanced
-        title={`NFT Collections - ${t('site.name')}`}
+        title={t('nft.title')}
         description={t('nft.meta.description')}
         keywords="NFT, Echoes, Ultravioleta DAO, Avalanche, Digital Art, Web3, Collectibles"
         path="/nfts"
