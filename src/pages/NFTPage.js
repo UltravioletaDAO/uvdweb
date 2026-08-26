@@ -33,7 +33,7 @@ const NFTPage = () => {
       totalSupply: 89,
       chain: 'Avalanche',
       contract: '0x6d08557830959b3441d269145b32dab93206b3d2',
-      marketplaceUrl: 'https://magiceden.us/collections/avalanche/echoes-by-ultravioleta-dao-806754961',
+      marketplaceUrl: 'https://salvor.io/collections/0x6d08557830959b3441d269145b32dab93206b3d2',
       stats: {
         uniqueOwners: 52,
         listed: 1,
