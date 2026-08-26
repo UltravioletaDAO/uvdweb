@@ -7,8 +7,10 @@ import { useEffect } from 'react';
  */
 const WebMCPProvider = () => {
   useEffect(() => {
-    // Solo si el browser soporta WebMCP (Chrome 128+ con flag, o futuro standard)
-    if (!navigator.modelContext?.provideContext) {
+    // Spec actual: document.modelContext.registerTool (navigator.modelContext es un alias deprecado).
+    // Feature-detect por método, no por objeto: provideContext ya no existe en Chrome/Edge 151.
+    const mc = document.modelContext ?? navigator.modelContext;
+    if (typeof mc?.registerTool !== 'function') {
       return;
     }
 
@@ -43,49 +45,6 @@ const WebMCPProvider = () => {
             body: JSON.stringify({ name, email, skills, motivation })
           });
           if (!res.ok) throw new Error(`Apply failed: ${res.status}`);
-          return res.json();
-        }
-      },
-      {
-        name: 'check_application_status',
-        description:
-          'Check the status of a UltravioletaDAO membership application by email address.',
-        inputSchema: {
-          type: 'object',
-          required: ['email'],
-          properties: {
-            email: { type: 'string', format: 'email' }
-          }
-        },
-        execute: async ({ email }) => {
-          const res = await fetch(
-            `https://api.ultravioletadao.xyz/apply/status/${encodeURIComponent(email)}`
-          );
-          if (!res.ok) throw new Error(`Status check failed: ${res.status}`);
-          return res.json();
-        }
-      },
-      {
-        name: 'list_open_bounties',
-        description:
-          'List currently open bounties in the UltravioletaDAO ecosystem. ' +
-          'Returns title, description, reward, and deadline for each bounty.',
-        inputSchema: {
-          type: 'object',
-          properties: {
-            limit: {
-              type: 'integer',
-              default: 10,
-              maximum: 50,
-              description: 'Max number of bounties to return'
-            }
-          }
-        },
-        execute: async ({ limit = 10 } = {}) => {
-          const res = await fetch(
-            `https://api.ultravioletadao.xyz/bounties?status=open&limit=${limit}`
-          );
-          if (!res.ok) throw new Error(`Bounties fetch failed: ${res.status}`);
           return res.json();
         }
       },
@@ -127,7 +86,7 @@ const WebMCPProvider = () => {
             },
             links: {
               website: 'https://ultravioletadao.xyz',
-              agent_discovery: 'https://ultravioletadao.xyz/agent-discovery',
+              agent_discovery: 'https://ultravioletadao.xyz/agents',
               facilitator: 'https://facilitator.ultravioletadao.xyz',
               github: 'https://github.com/ultravioletadao',
               discord: 'https://discord.gg/ultravioleta'
@@ -137,14 +96,25 @@ const WebMCPProvider = () => {
       }
     ];
 
-    try {
-      navigator.modelContext.provideContext({ tools });
-    } catch (err) {
-      // WebMCP no disponible o error — no bloquear la app
-      if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
-        console.warn('[WebMCP] provideContext failed:', err);
+    const warn = (err) => {
+      // WebMCP no disponible o error — no bloquear la app (AbortError = cleanup esperado)
+      if (err?.name !== 'AbortError' && process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+        console.warn('[WebMCP] registerTool failed:', err);
       }
-    }
+    };
+
+    // El AbortSignal des-registra los tools en el cleanup (sin él, el doble efecto de
+    // StrictMode lanza InvalidStateError: Duplicate tool name).
+    const controller = new AbortController();
+    tools.forEach((tool) => {
+      try {
+        Promise.resolve(mc.registerTool(tool, { signal: controller.signal })).catch(warn);
+      } catch (err) {
+        warn(err);
+      }
+    });
+
+    return () => controller.abort();
   }, []);
 
   return null; // No renderiza nada
