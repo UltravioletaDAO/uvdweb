@@ -442,7 +442,7 @@ const ServicesPage = () => {
                 </header>
 
                 <p className="text-gray-300 mb-4 text-lg" itemProp="description">
-                  <strong>What is Karma Hello?</strong> {t('services.karmaHelloExpanded.description')} Learn more about our <Link to="/token" className="text-purple-400 hover:text-purple-300 underline" title="UVD Token Information">UVD Token</Link>, <Link to="/nft" className="text-purple-400 hover:text-purple-300 underline" title="Echoes NFT Collections">Echoes NFT collections</Link>, and <Link to="/metrics" className="text-purple-400 hover:text-purple-300 underline" title="DAO Metrics Dashboard">DAO metrics</Link>. Join our <Link to="/aplicar" className="text-purple-400 hover:text-purple-300 underline" title="Apply to Join UltraVioleta DAO">community</Link> to participate!
+                  <strong>What is Karma Hello?</strong> {t('services.karmaHelloExpanded.description')} Learn more about our <Link to="/token" className="text-purple-400 hover:text-purple-300 underline" title="UVD Token Information">UVD Token</Link>, <Link to="/nfts" className="text-purple-400 hover:text-purple-300 underline" title="Echoes NFT Collections">Echoes NFT collections</Link>, and <Link to="/metrics" className="text-purple-400 hover:text-purple-300 underline" title="DAO Metrics Dashboard">DAO metrics</Link>. Join our <Link to="/aplicar" className="text-purple-400 hover:text-purple-300 underline" title="Apply to Join UltraVioleta DAO">community</Link> to participate!
                 </p>
 
               <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -1181,7 +1181,7 @@ const ServicesPage = () => {
                 <footer className="border-t border-gray-800 pt-6">
                   <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <a
-                      href="https://github.com/yourusername/abracadabra"
+                      href="https://github.com/ultravioletadao"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 rounded-lg transition-all"
