@@ -32,6 +32,15 @@ if (!Number.isFinite(generated)) fail(`generated_at inválido: ${JSON.stringify(
 const ageDays = (Date.now() - generated) / 86400000;
 if (ageDays > MAX_AGE_DAYS) fail(`generated_at ${graph.generated_at} tiene ${ageDays.toFixed(1)} días (máx ${MAX_AGE_DAYS})`);
 
+// Copia importable para el bundle (initialData del hook): mismo contenido, cero drift
+// porque este script corre en prebuild. Solo escribe si cambió (build cache friendly).
+const bundleCopy = path.join(__dirname, '..', '..', 'src', 'data', 'ecosystem', 'graph.snapshot.json');
+const raw = fs.readFileSync(file, 'utf8');
+if (!fs.existsSync(bundleCopy) || fs.readFileSync(bundleCopy, 'utf8') !== raw) {
+  fs.writeFileSync(bundleCopy, raw);
+  console.log(`[ecosystem] snapshot sincronizado -> ${path.relative(process.cwd(), bundleCopy)}`);
+}
+
 const scan = graph.source && graph.source.scan_timestamp ? graph.source.scan_timestamp : graph.generated_at;
 console.log(
   `[ecosystem] snapshot OK · scan_timestamp=${scan} · generated_at=${graph.generated_at} (${ageDays.toFixed(1)} días)` +
