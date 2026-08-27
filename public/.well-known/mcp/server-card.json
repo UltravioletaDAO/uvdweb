@@ -1,12 +1,12 @@
 {
   "name": "UltravioletaDAO MCP Server",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "MCP server card for UltravioletaDAO: membership applications and x402 gasless payment verification/settlement via the UltravioletaDAO facilitator, for AI agents operating in the Latin American Web3 ecosystem.",
   "serverInfo": {
     "name": "UltravioletaDAO MCP Server",
-    "version": "1.1.0",
+    "version": "1.2.0",
     "description": "MCP server card for UltravioletaDAO: membership applications and x402 gasless payment verification/settlement via the UltravioletaDAO facilitator, for AI agents operating in the Latin American Web3 ecosystem.",
-    "homepage": "https://ultravioletadao.xyz/agents",
+    "homepage": "https://ultravioletadao.xyz/ecosystem",
     "contact": "mailto:ultravioletadao@gmail.com",
     "license": "MIT"
   },
@@ -86,6 +86,12 @@
       "uri": "uvdao://token/metrics",
       "name": "UVD Token Metrics",
       "description": "UVD token price, supply, and market data",
+      "mimeType": "application/json"
+    },
+    {
+      "uri": "https://ultravioletadao.xyz/ecosystem/graph.json",
+      "name": "Ecosystem graph (measured by c0der)",
+      "description": "Public products of the UltravioletaDAO ecosystem as nodes and their measured integrations (API calls, facilitator usage, latent links) as edges with evidence counts. schema_version 1; generated_at and source.scan_timestamp date the scan. Rendered at https://ultravioletadao.xyz/ecosystem",
       "mimeType": "application/json"
     }
   ],

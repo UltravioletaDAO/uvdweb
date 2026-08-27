@@ -15,7 +15,7 @@ import {
   CalendarIcon,
   AcademicCapIcon,
   LinkIcon,
-  CpuChipIcon,
+  CubeTransparentIcon,
   ChevronDownIcon,
 } from "@heroicons/react/24/outline";
 import { useTranslation } from "react-i18next";
@@ -164,9 +164,9 @@ const Header = () => {
       isExternal: false,
     },
     {
-      name: t('navigation.agents'),
-      icon: CpuChipIcon,
-      path: "/agents",
+      name: t('navigation.ecosystem', 'Ecosistema'),
+      icon: CubeTransparentIcon,
+      path: "/ecosystem",
       isExternal: false,
     },
     {

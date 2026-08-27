@@ -17,7 +17,7 @@ import {
   CalendarIcon,
   AcademicCapIcon,
   LinkIcon,
-  CpuChipIcon,
+  CubeTransparentIcon,
   BeakerIcon,
   GiftIcon,
 } from "@heroicons/react/24/outline";
@@ -104,11 +104,11 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.bounties'),
     }] : []),
     {
-      name: t('navigation.agents'),
-      icon: CpuChipIcon,
-      path: "/agents",
+      name: t('navigation.ecosystem', 'Ecosistema'),
+      icon: CubeTransparentIcon,
+      path: "/ecosystem",
       isExternal: false,
-      description: t('navigation.descriptions.agents'),
+      description: t('navigation.descriptions.ecosystem', 'Mapa vivo de los productos del DAO'),
     },
     {
       name: t('navigation.links'),

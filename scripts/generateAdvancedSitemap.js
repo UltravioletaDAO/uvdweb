@@ -116,9 +116,9 @@ const routes = [
     lastmod: new Date().toISOString()
   },
   {
-    path: '/agents',
-    priority: 0.8,
-    changefreq: 'weekly',
+    path: '/ecosystem',
+    priority: 0.9,
+    changefreq: 'daily',
     lastmod: new Date().toISOString()
   },
   {

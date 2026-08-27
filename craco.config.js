@@ -61,6 +61,23 @@ module.exports = {
                 priority: 30,
                 chunks: 'async',
               },
+              // /ecosystem: layout del mapa (d3-force + deps) y resaltado de snippets (prismjs).
+              // Solo async: nunca entran a vendor/main (puerta: grep forceSimulation -> solo este chunk).
+              ecosystemVendor: {
+                test: /[\\/]node_modules[\\/](d3-force|d3-quadtree|d3-dispatch|d3-timer|prismjs)[\\/]/,
+                name: 'ecosystem-vendor',
+                chunks: 'async',
+                priority: 35,
+                enforce: true,
+              },
+              // Fase E (escena 3D propia, lazy por click): inerte hasta que exista un import de three.
+              threeVendor: {
+                test: /[\\/]node_modules[\\/]three[\\/]/,
+                name: 'three-vendor',
+                chunks: 'async',
+                priority: 36,
+                enforce: true,
+              },
               // UI libraries
               ui: {
                 test: /[\\/]node_modules[\\/](framer-motion|@heroicons|lucide-react|@radix-ui|tailwind)[\\/]/,
