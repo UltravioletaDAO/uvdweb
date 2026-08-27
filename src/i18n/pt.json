@@ -1458,7 +1458,8 @@
         "description": "Infelizmente, sua candidatura não foi aprovada neste momento."
       }
     },
-    "service_unavailable": "A consulta de status está temporariamente indisponível. Fale conosco nos canais da comunidade (Discord/Telegram) e verificamos sua aplicação."
+    "service_unavailable": "A consulta de status está temporariamente indisponível. Fale conosco nos canais da comunidade (Discord/Telegram) e verificamos sua aplicação.",
+    "not_found": "Não encontramos uma inscrição com esse e-mail. Confira se é o mesmo que você usou ao se inscrever."
   },
   "safestats": {
     "seoTitle": "SafeStats - Estatísticas de Assinaturas do Multisig",

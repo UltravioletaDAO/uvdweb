@@ -746,6 +746,7 @@
     "instructions": "Enter the email you applied with to check the status",
     "email_placeholder": "your@email.com",
     "service_unavailable": "Status lookup is temporarily unavailable. Please reach out on our community channels (Discord/Telegram) and we'll check your application for you.",
+    "not_found": "We could not find an application for that email. Check that it is the same one you used to apply.",
     "checking": "Checking...",
     "check_button": "Check Status",
     "last_update": "Last update:",

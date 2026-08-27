@@ -1259,7 +1259,8 @@
         "description": "Désolé, votre candidature n'a pas été approuvée pour l'instant."
       }
     },
-    "service_unavailable": "La consultation du statut est temporairement indisponible. Contactez-nous sur les canaux de la communauté (Discord/Telegram) et nous vérifierons votre candidature."
+    "service_unavailable": "La consultation du statut est temporairement indisponible. Contactez-nous sur les canaux de la communauté (Discord/Telegram) et nous vérifierons votre candidature.",
+    "not_found": "Nous n'avons trouvé aucune candidature pour cet e-mail. Vérifiez qu'il s'agit du même que celui utilisé pour postuler."
   },
   "navigation_extra": {
     "multisig_alt": "Portefeuille Safe Multisig trésorerie Ultravioleta DAO blockchain Avalanche stockage crypto sécurisé gouvernance",

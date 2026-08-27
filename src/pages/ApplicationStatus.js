@@ -70,8 +70,12 @@ const ApplicationStatus = () => {
 
       debugLog('Respuesta del servidor:', response.status);
 
-      // Backend endpoint offline/not deployed: show a friendly message instead of a raw error
-      if (response.status === 404 || response.status === 503) {
+      // 404 = no application for that email (backend GET /apply/status/:email); 503 = backend down
+      if (response.status === 404) {
+        setError(t('applicationStatus.not_found'));
+        return;
+      }
+      if (response.status === 503) {
         setError(t('applicationStatus.service_unavailable'));
         return;
       }
