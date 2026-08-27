@@ -177,28 +177,6 @@ const SEOEnhanced = ({
           description: 'Blockchain and DeFi education programs'
         }
       }
-    ],
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.8',
-      reviewCount: '287',
-      bestRating: '5',
-      worstRating: '1'
-    },
-    review: [
-      {
-        '@type': 'Review',
-        reviewRating: {
-          '@type': 'Rating',
-          ratingValue: '5',
-          bestRating: '5'
-        },
-        author: {
-          '@type': 'Person',
-          name: 'Community Member'
-        },
-        reviewBody: 'Excellent DAO with strong community governance and innovative Web3 projects.'
-      }
     ]
   };
 
@@ -423,12 +401,6 @@ const SEOEnhanced = ({
             applicationSubCategory: 'Chat Bot',
             operatingSystem: 'Web Browser, Twitch',
             description: 'Revolutionary Twitch bot with 18+ AI agents (GPT-4, Claude 3, Ollama) rewarding quality chat participation with UVD cryptocurrency tokens on Avalanche blockchain',
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: '4.8',
-              reviewCount: '287',
-              bestRating: '5'
-            },
             offers: {
               '@type': 'Offer',
               price: '0',
@@ -487,12 +459,6 @@ const SEOEnhanced = ({
             applicationSubCategory: 'AI Analysis Tool',
             operatingSystem: 'Web Browser',
             description: 'AI-powered stream content analysis platform with semantic search, knowledge graphs, and automated content generation using GPT-4o and Cognee framework',
-            aggregateRating: {
-              '@type': 'AggregateRating',
-              ratingValue: '4.9',
-              reviewCount: '145',
-              bestRating: '5'
-            },
             offers: {
               '@type': 'Offer',
               availability: 'https://schema.org/PreOrder',
@@ -874,7 +840,7 @@ const SEOEnhanced = ({
   return (
     <Helmet>
       {/* Essential Meta Tags */}
-      <html lang={currentLang} />
+      <html lang={(currentLang || 'es').slice(0, 2)} />
       <title>{fullTitle}</title>
       <meta name="description" content={fullDescription} />
       <meta name="keywords" content={keywords || defaultKeywords} />
@@ -1001,11 +967,9 @@ const SEOEnhanced = ({
 
       {/* JSON-LD Structured Data */}
       {allJsonLd.map((jsonLd, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
       ))}
     </Helmet>
   );

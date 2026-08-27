@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, memo } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 
 const OptimizedNFTCard = memo(({
   nft,
@@ -10,6 +11,7 @@ const OptimizedNFTCard = memo(({
   onLoad,
   priority = false
 }) => {
+  const { t } = useTranslation();
   const [videoError, setVideoError] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
   const [failed, setFailed] = useState(false);
@@ -208,7 +210,7 @@ const OptimizedNFTCard = memo(({
           {/* Loading indicator for videos */}
           {isVideo && !imageLoaded && inView && (
             <div className="absolute bottom-2 right-2 bg-black/50 text-white px-2 py-1 rounded text-xs">
-              Loading video...
+              {t('nft.loadingVideo')}
             </div>
           )}
         </div>
@@ -227,7 +229,7 @@ const OptimizedNFTCard = memo(({
           )}
           {isReserved && (
             <div className="text-xs text-ultraviolet-light">
-              Reserved for Community Treasury
+              {t('nft.reservedTreasury')}
             </div>
           )}
         </div>
