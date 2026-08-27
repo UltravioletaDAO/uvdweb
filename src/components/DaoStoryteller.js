@@ -116,9 +116,9 @@ const DaoStoryteller = ({ metrics }) => {
       <div className="flex items-center justify-between mb-3" style={{ flexShrink: 0 }}>
         <div className="flex items-center gap-2">
           <FireIcon className="w-5 h-5 text-ultraviolet-light" />
-          <h3 style={{ fontSize: '14px', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>
+          <p style={{ fontSize: '14px', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', margin: 0 }}>
             {t('home.metrics.expert_analysis')}
-          </h3>
+          </p>
         </div>
         {ttsEnabled && (
           <div className="flex items-center gap-2">

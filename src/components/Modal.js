@@ -1,11 +1,13 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/24/outline';
+import { useTranslation } from 'react-i18next';
 
 const FOCUSABLE_SELECTORS =
   'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])';
 
 const Modal = ({ isOpen, onClose, children, title, subtitle }) => {
+  const { t } = useTranslation();
   const titleId = 'modal-title';
   const modalRef = useRef(null);
   const previousFocusRef = useRef(null);
@@ -115,7 +117,7 @@ const Modal = ({ isOpen, onClose, children, title, subtitle }) => {
               {/* Botón de cerrar */}
               <motion.button
                 onClick={onClose}
-                aria-label="Cerrar modal"
+                aria-label={t('common.close_modal')}
                 className="absolute top-4 right-4 p-2 rounded-full
                   bg-background/20 hover:bg-background/40
                   transition-colors duration-200 z-[120]"

@@ -390,7 +390,7 @@ function StreamSummaries() {
             className="mb-6 bg-gradient-to-r from-violet-900/10 to-purple-900/10 rounded-lg p-4 border border-violet-700/20"
             aria-labelledby="about-abracadabra"
           >
-            <div className="flex items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center justify-between gap-4">
               <div className="flex items-center gap-3 flex-1">
                 <div className="flex items-center gap-2 text-violet-400 text-sm">
                   <svg className="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
@@ -430,7 +430,7 @@ function StreamSummaries() {
               <div className="flex flex-wrap gap-2">
                 <button
                   onClick={() => setSelectedStreamer('all')}
-                  className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                  className={`px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition-all duration-300 ${
                     selectedStreamer === 'all'
                       ? 'bg-violet-600 text-white shadow-lg shadow-violet-600/50'
                       : 'bg-zinc-800 text-text-secondary hover:bg-zinc-700'
@@ -444,7 +444,7 @@ function StreamSummaries() {
                   <button
                     key={streamer}
                     onClick={() => setSelectedStreamer(streamer)}
-                    className={`px-3 py-1.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
+                    className={`px-3 py-2.5 min-h-[44px] rounded-lg text-sm font-semibold transition-all duration-300 ${
                       selectedStreamer === streamer
                         ? 'bg-violet-600 text-white shadow-lg shadow-violet-600/50'
                         : 'bg-zinc-800 text-text-secondary hover:bg-zinc-700'
