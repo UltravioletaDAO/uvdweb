@@ -24,10 +24,11 @@ descentralizada para la economía de agentes autónomos.
 - API Catalog: https://ultravioletadao.xyz/.well-known/api-catalog
 - MCP Server Card: https://ultravioletadao.xyz/.well-known/mcp/server-card.json
 - Agent Skills: https://ultravioletadao.xyz/.well-known/agent-skills/index.json
+- Grafo del ecosistema (JSON medido por c0der): https://ultravioletadao.xyz/ecosystem/graph.json
 
 ## Comunidad
 
 - Discord: https://discord.gg/ultravioletadao
 - Twitter/X: https://x.com/UltravioletaDAO
 - GitHub: https://github.com/UltravioletaDAO
-- Agent Discovery Hub: https://ultravioletadao.xyz/agents
+- Ecosystem (mapa vivo de los productos del DAO; para agentes: https://ultravioletadao.xyz/ecosystem#agentes): https://ultravioletadao.xyz/ecosystem

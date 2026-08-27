@@ -1,0 +1,2859 @@
+{
+  "recorded_at": "2026-08-27T12:58:21.662Z",
+  "key": "facilitator_supported",
+  "cmd": "curl -s https://facilitator.ultravioletadao.xyz/supported | jq .",
+  "url": "https://facilitator.ultravioletadao.xyz/supported",
+  "status": 200,
+  "stdout": [
+    "{",
+    "  \"kinds\": [",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"hyperevm\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0xb88339CB7199b77E23DB6E890353E22632Ba630f\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"fogo\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"F742C4VfFLQ9zRQyithoj5229ZgtX2WqKCSFKgH2EThq\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"base-sepolia\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x036CbD53842c5426634e7929541eC2318f3dCF7e\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"monad\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x754704Bc059F8C67012fEd69BC8A327a5aafb603\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"usdt\",",
+    "            \"address\": \"0xe7cd86e13AC4309349F30B3435a9d337750fC82D\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"algorand\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"KIMS5H6QLCUDL65L5UBTOXDPWLMTS7N3AAC3I6B2NCONEI5QIVK7LH2C2I\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"polygon-amoy\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"avalanche\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"eurc\",",
+    "            \"address\": \"0xC891EB4cbdEFf6e073e859e987815Ed1505c2ACD\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"polygon\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"sui\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"0xe7bbf2b1…\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"base\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"eurc\",",
+    "            \"address\": \"0x60a3E35Cc302bFA44Cb288Bc5a4F316Fdb1adb42\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"hyperevm-testnet\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x2B3370eE501B4a559b57D449569354196457D8Ab\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"skale-base\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x85889c8c714505E0c94b30fcfcF64fE3Ac8FCb20\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"scroll\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"optimism-sepolia\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x5fd84259d66Cd46123540766Be93DFE6D43130D7\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"robinhood\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdg\",",
+    "            \"address\": \"0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"near\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"uvd-facilitator.near\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"sui-testnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"0xabbd16a2…\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"bsc\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d\",",
+    "            \"decimals\": 18",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"xrpl-testnet\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"5553444300000000000000000000000000000000.rHuGNhqTG32mfmAvWA8hUyWRLV3tCSwKQt\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"rlusd\",",
+    "            \"address\": \"524C555344000000000000000000000000000000.rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"xrp\",",
+    "            \"address\": \"XRP\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"optimism\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"usdt\",",
+    "            \"address\": \"0x01bFF41798a0BcF287b996046Ca68b395DbC1071\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"skale-base-sepolia\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x2e08028E3C4c2356572E096d8EF835cD5C6030bD\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"unichain-sepolia\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x31d0220469e10c4E71834a79b1f276d740d3768F\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"celo\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0xcebA9300f2b948710d2653dD7B07f33A8B32118C\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"usdt\",",
+    "            \"address\": \"0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"solana\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"F742C4VfFLQ9zRQyithoj5229ZgtX2WqKCSFKgH2EThq\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"arbitrum-sepolia\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"unichain\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x078D782b760474a361dDA0AF3839290b0EF57AD6\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"robinhood-testnet\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdg\",",
+    "            \"address\": \"0x7E955252E15c84f5768B83c41a71F9eba181802F\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"stellar-testnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"GBBFZMLUJEZVI32EN4XA2KPP445XIBTMTRBLYWFIL556RDTHS2OWFQ2Z\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"near-testnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"uvd-facilitator.testnet\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"xrpl\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"5553444300000000000000000000000000000000.rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"rlusd\",",
+    "            \"address\": \"524C555344000000000000000000000000000000.rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"xrp\",",
+    "            \"address\": \"XRP\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"fogo-testnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"6xNPewUdKRbEZDReQdpyfNUdgNg8QRc8Mt263T5GZSRv\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"algorand-testnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"5DPPDQNYUPCTXRZWRYSF3WPYU6RKAUR25F3YG4EKXQRHV5AUAI62H5GXL4\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"avalanche-fuji\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x5425890298aed601595a70AB815c96711a31Bc65\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"arbitrum\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0xaf88d065e77c8cC2239327C5EDb3A432268e5831\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"usdt\",",
+    "            \"address\": \"0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"stellar\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"GCHPGXJT2WFFRFCA5TV4G4E3PMMXLNIDUH27PKDYA4QJ2XGYZWGFZNHB\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"solana-devnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"6xNPewUdKRbEZDReQdpyfNUdgNg8QRc8Mt263T5GZSRv\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"celo-sepolia\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x01C5C0122039549AD1493B8220cABEdD739BC44E\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"ethereum\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"eurc\",",
+    "            \"address\": \"0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"pyusd\",",
+    "            \"address\": \"0x6c3ea9036406852006290770BEdFcAbA0e23A0e8\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:999\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0xb88339CB7199b77E23DB6E890353E22632Ba630f\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"fogo:mainnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"F742C4VfFLQ9zRQyithoj5229ZgtX2WqKCSFKgH2EThq\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:84532\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x036CbD53842c5426634e7929541eC2318f3dCF7e\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:143\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x754704Bc059F8C67012fEd69BC8A327a5aafb603\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"usdt\",",
+    "            \"address\": \"0xe7cd86e13AC4309349F30B3435a9d337750fC82D\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"algorand:mainnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"KIMS5H6QLCUDL65L5UBTOXDPWLMTS7N3AAC3I6B2NCONEI5QIVK7LH2C2I\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:80002\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:43114\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"eurc\",",
+    "            \"address\": \"0xC891EB4cbdEFf6e073e859e987815Ed1505c2ACD\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:137\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"sui:mainnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"0xe7bbf2b1…\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:8453\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"eurc\",",
+    "            \"address\": \"0x60a3E35Cc302bFA44Cb288Bc5a4F316Fdb1adb42\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:333\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x2B3370eE501B4a559b57D449569354196457D8Ab\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:1187947933\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x85889c8c714505E0c94b30fcfcF64fE3Ac8FCb20\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:534352\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:11155420\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x5fd84259d66Cd46123540766Be93DFE6D43130D7\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:4663\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdg\",",
+    "            \"address\": \"0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"near:mainnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"uvd-facilitator.near\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"sui:testnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"0xabbd16a2…\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:56\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d\",",
+    "            \"decimals\": 18",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"xrpl:1\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"5553444300000000000000000000000000000000.rHuGNhqTG32mfmAvWA8hUyWRLV3tCSwKQt\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"rlusd\",",
+    "            \"address\": \"524C555344000000000000000000000000000000.rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"xrp\",",
+    "            \"address\": \"XRP\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:10\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"usdt\",",
+    "            \"address\": \"0x01bFF41798a0BcF287b996046Ca68b395DbC1071\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:324705682\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x2e08028E3C4c2356572E096d8EF835cD5C6030bD\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:1301\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x31d0220469e10c4E71834a79b1f276d740d3768F\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:42220\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0xcebA9300f2b948710d2653dD7B07f33A8B32118C\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"usdt\",",
+    "            \"address\": \"0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"F742C4VfFLQ9zRQyithoj5229ZgtX2WqKCSFKgH2EThq\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:421614\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:130\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x078D782b760474a361dDA0AF3839290b0EF57AD6\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:46630\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdg\",",
+    "            \"address\": \"0x7E955252E15c84f5768B83c41a71F9eba181802F\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"stellar:testnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"GBBFZMLUJEZVI32EN4XA2KPP445XIBTMTRBLYWFIL556RDTHS2OWFQ2Z\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"near:testnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"uvd-facilitator.testnet\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"xrpl:0\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"5553444300000000000000000000000000000000.rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"rlusd\",",
+    "            \"address\": \"524C555344000000000000000000000000000000.rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"xrp\",",
+    "            \"address\": \"XRP\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"fogo:testnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"6xNPewUdKRbEZDReQdpyfNUdgNg8QRc8Mt263T5GZSRv\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"algorand:testnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"5DPPDQNYUPCTXRZWRYSF3WPYU6RKAUR25F3YG4EKXQRHV5AUAI62H5GXL4\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:43113\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x5425890298aed601595a70AB815c96711a31Bc65\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:42161\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0xaf88d065e77c8cC2239327C5EDb3A432268e5831\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"usdt\",",
+    "            \"address\": \"0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"stellar:pubnet\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"GCHPGXJT2WFFRFCA5TV4G4E3PMMXLNIDUH27PKDYA4QJ2XGYZWGFZNHB\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1\",",
+    "      \"extra\": {",
+    "        \"feePayer\": \"6xNPewUdKRbEZDReQdpyfNUdgNg8QRc8Mt263T5GZSRv\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:44787\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0x01C5C0122039549AD1493B8220cABEdD739BC44E\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"exact\",",
+    "      \"network\": \"eip155:1\",",
+    "      \"extra\": {",
+    "        \"tokens\": [",
+    "          {",
+    "            \"token\": \"usdc\",",
+    "            \"address\": \"0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"eurc\",",
+    "            \"address\": \"0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"ausd\",",
+    "            \"address\": \"0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a\",",
+    "            \"decimals\": 6",
+    "          },",
+    "          {",
+    "            \"token\": \"pyusd\",",
+    "            \"address\": \"0x6c3ea9036406852006290770BEdFcAbA0e23A0e8\",",
+    "            \"decimals\": 6",
+    "          }",
+    "        ]",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 1,",
+    "      \"scheme\": \"fhe-transfer\",",
+    "      \"network\": \"ethereum-sepolia\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"fhe-transfer\",",
+    "      \"network\": \"eip155:11155111\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:84532\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0x29025c0e9d4239d438e169570818db9fe0a80873\",",
+    "        \"operatorAddress\": \"0x7d092ec506b3d43eb87846f9c9739303785d7b2f\",",
+    "        \"tokenCollector\": \"0x5ca789000070df15b4663db64a50aef5d49c5ee0\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:84532\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:8453\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xb9488351e48b23d798f24e8174514f28b741eb4f\",",
+    "        \"operatorAddress\": \"0x271f9fa7f8907acf178ccfb470076d9129d8f0eb\",",
+    "        \"tokenCollector\": \"0x48adf6e37f9b31dc2aad0462c5862b5422c736b8\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:8453\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xb9488351e48b23d798f24e8174514f28b741eb4f\",",
+    "        \"operatorAddress\": \"0x030353642b936c9d4213cad7bcb0fb8a1489cbe5\",",
+    "        \"tokenCollector\": \"0x48adf6e37f9b31dc2aad0462c5862b5422c736b8\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:8453\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:11155111\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0x320a3c35f131e5d2fb36af56345726b298936037\",",
+    "        \"operatorAddress\": \"0xa8d2432c7ab8ba551fec15e09b64f44505e72b36\",",
+    "        \"tokenCollector\": \"0x230fd3a171750fa45db2976121376b7f47cba308\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:11155111\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:1\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0x9d4146ef898c8e60b3e865ae254ef438e7ced2a0\",",
+    "        \"operatorAddress\": \"0x69b67962ffb7c5c7078ff348a87df604dfa8001b\",",
+    "        \"tokenCollector\": \"0x206d4dbb6e7b876e4b5efaad2a04e7d7813fb6ba\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:1\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:137\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0x32d6ac59bce8dfb3026f10bcadb8d00ab218f5b6\",",
+    "        \"operatorAddress\": \"0xb87f1ecc85f074e50df3dd16a1f40e4e1ec4102e\",",
+    "        \"tokenCollector\": \"0xc1256bb30bd0cdda07d8c8cf67a59105f2ea1b98\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:137\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:42161\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0x320a3c35f131e5d2fb36af56345726b298936037\",",
+    "        \"operatorAddress\": \"0xc2377a9db1de2520bd6b2756ed012f4e82f7938e\",",
+    "        \"tokenCollector\": \"0x230fd3a171750fa45db2976121376b7f47cba308\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:42161\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:42220\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0x320a3c35f131e5d2fb36af56345726b298936037\",",
+    "        \"operatorAddress\": \"0xc2377a9db1de2520bd6b2756ed012f4e82f7938e\",",
+    "        \"tokenCollector\": \"0x230fd3a171750fa45db2976121376b7f47cba308\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:42220\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:143\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0x320a3c35f131e5d2fb36af56345726b298936037\",",
+    "        \"operatorAddress\": \"0x9620dbe2bb549e1d080dc8e7982623a9e1df8cc3\",",
+    "        \"tokenCollector\": \"0x230fd3a171750fa45db2976121376b7f47cba308\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:143\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:43114\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0x320a3c35f131e5d2fb36af56345726b298936037\",",
+    "        \"operatorAddress\": \"0xc2377a9db1de2520bd6b2756ed012f4e82f7938e\",",
+    "        \"tokenCollector\": \"0x230fd3a171750fa45db2976121376b7f47cba308\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:43114\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:10\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0x320a3c35f131e5d2fb36af56345726b298936037\",",
+    "        \"operatorAddress\": \"0xc2377a9db1de2520bd6b2756ed012f4e82f7938e\",",
+    "        \"tokenCollector\": \"0x230fd3a171750fa45db2976121376b7f47cba308\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:10\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:1187947933\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x942cdc281f5bd7bf3fae8973253fd708f23ef442\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:1187947933\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x28c23ae8f55ade5ea10a5353fc40418d0c1b3d33\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"escrow\",",
+    "      \"network\": \"eip155:1187947933\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x43e46d4587fccc382285c52012227555ed78d183\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"commerce\",",
+    "      \"network\": \"eip155:1187947933\",",
+    "      \"extra\": {",
+    "        \"escrowAddress\": \"0xbc151792f80c0eb1973d56b0235e6bee2a60e245\",",
+    "        \"operatorAddress\": \"0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4\",",
+    "        \"tokenCollector\": \"0x9a12a116a44636f55c9e135189a1321abcfe2f30\"",
+    "      }",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:999\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:84532\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:143\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:137\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:8453\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:56\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:10\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:421614\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:43113\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:42161\"",
+    "    },",
+    "    {",
+    "      \"x402Version\": 2,",
+    "      \"scheme\": \"upto\",",
+    "      \"network\": \"eip155:1\"",
+    "    }",
+    "  ],",
+    "  \"extensions\": [",
+    "    \"bazaar\",",
+    "    \"durable-evidence\"",
+    "  ]",
+    "}"
+  ],
+  "redactions": {
+    "hex64": 4,
+    "local_path": 0
+  },
+  "json": {
+    "kinds": [
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "hyperevm",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0xb88339CB7199b77E23DB6E890353E22632Ba630f",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "fogo",
+        "extra": {
+          "feePayer": "F742C4VfFLQ9zRQyithoj5229ZgtX2WqKCSFKgH2EThq"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "base-sepolia",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "monad",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x754704Bc059F8C67012fEd69BC8A327a5aafb603",
+              "decimals": 6
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            },
+            {
+              "token": "usdt",
+              "address": "0xe7cd86e13AC4309349F30B3435a9d337750fC82D",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "algorand",
+        "extra": {
+          "feePayer": "KIMS5H6QLCUDL65L5UBTOXDPWLMTS7N3AAC3I6B2NCONEI5QIVK7LH2C2I"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "polygon-amoy",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "avalanche",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+              "decimals": 6
+            },
+            {
+              "token": "eurc",
+              "address": "0xC891EB4cbdEFf6e073e859e987815Ed1505c2ACD",
+              "decimals": 6
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "polygon",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+              "decimals": 6
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "sui",
+        "extra": {
+          "feePayer": "0xe7bbf2b1…"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "base",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+              "decimals": 6
+            },
+            {
+              "token": "eurc",
+              "address": "0x60a3E35Cc302bFA44Cb288Bc5a4F316Fdb1adb42",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "hyperevm-testnet",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x2B3370eE501B4a559b57D449569354196457D8Ab",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "skale-base",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x85889c8c714505E0c94b30fcfcF64fE3Ac8FCb20",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "scroll",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "optimism-sepolia",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x5fd84259d66Cd46123540766Be93DFE6D43130D7",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "robinhood",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdg",
+              "address": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "near",
+        "extra": {
+          "feePayer": "uvd-facilitator.near"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "sui-testnet",
+        "extra": {
+          "feePayer": "0xabbd16a2…"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "bsc",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+              "decimals": 18
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "xrpl-testnet",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "5553444300000000000000000000000000000000.rHuGNhqTG32mfmAvWA8hUyWRLV3tCSwKQt",
+              "decimals": 6
+            },
+            {
+              "token": "rlusd",
+              "address": "524C555344000000000000000000000000000000.rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV",
+              "decimals": 6
+            },
+            {
+              "token": "xrp",
+              "address": "XRP",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "optimism",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+              "decimals": 6
+            },
+            {
+              "token": "usdt",
+              "address": "0x01bFF41798a0BcF287b996046Ca68b395DbC1071",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "skale-base-sepolia",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x2e08028E3C4c2356572E096d8EF835cD5C6030bD",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "unichain-sepolia",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x31d0220469e10c4E71834a79b1f276d740d3768F",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "celo",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0xcebA9300f2b948710d2653dD7B07f33A8B32118C",
+              "decimals": 6
+            },
+            {
+              "token": "usdt",
+              "address": "0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "solana",
+        "extra": {
+          "feePayer": "F742C4VfFLQ9zRQyithoj5229ZgtX2WqKCSFKgH2EThq"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "arbitrum-sepolia",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "unichain",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x078D782b760474a361dDA0AF3839290b0EF57AD6",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "robinhood-testnet",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdg",
+              "address": "0x7E955252E15c84f5768B83c41a71F9eba181802F",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "stellar-testnet",
+        "extra": {
+          "feePayer": "GBBFZMLUJEZVI32EN4XA2KPP445XIBTMTRBLYWFIL556RDTHS2OWFQ2Z"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "near-testnet",
+        "extra": {
+          "feePayer": "uvd-facilitator.testnet"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "xrpl",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "5553444300000000000000000000000000000000.rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE",
+              "decimals": 6
+            },
+            {
+              "token": "rlusd",
+              "address": "524C555344000000000000000000000000000000.rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+              "decimals": 6
+            },
+            {
+              "token": "xrp",
+              "address": "XRP",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "fogo-testnet",
+        "extra": {
+          "feePayer": "6xNPewUdKRbEZDReQdpyfNUdgNg8QRc8Mt263T5GZSRv"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "algorand-testnet",
+        "extra": {
+          "feePayer": "5DPPDQNYUPCTXRZWRYSF3WPYU6RKAUR25F3YG4EKXQRHV5AUAI62H5GXL4"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "avalanche-fuji",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x5425890298aed601595a70AB815c96711a31Bc65",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "arbitrum",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "decimals": 6
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            },
+            {
+              "token": "usdt",
+              "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "stellar",
+        "extra": {
+          "feePayer": "GCHPGXJT2WFFRFCA5TV4G4E3PMMXLNIDUH27PKDYA4QJ2XGYZWGFZNHB"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "solana-devnet",
+        "extra": {
+          "feePayer": "6xNPewUdKRbEZDReQdpyfNUdgNg8QRc8Mt263T5GZSRv"
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "celo-sepolia",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x01C5C0122039549AD1493B8220cABEdD739BC44E",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "exact",
+        "network": "ethereum",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "decimals": 6
+            },
+            {
+              "token": "eurc",
+              "address": "0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c",
+              "decimals": 6
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            },
+            {
+              "token": "pyusd",
+              "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:999",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0xb88339CB7199b77E23DB6E890353E22632Ba630f",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "fogo:mainnet",
+        "extra": {
+          "feePayer": "F742C4VfFLQ9zRQyithoj5229ZgtX2WqKCSFKgH2EThq"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:84532",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x036CbD53842c5426634e7929541eC2318f3dCF7e",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:143",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x754704Bc059F8C67012fEd69BC8A327a5aafb603",
+              "decimals": 6
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            },
+            {
+              "token": "usdt",
+              "address": "0xe7cd86e13AC4309349F30B3435a9d337750fC82D",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "algorand:mainnet",
+        "extra": {
+          "feePayer": "KIMS5H6QLCUDL65L5UBTOXDPWLMTS7N3AAC3I6B2NCONEI5QIVK7LH2C2I"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:80002",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x41E94Eb019C0762f9Bfcf9Fb1E58725BfB0e7582",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:43114",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0xB97EF9Ef8734C71904D8002F8b6Bc66Dd9c48a6E",
+              "decimals": 6
+            },
+            {
+              "token": "eurc",
+              "address": "0xC891EB4cbdEFf6e073e859e987815Ed1505c2ACD",
+              "decimals": 6
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:137",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359",
+              "decimals": 6
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "sui:mainnet",
+        "extra": {
+          "feePayer": "0xe7bbf2b1…"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:8453",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+              "decimals": 6
+            },
+            {
+              "token": "eurc",
+              "address": "0x60a3E35Cc302bFA44Cb288Bc5a4F316Fdb1adb42",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:333",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x2B3370eE501B4a559b57D449569354196457D8Ab",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:1187947933",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x85889c8c714505E0c94b30fcfcF64fE3Ac8FCb20",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:534352",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x06eFdBFf2a14a7c8E15944D1F4A48F9F95F663A4",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:11155420",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x5fd84259d66Cd46123540766Be93DFE6D43130D7",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:4663",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdg",
+              "address": "0x5fc5360D0400a0Fd4f2af552ADD042D716F1d168",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "near:mainnet",
+        "extra": {
+          "feePayer": "uvd-facilitator.near"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "sui:testnet",
+        "extra": {
+          "feePayer": "0xabbd16a2…"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:56",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x8AC76a51cc950d9822D68b83fE1Ad97B32Cd580d",
+              "decimals": 18
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "xrpl:1",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "5553444300000000000000000000000000000000.rHuGNhqTG32mfmAvWA8hUyWRLV3tCSwKQt",
+              "decimals": 6
+            },
+            {
+              "token": "rlusd",
+              "address": "524C555344000000000000000000000000000000.rQhWct2fv4Vc4KRjRgMrxa8xPN9Zx9iLKV",
+              "decimals": 6
+            },
+            {
+              "token": "xrp",
+              "address": "XRP",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:10",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x0b2C639c533813f4Aa9D7837CAf62653d097Ff85",
+              "decimals": 6
+            },
+            {
+              "token": "usdt",
+              "address": "0x01bFF41798a0BcF287b996046Ca68b395DbC1071",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:324705682",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x2e08028E3C4c2356572E096d8EF835cD5C6030bD",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:1301",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x31d0220469e10c4E71834a79b1f276d740d3768F",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:42220",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0xcebA9300f2b948710d2653dD7B07f33A8B32118C",
+              "decimals": 6
+            },
+            {
+              "token": "usdt",
+              "address": "0x48065fbBE25f71C9282ddf5e1cD6D6A887483D5e",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "solana:5eykt4UsFv8P8NJdTREpY1vzqKqZKvdp",
+        "extra": {
+          "feePayer": "F742C4VfFLQ9zRQyithoj5229ZgtX2WqKCSFKgH2EThq"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:421614",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x75faf114eafb1BDbe2F0316DF893fd58CE46AA4d",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:130",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x078D782b760474a361dDA0AF3839290b0EF57AD6",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:46630",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdg",
+              "address": "0x7E955252E15c84f5768B83c41a71F9eba181802F",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "stellar:testnet",
+        "extra": {
+          "feePayer": "GBBFZMLUJEZVI32EN4XA2KPP445XIBTMTRBLYWFIL556RDTHS2OWFQ2Z"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "near:testnet",
+        "extra": {
+          "feePayer": "uvd-facilitator.testnet"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "xrpl:0",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "5553444300000000000000000000000000000000.rGm7WCVp9gb4jZHWTEtGUr4dd74z2XuWhE",
+              "decimals": 6
+            },
+            {
+              "token": "rlusd",
+              "address": "524C555344000000000000000000000000000000.rMxCKbEDwqr76QuheSUMdEGf4B9xJ8m5De",
+              "decimals": 6
+            },
+            {
+              "token": "xrp",
+              "address": "XRP",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "fogo:testnet",
+        "extra": {
+          "feePayer": "6xNPewUdKRbEZDReQdpyfNUdgNg8QRc8Mt263T5GZSRv"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "algorand:testnet",
+        "extra": {
+          "feePayer": "5DPPDQNYUPCTXRZWRYSF3WPYU6RKAUR25F3YG4EKXQRHV5AUAI62H5GXL4"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:43113",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x5425890298aed601595a70AB815c96711a31Bc65",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:42161",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0xaf88d065e77c8cC2239327C5EDb3A432268e5831",
+              "decimals": 6
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            },
+            {
+              "token": "usdt",
+              "address": "0xFd086bC7CD5C481DCC9C85ebE478A1C0b69FCbb9",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "stellar:pubnet",
+        "extra": {
+          "feePayer": "GCHPGXJT2WFFRFCA5TV4G4E3PMMXLNIDUH27PKDYA4QJ2XGYZWGFZNHB"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "solana:EtWTRABZaYq6iMfeYKouRu166VU2xqa1",
+        "extra": {
+          "feePayer": "6xNPewUdKRbEZDReQdpyfNUdgNg8QRc8Mt263T5GZSRv"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:44787",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0x01C5C0122039549AD1493B8220cABEdD739BC44E",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "exact",
+        "network": "eip155:1",
+        "extra": {
+          "tokens": [
+            {
+              "token": "usdc",
+              "address": "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+              "decimals": 6
+            },
+            {
+              "token": "eurc",
+              "address": "0x1aBaEA1f7C830bD89Acc67eC4af516284b1bC33c",
+              "decimals": 6
+            },
+            {
+              "token": "ausd",
+              "address": "0x00000000eFE302BEAA2b3e6e1b18d08D69a9012a",
+              "decimals": 6
+            },
+            {
+              "token": "pyusd",
+              "address": "0x6c3ea9036406852006290770BEdFcAbA0e23A0e8",
+              "decimals": 6
+            }
+          ]
+        }
+      },
+      {
+        "x402Version": 1,
+        "scheme": "fhe-transfer",
+        "network": "ethereum-sepolia"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "fhe-transfer",
+        "network": "eip155:11155111"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:84532",
+        "extra": {
+          "escrowAddress": "0x29025c0e9d4239d438e169570818db9fe0a80873",
+          "operatorAddress": "0x7d092ec506b3d43eb87846f9c9739303785d7b2f",
+          "tokenCollector": "0x5ca789000070df15b4663db64a50aef5d49c5ee0"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:84532",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:8453",
+        "extra": {
+          "escrowAddress": "0xb9488351e48b23d798f24e8174514f28b741eb4f",
+          "operatorAddress": "0x271f9fa7f8907acf178ccfb470076d9129d8f0eb",
+          "tokenCollector": "0x48adf6e37f9b31dc2aad0462c5862b5422c736b8"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:8453",
+        "extra": {
+          "escrowAddress": "0xb9488351e48b23d798f24e8174514f28b741eb4f",
+          "operatorAddress": "0x030353642b936c9d4213cad7bcb0fb8a1489cbe5",
+          "tokenCollector": "0x48adf6e37f9b31dc2aad0462c5862b5422c736b8"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:8453",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:11155111",
+        "extra": {
+          "escrowAddress": "0x320a3c35f131e5d2fb36af56345726b298936037",
+          "operatorAddress": "0xa8d2432c7ab8ba551fec15e09b64f44505e72b36",
+          "tokenCollector": "0x230fd3a171750fa45db2976121376b7f47cba308"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:11155111",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:1",
+        "extra": {
+          "escrowAddress": "0x9d4146ef898c8e60b3e865ae254ef438e7ced2a0",
+          "operatorAddress": "0x69b67962ffb7c5c7078ff348a87df604dfa8001b",
+          "tokenCollector": "0x206d4dbb6e7b876e4b5efaad2a04e7d7813fb6ba"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:1",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:137",
+        "extra": {
+          "escrowAddress": "0x32d6ac59bce8dfb3026f10bcadb8d00ab218f5b6",
+          "operatorAddress": "0xb87f1ecc85f074e50df3dd16a1f40e4e1ec4102e",
+          "tokenCollector": "0xc1256bb30bd0cdda07d8c8cf67a59105f2ea1b98"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:137",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:42161",
+        "extra": {
+          "escrowAddress": "0x320a3c35f131e5d2fb36af56345726b298936037",
+          "operatorAddress": "0xc2377a9db1de2520bd6b2756ed012f4e82f7938e",
+          "tokenCollector": "0x230fd3a171750fa45db2976121376b7f47cba308"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:42161",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:42220",
+        "extra": {
+          "escrowAddress": "0x320a3c35f131e5d2fb36af56345726b298936037",
+          "operatorAddress": "0xc2377a9db1de2520bd6b2756ed012f4e82f7938e",
+          "tokenCollector": "0x230fd3a171750fa45db2976121376b7f47cba308"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:42220",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:143",
+        "extra": {
+          "escrowAddress": "0x320a3c35f131e5d2fb36af56345726b298936037",
+          "operatorAddress": "0x9620dbe2bb549e1d080dc8e7982623a9e1df8cc3",
+          "tokenCollector": "0x230fd3a171750fa45db2976121376b7f47cba308"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:143",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:43114",
+        "extra": {
+          "escrowAddress": "0x320a3c35f131e5d2fb36af56345726b298936037",
+          "operatorAddress": "0xc2377a9db1de2520bd6b2756ed012f4e82f7938e",
+          "tokenCollector": "0x230fd3a171750fa45db2976121376b7f47cba308"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:43114",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:10",
+        "extra": {
+          "escrowAddress": "0x320a3c35f131e5d2fb36af56345726b298936037",
+          "operatorAddress": "0xc2377a9db1de2520bd6b2756ed012f4e82f7938e",
+          "tokenCollector": "0x230fd3a171750fa45db2976121376b7f47cba308"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:10",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:1187947933",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x942cdc281f5bd7bf3fae8973253fd708f23ef442",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:1187947933",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x28c23ae8f55ade5ea10a5353fc40418d0c1b3d33",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "escrow",
+        "network": "eip155:1187947933",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x43e46d4587fccc382285c52012227555ed78d183",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "commerce",
+        "network": "eip155:1187947933",
+        "extra": {
+          "escrowAddress": "0xbc151792f80c0eb1973d56b0235e6bee2a60e245",
+          "operatorAddress": "0x3cd5c76fefe46cb07788ee8f80b93b20d81941d4",
+          "tokenCollector": "0x9a12a116a44636f55c9e135189a1321abcfe2f30"
+        }
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:999"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:84532"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:143"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:137"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:8453"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:56"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:10"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:421614"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:43113"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:42161"
+      },
+      {
+        "x402Version": 2,
+        "scheme": "upto",
+        "network": "eip155:1"
+      }
+    ],
+    "extensions": [
+      "bazaar",
+      "durable-evidence"
+    ]
+  }
+}

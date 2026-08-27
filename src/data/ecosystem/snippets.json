@@ -1,0 +1,65 @@
+{
+  "generated_at": "2026-08-27T03:38:05.038Z",
+  "snippets": [
+    {
+      "id": "x402-rs-main",
+      "repo": "x402-rs",
+      "path": "src/main.rs",
+      "sha": "a48c6fd7a295",
+      "start": 1,
+      "end": 22,
+      "lang": "rust",
+      "sha256": "dd8abea4ca1cb4eead61e45f4becd8fe5c3ad239372af379755fb98a981819e3",
+      "text": "//! x402 Facilitator HTTP entrypoint.\n//!\n//! This binary launches an Axum-based HTTP server that exposes the x402 protocol interface\n//! for payment verification and settlement via Ethereum-compatible networks.\n//!\n//! Endpoints:\n//! - `GET /verify` – Supported verification schema\n//! - `POST /verify` – Verify a payment payload against requirements\n//! - `GET /settle` – Supported settlement schema\n//! - `POST /settle` – Settle an accepted payment payload on-chain\n//! - `POST /accepts` – Negotiate payment requirements (Faremeter middleware)\n//! - `GET /supported` – List supported payment kinds (version/scheme/network)\n//!\n//! This server includes:\n//! - OpenTelemetry tracing via `TraceLayer`\n//! - CORS support for cross-origin clients\n//! - Ethereum provider cache for per-network RPC routing\n//!\n//! Environment:\n//! - `.env` values loaded at startup\n//! - `HOST`, `PORT` control binding address\n//! - `OTEL_*` variables enable tracing to systems like Honeycomb",
+      "blob_url": "https://github.com/UltravioletaDAO/x402-rs/blob/a48c6fd7a295/src/main.rs#L1-L22"
+    },
+    {
+      "id": "x402-rs-readme",
+      "repo": "x402-rs",
+      "path": "README.md",
+      "sha": "a48c6fd7a295",
+      "start": 5,
+      "end": 9,
+      "lang": "text",
+      "sha256": "a4edb019d537e9205e3ccb67a9a56e605b520fb176fdd149ded911e63de9831c",
+      "text": "```\n _  _  _  _  ___  ____      ____  ____\n( \\/ )/ )( \\(__ \\(  _ \\ ___(  _ \\/ ___)\n )  ( ) __ ( / _/ )   /(___))   /\\___ \\\n(_/\\_)\\_)(_/(____)(__\\_)   (__\\_)(____/",
+      "blob_url": "https://github.com/UltravioletaDAO/x402-rs/blob/a48c6fd7a295/README.md#L5-L9"
+    },
+    {
+      "id": "sdk-ts-index",
+      "repo": "uvd-x402-sdk-typescript",
+      "path": "src/index.ts",
+      "sha": "e5805a2d864f",
+      "start": 1,
+      "end": 33,
+      "lang": "typescript",
+      "sha256": "f4e93ca0a7de960e905867285f5abfb1fb53c7ef8fb503a2f6e3c6ebb8da33b2",
+      "text": "/**\n * uvd-x402-sdk\n *\n * x402 Payment SDK - Gasless crypto payments using the Ultravioleta facilitator.\n *\n * Supports 25 blockchain networks:\n * - EVM (15): Base, Ethereum, Polygon, Arbitrum, Optimism, Avalanche, Celo, HyperEVM, Unichain, Monad, Scroll, SKALE Base, Robinhood Chain (mainnet + testnet)\n * - SVM (2): Solana, Fogo\n * - Stellar (1): Stellar\n * - NEAR (1): NEAR Protocol\n * - Algorand (2): Algorand mainnet and testnet\n * - Sui (2): Sui mainnet and testnet\n * - XRPL (2): XRP Ledger mainnet and testnet\n *\n * Supports both x402 v1 and v2 protocols.\n *\n * @example Basic usage (EVM)\n * ```ts\n * import { X402Client } from 'uvd-x402-sdk';\n *\n * const client = new X402Client({ defaultChain: 'base' });\n *\n * // Connect wallet\n * await client.connect('base');\n *\n * // Create payment\n * const result = await client.createPayment({\n *   recipient: '0x...',\n *   amount: '10.00',\n * });\n *\n * // Use result.paymentHeader in X-PAYMENT HTTP header\n * ```",
+      "blob_url": "https://github.com/UltravioletaDAO/uvd-x402-sdk-typescript/blob/e5805a2d864f/src/index.ts#L1-L33"
+    },
+    {
+      "id": "sdk-py-client",
+      "repo": "uvd-x402-sdk-python",
+      "path": "src/uvd_x402_sdk/client.py",
+      "sha": "745ae51bd69d",
+      "start": 144,
+      "end": 162,
+      "lang": "python",
+      "sha256": "c46db4febf48b34f542dbbc52c5e1ade3e1cccea4cce03eef37a4a387c5aa900",
+      "text": "class X402Client:\n    \"\"\"\n    Client for processing x402 payments via the Ultravioleta facilitator.\n\n    The client handles the two-step payment flow:\n    1. Verify: Validate the payment signature/authorization\n    2. Settle: Execute the payment on-chain\n\n    Example:\n        >>> client = X402Client(\n        ...     recipient_address=\"0xYourWallet...\",\n        ...     facilitator_url=\"https://facilitator.ultravioletadao.xyz\"\n        ... )\n        >>> result = client.process_payment(\n        ...     x_payment_header=request.headers.get(\"X-PAYMENT\"),\n        ...     expected_amount_usd=Decimal(\"10.00\")\n        ... )\n        >>> print(f\"Paid by {result.payer_address}, tx: {result.transaction_hash}\")\n    \"\"\"",
+      "blob_url": "https://github.com/UltravioletaDAO/uvd-x402-sdk-python/blob/745ae51bd69d/src/uvd_x402_sdk/client.py#L144-L162"
+    },
+    {
+      "id": "uvdweb-tools",
+      "repo": "uvdweb",
+      "path": "src/agent/tools.js",
+      "sha": "386ee63f81cc",
+      "start": 1,
+      "end": 5,
+      "lang": "javascript",
+      "sha256": "ef51db12cf1750cdb37c8f110cbdfccea68f0a075e7d2842445e80a4721c78d6",
+      "text": "// Fuente única de verdad de las tools WebMCP del sitio (in-browser, document.modelContext).\n// Las registra WebMCPProvider.js. Convenciones: inputSchema con additionalProperties:false,\n// salida = objeto pequeño (clip + listas <= 10), errores como { error } (un throw llega al\n// agente como UnknownError), readOnlyHint en lecturas y untrustedContentHint cuando la salida\n// trae texto de terceros (transcripts, propuestas). Nunca secretos ni PII.",
+      "blob_url": "https://github.com/UltravioletaDAO/uvdweb/blob/386ee63f81cc/src/agent/tools.js#L1-L5"
+    }
+  ]
+}

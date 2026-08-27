@@ -2,10 +2,13 @@
 // Las registra WebMCPProvider.js. Convenciones: inputSchema con additionalProperties:false,
 // salida = objeto pequeño (clip + listas <= 10), errores como { error } (un throw llega al
 // agente como UnknownError), readOnlyHint en lecturas y untrustedContentHint cuando la salida
-// trae texto de terceros (transcripts, propuestas). Nunca secretos ni PII.
+// trae texto de terceros (transcripts, propuestas, IRC). Nunca secretos ni PII.
+// Las 8 tools del ecosistema (/ecosystem: mapa medido por c0der, pulso en vivo, IRC, ventanas
+// del escritorio) viven en ecosystemTools.js y se suman al final del array.
 import streamSummariesService, { PaymentRequiredError } from '../services/streamSummaries';
 import { getTokenData } from '../services/metrics/Token/TokenMetricsService';
 import { getSafeInfo, getSafeBalances } from '../services/metrics/funds/safeService';
+import { buildEcosystemTools } from './ecosystemTools';
 
 const SITE_URL = 'https://ultravioletadao.xyz';
 const S3_BASE_URL = 'https://ultravioletadao.s3.us-east-1.amazonaws.com';
@@ -26,7 +29,8 @@ const SECTIONS = {
   metrics: '/metrics',
   services: '/services',
   facilitator: '/facilitator',
-  agents: '/agents',
+  ecosystem: '/ecosystem',
+  agents: '/ecosystem#agentes',
   events: '/events',
   nfts: '/nfts',
   links: '/links',
@@ -215,7 +219,8 @@ export function buildTools({ navigate, i18n }) {
           },
           links: {
             website: SITE_URL,
-            agent_discovery: `${SITE_URL}/agents`,
+            ecosystem: `${SITE_URL}/ecosystem`,
+            agent_discovery: `${SITE_URL}/ecosystem#agentes`,
             facilitator: 'https://facilitator.ultravioletadao.xyz',
             github: 'https://github.com/ultravioletadao',
             discord: 'https://discord.gg/ultravioletadao'
@@ -496,6 +501,7 @@ export function buildTools({ navigate, i18n }) {
         navigate(path);
         return { ok: true, path };
       }
-    }
+    },
+    ...buildEcosystemTools({ navigate, i18n })
   ];
 }

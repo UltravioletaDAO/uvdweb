@@ -1,0 +1,13 @@
+{
+  "home": {
+    "teaser": {
+      "title": "ecosystem — {{products}} productos · {{edges}} aristas medidas",
+      "open": "abrir",
+      "aria": "Abrir el mapa del ecosistema: terminal con comandos reales contra MeshRelay, el facilitator x402 y el grafo medido por c0der",
+      "measured": "medido",
+      "live": "en vivo",
+      "stale": "último dato {{time}}",
+      "snapshot": "snapshot {{date}}"
+    }
+  }
+}

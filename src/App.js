@@ -40,7 +40,7 @@ const Events = lazy(() => import("./pages/Events"));
 const ExperimentsPage = lazy(() => import("./pages/ExperimentsPage"));
 const FacilitatorPage = lazy(() => import("./pages/FacilitatorPage"));
 const Bounties = lazy(() => import("./pages/Bounties"));
-const AgentDiscovery = lazy(() => import("./pages/AgentDiscovery"));
+const Ecosystem = lazy(() => import("./pages/Ecosystem"));
 const Purge = lazy(() => import("./pages/Purge"));
 const KarmaHelloLanding = lazy(() => import("./pages/KarmaHelloLanding"));
 const Delegations = lazy(() => import("./pages/Delegations"));
@@ -89,8 +89,10 @@ function AppRoutes() {
           {process.env.REACT_APP_BOUNTIES_ENABLED === 'true' && (
             <Route path="/bounties" element={<Bounties />} />
           )}
-          <Route path="/agents" element={<AgentDiscovery />} />
-          <Route path="/agent-discovery" element={<Navigate to="/agents" replace />} />
+          <Route path="/ecosystem" element={<Ecosystem />} />
+          {/* Agents hub absorbido por Ecosystem (sección #agentes); el 301 real vive en amplify.tf */}
+          <Route path="/agents" element={<Navigate to="/ecosystem#agentes" replace />} />
+          <Route path="/agent-discovery" element={<Navigate to="/ecosystem#agentes" replace />} />
           <Route path="/purge" element={<Purge />} />
           <Route path="/karma-hello" element={<KarmaHelloLanding />} />
           <Route path="/delegations" element={<Delegations />} />

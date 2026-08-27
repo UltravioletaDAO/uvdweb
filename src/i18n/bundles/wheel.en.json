@@ -1,0 +1,186 @@
+{
+  "wheel": {
+    "seoTitle": "Watch to Earn - UVD Rewards Wheel",
+    "seoDescription": "Redeem your Twitch channel points to spin the rewards wheel and earn $UVD tokens. Watch, participate and get paid directly in our community token on Avalanche.",
+    "title": "Watch to Earn",
+    "description": "Redeem your Twitch channel points live to spin and earn rewards in $UVD. The more you participate and watch the stream, the more chances you have to claim and get paid directly in our community token.",
+    "highlights": {
+      "redeem": "Redeem with Twitch points",
+      "paid": "Paid in UVD on-chain",
+      "watch": "Rewards for watching the stream",
+      "limit": "{{max}} spin per stream · {{cost}} channel points"
+    },
+    "customize_button": {
+      "show": "Customize Wheel",
+      "hide": "Hide Options"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Contract address"
+    },
+    "segments": {
+      "add": {
+        "title": "Add new value",
+        "value_placeholder": "Value",
+        "probability_placeholder": "Probability %",
+        "button": "Add",
+        "invalid_value": "The value must be a number greater than 0"
+      },
+      "current": {
+        "title": "Current values",
+        "probability_suffix": "%",
+        "min_segments_error": "The wheel needs at least 2 values"
+      },
+      "probability_validation_error": "Percentages must add up to 100%. Please check the values.",
+      "sum_label": "Sum",
+      "sum_hint": "Percentages add up to {{sum}}% — they must total 100%"
+    },
+    "buttons": {
+      "equalize": "Equalize probabilities",
+      "reset": "Reset to default values"
+    },
+    "participants": {
+      "panel": {
+        "show": "Add participant",
+        "hide": "Hide participants",
+        "clear": "Clear"
+      },
+      "add": {
+        "title": "New participant",
+        "wallet_placeholder": "Wallet (required)",
+        "username_placeholder": "Username (optional)",
+        "button": "Add",
+        "wallet_required": "Wallet is required",
+        "duplicate": "That wallet is already on the list"
+      },
+      "list": {
+        "title": "Participants and Results",
+        "headers": {
+          "user": "User",
+          "wallet": "Wallet",
+          "result": "Result"
+        },
+        "anonymous": "Anonymous",
+        "current_turn": "Current turn",
+        "pending": "Pending",
+        "total": "Total",
+        "remove": "Remove participant",
+        "completed": "Results",
+        "paid": "Paid"
+      }
+    },
+    "results": {
+      "title": "Result",
+      "current_participant": "Current participant",
+      "no_more_participants": "No more participants. Add more to continue",
+      "export": {
+        "button": "Export results",
+        "no_results": "No results to export",
+        "success": "{{count}} rows exported",
+        "include_paid": "Include already paid",
+        "no_pending": "No unpaid prizes; enable \"Include already paid\""
+      },
+      "copy": {
+        "button": "Copy results",
+        "error": "Error copying results",
+        "success": "Results copied"
+      },
+      "send": {
+        "button": "Send rewards"
+      },
+      "test_spin": "Test spin",
+      "share": {
+        "button": "Share",
+        "text": "{{user}} won {{amount}} $UVD on the Ultravioleta DAO wheel — {{url}}",
+        "copied": "Text copied to share"
+      }
+    },
+    "wallet": {
+      "send_rewards": "Rewards Airdrop",
+      "connect_required": "Connect your wallet to send rewards",
+      "connected": "Connected wallet",
+      "connected_success": "Wallet connected successfully!",
+      "balance": "Balance",
+      "total_rewards": "Total rewards",
+      "connect_button": "Connect Wallet",
+      "approve_button": "Approve",
+      "send_button": "Send Rewards",
+      "view_transaction": "View Transaction",
+      "approving": "Approving",
+      "sending": "Sending...",
+      "approving_transaction": "Approving transaction...",
+      "sending_transaction": "Processing transaction...",
+      "no_provider": "No EVM wallet detected. Please install a compatible wallet.",
+      "user_rejected": "Request rejected by user",
+      "connection_error": "Error connecting to wallet",
+      "network_add_error": "Error adding Avalanche network",
+      "network_switch_error": "Error switching to Avalanche network",
+      "invalid_state": "Invalid state. Please check connection and token",
+      "already_approved": "Tokens already approved",
+      "approval_success": "Tokens approved successfully!",
+      "approval_error": "Error approving tokens",
+      "insufficient_allowance": "Insufficient token allowance. Please approve first",
+      "send_success": "Rewards sent successfully!",
+      "send_error": "Error sending rewards",
+      "info": "Rewards will be sent directly from your wallet using the Avalanche C-Chain network.",
+      "pending_rewards": "Pending payment",
+      "paid_rewards": "Already paid",
+      "confirm_send": "Send {{total}} {{symbol}} to {{count}} recipients",
+      "confirm_button": "Confirm send",
+      "nothing_pending": "All prizes have already been paid",
+      "insufficient_balance": "Insufficient balance: you need {{total}} {{symbol}}",
+      "wrong_network": "Your wallet is on another network. The wheel pays on Avalanche C-Chain.",
+      "switch_network": "Switch to Avalanche",
+      "disconnect": "Disconnect wallet"
+    },
+    "spin_button": {
+      "spinning": "Spinning...",
+      "disabled": "Not available",
+      "loading": "Loading participants...",
+      "ready": "Click to spin",
+      "processing": "Processing result..."
+    },
+    "twitch": {
+      "load": "Load from Twitch",
+      "loading": "Loading rewards...",
+      "load_error": "Error loading Twitch rewards",
+      "auth_error": "Authentication error. Please connect again",
+      "complete_error": "Error completing reward",
+      "no_rewards": "No pending rewards to load",
+      "invalid_wallet": "Invalid wallet detected",
+      "auth_required": "Twitch authentication required",
+      "auth_button": "Connect with Twitch",
+      "redirecting": "Redirecting...",
+      "create_reward_error": "Error creating reward. Make sure you are a Twitch affiliate or partner",
+      "client_id_mismatch": "The reward was created with another application. Please create a new reward from this application",
+      "redemption_error": "Error getting redemptions. Please try again",
+      "auto_update": "Auto-update",
+      "verify_wallet_info": "Wallet verification enabled (set REACT_APP_WHEEL_VERIFY_WALLET=false to disable)",
+      "access_denied": "You cancelled the Twitch authorization",
+      "connected_as": "Connected as {{login}}",
+      "expires_in": "session valid ~{{hours}} h",
+      "verify_network_error": "Could not verify {{count}} wallet(s) with the API; they remain pending on Twitch",
+      "verify_auth_error": "The API rejected the streamer's Twitch token; no redemptions were cancelled",
+      "callback_title": "Connecting to Twitch...",
+      "callback_description": "Connecting your Twitch account to the Ultravioleta DAO wheel"
+    },
+    "aria": {
+      "wheel": "Prize wheel"
+    },
+    "echoes": {
+      "badge": "x2 for Echoes",
+      "badge_with_label": "x2 for Echoes {{label}}"
+    },
+    "session": {
+      "restored": "Session restored: {{count}} saved results ({{date}})",
+      "new": "New session",
+      "confirm": "{{count}} results from this session will be deleted (paid ones stay on the blockchain). Continue?",
+      "cleared": "Session reset"
+    },
+    "sound": {
+      "mute": "Mute",
+      "unmute": "Unmute",
+      "unavailable": "Sound unavailable"
+    }
+  }
+}

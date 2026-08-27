@@ -10,6 +10,7 @@ const staticRoutes = [
   { path: '/about', priority: 0.9, changefreq: 'weekly' },
   { path: '/aplicar', priority: 0.9, changefreq: 'monthly' },
   { path: '/services', priority: 0.9, changefreq: 'weekly' }, // Services page with x402
+  { path: '/ecosystem', priority: 0.9, changefreq: 'daily' }, // Live map of DAO products (c0der graph)
   { path: '/metrics', priority: 0.8, changefreq: 'daily' },
   { path: '/token', priority: 0.8, changefreq: 'weekly' },
   { path: '/snapshot', priority: 0.8, changefreq: 'daily' },

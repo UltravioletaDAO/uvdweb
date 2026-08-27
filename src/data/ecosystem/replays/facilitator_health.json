@@ -1,0 +1,19 @@
+{
+  "recorded_at": "2026-08-27T12:58:21.362Z",
+  "key": "facilitator_health",
+  "cmd": "curl -s https://facilitator.ultravioletadao.xyz/health | jq .",
+  "url": "https://facilitator.ultravioletadao.xyz/health",
+  "status": 200,
+  "stdout": [
+    "{",
+    "  \"status\": \"healthy\"",
+    "}"
+  ],
+  "redactions": {
+    "hex64": 0,
+    "local_path": 0
+  },
+  "json": {
+    "status": "healthy"
+  }
+}

@@ -35,6 +35,16 @@
         "which HTTP APIs does UltravioletaDAO expose",
         "OpenAPI spec of the UltravioletaDAO x402 facilitator"
       ]
+    },
+    {
+      "identifier": "urn:air:ultravioletadao.xyz:dataset:ecosystem-graph",
+      "displayName": "UltravioletaDAO Ecosystem Graph (measured by c0der)",
+      "type": "application/json",
+      "url": "https://ultravioletadao.xyz/ecosystem/graph.json",
+      "representativeQueries": [
+        "map of UltravioletaDAO products",
+        "which DAO products talk to each other"
+      ]
     }
   ]
 }

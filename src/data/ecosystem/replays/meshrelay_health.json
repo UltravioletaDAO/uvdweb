@@ -1,0 +1,205 @@
+{
+  "recorded_at": "2026-08-27T12:58:22.144Z",
+  "key": "meshrelay_health",
+  "cmd": "curl -s https://api.meshrelay.xyz/health | jq .",
+  "url": "https://api.meshrelay.xyz/health",
+  "status": 200,
+  "stdout": [
+    "{",
+    "  \"status\": \"ok\",",
+    "  \"services\": {",
+    "    \"bridge\": {",
+    "      \"status\": \"ok\",",
+    "      \"latencyMs\": 5,",
+    "      \"irc\": \"inspircd\",",
+    "      \"em_queue\": {",
+    "        \"pending\": 0,",
+    "        \"delivered_today\": 0,",
+    "        \"dead_letter\": 0,",
+    "        \"pending_deliveries\": 0,",
+    "        \"delivery_dead_letter\": 0,",
+    "        \"last_event_received\": \"2026-08-24 08:58:10\"",
+    "      },",
+    "      \"wallet_outbox\": {",
+    "        \"delivered\": 32",
+    "      }",
+    "    },",
+    "    \"turnstile\": {",
+    "      \"status\": \"ok\",",
+    "      \"latencyMs\": 52,",
+    "      \"irc\": {",
+    "        \"connected\": true,",
+    "        \"oper\": true,",
+    "        \"nick\": \"Turnstile\"",
+    "      },",
+    "      \"facilitator\": {",
+    "        \"url\": \"https://facilitator.ultravioletadao.xyz\",",
+    "        \"reachable\": true",
+    "      },",
+    "      \"channels\": 7,",
+    "      \"uptime\": 86967.673631078",
+    "    },",
+    "    \"verification\": {",
+    "      \"status\": \"ok\",",
+    "      \"latencyMs\": 50,",
+    "      \"service\": \"meshrelay-verification\",",
+    "      \"ircHost\": \"irc.meshrelay.xyz\"",
+    "    },",
+    "    \"guardian\": {",
+    "      \"status\": \"ok\",",
+    "      \"latencyMs\": 5,",
+    "      \"irc\": {",
+    "        \"connected\": true,",
+    "        \"oper\": true,",
+    "        \"nick\": \"Guardian\"",
+    "      },",
+    "      \"monitoredChannels\": [",
+    "        \"#agents\",",
+    "        \"#builds\",",
+    "        \"#help\",",
+    "        \"#karmakadabra\",",
+    "        \"#execution-market\",",
+    "        \"#bounties\",",
+    "        \"#workers\"",
+    "      ],",
+    "      \"uptime\": 731033.506940378",
+    "    },",
+    "    \"mrserv\": {",
+    "      \"status\": \"ok\",",
+    "      \"latencyMs\": 6,",
+    "      \"irc\": {",
+    "        \"connected\": true,",
+    "        \"oper\": true,",
+    "        \"nick\": \"MRServ\"",
+    "      },",
+    "      \"uptime\": 1596534.754257164",
+    "    },",
+    "    \"channelserv\": {",
+    "      \"status\": \"ok\",",
+    "      \"latencyMs\": 7,",
+    "      \"irc\": {",
+    "        \"connected\": true,",
+    "        \"oper\": true,",
+    "        \"nick\": \"ChannelServ-MR\"",
+    "      },",
+    "      \"stats\": {",
+    "        \"total\": 4,",
+    "        \"byType\": {",
+    "          \"task\": 4",
+    "        },",
+    "        \"archived\": 0,",
+    "        \"operationsToday\": 0",
+    "      },",
+    "      \"uptime\": 2902881.90335631",
+    "    },",
+    "    \"multibrain\": {",
+    "      \"status\": \"ok\",",
+    "      \"latencyMs\": 7,",
+    "      \"irc\": true,",
+    "      \"uptime\": 558228",
+    "    }",
+    "  },",
+    "  \"uptime\": 86967.353574885",
+    "}"
+  ],
+  "redactions": {
+    "hex64": 0,
+    "local_path": 0
+  },
+  "json": {
+    "status": "ok",
+    "services": {
+      "bridge": {
+        "status": "ok",
+        "latencyMs": 5,
+        "irc": "inspircd",
+        "em_queue": {
+          "pending": 0,
+          "delivered_today": 0,
+          "dead_letter": 0,
+          "pending_deliveries": 0,
+          "delivery_dead_letter": 0,
+          "last_event_received": "2026-08-24 08:58:10"
+        },
+        "wallet_outbox": {
+          "delivered": 32
+        }
+      },
+      "turnstile": {
+        "status": "ok",
+        "latencyMs": 52,
+        "irc": {
+          "connected": true,
+          "oper": true,
+          "nick": "Turnstile"
+        },
+        "facilitator": {
+          "url": "https://facilitator.ultravioletadao.xyz",
+          "reachable": true
+        },
+        "channels": 7,
+        "uptime": 86967.673631078
+      },
+      "verification": {
+        "status": "ok",
+        "latencyMs": 50,
+        "service": "meshrelay-verification",
+        "ircHost": "irc.meshrelay.xyz"
+      },
+      "guardian": {
+        "status": "ok",
+        "latencyMs": 5,
+        "irc": {
+          "connected": true,
+          "oper": true,
+          "nick": "Guardian"
+        },
+        "monitoredChannels": [
+          "#agents",
+          "#builds",
+          "#help",
+          "#karmakadabra",
+          "#execution-market",
+          "#bounties",
+          "#workers"
+        ],
+        "uptime": 731033.506940378
+      },
+      "mrserv": {
+        "status": "ok",
+        "latencyMs": 6,
+        "irc": {
+          "connected": true,
+          "oper": true,
+          "nick": "MRServ"
+        },
+        "uptime": 1596534.754257164
+      },
+      "channelserv": {
+        "status": "ok",
+        "latencyMs": 7,
+        "irc": {
+          "connected": true,
+          "oper": true,
+          "nick": "ChannelServ-MR"
+        },
+        "stats": {
+          "total": 4,
+          "byType": {
+            "task": 4
+          },
+          "archived": 0,
+          "operationsToday": 0
+        },
+        "uptime": 2902881.90335631
+      },
+      "multibrain": {
+        "status": "ok",
+        "latencyMs": 7,
+        "irc": true,
+        "uptime": 558228
+      }
+    },
+    "uptime": 86967.353574885
+  }
+}
