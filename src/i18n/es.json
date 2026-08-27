@@ -318,11 +318,16 @@
     }
   },
   "auth": {
+    "access_button": "Acceder",
+    "logout_button": "Salir",
     "register": "Aplicar a Ultravioleta DAO",
     "login": "Iniciar Sesión",
     "login_en": "Login"
   },
   "navigation": {
+    "status": "Estado de la aplicación",
+    "wheel": "Ruleta UVT",
+    "ecosystem": "Ecosistema",
     "governance": "Gobernanza",
     "apply": "Aplicar",
     "application": "Aplicación",
@@ -359,6 +364,9 @@
       "admin": "Administración"
     },
     "descriptions": {
+      "purge": "Gestión de usuarios inactivos",
+      "wheel": "Ruleta de premios UVD",
+      "ecosystem": "Mapa vivo de los productos del DAO",
       "agents": "Descubre agentes de IA",
       "facilitator": "Facilitador x402 para pagos con USDC",
       "home": "Dashboard principal de Ultravioleta DAO",
@@ -736,139 +744,6 @@
     "connect_wallet_to_vote": "Conectar Wallet para Votar",
     "wallet_required_message": "Necesitas conectar tu wallet para participar en la votación descentralizada."
   },
-  "wheel": {
-    "seoTitle": "Watch to Earn - Ruleta de Premios UVD",
-    "seoDescription": "Canjea tus puntos de Twitch para girar la ruleta de premios y ganar tokens $UVD. Mira, participa y cobra directamente en nuestra moneda de la comunidad en Avalanche.",
-    "title": "Watch to Earn",
-    "description": "Canjea tus puntos de Twitch en vivo para girar y gana recompensas en $UVD. Mientras más participas y ves el stream, más oportunidades tienes de reclamar y ser pagado directamente en nuestra moneda de la comunidad.",
-    "highlights": {
-      "redeem": "Canje con puntos de Twitch",
-      "paid": "Pago en UVD on-chain",
-      "watch": "Recompensas por ver el stream"
-    },
-    "customize_button": {
-      "show": "Personalizar Ruleta",
-      "hide": "Ocultar opciones"
-    },
-    "token": {
-      "title": "Token",
-      "placeholder": "Dirección del contrato"
-    },
-    "segments": {
-      "add": {
-        "title": "Agregar nuevo valor",
-        "value_placeholder": "Valor",
-        "probability_placeholder": "Probabilidad %",
-        "button": "Agregar"
-      },
-      "current": {
-        "title": "Valores actuales",
-        "probability_suffix": "%",
-        "min_segments_error": "La ruleta necesita al menos 2 valores"
-      },
-      "probability_validation_error": "Los porcentajes deben sumar 100%. Por favor, revisa los valores."
-    },
-    "buttons": {
-      "equalize": "Igualar probabilidades",
-      "reset": "Restablecer valores por defecto"
-    },
-    "participants": {
-      "panel": {
-        "show": "Agregar participante",
-        "hide": "Ocultar participantes",
-        "clear": "Limpiar"
-      },
-      "add": {
-        "title": "Nuevo participante",
-        "wallet_placeholder": "Wallet (obligatoria)",
-        "username_placeholder": "Usuario (opcional)",
-        "button": "Agregar",
-        "wallet_required": "La wallet es obligatoria"
-      },
-      "list": {
-        "title": "Participantes y Resultados",
-        "headers": {
-          "user": "Usuario",
-          "wallet": "Wallet",
-          "result": "Resultado"
-        },
-        "anonymous": "Anónimo",
-        "current_turn": "Turno actual",
-        "pending": "Pendiente",
-        "total": "Total",
-        "remove": "Eliminar participante",
-        "completed": "Resultados"
-      }
-    },
-    "results": {
-      "title": "Resultado",
-      "current_participant": "Participante actual",
-      "no_more_participants": "No hay más participantes. Agrega más para continuar",
-      "export": {
-        "button": "Exportar resultados",
-        "no_results": "No hay resultados para exportar"
-      },
-      "copy": {
-        "button": "Copiar resultados",
-        "error": "Error al copiar los resultados"
-      },
-      "send": {
-        "button": "Enviar premios"
-      }
-    },
-    "spin_button": {
-      "spinning": "Girando...",
-      "disabled": "No disponible",
-      "loading": "Cargando participantes...",
-      "ready": "Click para girar"
-    },
-    "twitch": {
-      "load": "Cargar de Twitch",
-      "loading": "Cargando recompensas...",
-      "load_error": "Error al cargar las recompensas de Twitch",
-      "auth_error": "Error de autenticación. Por favor, conéctate de nuevo",
-      "complete_error": "Error al completar la recompensa",
-      "no_rewards": "No hay recompensas pendientes por cargar",
-      "invalid_wallet": "Wallet inválida detectada",
-      "auth_required": "Necesitas autenticarte con Twitch",
-      "auth_button": "Conectar con Twitch",
-      "redirecting": "Redireccionando...",
-      "create_reward_error": "Error al crear la recompensa. Asegúrate de ser afiliado o partner de Twitch",
-      "client_id_mismatch": "La recompensa fue creada con otra aplicación. Por favor, crea una nueva recompensa desde esta aplicación",
-      "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo",
-      "auto_update": "Actualización automática",
-      "verify_wallet_info": "Verificación de wallet habilitada (configurar REACT_APP_WHEEL_VERIFY_WALLET=false para desactivar)"
-    },
-    "wallet": {
-      "send_rewards": "Airdrop de Premios",
-      "connect_required": "Conecta tu wallet para enviar premios",
-      "connected": "Wallet conectada",
-      "connected_success": "¡Wallet conectada exitosamente!",
-      "balance": "Balance",
-      "total_rewards": "Total de premios",
-      "connect_button": "Conectar Wallet",
-      "approve_button": "Aprobar",
-      "send_button": "Enviar Premios",
-      "view_transaction": "Ver Transacción",
-      "approving": "Aprobando",
-      "sending": "Enviando...",
-      "approving_transaction": "Aprobando transacción...",
-      "sending_transaction": "Procesando transacción...",
-      "no_provider": "No se detectó wallet EVM. Por favor instala una wallet compatible.",
-      "user_rejected": "Solicitud rechazada por el usuario",
-      "connection_error": "Error al conectar con la wallet",
-      "network_add_error": "Error al agregar la red Avalanche",
-      "network_switch_error": "Error al cambiar a la red Avalanche",
-      "invalid_state": "Estado inválido. Verifica la conexión y el token",
-      "already_approved": "Tokens ya aprobados",
-      "approval_success": "¡Tokens aprobados con éxito!",
-      "approval_error": "Error al aprobar tokens",
-      "insufficient_allowance": "Permiso de token insuficiente. Por favor aprueba primero",
-      "send_success": "¡Premios enviados con éxito!",
-      "send_error": "Error al enviar premios",
-      "info": "Los premios se enviarán directamente desde tu wallet usando la red Avalanche C-Chain."
-    }
-  },
   "watch_to_earn": {
     "title": "Watch to Earn",
     "subtitle": "Gana puntos de Twitch en directo para girar y recibir recompensas en $UVD. Mientras más participas y ves el stream, más posibilidades tienes de reclamar y recibir pagos directamente en nuestra moneda comunitaria.",
@@ -982,6 +857,11 @@
     }
   },
   "safestats": {
+    "filter_options": "Opciones de filtro",
+    "start_date": "Fecha de inicio",
+    "end_date": "Fecha de fin",
+    "statistics_title": "Estadísticas de firmas",
+    "from_to": "({{from}} hasta {{to}}, {{count}} transacciones)",
     "seoTitle": "SafeStats - Estadísticas de Firmas del Multisig",
     "seoDescription": "Consulta las estadísticas de firmas del multisig de UltraVioleta DAO: actividad por firmante, filtros por fecha y transacciones de la tesorería en Avalanche.",
     "title": "Multifirmantes UltravioletaDAO",
@@ -2347,6 +2227,18 @@
     "loading": "Cargando..."
   },
   "bountyDetails": {
+    "requirements_label": "Requisitos",
+    "deliverables_label": "Entregables",
+    "created_by": "Creado por",
+    "submitter_name_placeholder": "Escribe tu nombre o email",
+    "submissions": "Entregas",
+    "submit_task": "Enviar tarea",
+    "your_name": "Tu nombre",
+    "name_placeholder": "Escribe tu nombre",
+    "submission_description": "Descripción de tu entrega",
+    "submitting": "Enviando...",
+    "submit": "Enviar",
+    "error_submitting_task": "Error al enviar la tarea",
     "reward_label": "Recompensa",
     "expires_label": "Expira",
     "status_label": "Estado",
@@ -2369,6 +2261,7 @@
     "bounty_finished": "Bounty finalizada",
     "bounty_completed_message": "Esta bounty ha sido completada y las recompensas distribuidas.",
     "status_values": {
+      "in_progress": "En progreso",
       "todo": "Por Hacer",
       "in_review": "En Revisión",
       "in_voting": "En Votación",
@@ -2383,6 +2276,7 @@
     }
   },
   "bountyForm": {
+    "error_creating_bounty": "Error al crear el bounty. Por favor, inicia sesión.",
     "title_label": "Título",
     "description_label": "Descripción",
     "reward_label": "Recompensa (ej. 100 UVD)",
@@ -2392,6 +2286,8 @@
     "success_message": "¡Bounty \"{{title}}\" creada exitosamente!"
   },
   "submissionList": {
+    "error_fetching_submissions": "Error al cargar las entregas.",
+    "view_link": "Ver enlace",
     "loading": "Cargando entregas...",
     "no_submissions": "Aún no hay entregas",
     "submissions_title": "Entregas",

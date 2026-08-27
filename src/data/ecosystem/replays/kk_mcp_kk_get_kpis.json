@@ -1,0 +1,32 @@
+{
+  "recorded_at": "2026-08-27T12:58:24.325Z",
+  "key": "kk_mcp_kk_get_kpis",
+  "cmd": "curl -s -X POST https://karmakadabra.ultravioletadao.xyz/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"kk_get_kpis\",\"arguments\":{}}}' | jq -r .result.content[0].text | jq .",
+  "url": "https://karmakadabra.ultravioletadao.xyz/mcp",
+  "status": 200,
+  "stdout": [
+    "{",
+    "  \"volume_usd\": 20.98,",
+    "  \"trades\": 1046,",
+    "  \"donated_usd\": 9.3335,",
+    "  \"agents_total\": 34,",
+    "  \"agents_active\": 27,",
+    "  \"chain\": \"multi-chain-9\",",
+    "  \"currency\": \"stablecoins\"",
+    "}"
+  ],
+  "redactions": {
+    "hex64": 0,
+    "local_path": 0
+  },
+  "tool": "kk_get_kpis",
+  "json": {
+    "volume_usd": 20.98,
+    "trades": 1046,
+    "donated_usd": 9.3335,
+    "agents_total": 34,
+    "agents_active": 27,
+    "chain": "multi-chain-9",
+    "currency": "stablecoins"
+  }
+}

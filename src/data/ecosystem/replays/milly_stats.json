@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-08-27T12:58:22.770Z",
+  "key": "milly_stats",
+  "cmd": "curl -s https://api.402milly.xyz/stats | jq .",
+  "url": "https://api.402milly.xyz/stats",
+  "status": 200,
+  "stdout": [
+    "{",
+    "  \"totalPixelsSold\": 0,",
+    "  \"totalPixelsAvailable\": 402002500,",
+    "  \"totalRevenue\": 0,",
+    "  \"percentageSold\": 0,",
+    "  \"totalPurchases\": 0,",
+    "  \"recentPurchases\": []",
+    "}"
+  ],
+  "redactions": {
+    "hex64": 0,
+    "local_path": 0
+  },
+  "json": {
+    "totalPixelsSold": 0,
+    "totalPixelsAvailable": 402002500,
+    "totalRevenue": 0,
+    "percentageSold": 0,
+    "totalPurchases": 0,
+    "recentPurchases": []
+  }
+}

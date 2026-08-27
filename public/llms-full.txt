@@ -31,9 +31,10 @@ This is the expanded version of https://ultravioletadao.xyz/llms.txt. Everything
 ## Discovery documents
 - API catalog (RFC 9727): https://ultravioletadao.xyz/.well-known/api-catalog
 - MCP server card: https://ultravioletadao.xyz/.well-known/mcp/server-card.json (no MCP transport deployed yet; each tool documents its HTTP endpoint)
-- In-browser WebMCP tools (document.modelContext, registered on every page for agents that run inside the tab): search_stream_memory, list_stream_summaries, get_stream_summary, list_governance_proposals, get_token_metrics, get_treasury, get_facilitator_networks, get_dao_info, apply_dao_membership, navigate_to, set_language. Declarative forms: stream_search_form (/stream-summaries) and apply_dao_membership_form (/aplicar), both submitted by the human.
+- In-browser WebMCP tools (document.modelContext, registered on every page for agents that run inside the tab): search_stream_memory, list_stream_summaries, get_stream_summary, list_governance_proposals, get_token_metrics, get_treasury, get_facilitator_networks, get_dao_info, apply_dao_membership, navigate_to, set_language, get_ecosystem_map, list_ecosystem_products, get_ecosystem_pulse, get_ecosystem_messages, focus_ecosystem_node, open_terminal, run_ecosystem_command, set_desk_mode (the last eight drive the /ecosystem desktop and read the c0der-measured product graph). Declarative forms: stream_search_form (/stream-summaries) and apply_dao_membership_form (/aplicar), both submitted by the human.
 - Agent skills index: https://ultravioletadao.xyz/.well-known/agent-skills/index.json
 - AI catalog (ARD): https://ultravioletadao.xyz/.well-known/ai-catalog.json
+- Ecosystem graph (JSON measured by c0der: public products as nodes, real API calls / facilitator usage as edges with evidence counts; live copy on S3, versioned snapshot on the site): https://ultravioletadao.xyz/ecosystem/graph.json
 - OAuth metadata: https://ultravioletadao.xyz/.well-known/oauth-authorization-server and https://ultravioletadao.xyz/.well-known/oauth-protected-resource (planned; the endpoints they list are not live yet - do not attempt an OAuth flow)
 - Security contact: https://ultravioletadao.xyz/.well-known/security.txt
 - robots.txt: https://ultravioletadao.xyz/robots.txt (Content-Signal: ai-train=no, search=yes, ai-input=yes)
@@ -42,7 +43,7 @@ This is the expanded version of https://ultravioletadao.xyz/llms.txt. Everything
 - Home: https://ultravioletadao.xyz/
 - About: https://ultravioletadao.xyz/about
 - Apply: https://ultravioletadao.xyz/aplicar
-- Agents hub: https://ultravioletadao.xyz/agents
+- Ecosystem (live map of DAO products; for agents: https://ultravioletadao.xyz/ecosystem#agentes): https://ultravioletadao.xyz/ecosystem
 - x402 facilitator: https://ultravioletadao.xyz/facilitator
 - Services: https://ultravioletadao.xyz/services
 - Token: https://ultravioletadao.xyz/token

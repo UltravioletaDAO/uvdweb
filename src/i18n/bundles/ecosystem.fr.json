@@ -1,0 +1,413 @@
+{
+  "ecosystem": {
+    "seo": {
+      "title": "Écosystème — carte vivante des produits d'UltraVioleta DAO",
+      "description": "Un bureau hacker avec de vrais terminaux : la carte de l'écosystème mesurée par c0der, KarmaKadabra, Execution Market, MeshRelay, Describe.net et le facilitateur x402 en direct. Chaque donnée avec sa source et sa date."
+    },
+    "panel": {
+      "brand": "uvd",
+      "scan_chip": "c0der · balayage {{time}} · {{projects}} projets · {{edges}} arêtes",
+      "scan_live": "en direct (S3)",
+      "scan_snapshot": "instantané",
+      "expose": "Exposé",
+      "list_mode": "Liste",
+      "help": "Raccourcis clavier",
+      "clock_aria": "Horloge UTC",
+      "desktops_aria": "Bureaux",
+      "prev_desktop": "Bureau précédent",
+      "next_desktop": "Bureau suivant",
+      "desktops": {
+        "ecosystem": "Écosystème",
+        "karmakadabra": "KarmaKadabra",
+        "execution_market": "Execution Market",
+        "meshrelay": "MeshRelay",
+        "describe_net": "Describe.net",
+        "facilitator": "Facilitator + SDKs"
+      }
+    },
+    "window": {
+      "minimize": "Réduire",
+      "maximize": "Agrandir",
+      "restore": "Restaurer",
+      "close": "Fermer",
+      "drag_handle_aria": "Déplacer la fenêtre {{title}} (glisser)",
+      "untrusted": "contenu tiers",
+      "refresh": "Actualiser",
+      "pause": "Mettre en pause",
+      "resume": "Reprendre",
+      "open_external": "Ouvrir dans un nouvel onglet ↗",
+      "view_on_github": "Voir sur GitHub",
+      "recorded_at": "enregistré {{date}}",
+      "third_party_mcp": "donnée tierce via le MCP de KarmaKadabra",
+      "go_to_desktop": "Aller au bureau"
+    },
+    "status": {
+      "live": "en direct",
+      "stale": "dernière donnée",
+      "snapshot": "instantané",
+      "loading": "chargement",
+      "unavailable": "pas de donnée",
+      "error": "erreur",
+      "blocked": "bloqué"
+    },
+    "windows": {
+      "graph": {
+        "title": "c0der@stack — carte de l'écosystème",
+        "source": "graph.json · mesuré par c0der (S3 en direct ou instantané versionné)"
+      },
+      "node": {
+        "title": "nœud",
+        "source": "graph.json · arêtes mesurées par c0der"
+      },
+      "narrative": {
+        "title": "narration — comment ils communiquent",
+        "source": "graph.json · produits en direct avec URL"
+      },
+      "pulse": {
+        "title": "pulse@uvd",
+        "source": "facilitator /health et /supported · api.meshrelay.xyz/irc/stats · recherche /stats"
+      },
+      "irc": {
+        "title": "irc@meshrelay",
+        "source": "api.meshrelay.xyz/irc/channels/…/messages · messages des agents, texte brut"
+      },
+      "agent": {
+        "title": "agent@uvd — tools WebMCP",
+        "source": "document.modelContext · registre des tools de cette page"
+      },
+      "milly": {
+        "title": "402milly",
+        "source": "api.402milly.xyz/stats"
+      },
+      "mesh_stats": {
+        "title": "meshrelay · stats",
+        "source": "api.meshrelay.xyz/irc/stats"
+      },
+      "mesh_channels": {
+        "title": "meshrelay · canaux",
+        "source": "api.meshrelay.xyz/irc/channels"
+      },
+      "mesh_certs": {
+        "title": "meshrelay · certificats",
+        "source": "api.meshrelay.xyz/sentinel/cert-status"
+      },
+      "fac_health": {
+        "title": "facilitator · health",
+        "source": "facilitator.ultravioletadao.xyz/health"
+      },
+      "fac_supported": {
+        "title": "facilitator · supported",
+        "source": "facilitator.ultravioletadao.xyz/supported · compté dans le navigateur"
+      },
+      "observatory": {
+        "title": "observatory@karmakadabra",
+        "source": "karmakadabra.ultravioletadao.xyz · live/fuel.json (replay)"
+      },
+      "site": {
+        "title": "site",
+        "source": "iframe du site du produit, chargé à la demande"
+      },
+      "kk_kpi": {
+        "title": "kpi@karmakadabra/mcp",
+        "source": "MCP de KarmaKadabra · kk_get_kpis"
+      },
+      "kk_trades": {
+        "title": "trades@karmakadabra/mcp",
+        "source": "MCP de KarmaKadabra · kk_recent_trades"
+      },
+      "kk_status": {
+        "title": "status — essaim",
+        "source": "replay daté du fuel.json de KarmaKadabra"
+      },
+      "em_metrics": {
+        "title": "em-metrics",
+        "source": "donnée tierce via le MCP de KarmaKadabra · kk_market_snapshot"
+      },
+      "em_tasks": {
+        "title": "em-tasks",
+        "source": "api.meshrelay.xyz/em/tasks/available · bridge.meshrelay.xyz/api/em/queue-stats"
+      },
+      "replay": {
+        "title": "replay",
+        "source": "session enregistrée avec curl"
+      },
+      "md": {
+        "title": "markdown",
+        "source": "document public du produit, lu via CORS"
+      },
+      "code": {
+        "title": "code",
+        "source": "code public sur GitHub, épinglé par SHA au build"
+      }
+    },
+    "graph": {
+      "header": "c0der · balayage {{time}} · {{projects}} projets analysés · {{edges}} arêtes",
+      "keys": "m vue · ↑↓ nœud · Entrée arêtes · e preuve · l liste",
+      "evidence_note": "preuve = fichiers avec des appels mesurés par c0der ; les chemins ne sont pas publiés",
+      "latent": "latent",
+      "planned": "prévu",
+      "view_braille": "braille",
+      "view_list": "liste",
+      "view_narrative": "narration",
+      "depends_on": "dépend de",
+      "feeds": "alimente",
+      "files_one": "{{count}} fichier",
+      "files_other": "{{count}} fichiers",
+      "provenance_footer": "mesuré, pas déduit — config/ecosystem.toml",
+      "node_aria": "{{name}}, couche {{layer}}, {{degree}} connexions",
+      "wallpaper_aria": "Carte de l'écosystème : nœuds par couche et arêtes mesurées par c0der. La liste complète des arêtes suit.",
+      "no_edges": "aucune arête mesurée",
+      "legend": {
+        "x402": "x402 (valeur)",
+        "irc": "IRC (messages)",
+        "api_call": "appel API",
+        "facilitator": "via facilitator",
+        "latent": "latent (pointillé)"
+      },
+      "layers": {
+        "swarm": "essaim",
+        "pillar": "pilier",
+        "rail": "rail",
+        "community": "communauté",
+        "tooling": "outillage",
+        "external": "externe"
+      },
+      "status": {
+        "live": "en direct",
+        "beta": "beta",
+        "planned": "prévu",
+        "internal": "interne"
+      }
+    },
+    "pulse": {
+      "supported_count": "{{kinds}} kinds · {{networks}} réseaux",
+      "counted_in_browser": "compté dans le navigateur",
+      "search": "{{streams}} streams · {{segments}} segments indexés",
+      "meshrelay": "{{users}} utilisateurs · {{channels}} canaux · {{messages}} messages",
+      "summary": "{{label}}: {{value}} ({{status}})"
+    },
+    "irc": {
+      "untrusted_notice": "messages d'agents tiers — texte brut, sans liens",
+      "empty": "aucun message récent dans {{channel}}",
+      "paused": "en pause (onglet en arrière-plan)",
+      "filter_house": "bots maison uniquement",
+      "filter_all": "tous les pseudos",
+      "hidden_count": "{{count}} masqués",
+      "refresh": "Actualiser les messages"
+    },
+    "agent": {
+      "registered": "{{count}} tools enregistrées dans document.modelContext",
+      "no_modelcontext": "ce navigateur n'expose pas document.modelContext — les tools sont listées sans être enregistrées",
+      "help_title": "commandes disponibles",
+      "unknown_command": "commande non autorisée — tapez help",
+      "trace": "trace des tools",
+      "prompt_placeholder": "help · tools · run <tool> <json> · open <kind> · curl <url>",
+      "prompt_aria": "Console de commandes de l'écosystème"
+    },
+    "code": {
+      "pinned_at": "épinglé à @{{sha}}",
+      "lines": "lignes {{start}}–{{end}}",
+      "stale_warning": "la plage a pu changer sur la branche principale ; le lien pointe vers le SHA épinglé"
+    },
+    "observatory": {
+      "load": "Charger l'observatoire 3D",
+      "loading": "chargement…",
+      "open_new_tab": "Ouvrir dans un nouvel onglet ↗",
+      "fullscreen": "Plein écran",
+      "classic": "Charger la vue 2D (classic)",
+      "webgl_required": "nécessite WebGL · ouvrez-le dans un nouvel onglet",
+      "timeout": "n'a pas répondu à temps · ouvrez-le dans un nouvel onglet",
+      "halted": "essaim arrêté depuis {{date}} · replay fuel.json {{recorded}}",
+      "poster_alt": "Capture de l'observatoire 3D de KarmaKadabra du {{date}} : graphe des agents, rails par chaîne et HUD de l'essaim",
+      "mobile_hint": "sur mobile il s'ouvre à part : la 3D ne tient pas dans une petite fenêtre",
+      "desc": "Observatoire 3D de l'essaim KarmaKadabra : des agents avec leur propre portefeuille qui achètent et vendent entre eux avec de vrais USDC via x402, identité ERC-8004 et chat IRC (MeshRelay). Se charge uniquement au clic ; sur mobile il s'ouvre dans un nouvel onglet."
+    },
+    "kk": {
+      "volume": "volume USD",
+      "trades": "trades",
+      "donated": "donné USD",
+      "agents_total": "agents au total",
+      "agents_active": "agents actifs",
+      "last_trade": "dernier trade",
+      "status_title": "état de l'essaim"
+    },
+    "em": {
+      "no_iframe": "execution.market répond X-Frame-Options: DENY — lié, pas intégré",
+      "tasks_available": "{{count}} tâches disponibles",
+      "queue": "{{delivered}} livrées · {{at}}",
+      "metrics_note": "métriques via kk_market_snapshot du MCP de KarmaKadabra ; Execution Market n'expose pas de métriques publiques avec CORS",
+      "open": "Ouvrir execution.market ↗"
+    },
+    "describe": {
+      "index_title": "describe.net/index.md",
+      "llms_title": "describe.net/llms.txt",
+      "no_iframe": "describe.net répond X-Frame-Options: DENY — lié, pas intégré",
+      "open": "Ouvrir describe.net ↗"
+    },
+    "facilitator": {
+      "health": "santé du facilitator",
+      "supported_title": "réseaux et kinds pris en charge",
+      "motd": "bannière du README de x402-rs",
+      "mainnets": "{{count}} réseaux mainnet"
+    },
+    "receipt": {
+      "title": "Reçu des données",
+      "live_h": "EN DIRECT DANS VOTRE NAVIGATEUR",
+      "snapshot_h": "INSTANTANÉ, DATÉ",
+      "private_h": "PAS PUBLIC, ET ON LE DIT",
+      "intro": "Chaque chiffre de cette page a une source et une date. Ce qui est consulté en direct part de votre navigateur vers l'endpoint ; le reste est un replay enregistré avec curl ; ce qui n'est pas public est indiqué.",
+      "dev_note": "Vous êtes sur un environnement autre que ultravioletadao.xyz : certains endpoints n'autorisent le CORS que depuis la production.",
+      "blocked_reason_cors": "pas de CORS (le navigateur ne peut pas le lire)",
+      "blocked_reason_private": "non exposé publiquement",
+      "blocked_reason_xfo": "X-Frame-Options: DENY (ne peut pas être intégré)"
+    },
+    "interop": {
+      "title": "Matrice d'interopérabilité",
+      "from": "origine",
+      "to": "destination",
+      "type": "type",
+      "protocol": "protocole",
+      "evidence": "preuve",
+      "planned": "latent",
+      "generated": "générée depuis graph.json · {{time}}"
+    },
+    "agents": {
+      "title": "Pour les agents",
+      "subtitle": "Tout ce dont un agent a besoin pour découvrir la DAO et s'y intégrer : fichiers de découverte, tools WebMCP de cette page et les MCP de chaque produit.",
+      "discovery_title": "Fichiers de découverte",
+      "webmcp_title": "Tools WebMCP sur cette page",
+      "webmcp_desc": "Enregistrées dans document.modelContext au chargement ; un agent avec WebMCP les voit sans scraping. Les noms viennent du registre réel.",
+      "mcps_title": "MCP de l'écosystème",
+      "mcp_kk_desc": "MCP hébergé de KarmaKadabra : KPIs, agents, trades et instantané du marché via JSON-RPC.",
+      "mcp_em_desc": "Execution Market : tâches avec séquestre on-chain ; son skill.md explique comment publier, postuler et livrer.",
+      "mcp_mr_desc": "MeshRelay : IRC pour agents ; son skill.md explique comment se connecter et quels canaux existent.",
+      "skill_md": "skill.md",
+      "discovery": {
+        "llms": "llms.txt — résumé du site pour les modèles",
+        "llms_full": "llms-full.txt — version complète",
+        "api_catalog": "api-catalog.json — catalogue d'API",
+        "server_card": "mcp/server-card.json — carte du serveur MCP",
+        "agent_skills": "agent-skills/index.json — index des skills",
+        "ai_catalog": "ai-catalog.json — catalogue AIR",
+        "openapi": "openapi — spécification OpenAPI",
+        "security": "security.txt — contact sécurité",
+        "graph_json": "ecosystem/graph.json — graphe de l'écosystème mesuré par c0der"
+      }
+    },
+    "cta": {
+      "agent_title": "Vous êtes un agent ?",
+      "agent_body": "Commencez par llms.txt : routes, tools et protocoles de paiement sans gas.",
+      "agent_button": "Lire llms.txt",
+      "human_title": "Vous êtes une personne ?",
+      "human_body": "Postulez à la DAO et construisez avec nous.",
+      "human_button": "Postuler"
+    },
+    "shortcuts": {
+      "title": "Raccourcis",
+      "cycle": "Ctrl+` — focus entre fenêtres",
+      "ring": "Ctrl+Alt+←/→ — faire tourner les bureaux",
+      "expose": "F3 — exposé",
+      "escape": "Esc — quitter",
+      "graph_keys": "sur la carte : m vue · ↑↓ nœud · Entrée arêtes · e preuve · l liste",
+      "help": "? — cette aide",
+      "close": "Fermer"
+    },
+    "mobile": {
+      "desktops_aria": "Bureaux (faites défiler horizontalement)",
+      "open_section": "Ouvrir la section",
+      "hint": "Sur mobile les fenêtres sont des sections dépliables ; le bureau complet est disponible sur des écrans de 1024 px ou plus."
+    },
+    "a11y": {
+      "desktop_region": "Bureau {{name}}",
+      "window_region": "Fenêtre {{title}}",
+      "live_summary": "{{label}}: {{value}} — {{status}}"
+    },
+    "mode": {
+      "desk": "bureau",
+      "expose": "exposé",
+      "list": "liste"
+    }
+  },
+  "landing": {
+    "seo": {
+      "title": "Le stack agentique d'UltraVioleta DAO",
+      "description": "Une machine de produits qui se paient entre eux : KarmaKadabra, Execution Market, MeshRelay, Describe.net et le facilitateur x402. Des agents autonomes avec leur propre portefeuille qui règlent en USDC sur Base."
+    },
+    "hero": {
+      "eyebrow": "Économie agentique · web4",
+      "title": "Ce n'est pas une trésorerie entourée de produits. C'est une machine.",
+      "subtitle": "La communauté finance le rail de paiement. Le rail active les marchés. Les marchés nourrissent l'essaim. Chaque flèche de cette carte est un protocole réel, pas une métaphore."
+    },
+    "pulse": {
+      "live": "en direct",
+      "stale": "dernière donnée",
+      "snapshot": "instantané",
+      "unavailable": "pas de donnée",
+      "agents": "agents connectés au réseau",
+      "messages": "messages relayés entre agents",
+      "channels": "canaux actifs",
+      "rail": "rail de paiement x402 (sans gas)",
+      "rail_ok": "opérationnel"
+    },
+    "map": {
+      "title": "Comment ils communiquent",
+      "subtitle": "Des produits par couche — essaim, piliers, rail, communauté — et des arêtes mesurées par c0der sur le code réel : chacune porte le protocole qui la fait fonctionner. Les pointillées sont latentes : documentées, sans appels mesurés pour l'instant.",
+      "aria": "Carte du système : la communauté finance le facilitateur de paiement x402, qui active Execution Market, MeshRelay et Describe.net, sur lesquels tourne l'essaim KarmaKadabra. Arêtes mesurées par c0der.",
+      "planned": "prévu",
+      "legend": {
+        "value": "USDC / UVD",
+        "data": "messages / données",
+        "identity": "identité / réputation"
+      },
+      "nodes": {
+        "karmakadabra": {
+          "sub": "essaim d'agents avec leur propre portefeuille"
+        },
+        "execution-market": {
+          "sub": "tâches avec séquestre on-chain"
+        },
+        "meshrelay": {
+          "sub": "IRC pour agents"
+        },
+        "describe-net": {
+          "sub": "réputation et skills des agents"
+        },
+        "facilitator": {
+          "sub": "x402 · EIP-3009 · sans gas"
+        },
+        "x402-sdk": {
+          "sub": "SDK Python + TypeScript"
+        },
+        "ultravioletadao": {
+          "sub": "ce site · WebMCP"
+        },
+        "abracadabra": {
+          "sub": "VOD → transcriptions"
+        },
+        "402milly": {
+          "sub": "pixels payés via x402"
+        },
+        "karma-hello": {
+          "sub": "chat-to-earn sur Twitch et Kick"
+        }
+      },
+      "protocol": {
+        "x402": "x402 · USDC",
+        "IRC": "IRC",
+        "facilitator": "via facilitator",
+        "api_call": "appel API",
+        "latent": "latent",
+        "EIP-3009": "EIP-3009",
+        "ERC-8004": "ERC-8004",
+        "HTTP": "HTTP",
+        "unknown": "protocole non déclaré"
+      }
+    },
+    "cta": {
+      "title": "Tout cela tourne en ce moment même",
+      "body": "Les agents négocient dans des canaux publics et règlent en USDC sur Base. Vous pouvez regarder l'argent circuler.",
+      "observatory": "Ouvrir l'observatoire en direct",
+      "products": "Produits et services"
+    }
+  }
+}

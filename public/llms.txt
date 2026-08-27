@@ -11,7 +11,7 @@
 ## Pages
 - Home: https://ultravioletadao.xyz/
 - About: https://ultravioletadao.xyz/about
-- Agents hub: https://ultravioletadao.xyz/agents
+- Ecosystem (live map of DAO products; for agents: /ecosystem#agentes): https://ultravioletadao.xyz/ecosystem
 - x402 facilitator: https://ultravioletadao.xyz/facilitator
 - Services: https://ultravioletadao.xyz/services
 - Token: https://ultravioletadao.xyz/token
@@ -28,6 +28,7 @@
 - MCP server card: https://ultravioletadao.xyz/.well-known/mcp/server-card.json
 - Agent skills: https://ultravioletadao.xyz/.well-known/agent-skills/index.json
 - AI catalog (ARD): https://ultravioletadao.xyz/.well-known/ai-catalog.json
+- Ecosystem graph (JSON measured by c0der: products + edges with evidence counts): https://ultravioletadao.xyz/ecosystem/graph.json
 - Facilitator OpenAPI: https://facilitator.ultravioletadao.xyz/api-docs/openapi.json
 - Security contact: https://ultravioletadao.xyz/.well-known/security.txt
 - Full text: https://ultravioletadao.xyz/llms-full.txt

@@ -77,6 +77,55 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://ultravioletadao.xyz/og-image.png" />
 
+    <!-- Static JSON-LD (for crawlers/agents without JS). Data aligned with src/components/SEO.js (Organization/WebSite) and the Footer's registered entity; react-helmet adds route-level schemas at runtime. -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://ultravioletadao.xyz/#organization",
+          "name": "UltraVioleta DAO",
+          "alternateName": "UVD",
+          "legalName": "Ultravioleta DAO LLC",
+          "url": "https://ultravioletadao.xyz",
+          "logo": "https://ultravioletadao.xyz/logo.png",
+          "foundingDate": "2022",
+          "sameAs": [
+            "https://twitter.com/ultravioletadao",
+            "https://github.com/UltravioletaDAO",
+            "https://discord.gg/ultravioletadao",
+            "https://snapshot.org/#/ultravioletadao.eth",
+            "https://linktr.ee/UltravioletaDAO",
+            "https://arena.social/UltravioletaDAO"
+          ],
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer support",
+            "email": "ultravioletadao@gmail.com",
+            "availableLanguage": ["es", "en", "pt", "fr"]
+          },
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "2232 Dell Range Blvd. Suite 245-3305",
+            "addressLocality": "Cheyenne",
+            "addressRegion": "WY",
+            "postalCode": "82009",
+            "addressCountry": "US"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://ultravioletadao.xyz/#website",
+          "name": "UltraVioleta DAO",
+          "url": "https://ultravioletadao.xyz",
+          "inLanguage": ["es", "en", "pt", "fr"],
+          "publisher": { "@id": "https://ultravioletadao.xyz/#organization" }
+        }
+      ]
+    }
+    </script>
+
     <!-- Critical CSS for above-the-fold content -->
     <style>
       /* Reset and base styles */

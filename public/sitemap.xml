@@ -8,7 +8,7 @@
                             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   <url>
     <loc>https://ultravioletadao.xyz/</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
     <image:image>
@@ -22,25 +22,25 @@
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/about</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/aplicar</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/metrics</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/token</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -50,91 +50,91 @@
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/snapshot</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/contributors</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/courses</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/links</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/safestats</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/wheel</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/events</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/services</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/nfts</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/stream-summaries</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/experiments</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/facilitator</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://ultravioletadao.xyz/agents</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <loc>https://ultravioletadao.xyz/ecosystem</loc>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/karma-hello</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://ultravioletadao.xyz/delegations</loc>
-    <lastmod>2026-08-26T20:16:37.211Z</lastmod>
+    <lastmod>2026-08-27T13:14:42.784Z</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>

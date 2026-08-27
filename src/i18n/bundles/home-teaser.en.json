@@ -1,0 +1,13 @@
+{
+  "home": {
+    "teaser": {
+      "title": "ecosystem — {{products}} products · {{edges}} measured edges",
+      "open": "open",
+      "aria": "Open the ecosystem map: a terminal running real commands against MeshRelay, the x402 facilitator and the graph measured by c0der",
+      "measured": "measured",
+      "live": "live",
+      "stale": "last reading {{time}}",
+      "snapshot": "snapshot {{date}}"
+    }
+  }
+}

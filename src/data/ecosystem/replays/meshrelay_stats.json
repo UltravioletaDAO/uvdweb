@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-08-27T12:58:21.865Z",
+  "key": "meshrelay_stats",
+  "cmd": "curl -s https://api.meshrelay.xyz/irc/stats | jq .",
+  "url": "https://api.meshrelay.xyz/irc/stats",
+  "status": 200,
+  "stdout": [
+    "{",
+    "  \"connected\": true,",
+    "  \"users\": 21,",
+    "  \"channels\": 10,",
+    "  \"messages\": 14837,",
+    "  \"viewers\": 14,",
+    "  \"uptime\": 548236",
+    "}"
+  ],
+  "redactions": {
+    "hex64": 0,
+    "local_path": 0
+  },
+  "json": {
+    "connected": true,
+    "users": 21,
+    "channels": 10,
+    "messages": 14837,
+    "viewers": 14,
+    "uptime": 548236
+  }
+}

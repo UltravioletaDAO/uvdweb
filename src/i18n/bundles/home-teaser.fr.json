@@ -1,0 +1,13 @@
+{
+  "home": {
+    "teaser": {
+      "title": "ecosystem — {{products}} produits · {{edges}} arêtes mesurées",
+      "open": "ouvrir",
+      "aria": "Ouvrir la carte de l'écosystème : un terminal exécutant de vraies commandes vers MeshRelay, le facilitator x402 et le graphe mesuré par c0der",
+      "measured": "mesuré",
+      "live": "en direct",
+      "stale": "dernière donnée {{time}}",
+      "snapshot": "instantané {{date}}"
+    }
+  }
+}

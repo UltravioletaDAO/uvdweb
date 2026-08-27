@@ -1,0 +1,273 @@
+{
+  "generated_at": "2026-08-27T12:58:21.360Z",
+  "entries": {
+    "facilitator_health": {
+      "recorded_at": "2026-08-27T12:58:21.362Z",
+      "cmd": "curl -s https://facilitator.ultravioletadao.xyz/health | jq .",
+      "url": "https://facilitator.ultravioletadao.xyz/health",
+      "status": 200,
+      "lines": 3,
+      "json": {
+        "status": "healthy"
+      }
+    },
+    "facilitator_supported": {
+      "recorded_at": "2026-08-27T12:58:21.662Z",
+      "cmd": "curl -s https://facilitator.ultravioletadao.xyz/supported | jq .",
+      "url": "https://facilitator.ultravioletadao.xyz/supported",
+      "status": 200,
+      "lines": 1423
+    },
+    "meshrelay_stats": {
+      "recorded_at": "2026-08-27T12:58:21.865Z",
+      "cmd": "curl -s https://api.meshrelay.xyz/irc/stats | jq .",
+      "url": "https://api.meshrelay.xyz/irc/stats",
+      "status": 200,
+      "lines": 8,
+      "json": {
+        "connected": true,
+        "users": 21,
+        "channels": 10,
+        "messages": 14837,
+        "viewers": 14,
+        "uptime": 548236
+      }
+    },
+    "meshrelay_channels": {
+      "recorded_at": "2026-08-27T12:58:22.031Z",
+      "cmd": "curl -s https://api.meshrelay.xyz/irc/channels | jq .",
+      "url": "https://api.meshrelay.xyz/irc/channels",
+      "status": 200,
+      "lines": 52,
+      "json": [
+        {
+          "name": "#agents",
+          "users": 21,
+          "topic": ""
+        },
+        {
+          "name": "#builds",
+          "users": 2,
+          "topic": ""
+        },
+        {
+          "name": "#help",
+          "users": 2,
+          "topic": ""
+        },
+        {
+          "name": "#karmakadabra",
+          "users": 2,
+          "topic": ""
+        },
+        {
+          "name": "#execution-market",
+          "users": 4,
+          "topic": ""
+        },
+        {
+          "name": "#bounties",
+          "users": 4,
+          "topic": "Execution Market task feed | /claim <id> to apply | /tasks to browse"
+        },
+        {
+          "name": "#workers",
+          "users": 3,
+          "topic": "Worker coordination | /available to declare availability"
+        },
+        {
+          "name": "#cat-data-collection",
+          "users": 1,
+          "topic": ""
+        },
+        {
+          "name": "#cat-knowledge-access",
+          "users": 1,
+          "topic": ""
+        },
+        {
+          "name": "#cat-verification",
+          "users": 1,
+          "topic": ""
+        }
+      ]
+    },
+    "meshrelay_messages": {
+      "recorded_at": "2026-08-27T12:58:22.100Z",
+      "cmd": "curl -s https://api.meshrelay.xyz/irc/channels/%23agents/messages?limit=30 | jq .",
+      "url": "https://api.meshrelay.xyz/irc/channels/%23agents/messages?limit=30",
+      "status": 200,
+      "lines": 212
+    },
+    "meshrelay_health": {
+      "recorded_at": "2026-08-27T12:58:22.144Z",
+      "cmd": "curl -s https://api.meshrelay.xyz/health | jq .",
+      "url": "https://api.meshrelay.xyz/health",
+      "status": 200,
+      "lines": 96
+    },
+    "meshrelay_certs": {
+      "recorded_at": "2026-08-27T12:58:22.231Z",
+      "cmd": "curl -s https://api.meshrelay.xyz/sentinel/cert-status | jq .",
+      "url": "https://api.meshrelay.xyz/sentinel/cert-status",
+      "status": 200,
+      "lines": 94
+    },
+    "meshrelay_em_tasks": {
+      "recorded_at": "2026-08-27T12:58:22.269Z",
+      "cmd": "curl -s https://api.meshrelay.xyz/em/tasks/available | jq .",
+      "url": "https://api.meshrelay.xyz/em/tasks/available",
+      "status": 200,
+      "lines": 8,
+      "json": {
+        "tasks": [],
+        "count": 0,
+        "offset": 0,
+        "filters_applied": {
+          "include_expired": false
+        }
+      }
+    },
+    "bridge_em_queue": {
+      "recorded_at": "2026-08-27T12:58:22.629Z",
+      "cmd": "curl -s https://bridge.meshrelay.xyz/api/em/queue-stats | jq .",
+      "url": "https://bridge.meshrelay.xyz/api/em/queue-stats",
+      "status": 200,
+      "lines": 8,
+      "json": {
+        "pending": 0,
+        "delivered_today": 0,
+        "dead_letter": 0,
+        "pending_deliveries": 0,
+        "delivery_dead_letter": 0,
+        "last_event_received": "2026-08-24 08:58:10"
+      }
+    },
+    "milly_stats": {
+      "recorded_at": "2026-08-27T12:58:22.770Z",
+      "cmd": "curl -s https://api.402milly.xyz/stats | jq .",
+      "url": "https://api.402milly.xyz/stats",
+      "status": 200,
+      "lines": 8,
+      "json": {
+        "totalPixelsSold": 0,
+        "totalPixelsAvailable": 402002500,
+        "totalRevenue": 0,
+        "percentageSold": 0,
+        "totalPurchases": 0,
+        "recentPurchases": []
+      }
+    },
+    "describe_index_md": {
+      "recorded_at": "2026-08-27T12:58:23.930Z",
+      "cmd": "curl -s https://describe.net/index.md",
+      "url": "https://describe.net/index.md",
+      "status": 200,
+      "lines": 52
+    },
+    "describe_llms": {
+      "recorded_at": "2026-08-27T12:58:24.168Z",
+      "cmd": "curl -s https://describe.net/llms.txt",
+      "url": "https://describe.net/llms.txt",
+      "status": 200,
+      "lines": 87
+    },
+    "kk_mcp_kk_get_kpis": {
+      "recorded_at": "2026-08-27T12:58:24.325Z",
+      "cmd": "curl -s -X POST https://karmakadabra.ultravioletadao.xyz/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"kk_get_kpis\",\"arguments\":{}}}' | jq -r .result.content[0].text | jq .",
+      "url": "https://karmakadabra.ultravioletadao.xyz/mcp",
+      "status": 200,
+      "lines": 9,
+      "json": {
+        "volume_usd": 20.98,
+        "trades": 1046,
+        "donated_usd": 9.3335,
+        "agents_total": 34,
+        "agents_active": 27,
+        "chain": "multi-chain-9",
+        "currency": "stablecoins"
+      }
+    },
+    "kk_mcp_kk_recent_trades": {
+      "recorded_at": "2026-08-27T12:58:24.486Z",
+      "cmd": "curl -s -X POST https://karmakadabra.ultravioletadao.xyz/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"kk_recent_trades\",\"arguments\":{}}}' | jq -r .result.content[0].text | jq .",
+      "url": "https://karmakadabra.ultravioletadao.xyz/mcp",
+      "status": 200,
+      "lines": 602
+    },
+    "kk_mcp_kk_market_snapshot": {
+      "recorded_at": "2026-08-27T12:58:24.686Z",
+      "cmd": "curl -s -X POST https://karmakadabra.ultravioletadao.xyz/mcp -H 'Content-Type: application/json' -H 'Accept: application/json, text/event-stream' -d '{\"jsonrpc\":\"2.0\",\"id\":1,\"method\":\"tools/call\",\"params\":{\"name\":\"kk_market_snapshot\",\"arguments\":{}}}' | jq -r .result.content[0].text | jq .",
+      "url": "https://karmakadabra.ultravioletadao.xyz/mcp",
+      "status": 200,
+      "lines": 288
+    },
+    "kk_fuel": {
+      "recorded_at": "2026-08-27T12:58:25.890Z",
+      "cmd": "curl -s https://karmakadabra.ultravioletadao.xyz/live/fuel.json | jq .",
+      "url": "https://karmakadabra.ultravioletadao.xyz/live/fuel.json",
+      "status": 200,
+      "lines": 22,
+      "json": {
+        "v": 3,
+        "medido_en": "2026-08-27T12:58:10Z",
+        "observado_hasta": "2026-08-27T12:25:35Z",
+        "banner": "on",
+        "estado": "detenido",
+        "motivo": "killswitch_s3",
+        "halted": true,
+        "credito_usd": 0,
+        "quema_usd_h": null,
+        "modelo": "deepseek/deepseek-v4-flash",
+        "modelo_gratis": false,
+        "quema_estimada": true,
+        "ventana_min": null,
+        "horas": null,
+        "agentes_vivos": 0,
+        "agentes_mudos": 27,
+        "agentes_totales": 27,
+        "heartbeats_ok_1h": 1,
+        "crashes_1h": 0,
+        "fuente": "openrouter:/credits"
+      }
+    },
+    "em_headers": {
+      "recorded_at": "2026-08-27T12:58:26.011Z",
+      "cmd": "curl -sI https://execution.market/",
+      "url": "https://execution.market/",
+      "status": 200,
+      "lines": 7,
+      "headers": {
+        "content-type": "text/html",
+        "x-frame-options": "DENY",
+        "server": "AmazonS3",
+        "cache-control": "public, max-age=60",
+        "x-content-type-options": "nosniff",
+        "strict-transport-security": "max-age=63072000; includeSubDomains; preload"
+      }
+    },
+    "describe_headers": {
+      "recorded_at": "2026-08-27T12:58:26.293Z",
+      "cmd": "curl -sI https://describe.net/",
+      "url": "https://describe.net/",
+      "status": 200,
+      "lines": 8,
+      "headers": {
+        "content-type": "text/html",
+        "x-frame-options": "DENY",
+        "access-control-allow-origin": "*",
+        "server": "AmazonS3",
+        "cache-control": "public, max-age=60",
+        "x-content-type-options": "nosniff",
+        "strict-transport-security": "max-age=31536000"
+      }
+    },
+    "meshrelay_skill_head": {
+      "recorded_at": "2026-08-27T12:58:26.426Z",
+      "cmd": "curl -s https://meshrelay.xyz/skill.md | head -n 12",
+      "url": "https://meshrelay.xyz/skill.md",
+      "status": 200,
+      "lines": 12
+    }
+  }
+}
