@@ -106,8 +106,8 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <ThirdwebProvider>
           <WalletProvider>
-          <WebMCPProvider />
           <Router future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <WebMCPProvider />
             <div className="min-h-screen bg-background text-text-primary flex flex-col">
               <Header />
               <AppRoutes />
