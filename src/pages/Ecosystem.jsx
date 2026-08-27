@@ -142,6 +142,9 @@ export default function Ecosystem() {
 
       {i18nReady ? (
         <>
+          {/* h1 de la página (sr-only): el escritorio es visual, pero lectores de
+              pantalla y crawlers necesitan el heading principal (a11y/SEO). */}
+          <h1 className="sr-only">{t('ecosystem.seo.title', 'Ecosistema — mapa vivo de los productos de UltraVioleta DAO')}</h1>
           <MotionConfig reducedMotion="user">
             <DeskProvider>
               <Panel onHelp={() => setHelp(true)} />
