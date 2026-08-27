@@ -53,7 +53,7 @@ const SEO = ({
     sameAs: [
       'https://twitter.com/ultravioletadao',
       'https://github.com/UltravioletaDAO',
-      'https://discord.gg/ultravioleta',
+      'https://discord.gg/ultravioletadao',
       'https://snapshot.org/#/ultravioletadao.eth'
     ],
     foundingDate: '2022',

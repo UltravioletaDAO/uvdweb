@@ -70,7 +70,7 @@ const SEOEnhanced = ({
     sameAs: [
       'https://twitter.com/ultravioletadao',
       'https://github.com/UltravioletaDAO',
-      'https://discord.gg/ultravioleta',
+      'https://discord.gg/ultravioletadao',
       'https://snapshot.org/#/ultravioletadao.eth',
       'https://linktr.ee/UltravioletaDAO',
       'https://www.linkedin.com/company/ultravioleta-dao',

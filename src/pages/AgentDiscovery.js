@@ -169,7 +169,7 @@ const AgentDiscovery = () => {
     "sameAs": [
       "https://x.com/UltravioletaDAO",
       "https://github.com/ultravioletadao",
-      "https://discord.gg/ultravioleta"
+      "https://discord.gg/ultravioletadao"
     ],
     "additionalType": "AutonomousOrganization",
     "specialty": [
