@@ -12,6 +12,10 @@ import HeroImage from '../components/HeroImage';
 // Lazy load heavy components
 const ApplicationForm = lazy(() => import('./ApplicationForm'));
 const DaoStoryteller = lazy(() => import('../components/DaoStoryteller'));
+// Ecosystem teaser (glass terminal running real commands) and the faint
+// constellation behind the H1. Both are lazy: 0 KB in the initial chunk.
+const HomeTeaser = lazy(() => import('../components/landing/HomeTeaser'));
+const HeroConstellation = lazy(() => import('../components/landing/HeroConstellation'));
 
 const Home = () => {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -60,22 +64,33 @@ const Home = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/70 to-background" />
           <div className="absolute inset-0 bg-black/25" />
           <div className="absolute inset-0 bg-ultraviolet-darker/15 mix-blend-overlay" />
+          {/* Faint measured ecosystem map behind the H1 (>=1024px, mounted in idle) */}
+          <Suspense fallback={null}>
+            <HeroConstellation />
+          </Suspense>
         </div>
 
         {/* Fade gradient to metrics section */}
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent pointer-events-none" />
 
         <div className="container mx-auto px-4 py-20 relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-6
-              [text-shadow:_2px_2px_12px_rgba(106,0,255,0.5),_0_0_4px_rgba(106,0,255,0.8)]
-              relative z-10">
-              {t('home.title')}
-            </h1>
-            <p className="text-xl md:text-2xl text-text-primary mb-12 leading-relaxed drop-shadow-md">
-              {t('home.subtitle')}
-            </p>
-
+          <div className="grid grid-cols-1 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] gap-10 items-center max-w-6xl mx-auto">
+            <div className="text-center lg:text-left">
+              <h1 className="text-5xl md:text-7xl font-black text-white mb-6
+                [text-shadow:_2px_2px_12px_rgba(106,0,255,0.5),_0_0_4px_rgba(106,0,255,0.8)]
+                relative z-10">
+                {t('home.title')}
+              </h1>
+              <p className="text-xl md:text-2xl text-text-primary mb-12 leading-relaxed drop-shadow-md">
+                {t('home.subtitle')}
+              </p>
+            </div>
+            {/* Glass terminal running real commands; height reserved (232px) before it mounts.
+                minmax(0,…) keeps both tracks strictly fractional: the terminal's nowrap output
+                must never widen its column and re-wrap the H1 (CLS). */}
+            <Suspense fallback={<div className="min-h-[232px]" />}>
+              <HomeTeaser />
+            </Suspense>
           </div>
         </div>
       </section>
