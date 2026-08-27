@@ -1,0 +1,186 @@
+{
+  "wheel": {
+    "seoTitle": "Watch to Earn - Ruleta de Premios UVD",
+    "seoDescription": "Canjea tus puntos de Twitch para girar la ruleta de premios y ganar tokens $UVD. Mira, participa y cobra directamente en nuestra moneda de la comunidad en Avalanche.",
+    "title": "Watch to Earn",
+    "description": "Canjea tus puntos de Twitch en vivo para girar y gana recompensas en $UVD. Mientras más participas y ves el stream, más oportunidades tienes de reclamar y ser pagado directamente en nuestra moneda de la comunidad.",
+    "highlights": {
+      "redeem": "Canje con puntos de Twitch",
+      "paid": "Pago en UVD on-chain",
+      "watch": "Recompensas por ver el stream",
+      "limit": "{{max}} giro por stream · {{cost}} puntos de canal"
+    },
+    "customize_button": {
+      "show": "Personalizar Ruleta",
+      "hide": "Ocultar opciones"
+    },
+    "token": {
+      "title": "Token",
+      "placeholder": "Dirección del contrato"
+    },
+    "segments": {
+      "add": {
+        "title": "Agregar nuevo valor",
+        "value_placeholder": "Valor",
+        "probability_placeholder": "Probabilidad %",
+        "button": "Agregar",
+        "invalid_value": "El valor debe ser un número mayor que 0"
+      },
+      "current": {
+        "title": "Valores actuales",
+        "probability_suffix": "%",
+        "min_segments_error": "La ruleta necesita al menos 2 valores"
+      },
+      "probability_validation_error": "Los porcentajes deben sumar 100%. Por favor, revisa los valores.",
+      "sum_label": "Suma",
+      "sum_hint": "Los porcentajes suman {{sum}}% — deben sumar 100%"
+    },
+    "buttons": {
+      "equalize": "Igualar probabilidades",
+      "reset": "Restablecer valores por defecto"
+    },
+    "participants": {
+      "panel": {
+        "show": "Agregar participante",
+        "hide": "Ocultar participantes",
+        "clear": "Limpiar"
+      },
+      "add": {
+        "title": "Nuevo participante",
+        "wallet_placeholder": "Wallet (obligatoria)",
+        "username_placeholder": "Usuario (opcional)",
+        "button": "Agregar",
+        "wallet_required": "La wallet es obligatoria",
+        "duplicate": "Esa wallet ya está en la lista"
+      },
+      "list": {
+        "title": "Participantes y Resultados",
+        "headers": {
+          "user": "Usuario",
+          "wallet": "Wallet",
+          "result": "Resultado"
+        },
+        "anonymous": "Anónimo",
+        "current_turn": "Turno actual",
+        "pending": "Pendiente",
+        "total": "Total",
+        "remove": "Eliminar participante",
+        "completed": "Resultados",
+        "paid": "Pagado"
+      }
+    },
+    "results": {
+      "title": "Resultado",
+      "current_participant": "Participante actual",
+      "no_more_participants": "No hay más participantes. Agrega más para continuar",
+      "export": {
+        "button": "Exportar resultados",
+        "no_results": "No hay resultados para exportar",
+        "success": "{{count}} filas exportadas",
+        "include_paid": "Incluir ya pagados",
+        "no_pending": "No hay premios pendientes de pago; activa \"Incluir ya pagados\""
+      },
+      "copy": {
+        "button": "Copiar resultados",
+        "error": "Error al copiar los resultados",
+        "success": "Resultados copiados"
+      },
+      "send": {
+        "button": "Enviar premios"
+      },
+      "test_spin": "Giro de prueba",
+      "share": {
+        "button": "Compartir",
+        "text": "{{user}} ganó {{amount}} $UVD en la ruleta de Ultravioleta DAO — {{url}}",
+        "copied": "Texto copiado para compartir"
+      }
+    },
+    "spin_button": {
+      "spinning": "Girando...",
+      "disabled": "No disponible",
+      "loading": "Cargando participantes...",
+      "ready": "Click para girar",
+      "processing": "Procesando resultado..."
+    },
+    "twitch": {
+      "load": "Cargar de Twitch",
+      "loading": "Cargando recompensas...",
+      "load_error": "Error al cargar las recompensas de Twitch",
+      "auth_error": "Error de autenticación. Por favor, conéctate de nuevo",
+      "complete_error": "Error al completar la recompensa",
+      "no_rewards": "No hay recompensas pendientes por cargar",
+      "invalid_wallet": "Wallet inválida detectada",
+      "auth_required": "Necesitas autenticarte con Twitch",
+      "auth_button": "Conectar con Twitch",
+      "redirecting": "Redireccionando...",
+      "create_reward_error": "Error al crear la recompensa. Asegúrate de ser afiliado o partner de Twitch",
+      "client_id_mismatch": "La recompensa fue creada con otra aplicación. Por favor, crea una nueva recompensa desde esta aplicación",
+      "redemption_error": "Error al obtener las redenciones. Por favor, intenta de nuevo",
+      "auto_update": "Actualización automática",
+      "verify_wallet_info": "Verificación de wallet habilitada (configurar REACT_APP_WHEEL_VERIFY_WALLET=false para desactivar)",
+      "access_denied": "Cancelaste la autorización en Twitch",
+      "connected_as": "Conectado como {{login}}",
+      "expires_in": "sesión válida ~{{hours}} h",
+      "verify_network_error": "No se pudo verificar {{count}} wallet(s) con la API; siguen pendientes en Twitch",
+      "verify_auth_error": "La API rechazó el token de Twitch del streamer; no se cancelaron canjes",
+      "callback_title": "Conectando con Twitch...",
+      "callback_description": "Conectando tu cuenta de Twitch con la ruleta de Ultravioleta DAO"
+    },
+    "wallet": {
+      "send_rewards": "Airdrop de Premios",
+      "connect_required": "Conecta tu wallet para enviar premios",
+      "connected": "Wallet conectada",
+      "connected_success": "¡Wallet conectada exitosamente!",
+      "balance": "Balance",
+      "total_rewards": "Total de premios",
+      "connect_button": "Conectar Wallet",
+      "approve_button": "Aprobar",
+      "send_button": "Enviar Premios",
+      "view_transaction": "Ver Transacción",
+      "approving": "Aprobando",
+      "sending": "Enviando...",
+      "approving_transaction": "Aprobando transacción...",
+      "sending_transaction": "Procesando transacción...",
+      "no_provider": "No se detectó wallet EVM. Por favor instala una wallet compatible.",
+      "user_rejected": "Solicitud rechazada por el usuario",
+      "connection_error": "Error al conectar con la wallet",
+      "network_add_error": "Error al agregar la red Avalanche",
+      "network_switch_error": "Error al cambiar a la red Avalanche",
+      "invalid_state": "Estado inválido. Verifica la conexión y el token",
+      "already_approved": "Tokens ya aprobados",
+      "approval_success": "¡Tokens aprobados con éxito!",
+      "approval_error": "Error al aprobar tokens",
+      "insufficient_allowance": "Permiso de token insuficiente. Por favor aprueba primero",
+      "send_success": "¡Premios enviados con éxito!",
+      "send_error": "Error al enviar premios",
+      "info": "Los premios se enviarán directamente desde tu wallet usando la red Avalanche C-Chain.",
+      "pending_rewards": "Pendiente de pago",
+      "paid_rewards": "Ya pagado",
+      "confirm_send": "Enviar {{total}} {{symbol}} a {{count}} destinatarios",
+      "confirm_button": "Confirmar envío",
+      "nothing_pending": "Todos los premios ya fueron pagados",
+      "insufficient_balance": "Balance insuficiente: necesitas {{total}} {{symbol}}",
+      "wrong_network": "Tu wallet está en otra red. La ruleta paga en Avalanche C-Chain.",
+      "switch_network": "Cambiar a Avalanche",
+      "disconnect": "Desconectar wallet"
+    },
+    "aria": {
+      "wheel": "Ruleta de premios"
+    },
+    "echoes": {
+      "badge": "x2 por Echoes",
+      "badge_with_label": "x2 por Echoes {{label}}"
+    },
+    "session": {
+      "restored": "Sesión restaurada: {{count}} resultados guardados ({{date}})",
+      "new": "Nueva sesión",
+      "confirm": "Se borrarán {{count}} resultados de esta sesión (los ya pagados quedan en la blockchain). ¿Continuar?",
+      "cleared": "Sesión reiniciada"
+    },
+    "sound": {
+      "mute": "Silenciar",
+      "unmute": "Activar sonido",
+      "unavailable": "Sonido no disponible"
+    }
+  }
+}

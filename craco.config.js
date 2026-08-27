@@ -78,17 +78,53 @@ module.exports = {
                 priority: 36,
                 enforce: true,
               },
-              // UI libraries
+              // UI libraries usadas por los chunks iniciales. chunks:'initial'
+              // evita que módulos de framer-motion que solo usan rutas lazy
+              // (p.ej. /ecosystem) se cuelen en ui-vendor (ola 3 §9.2).
               ui: {
                 test: /[\\/]node_modules[\\/](framer-motion|@heroicons|lucide-react|@radix-ui|tailwind)[\\/]/,
                 name: 'ui-vendor',
                 priority: 25,
+                chunks: 'initial',
+              },
+              // Módulos de esas mismas libs que SOLO usan rutas lazy: chunk
+              // async compartido, en vez de caer al vendor inicial (chunks:'all').
+              uiAsync: {
+                test: /[\\/]node_modules[\\/](framer-motion|@heroicons|lucide-react|@radix-ui|tailwind)[\\/]/,
+                name: 'ui-async',
+                priority: 26,
+                chunks: 'async',
+                reuseExistingChunk: true,
               },
               // Other vendors
               vendor: {
                 test: /[\\/]node_modules[\\/]/,
                 name: 'vendor',
                 priority: 10,
+              },
+              // Data pesada de /ecosystem (cuerpos de replays + snippets), que
+              // ReplayTerm comparte vía require.context con los import() de
+              // endpoints.js: chunk async propio, separado del código, para que
+              // "/" (HomeTeaser → services/ecosystem) no baje los payloads.
+              // El índice compacto (replays/index.json) queda con el código.
+              ecosystemData: {
+                test: /[\\/]src[\\/]data[\\/]ecosystem[\\/](?!replays[\\/]index\.json)/,
+                name: 'ecosystem-data',
+                chunks: 'async',
+                priority: 7,
+                minChunks: 2,
+                reuseExistingChunk: true,
+              },
+              // Compartido de /ecosystem (replays JSON + ventanas/servicios):
+              // async con prioridad sobre common para que "/" no lo descargue
+              // vía el chunk common inicial (ola 3 §9.3).
+              ecosystemShared: {
+                test: /[\\/]src[\\/](data|components|services)[\\/]ecosystem[\\/]/,
+                name: 'ecosystem-shared',
+                chunks: 'async',
+                priority: 6,
+                minChunks: 2,
+                reuseExistingChunk: true,
               },
               // Common chunks
               common: {
