@@ -173,11 +173,12 @@ export default function IrcTerm({ windowId, params = {} }) {
           <SourceChip status={paused ? 'stale' : status} fetchedAt={fetchedAt} label={chName} />
         </div>
 
+        {/* h-72 fija (no max-h): el log no crece cuando llegan los mensajes del poll → 0 CLS. */}
         <pre
           role="log"
           aria-live="off"
           aria-label={chName}
-          className="m-0 max-h-72 overflow-auto whitespace-pre-wrap font-mono text-xs leading-relaxed text-text-primary"
+          className="m-0 h-72 overflow-auto whitespace-pre-wrap font-mono text-xs leading-relaxed text-text-primary"
           style={{ overflowWrap: 'anywhere' }}
           data-irc-log=""
         >

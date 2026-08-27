@@ -1,14 +1,65 @@
 // Escritorio para pantallas pequeñas. <768: chips de escritorios con scroll horizontal y una
 // sección <details> por ventana (graph y pulse abiertas). 768–1023: grid de 2 columnas, sin
 // arrastre ni anillo. Nunca iframe (los kinds `site` se omiten; el observatorio muestra póster).
-import React, { useState } from 'react';
+// Cada ventana se monta recién cuando su sección se acerca al viewport (IntersectionObserver):
+// bajo el fold no hay fetch ni chunk lazy, y la caja reservada (min-height por kind) evita el
+// salto cuando el contenido llega (fix 4 de VERIFICATION_OLA3 §9).
+import React, { useEffect, useRef, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DESKTOPS } from '../desktops';
-import { WindowHost } from '../windows/registry';
+import { metaFor, WindowHost } from '../windows/registry';
 import { useDeskActions, useDeskState } from './useDesk';
 
 const OPEN_BY_DEFAULT = new Set(['graph', 'pulse']);
 const SKIP_ON_MOBILE = new Set(['site']);
+
+/** Altura reservada mientras la ventana no montó. El grafo en móvil mide ~3 pantallas (braille +
+ * 93 aristas): 120svh es una cota honesta que además deja a pulse BAJO el fold desde el primer
+ * layout (su IntersectionObserver no dispara → sin fetch hasta scrollear). Para el resto la
+ * meta del kind es una buena cota inferior. */
+function reservedMinHeight(kind) {
+  if (kind === 'graph') return '120svh';
+  const meta = metaFor(kind);
+  const h = meta && meta.defaultSize ? meta.defaultSize.h : 360;
+  return `${Math.min(h, 440)}px`;
+}
+
+/** Monta children cuando el contenedor se acerca al viewport (una sola vez). Sin
+ * IntersectionObserver (navegador viejo / test raro) monta de inmediato. */
+function MountOnVisible({ kind, children }) {
+  const ref = useRef(null);
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    if (show) return undefined;
+    const el = ref.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
+      setShow(true);
+      return undefined;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShow(true);
+          io.disconnect();
+        }
+      },
+      { rootMargin: '25% 0px' }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [show]);
+  return (
+    <div
+      ref={ref}
+      className="uvd-mobile__mount"
+      data-mount-kind={kind}
+      data-mounted={show ? 'true' : 'false'}
+      style={{ minHeight: reservedMinHeight(kind) }}
+    >
+      {show ? children : null}
+    </div>
+  );
+}
 
 function hint(params) {
   if (!params) return '';
@@ -65,7 +116,9 @@ export default function MobileDesk() {
             .filter((w) => !w.minimized)
             .map((w) => (
               <div key={w.id} className="uvd-mobile__cell" data-mobile-window={w.kind}>
-                <WindowHost win={w} focused={state.focusId === w.id} />
+                <MountOnVisible kind={w.kind}>
+                  <WindowHost win={w} focused={state.focusId === w.id} />
+                </MountOnVisible>
               </div>
             ))}
         </div>
@@ -91,8 +144,14 @@ export default function MobileDesk() {
               <span aria-hidden="true">▸</span> {t(`ecosystem.windows.${w.kind}.title`, w.kind)}{hint(w.params)}
               <span className="sr-only"> — {t('ecosystem.mobile.open_section', 'Abrir sección')}</span>
             </summary>
-            {/* Solo se monta (y descarga su chunk) cuando la sección está abierta. */}
-            <div className="uvd-mobile__section">{isOpen ? <WindowHost win={w} focused={false} /> : null}</div>
+            {/* Solo se monta (y descarga su chunk) con la sección abierta Y cerca del viewport. */}
+            <div className="uvd-mobile__section">
+              {isOpen ? (
+                <MountOnVisible kind={w.kind}>
+                  <WindowHost win={w} focused={false} />
+                </MountOnVisible>
+              ) : null}
+            </div>
           </details>
         );
       })}

@@ -4,6 +4,16 @@
  * 100svh (nunca 100vh); overflow-wrap:anywhere en <pre>; foco visible 2 px #a78bfa.
  * Fuente: 'JetBrains Mono' se carga solo en esta ruta (Helmet en Ecosystem.jsx). */
 
+/* Fallback con métricas ajustadas a JetBrains Mono (advance 0.6em vs 0.55em de Consolas):
+ * si la web font no llega al primer paint (font-display: optional en Ecosystem.jsx), el texto
+ * ya ocupa el mismo ancho y el dock/las terminales no saltan (fix 4 de VERIFICATION_OLA3 §9). */
+@font-face {
+  font-family: 'JetBrains Mono Fallback';
+  src: local('Consolas'), local('Cascadia Code'), local('Courier New');
+  size-adjust: 109.09%;
+  line-gap-override: 0%;
+}
+
 :root {
   --uvd-bg: #0a0a1b;
   --uvd-uv: #6a00ff;
@@ -12,7 +22,7 @@
   --uvd-text: #e0e0e0;
   --uvd-text-dim: #a0a0a0;
   --uvd-focus: #a78bfa;
-  --uvd-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+  --uvd-mono: 'JetBrains Mono', 'JetBrains Mono Fallback', ui-monospace, 'Cascadia Code', Consolas, monospace;
 }
 
 .uvd-eco {
@@ -174,6 +184,8 @@
   backdrop-filter: none;
 }
 .uvd-term--static { position: relative; width: 100%; height: auto; min-height: 0; }
+/* Ventana flotante: tamaño fijo (w/h del reducer) → su layout interno no puede afectar afuera. */
+.uvd-term:not(.uvd-term--static) { contain: layout; }
 .uvd-term.is-focused { border-color: rgba(167, 139, 250, 0.7); box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.06), 0 0 40px rgba(106, 0, 255, 0.32); }
 /* Mientras se arrastra: sin blur (el backdrop se re-rasterizaría cada frame), conserva la
  * transparencia; el vidrio vuelve al soltar. will-change solo durante el arrastre. */
@@ -265,6 +277,15 @@
   tab-size: 2;
 }
 .uvd-pre:focus-visible { outline: 2px solid var(--uvd-focus); outline-offset: 2px; }
+/* Cada línea es un bloque (sin nodos '\n'): así una línea puede reservar su caja exacta.
+ * min-height mantiene la fila de las líneas vacías (antes la daba el '\n'). */
+.uvd-line { display: block; min-height: 1.5em; }
+/* Reservada por el typewriter: ocupa su espacio desde el primer render, se revela sin mover nada. */
+.uvd-line--pending { visibility: hidden; }
+/* Prompt en curso: el texto completo (invisible) fija ancho/alto; el tecleado se superpone. */
+.uvd-line--typing { position: relative; }
+.uvd-line--typing .uvd-line__sizer { visibility: hidden; }
+.uvd-line--typing .uvd-line__type { position: absolute; inset: 0; }
 .uvd-ps1 { color: #a78bfa; font-weight: 600; }
 .uvd-cmd { color: #f5f3ff; }
 .uvd-line--out { color: #d4d4d8; }
@@ -398,6 +419,9 @@
 .uvd-mobile__details[open] > .uvd-mobile__summary > span[aria-hidden] { transform: rotate(90deg); display: inline-block; }
 .uvd-mobile__summary:focus-visible { outline: 2px solid var(--uvd-focus); outline-offset: -2px; }
 .uvd-mobile__section { padding: 0 8px 8px; }
+/* Reserva de altura por ventana (min-height inline por kind): la sección no salta cuando el
+ * chunk lazy y los datos llegan; el montaje espera al IntersectionObserver (sin fetch bajo el fold). */
+.uvd-mobile__mount { position: relative; }
 .uvd-mobile__section .uvd-term--static { border: 0; box-shadow: none; }
 .uvd-mobile__grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .uvd-mobile__cell { min-width: 0; }

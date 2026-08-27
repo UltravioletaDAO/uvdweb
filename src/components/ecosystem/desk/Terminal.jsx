@@ -1,7 +1,11 @@
-// Terminal (contrato C10): <pre> con spans. Líneas { id, kind:'prompt'|'out'|'err'|'note'|'segments',
+// Terminal (contrato C10): <pre> con líneas en bloque. Líneas { id, kind:'prompt'|'out'|'err'|'note'|'segments',
 // text | segments:[{text,fg,bg,bold}], at }. Typewriter motion-safe (12 ms/char) SOLO en líneas
 // prompt: la salida aparece de golpe cuando el comando terminó de teclearse (como en una shell).
-// Nunca HTML: todo es texto plano; los códigos mIRC ya vienen convertidos a segmentos.
+// CLS 0: TODAS las líneas se maquetan desde el primer render — el prompt en curso reserva su caja
+// con el texto completo invisible (overlay tecleado encima, patrón de HomeTeaser) y las líneas
+// posteriores se pintan con visibility:hidden; revelarlas no mueve nada (fix 4 de
+// VERIFICATION_OLA3 §9). `minLines` reserva altura mínima (filas × line-height 1.5) para salidas
+// que llegan por red. Nunca HTML: todo es texto plano; los códigos mIRC ya vienen como segmentos.
 import React, { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useReducedMotion } from 'framer-motion';
 
@@ -22,27 +26,55 @@ function Segments({ segments }) {
   });
 }
 
-function Line({ line, ps1, typingRef }) {
+function Caret() {
+  return (
+    <span className="uvd-cursor motion-safe:animate-pulse" aria-hidden="true">▌</span>
+  );
+}
+
+// hidden = reservada (aún no revelada por el typewriter): ocupa su espacio exacto sin pintarse.
+function Line({ line, ps1, typingRef, hidden, caret }) {
   const kind = line.kind || 'out';
   const text = typeof line.text === 'string' ? line.text : '';
+  const hiddenCls = hidden ? ' uvd-line--pending' : '';
   if (kind === 'prompt') {
+    if (typingRef) {
+      // El texto completo (invisible) reserva la caja; el tecleado se superpone con la MISMA
+      // estructura y clases => mismo wrapping, altura fija durante todo el tecleo.
+      return (
+        <span className="uvd-line uvd-line--prompt uvd-line--typing" data-kind="prompt">
+          <span className="uvd-line__sizer" aria-hidden="true">
+            <span className="uvd-ps1">{ps1} </span>
+            <span className="uvd-cmd">{text}</span>
+          </span>
+          <span className="uvd-line__type">
+            <span className="uvd-ps1" aria-hidden="true">{ps1} </span>
+            <span className="uvd-cmd" ref={typingRef} data-typing="" />
+            {caret}
+          </span>
+        </span>
+      );
+    }
     return (
-      <span className="uvd-line uvd-line--prompt" data-kind="prompt">
+      <span className={`uvd-line uvd-line--prompt${hiddenCls}`} data-kind="prompt">
         <span className="uvd-ps1" aria-hidden="true">{ps1} </span>
-        {typingRef ? <span className="uvd-cmd" ref={typingRef} data-typing="" /> : <span className="uvd-cmd">{text}</span>}
+        <span className="uvd-cmd">{text}</span>
+        {caret}
       </span>
     );
   }
   if (kind === 'segments') {
     return (
-      <span className="uvd-line uvd-line--segments" data-kind="segments">
+      <span className={`uvd-line uvd-line--segments${hiddenCls}`} data-kind="segments">
         <Segments segments={Array.isArray(line.segments) ? line.segments : []} />
+        {caret}
       </span>
     );
   }
   return (
-    <span className={`uvd-line uvd-line--${kind}`} data-kind={kind}>
+    <span className={`uvd-line uvd-line--${kind}${hiddenCls}`} data-kind={kind}>
       {text}
+      {caret}
     </span>
   );
 }
@@ -53,6 +85,7 @@ export default function Terminal({
   cursor = false,
   ariaLive = 'off',
   maxLines = 200,
+  minLines = 0,
   ps1 = DEFAULT_PS1,
   className = '',
   children,
@@ -67,7 +100,7 @@ export default function Terminal({
   // otro al terminar cada línea.
   const doneRef = useRef(new Set());
   const cmdRef = useRef(null);
-  const [typing, setTyping] = useState(null);
+  const [, setTyping] = useState(null);
 
   useEffect(() => {
     if (!animate) return undefined;
@@ -92,13 +125,8 @@ export default function Terminal({
     return () => clearInterval(timer);
   }, [shown, animate]);
 
-  // Con typewriter, las líneas posteriores al prompt en curso esperan.
-  const visible = useMemo(() => {
-    if (!animate) return shown;
-    const typingIdx = typing ? shown.findIndex((l) => l.id === typing.id) : -1;
-    const cut = typingIdx >= 0 ? typingIdx : shown.findIndex((l) => l.kind === 'prompt' && !doneRef.current.has(l.id));
-    return cut < 0 ? shown : shown.slice(0, cut + 1);
-  }, [shown, animate, typing]);
+  // Índice del prompt en curso (las líneas posteriores quedan reservadas, no ocultas del layout).
+  const typingIdx = animate ? shown.findIndex((l) => l.kind === 'prompt' && !doneRef.current.has(l.id)) : -1;
 
   // Auto-scroll solo cuando llegan líneas nuevas tras el primer render (una sesión grabada
   // debe abrirse mostrando el comando, no el final de la salida).
@@ -108,43 +136,44 @@ export default function Terminal({
   useLayoutEffect(() => {
     const el = preRef.current;
     const prevLen = prevLenRef.current;
-    prevLenRef.current = visible.length;
-    if (!el || prevLen < 0 || visible.length <= prevLen) return;
+    prevLenRef.current = shown.length;
+    if (!el || prevLen < 0 || shown.length <= prevLen) return;
     if (stickRef.current) el.scrollTop = el.scrollHeight;
-  }, [visible]);
+  }, [shown]);
   const onScroll = () => {
     const el = preRef.current;
     if (!el) return;
     stickRef.current = el.scrollHeight - el.scrollTop - el.clientHeight < 24;
   };
 
+  // El cursor vive en la línea que "escribe": el prompt en curso, o la última línea revelada.
+  const caretIdx = cursor ? (typingIdx >= 0 ? typingIdx : shown.length - 1) : -1;
+
   return (
     <pre
       ref={preRef}
       onScroll={onScroll}
       className={`uvd-pre ${className}`}
+      style={minLines > 0 ? { minHeight: `${minLines * 1.5}em` } : undefined}
       data-terminal=""
       aria-live={ariaLive}
       aria-atomic={ariaLive === 'polite' ? 'false' : undefined}
       tabIndex={0}
     >
-      {visible.map((line, i) => {
-        const isTyping = typing && typing.id === line.id;
-        const last = i === visible.length - 1;
-        return (
-          <React.Fragment key={line.id || i}>
-            <Line line={line} ps1={ps1} typingRef={isTyping ? cmdRef : undefined} />
-            {cursor && last ? (
-              <span className="uvd-cursor motion-safe:animate-pulse" aria-hidden="true">▌</span>
-            ) : null}
-            {'\n'}
-          </React.Fragment>
-        );
-      })}
-      {cursor && visible.length === 0 ? (
+      {shown.map((line, i) => (
+        <Line
+          key={line.id || i}
+          line={line}
+          ps1={ps1}
+          typingRef={i === typingIdx ? cmdRef : undefined}
+          hidden={typingIdx >= 0 && i > typingIdx}
+          caret={i === caretIdx ? <Caret /> : null}
+        />
+      ))}
+      {cursor && shown.length === 0 ? (
         <span className="uvd-line uvd-line--prompt">
           <span className="uvd-ps1" aria-hidden="true">{ps1} </span>
-          <span className="uvd-cursor motion-safe:animate-pulse" aria-hidden="true">▌</span>
+          <Caret />
         </span>
       ) : null}
       {children}

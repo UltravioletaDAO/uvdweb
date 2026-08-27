@@ -75,8 +75,11 @@ function makeWindow({ id, kind, params, desktop, size, index, pos }) {
   const w = size && size.w ? size.w : DEFAULT_SIZE.w;
   const h = size && size.h ? size.h : DEFAULT_SIZE.h;
   const auto = initialPos(index, w, h);
-  const x = pos && Number.isFinite(pos.x) ? pos.x : auto.x;
-  const y = pos && Number.isFinite(pos.y) ? pos.y : auto.y;
+  // Un pos declarado en DESKTOPS también se recorta al área (en 1024×768 un x pensado para 1280
+  // dejaría la ventana cortada por el overflow del desk).
+  const area = deskArea();
+  const x = pos && Number.isFinite(pos.x) ? Math.max(0, Math.min(pos.x, area.w - w - 8)) : auto.x;
+  const y = pos && Number.isFinite(pos.y) ? Math.max(0, Math.min(pos.y, Math.max(24, area.h - h - 8))) : auto.y;
   return { id, kind, params: params || null, desktop, x, y, w, h, z: 0, minimized: false, maximized: false };
 }
 

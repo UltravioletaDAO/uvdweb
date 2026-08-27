@@ -183,8 +183,10 @@ export default function GraphTerm({ windowId, params = {} }) {
         className="min-w-0 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-purple-300"
         data-graph-term=""
       >
-        <Terminal lines={headerLines} typewriter cursor={false} ariaLive="off" maxLines={20} />
-        {url ? <p className="mt-1 font-mono text-[10px] text-text-secondary"># {url}</p> : null}
+        {/* minLines reserva las filas del `source` + la nota antes de que llegue el JSON (CLS 0);
+            la línea del url siempre ocupa su fila por lo mismo. */}
+        <Terminal lines={headerLines} typewriter cursor={false} ariaLive="off" maxLines={20} minLines={11} />
+        <p className="mt-1 min-h-[15px] font-mono text-[10px] text-text-secondary">{url ? `# ${url}` : ' '}</p>
 
         <div className="mt-2 flex flex-wrap items-center gap-2 font-mono text-[11px] text-text-secondary">
           <span className="rounded border border-ultraviolet/40 px-1.5 py-0.5 text-white">{viewLabel}</span>
@@ -196,7 +198,14 @@ export default function GraphTerm({ windowId, params = {} }) {
           <span className="hidden sm:inline">{t('ecosystem.graph.keys', 'm vista · ↑↓ nodo · Enter aristas · e evidencia · l lista')}</span>
         </div>
 
-        <div className="mt-2 min-w-0 overflow-x-auto" data-graph-view={view} data-graph-selected={selected ? selected.id : ''}>
+        {/* min-height = caja del braille (rows × 11px × 1.05) mientras el grafo carga: lo que
+            está debajo (aristas, footer) no se mueve cuando el dibujo aparece. */}
+        <div
+          className="mt-2 min-w-0 overflow-x-auto"
+          style={{ minHeight: `${Math.round(braille.rows * 11 * 1.05)}px` }}
+          data-graph-view={view}
+          data-graph-selected={selected ? selected.id : ''}
+        >
           {graph && index ? (
             <>
               {view === 'braille' ? <BrailleGraph graph={graph} cols={braille.cols} rows={braille.rows} selectedId={selected ? selected.id : null} /> : null}

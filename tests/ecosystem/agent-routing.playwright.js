@@ -175,8 +175,10 @@ function staticChecks() {
     if (fs.existsSync(abs)) walk(abs);
   }
   // La ruta <Route path="/agents"> de App.js es el redirect mismo: se permite explícitamente.
-  const allowed = residual.filter((r) => !/^src[\\/]App\.js:/.test(r));
-  check('(d) ningún "/agents" residual (salvo /ecosystem#agentes y el redirect de App.js)', allowed.length === 0,
+  // src/i18n/config.js (bundlesForPath) mapea /agents|/agent-discovery → bundle 'ecosystem' por la
+  // misma razón: el redirect no debe pintar claves crudas. Nada de esto se sirve como URL.
+  const allowed = residual.filter((r) => !/^src[\\/](App\.js|i18n[\\/]config\.js):/.test(r));
+  check('(d) ningún "/agents" residual (salvo /ecosystem#agentes, el redirect de App.js y bundlesForPath de i18n/config.js)', allowed.length === 0,
     { residual: allowed, comment_only: commentOnly });
 }
 
@@ -300,6 +302,9 @@ async function main() {
     check('(c) open_terminal {kind:"pulse"} desde / → ok:true y /ecosystem',
       opened && opened.ok === true && opened.path === '/ecosystem' && afterOpen === '/ecosystem',
       { opened, pathname: afterOpen });
+    // La SPA navega a /ecosystem en el mismo tick del tool: esperar la ventana (la cascada del
+    // escritorio la monta unos cientos de ms después) en vez de evaluar el DOM de inmediato.
+    await page.waitForSelector('[data-window][data-kind="pulse"]', { timeout: 5000 }).catch(() => {});
     const pulseFocused = await page.evaluate(() =>
       !!document.querySelector('[data-window][data-kind="pulse"]'));
     check('(c) ventana pulse presente tras open_terminal', pulseFocused);

@@ -25,7 +25,9 @@ export const DESKTOPS = [
       { kind: 'observatory', open: true },
       { kind: 'kk_kpi', open: true },
       { kind: 'kk_trades' },
-      { kind: 'kk_status', open: true },
+      // Abajo a la derecha: la cascada la dejaba encima del CTA "Cargar observatorio 3D"
+      // (abajo-izquierda del facade) en 1280×800. makeWindow recorta el pos al área real.
+      { kind: 'kk_status', open: true, pos: { x: 744, y: 390 } },
       { kind: 'irc', params: { channel: 'karmakadabra' } },
     ],
   },

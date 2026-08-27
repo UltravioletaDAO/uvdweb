@@ -6,6 +6,11 @@ import { useReducedMotion } from 'framer-motion';
 import useLiveMetric from '../../hooks/useLiveMetric';
 import { ENDPOINTS } from '../../services/ecosystem/endpoints';
 import { loadEcosystemGraph, indexGraph } from '../../services/ecosystem/graph';
+import { loadI18nBundle } from '../../i18n/loadBundle';
+
+// Top-level del módulo (el teaser es lazy desde Home.js): el chunk i18n 'home-teaser' se pide
+// apenas ejecuta este chunk; config.js ya lo dispara además por ruta (idempotente).
+const I18N_READY = loadI18nBundle('home-teaser');
 
 /**
  * HomeTeaser — la única terminal del Home (ECOSYSTEM_PLAN §1.1 / WP4).
@@ -153,6 +158,19 @@ export default function HomeTeaser() {
   const reduced = useReducedMotion();
   const { ref: inViewRef, inView } = useInView({ triggerOnce: true, rootMargin: '0px' });
 
+  // Sin claves crudas en ningún frame: la terminal no se pinta hasta que el bundle i18n
+  // 'home-teaser' está registrado; mientras tanto la caja reservada (232 px) mantiene el CLS en 0.
+  const [i18nReady, setI18nReady] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    I18N_READY.then(() => {
+      if (alive) setI18nReady(true);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
   // --- datos reales -------------------------------------------------------
   const mesh = useLiveMetric({
     url: ENDPOINTS.meshrelay_stats.url,
@@ -269,6 +287,15 @@ export default function HomeTeaser() {
 
   // El <style> va fuera del wrapper: su CSS no debe entrar al textContent de
   // [data-home-teaser] (lo leen tests, agentes y el propio WebMCP).
+  if (!i18nReady) {
+    // Caja reservada idéntica (min-h 232): al llegar el bundle la ventana se pinta dentro sin mover nada.
+    return (
+      <>
+        <style>{CSS}</style>
+        <div ref={inViewRef} data-home-teaser className="min-h-[232px] w-full" aria-busy="true" />
+      </>
+    );
+  }
   return (
     <>
       <style>{CSS}</style>

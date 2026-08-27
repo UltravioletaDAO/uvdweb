@@ -9,6 +9,7 @@ import { useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { MotionConfig } from 'framer-motion';
 import SEO from '../components/SEO';
+import { loadI18nBundle } from '../i18n/loadBundle';
 import { DeskProvider } from '../components/ecosystem/desk/DeskContext';
 import Panel from '../components/ecosystem/desk/Panel';
 import Desktop from '../components/ecosystem/desk/Desktop';
@@ -21,8 +22,15 @@ import ForAgents from '../components/ecosystem/sections/ForAgents';
 import EcosystemCta from '../components/ecosystem/sections/EcosystemCta';
 import '../styles/ecosystem.css';
 
+// Top-level del módulo (la página es React.lazy): el chunk i18n del bundle 'ecosystem' se pide
+// apenas ejecuta el chunk de la página; config.js ya lo dispara además por ruta (idempotente).
+const I18N_READY = loadI18nBundle('ecosystem');
+
 const SITE = 'https://ultravioletadao.xyz';
-const FONT_CSS = 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=swap';
+// display=optional: si la fuente no llega al primer paint NO se intercambia (0 CLS del dock y
+// las terminales); el fallback 'JetBrains Mono Fallback' (size-adjust en ecosystem.css) ocupa
+// el mismo ancho mientras tanto. Fix 4 de VERIFICATION_OLA3 §9.
+const FONT_CSS = 'https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&display=optional';
 
 function useJsonLd(graph, index, title, description) {
   return useMemo(() => {
@@ -81,6 +89,19 @@ export default function Ecosystem() {
   const { graph, index } = useEcosystemGraph();
   const [help, setHelp] = useState(false);
 
+  // Sin claves crudas en ningún frame: el escritorio no se pinta hasta que el bundle i18n
+  // 'ecosystem' está registrado (§9.1 / polish-bundle.md §3). El shell (mismo alto) evita CLS.
+  const [i18nReady, setI18nReady] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    I18N_READY.then(() => {
+      if (alive) setI18nReady(true);
+    });
+    return () => {
+      alive = false;
+    };
+  }, []);
+
   const title = t('ecosystem.seo.title', 'Ecosistema — mapa vivo de los productos de UltraVioleta DAO');
   const description = t(
     'ecosystem.seo.description',
@@ -108,8 +129,10 @@ export default function Ecosystem() {
   }, [location.hash]);
 
   return (
-    // El Header ya reserva 56 px en ≥1024 px (spacer h-14); en móvil solo hay que esquivar el botón flotante.
-    <div className="uvd-eco pt-12 lg:pt-0 min-h-[100svh]" data-ecosystem-page="">
+    // El Header reserva 56 px en ≥1024 px (spacer h-14) pero el nav fijo mide 57 px (h-14 +
+    // border-b 1px) y tapaba el borde superior del panel: 1 px extra de padding lo compensa.
+    // En móvil solo hay que esquivar el botón flotante.
+    <div className="uvd-eco pt-12 lg:pt-px min-h-[100svh]" data-ecosystem-page="">
       <SEO title={title} description={description} keywords="ecosystem, c0der, KarmaKadabra, Execution Market, MeshRelay, Describe.net, x402, facilitator, WebMCP, agents" customJsonLd={jsonLd} />
       <Helmet>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -117,20 +140,27 @@ export default function Ecosystem() {
         <link rel="stylesheet" href={FONT_CSS} />
       </Helmet>
 
-      <MotionConfig reducedMotion="user">
-        <DeskProvider>
-          <Panel onHelp={() => setHelp(true)} />
-          <Desktop helpOpen={help} onHelpChange={setHelp} />
-        </DeskProvider>
-      </MotionConfig>
+      {i18nReady ? (
+        <>
+          <MotionConfig reducedMotion="user">
+            <DeskProvider>
+              <Panel onHelp={() => setHelp(true)} />
+              <Desktop helpOpen={help} onHelpChange={setHelp} />
+            </DeskProvider>
+          </MotionConfig>
 
-      <main className="uvd-eco__sections" id="ecosystem-sections">
-        <SystemPulse />
-        <InteropMatrix />
-        <Receipt />
-        <ForAgents />
-        <EcosystemCta />
-      </main>
+          <main className="uvd-eco__sections" id="ecosystem-sections">
+            <SystemPulse />
+            <InteropMatrix />
+            <Receipt />
+            <ForAgents />
+            <EcosystemCta />
+          </main>
+        </>
+      ) : (
+        // Shell de espera: mismo fondo y min-h-[100svh] del wrapper — nada visible que saltar.
+        <div aria-busy="true" data-ecosystem-i18n-loading="" style={{ minHeight: '100svh' }} />
+      )}
     </div>
   );
 }
