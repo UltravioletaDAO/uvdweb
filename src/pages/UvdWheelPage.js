@@ -1097,6 +1097,7 @@ const UvdWheelPage = () => {
     }
 
     try {
+      await switchToAvalancheNetwork();
       setIsApproving(true);
       
       const provider = new ethers.providers.Web3Provider(window.ethereum);

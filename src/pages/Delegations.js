@@ -134,7 +134,7 @@ const Delegations = () => {
                 https://nodes.onbeam.com/delegations
               </a>
               <div className="flex items-center space-x-2 mt-2">
-                <p className="font-mono text-ultraviolet-dark select-all">
+                <p className="font-mono text-ultraviolet-dark select-all break-all">
                   {t('delegations.beam_validator.node_id')}
                 </p>
                 <button

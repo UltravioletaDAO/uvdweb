@@ -20,7 +20,7 @@ const TwitchCallback = () => {
       })
       .then(response => response.json())
       .then(data => {
-        if (data.client_id) {
+        if (data.client_id && data.client_id === process.env.REACT_APP_TWITCH_CLIENT_ID) {
           // Si el token es válido, guardarlo y redirigir
           localStorage.setItem('twitchAccessToken', accessToken);
           navigate('/wheel', { replace: true });
