@@ -45,7 +45,7 @@ const Footer = () => {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors duration-200 hover:text-purple-200"
+                    className="inline-block py-2 transition-colors duration-200 hover:text-purple-200"
                   >
                     {link.label}
                   </a>
@@ -81,7 +81,7 @@ const Footer = () => {
             <p className="mt-3 text-sm text-gray-300">
               <a
                 href="mailto:ultravioletadao@gmail.com"
-                className="transition-colors duration-200 hover:text-purple-200"
+                className="inline-block py-2 transition-colors duration-200 hover:text-purple-200"
               >
                 {t('footer.contact.email')}
               </a>

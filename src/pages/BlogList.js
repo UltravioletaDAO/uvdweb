@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import BlogCard from "../components/BlogCard"
-import Newsletter from "../components/Newsletter"
 import { posts } from "../posts/posts"
 import Pagination from '../components/Pagination'
 import SEO from '../components/SEO';
@@ -43,10 +42,6 @@ function BlogList() {
 
         <div className="mt-12 flex justify-center">
           <Pagination currentPage={currentPage} totalPages={totalPages} paginate={paginate} />
-        </div>
-
-        <div className="mt-24 mb-16">
-          <Newsletter />
         </div>
       </div>
     </main>

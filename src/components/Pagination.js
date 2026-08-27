@@ -8,6 +8,7 @@ const Pagination = ({ currentPage, totalPages, paginate }) => {
       <button 
         onClick={() => paginate(currentPage - 1)}
         disabled={currentPage === 1 || totalPages === 0}
+        aria-label={t('pagination.previous')}
         className="rounded-md border border-ultraviolet-dark p-2.5 text-center text-sm transition-all shadow-sm hover:shadow-lg text-text-primary hover:text-white hover:bg-ultraviolet-dark hover:border-ultraviolet-dark focus:text-white focus:bg-ultraviolet-dark focus:border-ultraviolet-dark active:border-ultraviolet-dark active:text-white active:bg-ultraviolet-dark disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" 
         type="button"
       >
@@ -23,6 +24,7 @@ const Pagination = ({ currentPage, totalPages, paginate }) => {
       <button 
         onClick={() => paginate(currentPage + 1)}
         disabled={currentPage === totalPages || totalPages === 0}
+        aria-label={t('pagination.next')}
         className="rounded-md border border-ultraviolet-dark p-2.5 text-center text-sm transition-all shadow-sm hover:shadow-lg text-text-primary hover:text-white hover:bg-ultraviolet-dark hover:border-ultraviolet-dark focus:text-white focus:bg-ultraviolet-dark focus:border-ultraviolet-dark active:border-ultraviolet-dark active:text-white active:bg-ultraviolet-dark disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none" 
         type="button"
       >

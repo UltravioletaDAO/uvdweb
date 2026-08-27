@@ -7,7 +7,6 @@ import {
   HomeIcon,
   CurrencyDollarIcon,
   UsersIcon,
-  ShieldCheckIcon,
   ArrowTopRightOnSquareIcon,
   ChartBarIcon,
   ArrowTrendingUpIcon,
@@ -16,7 +15,6 @@ import {
   PhotoIcon,
   DocumentTextIcon,
   CalendarIcon,
-  NewspaperIcon,
   AcademicCapIcon,
   LinkIcon,
   CpuChipIcon,
@@ -88,33 +86,29 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.events'),
     },
     {
-      name: t('navigation.blog'),
-      icon: NewspaperIcon,
-      path: "/blog",
-      isExternal: false,
-      description: t('navigation.descriptions.blog'),
-    },
-    {
       name: t('navigation.courses'),
       icon: AcademicCapIcon,
       path: "/courses",
       isExternal: false,
       description: t('navigation.descriptions.courses'),
     },
-    {
+    // Bounties backend is offline; hidden unless REACT_APP_BOUNTIES_ENABLED=true.
+    // The /bounties route is only registered under the same flag (App.js), so
+    // showing it unconditionally here produced a dead link (NotFound) on mobile.
+    ...(process.env.REACT_APP_BOUNTIES_ENABLED === 'true' ? [{
       name: t('navigation.bounties'),
       icon: GiftIcon,
       path: "/bounties",
       isExternal: false,
       customStyle: "text-amber-400 group-hover:text-amber-300",
       description: t('navigation.descriptions.bounties'),
-    },
+    }] : []),
     {
-      name: t('navigation.agents', 'Agents'),
+      name: t('navigation.agents'),
       icon: CpuChipIcon,
       path: "/agents",
       isExternal: false,
-      description: t('navigation.descriptions.metrics', 'Agent Discovery'),
+      description: t('navigation.descriptions.agents'),
     },
     {
       name: t('navigation.links'),
@@ -190,16 +184,16 @@ const HamburgerMenu = () => {
       path: "/facilitator",
       isExternal: false,
       customStyle: "text-emerald-400 group-hover:text-emerald-300",
-      description: t('navigation.descriptions.services', 'Facilitator'),
+      description: t('navigation.descriptions.facilitator'),
     },
     {
       // C-6: External "Abrir app" link for Facilitator
-      name: t('navigation.facilitatorApp', 'Abrir app'),
+      name: t('navigation.facilitatorApp'),
       icon: BeakerIcon,
       path: "https://facilitator.ultravioletadao.xyz/",
       isExternal: true,
       customStyle: "text-emerald-400 group-hover:text-emerald-300",
-      description: t('navigation.descriptions.services', 'Open Facilitator app'),
+      description: t('navigation.descriptions.facilitator'),
     },
   ];
 
@@ -342,13 +336,23 @@ const HamburgerMenu = () => {
     };
   }, [isOpen]);
 
+  // Cerrar el menú con Escape
+  useEffect(() => {
+    if (!isOpen) return;
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setIsOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isOpen]);
+
   return (
     <>
       {/* Botón del menú con efecto de hover mejorado */}
       <motion.button
         id="hamburger-button"
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed top-4 right-4 z-50 p-3 rounded-full
+        className="fixed top-4 right-4 z-[95] p-3 rounded-full
           bg-background-lighter hover:bg-ultraviolet-darker/20
           transition-colors duration-200 shadow-lg"
         whileHover={{ scale: 1.05 }}
@@ -406,9 +410,11 @@ const HamburgerMenu = () => {
               className="pt-16 pb-4 px-4"
             >
               <div className="flex items-center justify-center mb-3">
-                <img 
-                  src="/uvd.png" 
+                <img
+                  src="/uvd-128.png"
                   alt={t('common.logo_alt')}
+                  width={64}
+                  height={64}
                   className="h-16 !w-[18%] !max-w-[18%]"
                 />
               </div>

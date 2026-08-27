@@ -6,24 +6,22 @@
 
     <!-- Preconnect to critical third-party origins -->
     <link rel="preconnect" href="https://hub.snapshot.org" crossorigin>
-    <link rel="preconnect" href="https://api.coingecko.com" crossorigin>
     <link rel="preconnect" href="https://safe-transaction-avalanche.safe.global" crossorigin>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap">
 
     <!-- DNS Prefetch for additional resources -->
     <link rel="dns-prefetch" href="https://api.ultravioletadao.xyz">
     <link rel="dns-prefetch" href="https://cloudflare-eth.com">
     <link rel="dns-prefetch" href="https://api.avax.network">
 
-    <!-- Preload critical resources (but NOT hero images - they're lazy loaded) -->
+    <!-- Preload critical resources (hero = LCP: desktop webp / mobile jpg, split by media query) -->
+    <link rel="preload" as="image" href="%PUBLIC_URL%/hero.webp" type="image/webp" media="(min-width: 769px)">
+    <link rel="preload" as="image" href="%PUBLIC_URL%/hero-mobile.jpg" media="(max-width: 768px)">
     <link rel="preload" href="%PUBLIC_URL%/logo.png" as="image" type="image/png">
     <link rel="preload" href="%PUBLIC_URL%/manifest.json" as="fetch" crossorigin="anonymous">
 
-    <!-- Prefetch API data that will be needed soon -->
-    <link rel="prefetch" href="https://hub.snapshot.org/graphql" as="fetch" crossorigin="anonymous">
-    <link rel="prefetch" href="https://api.coingecko.com/api/v3/simple/price" as="fetch" crossorigin="anonymous">
-    
     <!-- Google tag (gtag.js) - Deferred for performance -->
     <script>
       // Defer Google Analytics until after page load
@@ -48,6 +46,7 @@
     
     <!-- PWA and Mobile Optimization -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link rel="ai-catalog" href="/.well-known/ai-catalog.json" />
     <meta name="theme-color" content="#6A00FF" />
     <meta name="msapplication-TileColor" content="#6A00FF" />
     <meta name="mobile-web-app-capable" content="yes">
@@ -55,11 +54,9 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="UltraVioleta">
     <meta name="application-name" content="UltraVioleta DAO">
-    <meta name="msapplication-config" content="%PUBLIC_URL%/browserconfig.xml">
 
     <!-- Security Headers -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta name="referrer" content="strict-origin-when-cross-origin">
 
@@ -67,6 +64,18 @@
     <meta http-equiv="x-dns-prefetch-control" content="on">
     
     <title>UltraVioleta DAO - Leading Web3 DAO in Latin America</title>
+
+    <!-- Static Open Graph / Twitter Card (for scrapers without JS; react-helmet overrides at runtime) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="UltraVioleta DAO" />
+    <meta property="og:title" content="UltraVioleta DAO - Leading Web3 DAO in Latin America" />
+    <meta property="og:description" content="Join UltraVioleta DAO - Latin America at the cutting edge of web4. Building the agentic economy through x402, ERC-8004, decentralized governance, and collaborative treasury management on Avalanche, Base, Celo." />
+    <meta property="og:url" content="https://ultravioletadao.xyz/" />
+    <meta property="og:image" content="https://ultravioletadao.xyz/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="https://ultravioletadao.xyz/og-image.png" />
 
     <!-- Critical CSS for above-the-fold content -->
     <style>
@@ -147,7 +156,7 @@
         window.addEventListener('load', function() {
           navigator.serviceWorker.register('/service-worker.js').then(
             function(registration) {
-              console.log('ServiceWorker registered:', registration.scope);
+              console.log('ServiceWorker registered:', registration && registration.scope);
             },
             function(err) {
               console.log('ServiceWorker registration failed:', err);

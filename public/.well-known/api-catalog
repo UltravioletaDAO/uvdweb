@@ -10,15 +10,19 @@
       ],
       "service-doc": [
         {
-          "href": "https://github.com/UltravioletaDAO/x402-facilitator#api",
+          "href": "https://github.com/UltravioletaDAO",
           "type": "text/html"
         }
       ],
       "status": [
         {
-          "href": "https://api.ultravioletadao.xyz/health",
+          "href": "https://api.ultravioletadao.xyz/",
           "type": "application/json"
         }
+      ],
+      "item": [
+        { "href": "https://api.ultravioletadao.xyz/apply" },
+        { "href": "https://api.ultravioletadao.xyz/wallets" }
       ],
       "describedby": [
         {
@@ -31,13 +35,13 @@
       "anchor": "https://facilitator.ultravioletadao.xyz",
       "service-desc": [
         {
-          "href": "https://ultravioletadao.xyz/.well-known/openapi/facilitator-api.json",
-          "type": "application/vnd.oai.openapi+json;version=3.0"
+          "href": "https://facilitator.ultravioletadao.xyz/api-docs/openapi.json",
+          "type": "application/vnd.oai.openapi+json;version=3.1"
         }
       ],
       "service-doc": [
         {
-          "href": "https://github.com/UltravioletaDAO/x402-facilitator",
+          "href": "https://github.com/UltravioletaDAO/x402-rs",
           "type": "text/html"
         }
       ],
@@ -46,6 +50,11 @@
           "href": "https://facilitator.ultravioletadao.xyz/health",
           "type": "application/json"
         }
+      ],
+      "item": [
+        { "href": "https://facilitator.ultravioletadao.xyz/supported" },
+        { "href": "https://facilitator.ultravioletadao.xyz/verify" },
+        { "href": "https://facilitator.ultravioletadao.xyz/settle" }
       ]
     }
   ]

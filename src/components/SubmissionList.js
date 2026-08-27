@@ -59,7 +59,7 @@ const SubmissionList = ({ bountyId }) => {
     const savedAddress = localStorage.getItem('walletAddress');
     if (savedAddress) {
       setAccount(savedAddress);
-      fetchSnapshotProfile(savedAddress).then(setUserProfile);
+      fetchSnapshotProfile(savedAddress).then(setUserProfile).catch(() => setUserProfile(null));
     }
   }, []);
 

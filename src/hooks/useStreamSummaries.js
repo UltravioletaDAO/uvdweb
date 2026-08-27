@@ -24,8 +24,16 @@ export function useStreamSummariesIndex() {
  * @param {number} perPage - Items per page
  */
 export function useStreamSummariesPaginated(page = 1, perPage = 10) {
+  const { i18n } = useTranslation();
+  const lang = (i18n.language || 'es').slice(0, 2);
+
+  // Point the service at the current language before the query fires (index_{lang}.json)
+  React.useEffect(() => {
+    streamSummariesService.setLanguage(lang);
+  }, [lang]);
+
   return useQuery({
-    queryKey: ['streamSummaries', 'paginated', page, perPage],
+    queryKey: ['streamSummaries', 'paginated', lang, page, perPage],
     queryFn: () => streamSummariesService.fetchPaginatedSummaries(page, perPage),
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes

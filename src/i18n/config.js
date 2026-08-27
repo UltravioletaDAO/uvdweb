@@ -18,6 +18,8 @@ i18n
       pt: { translation: pt }
     },
     fallbackLng: 'es',
+    supportedLngs: ['es', 'en', 'pt', 'fr'],
+    nonExplicitSupportedLngs: true,
     interpolation: {
       escapeValue: false
     }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const API_URL = process.env.REACT_APP_STREAM_SEARCH_API;
@@ -27,23 +27,59 @@ const StreamSearch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
+  // La tool WebMCP search_stream_memory (src/agent/tools.js) despacha este evento con la
+  // respuesta cruda del Lambda para que el agente y el humano vean los mismos resultados.
+  useEffect(() => {
+    const onAgentSearch = (e) => {
+      const { query: q, results: r } = e.detail || {};
+      if (typeof q === 'string') setQuery(q);
+      if (r && Array.isArray(r.results)) {
+        setError(null);
+        setResults(r);
+      }
+    };
+    window.addEventListener('uvd:stream-search', onAgentSearch);
+    return () => window.removeEventListener('uvd:stream-search', onAgentSearch);
+  }, []);
+
   if (!API_URL) return null;
 
   const runSearch = async (e) => {
     e.preventDefault();
     const q = query.trim();
-    if (q.length < 2) return;
+    if (q.length < 2) return { error: 'invalid_query' };
     setLoading(true);
     setError(null);
     try {
       const res = await fetch(`${API_URL.replace(/\/$/, '')}/?q=${encodeURIComponent(q)}&limit=20`);
       if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      setResults(await res.json());
+      const data = await res.json();
+      setResults(data);
+      return {
+        count: data.count,
+        results: (data.results || []).slice(0, 10).map((r) => ({
+          date: r.date_formatted,
+          t: r.t,
+          snippet: String(r.snippet || '').replace(/<\/?mark>/g, ''),
+          url: r.url
+        }))
+      };
     } catch (err) {
       setError(t('streamSummaries.search.error'));
       setResults(null);
+      return { error: 'search_failed' };
     } finally {
       setLoading(false);
+    }
+  };
+
+  // WebMCP declarativo (form toolname="stream_search_form"): si el submit lo disparó un agente,
+  // hay que responderle con respondWith(); si no, Chrome rechaza la llamada por el preventDefault().
+  const onFormSubmit = (e) => {
+    const result = runSearch(e);
+    const native = e.nativeEvent;
+    if (native?.agentInvoked && typeof native.respondWith === 'function') {
+      native.respondWith(result);
     }
   };
 
@@ -55,9 +91,16 @@ const StreamSearch = () => {
       <h2 id="stream-search-title" className="text-violet-400 font-semibold text-sm mb-3">
         {t('streamSummaries.search.title')}
       </h2>
-      <form onSubmit={runSearch} className="flex gap-2">
+      <form
+        onSubmit={onFormSubmit}
+        className="flex gap-2"
+        toolname="stream_search_form"
+        tooldescription="Search the UltravioletaDAO stream transcripts (2024-2026) and show the matching moments on this page"
+      >
         <input
           type="search"
+          name="q"
+          toolparamdescription="Search query (2-120 chars)"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t('streamSummaries.search.placeholder')}

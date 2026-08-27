@@ -17,8 +17,10 @@ export function useSnapshotData() {
       
       const data = await getSnapshotData(spaceId);
       setSpaceData(data.space);
-      setProposals(data.proposals);
-      setLeaderboard(data.leaderboard);
+      // Guard against a degraded Snapshot response (HTTP 200 with null fields):
+      // proposals/leaderboard must stay arrays or downstream .map/.length throws.
+      setProposals(Array.isArray(data.proposals) ? data.proposals : []);
+      setLeaderboard(Array.isArray(data.leaderboard) ? data.leaderboard : []);
       
     } catch (err) {
       setError(err.message);

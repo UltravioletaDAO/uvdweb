@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import { useTranslation } from 'react-i18next';
+import { useInView } from 'react-intersection-observer';
 import SwapWidgetV2 from '../components/SwapWidgetV2';
 import WrapWidget from '../components/WrapWidget';
 import { createThirdwebClient } from "thirdweb";
@@ -22,6 +23,12 @@ const wallets = [
 const Token = () => {
   const { t } = useTranslation();
 
+  // W2-15: only mount the DexScreener iframe once its container is near the viewport
+  const { ref: embedRef, inView: embedInView } = useInView({
+    triggerOnce: true,
+    rootMargin: '200px',
+  });
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -30,8 +37,8 @@ const Token = () => {
   return (
     <>
       <SEO
-        title="UVD Token | Avalanche Governance Token for Latin America DAO"
-        description="UVD is the native governance token of UltraVioleta DAO on Avalanche blockchain. Trade, swap, and participate in DAO governance. Contract: 0x4Ffe7e01832243e03668E090706F17726c26d6B2"
+        title={t('token.seo.title')}
+        description={t('token.seo.description')}
         keywords="UVD token, UltraVioleta token, Avalanche token, governance token, DAO token, Latin America cryptocurrency, AVAX DEX, Arena swap, DeFi token LATAM, ERC-20 token, crypto governance, Web3 token, decentralized governance, Avalanche C-Chain, UVD price, UVD trading"
       />
       <motion.div
@@ -41,6 +48,7 @@ const Token = () => {
       transition={{ duration: 0.3 }}
       className="min-h-screen bg-background py-16 px-4"
     >
+      <main>
       <div className="border-b border-gray-800">
         <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
           <div className="flex justify-between items-center">
@@ -130,6 +138,11 @@ const Token = () => {
               justify-content: center;
               align-items: center;
             }
+            @media(min-width: 1024px) {
+              #dexscreener-embed {
+                padding-bottom: 60%;
+              }
+            }
             @media(min-width: 1400px) {
               #dexscreener-embed {
                 padding-bottom: 40%;
@@ -145,11 +158,14 @@ const Token = () => {
             }
             `}
           </style>
-          <div id="dexscreener-embed">
-            <iframe
-              src="https://dexscreener.com/avalanche/0xBFf3e2238e545C76f705560BD1677BD9c0E9dAB4?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=1"
-              title={t('token.chart_title')}
-            ></iframe>
+          <div id="dexscreener-embed" ref={embedRef}>
+            {embedInView && (
+              <iframe
+                src="https://dexscreener.com/avalanche/0xBFf3e2238e545C76f705560BD1677BD9c0E9dAB4?embed=1&loadChartSettings=0&chartDefaultOnMobile=1&chartTheme=dark&theme=dark&chartStyle=1&chartType=usd&interval=1"
+                title={t('token.chart_title')}
+                loading="lazy"
+              ></iframe>
+            )}
           </div>
         </motion.div>
 
@@ -166,7 +182,7 @@ const Token = () => {
 
           {/* Total Supply Overview */}
           <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl p-6 mb-6">
-            <h3 className="text-xl font-semibold text-primary mb-4">
+            <h3 className="text-xl font-semibold text-violet-400 mb-4">
               {t('tokenomics.supply.title')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
@@ -182,7 +198,7 @@ const Token = () => {
               </div>
               <div className="bg-background/80 rounded-lg p-4">
                 <span className="text-text-secondary text-sm">{t('tokenomics.supply.circulating')}</span>
-                <p className="text-2xl font-bold text-primary">~6,070,000,000 UVD</p>
+                <p className="text-2xl font-bold text-violet-400">~6,070,000,000 UVD</p>
                 <span className="text-xs text-text-secondary">~60.7%</span>
               </div>
             </div>
@@ -244,7 +260,7 @@ const Token = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
             {/* Bounties Section */}
             <div className="bg-background-secondary rounded-2xl p-6">
-              <h3 className="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-violet-400 mb-4 flex items-center gap-2">
                 <span className="text-2xl">🏆</span>
                 {t('tokenomics.bounties.title')}
               </h3>
@@ -266,15 +282,15 @@ const Token = () => {
                   <div className="space-y-1">
                     <div className="flex justify-between text-sm">
                       <span>🥇 {t('tokenomics.bounties.first')}</span>
-                      <span className="text-primary">50% (~7,922,458 UVD)</span>
+                      <span className="text-violet-400">50% (~7,922,458 UVD)</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>🥈 {t('tokenomics.bounties.second')}</span>
-                      <span className="text-primary">30% (~4,753,475 UVD)</span>
+                      <span className="text-violet-400">30% (~4,753,475 UVD)</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>🥉 {t('tokenomics.bounties.third')}</span>
-                      <span className="text-primary">20% (~3,168,983 UVD)</span>
+                      <span className="text-violet-400">20% (~3,168,983 UVD)</span>
                     </div>
                   </div>
                 </div>
@@ -283,7 +299,7 @@ const Token = () => {
 
             {/* Airdrops Section */}
             <div className="bg-background-secondary rounded-2xl p-6">
-              <h3 className="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-violet-400 mb-4 flex items-center gap-2">
                 <span className="text-2xl">🪂</span>
                 {t('tokenomics.airdrops.title')}
               </h3>
@@ -313,7 +329,7 @@ const Token = () => {
 
             {/* Wheel Section */}
             <div className="bg-background-secondary rounded-2xl p-6">
-              <h3 className="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-violet-400 mb-4 flex items-center gap-2">
                 <span className="text-2xl">🎰</span>
                 {t('tokenomics.wheel.title')}
               </h3>
@@ -335,19 +351,19 @@ const Token = () => {
                   <div className="grid grid-cols-2 gap-2 text-xs">
                     <div className="flex justify-between">
                       <span>1º</span>
-                      <span className="text-primary">514,229 UVD</span>
+                      <span className="text-violet-400">514,229 UVD</span>
                     </div>
                     <div className="flex justify-between">
                       <span>2º</span>
-                      <span className="text-primary">317,811 UVD</span>
+                      <span className="text-violet-400">317,811 UVD</span>
                     </div>
                     <div className="flex justify-between">
                       <span>3º</span>
-                      <span className="text-primary">196,418 UVD</span>
+                      <span className="text-violet-400">196,418 UVD</span>
                     </div>
                     <div className="flex justify-between">
                       <span>4º</span>
-                      <span className="text-primary">121,393 UVD</span>
+                      <span className="text-violet-400">121,393 UVD</span>
                     </div>
                   </div>
                 </div>
@@ -356,7 +372,7 @@ const Token = () => {
 
             {/* Savings Fund Section */}
             <div className="bg-background-secondary rounded-2xl p-6">
-              <h3 className="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-violet-400 mb-4 flex items-center gap-2">
                 <span className="text-2xl">💰</span>
                 {t('tokenomics.savings.title')}
               </h3>
@@ -382,7 +398,7 @@ const Token = () => {
 
             {/* Ultra Event 2025 */}
             <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-2xl p-6 lg:col-span-2">
-              <h3 className="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-violet-400 mb-4 flex items-center gap-2">
                 <span className="text-2xl">🎉</span>
                 {t('tokenomics.event.title')}
               </h3>
@@ -407,7 +423,7 @@ const Token = () => {
 
             {/* Remaining Reserve */}
             <div className="bg-background-secondary rounded-2xl p-6 lg:col-span-2">
-              <h3 className="text-lg font-semibold text-primary mb-4 flex items-center gap-2">
+              <h3 className="text-lg font-semibold text-violet-400 mb-4 flex items-center gap-2">
                 <span className="text-2xl">🔒</span>
                 {t('tokenomics.reserve.title')}
               </h3>
@@ -434,7 +450,7 @@ const Token = () => {
               href="https://snapshot.box/#/s:ultravioletadao.eth/proposal/0xc132335dbab914d230d394b90877679568eb51e859f50b34afaeb0879ddd185e"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-primary hover:text-primary-light transition-colors"
+              className="inline-flex items-center gap-2 text-violet-400 hover:text-violet-300 transition-colors"
             >
               {t('tokenomics.view_proposal')}
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -444,6 +460,7 @@ const Token = () => {
           </div>
         </motion.div>
       </div>
+      </main>
     </motion.div>
     </>
   );

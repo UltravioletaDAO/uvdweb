@@ -24,7 +24,7 @@ const Purge = () => {
   ];
 
   useEffect(() => {
-    getInactiveUsers().then(setInactiveUsers);
+    getInactiveUsers().then(setInactiveUsers).catch(() => setInactiveUsers([]));
   }, []);
 
   return (

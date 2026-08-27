@@ -22,7 +22,7 @@ const SEO = ({
 }) => {
   const { pathname } = useLocation();
   const { i18n, t } = useTranslation();
-  const currentLang = i18n.language;
+  const currentLang = (i18n.language || 'es').slice(0, 2);
   
   const siteUrl = 'https://ultravioletadao.xyz';
   const defaultImage = `${siteUrl}/og-image.png`;
@@ -53,7 +53,7 @@ const SEO = ({
     sameAs: [
       'https://twitter.com/ultravioletadao',
       'https://github.com/UltravioletaDAO',
-      'https://discord.gg/ultravioleta',
+      'https://discord.gg/ultravioletadao',
       'https://snapshot.org/#/ultravioletadao.eth'
     ],
     foundingDate: '2022',
@@ -323,13 +323,6 @@ const SEO = ({
       availability: 'https://schema.org/InStock',
       priceValidUntil: '2026-12-31'
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '89',
-      bestRating: '5',
-      worstRating: '1'
-    },
     author: {
       '@type': 'Organization',
       name: 'UltraVioleta DAO',
@@ -349,11 +342,6 @@ const SEO = ({
       name: 'x402 Protocol Specification',
       url: 'https://x402.org',
       description: 'Official x402 protocol documentation for stateless HTTP payments'
-    },
-    interactionStatistic: {
-      '@type': 'InteractionCounter',
-      'interactionType': 'https://schema.org/UseAction',
-      'userInteractionCount': '1234'
     },
     maintainer: {
       '@type': 'Organization',
@@ -377,12 +365,6 @@ const SEO = ({
         applicationCategory: 'CommunicationApplication',
         operatingSystem: 'Web Browser',
         description: 'Revolutionary Twitch bot with 18+ AI agents rewarding quality chat participation with UVD cryptocurrency tokens on Avalanche blockchain',
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.8',
-          reviewCount: '287',
-          bestRating: '5'
-        },
         offers: {
           '@type': 'Offer',
           price: '0',
@@ -425,12 +407,6 @@ const SEO = ({
         applicationCategory: 'AnalyticsApplication',
         operatingSystem: 'Web Browser',
         description: 'AI-powered stream content analysis platform with semantic search, knowledge graphs, and automated content generation using GPT-4o and Cognee framework',
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.9',
-          reviewCount: '145',
-          bestRating: '5'
-        },
         offers: {
           '@type': 'Offer',
           availability: 'https://schema.org/PreOrder',
@@ -473,12 +449,6 @@ const SEO = ({
         applicationCategory: 'FinanceApplication',
         operatingSystem: 'Web Browser, API',
         description: 'Revolutionary gasless payment infrastructure enabling AI agents to transact autonomously without gas fees using x402 protocol with EIP-3009 meta-transactions on multiple blockchain networks',
-        aggregateRating: {
-          '@type': 'AggregateRating',
-          ratingValue: '4.9',
-          reviewCount: '89',
-          bestRating: '5'
-        },
         offers: {
           '@type': 'Offer',
           price: '0',
@@ -684,7 +654,7 @@ const SEO = ({
           key={lang}
           rel="alternate"
           hrefLang={lang}
-          href={`${siteUrl}${pathname}?lang=${lang}`}
+          href={`${siteUrl}${pathname}?lng=${lang}`}
         />
       ))}
       <link rel="alternate" hrefLang="x-default" href={fullUrl} />
@@ -697,10 +667,10 @@ const SEO = ({
       <meta property="og:image:height" content="630" />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:site_name" content="UltraVioleta DAO" />
-      <meta property="og:locale" content={languageAlternates[currentLang] || 'en_US'} />
+      <meta property="og:locale" content={(languageAlternates[currentLang] || 'en-US').replace('-', '_')} />
       
       {Object.entries(languageAlternates).filter(([lang]) => lang !== currentLang).map(([lang, locale]) => (
-        <meta key={locale} property="og:locale:alternate" content={locale} />
+        <meta key={locale} property="og:locale:alternate" content={locale.replace('-', '_')} />
       ))}
       
       <meta name="twitter:card" content="summary_large_image" />
@@ -743,11 +713,9 @@ const SEO = ({
       <meta name="apple-mobile-web-app-status-bar-style" content="default" />
       
       {allJsonLd.map((jsonLd, index) => (
-        <script
-          key={index}
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script key={index} type="application/ld+json">
+          {JSON.stringify(jsonLd)}
+        </script>
       ))}
     </Helmet>
   );

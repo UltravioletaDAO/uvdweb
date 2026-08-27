@@ -2,6 +2,9 @@
 import audioCache from './audioCache';
 
 const ELEVENLABS_API_KEY = process.env.REACT_APP_ELEVENLABS_API_KEY;
+// CRA inlines the env var as the literal string 'null'/'undefined' when it is unset in Amplify
+const hasKey = Boolean(ELEVENLABS_API_KEY) &&
+  !['null', 'undefined', 'your_elevenlabs_api_key_here'].includes(ELEVENLABS_API_KEY);
 const DEBUG_ENABLED = process.env.REACT_APP_DEBUG_ENABLED === 'true';
 const TTS_ENABLED = process.env.REACT_APP_TTS_ENABLED === 'true';
 
@@ -59,14 +62,14 @@ class TextToSpeechService {
     }
 
     // Check if API key exists
-    if (ELEVENLABS_API_KEY && ELEVENLABS_API_KEY !== 'your_elevenlabs_api_key_here') {
+    if (hasKey) {
       this.log('ElevenLabs API Key detected');
     } else {
       this.log('No valid ElevenLabs API Key found, using browser TTS');
     }
 
     // Try ElevenLabs first if API key exists and is valid format
-    if (ELEVENLABS_API_KEY && ELEVENLABS_API_KEY !== 'your_elevenlabs_api_key_here') {
+    if (hasKey) {
       const voiceId = VOICE_IDS[language] || MULTILINGUAL_VOICE_ID;
       this.log(`Generating new audio for language: ${language}`);
 

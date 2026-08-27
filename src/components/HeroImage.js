@@ -1,52 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
+// W2-15: the hero is the LCP element. It is rendered directly (no WebP/innerWidth
+// detection in an effect, not lazy-loaded) so the browser can start the request
+// from the preload scanner. The picture element lets the browser pick WebP/JPEG and the
+// desktop/mobile variant without any JS.
 const HeroImage = () => {
   const [imageLoaded, setImageLoaded] = useState(false);
-  const [imageSrc, setImageSrc] = useState(null);
-
-  useEffect(() => {
-    // Check if browser supports WebP
-    const checkWebPSupport = () => {
-      return new Promise((resolve) => {
-        const webP = new Image();
-        webP.onload = webP.onerror = function () {
-          resolve(webP.height === 2);
-        };
-        webP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
-      });
-    };
-
-    // Load appropriate image based on screen size and WebP support
-    const loadImage = async () => {
-      const isDesktop = window.innerWidth > 768;
-      const supportsWebP = await checkWebPSupport();
-
-      let src;
-      if (isDesktop && supportsWebP) {
-        src = '/hero.webp';
-      } else if (isDesktop) {
-        src = '/hero-opt.jpg';
-      } else {
-        src = '/hero-mobile.jpg';
-      }
-
-      // Preload the image
-      const img = new Image();
-      img.onload = () => {
-        setImageSrc(src);
-        // Small delay to ensure smooth transition
-        requestAnimationFrame(() => {
-          setImageLoaded(true);
-        });
-      };
-      img.src = src;
-    };
-
-    // Start loading after React hydrates
-    requestAnimationFrame(() => {
-      loadImage();
-    });
-  }, []);
 
   return (
     <>
@@ -62,20 +21,21 @@ const HeroImage = () => {
         }}
       />
 
-      {/* Actual hero image with fade-in */}
-      {imageSrc && (
+      {/* Actual hero image: eager, high priority (LCP) */}
+      <picture>
+        <source media="(min-width: 769px)" srcSet="/hero.webp" type="image/webp" />
+        <source media="(min-width: 769px)" srcSet="/hero-opt.jpg" />
         <img
-          src={imageSrc}
+          src="/hero-mobile.jpg"
+          width="768"
+          height="432"
+          fetchpriority="high"
+          decoding="async"
           alt="UltraVioleta DAO Web3 Latin America blockchain community governance"
           className="absolute inset-0 w-full h-full object-cover object-center"
-          style={{
-            opacity: imageLoaded ? 1 : 0,
-            transition: 'opacity 0.5s ease-out'
-          }}
-          loading="lazy"
-          decoding="async"
+          onLoad={() => setImageLoaded(true)}
         />
-      )}
+      </picture>
     </>
   );
 };

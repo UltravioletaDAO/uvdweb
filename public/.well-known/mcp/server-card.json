@@ -1,18 +1,20 @@
 {
-  "$schema": "https://modelcontextprotocol.io/schema/server-card/v1",
+  "name": "UltravioletaDAO MCP Server",
+  "version": "1.1.0",
+  "description": "MCP server card for UltravioletaDAO: membership applications and x402 gasless payment verification/settlement via the UltravioletaDAO facilitator, for AI agents operating in the Latin American Web3 ecosystem.",
   "serverInfo": {
     "name": "UltravioletaDAO MCP Server",
-    "version": "1.0.0",
-    "description": "MCP server providing access to UltravioletaDAO's governance data, treasury metrics, bounty system, and x402 payment infrastructure for AI agents operating in the Latin American Web3 ecosystem.",
-    "homepage": "https://ultravioletadao.xyz/agent-discovery",
-    "contact": "mailto:agents@ultravioletadao.xyz",
+    "version": "1.1.0",
+    "description": "MCP server card for UltravioletaDAO: membership applications and x402 gasless payment verification/settlement via the UltravioletaDAO facilitator, for AI agents operating in the Latin American Web3 ecosystem.",
+    "homepage": "https://ultravioletadao.xyz/agents",
+    "contact": "mailto:ultravioletadao@gmail.com",
     "license": "MIT"
   },
   "transport": [
     {
-      "type": "http",
-      "url": "https://api.ultravioletadao.xyz/mcp",
-      "protocol": "mcp/1.0"
+      "type": "streamable-http",
+      "x-status": "planned",
+      "x-note": "No MCP endpoint is deployed yet. Each tool below documents the public HTTP endpoint it maps to; see https://ultravioletadao.xyz/.well-known/api-catalog"
     }
   ],
   "capabilities": {
@@ -24,69 +26,45 @@
   "tools": [
     {
       "name": "apply_dao_membership",
-      "description": "Submit a membership application to UltravioletaDAO. Returns application ID.",
-      "inputSchema": {
-        "type": "object",
-        "required": ["name", "email", "skills", "motivation"],
-        "properties": {
-          "name": { "type": "string", "description": "Applicant full name" },
-          "email": { "type": "string", "format": "email" },
-          "skills": { "type": "array", "items": { "type": "string" } },
-          "motivation": { "type": "string", "maxLength": 1000 }
-        }
-      }
-    },
-    {
-      "name": "check_application_status",
-      "description": "Check the status of a DAO membership application by email.",
+      "description": "Submit a membership application to UltravioletaDAO. HTTP: POST https://api.ultravioletadao.xyz/apply (JSON). Returns 201 with the application id, 400 on invalid/missing email, 429 if the same email applied in the last 24h.",
       "inputSchema": {
         "type": "object",
         "required": ["email"],
         "properties": {
-          "email": { "type": "string", "format": "email" }
-        }
-      }
-    },
-    {
-      "name": "get_bounties",
-      "description": "List available bounties in the UltravioletaDAO ecosystem.",
-      "inputSchema": {
-        "type": "object",
-        "properties": {
-          "status": { "type": "string", "enum": ["open", "in_progress", "completed"] },
-          "limit": { "type": "integer", "default": 10, "maximum": 50 }
+          "email": { "type": "string", "format": "email", "description": "Applicant email (the only server-validated field)" },
+          "fullName": { "type": "string", "description": "Applicant full name" },
+          "twitter": { "type": "string" },
+          "telegram": { "type": "string" },
+          "twitch": { "type": "string" },
+          "walletAddress": { "type": "string", "description": "EVM address (Avalanche C-Chain)" },
+          "story": { "type": "string", "description": "Who you are and your background" },
+          "purpose": { "type": "string", "description": "Why you want to join the DAO" },
+          "references": { "type": "string", "description": "Who referred you or can vouch for you" },
+          "timestamp": { "type": "integer", "description": "Unix timestamp in seconds" }
         }
       }
     },
     {
       "name": "verify_x402_payment",
-      "description": "Verify an x402 gasless payment authorization (EIP-3009) via the UltravioletaDAO facilitator.",
+      "description": "Verify an x402 payment authorization (EIP-3009 transferWithAuthorization, scheme \"exact\") via the UltravioletaDAO facilitator. HTTP: POST https://facilitator.ultravioletadao.xyz/verify. Supported networks: GET https://facilitator.ultravioletadao.xyz/supported.",
       "inputSchema": {
         "type": "object",
-        "required": ["network", "authorization"],
+        "required": ["paymentPayload", "paymentRequirements"],
         "properties": {
-          "network": {
-            "type": "string",
-            "enum": ["avalanche", "base", "celo", "hyperevm"],
-            "description": "Target blockchain network"
-          },
-          "authorization": {
-            "type": "object",
-            "description": "EIP-3009 transferWithAuthorization parameters"
-          }
+          "paymentPayload": { "type": "object", "description": "x402 PaymentPayload (x402Version, scheme, network, payload with the signed EIP-3009 authorization)" },
+          "paymentRequirements": { "type": "object", "description": "x402 PaymentRequirements returned by the resource server in its 402 response" }
         }
       }
     },
     {
       "name": "settle_x402_payment",
-      "description": "Execute settlement of a verified x402 payment via the UltravioletaDAO facilitator.",
+      "description": "Execute on-chain settlement of a verified x402 payment via the UltravioletaDAO facilitator. HTTP: POST https://facilitator.ultravioletadao.xyz/settle.",
       "inputSchema": {
         "type": "object",
-        "required": ["network", "authorization", "signature"],
+        "required": ["paymentPayload", "paymentRequirements"],
         "properties": {
-          "network": { "type": "string" },
-          "authorization": { "type": "object" },
-          "signature": { "type": "string", "description": "EIP-712 signature" }
+          "paymentPayload": { "type": "object", "description": "x402 PaymentPayload (same object passed to verify)" },
+          "paymentRequirements": { "type": "object", "description": "x402 PaymentRequirements (same object passed to verify)" }
         }
       }
     }
@@ -113,11 +91,11 @@
   ],
   "auth": {
     "type": "none",
-    "description": "Public tools require no authentication. Write operations (apply, settle) use API keys."
+    "description": "The HTTP endpoints above require no authentication. x402 payments are authorized per request with an EIP-3009 signature."
   },
   "x402": {
     "facilitator": "https://facilitator.ultravioletadao.xyz",
-    "networks": ["avalanche", "base", "celo", "hyperevm"],
-    "description": "This MCP server supports x402 micropayments for premium tool access"
+    "supported": "https://facilitator.ultravioletadao.xyz/supported",
+    "description": "x402 v1 gasless micropayments (scheme \"exact\"). The live list of networks and tokens is served by the supported endpoint."
   }
 }

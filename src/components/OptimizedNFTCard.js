@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef, memo } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 
 const OptimizedNFTCard = memo(({
   nft,
@@ -10,11 +11,14 @@ const OptimizedNFTCard = memo(({
   onLoad,
   priority = false
 }) => {
+  const { t } = useTranslation();
   const [videoError, setVideoError] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [failed, setFailed] = useState(false);
   const [mediaUrl, setMediaUrl] = useState(null);
   const [thumbnailUrl, setThumbnailUrl] = useState(null);
   const videoRef = useRef(null);
+  const retriedRef = useRef(false);
 
   const { ref, inView } = useInView({
     threshold: 0.01,
@@ -25,7 +29,7 @@ const OptimizedNFTCard = memo(({
   const isVideo = nft.animation_url && !videoError;
 
   // Convert IPFS URLs to gateway URLs
-  const convertIPFSToGateway = (ipfsUrl) => {
+  const convertIPFSToGateway = (ipfsUrl, gatewayIndex = 0) => {
     if (!ipfsUrl) return '';
     if (ipfsUrl.startsWith('ipfs://')) {
       const hash = ipfsUrl.replace('ipfs://', '');
@@ -35,7 +39,7 @@ const OptimizedNFTCard = memo(({
         `https://gateway.pinata.cloud/ipfs/${hash}`,
         `https://cloudflare-ipfs.com/ipfs/${hash}`
       ];
-      return gateways[0]; // Primary gateway
+      return gateways[gatewayIndex]; // 0 = primary gateway, 1 = single retry
     }
     return ipfsUrl;
   };
@@ -95,9 +99,26 @@ const OptimizedNFTCard = memo(({
     if (onLoad) onLoad(nft.id);
   };
 
-  const handleVideoError = () => {
-    setVideoError(true);
-    console.warn(`Video failed to load for NFT #${nft.collectionNumber}`);
+  // Bounded error handling: ONE retry through the next IPFS gateway, then give up.
+  // Never reassign the same remote URL on error (that was an unbounded request loop).
+  const handleMediaError = () => {
+    const src = isVideo ? nft.animation_url : nft.image;
+    if (!retriedRef.current && src && src.startsWith('ipfs://')) {
+      retriedRef.current = true;
+      setMediaUrl(convertIPFSToGateway(src, 1));
+      return;
+    }
+    if (isVideo && nft.image && nft.image !== nft.animation_url) {
+      // Fall back to the still image only when it is a different asset than the video
+      if (process.env.REACT_APP_DEBUG_ENABLED === 'true') {
+        console.warn(`Video failed to load for NFT #${nft.collectionNumber}`);
+      }
+      setMediaUrl(null);
+      setVideoError(true);
+      return;
+    }
+    setFailed(true);
+    setImageLoaded(true);
   };
 
   return (
@@ -129,11 +150,21 @@ const OptimizedNFTCard = memo(({
             </div>
           )}
 
+          {/* Local fallback once every gateway failed (no onError: never loops) */}
+          {failed && (
+            <img
+              src="/placeholder.png"
+              alt={`Echo NFT #${nft.collectionNumber} UltraVioleta DAO (media unavailable)`}
+              className="w-full h-full object-cover"
+            />
+          )}
+
           {/* Media content */}
-          {inView && mediaUrl && (
+          {!failed && inView && mediaUrl && (
             <>
               {isVideo ? (
                 <video
+                  key={mediaUrl}
                   ref={videoRef}
                   autoPlay
                   muted
@@ -144,7 +175,7 @@ const OptimizedNFTCard = memo(({
                     imageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
                   onLoadedData={handleImageLoad}
-                  onError={handleVideoError}
+                  onError={handleMediaError}
                   loading="lazy"
                 >
                   <source src={mediaUrl} type="video/mp4" />
@@ -157,9 +188,7 @@ const OptimizedNFTCard = memo(({
                     imageLoaded ? 'opacity-100' : 'opacity-0'
                   }`}
                   onLoad={handleImageLoad}
-                  onError={(e) => {
-                    e.target.src = thumbnailUrl || '/placeholder.png';
-                  }}
+                  onError={handleMediaError}
                   loading={priority ? 'eager' : 'lazy'}
                 />
               )}
@@ -181,7 +210,7 @@ const OptimizedNFTCard = memo(({
           {/* Loading indicator for videos */}
           {isVideo && !imageLoaded && inView && (
             <div className="absolute bottom-2 right-2 bg-black/50 text-white px-2 py-1 rounded text-xs">
-              Loading video...
+              {t('nft.loadingVideo')}
             </div>
           )}
         </div>
@@ -200,7 +229,7 @@ const OptimizedNFTCard = memo(({
           )}
           {isReserved && (
             <div className="text-xs text-ultraviolet-light">
-              Reserved for Community Treasury
+              {t('nft.reservedTreasury')}
             </div>
           )}
         </div>

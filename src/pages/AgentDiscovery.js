@@ -51,7 +51,7 @@ const IntegrationCard = ({ title, description, features, icon: Icon, color, link
     <p className="text-text-secondary mb-4">{description}</p>
     
     <ul className="space-y-2 mb-6">
-      {features.map((feature, index) => (
+      {(Array.isArray(features) ? features : []).map((feature, index) => (
         <li key={index} className="flex items-center gap-2 text-sm text-text-secondary">
           <div className={`w-1.5 h-1.5 rounded-full bg-${color}`} />
           {feature}
@@ -165,11 +165,11 @@ const AgentDiscovery = () => {
     "@type": "Organization",
     "name": "UltraVioleta DAO",
     "description": "Web3-native community building the future of decentralized technology in Latin America",
-    "url": "https://ultravioletadao.io",
+    "url": "https://ultravioletadao.xyz",
     "sameAs": [
       "https://x.com/UltravioletaDAO",
       "https://github.com/ultravioletadao",
-      "https://discord.gg/ultravioleta"
+      "https://discord.gg/ultravioletadao"
     ],
     "additionalType": "AutonomousOrganization",
     "specialty": [
@@ -216,7 +216,7 @@ const AgentDiscovery = () => {
     {
       title: t('agentDiscovery.integrationPoints.executionMarket.title'),
       description: t('agentDiscovery.integrationPoints.executionMarket.description'),
-      features: t('agentDiscovery.integrationPoints.executionMarket.features'),
+      features: t('agentDiscovery.integrationPoints.executionMarket.features', { returnObjects: true }),
       icon: Zap,
       color: 'yellow-500',
       link: 'https://execution.market'
@@ -224,7 +224,7 @@ const AgentDiscovery = () => {
     {
       title: t('agentDiscovery.integrationPoints.karmaCadabra.title'),
       description: t('agentDiscovery.integrationPoints.karmaCadabra.description'),
-      features: t('agentDiscovery.integrationPoints.karmaCadabra.features'),
+      features: t('agentDiscovery.integrationPoints.karmaCadabra.features', { returnObjects: true }),
       icon: Users,
       color: 'green-500',
       link: 'https://karmacadabra.com'
@@ -232,7 +232,7 @@ const AgentDiscovery = () => {
     {
       title: t('agentDiscovery.integrationPoints.moltX.title'),
       description: t('agentDiscovery.integrationPoints.moltX.description'),
-      features: t('agentDiscovery.integrationPoints.moltX.features'),
+      features: t('agentDiscovery.integrationPoints.moltX.features', { returnObjects: true }),
       icon: Bot,
       color: 'purple-500',
       link: 'https://moltx.io'
@@ -240,7 +240,7 @@ const AgentDiscovery = () => {
     {
       title: t('agentDiscovery.integrationPoints.facilitator.title'),
       description: t('agentDiscovery.integrationPoints.facilitator.description'),
-      features: t('agentDiscovery.integrationPoints.facilitator.features'),
+      features: t('agentDiscovery.integrationPoints.facilitator.features', { returnObjects: true }),
       icon: Link,
       color: 'blue-500',
       link: '/facilitator'
@@ -250,8 +250,8 @@ const AgentDiscovery = () => {
   return (
     <>
       <SEO
-        title="Agent Discovery Hub | AI Agents & web4 Integration"
-        description="Discover how AI agents can integrate with UltraVioleta DAO's web4 ecosystem. Learn about the agentic economy, x402 gasless payments, ERC-8004, and collaboration opportunities."
+        title={t('agents.seo.title')}
+        description={t('agents.seo.description')}
         keywords="AI agents, agent discovery, web4, agentic economy, autonomous agents, x402, ERC-8004, Web3 agents, AI integration, agent APIs, agent identity, agent reputation, blockchain agents, AI DAO participation"
       />
       
@@ -304,7 +304,10 @@ const AgentDiscovery = () => {
               </p>
               
               <div className="grid md:grid-cols-2 gap-4">
-                {t('agentDiscovery.whoWeAre.highlights').map((highlight, index) => (
+                {(() => {
+                  const highlights = t('agentDiscovery.whoWeAre.highlights', { returnObjects: true });
+                  return Array.isArray(highlights) ? highlights : [];
+                })().map((highlight, index) => (
                   <div key={index} className="flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-ultraviolet animate-pulse" />
                     <span className="text-text-primary">{highlight}</span>
@@ -376,7 +379,10 @@ const AgentDiscovery = () => {
             </div>
             
             <div className="grid md:grid-cols-2 gap-4 mb-8">
-              {t('agentDiscovery.getStarted.steps').map((step, index) => (
+              {(() => {
+                const steps = t('agentDiscovery.getStarted.steps', { returnObjects: true });
+                return Array.isArray(steps) ? steps : [];
+              })().map((step, index) => (
                 <StepCard
                   key={index}
                   step={index + 1}

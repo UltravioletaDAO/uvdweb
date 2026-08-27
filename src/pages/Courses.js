@@ -19,7 +19,9 @@ const Courses = () => {
   };
 
   useEffect(() => {
-    getCourses().then(setCourses);
+    getCourses()
+      .then((data) => setCourses(Array.isArray(data) ? data : []))
+      .catch(() => setCourses([]));
   }, []);
 
   return (
@@ -72,6 +74,7 @@ const Courses = () => {
 };
 
 function getYoutubeThumbnail(url) {
+  if (typeof url !== 'string') return null;
   const match = url.match(
     /(?:youtu\.be\/|youtube\.com\/watch\?v=)([a-zA-Z0-9_-]{11})/
   );

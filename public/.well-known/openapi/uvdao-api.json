@@ -1,0 +1,132 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "UltravioletaDAO API",
+    "version": "1.0.0",
+    "description": "Public API of UltravioletaDAO (AWS Lambda behind API Gateway). Only the endpoints listed here are deployed.",
+    "contact": { "name": "UltravioletaDAO", "url": "https://ultravioletadao.xyz", "email": "ultravioletadao@gmail.com" }
+  },
+  "servers": [
+    { "url": "https://api.ultravioletadao.xyz", "description": "Production" }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "API status and endpoint list",
+        "operationId": "getStatus",
+        "responses": {
+          "200": {
+            "description": "API is up",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "timestamp": { "type": "string", "format": "date-time" },
+                    "availableEndpoints": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "path": { "type": "string" },
+                          "method": { "type": "string" },
+                          "description": { "type": "string" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/apply": {
+      "post": {
+        "summary": "Submit a DAO membership application",
+        "operationId": "applyMembership",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": { "$ref": "#/components/schemas/Application" }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Application stored",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": { "type": "string" },
+                    "id": { "type": "string" },
+                    "success": { "type": "boolean" }
+                  }
+                }
+              }
+            }
+          },
+          "400": { "description": "Invalid or missing email", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "429": { "description": "An application with this email already exists in the last 24 hours", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "500": { "description": "Server error", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
+    },
+    "/wallets": {
+      "post": {
+        "summary": "Register a member wallet",
+        "operationId": "registerWallet",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["username", "wallet"],
+                "properties": {
+                  "username": { "type": "string" },
+                  "wallet": { "type": "string", "description": "EVM address (Avalanche C-Chain)" }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": { "description": "Wallet already registered", "content": { "application/json": { "schema": { "type": "object", "properties": { "message": { "type": "string" } } } } } },
+          "201": { "description": "Wallet registered", "content": { "application/json": { "schema": { "type": "object", "properties": { "message": { "type": "string" } } } } } },
+          "400": { "description": "Missing or invalid username/wallet", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "500": { "description": "Server error", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Application": {
+        "type": "object",
+        "required": ["email"],
+        "properties": {
+          "email": { "type": "string", "format": "email", "description": "The only server-validated field" },
+          "fullName": { "type": "string" },
+          "twitter": { "type": "string" },
+          "telegram": { "type": "string" },
+          "twitch": { "type": "string" },
+          "walletAddress": { "type": "string", "description": "EVM address (Avalanche C-Chain)" },
+          "story": { "type": "string" },
+          "purpose": { "type": "string" },
+          "references": { "type": "string" },
+          "timestamp": { "type": "integer", "description": "Unix timestamp in seconds" }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": { "error": { "type": "string" } }
+      }
+    }
+  }
+}

@@ -15,7 +15,6 @@ descentralizada para la economía de agentes autónomos.
 ## APIs disponibles para agentes
 
 - Membresía: POST https://api.ultravioletadao.xyz/apply
-- Estado de solicitud: GET https://api.ultravioletadao.xyz/apply/status/{email}
 - Facilitador health: GET https://facilitator.ultravioletadao.xyz/health
 - Facilitador redes soportadas: GET https://facilitator.ultravioletadao.xyz/supported
 - Pagar con x402: POST https://facilitator.ultravioletadao.xyz/settle
@@ -28,7 +27,7 @@ descentralizada para la economía de agentes autónomos.
 
 ## Comunidad
 
-- Discord: https://discord.gg/ultravioleta
+- Discord: https://discord.gg/ultravioletadao
 - Twitter/X: https://x.com/UltravioletaDAO
-- GitHub: https://github.com/ultravioletadao
-- Agent Discovery Hub: https://ultravioletadao.xyz/agent-discovery
+- GitHub: https://github.com/UltravioletaDAO
+- Agent Discovery Hub: https://ultravioletadao.xyz/agents

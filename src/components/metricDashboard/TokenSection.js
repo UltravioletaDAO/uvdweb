@@ -7,12 +7,12 @@ import { useTokenMetrics } from "../../hooks/useTokenMetrics";
 import { usePriceHistory } from "../../hooks/usePriceEvolution";
 
 const TokenSection = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const data = useTokenMetrics();
-  const { uvdPerAvax, uvdPerUsdc } = useTokenMetrics();
+  const { uvdPerAvax, uvdPerUsdc } = data;
   const { history: priceHistory, priceChange30d } = usePriceHistory();
 
-  if (data.error) return <div>Error: {data.error}</div>;
+  if (data.error) return <p className="text-sm text-red-400">{t('metricsDashboard.snapshot.error_loading')}</p>;
 
   return (
     <div className="space-y-8">
@@ -33,7 +33,7 @@ const TokenSection = () => {
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5">
         <MetricCard
           title={t('metricsDashboard.tokenSection.price_usd')}
-          value={`${parseFloat(uvdPerUsdc).toLocaleString()} UVD`}
+          value={uvdPerUsdc === 'N/A' ? 'N/A' : `${parseFloat(uvdPerUsdc).toLocaleString()} UVD`}
           change="= $1 USD"
           changeType="neutral"
           variant="token"
@@ -41,7 +41,7 @@ const TokenSection = () => {
         />
         <MetricCard
           title={t('metricsDashboard.tokenSection.price_avax')}
-          value={`${parseFloat(uvdPerAvax).toLocaleString()} UVD`}
+          value={uvdPerAvax === 'N/A' ? 'N/A' : `${parseFloat(uvdPerAvax).toLocaleString()} UVD`}
           change="= 1 AVAX"
           changeType="neutral"
           variant="token"
@@ -50,14 +50,14 @@ const TokenSection = () => {
         <MetricCard
           title={t('metricsDashboard.tokenSection.holders')}
           value={data.holderCount.toLocaleString()}
-          change={`${data.totalTransactions.toLocaleString()} transacciones`}
+          change={t('metricsDashboard.tokenSection.transactions_count', { count: data.totalTransactions })}
           changeType="neutral"
           variant="token"
           icon={<Users className="h-4 w-4" />}
         />
         <MetricCard
           title={t('metricsDashboard.tokenSection.liquidity_total')}
-          value={`$${parseFloat(data.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 })}`}
+          value={`$${parseFloat(data.liquidity).toLocaleString(i18n.language, { maximumFractionDigits: 0 })}`}
           change={`${data.liquidity && data.priceNative && data.priceUsd ? Math.floor(parseFloat(data.liquidity) / (parseFloat(data.priceUsd) / parseFloat(data.priceNative))).toLocaleString() : '0'} AVAX`}
           changeType="positive"
           variant="token"
@@ -167,7 +167,7 @@ const TokenSection = () => {
                   </Button>
                   <Button variant="ghost" size="sm" className="h-6 p-1" asChild>
                     <a
-                      href="https://arena.trade/token/0x4ffe7e01832243e03668e090706f17726c26d6b2"
+                      href="https://arena.social/UltravioletaDAO"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

@@ -59,7 +59,7 @@ function NetworkSelector({ selectedNetwork, onSelectNetwork, disabled = false })
   return (
     <div className="space-y-3">
       <label className="block text-sm font-medium text-text-secondary">
-        {t('networkSelector.title', 'Select Payment Network')}
+        {t('networkSelector.title')}
       </label>
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
@@ -80,7 +80,7 @@ function NetworkSelector({ selectedNetwork, onSelectNetwork, disabled = false })
                 ${disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer'}
                 group
               `}
-              aria-label={`Select ${network.name}`}
+              aria-label={t('networkSelector.select_aria', { name: network.name })}
               aria-pressed={isSelected}
             >
               {/* Selected indicator */}
@@ -126,7 +126,7 @@ function NetworkSelector({ selectedNetwork, onSelectNetwork, disabled = false })
           <div className="flex items-center gap-2 text-sm">
             <span className="text-violet-400">✓</span>
             <span className="text-text-secondary">
-              {t('networkSelector.selected', 'You will pay on')} <span className="font-semibold text-text-primary">
+              {t('networkSelector.selected')} <span className="font-semibold text-text-primary">
                 {NETWORKS.find(n => n.id === selectedNetwork)?.name}
               </span>
             </span>
@@ -136,7 +136,7 @@ function NetworkSelector({ selectedNetwork, onSelectNetwork, disabled = false })
 
       {/* Help text */}
       <p className="text-xs text-text-secondary mt-2">
-        {t('networkSelector.help', 'Choose the network where you have USDC. Gas fees are minimal on all networks.')}
+        {t('networkSelector.help')}
       </p>
     </div>
   );

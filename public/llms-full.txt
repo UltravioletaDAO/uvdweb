@@ -1,0 +1,65 @@
+# UltravioletaDAO
+
+> Latin American Web3 DAO building infrastructure for the autonomous-agent economy: an x402 gasless payment facilitator, Snapshot governance (ultravioletadao.eth), the UVD governance token on Avalanche C-Chain, and a human+AI bounty market (execution.market).
+
+This is the expanded version of https://ultravioletadao.xyz/llms.txt. Everything below was verified against the live services on 2026-08-26; nothing is announced that does not respond today.
+
+## What UltravioletaDAO does
+- x402 facilitator (https://facilitator.ultravioletadao.xyz): verifies and settles x402 v1 payments (scheme "exact", EIP-3009 transferWithAuthorization) so agents can pay for HTTP resources with stablecoins and no gas. The live list of networks and tokens is served by GET /supported.
+- DAO governance: on-chain voting on Snapshot, space ultravioletadao.eth. Proposals and briefings are shown at https://ultravioletadao.xyz/snapshot.
+- UVD token: governance token on Avalanche C-Chain, contract 0x4Ffe7e01832243e03668E090706F17726c26d6B2. Metrics at https://ultravioletadao.xyz/token and https://ultravioletadao.xyz/metrics.
+- Treasury: Safe multisig on Avalanche C-Chain, 0x52110a2Cc8B6bBf846101265edAAe34E753f3389. Stats at https://ultravioletadao.xyz/safestats.
+- Bounties: human+AI task market at https://execution.market.
+
+## HTTP endpoints available to agents (no authentication)
+
+### x402 facilitator - https://facilitator.ultravioletadao.xyz
+- GET /health -> {"status":"healthy"}
+- GET /supported -> {"kinds":[{"x402Version":1,"scheme":"exact","network":"...","extra":{...}}]} (networks, tokens, fee payers)
+- POST /verify - body {"paymentPayload": PaymentPayload, "paymentRequirements": PaymentRequirements}; 200 with the verification result, 400 on malformed body
+- POST /settle - same body as /verify; 200 with the settlement result, 400 on malformed body
+- GET /verify and GET /settle return a short description of the expected body
+- OpenAPI 3.1: https://facilitator.ultravioletadao.xyz/api-docs/openapi.json - interactive docs: https://facilitator.ultravioletadao.xyz/docs/
+- Source code: https://github.com/UltravioletaDAO/x402-rs
+
+### DAO API - https://api.ultravioletadao.xyz
+- GET / -> API status and the list of available endpoints
+- POST /apply - membership application. JSON body: email (required, validated), fullName, twitter, telegram, twitch, walletAddress, story, purpose, references, timestamp (unix seconds). Responses: 201 {message,id,success}; 400 invalid email; 429 same email within 24h; 500 server error.
+- POST /wallets - register a member wallet. JSON body: username, wallet (EVM address). Responses: 201 registered, 200 already registered, 400 missing/invalid fields.
+- OpenAPI 3.0: https://ultravioletadao.xyz/.well-known/openapi/uvdao-api.json
+
+## Discovery documents
+- API catalog (RFC 9727): https://ultravioletadao.xyz/.well-known/api-catalog
+- MCP server card: https://ultravioletadao.xyz/.well-known/mcp/server-card.json (no MCP transport deployed yet; each tool documents its HTTP endpoint)
+- In-browser WebMCP tools (document.modelContext, registered on every page for agents that run inside the tab): search_stream_memory, list_stream_summaries, get_stream_summary, list_governance_proposals, get_token_metrics, get_treasury, get_facilitator_networks, get_dao_info, apply_dao_membership, navigate_to, set_language. Declarative forms: stream_search_form (/stream-summaries) and apply_dao_membership_form (/aplicar), both submitted by the human.
+- Agent skills index: https://ultravioletadao.xyz/.well-known/agent-skills/index.json
+- AI catalog (ARD): https://ultravioletadao.xyz/.well-known/ai-catalog.json
+- OAuth metadata: https://ultravioletadao.xyz/.well-known/oauth-authorization-server and https://ultravioletadao.xyz/.well-known/oauth-protected-resource (planned; the endpoints they list are not live yet - do not attempt an OAuth flow)
+- Security contact: https://ultravioletadao.xyz/.well-known/security.txt
+- robots.txt: https://ultravioletadao.xyz/robots.txt (Content-Signal: ai-train=no, search=yes, ai-input=yes)
+
+## Pages
+- Home: https://ultravioletadao.xyz/
+- About: https://ultravioletadao.xyz/about
+- Apply: https://ultravioletadao.xyz/aplicar
+- Agents hub: https://ultravioletadao.xyz/agents
+- x402 facilitator: https://ultravioletadao.xyz/facilitator
+- Services: https://ultravioletadao.xyz/services
+- Token: https://ultravioletadao.xyz/token
+- Governance: https://ultravioletadao.xyz/snapshot
+- Delegations: https://ultravioletadao.xyz/delegations
+- Metrics: https://ultravioletadao.xyz/metrics
+- Safe stats: https://ultravioletadao.xyz/safestats
+- Contributors: https://ultravioletadao.xyz/contributors
+- Courses: https://ultravioletadao.xyz/courses
+- Blog: https://ultravioletadao.xyz/blog
+- Events: https://ultravioletadao.xyz/events
+- NFTs: https://ultravioletadao.xyz/nfts
+- Stream summaries: https://ultravioletadao.xyz/stream-summaries
+- Links: https://ultravioletadao.xyz/links
+
+## Community
+- Discord: https://discord.gg/ultravioletadao
+- X: https://x.com/UltravioletaDAO
+- GitHub: https://github.com/UltravioletaDAO
+- Email: ultravioletadao@gmail.com

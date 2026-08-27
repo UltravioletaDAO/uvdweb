@@ -14,7 +14,7 @@ export function FundsSection() {
   const { t } = useTranslation();
   const { owners, threshold, fiatTotal, tokens, error } = useSafeAvalanche();
 
-  if (error) return <div>Error: {error}</div>;
+  if (error) return <p className="text-sm text-red-400">{t('metricsDashboard.snapshot.error_loading')}</p>;
 
   return (
     <div className="space-y-8">
@@ -44,22 +44,6 @@ export function FundsSection() {
         <MetricCard
           title={t('metricsDashboard.funds.required_signatures_avax')}
           value={`${threshold}/${owners.length}`}
-          change={t('metricsDashboard.funds.to_execute_transactions')}
-          changeType="neutral"
-          variant="funds"
-          icon={<Users className="h-4 w-4" />}
-        />
-        <MetricCard
-          title={t('metricsDashboard.funds.multisig_solana')}
-          value="$0"
-          change={`10 ${t('home.metrics.funds.signers') || 'multisigners'}`}
-          changeType="neutral"
-          variant="funds"
-          icon={<Shield className="h-4 w-4" />}
-        />
-        <MetricCard
-          title={t('metricsDashboard.funds.required_signatures_sol')}
-          value="6/10"
           change={t('metricsDashboard.funds.to_execute_transactions')}
           changeType="neutral"
           variant="funds"
@@ -141,23 +125,6 @@ export function FundsSection() {
                     <ExternalLink className="h-3 w-3" />
                   </a>
                 </Button>
-              </div>
-
-              <div className="space-y-3">
-                <div className="flex justify-between items-center p-2.5 rounded-lg bg-background/50">
-                  <div className="flex items-center gap-2">
-                    <div className="w-6 h-6 rounded-full bg-purple-500 flex items-center justify-center text-xs font-bold text-white">
-                      S
-                    </div>
-                    <span className="font-medium">SOL</span>
-                  </div>
-                  <div className="text-right">
-                    <div className="font-bold">0</div>
-                    <div className="text-xs text-muted-foreground">
-                      ~$0
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>

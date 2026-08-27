@@ -70,8 +70,12 @@ const ApplicationStatus = () => {
 
       debugLog('Respuesta del servidor:', response.status);
 
-      // Backend endpoint offline/not deployed: show a friendly message instead of a raw error
-      if (response.status === 404 || response.status === 503) {
+      // 404 = no application for that email (backend GET /apply/status/:email); 503 = backend down
+      if (response.status === 404) {
+        setError(t('applicationStatus.not_found'));
+        return;
+      }
+      if (response.status === 503) {
         setError(t('applicationStatus.service_unavailable'));
         return;
       }
@@ -107,7 +111,9 @@ const ApplicationStatus = () => {
   };
 
   const StatusDisplay = ({ status }) => {
-    const config = statusConfig[status.status];
+    // Fall back to 'pending' if the API returns an unknown status key,
+    // otherwise config would be undefined and config.icon would throw.
+    const config = statusConfig[status?.status] || statusConfig.pending;
     const Icon = config.icon;
 
     return (

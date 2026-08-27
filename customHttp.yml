@@ -1,0 +1,34 @@
+# Amplify custom HTTP headers (replaces the deprecated customHeaders block in amplify.yml).
+# Docs: https://docs.aws.amazon.com/amplify/latest/userguide/custom-headers.html
+# NOTE: no includeSubDomains on HSTS (402milly./402millones. are HTTP-only) and no
+# /*.md Content-Type until the SPA rewrite rule excludes .md (needs Amplify customRules change).
+customHeaders:
+  - pattern: '/**'
+    headers:
+      - key: 'Link'
+        value: '</.well-known/api-catalog>; rel="api-catalog", </.well-known/mcp/server-card.json>; rel="mcp-server-card", </.well-known/agent-skills/index.json>; rel="agent-skills", </.well-known/oauth-protected-resource>; rel="oauth-protected-resource", </agents>; rel="service-doc"'
+      - key: 'Strict-Transport-Security'
+        value: 'max-age=31536000'
+      - key: 'X-Content-Type-Options'
+        value: 'nosniff'
+      - key: 'X-Frame-Options'
+        value: 'SAMEORIGIN'
+      - key: 'Referrer-Policy'
+        value: 'strict-origin-when-cross-origin'
+      # Report-Only (no report-uri/report-to): violations show in DevTools as [Report Only]. Enforcing is a separate decision.
+      - key: 'Content-Security-Policy-Report-Only'
+        value: "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: blob: https:; media-src 'self' blob: https:; frame-src https://dexscreener.com https://player.twitch.tv https://www.youtube.com https://verify.walletconnect.com https://verify.walletconnect.org https://secure.walletconnect.org https://secure.walletconnect.com; frame-ancestors 'self'; worker-src 'self' blob:; connect-src 'self' https://api.ultravioletadao.xyz https://facilitator.ultravioletadao.xyz https://ultravioletadao.s3.us-east-1.amazonaws.com https://pbs5xr8wye.execute-api.us-east-1.amazonaws.com https://hub.snapshot.org https://seq.snapshot.org https://score.snapshot.org https://rpc.snapshot.org https://subgrapher.snapshot.org https://safe-client.safe.global https://safe-transaction-avalanche.safe.global https://api.safe.global https://api.avax.network https://rpc.ankr.com https://*.thirdweb.com https://*.rpc.thirdweb.com https://api.odos.xyz https://api.dexscreener.com https://api.geckoterminal.com https://cdn.routescan.io https://api.twitch.tv https://id.twitch.tv https://api.elevenlabs.io https://ipfs.io https://gateway.pinata.cloud https://cloudflare-ipfs.com https://gateway.ipfs.io https://effigy.im https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com wss://relay.walletconnect.org https://rpc.walletconnect.org https://pulse.walletconnect.org https://echo.walletconnect.com https://verify.walletconnect.com https://verify.walletconnect.org https://api.web3modal.org https://appkit-lab.reown.com https://cloud.walletconnect.com https://explorer-api.walletconnect.com; base-uri 'self'; form-action 'self' https://id.twitch.tv; object-src 'none'"
+  - pattern: '/.well-known/api-catalog'
+    headers:
+      - key: 'Content-Type'
+        value: 'application/linkset+json'
+  - pattern: '/.well-known/**'
+    headers:
+      - key: 'Access-Control-Allow-Origin'
+        value: '*'
+      - key: 'Access-Control-Allow-Methods'
+        value: 'GET, HEAD, OPTIONS'
+  - pattern: '/static/**'
+    headers:
+      - key: 'Cache-Control'
+        value: 'public, max-age=31536000, immutable'

@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import { formatDistanceToNow, isPast } from 'date-fns';
-import { es } from 'date-fns/locale';
-import { enUS } from 'date-fns/locale';
+import { es, enUS, ptBR, fr } from 'date-fns/locale';
+import i18next from '../i18n/config';
 import snapshot from '@snapshot-labs/snapshot.js';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { debugError } from '../lib/utils';
 import { useWallet } from '../contexts/WalletContext';
 import useGovernanceBriefing from '../hooks/useGovernanceBriefings';
+
+const DATE_FNS_LOCALES = { es, en: enUS, pt: ptBR, fr };
+const getDateLocale = (lng) => DATE_FNS_LOCALES[(lng || 'es').slice(0, 2)] || es;
 
 const formatVotingPower = (value) => {
   if (value >= 1000000) {
@@ -61,10 +66,14 @@ const fetchProposalsFromAPI = async (space, setProposals, setLoading, setError, 
       body: JSON.stringify({ query })
     });
 
+    if (!response.ok) {
+      throw new Error(i18next.t('snapshot.errors.load_failed'));
+    }
+
     const json = await response.json();
-    
+
     if (json.errors) {
-      throw new Error(json.errors[0].message);
+      throw new Error(i18next.t('snapshot.errors.load_failed'));
     }
 
     const proposals = json.data.proposals || [];
@@ -83,7 +92,7 @@ const fetchProposalsFromAPI = async (space, setProposals, setLoading, setError, 
 };
 
 const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const briefing = useGovernanceBriefing(proposal?.id);
 
   useEffect(() => {
@@ -115,7 +124,7 @@ const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
           <h2 className="text-2xl font-bold text-text-primary">{proposal.title}</h2>
           <button
             onClick={onClose}
-            aria-label="Cerrar propuesta"
+            aria-label={t('snapshot.aria.close_proposal')}
             className="p-2 rounded-lg"
           >
             <svg className="w-6 h-6 text-ultraviolet-dark hover:text-red-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -129,9 +138,9 @@ const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
             <span>{t('snapshot.author')} {proposal.authorDisplayName || `${proposal.author?.slice(0, 6)}...${proposal.author?.slice(-4)}`}</span>
             <span>•</span>
             <span>
-              {new Date(proposal.start * 1000).toLocaleDateString()}
+              {new Date(proposal.start * 1000).toLocaleDateString(i18n.language)}
               {' - '}
-              {new Date(proposal.end * 1000).toLocaleDateString()}
+              {new Date(proposal.end * 1000).toLocaleDateString(i18n.language)}
             </span>
           </div>
           <span className={`px-3 py-1 rounded-full ${
@@ -147,7 +156,7 @@ const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
           <div className="mt-4 bg-violet-900/15 border border-violet-700/30 rounded-lg p-4">
             <div className="flex items-center justify-between gap-2 mb-2">
               <span className="text-violet-400 font-semibold text-sm">
-                {t('snapshot.briefing.title')}
+                {t('home.metrics.snapshot.briefing.title')}
               </span>
               {typeof briefing.quorum_alcanzado === 'boolean' && (
                 <span className={`text-xs px-2 py-0.5 rounded-full ${
@@ -156,18 +165,18 @@ const ProposalModal = ({ proposal, onClose, onVote, isVoting, userVote }) => {
                     : 'bg-amber-500/10 text-amber-400'
                 }`}>
                   {briefing.quorum_alcanzado
-                    ? t('snapshot.briefing.quorumReached')
-                    : t('snapshot.briefing.quorumMissed')}
+                    ? t('home.metrics.snapshot.briefing.quorumReached')
+                    : t('home.metrics.snapshot.briefing.quorumMissed')}
                 </span>
               )}
             </div>
             <p className="text-sm text-text-secondary leading-relaxed">{briefing.resumen_es}</p>
-            <p className="text-xs text-text-secondary/50 mt-2">{t('snapshot.briefing.credit')}</p>
+            <p className="text-xs text-text-secondary/50 mt-2">{t('home.metrics.snapshot.briefing.credit')}</p>
           </div>
         )}
 
         <div className="prose prose-invert max-w-none mt-4">
-          <div className="whitespace-pre-wrap">{proposal.body}</div>
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{proposal.body}</ReactMarkdown>
         </div>
 
         <h3 className="text-lg font-semibold mb-3 mt-6">{t('snapshot.choices')}:</h3>
@@ -282,7 +291,7 @@ const VoteReasonModal = ({ onConfirm, onClose, choice }) => {
           <h2 className="text-xl font-semibold text-text-primary">{t('snapshot.vote_reason_title')}</h2>
           <button
             onClick={onClose}
-            aria-label="Cerrar razón de voto"
+            aria-label={t('snapshot.aria.close_vote_reason')}
             className="p-2 rounded-lg"
           >
             <svg className="w-6 h-6 text-ultraviolet-dark hover:text-red-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -320,7 +329,7 @@ const VoteReasonModal = ({ onConfirm, onClose, choice }) => {
 };
 
 const VotesModal = ({ proposal, onClose }) => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [votes, setVotes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [voterNames, setVoterNames] = useState({});
@@ -448,7 +457,7 @@ const VotesModal = ({ proposal, onClose }) => {
 
   const formatDate = (timestamp) => {
     const date = new Date(timestamp * 1000);
-    return formatDistanceToNow(date, { addSuffix: true });
+    return formatDistanceToNow(date, { addSuffix: true, locale: getDateLocale(i18n.language) });
   };
 
   const convertIpfsUrl = (ipfsUrl) => {
@@ -465,7 +474,7 @@ const VotesModal = ({ proposal, onClose }) => {
       className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
       role="dialog"
       aria-modal="true"
-      aria-label="Votos de la propuesta"
+      aria-label={t('snapshot.aria.proposal_votes')}
     >
       <div className="bg-background max-w-5xl w-full rounded-lg p-6 max-h-[90vh] overflow-y-auto">
         <div className="flex flex-col gap-6">
@@ -504,7 +513,7 @@ const VotesModal = ({ proposal, onClose }) => {
                 <div>{t('snapshot.voting_power')} ↓</div>
                 <button
                   onClick={onClose}
-                  aria-label="Cerrar lista de votos"
+                  aria-label={t('snapshot.aria.close_votes_list')}
                   className="text-lg text-ultraviolet hover:text-red-500 transition-colors text-center flex items-center justify-center"
                 >
                   <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -714,7 +723,7 @@ const Snapshot = () => {
       if (err.code === 4001) {
         setError(t('snapshot.errors.user_rejected_connection'));
       } else if (!err.code) {
-        setError(err.message || t('snapshot.errors.no_metamask'));
+        setError(err?.message?.includes('No wallet detected') ? t('snapshot.errors.no_metamask') : (err.message || t('snapshot.errors.no_metamask')));
       } else {
         setError(t('snapshot.errors.provider_error'));
       }
@@ -879,39 +888,17 @@ const Snapshot = () => {
 
   const formatTimeLeft = (timestamp) => {
     const date = new Date(timestamp * 1000);
-    const isPastDate = isPast(date);
-    const currentLanguage = i18n.language;
-    const isSpanish = currentLanguage.startsWith('es');
-    
-    if (isPastDate) {
-      if (isSpanish) {
-        const distance = formatDistanceToNow(date, { 
-          locale: es,
-          addSuffix: true
-        });
-        return `Finalizada ${distance}`;
-      } else {
-        const distance = formatDistanceToNow(date, { 
-          locale: enUS,
-          addSuffix: true
-        });
-        return `Ended ${distance}`;
-      }
+    // date-fns throws "Invalid time value" on a NaN date (missing/malformed end)
+    if (isNaN(date.getTime())) return '';
+    const locale = getDateLocale(i18n.language);
+
+    if (isPast(date)) {
+      const distance = formatDistanceToNow(date, { locale, addSuffix: true });
+      return t('snapshot.ended_ago', { distance });
     }
-    
-    if (isSpanish) {
-      const distance = formatDistanceToNow(date, { 
-        locale: es,
-        addSuffix: false
-      });
-      return `${distance} restantes`;
-    } else {
-      const distance = formatDistanceToNow(date, { 
-        locale: enUS,
-        addSuffix: false
-      });
-      return `${distance} left`;
-    }
+
+    const distance = formatDistanceToNow(date, { locale, addSuffix: false });
+    return t('snapshot.time_left', { distance });
   };
 
   // Disconnect — delegates to WalletContext; local Snapshot state resets via the
@@ -936,11 +923,11 @@ const Snapshot = () => {
   return (
     <>
       <SEO
-        title="DAO Governance Voting | Snapshot Proposals & Community Decisions"
-        description="Participate in UltraVioleta DAO governance. Vote on proposals, submit ideas, and shape the future of Web3 in Latin America through decentralized voting on Snapshot."
+        title={t('snapshot.seo.title')}
+        description={t('snapshot.seo.description')}
         keywords="DAO governance, Snapshot voting, decentralized governance, Web3 voting, DAO proposals, community governance, blockchain voting, Latin America DAO, on-chain governance, governance token voting, DAO decision making, Snapshot.org, Web3 democracy, proposal voting, decentralized voting"
       />
-      <div className="min-h-screen bg-background">
+      <main className="min-h-screen bg-background">
       {alert && (
         <Alert
           message={alert.message}
@@ -962,7 +949,7 @@ const Snapshot = () => {
         />
       )}
       <div className="border-b border-gray-800">
-        <div className="max-w-6xl mx-auto px-2 sm:px-4 py-4">
+        <div className="max-w-6xl mx-auto px-2 sm:px-4 pr-16 sm:pr-16 lg:pr-4 py-4">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-2 sm:gap-4">
               <img src="/logo.png" alt={t('common.logo_alt')} className="w-8 h-8 sm:w-10 sm:h-10" />
@@ -1067,11 +1054,11 @@ const Snapshot = () => {
               </h3>
                     </div>
                     <p className="text-text-secondary text-sm sm:text-base line-clamp-3 mb-4">
-                {proposal.body}
+                {(proposal.body || '').replace(/[#*_>`]+/g, '').trim()}
               </p>
                     <div className="flex flex-wrap items-center gap-2 sm:gap-4 text-xs sm:text-sm text-text-tertiary">
                 <span>
-                        {t('snapshot.author')} {authorNames[proposal.author.toLowerCase()] || `${proposal.author.slice(0, 6)}...${proposal.author.slice(-4)}`}
+                        {t('snapshot.author')} {proposal.author ? (authorNames[proposal.author.toLowerCase()] || `${proposal.author.slice(0, 6)}...${proposal.author.slice(-4)}`) : '—'}
                       </span>
                       <span className="hidden sm:inline">•</span>
                       <span>{formatTimeLeft(proposal.end)}</span>
@@ -1103,7 +1090,7 @@ const Snapshot = () => {
                         e.stopPropagation();
                         setSelectedVotes(proposal);
                       }}
-                      className="px-3 py-1 text-xs sm:text-sm border rounded-lg
+                      className="px-3 py-2 min-h-[44px] text-xs sm:text-sm border rounded-lg
                         text-text-primary bg-ultraviolet-darker hover:bg-ultraviolet-dark transition-colors whitespace-nowrap"
                     >
                       {t('snapshot.view_votes')}
@@ -1145,7 +1132,7 @@ const Snapshot = () => {
           />
         )}
       </div>
-    </div>
+    </main>
     </>
   );
 };

@@ -56,13 +56,6 @@ export const ContributorSection = () => {
         console.log('No local contributor_handles.json found:', e);
       }
 
-      // Try multiple endpoints to get application data
-      const endpoints = [
-        `${process.env.REACT_APP_API_URL}/apply/approved`,
-        `${process.env.REACT_APP_API_URL}/apply/all`,
-        `${process.env.REACT_APP_API_URL}/applications`
-      ];
-
       let allApplications = [];
       // Also attempt to load from local JSON snapshot generated from DB
       try {
@@ -81,22 +74,6 @@ export const ContributorSection = () => {
         }
       } catch (e) {
         console.log('Failed to fetch local applicants JSON:', e);
-      }
-
-      for (const endpoint of endpoints) {
-        try {
-          const response = await fetch(endpoint);
-          if (response.ok) {
-            const data = await response.json();
-            if (data.data && Array.isArray(data.data)) {
-              allApplications = [...allApplications, ...data.data];
-            } else if (Array.isArray(data)) {
-              allApplications = [...allApplications, ...data];
-            }
-          }
-        } catch (err) {
-          console.log(`Failed to fetch from ${endpoint}:`, err);
-        }
       }
 
       const profiles = {};

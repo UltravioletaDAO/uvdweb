@@ -12,20 +12,6 @@ const NFTPage = () => {
   const [loading, setLoading] = useState(true);
   const { getCachedUrl, preloadImages, markAsLoaded } = useNFTCache();
 
-  // Register service worker for offline caching
-  useEffect(() => {
-    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-      navigator.serviceWorker
-        .register('/nft-cache-sw.js')
-        .then(registration => {
-          console.log('NFT Cache Service Worker registered:', registration);
-        })
-        .catch(error => {
-          console.warn('Service Worker registration failed:', error);
-        });
-    }
-  }, []);
-
   const collections = {
     echoes: {
       name: 'Echoes by Ultravioleta DAO',
@@ -132,7 +118,7 @@ const NFTPage = () => {
   return (
     <>
       <SEOEnhanced
-        title={`NFT Collections - ${t('site.name')}`}
+        title={t('nft.title')}
         description={t('nft.meta.description')}
         keywords="NFT, Echoes, Ultravioleta DAO, Avalanche, Digital Art, Web3, Collectibles"
         path="/nfts"
@@ -250,7 +236,7 @@ const NFTPage = () => {
                   </div>
 
                   <div className="text-xs text-text-secondary mt-2 text-center">
-                    <span>¹ Venue entry only. ² International shipping not included.</span>
+                    <span>{t('nft.footnotes')}</span>
                   </div>
                 </div>
               )}
