@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-27T02:39:01+00:00",
+  "generated_at": "2026-08-27T21:25:26+00:00",
   "source": {
     "tool": "c0der",
-    "scan_timestamp": "2026-08-27T02:39:01+00:00",
+    "scan_timestamp": "2026-08-27T21:25:26+00:00",
     "projects_scanned": 92
   },
   "nodes": [
@@ -23,7 +23,7 @@
         "three.js",
         "observatory"
       ],
-      "degree": 15
+      "degree": 14
     },
     {
       "id": "execution-market",
@@ -40,7 +40,7 @@
         "mcp",
         "agents"
       ],
-      "degree": 20
+      "degree": 17
     },
     {
       "id": "meshrelay",
@@ -57,7 +57,7 @@
         "websocket",
         "multibrain"
       ],
-      "degree": 17
+      "degree": 15
     },
     {
       "id": "describe-net",
@@ -73,7 +73,7 @@
         "agents",
         "skills"
       ],
-      "degree": 10
+      "degree": 9
     },
     {
       "id": "facilitator",
@@ -90,7 +90,7 @@
         "rust",
         "multichain"
       ],
-      "degree": 20
+      "degree": 16
     },
     {
       "id": "x402-sdk",
@@ -108,7 +108,7 @@
         "pypi",
         "npm"
       ],
-      "degree": 12
+      "degree": 10
     },
     {
       "id": "ultravioletadao",
@@ -141,7 +141,7 @@
         "knowledge-graph",
         "summaries"
       ],
-      "degree": 17
+      "degree": 13
     },
     {
       "id": "karma-hello",
@@ -149,7 +149,7 @@
       "layer": "community",
       "url": null,
       "repo": null,
-      "status": "internal",
+      "status": "beta",
       "embeddable": false,
       "tags": [
         "twitch",
@@ -158,7 +158,7 @@
         "uvd",
         "bot"
       ],
-      "degree": 15
+      "degree": 13
     },
     {
       "id": "402milly",
@@ -174,7 +174,7 @@
         "marketplace",
         "multichain"
       ],
-      "degree": 10
+      "degree": 8
     },
     {
       "id": "tarotof",
@@ -182,7 +182,7 @@
       "layer": "community",
       "url": null,
       "repo": null,
-      "status": "internal",
+      "status": "beta",
       "embeddable": false,
       "tags": [
         "tarot",
@@ -192,85 +192,20 @@
       "degree": 5
     },
     {
-      "id": "c0der",
-      "name": "c0der",
-      "layer": "tooling",
-      "url": null,
-      "repo": null,
-      "status": "internal",
-      "embeddable": false,
-      "tags": [
-        "pm",
-        "drift",
-        "inventory",
-        "graph",
-        "provenance"
-      ],
-      "degree": 0
-    },
-    {
-      "id": "control-plane",
-      "name": "Control Plane",
-      "layer": "tooling",
-      "url": null,
-      "repo": null,
-      "status": "internal",
-      "embeddable": false,
-      "tags": [
-        "knowledge",
-        "memory",
-        "hub",
-        "erc-8004"
-      ],
-      "degree": 14
-    },
-    {
-      "id": "uvd-backend",
-      "name": "uvd-backend",
-      "layer": "tooling",
-      "url": null,
-      "repo": "https://github.com/UltravioletaDAO/uvd-backend",
-      "status": "internal",
-      "embeddable": false,
-      "tags": [
-        "lambda",
-        "terraform",
-        "api",
-        "x402"
-      ],
-      "degree": 3
-    },
-    {
-      "id": "lighthouse",
-      "name": "Lighthouse",
-      "layer": "tooling",
-      "url": null,
-      "repo": null,
-      "status": "internal",
-      "embeddable": false,
-      "tags": [
-        "monitoring",
-        "x402",
-        "rust",
-        "canary"
-      ],
-      "degree": 5
-    },
-    {
       "id": "faro",
       "name": "Faro",
-      "layer": "tooling",
+      "layer": "pillar",
       "url": null,
       "repo": null,
-      "status": "internal",
+      "status": "beta",
       "embeddable": false,
       "tags": [
         "monitoring",
         "x402",
-        "python",
-        "lighthouse-port"
+        "canary",
+        "usdc"
       ],
-      "degree": 3
+      "degree": 2
     },
     {
       "id": "enclaveops",
@@ -278,55 +213,23 @@
       "layer": "tooling",
       "url": null,
       "repo": null,
-      "status": "internal",
+      "status": "beta",
       "embeddable": false,
       "tags": [
         "enclaves",
         "x402",
         "payments"
       ],
-      "degree": 3
-    },
-    {
-      "id": "x402scan",
-      "name": "x402scan",
-      "layer": "external",
-      "url": "https://www.x402scan.com",
-      "repo": "https://github.com/UltravioletaDAO/x402scan",
-      "status": "live",
-      "embeddable": false,
-      "tags": [
-        "explorer",
-        "x402",
-        "fork",
-        "merit-systems"
-      ],
-      "degree": 5
+      "degree": 2
     }
   ],
   "edges": [
-    {
-      "source": "402milly",
-      "target": "x402scan",
-      "type": "api_call",
-      "protocol": "x402",
-      "evidence_count": 1,
-      "planned": false
-    },
     {
       "source": "abracadabra",
       "target": "402milly",
       "type": "api_call",
       "protocol": null,
       "evidence_count": 4,
-      "planned": false
-    },
-    {
-      "source": "abracadabra",
-      "target": "control-plane",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 7,
       "planned": false
     },
     {
@@ -363,14 +266,6 @@
     },
     {
       "source": "abracadabra",
-      "target": "lighthouse",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 7,
-      "planned": false
-    },
-    {
-      "source": "abracadabra",
       "target": "meshrelay",
       "type": "api_call",
       "protocol": null,
@@ -383,78 +278,6 @@
       "type": "api_call",
       "protocol": null,
       "evidence_count": 9,
-      "planned": false
-    },
-    {
-      "source": "control-plane",
-      "target": "402milly",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "control-plane",
-      "target": "abracadabra",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "control-plane",
-      "target": "describe-net",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "control-plane",
-      "target": "enclaveops",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "control-plane",
-      "target": "execution-market",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "control-plane",
-      "target": "karma-hello",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "control-plane",
-      "target": "lighthouse",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 3,
-      "planned": false
-    },
-    {
-      "source": "control-plane",
-      "target": "meshrelay",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "control-plane",
-      "target": "x402-sdk",
-      "type": "api_call",
-      "protocol": "x402",
-      "evidence_count": 24,
       "planned": false
     },
     {
@@ -507,14 +330,6 @@
     },
     {
       "source": "execution-market",
-      "target": "control-plane",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 7,
-      "planned": false
-    },
-    {
-      "source": "execution-market",
       "target": "describe-net",
       "type": "api_call",
       "protocol": null,
@@ -549,7 +364,7 @@
       "source": "execution-market",
       "target": "meshrelay",
       "type": "api_call",
-      "protocol": "IRC",
+      "protocol": null,
       "evidence_count": 12,
       "planned": false
     },
@@ -559,14 +374,6 @@
       "type": "api_call",
       "protocol": "x402",
       "evidence_count": 2,
-      "planned": false
-    },
-    {
-      "source": "execution-market",
-      "target": "x402scan",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 3,
       "planned": false
     },
     {
@@ -580,14 +387,6 @@
     {
       "source": "facilitator",
       "target": "abracadabra",
-      "type": "api_call",
-      "protocol": "x402",
-      "evidence_count": 2,
-      "planned": false
-    },
-    {
-      "source": "facilitator",
-      "target": "control-plane",
       "type": "api_call",
       "protocol": "x402",
       "evidence_count": 2,
@@ -619,14 +418,6 @@
     },
     {
       "source": "facilitator",
-      "target": "lighthouse",
-      "type": "api_call",
-      "protocol": "x402",
-      "evidence_count": 7,
-      "planned": false
-    },
-    {
-      "source": "facilitator",
       "target": "meshrelay",
       "type": "api_call",
       "protocol": "x402",
@@ -647,14 +438,6 @@
       "type": "api_call",
       "protocol": "x402",
       "evidence_count": 1,
-      "planned": false
-    },
-    {
-      "source": "faro",
-      "target": "lighthouse",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
       "planned": false
     },
     {
@@ -699,14 +482,6 @@
     },
     {
       "source": "karma-hello",
-      "target": "uvd-backend",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 5,
-      "planned": false
-    },
-    {
-      "source": "karma-hello",
       "target": "x402-sdk",
       "type": "api_call",
       "protocol": "x402",
@@ -723,17 +498,9 @@
     },
     {
       "source": "karmakadabra",
-      "target": "control-plane",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "karmakadabra",
       "target": "execution-market",
       "type": "api_call",
-      "protocol": "x402",
+      "protocol": null,
       "evidence_count": 12,
       "planned": false
     },
@@ -749,7 +516,7 @@
       "source": "karmakadabra",
       "target": "meshrelay",
       "type": "api_call",
-      "protocol": "IRC",
+      "protocol": null,
       "evidence_count": 12,
       "planned": false
     },
@@ -773,7 +540,7 @@
       "source": "meshrelay",
       "target": "execution-market",
       "type": "api_call",
-      "protocol": "IRC",
+      "protocol": null,
       "evidence_count": 11,
       "planned": false
     },
@@ -789,16 +556,8 @@
       "source": "meshrelay",
       "target": "karmakadabra",
       "type": "api_call",
-      "protocol": "IRC",
-      "evidence_count": 9,
-      "planned": false
-    },
-    {
-      "source": "meshrelay",
-      "target": "x402scan",
-      "type": "api_call",
       "protocol": null,
-      "evidence_count": 3,
+      "evidence_count": 9,
       "planned": false
     },
     {
@@ -863,22 +622,6 @@
       "type": "api_call",
       "protocol": null,
       "evidence_count": 3,
-      "planned": false
-    },
-    {
-      "source": "uvd-backend",
-      "target": "abracadabra",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 1,
-      "planned": false
-    },
-    {
-      "source": "uvd-backend",
-      "target": "lighthouse",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 1,
       "planned": false
     },
     {
@@ -930,14 +673,6 @@
       "planned": false
     },
     {
-      "source": "x402-sdk",
-      "target": "x402scan",
-      "type": "api_call",
-      "protocol": "x402",
-      "evidence_count": 1,
-      "planned": false
-    },
-    {
       "source": "402milly",
       "target": "facilitator",
       "type": "facilitator",
@@ -951,14 +686,6 @@
       "type": "facilitator",
       "protocol": "x402",
       "evidence_count": 2,
-      "planned": false
-    },
-    {
-      "source": "control-plane",
-      "target": "facilitator",
-      "type": "facilitator",
-      "protocol": "x402",
-      "evidence_count": 12,
       "planned": false
     },
     {
@@ -1015,14 +742,6 @@
       "type": "facilitator",
       "protocol": "x402",
       "evidence_count": 9,
-      "planned": false
-    },
-    {
-      "source": "x402scan",
-      "target": "facilitator",
-      "type": "facilitator",
-      "protocol": "x402",
-      "evidence_count": 1,
       "planned": false
     },
     {
