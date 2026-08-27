@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-08-27T12:58:26.293Z",
+  "key": "describe_headers",
+  "cmd": "curl -sI https://describe.net/",
+  "url": "https://describe.net/",
+  "status": 200,
+  "stdout": [
+    "HTTP/2 200",
+    "content-type: text/html",
+    "x-frame-options: DENY",
+    "access-control-allow-origin: *",
+    "server: AmazonS3",
+    "cache-control: public, max-age=60",
+    "x-content-type-options: nosniff",
+    "strict-transport-security: max-age=31536000"
+  ],
+  "redactions": {
+    "hex64": 0,
+    "local_path": 0
+  },
+  "headers": {
+    "content-type": "text/html",
+    "x-frame-options": "DENY",
+    "access-control-allow-origin": "*",
+    "server": "AmazonS3",
+    "cache-control": "public, max-age=60",
+    "x-content-type-options": "nosniff",
+    "strict-transport-security": "max-age=31536000"
+  }
+}

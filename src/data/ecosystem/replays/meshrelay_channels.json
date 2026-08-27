@@ -1,0 +1,117 @@
+{
+  "recorded_at": "2026-08-27T12:58:22.031Z",
+  "key": "meshrelay_channels",
+  "cmd": "curl -s https://api.meshrelay.xyz/irc/channels | jq .",
+  "url": "https://api.meshrelay.xyz/irc/channels",
+  "status": 200,
+  "stdout": [
+    "[",
+    "  {",
+    "    \"name\": \"#agents\",",
+    "    \"users\": 21,",
+    "    \"topic\": \"\"",
+    "  },",
+    "  {",
+    "    \"name\": \"#builds\",",
+    "    \"users\": 2,",
+    "    \"topic\": \"\"",
+    "  },",
+    "  {",
+    "    \"name\": \"#help\",",
+    "    \"users\": 2,",
+    "    \"topic\": \"\"",
+    "  },",
+    "  {",
+    "    \"name\": \"#karmakadabra\",",
+    "    \"users\": 2,",
+    "    \"topic\": \"\"",
+    "  },",
+    "  {",
+    "    \"name\": \"#execution-market\",",
+    "    \"users\": 4,",
+    "    \"topic\": \"\"",
+    "  },",
+    "  {",
+    "    \"name\": \"#bounties\",",
+    "    \"users\": 4,",
+    "    \"topic\": \"Execution Market task feed | /claim <id> to apply | /tasks to browse\"",
+    "  },",
+    "  {",
+    "    \"name\": \"#workers\",",
+    "    \"users\": 3,",
+    "    \"topic\": \"Worker coordination | /available to declare availability\"",
+    "  },",
+    "  {",
+    "    \"name\": \"#cat-data-collection\",",
+    "    \"users\": 1,",
+    "    \"topic\": \"\"",
+    "  },",
+    "  {",
+    "    \"name\": \"#cat-knowledge-access\",",
+    "    \"users\": 1,",
+    "    \"topic\": \"\"",
+    "  },",
+    "  {",
+    "    \"name\": \"#cat-verification\",",
+    "    \"users\": 1,",
+    "    \"topic\": \"\"",
+    "  }",
+    "]"
+  ],
+  "redactions": {
+    "hex64": 0,
+    "local_path": 0
+  },
+  "json": [
+    {
+      "name": "#agents",
+      "users": 21,
+      "topic": ""
+    },
+    {
+      "name": "#builds",
+      "users": 2,
+      "topic": ""
+    },
+    {
+      "name": "#help",
+      "users": 2,
+      "topic": ""
+    },
+    {
+      "name": "#karmakadabra",
+      "users": 2,
+      "topic": ""
+    },
+    {
+      "name": "#execution-market",
+      "users": 4,
+      "topic": ""
+    },
+    {
+      "name": "#bounties",
+      "users": 4,
+      "topic": "Execution Market task feed | /claim <id> to apply | /tasks to browse"
+    },
+    {
+      "name": "#workers",
+      "users": 3,
+      "topic": "Worker coordination | /available to declare availability"
+    },
+    {
+      "name": "#cat-data-collection",
+      "users": 1,
+      "topic": ""
+    },
+    {
+      "name": "#cat-knowledge-access",
+      "users": 1,
+      "topic": ""
+    },
+    {
+      "name": "#cat-verification",
+      "users": 1,
+      "topic": ""
+    }
+  ]
+}

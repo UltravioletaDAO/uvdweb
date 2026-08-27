@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-08-27T12:58:22.629Z",
+  "key": "bridge_em_queue",
+  "cmd": "curl -s https://bridge.meshrelay.xyz/api/em/queue-stats | jq .",
+  "url": "https://bridge.meshrelay.xyz/api/em/queue-stats",
+  "status": 200,
+  "stdout": [
+    "{",
+    "  \"pending\": 0,",
+    "  \"delivered_today\": 0,",
+    "  \"dead_letter\": 0,",
+    "  \"pending_deliveries\": 0,",
+    "  \"delivery_dead_letter\": 0,",
+    "  \"last_event_received\": \"2026-08-24 08:58:10\"",
+    "}"
+  ],
+  "redactions": {
+    "hex64": 0,
+    "local_path": 0
+  },
+  "json": {
+    "pending": 0,
+    "delivered_today": 0,
+    "dead_letter": 0,
+    "pending_deliveries": 0,
+    "delivery_dead_letter": 0,
+    "last_event_received": "2026-08-24 08:58:10"
+  }
+}

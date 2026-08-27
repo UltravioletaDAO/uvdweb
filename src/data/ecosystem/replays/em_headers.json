@@ -1,0 +1,28 @@
+{
+  "recorded_at": "2026-08-27T12:58:26.011Z",
+  "key": "em_headers",
+  "cmd": "curl -sI https://execution.market/",
+  "url": "https://execution.market/",
+  "status": 200,
+  "stdout": [
+    "HTTP/2 200",
+    "content-type: text/html",
+    "x-frame-options: DENY",
+    "server: AmazonS3",
+    "cache-control: public, max-age=60",
+    "x-content-type-options: nosniff",
+    "strict-transport-security: max-age=63072000; includeSubDomains; preload"
+  ],
+  "redactions": {
+    "hex64": 0,
+    "local_path": 0
+  },
+  "headers": {
+    "content-type": "text/html",
+    "x-frame-options": "DENY",
+    "server": "AmazonS3",
+    "cache-control": "public, max-age=60",
+    "x-content-type-options": "nosniff",
+    "strict-transport-security": "max-age=63072000; includeSubDomains; preload"
+  }
+}

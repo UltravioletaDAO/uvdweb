@@ -1,0 +1,29 @@
+{
+  "recorded_at": "2026-08-27T12:58:22.269Z",
+  "key": "meshrelay_em_tasks",
+  "cmd": "curl -s https://api.meshrelay.xyz/em/tasks/available | jq .",
+  "url": "https://api.meshrelay.xyz/em/tasks/available",
+  "status": 200,
+  "stdout": [
+    "{",
+    "  \"tasks\": [],",
+    "  \"count\": 0,",
+    "  \"offset\": 0,",
+    "  \"filters_applied\": {",
+    "    \"include_expired\": false",
+    "  }",
+    "}"
+  ],
+  "redactions": {
+    "hex64": 0,
+    "local_path": 0
+  },
+  "json": {
+    "tasks": [],
+    "count": 0,
+    "offset": 0,
+    "filters_applied": {
+      "include_expired": false
+    }
+  }
+}
