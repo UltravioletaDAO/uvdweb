@@ -12,20 +12,13 @@ import {
   ArrowTopRightOnSquareIcon,
   CheckCircleIcon,
   CubeTransparentIcon,
-  CurrencyDollarIcon,
-  ChartBarIcon
+  CurrencyDollarIcon
 } from '@heroicons/react/24/outline';
 import SEO from '../components/SEO';
 
 const FacilitatorPage = () => {
   const { t } = useTranslation();
   const [copiedAddress, setCopiedAddress] = useState(null);
-  const [stats, setStats] = useState({
-    transactions: '1,234',
-    volume: '$567,890',
-    agents: '42',
-    uptime: '99.99%'
-  });
 
   const mainnetAddress = '0x103040545AC5031A11E8C03dd11324C7333a13C7';
   const testnetAddress = '0x34033041a5944B8F10f8E4D8496Bfb84f1A293A8';
@@ -116,12 +109,6 @@ const FacilitatorPage = () => {
       priceCurrency: 'USD',
       availability: 'https://schema.org/InStock'
     },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      reviewCount: '89',
-      bestRating: '5'
-    },
     author: {
       '@type': 'Organization',
       name: 'UltraVioleta DAO',
@@ -187,7 +174,7 @@ const FacilitatorPage = () => {
                   <ArrowTopRightOnSquareIcon className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://github.com/UltravioletaDAO/x402-facilitator"
+                  href="https://github.com/UltravioletaDAO/x402-rs"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-8 py-4 bg-background-card text-text-primary rounded-lg
@@ -392,38 +379,6 @@ const FacilitatorPage = () => {
           </div>
         </section>
 
-        {/* Live Stats */}
-        <section className="py-20 px-4">
-          <div className="container mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold text-center text-text-primary mb-12">
-              {t('facilitatorPage.stats.title')}
-            </h2>
-
-            <div className="grid md:grid-cols-4 gap-6">
-              <div className="p-6 rounded-xl bg-background-card border border-border text-center">
-                <ChartBarIcon className="w-10 h-10 text-ultraviolet mx-auto mb-3" />
-                <p className="text-3xl font-bold text-text-primary mb-1">{stats.transactions}</p>
-                <p className="text-sm text-text-secondary">{t('facilitatorPage.stats.transactions')}</p>
-              </div>
-              <div className="p-6 rounded-xl bg-background-card border border-border text-center">
-                <CurrencyDollarIcon className="w-10 h-10 text-green-500 mx-auto mb-3" />
-                <p className="text-3xl font-bold text-text-primary mb-1">{stats.volume}</p>
-                <p className="text-sm text-text-secondary">{t('facilitatorPage.stats.volume')}</p>
-              </div>
-              <div className="p-6 rounded-xl bg-background-card border border-border text-center">
-                <BoltIcon className="w-10 h-10 text-blue-500 mx-auto mb-3" />
-                <p className="text-3xl font-bold text-text-primary mb-1">{stats.agents}</p>
-                <p className="text-sm text-text-secondary">{t('facilitatorPage.stats.agents')}</p>
-              </div>
-              <div className="p-6 rounded-xl bg-background-card border border-border text-center">
-                <ShieldCheckIcon className="w-10 h-10 text-yellow-500 mx-auto mb-3" />
-                <p className="text-3xl font-bold text-text-primary mb-1">{stats.uptime}</p>
-                <p className="text-sm text-text-secondary">{t('facilitatorPage.stats.uptime')}</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
         {/* CTA Section */}
         <section className="py-20 px-4 bg-gradient-to-br from-ultraviolet-darker/20 via-background to-background">
           <div className="container mx-auto text-center">
@@ -447,7 +402,7 @@ const FacilitatorPage = () => {
                 <ArrowTopRightOnSquareIcon className="w-5 h-5" />
               </a>
               <a
-                href="https://github.com/UltravioletaDAO/x402-facilitator"
+                href="https://github.com/UltravioletaDAO/x402-rs"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-background-card text-text-primary rounded-lg

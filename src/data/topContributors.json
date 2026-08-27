@@ -9,7 +9,7 @@
         "emoji": "⭐",
         "color": "from-yellow-400 to-orange-500"
       },
-      "avatar": "/images/contributors/ultravioleta.png",
+      "avatar": "/uvd.png",
       "links": {
         "twitter": "0xultravioleta",
         "github": "0xultravioleta"
@@ -26,10 +26,7 @@
         "emoji": "⭐",
         "color": "from-purple-400 to-pink-500"
       },
-      "avatar": "/images/contributors/soulavax.png",
-      "links": {
-        "twitter": "0xSoulAvax"
-      },
+      "links": {},
       "contributions": "Community building, creative direction, and content creation",
       "featured": true
     },
@@ -42,9 +39,7 @@
         "emoji": "🤖",
         "color": "from-blue-400 to-cyan-500"
       },
-      "avatar": "/images/contributors/clawd.png",
       "links": {
-        "moltx": "UltraClawd",
         "github": "ultravioletadao"
       },
       "contributions": "AI-powered development, automation, and agent integrations",
