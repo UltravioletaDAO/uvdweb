@@ -51,6 +51,16 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.about'),
     },
     {
+      // Wave 3 spotlight: Ecosystem right after About (mirrors desktop Header order).
+      name: t('navigation.ecosystem'),
+      icon: CubeTransparentIcon,
+      path: "/ecosystem",
+      isExternal: false,
+      matchPrefix: true, // active on /ecosystem and any /ecosystem/* sub-route
+      spotlight: true,   // pulsing violet dot next to the name
+      description: t('navigation.descriptions.ecosystem'),
+    },
+    {
       name: t('navigation.token'),
       icon: CurrencyDollarIcon,
       path: "/token",
@@ -103,13 +113,6 @@ const HamburgerMenu = () => {
       customStyle: "text-amber-400 group-hover:text-amber-300",
       description: t('navigation.descriptions.bounties'),
     }] : []),
-    {
-      name: t('navigation.ecosystem', 'Ecosistema'),
-      icon: CubeTransparentIcon,
-      path: "/ecosystem",
-      isExternal: false,
-      description: t('navigation.descriptions.ecosystem', 'Mapa vivo de los productos del DAO'),
-    },
     {
       name: t('navigation.links'),
       icon: LinkIcon,
@@ -221,6 +224,10 @@ const HamburgerMenu = () => {
     open: { x: 0, opacity: 1 },
   };
 
+  // Exact match by default; prefix match for items flagged matchPrefix (e.g. /ecosystem/*).
+  const isActive = (item) =>
+    item.matchPrefix ? location.pathname.startsWith(item.path) : location.pathname === item.path;
+
   // Función para renderizar un grupo de elementos del menú
   const renderMenuGroup = (items, title, delay = 0) => (
     <div className="mb-8">
@@ -286,12 +293,12 @@ const HamburgerMenu = () => {
                 to={item.path}
                 className={`flex items-center px-4 py-3 rounded-lg
                   group hover:bg-background/40 transition-all duration-200
-                  ${location.pathname === item.path ? 'bg-background/30' : ''}`}
+                  ${isActive(item) ? 'bg-background/30' : ''}`}
                 onClick={() => setIsOpen(false)}
                 aria-label={item.name}
                 title={item.description}
               >
-                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center 
+                <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center
                   bg-background/30 rounded-lg mr-3 group-hover:bg-background/50
                   transition-all duration-200">
                   <item.icon
@@ -300,16 +307,25 @@ const HamburgerMenu = () => {
                   />
                 </div>
                 <div className="flex-grow">
-                  <span className="font-medium text-text-primary">{item.name}</span>
+                  <div className="flex items-center">
+                    <span className="font-medium text-text-primary">{item.name}</span>
+                    {item.spotlight && (
+                      // Subtle spotlight: pulsing violet dot (static under prefers-reduced-motion)
+                      <span className="relative flex h-2 w-2 ml-2" aria-hidden="true">
+                        <span className="absolute inline-flex h-full w-full rounded-full bg-ultraviolet-light opacity-75 motion-safe:animate-ping" />
+                        <span className="relative inline-flex h-2 w-2 rounded-full bg-ultraviolet-light" />
+                      </span>
+                    )}
+                  </div>
                   <p className="text-xs text-text-secondary mt-0.5 line-clamp-1">
                     {item.description}
                   </p>
                 </div>
               </Link>
             )}
-            
+
             {/* Indicador de elemento activo */}
-            {location.pathname === item.path && !item.isExternal && (
+            {isActive(item) && !item.isExternal && (
               <motion.div 
                 layoutId="activeIndicator"
                 className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-ultraviolet rounded-r-full"

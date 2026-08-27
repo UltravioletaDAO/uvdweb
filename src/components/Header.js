@@ -54,12 +54,24 @@ const Header = () => {
   }, [location.pathname]);
 
   // Curated top bar: only the 7 core destinations. Everything else lives in "More".
+  // Wave 3: Ecosystem promoted into slot 2; Events demoted to "More" so the bar
+  // still fits on one row at 1024px in the widest locale (es) — measured 941px
+  // needed vs 916px available with both, 880px after the swap.
   const mainMenuItems = [
     {
       name: t('navigation.about'),
       icon: InformationCircleIcon,
       path: "/about",
       isExternal: false,
+    },
+    {
+      // Wave 3 spotlight: Ecosystem promoted out of "More" into the 2nd slot.
+      name: t('navigation.ecosystem'),
+      icon: CubeTransparentIcon,
+      path: "/ecosystem",
+      isExternal: false,
+      matchPrefix: true, // active on /ecosystem and any /ecosystem/* sub-route
+      spotlight: true,   // pulsing violet dot (see render below)
     },
     {
       name: t('navigation.token'),
@@ -98,12 +110,6 @@ const Header = () => {
       customStyle: "text-purple-400 hover:text-purple-300",
     },
     {
-      name: t('navigation.events'),
-      icon: CalendarIcon,
-      path: "/events",
-      isExternal: false,
-    },
-    {
       name: t('navigation.watchToEarn'),
       icon: PlayCircleIcon,
       path: "/wheel",
@@ -114,6 +120,13 @@ const Header = () => {
   // C-5: Secondary items grouped under "More" dropdown to avoid desktop nav saturation.
   // BLOG removed from nav (posts.js is empty). Bounties only appears when its flag is on.
   const moreMenuItems = [
+    {
+      // Wave 3: demoted from the top bar to make room for Ecosystem (see note above).
+      name: t('navigation.events'),
+      icon: CalendarIcon,
+      path: "/events",
+      isExternal: false,
+    },
     {
       // C-6: Internal Facilitator landing page
       name: t('navigation.facilitator'),
@@ -164,12 +177,6 @@ const Header = () => {
       isExternal: false,
     },
     {
-      name: t('navigation.ecosystem', 'Ecosistema'),
-      icon: CubeTransparentIcon,
-      path: "/ecosystem",
-      isExternal: false,
-    },
-    {
       name: t('navigation.links'),
       icon: LinkIcon,
       path: "/links",
@@ -184,6 +191,10 @@ const Header = () => {
       customStyle: "text-amber-400 hover:text-amber-300",
     }] : []),
   ];
+
+  // Exact match by default; prefix match for items flagged matchPrefix (e.g. /ecosystem/*).
+  const isActive = (item) =>
+    item.matchPrefix ? location.pathname.startsWith(item.path) : location.pathname === item.path;
 
   return (
     <>
@@ -227,10 +238,17 @@ const Header = () => {
                       to={item.path}
                       className={`flex items-center px-1.5 py-1 rounded text-xs leading-none font-medium tracking-wide
                         transition-all duration-200 hover:bg-white/10 hover:text-white
-                        ${location.pathname === item.path ? 'bg-white/15 text-white' : 'text-text-primary'}
+                        ${isActive(item) ? 'bg-white/15 text-white' : 'text-text-primary'}
                         ${item.customStyle || ''}`}
                       aria-label={item.name}
                     >
+                      {item.spotlight && (
+                        // Subtle spotlight: pulsing violet dot (static under prefers-reduced-motion)
+                        <span className="relative flex h-1.5 w-1.5 mr-1.5" aria-hidden="true">
+                          <span className="absolute inline-flex h-full w-full rounded-full bg-ultraviolet-light opacity-75 motion-safe:animate-ping" />
+                          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-ultraviolet-light" />
+                        </span>
+                      )}
                       <span className="uppercase whitespace-nowrap">{item.name}</span>
                     </Link>
                   )}
