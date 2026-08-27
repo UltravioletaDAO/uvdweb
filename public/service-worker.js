@@ -1,9 +1,9 @@
 // Service Worker for UltraVioleta DAO
 // Version: 1.0.0
 
-const CACHE_NAME = 'uvd-cache-v1';
-const DYNAMIC_CACHE = 'uvd-dynamic-v1';
-const STATIC_CACHE = 'uvd-static-v1';
+const CACHE_NAME = 'uvd-cache-v2';
+const DYNAMIC_CACHE = 'uvd-dynamic-v2';
+const STATIC_CACHE = 'uvd-static-v2';
 
 // Static assets to cache immediately
 const STATIC_ASSETS = [
@@ -14,8 +14,7 @@ const STATIC_ASSETS = [
   '/logo.png',
   '/logo192.png',
   '/logo512.png',
-  '/static/css/main.css',
-  '/static/js/main.js'
+  '/offline.html'
 ];
 
 // Dynamic cache for API responses
@@ -139,7 +138,8 @@ self.addEventListener('fetch', (event) => {
   }
 
   // HTML pages - Network first with offline fallback
-  if (request.headers.get('accept').includes('text/html')) {
+  const accept = request.headers.get('accept') || '';
+  if (accept.includes('text/html')) {
     event.respondWith(
       fetch(request)
         .then((response) => {
@@ -155,7 +155,7 @@ self.addEventListener('fetch', (event) => {
               return response;
             }
             // Return offline page if available
-            return caches.match('/offline.html');
+            return caches.match('/offline.html').then(r => r || Response.error());
           });
         })
     );
