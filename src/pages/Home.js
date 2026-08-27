@@ -18,7 +18,7 @@ const Home = () => {
   const [events, setEvents] = useState([]);
   const [showEventsSection, setShowEventsSection] = useState(false);
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   // Metrics hooks
   const { metrics: snapshotMetrics } = useCombinedSnapshotData();
@@ -32,13 +32,14 @@ const Home = () => {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const filteredEvents = fetchedEvents.filter(eventGroup => {
+          if (!eventGroup?.date) return false;
           const [eventDay, eventMonth] = eventGroup.date.split("/").map(Number);
           const eventDate = new Date(today.getFullYear(), eventMonth - 1, eventDay);
           return eventDate >= today;
         });
         setEvents(filteredEvents);
         setShowEventsSection(filteredEvents.length > 0);
-      });
+      }).catch(() => setShowEventsSection(false));
     }, 1000); // Load events after 1 second
 
     return () => clearTimeout(timer);
@@ -51,7 +52,7 @@ const Home = () => {
         description={t('home.seoDescription', 'UltraVioleta DAO - Latin America at the cutting edge of web4. Pioneers of x402 Facilitator for gasless AI agent payments, building the agentic economy with EIP-3009, ERC-8004, decentralized governance, and collaborative treasury management on Avalanche, Base, Celo.')}
         keywords="x402 facilitator, gasless payments, AI agent transactions, EIP-3009, meta-transactions, web4, agentic economy, autonomous agents, x402, ERC-8004, UltraVioleta DAO, Web3 LATAM, Latin America Blockchain, DAO Community, Decentralized Governance, Avalanche, Base, Celo, HyperEVM, Snapshot Voting, Web3 Development, DeFi Latin America, zero gas fees, trustless payments, cross-chain infrastructure"
       />
-      <div className="min-h-screen bg-background">
+      <main className="min-h-screen bg-background">
       {/* Hero Section - Simplified without animations */}
       <section className="relative overflow-hidden min-h-[70vh] flex items-center">
         <div className="absolute inset-0">
@@ -99,7 +100,7 @@ const Home = () => {
                 <div className="text-sm text-purple-400">
                   {t('home.metrics.legal.jurisdiction')}
                 </div>
-                <div className="text-xs text-gray-500 mt-1">
+                <div className="text-xs text-gray-400 mt-1">
                   {t('home.metrics.legal.registered')}
                 </div>
               </div>
@@ -108,6 +109,7 @@ const Home = () => {
             <div className="flex gap-3 flex-wrap">
               <Link
                 to="/about#legal"
+                aria-label={t('home.metrics.legal.learn_more_aria')}
                 className="text-sm text-purple-400 inline-flex items-center gap-2 px-4 py-2 border border-purple-600/30 rounded-lg bg-purple-600/5 hover:bg-purple-600/20 hover:border-purple-500/50 transition-all"
               >
                 {t('home.metrics.legal.learn_more')}
@@ -130,7 +132,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className={`grid grid-cols-1 ${tokenData.priceUsd && parseFloat(tokenData.priceUsd) > 0 && tokenData.holderCount > 0 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-6`}>
+          <div className={`grid grid-cols-1 ${tokenData.priceUsd && parseFloat(tokenData.priceUsd) > 0 ? 'md:grid-cols-3' : 'md:grid-cols-2'} gap-6`}>
 
             {/* Community Vault Box */}
             <div className="bg-emerald-600/5 border border-emerald-600/20 rounded-xl p-6 text-center min-h-[180px] flex flex-col transition-all duration-300 hover:border-emerald-500/50 hover:bg-emerald-600/10">
@@ -141,11 +143,11 @@ const Home = () => {
                 <div className="text-3xl font-bold text-white mb-2">
                   ${treasuryTotal ? Math.floor(treasuryTotal).toLocaleString() : '-'}
                 </div>
-                <div className="text-xs text-gray-500 mb-2">
+                <div className="text-xs text-gray-400 mb-2">
                   {t('home.metrics.funds.multisig')}
                 </div>
               </div>
-              <div className="text-sm text-gray-600 border-t border-emerald-600/10 pt-2 mt-auto">
+              <div className="text-sm text-gray-400 border-t border-emerald-600/10 pt-2 mt-auto">
                 {threshold || '-'} {t('home.metrics.funds.required_of')} {owners?.length || '-'} {t('home.metrics.funds.multisigners')}
               </div>
             </div>
@@ -174,17 +176,17 @@ const Home = () => {
                     </div>
                   </div>
                 </div>
-                <div className="text-xs text-gray-600 mt-1">
+                <div className="text-xs text-gray-400 mt-1">
                   {t('home.metrics.snapshot.members_participating', { count: snapshotMetrics?.followers || '-' })}
                 </div>
               </div>
-              <div className="text-sm text-gray-500 border-t border-violet-600/20 pt-2 mt-auto">
+              <div className="text-sm text-gray-400 border-t border-violet-600/20 pt-2 mt-auto">
                 {t('home.metrics.snapshot.since')}
               </div>
             </div>
 
             {/* Token UVD Box - only show when real data is available */}
-            {tokenData.priceUsd && parseFloat(tokenData.priceUsd) > 0 && tokenData.holderCount > 0 && (
+            {tokenData.priceUsd && parseFloat(tokenData.priceUsd) > 0 && (
             <div className="bg-amber-600/5 border border-amber-600/20 rounded-xl p-6 text-center relative min-h-[180px] flex flex-col group transition-all duration-300 hover:border-amber-500/50 hover:bg-amber-600/10">
               <div className="text-sm text-gray-400 mb-2 uppercase tracking-wider flex items-center justify-center gap-1.5">
                 <CurrencyDollarIcon className="w-4 h-4" /> {t('home.metrics.token.title_full')}
@@ -197,13 +199,13 @@ const Home = () => {
                   {tokenData.priceNative ? Math.floor(1 / parseFloat(tokenData.priceNative)).toLocaleString() : '-'} UVD = 1 AVAX
                 </div>
                 <div className="text-sm text-purple-500">
-                  {t('home.metrics.token.total_liquidity_backing')}: ${parseFloat(tokenData.liquidity).toLocaleString('en-US', { maximumFractionDigits: 0 })}
+                  {t('home.metrics.token.total_liquidity_backing')}: ${parseFloat(tokenData.liquidity).toLocaleString(i18n.language, { maximumFractionDigits: 0 })}
                 </div>
                 <div className="text-sm text-red-500 mt-1">
                   🔥 {t('home.metrics.token.burned_total')}: {tokenData.totalBurnedTokens ? tokenData.totalBurnedTokens.toLocaleString(undefined, { maximumFractionDigits: 0 }) : '0'} UVD
                 </div>
               </div>
-              <div className="text-sm text-gray-600 border-t border-amber-600/10 pt-2 mt-auto">
+              <div className="text-sm text-gray-400 border-t border-amber-600/10 pt-2 mt-auto">
                 {tokenData.holderCount?.toLocaleString()} {t('home.metrics.token.holders')} • {tokenData.totalTransactions?.toLocaleString() || '-'} {t('home.metrics.token.transactions')}
               </div>
             </div>
@@ -212,7 +214,7 @@ const Home = () => {
 
           {/* Lazy load DAO Storyteller */}
           <Suspense fallback={<div className="mt-6 h-32 bg-gray-800/20 rounded-xl animate-pulse" />}>
-            {snapshotMetrics?.proposals && treasuryTotal && owners?.length && (
+            {snapshotMetrics?.proposals && treasuryTotal > 0 && owners?.length && (
               <div className="mt-6">
                 <DaoStoryteller
                   metrics={{
@@ -433,7 +435,7 @@ const Home = () => {
           onClose={() => setIsFormOpen(false)}
         />
       </Suspense>
-    </div>
+    </main>
     </>
   );
 };

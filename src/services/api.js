@@ -4,13 +4,19 @@
 // API Configuration
 const API_CONFIG = {
   // Bounties API - AWS Lambda
-  BOUNTIES_API_URL: process.env.REACT_APP_BOUNTIES_API_URL || 'https://othbtswzu7.execute-api.us-east-1.amazonaws.com/prod',
+  BOUNTIES_API_URL: process.env.REACT_APP_BOUNTIES_API_URL || null,
   
   // New Applicants API - Existing API
   NEW_APPLICANTS_API_URL: process.env.REACT_APP_NEW_APPLICANTS_API_URL || 'https://api.ultravioletadao.xyz',
   
   // Legacy API URL (for backward compatibility)
   LEGACY_API_URL: process.env.REACT_APP_API_URL || 'https://api.ultravioletadao.xyz'
+};
+
+// Bounties API is optional: fail loudly instead of hitting a dead default host
+const requireBountiesApi = () => {
+  if (!API_CONFIG.BOUNTIES_API_URL) throw new Error('Bounties API not configured');
+  return API_CONFIG.BOUNTIES_API_URL;
 };
 
 // Helper function to make API requests
@@ -56,19 +62,19 @@ export const bountiesAPI = {
     if (limit) queryParams.append('limit', limit);
     if (page) queryParams.append('page', page);
     
-    const url = `${API_CONFIG.BOUNTIES_API_URL}/bounties${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
+    const url = `${requireBountiesApi()}/bounties${queryParams.toString() ? `?${queryParams.toString()}` : ''}`;
     return makeRequest(url);
   },
 
   // Get single bounty by ID
   getById: async (id) => {
-    const url = `${API_CONFIG.BOUNTIES_API_URL}/bounties/${id}`;
+    const url = `${requireBountiesApi()}/bounties/${id}`;
     return makeRequest(url);
   },
 
   // Create new bounty
   create: async (bountyData) => {
-    const url = `${API_CONFIG.BOUNTIES_API_URL}/bounties`;
+    const url = `${requireBountiesApi()}/bounties`;
     return makeRequest(url, {
       method: 'POST',
       body: JSON.stringify(bountyData),
@@ -77,7 +83,7 @@ export const bountiesAPI = {
 
   // Update bounty
   update: async (id, bountyData) => {
-    const url = `${API_CONFIG.BOUNTIES_API_URL}/bounties/${id}`;
+    const url = `${requireBountiesApi()}/bounties/${id}`;
     return makeRequest(url, {
       method: 'PUT',
       body: JSON.stringify(bountyData),
@@ -86,7 +92,7 @@ export const bountiesAPI = {
 
   // Delete bounty
   delete: async (id) => {
-    const url = `${API_CONFIG.BOUNTIES_API_URL}/bounties/${id}`;
+    const url = `${requireBountiesApi()}/bounties/${id}`;
     return makeRequest(url, {
       method: 'DELETE',
     });
@@ -94,7 +100,7 @@ export const bountiesAPI = {
 
   // Update bounty status
   updateStatus: async (id, status) => {
-    const url = `${API_CONFIG.BOUNTIES_API_URL}/bounties/${id}/status`;
+    const url = `${requireBountiesApi()}/bounties/${id}/status`;
     return makeRequest(url, {
       method: 'PATCH',
       body: JSON.stringify({ status }),
@@ -103,13 +109,13 @@ export const bountiesAPI = {
 
   // Get bounty submissions
   getSubmissions: async (bountyId) => {
-    const url = `${API_CONFIG.BOUNTIES_API_URL}/bounties/${bountyId}/submissions`;
+    const url = `${requireBountiesApi()}/bounties/${bountyId}/submissions`;
     return makeRequest(url);
   },
 
   // Create submission
   createSubmission: async (bountyId, submissionData) => {
-    const url = `${API_CONFIG.BOUNTIES_API_URL}/bounties/${bountyId}/submissions`;
+    const url = `${requireBountiesApi()}/bounties/${bountyId}/submissions`;
     return makeRequest(url, {
       method: 'POST',
       body: JSON.stringify(submissionData),
@@ -118,7 +124,7 @@ export const bountiesAPI = {
 
   // Test API connection
   test: async () => {
-    const url = `${API_CONFIG.BOUNTIES_API_URL}/test`;
+    const url = `${requireBountiesApi()}/test`;
     return makeRequest(url);
   }
 };

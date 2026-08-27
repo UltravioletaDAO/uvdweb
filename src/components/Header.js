@@ -28,15 +28,24 @@ const Header = () => {
   const [moreOpen, setMoreOpen] = useState(false);
   const moreRef = useRef(null);
 
-  // Close "More" dropdown when clicking outside
+  // Close "More" dropdown when clicking outside or pressing Escape
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (moreRef.current && !moreRef.current.contains(e.target)) {
         setMoreOpen(false);
       }
     };
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setMoreOpen(false);
+      }
+    };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
   }, []);
 
   // Close "More" dropdown on route change
@@ -115,7 +124,7 @@ const Header = () => {
     },
     {
       // C-6: External "Abrir app" secondary link for Facilitator
-      name: t('navigation.facilitatorApp', 'Abrir app'),
+      name: t('navigation.facilitatorApp'),
       icon: BeakerIcon,
       path: "https://facilitator.ultravioletadao.xyz/",
       isExternal: true,
@@ -155,7 +164,7 @@ const Header = () => {
       isExternal: false,
     },
     {
-      name: t('navigation.agents', 'Agents'),
+      name: t('navigation.agents'),
       icon: CpuChipIcon,
       path: "/agents",
       isExternal: false,
@@ -186,8 +195,10 @@ const Header = () => {
             <div className="flex-shrink-0">
               <Link to="/" className="flex items-center group">
                 <img
-                  src="/uvd.png"
+                  src="/uvd-128.png"
                   alt={t('common.logo_alt')}
+                  width={36}
+                  height={36}
                   className="h-9 w-9 transition-transform duration-200 group-hover:scale-105"
                 />
               </Link>
@@ -236,7 +247,7 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded={moreOpen}
                 >
-                  <span className="uppercase whitespace-nowrap">More</span>
+                  <span className="uppercase whitespace-nowrap">{t('navigation.more')}</span>
                   <ChevronDownIcon className={`w-3 h-3 transition-transform duration-200 ${moreOpen ? 'rotate-180' : ''}`} />
                 </button>
                 {moreOpen && (

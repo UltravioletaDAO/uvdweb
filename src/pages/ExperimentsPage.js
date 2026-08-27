@@ -67,9 +67,9 @@ const ExperimentsPage = () => {
       year: 2025,
       category: 'governance',
       status: 'upcoming',
-      date: t('experiments.comingSoon.date'),
-      title: t('experiments.comingSoon.title'),
-      description: t('experiments.comingSoon.description'),
+      date: t('experiments.items.comingSoon.date'),
+      title: t('experiments.items.comingSoon.title'),
+      description: t('experiments.items.comingSoon.description'),
       summary: '',
       participants: 0,
       budget: 'TBD',
@@ -340,7 +340,7 @@ const ExperimentsPage = () => {
                       <div className="text-center py-8">
                         <ClockIcon className="h-12 w-12 mx-auto text-gray-400 mb-3" />
                         <p className="text-gray-500 text-text-secondary italic">
-                          {t('experiments.comingSoon.details')}
+                          {t('experiments.items.comingSoon.details')}
                         </p>
                       </div>
                     )}

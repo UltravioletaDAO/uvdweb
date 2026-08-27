@@ -12,20 +12,6 @@ const NFTPage = () => {
   const [loading, setLoading] = useState(true);
   const { getCachedUrl, preloadImages, markAsLoaded } = useNFTCache();
 
-  // Register service worker for offline caching
-  useEffect(() => {
-    if ('serviceWorker' in navigator && process.env.NODE_ENV === 'production') {
-      navigator.serviceWorker
-        .register('/nft-cache-sw.js')
-        .then(registration => {
-          console.log('NFT Cache Service Worker registered:', registration);
-        })
-        .catch(error => {
-          console.warn('Service Worker registration failed:', error);
-        });
-    }
-  }, []);
-
   const collections = {
     echoes: {
       name: 'Echoes by Ultravioleta DAO',
@@ -33,7 +19,7 @@ const NFTPage = () => {
       totalSupply: 89,
       chain: 'Avalanche',
       contract: '0x6d08557830959b3441d269145b32dab93206b3d2',
-      marketplaceUrl: 'https://magiceden.us/collections/avalanche/echoes-by-ultravioleta-dao-806754961',
+      marketplaceUrl: 'https://salvor.io/collections/0x6d08557830959b3441d269145b32dab93206b3d2',
       stats: {
         uniqueOwners: 52,
         listed: 1,
@@ -250,7 +236,7 @@ const NFTPage = () => {
                   </div>
 
                   <div className="text-xs text-text-secondary mt-2 text-center">
-                    <span>¹ Venue entry only. ² International shipping not included.</span>
+                    <span>{t('nft.footnotes')}</span>
                   </div>
                 </div>
               )}

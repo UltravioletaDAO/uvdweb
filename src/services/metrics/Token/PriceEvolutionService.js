@@ -1,3 +1,5 @@
+import i18n from '../../../i18n/config';
+
 const PAIR_ID = "0xbff3e2238e545c76f705560bd1677bd9c0e9dab4";
 const INTERVAL = "day?aggregate=1&limit=30";
 
@@ -8,7 +10,7 @@ export async function fetchPriceHistory() {
     const json = await res.json();
     
     return json.data.attributes.ohlcv_list.map(([timestamp, open, high, low, close, volume]) => ({
-      date: new Date(timestamp * 1000).toLocaleDateString(),
+      date: new Date(timestamp * 1000).toLocaleDateString(i18n.language),
       price: close,
       open,
       high,

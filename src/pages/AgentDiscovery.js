@@ -169,7 +169,7 @@ const AgentDiscovery = () => {
     "sameAs": [
       "https://x.com/UltravioletaDAO",
       "https://github.com/ultravioletadao",
-      "https://discord.gg/ultravioleta"
+      "https://discord.gg/ultravioletadao"
     ],
     "additionalType": "AutonomousOrganization",
     "specialty": [
@@ -250,8 +250,8 @@ const AgentDiscovery = () => {
   return (
     <>
       <SEO
-        title="Agent Discovery Hub | AI Agents & web4 Integration"
-        description="Discover how AI agents can integrate with UltraVioleta DAO's web4 ecosystem. Learn about the agentic economy, x402 gasless payments, ERC-8004, and collaboration opportunities."
+        title={t('agents.seo.title')}
+        description={t('agents.seo.description')}
         keywords="AI agents, agent discovery, web4, agentic economy, autonomous agents, x402, ERC-8004, Web3 agents, AI integration, agent APIs, agent identity, agent reputation, blockchain agents, AI DAO participation"
       />
       

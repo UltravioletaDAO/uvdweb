@@ -11,8 +11,8 @@ const Contributors = () => {
   return (
     <>
       <SEO
-        title="DAO Contributors & Builders | web4 & Web3 Development"
-        description="Meet the builders of UltraVioleta DAO. Join our community of web4 and Web3 developers, designers, and contributors building the agentic economy in Latin America."
+        title={t('contributors.seo.title')}
+        description={t('contributors.seo.description')}
         keywords="DAO contributors, Web3 builders, web4 builders, agentic economy, open source contributors, blockchain developers, Latin America developers, GitHub contributors, Web3 community, DAO members, decentralized development, crypto contributors, blockchain builders, community developers"
       />
       <div className="min-h-screen bg-background">

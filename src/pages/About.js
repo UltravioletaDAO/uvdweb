@@ -122,7 +122,7 @@ const About = () => {
         { name: 'Avalanche', twitter: '@AvaxTeam1', videoUrl: 'https://x.com/UltravioletaDAO/status/1961197588389953629' },
         { name: 'Rekt', twitter: '@RektHQ', videoUrl: 'https://x.com/UltravioletaDAO/status/1961077187227844906' },
         { name: 'Celo Colombia', twitter: '@Celo_Col', videoUrl: 'https://x.com/UltravioletaDAO/status/1961113800574189779' },
-        { name: 'Self', twitter: '@selfprotocol', videoUrl: 'https://x.com/UltravioletaDAO/status/1961544954301616209' },
+        { name: 'Self', videoUrl: 'https://x.com/UltravioletaDAO/status/1961544954301616209' },
         { name: 'Uniswap', twitter: '@Uniswap', videoUrl: 'https://x.com/UltravioletaDAO/status/1961535762828333124' },
         { name: 'Pyth Network', twitter: '@PythNetwork', videoUrl: 'https://x.com/UltravioletaDAO/status/1961567997509738889' },
         { name: 'Heroes Of Cipher', twitter: '@HeroesOfCipher', videoUrl: 'https://x.com/UltravioletaDAO/status/1961177432419193181' },
@@ -431,6 +431,7 @@ const About = () => {
                                     <h4 className="font-semibold text-sm text-gray-800 text-text-primary group-hover:text-purple-600 group-hover:text-ultraviolet-light transition-colors">
                                       {sponsor.name}
                                     </h4>
+                                    {sponsor.twitter && (
                                     <a
                                       href={`https://x.com/${sponsor.twitter.substring(1)}`}
                                       target="_blank"
@@ -442,6 +443,7 @@ const About = () => {
                                       </svg>
                                       <span>{sponsor.twitter}</span>
                                     </a>
+                                    )}
                                   </div>
                                 </div>
                                 <a
@@ -741,17 +743,6 @@ const About = () => {
                   <p className="text-gray-700 text-text-secondary mb-4 line-clamp-3">
                     {t('about.featuredOn.cointelegraph.description')}
                   </p>
-                  <a
-                    href="https://es.cointelegraph.com/news/blockchain-es-una-herramienta-de-coordinacion-y-transparencia-radical-segun-ultravioletadao"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-purple-600 text-ultraviolet-light hover:text-purple-700 hover:text-ultraviolet-light font-semibold"
-                  >
-                    {t('about.featuredOn.readMore')}
-                    <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                    </svg>
-                  </a>
                 </div>
               </motion.div>
 

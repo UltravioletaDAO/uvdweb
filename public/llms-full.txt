@@ -31,6 +31,7 @@ This is the expanded version of https://ultravioletadao.xyz/llms.txt. Everything
 ## Discovery documents
 - API catalog (RFC 9727): https://ultravioletadao.xyz/.well-known/api-catalog
 - MCP server card: https://ultravioletadao.xyz/.well-known/mcp/server-card.json (no MCP transport deployed yet; each tool documents its HTTP endpoint)
+- In-browser WebMCP tools (document.modelContext, registered on every page for agents that run inside the tab): search_stream_memory, list_stream_summaries, get_stream_summary, list_governance_proposals, get_token_metrics, get_treasury, get_facilitator_networks, get_dao_info, apply_dao_membership, navigate_to, set_language. Declarative forms: stream_search_form (/stream-summaries) and apply_dao_membership_form (/aplicar), both submitted by the human.
 - Agent skills index: https://ultravioletadao.xyz/.well-known/agent-skills/index.json
 - AI catalog (ARD): https://ultravioletadao.xyz/.well-known/ai-catalog.json
 - OAuth metadata: https://ultravioletadao.xyz/.well-known/oauth-authorization-server and https://ultravioletadao.xyz/.well-known/oauth-protected-resource (planned; the endpoints they list are not live yet - do not attempt an OAuth flow)

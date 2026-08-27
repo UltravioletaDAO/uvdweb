@@ -213,9 +213,9 @@ const ApplicationForm = ({ isOpen, onClose }) => {
   // Manejo del envío del formulario
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     if (!validateStep(3)) {
-      return;
+      return { error: 'validation_failed' };
     }
 
     setIsSubmitting(true);
@@ -290,10 +290,11 @@ const ApplicationForm = ({ isOpen, onClose }) => {
           references: ''
         });
         setCurrentStep(1);
+        return { ok: true };
       } else {
         throw new Error(data.message || t('form.errors.processing_error'));
       }
-      
+
     } catch (error) {
       console.error('Error detallado:', error); // Debug
 
@@ -308,8 +309,19 @@ const ApplicationForm = ({ isOpen, onClose }) => {
       }
       
       setSubmitError(errorMessage);
+      return { error: errorMessage };
     } finally {
       setIsSubmitting(false);
+    }
+  };
+
+  // WebMCP declarativo: si el submit lo disparó un agente (SubmitEvent.agentInvoked), hay que
+  // responderle con respondWith(); si no, Chrome rechaza la llamada por el preventDefault().
+  const onFormSubmit = (e) => {
+    const result = handleSubmit(e);
+    const native = e.nativeEvent;
+    if (native?.agentInvoked && typeof native.respondWith === 'function') {
+      native.respondWith(result);
     }
   };
 
@@ -594,6 +606,16 @@ const ApplicationForm = ({ isOpen, onClose }) => {
     </AnimatePresence>
   );
 
+  // WebMCP declarativo (sin toolautosubmit: el humano envía). Chrome exige un botón submit en el
+  // form, y solo el paso 3 lo tiene; en los pasos 1-2 exponerlo lanzaría UnknownError al agente.
+  const toolFormAttrs = currentStep === 3
+    ? {
+        toolname: 'apply_dao_membership_form',
+        tooldescription:
+          'Fill in the last step of the UltravioletaDAO membership application (wallet, story, purpose, references). The human reviews and clicks submit.'
+      }
+    : {};
+
   if (isPage) {
     return (
       <div className="min-h-screen py-12 px-4 flex flex-col items-center">
@@ -604,7 +626,11 @@ const ApplicationForm = ({ isOpen, onClose }) => {
           {showSuccess ? (
             <SuccessMessage onClose={() => {}} />
           ) : (
-            <form onSubmit={handleSubmit} className="w-full">
+            <form
+              onSubmit={onFormSubmit}
+              className="w-full"
+              {...toolFormAttrs}
+            >
               <ProgressBar />
               {renderStep()}
             </form>
@@ -624,7 +650,11 @@ const ApplicationForm = ({ isOpen, onClose }) => {
       {showSuccess ? (
         <SuccessMessage onClose={onClose} />
       ) : (
-        <form onSubmit={handleSubmit} className="w-full">
+        <form
+          onSubmit={onFormSubmit}
+          className="w-full"
+          {...toolFormAttrs}
+        >
           <ProgressBar />
           {renderStep()}
         </form>

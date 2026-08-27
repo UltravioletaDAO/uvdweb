@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import { cn } from '../../lib/utils';
 
 // Token image component with fallback
@@ -74,6 +75,7 @@ export const TokenSelector = ({
   isLoading = false,
   className
 }) => {
+  const { t } = useTranslation();
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -115,7 +117,7 @@ export const TokenSelector = ({
         <div className="flex items-center justify-between text-sm">
           <span className="text-muted-foreground font-medium">{label}</span>
           <div className="flex items-center gap-2">
-            <span className="text-muted-foreground">Balance:</span>
+            <span className="text-muted-foreground">{t('swap.balance')}:</span>
             <span className="text-foreground font-semibold">
               {parseFloat(balance || 0).toFixed(6)}
             </span>
@@ -145,7 +147,7 @@ export const TokenSelector = ({
                     transition={{ duration: 0.6, repeat: Infinity, delay: 0.4 }}
                   />
                 </div>
-                <span className="text-sm text-muted-foreground">Updating...</span>
+                <span className="text-sm text-muted-foreground">{t('swap.updating')}…</span>
               </div>
             ) : (
               <input

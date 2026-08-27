@@ -1,6 +1,6 @@
 # Stream Search ("la memoria del stream")
 
-Full-text search over every phrase said on 358+ Ultravioleta streams (Sep 2024 →),
+Full-text search over every phrase said on 402+ Ultravioleta streams (Sep 2024 →),
 shown on `/stream-summaries`. Results quote the exact sentence and deep-link to the
 Twitch VOD at that second (`?t=XhYmZs`) — segment timestamps are relative to the VOD,
 so no clock calibration is needed.
@@ -9,7 +9,7 @@ so no clock calibration is needed.
 - **Index builder**: `scripts/build_stream_search_index.py` — reads AbraKadabra
   transcripts (`transcripcion.json` AWS Transcribe + `transcripcion_whisper.json`
   Whisper, long Whisper segments re-chunked by word timings) into a SQLite FTS5 db
-  (~67 MB for 358 streams / 458k segments). Corpus lives on the streamer's machine:
+  (~75 MB for 402 streams / 544k segments, last refresh 2026-08-26). Corpus lives on the streamer's machine:
   `Z:/ultravioleta/ai/cursor/abracadabra/streamers/0xultravioleta/`.
 - **Index home**: `s3://ultravioletadao/stream-search/search.db` (us-east-1).
 - **API**: Lambda `uvd-stream-search` (us-east-1, python3.12) behind API Gateway

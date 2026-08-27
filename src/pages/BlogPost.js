@@ -1,31 +1,17 @@
 import React from "react"
 import { useTranslation } from 'react-i18next'
-import { Link, useParams, useNavigate } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 import { posts } from "../posts/posts"
 import SEO from '../components/SEO'
+import NotFound from './NotFound'
 
 function BlogPost() {
   const { slug } = useParams()
-  const navigate = useNavigate()
   const { t } = useTranslation()
 
   const post = posts.find((post) => post.slug === slug)
 
-  React.useEffect(() => {
-    if (!post) {
-      navigate("/404")
-    }
-  }, [navigate, post])
-
-  if (!post) {
-    return (
-      <main className="min-h-screen bg text-text-primary flex items-center justify-center">
-        <div className="text-center text-text-secondary">
-          {t('blog.not_found')}
-        </div>
-      </main>
-    )
-  }
+  if (!post) return <NotFound />
 
   return (
     <>

@@ -104,11 +104,11 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.bounties'),
     }] : []),
     {
-      name: t('navigation.agents', 'Agents'),
+      name: t('navigation.agents'),
       icon: CpuChipIcon,
       path: "/agents",
       isExternal: false,
-      description: t('navigation.descriptions.metrics', 'Agent Discovery'),
+      description: t('navigation.descriptions.agents'),
     },
     {
       name: t('navigation.links'),
@@ -184,16 +184,16 @@ const HamburgerMenu = () => {
       path: "/facilitator",
       isExternal: false,
       customStyle: "text-emerald-400 group-hover:text-emerald-300",
-      description: t('navigation.descriptions.services', 'Facilitator'),
+      description: t('navigation.descriptions.facilitator'),
     },
     {
       // C-6: External "Abrir app" link for Facilitator
-      name: t('navigation.facilitatorApp', 'Abrir app'),
+      name: t('navigation.facilitatorApp'),
       icon: BeakerIcon,
       path: "https://facilitator.ultravioletadao.xyz/",
       isExternal: true,
       customStyle: "text-emerald-400 group-hover:text-emerald-300",
-      description: t('navigation.descriptions.services', 'Open Facilitator app'),
+      description: t('navigation.descriptions.facilitator'),
     },
   ];
 
@@ -410,9 +410,11 @@ const HamburgerMenu = () => {
               className="pt-16 pb-4 px-4"
             >
               <div className="flex items-center justify-center mb-3">
-                <img 
-                  src="/uvd.png" 
+                <img
+                  src="/uvd-128.png"
                   alt={t('common.logo_alt')}
+                  width={64}
+                  height={64}
                   className="h-16 !w-[18%] !max-w-[18%]"
                 />
               </div>

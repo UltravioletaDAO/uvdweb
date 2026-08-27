@@ -103,7 +103,7 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
           <div className="flex items-center justify-center space-x-2">
             <span className="text-2xl">💎</span>
             <span className="text-violet-400 font-semibold">
-              {t('streamSummaries.paymentRequired', 'Este contenido requiere pago. Abriendo modal de pago...')}
+              {t('streamSummaries.paymentRequired')}
             </span>
           </div>
         </div>
@@ -120,7 +120,7 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
               <span className="text-red-400">
-                {t('streamSummaries.errorLoadingSummary', 'Error cargando el resumen. Intenta de nuevo más tarde.')}
+                {t('streamSummaries.errorLoadingSummary')}
               </span>
             </div>
             {/* DEBUG: Show error details — only in debug mode */}
@@ -211,61 +211,65 @@ const StreamSummaryCard = ({ summary, onPaymentRequired, paymentProof }) => {
         ? 'border-violet-600/50 shadow-[0_0_20px_rgba(139,92,246,0.2)]'
         : 'border-zinc-800 hover:border-violet-700/30'
     }`}>
-      {/* Horizontal Bar - Always Visible */}
-      <button
-        onClick={toggleCard}
-        className="w-full p-3 flex items-center gap-3 hover:bg-zinc-800/50 transition-colors"
-      >
-        {/* Left: Streamer Badge */}
-        <span className={`${getStreamerColor(summary.streamer)} text-white text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0`}>
-          {summary.streamer}
-        </span>
-
-        {/* Center: Title and Info */}
-        <div className="flex-1 text-left min-w-0">
-          <h3 className="text-sm font-bold text-text-primary mb-0.5 truncate group-hover:text-violet-400 transition-colors">
-            {summary.titulo_stream}
-          </h3>
-          <div className="flex items-center gap-2 text-xs text-text-secondary">
-            <a
-              href={summary.twitch_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="flex items-center gap-1 text-violet-400 hover:text-violet-300 transition-colors"
-            >
-              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
-              </svg>
-              <span>{t('streamSummaries.watchOnTwitch')}</span>
-              <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-              </svg>
-            </a>
-            <span className="text-text-secondary/40">•</span>
-            <span>{formatDate(summary.fecha_formateada)}</span>
-            {fullSummary?.resumenes?.web?.longitud && (
-              <>
-                <span className="text-text-secondary/40">•</span>
-                <span className="text-text-secondary/60">
-                  {fullSummary.resumenes.web.longitud} {t('streamSummaries.characters')}
-                </span>
-              </>
-            )}
-          </div>
-        </div>
-
-        {/* Right: Expand Icon */}
-        <motion.div
-          animate={{ rotate: isCardOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-          className="flex-shrink-0"
+      {/* Horizontal Bar - Always Visible (toggle button + sibling Twitch link: no nested interactive) */}
+      <div className="w-full p-3 flex items-center gap-3">
+        <button
+          type="button"
+          onClick={toggleCard}
+          aria-expanded={isCardOpen}
+          className="flex-1 min-w-0 flex items-center gap-3 text-left rounded-md hover:bg-zinc-800/50 transition-colors"
         >
-          <svg className="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+          {/* Left: Streamer Badge */}
+          <span className={`${getStreamerColor(summary.streamer)} text-white text-xs px-2.5 py-1 rounded-full font-semibold flex-shrink-0`}>
+            {summary.streamer}
+          </span>
+
+          {/* Center: Title and Info */}
+          <div className="flex-1 text-left min-w-0">
+            <h3 className="text-sm font-bold text-text-primary mb-0.5 truncate group-hover:text-violet-400 transition-colors">
+              {summary.titulo_stream}
+            </h3>
+            <div className="flex items-center gap-2 text-xs text-text-secondary">
+              <span>{formatDate(summary.fecha_formateada)}</span>
+              {fullSummary?.resumenes?.web?.longitud && (
+                <>
+                  <span className="text-text-secondary/40">•</span>
+                  <span className="text-text-secondary/60">
+                    {fullSummary.resumenes.web.longitud} {t('streamSummaries.characters')}
+                  </span>
+                </>
+              )}
+            </div>
+          </div>
+
+          {/* Right: Expand Icon */}
+          <motion.div
+            animate={{ rotate: isCardOpen ? 180 : 0 }}
+            transition={{ duration: 0.3 }}
+            className="flex-shrink-0"
+          >
+            <svg className="w-5 h-5 text-violet-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </motion.div>
+        </button>
+
+        {/* Twitch link as a sibling of the toggle button (tap target >= 44px) */}
+        <a
+          href={summary.twitch_url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1 min-h-[44px] py-2 px-1 flex-shrink-0 text-xs text-violet-400 hover:text-violet-300 transition-colors"
+        >
+          <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M11.571 4.714h1.715v5.143H11.57zm4.715 0H18v5.143h-1.714zM6 0L1.714 4.286v15.428h5.143V24l4.286-4.286h3.428L22.286 12V0zm14.571 11.143l-3.428 3.428h-3.429l-3 3v-3H6.857V1.714h13.714z"/>
           </svg>
-        </motion.div>
-      </button>
+          <span>{t('streamSummaries.watchOnTwitch')}</span>
+          <svg className="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </a>
+      </div>
 
       {/* Collapsible Summary Content */}
       <AnimatePresence>

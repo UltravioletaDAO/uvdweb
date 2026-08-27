@@ -16,7 +16,6 @@ const LanguageSwitcher = () => {
   const handleChange = (event) => {
     const newLang = event.target.value;
     i18n.changeLanguage(newLang);
-    localStorage.setItem('preferredLanguage', newLang);
   };
 
   return (

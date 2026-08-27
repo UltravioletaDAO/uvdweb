@@ -393,7 +393,7 @@ const Events = () => {
                         { name: 'Avalanche', twitter: 'AvaxTeam1', video: 'https://x.com/UltravioletaDAO/status/1961197588389953629', color: 'from-red-500 to-red-600' },
                         { name: 'Rekt', twitter: 'RektHQ', video: 'https://x.com/UltravioletaDAO/status/1961077187227844906', color: 'from-gray-600 to-black' },
                         { name: 'Celo Colombia', twitter: 'Celo_Col', video: 'https://x.com/UltravioletaDAO/status/1961113800574189779', color: 'from-green-500 to-yellow-500' },
-                        { name: 'Self', twitter: 'selfprotocol', video: 'https://x.com/UltravioletaDAO/status/1961544954301616209', color: 'from-blue-500 to-purple-500' },
+                        { name: 'Self', video: 'https://x.com/UltravioletaDAO/status/1961544954301616209', color: 'from-blue-500 to-purple-500' },
                         { name: 'Uniswap', twitter: 'Uniswap', video: 'https://x.com/UltravioletaDAO/status/1961535762828333124', color: 'from-pink-500 to-pink-600' },
                         { name: 'Pyth Network', twitter: 'PythNetwork', video: 'https://x.com/UltravioletaDAO/status/1961567997509738889', color: 'from-purple-600 to-indigo-600' },
                         { name: 'Heroes Of Cipher', twitter: 'HeroesOfCipher', video: 'https://x.com/UltravioletaDAO/status/1961177432419193181', color: 'from-yellow-500 to-orange-500' },
@@ -427,6 +427,7 @@ const Events = () => {
 
                             {/* Social Links */}
                             <div className="flex items-center justify-center gap-2">
+                              {sponsor.twitter && (
                               <a
                                 href={`https://x.com/${sponsor.twitter}`}
                                 target="_blank"
@@ -438,6 +439,7 @@ const Events = () => {
                                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
                                 </svg>
                               </a>
+                              )}
                               <a
                                 href={sponsor.video}
                                 target="_blank"

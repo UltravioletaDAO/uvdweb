@@ -181,8 +181,8 @@ const SnapshotSection = () => {
               icon={<Users className="h-4 w-4" />}
             />
             <MetricCard
-              title={t('metricsDashboard.snapshot.latest_proposal')}
-              value={currentProposal && currentProposal.quorum ? currentProposal.quorum.toLocaleString() : "N/A"}
+              title={t('metricsDashboard.snapshot.quorum')}
+              value={currentProposal && currentProposal.quorum ? `${currentProposal.quorum.toLocaleString()} UVD` : "N/A"}
               change={t('metricsDashboard.snapshot.latest_proposal')}
               changeType="positive"
               variant="snapshot"

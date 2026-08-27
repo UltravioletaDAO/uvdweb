@@ -1304,7 +1304,7 @@ const SwapWidgetV2 = () => {
                 {t('swap.title')}
               </CardTitle>
               <CardDescription>
-                Swap AVAX, USDC & UVD tokens instantly
+                {t('swap.subtitle')}
               </CardDescription>
             </div>
             <div className="flex items-center gap-2">
@@ -1313,6 +1313,7 @@ const SwapWidgetV2 = () => {
                 size="icon"
                 onClick={refreshQuote}
                 disabled={isRefreshing || !activeAccount?.address}
+                aria-label={t('swap.refresh_quote')}
                 className={cn(
                   "transition-all",
                   isRefreshing && "border-ultraviolet/50"
@@ -1327,6 +1328,7 @@ const SwapWidgetV2 = () => {
                 variant="outline"
                 size="icon"
                 onClick={() => setShowSettings(!showSettings)}
+                aria-label={t('swap.settings')}
               >
                 <Settings className="w-4 h-4" />
               </Button>
@@ -1416,6 +1418,7 @@ const SwapWidgetV2 = () => {
               className="rounded-full w-10 h-10 shadow-md border border-border/50 hover:scale-110 transition-transform bg-background"
               onClick={handleSwapTokens}
               disabled={isLoading || isApproving}
+              aria-label={t('swap.switch_direction')}
             >
               <ArrowDownUp className="w-5 h-5 text-ultraviolet" />
             </Button>
@@ -1502,7 +1505,7 @@ const SwapWidgetV2 = () => {
             <Card className="bg-muted/50 border-dashed">
               <CardContent className="pt-6 text-center">
                 <p className="text-muted-foreground">
-                  Please connect your wallet to start swapping
+                  {t('swap.connect_wallet')}
                 </p>
               </CardContent>
             </Card>
@@ -1515,7 +1518,7 @@ const SwapWidgetV2 = () => {
                   className="w-full h-12 text-base font-semibold bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600"
                 >
                   {(isApproving || (isTransactionLoading && currentTransactionType === 'approval') || (isReceiptLoading && currentTransactionType === 'approval'))
-                    ? 'Approving...'
+                    ? t('swap.approving')
                     : `Approve ${fromToken}`}
                 </Button>
               )}
@@ -1525,12 +1528,12 @@ const SwapWidgetV2 = () => {
                 disabled={isSwapDisabled}
                 className="w-full h-12 text-base font-semibold bg-gradient-to-r from-ultraviolet to-ultraviolet-light hover:shadow-lg hover:shadow-ultraviolet/25"
               >
-                {(isLoading || isTransactionLoading || isReceiptLoading) ? 'Swapping...' :
-                 isApproving ? 'Approval Required' :
-                 parseFloat(fromAmount) > parseFloat(currentBalance) ? 'Insufficient Balance' :
-                 !fromAmount || parseFloat(fromAmount) === 0 ? 'Enter Amount' :
-                 (fromToken === 'UVD' && needsApproval) ? 'Approve Required' :
-                 'Swap Tokens'}
+                {(isLoading || isTransactionLoading || isReceiptLoading) ? t('swap.swapping') :
+                 isApproving ? t('swap.approve_required') :
+                 parseFloat(fromAmount) > parseFloat(currentBalance) ? t('swap.insufficient_balance') :
+                 !fromAmount || parseFloat(fromAmount) === 0 ? t('swap.enter_amount') :
+                 (fromToken === 'UVD' && needsApproval) ? t('swap.approve_required') :
+                 t('swap.swap_tokens')}
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
