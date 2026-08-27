@@ -22,7 +22,7 @@ const SEO = ({
 }) => {
   const { pathname } = useLocation();
   const { i18n, t } = useTranslation();
-  const currentLang = i18n.language;
+  const currentLang = (i18n.language || 'es').slice(0, 2);
   
   const siteUrl = 'https://ultravioletadao.xyz';
   const defaultImage = `${siteUrl}/og-image.png`;
@@ -667,10 +667,10 @@ const SEO = ({
       <meta property="og:image:height" content="630" />
       <meta property="og:url" content={fullUrl} />
       <meta property="og:site_name" content="UltraVioleta DAO" />
-      <meta property="og:locale" content={languageAlternates[currentLang] || 'en_US'} />
+      <meta property="og:locale" content={(languageAlternates[currentLang] || 'en-US').replace('-', '_')} />
       
       {Object.entries(languageAlternates).filter(([lang]) => lang !== currentLang).map(([lang, locale]) => (
-        <meta key={locale} property="og:locale:alternate" content={locale} />
+        <meta key={locale} property="og:locale:alternate" content={locale.replace('-', '_')} />
       ))}
       
       <meta name="twitter:card" content="summary_large_image" />

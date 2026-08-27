@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
 import {
   Bot, Coins, Shield, Zap, Globe, Users, TrendingUp, Gift,
-  CheckCircle, ArrowRight, PlayCircle, Star, MessageCircle,
+  CheckCircle, ArrowRight, PlayCircle, MessageCircle,
   Twitter, Clock, Award, Database, Code, Sparkles
 } from 'lucide-react';
 
@@ -15,38 +15,38 @@ const KarmaHelloLanding = () => {
   const features = [
     {
       icon: Bot,
-      title: '18+ AI Agents',
-      description: 'GPT-4o, Claude 3.5, Ollama working together to evaluate message quality',
+      title: t('karmaHello.features.agents.title'),
+      description: t('karmaHello.features.agents.description'),
       color: 'from-purple-500 to-pink-500'
     },
     {
       icon: Shield,
-      title: 'Anti-Farming Protection',
-      description: 'Advanced ML models (BERT, Isolation Forest) prevent abuse',
+      title: t('karmaHello.features.antiFarming.title'),
+      description: t('karmaHello.features.antiFarming.description'),
       color: 'from-blue-500 to-cyan-500'
     },
     {
       icon: Coins,
-      title: 'Fibonacci Rewards',
-      description: '10,946 to 832,040 UVD tokens per quality message',
+      title: t('karmaHello.features.fibonacci.title'),
+      description: t('karmaHello.features.fibonacci.description'),
       color: 'from-green-500 to-emerald-500'
     },
     {
       icon: Gift,
-      title: '2x NFT Multiplier',
-      description: 'Echoes NFT holders get double rewards automatically',
+      title: t('karmaHello.features.nftMultiplier.title'),
+      description: t('karmaHello.features.nftMultiplier.description'),
       color: 'from-yellow-500 to-orange-500'
     },
     {
       icon: Twitter,
-      title: 'Social Boost',
-      description: '1.2x to 5.0x multiplier based on Twitter influence',
+      title: t('karmaHello.features.socialBoost.title'),
+      description: t('karmaHello.features.socialBoost.description'),
       color: 'from-indigo-500 to-purple-500'
     },
     {
       icon: Globe,
-      title: '4 Languages',
-      description: 'Native support for Spanish, English, Portuguese, French',
+      title: t('karmaHello.features.languages.title'),
+      description: t('karmaHello.features.languages.description'),
       color: 'from-red-500 to-pink-500'
     }
   ];
@@ -54,26 +54,26 @@ const KarmaHelloLanding = () => {
   const howItWorks = [
     {
       step: 1,
-      title: 'Join the Stream',
-      description: 'Navigate to twitch.tv/0xultravioleta',
+      title: t('karmaHello.steps.join.title'),
+      description: t('karmaHello.steps.join.description'),
       icon: PlayCircle
     },
     {
       step: 2,
-      title: 'Connect Wallet',
-      description: 'Link your MetaMask, Core, or Rabby wallet',
+      title: t('karmaHello.steps.connect.title'),
+      description: t('karmaHello.steps.connect.description'),
       icon: Database
     },
     {
       step: 3,
-      title: 'Chat with Quality',
-      description: 'Participate with meaningful messages',
+      title: t('karmaHello.steps.chat.title'),
+      description: t('karmaHello.steps.chat.description'),
       icon: MessageCircle
     },
     {
       step: 4,
-      title: 'Earn UVD Tokens',
-      description: 'Receive instant rewards on Avalanche',
+      title: t('karmaHello.steps.earn.title'),
+      description: t('karmaHello.steps.earn.description'),
       icon: Coins
     }
   ];
@@ -91,11 +91,6 @@ const KarmaHelloLanding = () => {
           "@type": "Offer",
           "price": "0",
           "priceCurrency": "USD"
-        },
-        "aggregateRating": {
-          "@type": "AggregateRating",
-          "ratingValue": "4.8",
-          "ratingCount": "287"
         }
       },
       {
@@ -103,18 +98,18 @@ const KarmaHelloLanding = () => {
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What is Karma Hello Chat-to-Earn?",
+            "name": t('karmaHello.faq.q1.question'),
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Karma Hello is a revolutionary Web3 system that rewards quality Twitch chat interactions with UVD cryptocurrency tokens. Using 18+ AI agents, it evaluates message quality and distributes rewards on the Avalanche blockchain."
+              "text": t('karmaHello.faq.q1.answer')
             }
           },
           {
             "@type": "Question",
-            "name": "How much can I earn with Karma Hello?",
+            "name": t('karmaHello.faq.q2.question'),
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Earnings range from 10,946 to 832,040 UVD tokens per quality message. With multipliers (2x for NFT holders, up to 5x for Twitter influence), active participants can earn 100,000-5,000,000 UVD tokens daily."
+              "text": t('karmaHello.faq.q2.answer')
             }
           }
         ]
@@ -125,8 +120,8 @@ const KarmaHelloLanding = () => {
   return (
     <>
       <SEO
-        title="Karma Hello - Revolutionary Chat-to-Earn Platform | Earn UVD Tokens on Twitch"
-        description="Transform your Twitch chat into crypto earnings with Karma Hello. 18+ AI agents reward quality interactions with UVD tokens on Avalanche blockchain. Join 2,800+ users earning daily."
+        title={t('karmaHello.seo.title')}
+        description={t('karmaHello.seo.description')}
         keywords="Karma Hello, chat to earn, Twitch crypto rewards, UVD tokens, AI chat evaluation, Web3 streaming, Avalanche blockchain, chat monetization, stream engagement, crypto earnings Twitch"
         customJsonLd={jsonLd}
         canonicalUrl="https://ultravioletadao.xyz/karma-hello"
@@ -145,28 +140,27 @@ const KarmaHelloLanding = () => {
             >
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-600/20 border border-purple-500/50 rounded-full text-sm text-purple-300 mb-6">
                 <Sparkles className="w-4 h-4" />
-                <span>Live on Twitch • Powered by AI • Built on Avalanche</span>
+                <span>{t('karmaHello.hero.badge')}</span>
               </div>
 
               <h1 className="text-6xl font-bold mb-6 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-                Turn Your Chat Into Crypto
+                {t('karmaHello.hero.title')}
               </h1>
 
               <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-                Karma Hello rewards quality Twitch interactions with UVD tokens.
-                Chat smarter, earn instantly, no investment required.
+                {t('karmaHello.hero.subtitle')}
               </p>
 
               {/* Demo Stats — illustrative values, not live data */}
               <div className="mb-2 text-xs text-yellow-400/80 text-center">
-                Demo data · not live
+                {t('karmaHello.hero.demoNotice')}
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                 {[
-                  { label: 'Active Users', value: '2,847', icon: Users },
-                  { label: 'Messages Processed', value: '1,284K', icon: MessageCircle },
-                  { label: 'UVD Distributed', value: '892.7M', icon: Coins },
-                  { label: 'Live Streams', value: '47', icon: PlayCircle }
+                  { label: t('karmaHello.hero.stats.activeUsers'), value: '2,847', icon: Users },
+                  { label: t('karmaHello.hero.stats.messagesProcessed'), value: '1,284K', icon: MessageCircle },
+                  { label: t('karmaHello.hero.stats.uvdDistributed'), value: '892.7M', icon: Coins },
+                  { label: t('karmaHello.hero.stats.liveStreams'), value: '47', icon: PlayCircle }
                 ].map((stat, idx) => (
                   <motion.div
                     key={idx}
@@ -191,7 +185,7 @@ const KarmaHelloLanding = () => {
                   className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-semibold text-lg hover:shadow-lg hover:scale-105 transition-all inline-flex items-center justify-center gap-2"
                 >
                   <PlayCircle className="w-5 h-5" />
-                  Start Earning Now
+                  {t('karmaHello.hero.ctaPrimary')}
                   <ArrowRight className="w-5 h-5" />
                 </a>
 
@@ -199,7 +193,7 @@ const KarmaHelloLanding = () => {
                   to="/services#karma-hello"
                   className="px-8 py-4 bg-gray-800 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-all inline-flex items-center justify-center gap-2"
                 >
-                  Learn How It Works
+                  {t('karmaHello.hero.ctaSecondary')}
                 </Link>
               </div>
 
@@ -207,15 +201,15 @@ const KarmaHelloLanding = () => {
               <div className="mt-6 flex items-center justify-center gap-6 text-sm text-gray-400">
                 <div className="flex items-center gap-1">
                   <CheckCircle className="w-4 h-4 text-green-400" />
-                  <span>No Investment Required</span>
+                  <span>{t('karmaHello.badges.noInvestment')}</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Shield className="w-4 h-4 text-blue-400" />
-                  <span>Anti-Fraud Protected</span>
+                  <span>{t('karmaHello.badges.antiFraud')}</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <Zap className="w-4 h-4 text-yellow-400" />
-                  <span>Instant Rewards</span>
+                  <span>{t('karmaHello.badges.instant')}</span>
                 </div>
               </div>
             </motion.div>
@@ -226,8 +220,8 @@ const KarmaHelloLanding = () => {
         <section className="py-20 bg-gradient-to-b from-black to-purple-900/10">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Why Karma Hello?</h2>
-              <p className="text-xl text-gray-400">The most advanced Chat-to-Earn system in Web3</p>
+              <h2 className="text-4xl font-bold mb-4">{t('karmaHello.why.title')}</h2>
+              <p className="text-xl text-gray-400">{t('karmaHello.why.subtitle')}</p>
             </div>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -254,8 +248,8 @@ const KarmaHelloLanding = () => {
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Start Earning in 4 Simple Steps</h2>
-              <p className="text-xl text-gray-400">No coding, no complexity, just chat and earn</p>
+              <h2 className="text-4xl font-bold mb-4">{t('karmaHello.steps.title')}</h2>
+              <p className="text-xl text-gray-400">{t('karmaHello.steps.subtitle')}</p>
             </div>
 
             <div className="max-w-4xl mx-auto">
@@ -292,11 +286,11 @@ const KarmaHelloLanding = () => {
         <section className="py-20 bg-gradient-to-b from-purple-900/10 to-black">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto bg-gray-900/50 rounded-2xl p-8 border border-purple-500/30">
-              <h2 className="text-3xl font-bold mb-6 text-center">Calculate Your Potential Earnings</h2>
+              <h2 className="text-3xl font-bold mb-6 text-center">{t('karmaHello.calculator.title')}</h2>
 
               <div className="space-y-6">
                 <div>
-                  <label className="block text-sm text-gray-400 mb-2">Daily Quality Messages</label>
+                  <label className="block text-sm text-gray-400 mb-2">{t('karmaHello.calculator.label')}</label>
                   <input
                     type="range"
                     min="10"
@@ -312,11 +306,11 @@ const KarmaHelloLanding = () => {
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="bg-black/50 rounded-lg p-4">
-                    <div className="text-sm text-gray-400 mb-1">Daily UVD Earnings</div>
+                    <div className="text-sm text-gray-400 mb-1">{t('karmaHello.calculator.daily')}</div>
                     <div className="text-2xl font-bold text-purple-400">547,300 - 4,160,200</div>
                   </div>
                   <div className="bg-black/50 rounded-lg p-4">
-                    <div className="text-sm text-gray-400 mb-1">With NFT 2x Boost</div>
+                    <div className="text-sm text-gray-400 mb-1">{t('karmaHello.calculator.nftBoost')}</div>
                     <div className="text-2xl font-bold text-green-400">1,094,600 - 8,320,400</div>
                   </div>
                 </div>
@@ -328,8 +322,8 @@ const KarmaHelloLanding = () => {
         {/* Final CTA */}
         <section className="py-20">
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-4xl font-bold mb-4">Ready to Transform Your Chat?</h2>
-            <p className="text-xl text-gray-400 mb-8">Join thousands earning UVD tokens daily</p>
+            <h2 className="text-4xl font-bold mb-4">{t('karmaHello.cta.title')}</h2>
+            <p className="text-xl text-gray-400 mb-8">{t('karmaHello.cta.subtitle')}</p>
 
             <a
               href="https://twitch.tv/0xultravioleta"
@@ -338,22 +332,18 @@ const KarmaHelloLanding = () => {
               className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg font-semibold text-lg hover:shadow-lg hover:scale-105 transition-all"
             >
               <PlayCircle className="w-6 h-6" />
-              Join Live Stream Now
+              {t('karmaHello.cta.button')}
               <ArrowRight className="w-6 h-6" />
             </a>
 
             <div className="mt-8 flex items-center justify-center gap-8 text-sm text-gray-400">
               <div className="flex items-center gap-2">
                 <Users className="w-4 h-4" />
-                <span>2,847+ Active Users</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Star className="w-4 h-4 text-yellow-400" />
-                <span>4.8/5 Rating</span>
+                <span>{t('karmaHello.stats.users')}</span>
               </div>
               <div className="flex items-center gap-2">
                 <Clock className="w-4 h-4" />
-                <span>24/7 Uptime</span>
+                <span>{t('karmaHello.stats.uptime')}</span>
               </div>
             </div>
           </div>

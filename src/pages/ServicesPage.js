@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation, Trans } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
@@ -116,8 +116,8 @@ const ServicesPage = () => {
   return (
     <>
       <SEO
-        title="x402 Facilitator, AI Stream Intelligence & Chat-to-Earn Platforms | UltraVioleta DAO Services"
-        description="Revolutionary Web3 infrastructure: x402 Facilitator for gasless AI agent payments with EIP-3009 on Avalanche/Base/Celo + Karma Hello Chat-to-Earn bot with 18+ AI agents rewarding UVD tokens + Abracadabra stream intelligence platform. Zero gas fees, instant settlement, 100% trustless."
+        title={t('services.seo.title')}
+        description={t('services.seo.description')}
         keywords="x402 facilitator, gasless payments, EIP-3009, meta-transactions, AI agent payments, zero gas fees, trustless infrastructure, transferWithAuthorization, Avalanche gasless, Base gasless, Celo gasless, HyperEVM, x402 protocol, HTTP payments, stateless payments, Karma Hello, Abracadabra AI, chat to earn crypto, stream content intelligence, Twitch AI analytics, semantic search streaming, knowledge graph video analysis, AI content generation, GPT-4o stream analysis, Claude Sonnet 4 AI, Whisper transcription, AWS Transcribe, Cognee framework, FFmpeg video processing, DALL-E 3 content creation, multi-agent AI system, UVD token rewards, Avalanche blockchain, Web3 gamification, streaming cryptocurrency, BERT anti-farming ML, Isolation Forest anomaly detection, Gradient Boosting classification, Fibonacci reward system, Echoes NFT multiplier, Twitter Social Boost crypto, content repurposing AI, predictive analytics streaming, trending topics prediction, viral clip detection, automated blog generation, Twitter thread creator, multi-language translation AI, time machine search, temporal analysis streaming, SQLite ETL pipeline, vector embeddings search, multi-hop reasoning AI, 56 REST API endpoints, 640 indexed topics, Web3 development LATAM, blockchain consulting Latin America, DAO tokenization services, smart contract audit, DeFi protocols Spanish, crypto education courses, Ultra Evento 2025 Medellin, Wyoming DUNA LLC DAO, decentralized governance, Snapshot voting platform, stream monetization Web3, AI-powered creator tools, content intelligence platform, video analysis automation, agentic economy, autonomous agents"
         customJsonLd={{
           "@context": "https://schema.org",
@@ -174,25 +174,6 @@ const ServicesPage = () => {
                   "https://ultravioletadao.xyz/images/karma-hello-screenshot.jpg",
                   "https://ultravioletadao.xyz/images/karma-hello-dashboard.jpg"
                 ],
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": "4.8",
-                  "ratingCount": "287",
-                  "bestRating": "5",
-                  "worstRating": "1"
-                },
-                "review": {
-                  "@type": "Review",
-                  "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5"
-                  },
-                  "author": {
-                    "@type": "Person",
-                    "name": "Twitch Streamer Community"
-                  },
-                  "reviewBody": "Revolutionary way to reward engaged community members with crypto tokens"
-                },
                 "isAccessibleForFree": true,
                 "inLanguage": ["es-ES", "en-US", "pt-BR", "fr-FR"],
                 "softwareVersion": "2.0",
@@ -251,25 +232,6 @@ const ServicesPage = () => {
                   "https://ultravioletadao.xyz/images/abracadabra-dashboard.jpg",
                   "https://ultravioletadao.xyz/images/abracadabra-search.jpg"
                 ],
-                "aggregateRating": {
-                  "@type": "AggregateRating",
-                  "ratingValue": "4.9",
-                  "ratingCount": "145",
-                  "bestRating": "5",
-                  "worstRating": "1"
-                },
-                "review": {
-                  "@type": "Review",
-                  "reviewRating": {
-                    "@type": "Rating",
-                    "ratingValue": "5"
-                  },
-                  "author": {
-                    "@type": "Organization",
-                    "name": "Content Creator Network"
-                  },
-                  "reviewBody": "Game-changing platform for content repurposing and stream analytics"
-                },
                 "isAccessibleForFree": false,
                 "inLanguage": ["es-ES", "en-US", "pt-BR", "fr-FR"],
                 "softwareVersion": "1.5",
@@ -342,10 +304,10 @@ const ServicesPage = () => {
             transition={{ duration: 0.5 }}
           >
             <h1 className="text-5xl font-bold mb-4">
-              AI Services & Web3 Development Solutions
+              {t('services.hero.title')}
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Revolutionary AI-powered tools for streamers, content creators, and Web3 communities in Latin America
+              {t('services.hero.subtitle')}
             </p>
           </motion.div>
         </header>
@@ -442,7 +404,16 @@ const ServicesPage = () => {
                 </header>
 
                 <p className="text-gray-300 mb-4 text-lg" itemProp="description">
-                  <strong>What is Karma Hello?</strong> {t('services.karmaHelloExpanded.description')} Learn more about our <Link to="/token" className="text-purple-400 hover:text-purple-300 underline" title="UVD Token Information">UVD Token</Link>, <Link to="/nfts" className="text-purple-400 hover:text-purple-300 underline" title="Echoes NFT Collections">Echoes NFT collections</Link>, and <Link to="/metrics" className="text-purple-400 hover:text-purple-300 underline" title="DAO Metrics Dashboard">DAO metrics</Link>. Join our <Link to="/aplicar" className="text-purple-400 hover:text-purple-300 underline" title="Apply to Join UltraVioleta DAO">community</Link> to participate!
+                  <strong>{t('services.karmaHello.whatIs')}</strong> {t('services.karmaHelloExpanded.description')}{' '}
+                  <Trans
+                    i18nKey="services.karmaHello.learnMore"
+                    components={{
+                      token: <Link to="/token" className="text-purple-400 hover:text-purple-300 underline" />,
+                      nfts: <Link to="/nfts" className="text-purple-400 hover:text-purple-300 underline" />,
+                      metrics: <Link to="/metrics" className="text-purple-400 hover:text-purple-300 underline" />,
+                      apply: <Link to="/aplicar" className="text-purple-400 hover:text-purple-300 underline" />
+                    }}
+                  />
                 </p>
 
               <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-4 mb-6">
@@ -911,40 +882,14 @@ const ServicesPage = () => {
           <div className="bg-gradient-to-r from-purple-900/20 to-pink-900/20 rounded-xl p-6 border border-purple-500/30">
             <h3 className="text-2xl font-bold text-purple-300 mb-4 flex items-center">
               <Bot className="w-6 h-6 mr-2" />
-              Karma Hello - Preguntas Frecuentes
+              {t('services.faq.karmaHello')}
             </h3>
 
             <div className="space-y-3">
-              {[
-                {
-                  question: "¿Qué es Chat-to-Earn?",
-                  answer: "Chat-to-Earn es un concepto revolucionario Web3 donde los usuarios ganan criptomonedas (tokens UVD) participando en interacciones de chat de calidad en Twitch. Karma Hello evalúa la calidad de los mensajes usando 18+ agentes de IA y recompensa a los usuarios con tokens en la blockchain Avalanche."
-                },
-                {
-                  question: "¿Cómo previene Karma Hello el farming y el abuso?",
-                  answer: "Karma Hello usa un sistema anti-farming multi-capa con modelos avanzados de ML incluyendo BERT para análisis de texto, Isolation Forest para detección de anomalías, y Gradient Boosting para clasificación de fraude. Además, cada mensaje quema 1 token UVD, creando un desincentivo económico para el spam."
-                },
-                {
-                  question: "¿Cuáles son los beneficios para holders de NFTs Echoes?",
-                  answer: "Los holders de NFTs Echoes reciben recompensas x2 en todos los tokens UVD ganados a través de Karma Hello. Este beneficio exclusivo se aplica automáticamente cuando el sistema detecta la propiedad del NFT en la wallet conectada del usuario."
-                },
-                {
-                  question: "¿Cuánto puedo ganar con Karma Hello?",
-                  answer: "Las recompensas siguen una distribución Fibonacci que va desde 10,946 hasta 832,040 tokens UVD por mensaje de calidad. Con Twitter Social Boost, los multiplicadores van de 1.2x a 5.0x basados en tu influencia social. Los holders de Echoes NFT obtienen un multiplicador adicional x2 en todas las recompensas."
-                },
-                {
-                  question: "What is the difference between Karma Hello and other chat bots?",
-                  answer: "Karma Hello uniquely combines 18+ AI agents (GPT-4, Claude, Ollama) to evaluate message quality in real-time, rewards users with actual cryptocurrency (UVD tokens) on Avalanche blockchain, implements advanced anti-farming ML models (BERT, Isolation Forest), and includes token burning mechanics for economic sustainability. No other bot offers this comprehensive Web3 integration."
-                },
-                {
-                  question: "How do I start earning with Karma Hello?",
-                  answer: "To start earning: 1) Join the Twitch channel at twitch.tv/0xultravioleta, 2) Connect your Web3 wallet to the platform, 3) Start chatting with quality messages in the stream, 4) Receive UVD token rewards automatically based on AI evaluation, 5) Optional: Hold Echoes NFTs for 2x rewards or connect Twitter for social boost multipliers."
-                },
-                {
-                  question: "Is Karma Hello available in multiple languages?",
-                  answer: "Yes, Karma Hello supports multiple languages including Spanish (ES), English (EN), Portuguese (PT), and French (FR). The AI agents can understand and evaluate message quality in all these languages, making it accessible for the entire Latin American and global community."
-                }
-              ].map((faq, index) => (
+              {['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7'].map((q) => ({
+                question: t(`services.karmaHelloExpanded.faqs.${q}.question`),
+                answer: t(`services.karmaHelloExpanded.faqs.${q}.answer`)
+              })).map((faq, index) => (
                 <div
                   key={index}
                   itemScope
@@ -1037,7 +982,7 @@ const ServicesPage = () => {
                 {/* 5 Phases */}
                 <div className="mb-6">
                   <h3 className="text-xl font-bold text-cyan-300 mb-4">
-                    5 Fases Completas de Desarrollo
+                    {t('services.phases.title')}
                   </h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {/* Phase 1 */}
@@ -1210,40 +1155,14 @@ const ServicesPage = () => {
           <div className="bg-gradient-to-r from-blue-900/20 to-cyan-900/20 rounded-xl p-6 border border-cyan-500/30">
             <h3 className="text-2xl font-bold text-cyan-300 mb-4 flex items-center">
               <Sparkles className="w-6 h-6 mr-2" />
-              Abracadabra - Preguntas Frecuentes
+              {t('services.faq.abracadabra')}
             </h3>
 
             <div className="space-y-3">
-              {[
-                {
-                  question: "¿Qué es Abracadabra?",
-                  answer: "Abracadabra es una plataforma integral de análisis de streams y content intelligence que transforma videos de Twitch en contenido procesable, buscable y reutilizable usando IA avanzada. Incluye 5 fases completas: Analytics, Time Machine, Semantic Search, Content Intelligence y Predictive Analytics."
-                },
-                {
-                  question: "¿Qué tipo de contenido puede generar automáticamente?",
-                  answer: "Abracadabra puede generar automáticamente blogs en markdown (1500+ palabras), Twitter threads optimizados (280 chars/tweet), clips de video con FFmpeg, imágenes con DALL-E 3/GPT-Image-1, traducciones multi-idioma (10+ idiomas), y resúmenes personalizados. Todo con 56+ API endpoints REST."
-                },
-                {
-                  question: "¿Cómo funciona la búsqueda semántica?",
-                  answer: "Abracadabra usa Cognee framework con embeddings de OpenAI para búsqueda en lenguaje natural. Puedes preguntar '¿Qué dijo sobre NFTs?' y el sistema encuentra contenido relevante entendiendo sinónimos, contexto e intenciones. Incluye un knowledge graph con 500+ nodos y multi-hop reasoning hasta 3 saltos."
-                },
-                {
-                  question: "¿Qué datos ha procesado Abracadabra?",
-                  answer: "Actualmente ha procesado 70+ streams de Twitch, indexado 640+ topics en Cognee, y tiene un sistema de análisis completo con SQLite + vector store. El procesamiento es completamente automático: descarga, transcripción dual (AWS Transcribe + Whisper), análisis con GPT-4o, y auto-indexing post-procesamiento."
-                },
-                {
-                  question: "How much does Abracadabra cost?",
-                  answer: "Abracadabra is currently in pre-order phase with special early access pricing for UltraVioleta DAO members. The platform will offer different tiers: Free tier (limited queries), Pro tier for content creators, and Enterprise tier for agencies and brands. Contact us for custom pricing and early access."
-                },
-                {
-                  question: "Can Abracadabra analyze YouTube or other platforms?",
-                  answer: "While currently focused on Twitch streams, Abracadabra's architecture supports multi-platform expansion. The same AI pipeline (transcription, semantic analysis, content generation) can process YouTube videos, podcasts, webinars, and any video/audio content. Platform expansion is planned for Q2 2025."
-                },
-                {
-                  question: "What makes Abracadabra's semantic search unique?",
-                  answer: "Abracadabra uses Cognee framework with OpenAI embeddings to understand context and meaning, not just keywords. It features a knowledge graph with 500+ nodes enabling multi-hop reasoning up to 3 levels deep, natural language queries in any language, and temporal search to find content from specific time periods. This allows queries like 'What did they say about NFTs last month?' to return accurate, contextual results."
-                }
-              ].map((faq, index) => (
+              {['q1', 'q2', 'q3', 'q4', 'q5', 'q6', 'q7'].map((q) => ({
+                question: t(`services.abracadabraExpanded.faqs.${q}.question`),
+                answer: t(`services.abracadabraExpanded.faqs.${q}.answer`)
+              })).map((faq, index) => (
                 <div
                   key={index}
                   itemScope
@@ -1306,7 +1225,7 @@ const ServicesPage = () => {
                   <div className="flex items-center gap-2 text-purple-400">
                     <Sparkles className="w-6 h-6" aria-hidden="true" />
                     <span className="font-semibold" itemProp="eventStatus">
-                      {t('events.ultraevento.flagship', 'Evento Insignia')}
+                      {t('events.ultraevento.flagship')}
                     </span>
                   </div>
                 </header>
@@ -1413,7 +1332,7 @@ const ServicesPage = () => {
                     { name: 'Avalanche', twitter: '@AvaxTeam1', video: 'https://x.com/UltravioletaDAO/status/1961197588389953629' },
                     { name: 'Rekt', twitter: '@RektHQ', video: 'https://x.com/UltravioletaDAO/status/1961077187227844906' },
                     { name: 'Celo Colombia', twitter: '@Celo_Col', video: 'https://x.com/UltravioletaDAO/status/1961113800574189779' },
-                    { name: 'Self', twitter: '@selfprotocol', video: 'https://x.com/UltravioletaDAO/status/1961544954301616209' },
+                    { name: 'Self', video: 'https://x.com/UltravioletaDAO/status/1961544954301616209' },
                     { name: 'Uniswap', twitter: '@Uniswap', video: 'https://x.com/UltravioletaDAO/status/1961535762828333124' },
                     { name: 'Pyth Network', twitter: '@PythNetwork', video: 'https://x.com/UltravioletaDAO/status/1961567997509738889' },
                     { name: 'Heroes Of Cipher', twitter: '@HeroesOfCipher', video: 'https://x.com/UltravioletaDAO/status/1961177432419193181' },
@@ -1424,23 +1343,25 @@ const ServicesPage = () => {
                     <div key={idx} className="bg-gray-900/50 rounded-lg p-3 text-center border border-purple-500/20 hover:border-purple-500/50 transition-all">
                       <p className="text-white font-medium text-sm mb-2">{sponsor.name}</p>
                       <div className="flex justify-center gap-2">
-                        <a
-                          href={`https://x.com/${sponsor.twitter.substring(1)}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-gray-400 hover:text-white transition-colors"
-                          title={sponsor.twitter}
-                        >
-                          <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-                          </svg>
-                        </a>
+                        {sponsor.twitter && (
+                          <a
+                            href={`https://x.com/${sponsor.twitter.substring(1)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-400 hover:text-white transition-colors"
+                            title={sponsor.twitter}
+                          >
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                          </a>
+                        )}
                         <a
                           href={sponsor.video}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-purple-400 hover:text-purple-300 transition-colors"
-                          title="Ver video"
+                          title={t('events.ultraevento.sponsors.watchVideo')}
                         >
                           <PlayCircle className="w-4 h-4" />
                         </a>
@@ -1457,14 +1378,14 @@ const ServicesPage = () => {
               {/* CTA Button */}
               <footer className="mt-6 text-center">
                 <p className="text-gray-300 mb-4">
-                  {t('events.ultraevento.brandRepresentation', 'Como parte de nuestros servicios de representación de marca, organizamos eventos presenciales que conectan a proyectos Web3 con la comunidad latinoamericana.')}
+                  {t('events.ultraevento.brandRepresentation')}
                 </p>
                 <a
                   href="mailto:ultravioletadao@gmail.com"
                   className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg transition-all"
                 >
                   <Users className="w-5 h-5 mr-2" />
-                  {t('events.ultraevento.sponsorCTA', 'Patrocina el próximo evento')}
+                  {t('events.ultraevento.sponsorCTA')}
                 </a>
               </footer>
             </article>
@@ -1590,24 +1511,24 @@ const ServicesPage = () => {
                   <div className="aspect-video bg-black/50 rounded-lg mb-4 flex items-center justify-center">
                     <PlayCircle className="w-12 h-12 text-purple-400" />
                   </div>
-                  <h3 className="text-white font-semibold mb-2">Introducción a Web3</h3>
-                  <p className="text-gray-400 text-sm">Conceptos básicos de blockchain y criptomonedas</p>
+                  <h3 className="text-white font-semibold mb-2">{t('services.courses.intro.title')}</h3>
+                  <p className="text-gray-400 text-sm">{t('services.courses.intro.description')}</p>
                 </div>
 
                 <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-xl p-4 border border-purple-500/30">
                   <div className="aspect-video bg-black/50 rounded-lg mb-4 flex items-center justify-center">
                     <PlayCircle className="w-12 h-12 text-purple-400" />
                   </div>
-                  <h3 className="text-white font-semibold mb-2">Smart Contracts</h3>
-                  <p className="text-gray-400 text-sm">Aprende sobre contratos inteligentes y DeFi</p>
+                  <h3 className="text-white font-semibold mb-2">{t('services.courses.smartContracts.title')}</h3>
+                  <p className="text-gray-400 text-sm">{t('services.courses.smartContracts.description')}</p>
                 </div>
 
                 <div className="bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-xl p-4 border border-purple-500/30">
                   <div className="aspect-video bg-black/50 rounded-lg mb-4 flex items-center justify-center">
                     <PlayCircle className="w-12 h-12 text-purple-400" />
                   </div>
-                  <h3 className="text-white font-semibold mb-2">Gobernanza DAO</h3>
-                  <p className="text-gray-400 text-sm">Cómo participar en decisiones descentralizadas</p>
+                  <h3 className="text-white font-semibold mb-2">{t('services.courses.governance.title')}</h3>
+                  <p className="text-gray-400 text-sm">{t('services.courses.governance.description')}</p>
                 </div>
               </>
             )}

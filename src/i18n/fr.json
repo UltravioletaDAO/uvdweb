@@ -5,6 +5,8 @@
     "seoTitle": "Accueil - Le DAO web4 de référence en Amérique latine",
     "seoDescription": "Rejoignez Ultravioleta DAO - L'Amérique latine à la pointe du web4. Construire l'économie agentique grâce à x402, ERC-8004, la gouvernance décentralisée et la gestion collaborative de la trésorerie sur Avalanche, Base, Celo.",
     "metrics": {
+      "community_title": "Communauté DAO",
+      "community_subtitle": "Membres actifs et participation de la communauté",
       "snapshot": {
         "briefing": {
             "title": "Briefing en espagnol",
@@ -42,6 +44,7 @@
         "multisigners": "multisignataires pour exécuter les transactions"
       },
       "legal": {
+        "learn_more_aria": "En savoir plus sur le statut juridique d'UltraVioleta DAO",
         "title": "Statut juridique",
         "jurisdiction": "Wyoming, États-Unis",
         "registered": "Enregistré le 26 sep. 2025",
@@ -100,6 +103,14 @@
     "logout_button": "Déconnexion"
   },
   "navigation": {
+    "governance": "Gouvernance",
+    "application": "Candidature",
+    "social": "Réseaux sociaux",
+    "stream_summaries": "Résumés de streams",
+    "safe_stats": "Multisignataires",
+    "more": "Plus",
+    "agents": "Agents",
+    "facilitatorApp": "Ouvrir l'app",
     "home": "Accueil",
     "apply": "Postuler",
     "links": "Liens",
@@ -119,6 +130,8 @@
       "admin": "Administration"
     },
     "descriptions": {
+      "agents": "Découvrez des agents IA",
+      "facilitator": "Facilitateur x402 pour les paiements en USDC",
       "home": "Tableau de bord principal de Ultravioleta DAO",
       "links": "Liens importants de la communauté",
       "courses": "Cours et matériel éducatif",
@@ -191,6 +204,10 @@
     }
   },
   "token": {
+    "seo": {
+      "title": "Jeton UVD : gouvernance sur Avalanche",
+      "description": "UVD est le jeton de gouvernance d'UltraVioleta DAO sur Avalanche. Achetez, échangez et participez aux décisions de la DAO depuis cette page."
+    },
     "title": "Ultravioleta Token",
     "description_1": "$UVT est le token de gouvernance et d'utilité de UltraVioleta DAO, permettant aux détenteurs de participer à la prise de décision décentralisée et à la gestion de la trésorerie.",
     "description_2": "À travers $UVT, la DAO maintient une structure transparente et démocratique.",
@@ -322,11 +339,14 @@
     "title": "Événements à venir",
     "description": "Événements d'intérêt communautaire auxquels il est recommandé de participer.",
     "seo": {
-      "title": "Événements - Ultravioleta DAO",
+      "title": "Événements",
       "description": "Événements et activités communautaires de Ultravioleta DAO. Conférences, meetups, hackathons et plus en Amérique latine."
     },
     "image_alt_placeholder": "Emplacement pour image de l'événement",
     "ultraevento": {
+      "flagship": "Événement phare",
+      "brandRepresentation": "Dans le cadre de nos services de représentation de marque, nous organisons des événements en présentiel qui connectent les projets Web3 à la communauté latino-américaine.",
+      "sponsorCTA": "Sponsorisez le prochain événement",
       "title": "Ultra Événement 2025",
       "date": {
         "label": "Date",
@@ -471,6 +491,18 @@
     }
   },
   "snapshot": {
+    "aria": {
+      "close_proposal": "Fermer la proposition",
+      "close_vote_reason": "Fermer la raison du vote",
+      "proposal_votes": "Votes de la proposition",
+      "close_votes_list": "Fermer la liste des votes"
+    },
+    "ended_ago": "Terminée {{distance}}",
+    "time_left": "{{distance}} restants",
+    "seo": {
+      "title": "Gouvernance DAO : propositions et votes sur Snapshot",
+      "description": "Participez à la gouvernance d'UltraVioleta DAO. Votez sur les propositions, proposez des idées et façonnez l'avenir du Web3 en Amérique latine sur Snapshot."
+    },
     "title": "Propositions de Gouvernance Ultravioleta DAO",
     "view_votes": "Voir les votes",
     "new_proposal": "Nouvelle proposition",
@@ -493,6 +525,7 @@
     "vote_cancelled": "Vote annulé",
     "vote_submitted": "Vote envoyé avec succès!",
     "errors": {
+      "load_failed": "Impossible de charger les propositions. Veuillez réessayer plus tard.",
       "no_metamask": "Veuillez installer MetaMask ou un autre fournisseur Ethereum",
       "connect_wallet": "Veuillez connecter votre wallet pour voter",
       "connect_wallet_proposal": "Veuillez connecter votre wallet pour créer une nouvelle proposition",
@@ -512,6 +545,7 @@
     "view_more": "Voir plus"
   },
   "common": {
+    "close_modal": "Fermer la fenêtre",
     "cancel": "Annuler",
     "anonymous": "Anonyme",
     "disconnect": "Déconnecter",
@@ -699,7 +733,7 @@
     "wallet_required_message": "Vous devez connecter votre wallet pour participer au vote décentralisé."
   },
   "wheel": {
-    "seoTitle": "Watch to Earn - Roulette de Prix UVD | UltraVioleta DAO",
+    "seoTitle": "Watch to Earn - Roulette de Prix UVD",
     "seoDescription": "Échangez vos points de chaîne Twitch pour tourner la roulette et gagner des tokens $UVD. Regardez, participez et soyez payé directement dans notre monnaie communautaire sur Avalanche.",
     "title": "Watch to Earn",
     "description": "Échangez vos points de chaîne Twitch en direct pour tourner et gagner des récompenses en $UVD. Plus vous participez et regardez le stream, plus vous avez de chances de réclamer et d'être payé directement dans notre token communautaire.",
@@ -913,6 +947,8 @@
     "title": "Page introuvable"
   },
   "pagination": {
+    "previous": "Page précédente",
+    "next": "Page suivante",
     "page_of": "Page {{current}} sur {{total}}"
   },
   "metricsDashboard": {
@@ -930,7 +966,7 @@
       "no_active_proposals": "Aucune proposition active",
       "top_voters": "Meilleurs votants de la communauté",
       "see_all": "Voir tout",
-      "from_proposals": "des propositions",
+      "from_proposals": "Sur {{count}} propositions",
       "active_members": "Membres actifs",
       "view_on_snapshot": "Voir sur Snapshot",
       "state": "État",
@@ -939,6 +975,7 @@
       "no_proposals_message": "Aucune proposition active pour l'instant"
     },
     "tokenSection": {
+      "transactions_count": "{{count}} transactions",
       "subtitle": "Activité et métriques du token UVD",
       "price_usd": "Prix USD",
       "price_avax": "Prix AVAX",
@@ -958,7 +995,7 @@
       "market_cap": "Capitalisation boursière",
       "view_on_dex": "Voir sur DEX",
       "lfj": "LFJ",
-      "arena_trade": "ArenaTrade"
+      "arena_trade": "Arena"
     },
     "funds": {
       "subtitle": "Activité de gestion de la trésorerie communautaire",
@@ -1030,7 +1067,7 @@
       "events_desc": "Réunions et conférences tenues",
       "members_title": "Membres en vedette",
       "join": "Postuler à Ultravioleta DAO",
-      "view_all_members": "Voir tous les membres",
+      "view_all_members": "Voir tous les membres ({{count}})",
       "recent_activity": "Activité récente",
       "quick_links": "Liens rapides",
       "discord": "Discord",
@@ -1229,6 +1266,10 @@
     "swap_token_alt": "Échange token UVD DEX trading Avalanche DeFi cryptomonnaie Web3 finance décentralisée"
   },
   "swap": {
+    "subtitle": "Échangez AVAX, USDC et UVD instantanément",
+    "gas_hint": "Vous avez besoin d'AVAX dans votre wallet pour payer le gas de la transaction.",
+    "switch_direction": "Inverser le sens du swap",
+    "swap_tokens": "Échanger les jetons",
     "title": "Échanger",
     "from": "De",
     "to": "Vers",
@@ -1565,6 +1606,35 @@
     }
   },
   "services": {
+    "seo": {
+      "title": "Services : Facilitateur x402, Karma Hello et Abracadabra",
+      "description": "Infrastructure Web3 d'UltraVioleta DAO : Facilitateur x402 pour les paiements sans gas des agents IA, Karma Hello Chat-to-Earn et Abracadabra (streams IA)."
+    },
+    "karmaHello": {
+      "whatIs": "Qu'est-ce que Karma Hello ?",
+      "learnMore": "Découvrez notre <token>jeton UVD</token>, les <nfts>collections NFT Echoes</nfts> et les <metrics>métriques de la DAO</metrics>. Rejoignez notre <apply>communauté</apply> pour participer !"
+    },
+    "faq": {
+      "karmaHello": "Karma Hello - Questions fréquentes",
+      "abracadabra": "Abracadabra - Questions fréquentes"
+    },
+    "phases": {
+      "title": "5 phases de développement complètes"
+    },
+    "courses": {
+      "intro": {
+        "title": "Introduction au Web3",
+        "description": "Notions de base sur la blockchain et les cryptomonnaies"
+      },
+      "smartContracts": {
+        "title": "Smart Contracts",
+        "description": "Découvrez les contrats intelligents et la DeFi"
+      },
+      "governance": {
+        "title": "Gouvernance DAO",
+        "description": "Comment participer aux décisions décentralisées"
+      }
+    },
     "title": "Produits & Services",
     "subtitle": "Nous offrons des produits et services Web3 professionnels pour les communautés, marques et projets en Amérique latine",
     "hero": {
@@ -2124,6 +2194,9 @@
     }
   },
   "nft": {
+    "footnotes": "¹ Entrée au lieu uniquement. ² Livraison internationale non incluse.",
+    "loadingVideo": "Chargement de la vidéo...",
+    "reservedTreasury": "Réservé au Trésor Communautaire",
     "title": "Collections NFT",
     "subtitle": "Explorez les collections d'art numérique exclusives de Ultravioleta DAO",
     "totalSupply": "Offre totale",
@@ -2165,6 +2238,8 @@
     }
   },
   "streamSummaries": {
+    "paymentRequired": "Ce contenu nécessite un paiement. Ouverture de la fenêtre de paiement...",
+    "errorLoadingSummary": "Erreur lors du chargement du résumé. Veuillez réessayer plus tard.",
     "search": {
         "title": "Cherchez dans la mémoire des streams — chaque phrase dite, avec son moment exact",
         "placeholder": "De quoi Ultra a-t-il parlé...? (ex: execution market)",
@@ -2214,13 +2289,7 @@
     }
   },
   "experiments": {
-    "comingSoon": {
-      "title": "Plus d'expériences à venir",
-      "date": "2025",
-      "description": "Nous explorons constamment de nouvelles façons de collaborer et d'innover. Restez à l'écoute pour plus d'expériences communautaires.",
-      "details": "Détails à venir..."
-    },
-    "seoTitle": "Expériences communautaires - Ultravioleta DAO",
+    "seoTitle": "Expériences communautaires",
     "seoDescription": "Explorez les expériences innovantes menées par la communauté Ultravioleta DAO. De la recherche en santé aux expériences de gouvernance, découvrez comment nous testons et apprenons ensemble.",
     "hero": {
       "title": "Expériences communautaires",
@@ -2278,7 +2347,7 @@
     }
   },
   "facilitatorPage": {
-    "seoTitle": "Facilitateur x402 - Paiements sans gas pour agents IA | Ultravioleta DAO",
+    "seoTitle": "Facilitateur x402 - Paiements sans gas pour agents IA",
     "seoDescription": "Permettez aux agents IA de transacter de manière autonome sans frais de gas. Le Facilitateur x402 fournit des paiements cross-chain sans gas grâce aux méta-transactions EIP-3009 sur Avalanche, Base, Celo et HyperEVM.",
     "hero": {
       "title": "Facilitateur x402",
@@ -2434,6 +2503,143 @@
         "Construisez et collaborez"
       ],
       "button": "Rejoindre l'écosystème"
+    }
+  },
+  "errorBoundary": {
+    "title": "Une erreur est survenue",
+    "message": "Une erreur inattendue s'est produite. Veuillez recharger la page pour continuer.",
+    "reload": "Recharger"
+  },
+  "paywall": {
+    "title": "Contenu Premium",
+    "price": "Prix",
+    "what_you_get": "Ce que vous obtenez :",
+    "feature_summary": "Résumé complet généré par IA",
+    "feature_highlights": "Moments clés et points forts techniques",
+    "feature_permanent": "Accès permanent : payez une fois, regardez pour toujours",
+    "feature_support": "Vous soutenez le développement d'UltraVioleta DAO",
+    "connected": "Connecté :",
+    "x402_info": "💡 Le paiement sera traité automatiquement via le facilitateur x402. Vous devez seulement être sur le bon réseau.",
+    "connecting": "Connexion...",
+    "connect_wallet": "Connecter le wallet",
+    "continue": "Continuer (${{price}} USDC)"
+  },
+  "networkSelector": {
+    "title": "Sélectionnez le réseau de paiement",
+    "select_aria": "Sélectionner {{name}}",
+    "selected": "Vous paierez sur",
+    "help": "Choisissez le réseau où vous avez des USDC. Les frais de gas sont minimes sur tous les réseaux."
+  },
+  "contributors": {
+    "seo": {
+      "title": "Contributeurs et builders de la DAO",
+      "description": "Découvrez les builders d'UltraVioleta DAO : développeurs, designers et contributeurs web4 et Web3 qui bâtissent l'économie agentique en Amérique latine."
+    }
+  },
+  "agents": {
+    "seo": {
+      "title": "Hub de découverte des agents IA",
+      "description": "Découvrez comment les agents IA s'intègrent à l'écosystème web4 d'UltraVioleta DAO : économie agentique, paiements sans gas x402, ERC-8004 et collaboration."
+    }
+  },
+  "karmaHello": {
+    "seo": {
+      "title": "Karma Hello : Chat-to-Earn en jetons UVD sur Twitch",
+      "description": "Transformez votre chat Twitch en récompenses crypto avec Karma Hello : 18+ agents IA évaluent vos messages et vous récompensent en jetons UVD sur Avalanche."
+    },
+    "hero": {
+      "badge": "En direct sur Twitch • Propulsé par l'IA • Construit sur Avalanche",
+      "title": "Transformez votre chat en crypto",
+      "subtitle": "Karma Hello récompense les interactions de qualité sur Twitch avec des jetons UVD. Chattez mieux, gagnez instantanément, sans investissement.",
+      "demoNotice": "Données de démonstration · pas en direct",
+      "stats": {
+        "activeUsers": "Utilisateurs actifs",
+        "messagesProcessed": "Messages traités",
+        "uvdDistributed": "UVD distribués",
+        "liveStreams": "Streams en direct"
+      },
+      "ctaPrimary": "Commencez à gagner maintenant",
+      "ctaSecondary": "Découvrez comment ça marche"
+    },
+    "badges": {
+      "noInvestment": "Aucun investissement requis",
+      "antiFraud": "Protection antifraude",
+      "instant": "Récompenses instantanées"
+    },
+    "features": {
+      "agents": {
+        "title": "18+ agents IA",
+        "description": "GPT-4o, Claude 3.5 et Ollama travaillent ensemble pour évaluer la qualité des messages"
+      },
+      "antiFarming": {
+        "title": "Protection anti-farming",
+        "description": "Des modèles ML avancés (BERT, Isolation Forest) empêchent les abus"
+      },
+      "fibonacci": {
+        "title": "Récompenses Fibonacci",
+        "description": "De 10 946 à 832 040 jetons UVD par message de qualité"
+      },
+      "nftMultiplier": {
+        "title": "Multiplicateur NFT 2x",
+        "description": "Les détenteurs de NFT Echoes reçoivent automatiquement le double de récompenses"
+      },
+      "socialBoost": {
+        "title": "Boost social",
+        "description": "Multiplicateur de 1,2x à 5,0x selon votre influence sur Twitter"
+      },
+      "languages": {
+        "title": "4 langues",
+        "description": "Prise en charge native de l'espagnol, l'anglais, le portugais et le français"
+      }
+    },
+    "why": {
+      "title": "Pourquoi Karma Hello ?",
+      "subtitle": "Le système Chat-to-Earn le plus avancé du Web3"
+    },
+    "steps": {
+      "title": "Commencez à gagner en 4 étapes simples",
+      "subtitle": "Pas de code, pas de complexité : chattez et gagnez",
+      "join": {
+        "title": "Rejoignez le stream",
+        "description": "Rendez-vous sur twitch.tv/0xultravioleta"
+      },
+      "connect": {
+        "title": "Connectez votre wallet",
+        "description": "Liez votre wallet MetaMask, Core ou Rabby"
+      },
+      "chat": {
+        "title": "Chattez avec qualité",
+        "description": "Participez avec des messages pertinents"
+      },
+      "earn": {
+        "title": "Gagnez des jetons UVD",
+        "description": "Recevez des récompenses instantanées sur Avalanche"
+      }
+    },
+    "calculator": {
+      "title": "Calculez vos gains potentiels",
+      "label": "Messages de qualité par jour",
+      "daily": "Gains quotidiens en UVD",
+      "nftBoost": "Avec le boost NFT 2x"
+    },
+    "cta": {
+      "title": "Prêt à transformer votre chat ?",
+      "subtitle": "Rejoignez des milliers de personnes qui gagnent des jetons UVD chaque jour",
+      "button": "Rejoignez le stream en direct"
+    },
+    "stats": {
+      "users": "2 847+ utilisateurs actifs",
+      "uptime": "Disponibilité 24/7"
+    },
+    "faq": {
+      "q1": {
+        "question": "Qu'est-ce que Karma Hello Chat-to-Earn ?",
+        "answer": "Karma Hello est un système Web3 qui récompense les interactions de qualité dans le chat Twitch avec des jetons UVD. Grâce à plus de 18 agents IA, il évalue la qualité des messages et distribue les récompenses sur la blockchain Avalanche."
+      },
+      "q2": {
+        "question": "Combien puis-je gagner avec Karma Hello ?",
+        "answer": "Les récompenses vont de 10 946 à 832 040 jetons UVD par message de qualité. Avec les multiplicateurs (2x pour les détenteurs de NFT, jusqu'à 5x selon l'influence Twitter), les participants actifs peuvent gagner entre 100 000 et 5 000 000 de jetons UVD par jour."
+      }
     }
   }
 }
