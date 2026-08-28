@@ -15,7 +15,10 @@
  *   (d) Escritorio describe_net: MarkdownTerm con ≥ 1 h1/h2 o chip snapshot; ningún <img>; ningún iframe.
  *   (e) Escritorio facilitator: CodeTerm `main.rs:1-22 @ a48c6fd` + enlace al blob pineado; `pin-snippets.js --verify` exit 0.
  *   (f) #agentes: llms.txt, server-card.json, agent-skills, get_ecosystem_map; sin karmacadabra.com en el DOM.
- *   (g) InteropMatrix: filas = edges.length del JSON servido; Receipt lista X-Frame-Options en "no es público".
+ *   (g) Secciones planas (wave 4): [data-interop], [data-receipt], #interop y #recibo ausentes del DOM;
+ *       innerText de #ecosystem-sections sin `curl -`, `CORS` ni `X-Frame-Options`; #productos existe por
+ *       encima de #agentes (offsetTop menor) con 5 [data-product-card], cada card con favicon real
+ *       (img[src^="/ecosystem/brand/"]) o su fallback lucide (svg).
  *   (h) kk-observatory.webp ≤ 60 KB.
  *   (i) 0 pageerror.
  *
@@ -337,33 +340,32 @@ async function main() {
   await page.locator('#agentes').scrollIntoViewIfNeeded().catch(() => {});
   await page.screenshot({ path: path.join(SHOT_DIR, 'f-agentes.png') });
 
-  /* ---------- (g) InteropMatrix + Receipt ---------- */
-  const interopStatus = await page.evaluate(() => {
-    const table = document.querySelector('[data-interop-table]');
-    return table ? table.getAttribute('data-interop-status') : null;
+  /* ---------- (g) secciones planas: sin matriz/recibo, #productos antes de #agentes ---------- */
+  const flat = await page.evaluate(() => {
+    const sections = document.getElementById('ecosystem-sections');
+    const productos = document.getElementById('productos');
+    const agentes = document.getElementById('agentes');
+    const cards = productos ? Array.from(productos.querySelectorAll('[data-product-card]')) : [];
+    return {
+      interop: Boolean(document.querySelector('[data-interop]') || document.getElementById('interop')),
+      receipt: Boolean(document.querySelector('[data-receipt]') || document.getElementById('recibo')),
+      sectionsText: sections ? sections.innerText || '' : '',
+      productosTop: productos ? productos.offsetTop : -1,
+      agentesTop: agentes ? agentes.offsetTop : -1,
+      cardCount: cards.length,
+      cardIds: cards.map((c) => c.getAttribute('data-product-card')),
+      cardsWithIcon: cards.filter((c) => c.querySelector('img[src^="/ecosystem/brand/"]') || c.querySelector('svg')).length,
+    };
   });
-  const graphUrl = interopStatus === 'live' ? 'https://ultravioletadao.s3.us-east-1.amazonaws.com/ecosystem/graph.json' : `${BASE}/ecosystem/graph.json`;
-  let servedEdges = -1;
-  try {
-    const res = await page.request.get(graphUrl);
-    const json = await res.json();
-    servedEdges = Array.isArray(json.edges) ? json.edges.length : -1;
-  } catch (e) {
-    servedEdges = -1;
-  }
-  const rows = await waitFor(async () => {
-    const n = await page.locator('[data-interop-table] tbody tr[data-edge-source]').count();
-    return n > 0 ? n : null;
-  }, { timeout: 12000 });
-  check('(g) InteropMatrix filas = edges.length del JSON servido', rows === servedEdges && servedEdges > 0, { rows, servedEdges, interopStatus, graphUrl });
-  const receiptPrivate = await page.evaluate(() => {
-    const col = document.querySelector('[data-receipt-col="private"]');
-    return col ? col.textContent : '';
-  });
-  check('(g) Receipt lista X-Frame-Options en "no es público"', /X-Frame-Options/.test(receiptPrivate));
-  await page.locator('[data-receipt]').scrollIntoViewIfNeeded().catch(() => {});
-  await page.screenshot({ path: path.join(SHOT_DIR, 'g-receipt.png') });
-  verify.interop = { rows, servedEdges, interopStatus };
+  check('(g) [data-interop], [data-receipt], #interop y #recibo ausentes del DOM', !flat.interop && !flat.receipt, { interop: flat.interop, receipt: flat.receipt });
+  const jargon = ['curl -', 'CORS', 'X-Frame-Options'].filter((s) => flat.sectionsText.includes(s));
+  check('(g) #ecosystem-sections sin "curl -", "CORS" ni "X-Frame-Options"', flat.sectionsText.length > 0 && jargon.length === 0, { jargon });
+  check('(g) #productos existe por encima de #agentes (offsetTop menor)', flat.productosTop >= 0 && flat.agentesTop >= 0 && flat.productosTop < flat.agentesTop, { productosTop: flat.productosTop, agentesTop: flat.agentesTop });
+  check('(g) #productos contiene 5 [data-product-card]', flat.cardCount === 5, { cardCount: flat.cardCount, cardIds: flat.cardIds });
+  check('(g) cada card con favicon real (/ecosystem/brand/) o fallback lucide (svg)', flat.cardCount > 0 && flat.cardsWithIcon === flat.cardCount, { cardsWithIcon: flat.cardsWithIcon, cardCount: flat.cardCount });
+  await page.locator('#productos').scrollIntoViewIfNeeded().catch(() => {});
+  await page.screenshot({ path: path.join(SHOT_DIR, 'g-sections.png') });
+  verify.sections = flat;
 
   /* ---------- (i) errores ---------- */
   const pe = pageErrorsOnly(errors);

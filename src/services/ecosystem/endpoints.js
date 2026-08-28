@@ -241,20 +241,6 @@ export async function loadSnapshot(key) {
   };
 }
 
-// Documentación para el "Recibo de datos": lo que NO se puede leer desde el navegador y por qué.
-// Verificado el 2026-08-27 con `curl -sD - -H "Origin: https://ultravioletadao.xyz" <url>`:
-// 200 sin Access-Control-Allow-Origin (cors) o cabecera X-Frame-Options: DENY (xfo, ver replays).
-export const BLOCKED = [
-  { url: 'https://karmakadabra.ultravioletadao.xyz/graph.json', reasonKey: 'ecosystem.receipt.blocked_reason_cors', reason: 'sin Access-Control-Allow-Origin', replay: null },
-  { url: 'https://karmakadabra.ultravioletadao.xyz/live/fuel.json', reasonKey: 'ecosystem.receipt.blocked_reason_cors', reason: 'sin Access-Control-Allow-Origin', replay: 'kk_fuel' },
-  { url: 'https://execution.market/public/metrics', reasonKey: 'ecosystem.receipt.blocked_reason_cors', reason: 'sin Access-Control-Allow-Origin', replay: null },
-  { url: 'https://execution.market/', reasonKey: 'ecosystem.receipt.blocked_reason_xfo', reason: 'X-Frame-Options: DENY', replay: 'em_headers' },
-  { url: 'https://describe.net/', reasonKey: 'ecosystem.receipt.blocked_reason_xfo', reason: 'X-Frame-Options: DENY', replay: 'describe_headers' },
-  { url: 'https://api.execution.market/skill.md', reasonKey: 'ecosystem.receipt.blocked_reason_cors', reason: 'sin Access-Control-Allow-Origin', replay: null },
-  { url: 'https://meshrelay.xyz/skill.md', reasonKey: 'ecosystem.receipt.blocked_reason_cors', reason: 'sin Access-Control-Allow-Origin', replay: 'meshrelay_skill_head' },
-  { url: 'https://api.describe.net/health', reasonKey: 'ecosystem.receipt.blocked_reason_cors', reason: 'sin Access-Control-Allow-Origin', replay: null },
-];
-
 // URLs del grafo (c0der → S3 / snapshot del sitio) también son "curl-eables" desde el REPL.
 const GRAPH_URLS = [
   'https://ultravioletadao.s3.us-east-1.amazonaws.com/ecosystem/graph.json',

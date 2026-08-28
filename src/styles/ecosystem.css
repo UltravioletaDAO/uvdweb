@@ -439,7 +439,6 @@
 
 /* ---------- Secciones planas bajo el escritorio ---------- */
 .uvd-eco__sections { max-width: 1200px; margin: 0 auto; padding: 32px 16px 64px; }
-.uvd-eco__sections > section { margin-bottom: 48px; }
 
 /* ---------- Sin blur disponible / transparencia reducida → sólido ---------- */
 @supports not (backdrop-filter: blur(1px)) {

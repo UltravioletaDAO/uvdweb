@@ -2,6 +2,7 @@
 // Click = enfocar / restaurar / volver a abrir por kind con los params declarados en DESKTOPS.
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import ProductIcon, { productForWindow } from '../ProductIcon';
 import { DESKTOPS } from '../desktops';
 import { useDeskActions, useDeskLayoutState } from './useDesk';
 
@@ -51,7 +52,8 @@ export default function Dock() {
             title={title}
             onClick={onClick}
           >
-            <span aria-hidden="true">{stateLabel}</span> {title}
+            <span aria-hidden="true">{stateLabel}</span>{' '}
+            <ProductIcon id={productForWindow(it.kind, it.params)} size={14} className="mr-0.5" /> {title}
           </button>
         );
       })}
