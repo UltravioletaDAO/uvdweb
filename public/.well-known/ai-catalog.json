@@ -10,10 +10,13 @@
       "displayName": "UltravioletaDAO MCP Server Card",
       "type": "application/mcp-server-card+json",
       "url": "https://ultravioletadao.xyz/.well-known/mcp/server-card.json",
+      "endpoint": "https://api.ultravioletadao.xyz/mcp",
       "representativeQueries": [
-        "apply for UltravioletaDAO membership",
-        "verify an x402 payment with the UltravioletaDAO facilitator",
-        "settle a gasless USDC payment on Avalanche"
+        "connect to the UltravioletaDAO MCP server",
+        "UltravioletaDAO treasury, UVD token and governance proposals",
+        "search the UltravioletaDAO Twitch stream memory",
+        "map of the UltravioletaDAO product ecosystem",
+        "apply for UltravioletaDAO membership"
       ]
     },
     {

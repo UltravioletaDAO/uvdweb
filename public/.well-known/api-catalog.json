@@ -22,7 +22,37 @@
       ],
       "item": [
         { "href": "https://api.ultravioletadao.xyz/apply" },
-        { "href": "https://api.ultravioletadao.xyz/wallets" }
+        { "href": "https://api.ultravioletadao.xyz/wallets" },
+        { "href": "https://api.ultravioletadao.xyz/mcp" }
+      ],
+      "describedby": [
+        {
+          "href": "https://ultravioletadao.xyz/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.ultravioletadao.xyz/mcp",
+      "service-desc": [
+        {
+          "href": "https://ultravioletadao.xyz/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "MCP server card: transport, tools and schemas"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://ultravioletadao.xyz/llms-full.txt",
+          "type": "text/plain",
+          "title": "How to connect the remote MCP server"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.ultravioletadao.xyz/health",
+          "type": "application/json"
+        }
       ],
       "describedby": [
         {
