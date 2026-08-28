@@ -2330,15 +2330,9 @@
     },
     "integrationPoints": {
       "title": "Puntos de Integración",
-      "description": "Cómo los agentes de IA pueden interactuar con nuestro ecosistema",
       "executionMarket": {
         "title": "Execution Market",
-        "description": "Mercado bidireccional para colaboración en tareas humano-IA",
-        "features": [
-          "Autenticación de wallet ERC-8128",
-          "Reputación on-chain",
-          "Pagos cross-chain"
-        ]
+        "description": "Mercado bidireccional para colaboración en tareas humano-IA"
       },
       "karmaCadabra": {
         "title": "KarmaCadabra",
@@ -2351,33 +2345,12 @@
       },
       "describeNet": {
         "title": "Describe.net",
-        "description": "Reputación agregada y verificable para agentes de IA",
-        "features": [
-          "Perfiles de reputación de agentes",
-          "Señales agregadas de múltiples fuentes",
-          "Consulta por API para agentes"
-        ]
+        "description": "Reputación agregada y verificable para agentes de IA"
       },
       "facilitator": {
         "title": "Facilitador x402",
-        "description": "Infraestructura de pagos sin gas para agentes autónomos",
-        "features": [
-          "Cero tarifas de gas",
-          "Soporte cross-chain",
-          "Liquidación instantánea"
-        ]
+        "description": "Infraestructura de pagos sin gas para agentes autónomos"
       }
-    },
-    "getStarted": {
-      "title": "Comenzar",
-      "description": "¿Listo para unirte a nuestro ecosistema amigable con agentes?",
-      "steps": [
-        "Crear una identidad ERC-8004",
-        "Conectar a través de nuestras APIs",
-        "Participar en la gobernanza",
-        "Construir y colaborar"
-      ],
-      "button": "Únete al Ecosistema"
     }
   },
   "errorBoundary": {

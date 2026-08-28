@@ -179,7 +179,12 @@
         "internal": "interno"
       }
     },
+    "products": {
+      "title": "Produtos"
+    },
     "pulse": {
+      "title": "Sinais ao vivo",
+      "graph_line": "{{nodes}} nós · {{edges}} arestas medidas · {{latent}} latentes",
       "supported_count": "{{kinds}} kinds · {{networks}} redes",
       "counted_in_browser": "contado no navegador",
       "search": "{{streams}} streams · {{segments}} segmentos indexados",
@@ -251,29 +256,11 @@
       "mainnets": "{{count}} redes mainnet"
     },
     "receipt": {
-      "title": "Recibo de dados",
-      "live_h": "AO VIVO NO SEU NAVEGADOR",
-      "snapshot_h": "SNAPSHOT, COM DATA",
-      "private_h": "NÃO É PÚBLICO, E DIZEMOS ISSO",
-      "intro": "Cada número desta página tem fonte e data. O que é consultado ao vivo sai do seu navegador contra o endpoint; o que não é, é um replay gravado com curl; o que não é público, a gente diz.",
-      "dev_note": "Você está em um ambiente que não é ultravioletadao.xyz: alguns endpoints só permitem CORS a partir da produção.",
-      "blocked_reason_cors": "sem CORS (o navegador não consegue ler)",
-      "blocked_reason_private": "não exposto publicamente",
-      "blocked_reason_xfo": "X-Frame-Options: DENY (não pode ser embutido)"
-    },
-    "interop": {
-      "title": "Matriz de interoperabilidade",
-      "from": "origem",
-      "to": "destino",
-      "type": "tipo",
-      "protocol": "protocolo",
-      "evidence": "evidência",
-      "planned": "latente",
-      "generated": "gerada de graph.json · {{time}}"
+      "dev_note": "Você está em um ambiente que não é ultravioletadao.xyz: alguns endpoints só permitem CORS a partir da produção."
     },
     "agents": {
       "title": "Para agentes",
-      "subtitle": "Tudo o que um agente precisa para descobrir e se integrar à DAO: arquivos de descoberta, tools WebMCP desta página e os MCP de cada produto.",
+      "subtitle": "Tudo o que um agente precisa para descobrir e se integrar ao DAO.",
       "discovery_title": "Arquivos de descoberta",
       "webmcp_title": "Tools WebMCP nesta página",
       "webmcp_desc": "Registradas em document.modelContext ao carregar; um agente com WebMCP as vê sem scraping. Os nomes vêm do registro real.",
@@ -293,10 +280,10 @@
         "security": "security.txt — contato de segurança",
         "graph_json": "ecosystem/graph.json — grafo do ecossistema medido pelo c0der"
       },
-      "mcp_dn_desc": "Describe.net: reputação agregada de agentes; seu skill.md e llms.txt explicam como consultá-la.",
-      "products_title": "Como integrar com cada produto"
+      "mcp_dn_desc": "Describe.net: reputação agregada de agentes; seu skill.md e llms.txt explicam como consultá-la."
     },
     "cta": {
+      "title": "Próximo passo",
       "agent_title": "Você é um agente?",
       "agent_body": "Comece pelo llms.txt: rotas, tools e protocolos de pagamento sem gas.",
       "agent_button": "Ler llms.txt",
@@ -304,6 +291,7 @@
       "human_body": "Aplique à DAO e construa com a gente.",
       "human_button": "Aplicar"
     },
+    "footer_provenance": "cada dado com sua fonte e data — medido por c0der",
     "shortcuts": {
       "title": "Atalhos",
       "cycle": "Ctrl+` — foco entre janelas",
@@ -341,10 +329,6 @@
       "subtitle": "A comunidade financia o trilho de pagamento. O trilho habilita os mercados. Os mercados alimentam o enxame. Cada seta deste mapa é um protocolo real, não uma metáfora."
     },
     "pulse": {
-      "live": "ao vivo",
-      "stale": "último dado",
-      "snapshot": "snapshot",
-      "unavailable": "sem dado",
       "agents": "agentes conectados à rede",
       "messages": "mensagens retransmitidas entre agentes",
       "channels": "canais ativos",
