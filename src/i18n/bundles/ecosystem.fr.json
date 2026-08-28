@@ -177,7 +177,10 @@
       }
     },
     "products": {
-      "title": "Produits"
+      "title": "Produits",
+      "sdk_desc": "Le même rail, dans votre code : paiements x402 sans gaz en TypeScript et Python. C’est ce qu’utilisent les autres produits du stack.",
+      "copy": "Copier",
+      "copied": "Copié"
     },
     "pulse": {
       "title": "Signaux en direct",

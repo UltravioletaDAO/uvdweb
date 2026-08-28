@@ -6,7 +6,7 @@
 // + links. Color por capa (LAYER_COLORS) solo en el punto del chip, nunca como color de texto.
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Users, Zap, Link as LinkIcon, ExternalLink, Cpu, Radio } from 'lucide-react';
+import { Users, Zap, Link as LinkIcon, ExternalLink, Cpu, Radio, Package, Copy, Check } from 'lucide-react';
 import ProductIcon from '../ProductIcon';
 import { LAYER_COLORS } from '../../../services/ecosystem/graph';
 import { KK_TOOLS } from '../../../services/ecosystem/kkMcp';
@@ -41,6 +41,26 @@ function ExtLink({ href, children, className = LINK, ...rest }) {
   );
 }
 
+// Comando de instalación copiable: la única clase de comando que un dev sí copia.
+function InstallCmd({ cmd, copiedLabel, copyLabel }) {
+  const [copied, setCopied] = React.useState(false);
+  const onCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(cmd);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1600);
+    } catch (e) { /* clipboard bloqueado: el texto sigue seleccionable */ }
+  };
+  return (
+    <div className="flex items-center justify-between gap-2 rounded border border-white/10 bg-black/40 px-3 py-1.5 font-mono text-sm text-text-primary">
+      <code className="min-w-0 break-all">{cmd}</code>
+      <button type="button" onClick={onCopy} aria-label={copied ? copiedLabel : `${copyLabel}: ${cmd}`} className="shrink-0 rounded p-1 text-[#a78bfa] hover:bg-white/10 hover:text-[#c4b5fd] focus:outline focus:outline-2 focus:outline-purple-300">
+      {copied ? <Check className="h-4 w-4" aria-hidden="true" /> : <Copy className="h-4 w-4" aria-hidden="true" />}
+      </button>
+    </div>
+  );
+}
+
 // Chip de capa (arriba-derecha de cada card): punto 6px con el color de LAYER_DOT + label i18n.
 function LayerChip({ layer }) {
   const { t } = useTranslation();
@@ -62,21 +82,47 @@ export default function EcosystemProducts() {
         {t('ecosystem.products.title', 'Productos')}
       </h2>
 
-      {/* Facilitator: el riel, card destacada con glow en reposo */}
-      <div className={`${CARD} mt-6 mb-6 border-ultraviolet/40 shadow-[0_0_32px_rgba(106,0,255,0.18)]`} data-product-card="facilitator">
-        <div className="mb-3 flex items-start justify-between gap-3">
-          <div className="flex min-w-0 items-center gap-3">
-            <span className={ICON_BOX}>
-              <ProductIcon id="facilitator" size={28} fallback={LinkIcon} />
-            </span>
-            <h3 className="text-xl font-bold text-text-primary">{t('agentDiscovery.integrationPoints.facilitator.title', 'Facilitador x402')}</h3>
+      {/* El riel: Facilitator + x402 SDK, destacados lado a lado (directiva de Saul 2026-08-28:
+          los SDK son lo que usa el resto de proyectos y no tenían luz). */}
+      <div className="mt-6 mb-6 grid gap-6 md:grid-cols-2">
+        <div className={`${CARD} border-ultraviolet/40 shadow-[0_0_32px_rgba(106,0,255,0.18)]`} data-product-card="facilitator">
+          <div className="mb-3 flex items-start justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-3">
+              <span className={ICON_BOX}>
+                <ProductIcon id="facilitator" size={28} fallback={LinkIcon} />
+              </span>
+              <h3 className="text-xl font-bold text-text-primary">{t('agentDiscovery.integrationPoints.facilitator.title', 'Facilitador x402')}</h3>
+            </div>
+            <LayerChip layer="rail" />
           </div>
-          <LayerChip layer="rail" />
+          <p className="mb-3 text-sm text-text-secondary">{t('agentDiscovery.integrationPoints.facilitator.description', 'Infraestructura de pagos sin gas para agentes autónomos')}</p>
+          <div className="flex flex-wrap gap-x-6 gap-y-1">
+            <ExtLink href="https://facilitator.ultravioletadao.xyz">facilitator.ultravioletadao.xyz</ExtLink>
+            <ExtLink href="/facilitator">/facilitator</ExtLink>
+          </div>
         </div>
-        <p className="mb-3 text-sm text-text-secondary">{t('agentDiscovery.integrationPoints.facilitator.description', 'Infraestructura de pagos sin gas para agentes autónomos')}</p>
-        <div className="flex flex-wrap gap-x-6 gap-y-1">
-          <ExtLink href="https://facilitator.ultravioletadao.xyz">facilitator.ultravioletadao.xyz</ExtLink>
-          <ExtLink href="/facilitator">/facilitator</ExtLink>
+
+        <div className={`${CARD} border-ultraviolet/40 shadow-[0_0_32px_rgba(106,0,255,0.18)]`} data-product-card="x402-sdk">
+          <div className="mb-3 flex items-start justify-between gap-3">
+            <div className="flex min-w-0 items-center gap-3">
+              <span className={ICON_BOX}>
+                <ProductIcon id="x402-sdk" size={28} fallback={Package} />
+              </span>
+              <h3 className="text-xl font-bold text-text-primary">x402 SDK</h3>
+            </div>
+            <LayerChip layer="rail" />
+          </div>
+          <p className="mb-3 text-sm text-text-secondary">{t('ecosystem.products.sdk_desc', 'El mismo riel, en tu código: pagos x402 sin gas en TypeScript y Python. Es lo que usan los demás productos del stack.')}</p>
+          <div className="mb-3 space-y-2">
+            <InstallCmd cmd="npm i uvd-x402-sdk" copiedLabel={t('ecosystem.products.copied', 'Copiado')} copyLabel={t('ecosystem.products.copy', 'Copiar')} />
+            <InstallCmd cmd="pip install uvd-x402-sdk" copiedLabel={t('ecosystem.products.copied', 'Copiado')} copyLabel={t('ecosystem.products.copy', 'Copiar')} />
+          </div>
+          <div className="flex flex-wrap gap-x-6 gap-y-1">
+            <ExtLink href="https://www.npmjs.com/package/uvd-x402-sdk">npm</ExtLink>
+            <ExtLink href="https://pypi.org/project/uvd-x402-sdk/">PyPI</ExtLink>
+            <ExtLink href="https://github.com/UltravioletaDAO/uvd-x402-sdk-typescript">GitHub (TS)</ExtLink>
+            <ExtLink href="https://github.com/UltravioletaDAO/uvd-x402-sdk-python">GitHub (Python)</ExtLink>
+          </div>
         </div>
       </div>
 
