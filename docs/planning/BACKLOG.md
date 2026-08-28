@@ -6,7 +6,7 @@
 
 | Date | Item | Context | Priority | Status |
 |---|---|---|---|---|
-| 2026-08-27 | Origin trial de WebMCP | Registrar https://ultravioletadao.xyz en developer.chrome.com/origintrials (trial "WebMCP") con la cuenta Google de Saul y pegar el `<meta http-equiv="origin-trial">` en `public/index.html`. Saul dijo "sí, ahora": EN CURSO. Snippet e instrucciones: audit wave3/governance.md §4 | P1 | In progress |
+| 2026-08-27 | Origin trial de WebMCP | Registrar https://ultravioletadao.xyz en developer.chrome.com/origintrials (trial "WebMCP") con la cuenta Google de Saul y pegar el `<meta http-equiv="origin-trial">` en `public/index.html`. Registrado y verificado 2026-08-28: token de 228 chars en index.html, Chrome estable sin flag ve las 19 tools. Renovar antes de Chrome 156 (vence 2026-11-16; el dashboard avisa por email) | P1 | Done |
 | 2026-08-27 | Markdown negotiation (Level 3 isitagentready) | POSPUESTO por decisión de Saul 2026-08-27. Stack CloudFront listo y apagado en uvd-backend `environments/prod/cloudfront-agents.tf`; bloqueado por CNAMEAlreadyExists (el alias pertenece a la distro de Amplify). Opciones A/B/C/D en wave3/cloudfront-cutover.md | P2 | Deferred |
 | 2026-08-27 | Web pública para Faro y Tarotof | Ambos aparecen en /ecosystem como beta SIN link (decisión Saul: mostrar con descripción). Al publicar su sitio: poner `url` en c0der `config/ecosystem.toml` y re-scan | P2 | Open |
 | 2026-08-27 | Escritorios propios para Faro, Tarotof y EnclaveOps en /ecosystem | Hoy solo tienen nodo en el mapa; 402milly tiene ventana. Diseñar ventana/escritorio con datos reales cuando tengan API/web pública | P3 | Open |
