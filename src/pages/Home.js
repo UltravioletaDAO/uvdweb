@@ -15,6 +15,7 @@ const DaoStoryteller = lazy(() => import('../components/DaoStoryteller'));
 // Ecosystem teaser (glass terminal running real commands) and the faint
 // constellation behind the H1. Both are lazy: 0 KB in the initial chunk.
 const HomeTeaser = lazy(() => import('../components/landing/HomeTeaser'));
+const HomeIrcWidget = lazy(() => import('../components/landing/HomeIrcWidget'));
 const HeroConstellation = lazy(() => import('../components/landing/HeroConstellation'));
 
 const Home = () => {
@@ -88,9 +89,18 @@ const Home = () => {
             {/* Glass terminal running real commands; height reserved (232px) before it mounts.
                 minmax(0,…) keeps both tracks strictly fractional: the terminal's nowrap output
                 must never widen its column and re-wrap the H1 (CLS). */}
-            <Suspense fallback={<div className="min-h-[232px]" />}>
-              <HomeTeaser />
-            </Suspense>
+            <div>
+              <Suspense fallback={<div className="min-h-[232px]" />}>
+                <HomeTeaser />
+              </Suspense>
+              {/* Chat en vivo de MeshRelay (#agents): caja flotante faded, solo md+ (móvil no
+                  alarga el hero). Altura reservada => CLS 0. */}
+              <div className="hidden md:block min-h-[252px]">
+                <Suspense fallback={<div className="min-h-[236px] mt-4" />}>
+                  <HomeIrcWidget />
+                </Suspense>
+              </div>
+            </div>
           </div>
         </div>
       </section>
