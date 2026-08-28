@@ -25,9 +25,10 @@ const DISCOVERY = [
 ];
 
 const MCPS = [
-  { id: 'kk', name: 'KarmaKadabra', descKey: 'ecosystem.agents.mcp_kk_desc', descFallback: 'MCP hosteado de KarmaKadabra: KPIs, agentes, trades y snapshot del mercado por JSON-RPC.', links: [{ label: KK_MCP, href: KK_MCP }], tools: KK_TOOLS, icon: Cpu },
+  { id: 'kk', name: 'KarmaKadabra', descKey: 'ecosystem.agents.mcp_kk_desc', descFallback: 'MCP hosteado de KarmaKadabra: KPIs, agentes, trades y snapshot del mercado por JSON-RPC.', links: [{ label: 'karmakadabra.ultravioletadao.xyz/mcp', href: KK_MCP }], tools: KK_TOOLS, icon: Cpu },
   { id: 'em', name: 'Execution Market', descKey: 'ecosystem.agents.mcp_em_desc', descFallback: 'Execution Market: tareas con escrow on-chain; su skill.md explica cómo publicar, aplicar y entregar.', links: [{ label: 'execution.market/skill.md', href: 'https://execution.market/skill.md' }, { label: 'execution.market/llms.txt', href: 'https://execution.market/llms.txt' }], icon: Zap },
-  { id: 'mr', name: 'MeshRelay', descKey: 'ecosystem.agents.mcp_mr_desc', descFallback: 'MeshRelay: IRC para agentes; su skill.md explica cómo conectarse y qué canales existen.', links: [{ label: 'meshrelay.xyz/skill.md', href: 'https://meshrelay.xyz/skill.md' }, { label: 'meshrelay.xyz/llms.txt', href: 'https://meshrelay.xyz/llms.txt' }], icon: Radio }
+  { id: 'mr', name: 'MeshRelay', descKey: 'ecosystem.agents.mcp_mr_desc', descFallback: 'MeshRelay: IRC para agentes; su skill.md explica cómo conectarse y qué canales existen.', links: [{ label: 'meshrelay.xyz/skill.md', href: 'https://meshrelay.xyz/skill.md' }, { label: 'meshrelay.xyz/llms.txt', href: 'https://meshrelay.xyz/llms.txt' }], icon: Radio },
+  { id: 'dn', name: 'Describe.net', descKey: 'ecosystem.agents.mcp_dn_desc', descFallback: 'Describe.net: reputación agregada de agentes; su skill.md y llms.txt explican cómo consultarla.', links: [{ label: 'describe.net/skill.md', href: 'https://describe.net/skill.md' }, { label: 'describe.net/llms.txt', href: 'https://describe.net/llms.txt' }], icon: Users }
 ];
 
 const asArray = (v) => (Array.isArray(v) ? v : []);
@@ -35,7 +36,7 @@ const isExternal = (href) => /^https?:\/\//.test(href);
 
 const CARD = 'rounded-xl border border-ultraviolet-darker/30 bg-gradient-to-br from-background-lighter to-background p-6';
 const H2 = 'mb-4 flex items-center gap-3 text-2xl font-bold text-text-primary';
-const LINK = 'inline-flex items-center gap-1 font-mono text-sm text-ultraviolet-light underline-offset-2 hover:underline focus:outline focus:outline-2 focus:outline-purple-300';
+const LINK = 'inline-flex min-w-0 items-center gap-1 break-all font-mono text-sm text-ultraviolet-light underline-offset-2 hover:underline focus:outline focus:outline-2 focus:outline-purple-300';
 
 function ExtLink({ href, children, className = LINK, ...rest }) {
   const ext = isExternal(href);
@@ -95,7 +96,7 @@ export default function ForAgents() {
   const integrations = [
     { key: 'executionMarket', icon: Zap, color: 'yellow', link: 'https://execution.market' },
     { key: 'karmaCadabra', icon: Users, color: 'green', link: KK_URL },
-    { key: 'moltX', icon: Bot, color: 'purple', link: 'https://moltx.io' },
+    { key: 'describeNet', icon: Users, color: 'purple', link: 'https://describe.net' },
     { key: 'facilitator', icon: LinkIcon, color: 'blue', link: '/facilitator' }
   ].map((x) => ({
     ...x,
@@ -162,7 +163,7 @@ export default function ForAgents() {
           <Cpu className="h-7 w-7 text-ultraviolet" aria-hidden="true" />
           {t('ecosystem.agents.mcps_title', 'MCP del ecosistema')}
         </h3>
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
           {MCPS.map((m) => (
             <div key={m.id} className={CARD}>
               <div className="mb-3 flex items-center gap-2">
@@ -230,9 +231,6 @@ export default function ForAgents() {
             </div>
             <p className="mb-4 text-text-secondary">AI agent specializing in Web3 development, automation, and community assistance.</p>
             <div className="flex gap-2">
-              <a href="https://moltx.io/UltraClawd" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-ultraviolet/10 p-2 text-ultraviolet hover:bg-ultraviolet/20 hover:text-ultraviolet-light focus:outline focus:outline-2 focus:outline-purple-300" aria-label="Clawd on moltx">
-                <Bot className="h-4 w-4" aria-hidden="true" />
-              </a>
               <a href="https://github.com/ultravioletadao" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-ultraviolet/10 p-2 text-ultraviolet hover:bg-ultraviolet/20 hover:text-ultraviolet-light focus:outline focus:outline-2 focus:outline-purple-300" aria-label="Clawd on GitHub">
                 <Github className="h-4 w-4" aria-hidden="true" />
               </a>
