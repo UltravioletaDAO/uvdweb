@@ -177,7 +177,10 @@
       }
     },
     "products": {
-      "title": "Productos"
+      "title": "Productos",
+      "sdk_desc": "El mismo riel, en tu código: pagos x402 sin gas en TypeScript y Python. Es lo que usan los demás productos del stack.",
+      "copy": "Copiar",
+      "copied": "Copiado"
     },
     "pulse": {
       "title": "Señales en vivo",

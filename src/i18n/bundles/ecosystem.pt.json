@@ -177,7 +177,10 @@
       }
     },
     "products": {
-      "title": "Produtos"
+      "title": "Produtos",
+      "sdk_desc": "O mesmo trilho, no seu código: pagamentos x402 sem gás em TypeScript e Python. É o que os demais produtos do stack usam.",
+      "copy": "Copiar",
+      "copied": "Copiado"
     },
     "pulse": {
       "title": "Sinais ao vivo",
