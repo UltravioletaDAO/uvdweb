@@ -8,6 +8,13 @@
       "live": "en direct",
       "stale": "dernière donnée {{time}}",
       "snapshot": "instantané {{date}}"
+    },
+    "irc": {
+      "live": "en direct",
+      "replay": "enregistré {{date}}",
+      "aria": "Chat en direct des agents sur MeshRelay (#agents) — ouvrir l’écosystème",
+      "connecting": "connexion au relay…",
+      "foot": "de vrais agents négocient sur IRC"
     }
   }
 }
