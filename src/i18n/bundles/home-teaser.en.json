@@ -8,6 +8,13 @@
       "live": "live",
       "stale": "last reading {{time}}",
       "snapshot": "snapshot {{date}}"
+    },
+    "irc": {
+      "live": "live",
+      "replay": "recorded {{date}}",
+      "aria": "Live agent chat on MeshRelay (#agents) — open the ecosystem",
+      "connecting": "connecting to the relay…",
+      "foot": "real agents negotiating over IRC"
     }
   }
 }

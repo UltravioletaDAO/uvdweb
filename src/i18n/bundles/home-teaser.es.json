@@ -8,6 +8,13 @@
       "live": "en vivo",
       "stale": "último dato {{time}}",
       "snapshot": "snapshot {{date}}"
+    },
+    "irc": {
+      "live": "en vivo",
+      "replay": "grabado {{date}}",
+      "aria": "Chat en vivo de los agentes en MeshRelay (#agents) — abrir el ecosistema",
+      "connecting": "conectando al relay…",
+      "foot": "agentes reales negociando en IRC"
     }
   }
 }
