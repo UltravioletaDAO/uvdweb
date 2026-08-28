@@ -1,18 +1,15 @@
+// SystemPulse — sección 02 `#pulso` de /ecosystem: "la máquina está encendida".
+// Solo endpoints verificados como accesibles desde el browser (chequeo 2026-07-21, PLAN §4.1);
+// los que no lo son llegan vía snapshot por useLiveMetric (nunca un 0 pelado ni spinner colgado:
+// vivo -> último dato con hora -> snapshot -> raya). Procedencia con SourceChip (contrato C10,
+// mismo chip que el escritorio). La línea de grafo bajo la grilla absorbe el conteo honesto de la
+// antigua matriz: nodos/aristas salen de index.counts (cero cifras tipeadas), min-h reserva la
+// línea para que el dato async no mueva el layout (CLS ~0).
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import useLiveMetric from '../../../hooks/useLiveMetric';
-
-/**
- * SystemPulse — "la máquina está encendida" (docs/PLAN.md §3 sección 1).
- *
- * Only endpoints VERIFIED to send access-control-allow-origin are used here
- * (checked 2026-07-21, see PLAN §4.1). KarmaKadabra's graph.json and Execution
- * Market's /public/metrics return 200 but no CORS header, so they are NOT
- * fetched from the browser — they land in Fase 4 behind /api/pulse.
- *
- * PLAN §4.5: a tile never renders a bare 0 or a hung spinner for a system that
- * is alive. Live value -> cached stale value with its time -> snapshot -> dash.
- */
+import useEcosystemGraph from '../useEcosystemGraph';
+import SourceChip, { formatDay } from '../desk/SourceChip';
 
 const MESHRELAY_STATS = 'https://api.meshrelay.xyz/irc/stats';
 const FACILITATOR_HEALTH = 'https://facilitator.ultravioletadao.xyz/health';
@@ -30,67 +27,25 @@ const fmt = (n) => {
   }
 };
 
-function ProvenanceChip({ status, fetchedAt }) {
-  const { t } = useTranslation();
-  if (status === 'live') {
-    return (
-      <span className="inline-flex items-center gap-1.5 text-[10px] uppercase tracking-wider text-emerald-400">
-        <span className="relative flex h-1.5 w-1.5">
-          <span className="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-60 motion-safe:animate-ping" />
-          <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400" />
-        </span>
-        {t('landing.pulse.live', 'en vivo')}
-      </span>
-    );
-  }
-  if (status === 'stale') {
-    let when = '';
-    try {
-      if (fetchedAt) when = new Date(fetchedAt).toLocaleString('es');
-    } catch (e) {
-      when = '';
-    }
-    return (
-      <span className="text-[10px] uppercase tracking-wider text-amber-400/80">
-        {t('landing.pulse.stale', 'último dato')} {when}
-      </span>
-    );
-  }
-  if (status === 'snapshot') {
-    return (
-      <span className="text-[10px] uppercase tracking-wider text-gray-500">
-        {t('landing.pulse.snapshot', 'snapshot')} {fetchedAt || ''}
-      </span>
-    );
-  }
-  if (status === 'loading') {
-    return <span className="text-[10px] uppercase tracking-wider text-gray-600">···</span>;
-  }
-  return (
-    <span className="text-[10px] uppercase tracking-wider text-gray-600">
-      {t('landing.pulse.unavailable', 'sin dato')}
-    </span>
-  );
-}
-
 function StatTile({ value, label, status, fetchedAt }) {
   // Never a bare 0 and never a hung spinner: an unavailable number is a dash.
   const shown = value === null || value === undefined ? '—' : value;
   return (
-    <div className="flex flex-col justify-between rounded-xl border border-ultraviolet-darker/25 bg-background-lighter/40 p-4 min-h-[104px]">
+    <div className="flex flex-col justify-between rounded-lg border border-ultraviolet-darker/40 bg-background/80 p-4 min-h-[104px]">
       <div className="text-2xl md:text-3xl font-bold text-white tabular-nums">{shown}</div>
       <div className="mt-2">
         <div className="text-xs text-text-secondary leading-snug">{label}</div>
         <div className="mt-1">
-          <ProvenanceChip status={status} fetchedAt={fetchedAt} />
+          <SourceChip status={status} fetchedAt={fetchedAt} />
         </div>
       </div>
     </div>
   );
 }
 
-function SystemPulse({ className = '' }) {
+function SystemPulse() {
   const { t } = useTranslation();
+  const { graph, index } = useEcosystemGraph();
 
   // One request for MeshRelay; three tiles derive from it.
   const irc = useLiveMetric({
@@ -117,32 +72,53 @@ function SystemPulse({ className = '' }) {
       : '—';
 
   return (
-    <div className={`grid grid-cols-2 lg:grid-cols-4 gap-3 ${className}`}>
-      <StatTile
-        value={fmt(s.users)}
-        label={t('landing.pulse.agents', 'agentes conectados a la red')}
-        status={irc.status}
-        fetchedAt={irc.fetchedAt}
-      />
-      <StatTile
-        value={fmt(s.messages)}
-        label={t('landing.pulse.messages', 'mensajes relevados entre agentes')}
-        status={irc.status}
-        fetchedAt={irc.fetchedAt}
-      />
-      <StatTile
-        value={fmt(s.channels)}
-        label={t('landing.pulse.channels', 'canales activos')}
-        status={irc.status}
-        fetchedAt={irc.fetchedAt}
-      />
-      <StatTile
-        value={railLabel}
-        label={t('landing.pulse.rail', 'riel de pago x402 (sin gas)')}
-        status={health.status}
-        fetchedAt={health.fetchedAt}
-      />
-    </div>
+    <section id="pulso" aria-labelledby="pulse-title" className="mx-auto w-full max-w-7xl scroll-mt-16 px-4 py-12" data-system-pulse>
+      <h2 id="pulse-title" className="mb-2 font-mono text-2xl font-bold text-text-primary">
+        <span className="text-[#a78bfa]" aria-hidden="true">02 · </span>
+        {t('ecosystem.pulse.title', 'Señales en vivo')}
+      </h2>
+      <div className="mt-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        <StatTile
+          value={fmt(s.users)}
+          label={t('landing.pulse.agents', 'agentes conectados a la red')}
+          status={irc.status}
+          fetchedAt={irc.fetchedAt}
+        />
+        <StatTile
+          value={fmt(s.messages)}
+          label={t('landing.pulse.messages', 'mensajes relevados entre agentes')}
+          status={irc.status}
+          fetchedAt={irc.fetchedAt}
+        />
+        <StatTile
+          value={fmt(s.channels)}
+          label={t('landing.pulse.channels', 'canales activos')}
+          status={irc.status}
+          fetchedAt={irc.fetchedAt}
+        />
+        <StatTile
+          value={railLabel}
+          label={t('landing.pulse.rail', 'riel de pago x402 (sin gas)')}
+          status={health.status}
+          fetchedAt={health.fetchedAt}
+        />
+      </div>
+      <p className="mt-3 min-h-5 font-mono text-xs text-text-secondary" data-pulse-graphline>
+        {index ? (
+          <>
+            {t('ecosystem.pulse.graph_line', {
+              defaultValue: '{{nodes}} nodos · {{edges}} aristas medidas · {{latent}} latentes',
+              nodes: index.counts.nodes,
+              edges: index.counts.edges,
+              latent: index.counts.latent,
+            })}
+            {' · '}
+            <a href="/ecosystem/graph.json" className="text-[#a78bfa] underline-offset-2 hover:underline hover:text-[#c4b5fd]">graph.json</a>
+            {graph && graph.generated_at ? ` · ${formatDay(graph.generated_at)}` : ''}
+          </>
+        ) : null}
+      </p>
+    </section>
   );
 }
 
