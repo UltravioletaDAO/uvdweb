@@ -5,7 +5,7 @@
 // Sin framer-motion (listas planas), sin JSON-LD propio (lo emite Ecosystem.jsx).
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Bot, Users, Zap, Link as LinkIcon, ExternalLink, Github, Globe, Code, ArrowRight, FileText, Cpu, Radio } from 'lucide-react';
+import { Bot, Users, Zap, Link as LinkIcon, ExternalLink, Code, ArrowRight, FileText, Cpu, Radio } from 'lucide-react';
 import { buildTools } from '../../../agent/tools';
 import { KK_TOOLS } from '../../../services/ecosystem/kkMcp';
 
@@ -24,11 +24,11 @@ const DISCOVERY = [
   { key: 'graph_json', href: '/ecosystem/graph.json', fallback: 'ecosystem/graph.json — grafo del ecosistema medido por c0der' }
 ];
 
-const MCPS = [
-  { id: 'kk', name: 'KarmaKadabra', descKey: 'ecosystem.agents.mcp_kk_desc', descFallback: 'MCP hosteado de KarmaKadabra: KPIs, agentes, trades y snapshot del mercado por JSON-RPC.', links: [{ label: 'karmakadabra.ultravioletadao.xyz/mcp', href: KK_MCP }], tools: KK_TOOLS, icon: Cpu },
-  { id: 'em', name: 'Execution Market', descKey: 'ecosystem.agents.mcp_em_desc', descFallback: 'Execution Market: tareas con escrow on-chain; su skill.md explica cómo publicar, aplicar y entregar.', links: [{ label: 'execution.market/skill.md', href: 'https://execution.market/skill.md' }, { label: 'execution.market/llms.txt', href: 'https://execution.market/llms.txt' }], icon: Zap },
-  { id: 'mr', name: 'MeshRelay', descKey: 'ecosystem.agents.mcp_mr_desc', descFallback: 'MeshRelay: IRC para agentes; su skill.md explica cómo conectarse y qué canales existen.', links: [{ label: 'meshrelay.xyz/skill.md', href: 'https://meshrelay.xyz/skill.md' }, { label: 'meshrelay.xyz/llms.txt', href: 'https://meshrelay.xyz/llms.txt' }], icon: Radio },
-  { id: 'dn', name: 'Describe.net', descKey: 'ecosystem.agents.mcp_dn_desc', descFallback: 'Describe.net: reputación agregada de agentes; su skill.md y llms.txt explican cómo consultarla.', links: [{ label: 'describe.net/skill.md', href: 'https://describe.net/skill.md' }, { label: 'describe.net/llms.txt', href: 'https://describe.net/llms.txt' }], icon: Users }
+const PRODUCTS = [
+  { id: 'em', name: 'Execution Market', color: 'yellow', icon: Zap, descKey: 'agentDiscovery.integrationPoints.executionMarket.description', descFallback: 'Marketplace bidireccional de tareas humano-IA con escrow on-chain.', featuresKey: 'agentDiscovery.integrationPoints.executionMarket.features', links: [{ label: 'execution.market', href: 'https://execution.market' }, { label: 'execution.market/skill.md', href: 'https://execution.market/skill.md' }, { label: 'execution.market/llms.txt', href: 'https://execution.market/llms.txt' }] },
+  { id: 'mr', name: 'MeshRelay', color: 'purple', icon: Radio, descKey: 'ecosystem.agents.mcp_mr_desc', descFallback: 'MeshRelay: IRC para agentes; su skill.md explica como conectarse y que canales existen.', links: [{ label: 'meshrelay.xyz', href: 'https://meshrelay.xyz' }, { label: 'meshrelay.xyz/skill.md', href: 'https://meshrelay.xyz/skill.md' }, { label: 'meshrelay.xyz/llms.txt', href: 'https://meshrelay.xyz/llms.txt' }] },
+  { id: 'dn', name: 'Describe.net', color: 'green', icon: Users, descKey: 'agentDiscovery.integrationPoints.describeNet.description', descFallback: 'Reputacion agregada y verificable para agentes de IA.', featuresKey: 'agentDiscovery.integrationPoints.describeNet.features', links: [{ label: 'describe.net', href: 'https://describe.net' }, { label: 'describe.net/skill.md', href: 'https://describe.net/skill.md' }, { label: 'describe.net/llms.txt', href: 'https://describe.net/llms.txt' }] },
+  { id: 'kk', name: 'KarmaKadabra', color: 'blue', icon: Cpu, descKey: 'ecosystem.agents.mcp_kk_desc', descFallback: 'MCP hosteado de KarmaKadabra: KPIs, agentes, trades y snapshot del mercado por JSON-RPC - el observatorio del enjambre.', links: [{ label: 'karmakadabra.ultravioletadao.xyz', href: KK_URL }, { label: 'karmakadabra.ultravioletadao.xyz/mcp', href: KK_MCP }], tools: KK_TOOLS },
 ];
 
 const asArray = (v) => (Array.isArray(v) ? v : []);
@@ -55,32 +55,6 @@ const COLOR = {
   blue: { bg: 'bg-blue-500/20', text: 'text-blue-500', dot: 'bg-blue-500' }
 };
 
-function IntegrationCard({ title, description, features, icon: Icon, color, link }) {
-  const c = COLOR[color] || COLOR.purple;
-  return (
-    <div className={CARD}>
-      <div className={`mb-4 w-fit rounded-xl p-3 ${c.bg}`}>
-        <Icon className={`h-6 w-6 ${c.text}`} aria-hidden="true" />
-      </div>
-      <h4 className="mb-2 text-xl font-bold text-text-primary">{title}</h4>
-      <p className="mb-4 text-text-secondary">{description}</p>
-      <ul className="mb-6 space-y-2">
-        {asArray(features).map((f, i) => (
-          <li key={i} className="flex items-center gap-2 text-sm text-text-secondary">
-            <span className={`h-1.5 w-1.5 rounded-full ${c.dot}`} aria-hidden="true" />
-            {f}
-          </li>
-        ))}
-      </ul>
-      {link ? (
-        <ExtLink href={link} className={`inline-flex items-center gap-2 font-medium ${c.text} hover:text-ultraviolet-light focus:outline focus:outline-2 focus:outline-purple-300`}>
-          {link.replace(/^https:\/\//, '')}
-        </ExtLink>
-      ) : null}
-    </div>
-  );
-}
-
 export default function ForAgents() {
   const { t, i18n } = useTranslation();
 
@@ -93,19 +67,6 @@ export default function ForAgents() {
     }
   }, [i18n]);
 
-  const integrations = [
-    { key: 'executionMarket', icon: Zap, color: 'yellow', link: 'https://execution.market' },
-    { key: 'karmaCadabra', icon: Users, color: 'green', link: KK_URL },
-    { key: 'describeNet', icon: Users, color: 'purple', link: 'https://describe.net' },
-    { key: 'facilitator', icon: LinkIcon, color: 'blue', link: '/facilitator' }
-  ].map((x) => ({
-    ...x,
-    title: t(`agentDiscovery.integrationPoints.${x.key}.title`),
-    description: t(`agentDiscovery.integrationPoints.${x.key}.description`),
-    features: t(`agentDiscovery.integrationPoints.${x.key}.features`, { returnObjects: true })
-  }));
-
-  const highlights = asArray(t('agentDiscovery.whoWeAre.highlights', { returnObjects: true }));
   const steps = asArray(t('agentDiscovery.getStarted.steps', { returnObjects: true }));
 
   return (
@@ -157,20 +118,55 @@ export default function ForAgents() {
         </div>
       </div>
 
-      {/* MCP del ecosistema */}
-      <div className="mb-12" data-agents-mcps>
+      {/* Productos: una sola seccion consolidada (antes: "MCP del ecosistema" +
+          "Who We Are" + "Our AI Agents" + "Integration Points", que repetian productos).
+          Orden: Facilitator (el riel, lo principal) -> pilares -> KarmaKadabra (el observatorio). */}
+      <div className="mb-12" data-agents-products>
         <h3 className={H2}>
-          <Cpu className="h-7 w-7 text-ultraviolet" aria-hidden="true" />
-          {t('ecosystem.agents.mcps_title', 'MCP del ecosistema')}
+          <Code className="h-7 w-7 text-ultraviolet" aria-hidden="true" />
+          {t('ecosystem.agents.products_title', 'Como integrarse con cada producto')}
         </h3>
-        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-          {MCPS.map((m) => (
-            <div key={m.id} className={CARD}>
-              <div className="mb-3 flex items-center gap-2">
-                <m.icon className="h-5 w-5 text-ultraviolet" aria-hidden="true" />
-                <h4 className="text-lg font-bold text-text-primary">{m.name}</h4>
+        <p className="mb-6 text-lg text-text-secondary">{t('agentDiscovery.integrationPoints.description')}</p>
+
+        {/* Facilitator: lo principal, card destacada */}
+        <div className={`${CARD} mb-6 border-ultraviolet/40`} data-product-card="facilitator">
+          <div className="mb-3 flex items-center gap-3">
+            <span className="rounded-lg bg-blue-500/20 p-2"><LinkIcon className="h-6 w-6 text-blue-500" aria-hidden="true" /></span>
+            <h4 className="text-xl font-bold text-text-primary">{t('agentDiscovery.integrationPoints.facilitator.title')}</h4>
+          </div>
+          <p className="mb-3 text-text-secondary">{t('agentDiscovery.integrationPoints.facilitator.description')}</p>
+          <ul className="mb-4 grid gap-2 sm:grid-cols-3">
+            {asArray(t('agentDiscovery.integrationPoints.facilitator.features', { returnObjects: true })).map((f, i) => (
+              <li key={i} className="flex items-center gap-2 text-sm text-text-primary">
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-500" aria-hidden="true" />
+                {f}
+              </li>
+            ))}
+          </ul>
+          <div className="flex flex-wrap gap-x-6 gap-y-1">
+            <ExtLink href="https://facilitator.ultravioletadao.xyz">facilitator.ultravioletadao.xyz</ExtLink>
+            <ExtLink href="/facilitator">/facilitator</ExtLink>
+          </div>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {PRODUCTS.map((m) => (
+            <div key={m.id} className={CARD} data-product-card={m.id}>
+              <div className="mb-3 flex items-center gap-3">
+                <span className={`rounded-lg p-2 ${COLOR[m.color].bg}`}><m.icon className={`h-6 w-6 ${COLOR[m.color].text}`} aria-hidden="true" /></span>
+                <h4 className="text-xl font-bold text-text-primary">{m.name}</h4>
               </div>
               <p className="mb-3 text-sm text-text-secondary">{t(m.descKey, m.descFallback)}</p>
+              {m.featuresKey ? (
+                <ul className="mb-4 space-y-1">
+                  {asArray(t(m.featuresKey, { returnObjects: true })).map((f, i) => (
+                    <li key={i} className="flex items-center gap-2 text-sm text-text-primary">
+                      <span className={`h-1.5 w-1.5 rounded-full ${COLOR[m.color].dot}`} aria-hidden="true" />
+                      {f}
+                    </li>
+                  ))}
+                </ul>
+              ) : null}
               <ul className="mb-3 space-y-1">
                 {m.links.map((l) => (
                   <li key={l.href}>
@@ -188,70 +184,6 @@ export default function ForAgents() {
                 </ul>
               ) : null}
             </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Quiénes somos */}
-      <div className="mb-12 rounded-2xl border border-ultraviolet-darker/20 bg-gradient-to-r from-ultraviolet/10 to-purple-500/10 p-8">
-        <h3 className={H2}>
-          <Users className="h-7 w-7 text-ultraviolet" aria-hidden="true" />
-          {t('agentDiscovery.whoWeAre.title')}
-        </h3>
-        <p className="mb-6 text-lg text-text-secondary">{t('agentDiscovery.whoWeAre.description')}</p>
-        <ul className="grid gap-3 md:grid-cols-2">
-          {highlights.map((h, i) => (
-            <li key={i} className="flex items-center gap-3 text-text-primary">
-              <span className="h-2 w-2 rounded-full bg-ultraviolet" aria-hidden="true" />
-              {h}
-            </li>
-          ))}
-        </ul>
-      </div>
-
-      {/* Nuestros agentes */}
-      <div className="mb-12">
-        <h3 className={H2}>
-          <Bot className="h-7 w-7 text-ultraviolet" aria-hidden="true" />
-          {t('agentDiscovery.ourAgents.title')}
-        </h3>
-        <p className="mb-6 text-lg text-text-secondary">{t('agentDiscovery.ourAgents.description')}</p>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          <div className={`${CARD} relative`}>
-            <div className="mb-4 flex items-center gap-4">
-              <span className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-br from-ultraviolet to-purple-500 p-0.5">
-                <span className="flex h-full w-full items-center justify-center rounded-full bg-background-lighter">
-                  <Bot className="h-6 w-6 text-ultraviolet" aria-hidden="true" />
-                </span>
-              </span>
-              <div>
-                <h4 className="text-lg font-bold text-text-primary">Clawd</h4>
-                <p className="text-sm font-medium text-ultraviolet">Development Agent</p>
-              </div>
-            </div>
-            <p className="mb-4 text-text-secondary">AI agent specializing in Web3 development, automation, and community assistance.</p>
-            <div className="flex gap-2">
-              <a href="https://github.com/ultravioletadao" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-ultraviolet/10 p-2 text-ultraviolet hover:bg-ultraviolet/20 hover:text-ultraviolet-light focus:outline focus:outline-2 focus:outline-purple-300" aria-label="Clawd on GitHub">
-                <Github className="h-4 w-4" aria-hidden="true" />
-              </a>
-              <a href={KK_URL} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-ultraviolet/10 p-2 text-ultraviolet hover:bg-ultraviolet/20 hover:text-ultraviolet-light focus:outline focus:outline-2 focus:outline-purple-300" aria-label="KarmaKadabra observatory">
-                <Globe className="h-4 w-4" aria-hidden="true" />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Puntos de integración */}
-      <div className="mb-12">
-        <h3 className={H2}>
-          <Code className="h-7 w-7 text-ultraviolet" aria-hidden="true" />
-          {t('agentDiscovery.integrationPoints.title')}
-        </h3>
-        <p className="mb-6 text-lg text-text-secondary">{t('agentDiscovery.integrationPoints.description')}</p>
-        <div className="grid gap-6 md:grid-cols-2">
-          {integrations.map(({ key, ...card }) => (
-            <IntegrationCard key={key} {...card} />
           ))}
         </div>
       </div>
