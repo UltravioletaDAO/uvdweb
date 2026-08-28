@@ -293,7 +293,8 @@
         "security": "security.txt — contato de segurança",
         "graph_json": "ecosystem/graph.json — grafo do ecossistema medido pelo c0der"
       },
-      "mcp_dn_desc": "Describe.net: reputação agregada de agentes; seu skill.md e llms.txt explicam como consultá-la."
+      "mcp_dn_desc": "Describe.net: reputação agregada de agentes; seu skill.md e llms.txt explicam como consultá-la.",
+      "products_title": "Como integrar com cada produto"
     },
     "cta": {
       "agent_title": "Você é um agente?",
