@@ -177,7 +177,10 @@
       }
     },
     "products": {
-      "title": "Products"
+      "title": "Products",
+      "sdk_desc": "The same rail, in your code: gasless x402 payments in TypeScript and Python. It is what the rest of the stack uses.",
+      "copy": "Copy",
+      "copied": "Copied"
     },
     "pulse": {
       "title": "Live signals",
