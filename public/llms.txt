@@ -7,6 +7,7 @@
 - You need UltravioletaDAO governance or treasury data: /snapshot (proposals + briefings), /metrics, /token, /safestats, /delegations.
 - You want to apply for membership: POST https://api.ultravioletadao.xyz/apply (JSON: email required; fullName, twitter, telegram, twitch, walletAddress, story, purpose, references optional) or the form at /aplicar.
 - You want summaries and search over past Twitch streams: /stream-summaries.
+- You are an MCP client (claude.ai connector, Claude Desktop, Cursor): connect to https://api.ultravioletadao.xyz/mcp and you get the DAO data as tools, with no key and no payment.
 
 ## Pages
 - Home: https://ultravioletadao.xyz/
@@ -25,7 +26,8 @@
 
 ## Agent discovery
 - API catalog (RFC 9727): https://ultravioletadao.xyz/.well-known/api-catalog
-- MCP server card: https://ultravioletadao.xyz/.well-known/mcp/server-card.json
+- Remote MCP server (Streamable HTTP, JSON-RPC 2.0, no auth): https://api.ultravioletadao.xyz/mcp
+- MCP server card (endpoint + the 13 tools it serves): https://ultravioletadao.xyz/.well-known/mcp/server-card.json
 - Agent skills: https://ultravioletadao.xyz/.well-known/agent-skills/index.json
 - AI catalog (ARD): https://ultravioletadao.xyz/.well-known/ai-catalog.json
 - Ecosystem graph (JSON measured by c0der: products + edges with evidence counts): https://ultravioletadao.xyz/ecosystem/graph.json
