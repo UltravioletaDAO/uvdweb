@@ -5,6 +5,7 @@
 import React, { useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import TermWindow from '../../desk/TermWindow';
+import ProductIcon from '../../ProductIcon';
 import { useDesk } from '../../desk/useDesk';
 import useEcosystemGraph from '../../useEcosystemGraph';
 import { DESKTOPS } from '../../desktops';
@@ -85,7 +86,10 @@ export default function NodeCard({ windowId, params = {} }) {
       ) : (
         <div className="space-y-3" data-node-card={node.id}>
           <header className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <h2 className="font-mono text-base font-semibold text-white">{node.name}</h2>
+            <h2 className="font-mono text-base font-semibold text-white">
+              <ProductIcon id={node.id} size={16} className="mr-1.5" />
+              {node.name}
+            </h2>
             <span className="font-mono text-[11px] uppercase tracking-wider" style={{ color: layerColor }}>
               {t(`ecosystem.graph.layers.${node.layer}`, node.layer)}
             </span>

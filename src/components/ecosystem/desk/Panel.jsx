@@ -4,6 +4,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../../LanguageSwitcher';
+import ProductIcon from '../ProductIcon';
 import { DESKTOPS } from '../desktops';
 import useEcosystemGraph from '../useEcosystemGraph';
 import { useDesk } from './useDesk';
@@ -69,7 +70,8 @@ export default function Panel({ onHelp }) {
             data-desktop-btn={d.id}
             onClick={() => actions.setDesktop(i)}
           >
-            <span className="uvd-panel__desk-n" aria-hidden="true">{i}</span> {t(d.titleKey, d.id)}
+            <span className="uvd-panel__desk-n" aria-hidden="true">{i}</span>{' '}
+            <ProductIcon id={d.id} size={14} className="mr-0.5" /> {t(d.titleKey, d.id)}
           </button>
         ))}
         <button type="button" className="uvd-panel__arrow" aria-label={t('ecosystem.panel.next_desktop', 'Escritorio siguiente')} onClick={actions.nextDesktop}>›</button>
