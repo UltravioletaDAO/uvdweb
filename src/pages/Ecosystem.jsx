@@ -1,6 +1,7 @@
 // /ecosystem — "El escritorio está encendido": panel + escritorio Compiz (100svh − 44 px) con
-// terminales reales sobre el mapa medido por c0der, y debajo las secciones planas (pulso,
-// matriz de interoperabilidad, recibo de datos, #agentes, CTA). Reemplaza a /agents.
+// terminales reales sobre el mapa medido por c0der, y debajo las secciones planas en orden
+// editorial: productos (#productos), pulso, #agentes, CTA y una línea de procedencia al pie.
+// Reemplaza a /agents.
 // SEO: WebPage + ItemList de SoftwareApplication (productos live con URL del grafo) + Dataset
 // (graph.json, dateModified = generated_at). JetBrains Mono se carga SOLO en esta ruta.
 import React, { useEffect, useMemo, useState } from 'react';
@@ -15,9 +16,8 @@ import Panel from '../components/ecosystem/desk/Panel';
 import Desktop from '../components/ecosystem/desk/Desktop';
 import useEcosystemGraph from '../components/ecosystem/useEcosystemGraph';
 import { GRAPH_SNAPSHOT_URL } from '../services/ecosystem/graph';
+import EcosystemProducts from '../components/ecosystem/sections/EcosystemProducts';
 import SystemPulse from '../components/ecosystem/sections/SystemPulse';
-import InteropMatrix from '../components/ecosystem/sections/InteropMatrix';
-import Receipt from '../components/ecosystem/sections/Receipt';
 import ForAgents from '../components/ecosystem/sections/ForAgents';
 import EcosystemCta from '../components/ecosystem/sections/EcosystemCta';
 import '../styles/ecosystem.css';
@@ -153,11 +153,15 @@ export default function Ecosystem() {
           </MotionConfig>
 
           <main className="uvd-eco__sections" id="ecosystem-sections">
+            <EcosystemProducts />
             <SystemPulse />
-            <InteropMatrix />
-            <Receipt />
             <ForAgents />
             <EcosystemCta />
+            <p className="border-t border-ultraviolet-darker/30 pt-4 text-center font-mono text-[11px] text-text-secondary" data-provenance-footer>
+              {t('ecosystem.footer_provenance', 'cada dato con su fuente y fecha — medido por c0der')}
+              {' · '}
+              <a href="/ecosystem/graph.json" className="text-[#a78bfa] underline-offset-2 hover:underline hover:text-[#c4b5fd]">graph.json</a>
+            </p>
           </main>
         </>
       ) : (

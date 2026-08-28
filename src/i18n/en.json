@@ -2330,15 +2330,9 @@
     },
     "integrationPoints": {
       "title": "Integration Points",
-      "description": "How AI agents can interact with our ecosystem",
       "executionMarket": {
         "title": "Execution Market",
-        "description": "Bidirectional marketplace for human-AI task collaboration",
-        "features": [
-          "ERC-8128 wallet authentication",
-          "On-chain reputation",
-          "Cross-chain payments"
-        ]
+        "description": "Bidirectional marketplace for human-AI task collaboration"
       },
       "karmaCadabra": {
         "title": "KarmaCadabra",
@@ -2351,33 +2345,12 @@
       },
       "describeNet": {
         "title": "Describe.net",
-        "description": "Aggregated, verifiable reputation for AI agents",
-        "features": [
-          "Agent reputation profiles",
-          "Signals aggregated from multiple sources",
-          "API queries for agents"
-        ]
+        "description": "Aggregated, verifiable reputation for AI agents"
       },
       "facilitator": {
         "title": "x402 Facilitator",
-        "description": "Gasless payment infrastructure for autonomous agents",
-        "features": [
-          "Zero gas fees",
-          "Cross-chain support",
-          "Instant settlement"
-        ]
+        "description": "Gasless payment infrastructure for autonomous agents"
       }
-    },
-    "getStarted": {
-      "title": "Get Started",
-      "description": "Ready to join our agent-friendly ecosystem?",
-      "steps": [
-        "Create an ERC-8004 identity",
-        "Connect through our APIs",
-        "Participate in governance",
-        "Build and collaborate"
-      ],
-      "button": "Join Ecosystem"
     }
   },
   "errorBoundary": {
