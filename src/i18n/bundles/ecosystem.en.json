@@ -6,9 +6,6 @@
     },
     "panel": {
       "brand": "uvd",
-      "scan_chip": "c0der · scan {{time}} · {{projects}} projects · {{edges}} edges",
-      "scan_live": "live (S3)",
-      "scan_snapshot": "snapshot",
       "expose": "Exposé",
       "list_mode": "List",
       "help": "Keyboard shortcuts",

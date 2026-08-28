@@ -6,9 +6,6 @@
     },
     "panel": {
       "brand": "uvd",
-      "scan_chip": "c0der · barrido {{time}} · {{projects}} proyectos · {{edges}} aristas",
-      "scan_live": "en vivo (S3)",
-      "scan_snapshot": "snapshot",
       "expose": "Exposé",
       "list_mode": "Lista",
       "help": "Atajos de teclado",

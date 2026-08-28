@@ -6,9 +6,6 @@
     },
     "panel": {
       "brand": "uvd",
-      "scan_chip": "c0der · varredura {{time}} · {{projects}} projetos · {{edges}} arestas",
-      "scan_live": "ao vivo (S3)",
-      "scan_snapshot": "snapshot",
       "expose": "Exposé",
       "list_mode": "Lista",
       "help": "Atalhos de teclado",
