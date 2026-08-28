@@ -109,11 +109,15 @@ const StreamSearch = () => {
             focus:border-violet-500"
           aria-label={t('streamSummaries.search.title')}
         />
+        {/* disabled solo durante la búsqueda: con disabled por query corta, Chrome no
+            encuentra submit button y un agente (WebMCP declarativo) no puede invocar el
+            form (UnknownError: No submit button was found). runSearch ya valida (<2). */}
         <button
           type="submit"
-          disabled={loading || query.trim().length < 2}
-          className="bg-violet-600 hover:bg-violet-500 disabled:opacity-40 text-white text-sm
-            font-medium px-4 py-2 rounded-lg transition-colors"
+          disabled={loading}
+          aria-disabled={query.trim().length < 2}
+          className={`bg-violet-600 hover:bg-violet-500 disabled:opacity-40 text-white text-sm
+            font-medium px-4 py-2 rounded-lg transition-colors ${query.trim().length < 2 ? 'opacity-40' : ''}`}
         >
           {loading ? t('streamSummaries.search.searching') : t('streamSummaries.search.button')}
         </button>
