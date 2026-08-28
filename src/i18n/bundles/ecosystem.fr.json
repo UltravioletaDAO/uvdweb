@@ -6,9 +6,6 @@
     },
     "panel": {
       "brand": "uvd",
-      "scan_chip": "c0der · balayage {{time}} · {{projects}} projets · {{edges}} arêtes",
-      "scan_live": "en direct (S3)",
-      "scan_snapshot": "instantané",
       "expose": "Exposé",
       "list_mode": "Liste",
       "help": "Raccourcis clavier",

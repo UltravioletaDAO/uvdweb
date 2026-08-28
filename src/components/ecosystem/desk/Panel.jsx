@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitcher from '../../LanguageSwitcher';
 import ProductIcon from '../ProductIcon';
 import { DESKTOPS } from '../desktops';
-import useEcosystemGraph from '../useEcosystemGraph';
 import { useDesk } from './useDesk';
 
 function useUtcClock() {
@@ -35,23 +34,11 @@ function useUtcClock() {
 }
 
 /** 2026-08-27T12:49:06+00:00 → 12:49Z (solo si parsea; si no, el ISO tal cual). */
-function shortUtc(iso) {
-  if (!iso) return '';
-  const d = new Date(iso);
-  if (Number.isNaN(d.getTime())) return iso;
-  return `${String(d.getUTCHours()).padStart(2, '0')}:${String(d.getUTCMinutes()).padStart(2, '0')}Z`;
-}
-
 export default function Panel({ onHelp }) {
   const { t } = useTranslation();
   const { state, actions } = useDesk();
-  const { graph, index, status } = useEcosystemGraph();
   const clock = useUtcClock();
 
-  const scan = graph && graph.source ? graph.source.scan_timestamp : null;
-  const projects = graph && graph.source ? graph.source.projects_scanned : null;
-  const edges = index ? index.counts.edges : null;
-  const statusText = status === 'live' ? t('ecosystem.panel.scan_live', 'en vivo (S3)') : status === 'snapshot' ? t('ecosystem.panel.scan_snapshot', 'snapshot') : t(`ecosystem.status.${status}`, status);
 
   return (
     <header className="uvd-panel" role="banner" data-panel="">
@@ -76,26 +63,6 @@ export default function Panel({ onHelp }) {
         ))}
         <button type="button" className="uvd-panel__arrow" aria-label={t('ecosystem.panel.next_desktop', 'Escritorio siguiente')} onClick={actions.nextDesktop}>›</button>
       </nav>
-
-      <span
-        className={`uvd-chip uvd-panel__scan ${status === 'live' ? 'uvd-chip--live' : 'uvd-chip--snapshot'}`}
-        data-scan-chip=""
-        data-graph-status={status}
-        data-scan-timestamp={scan || ''}
-        title={graph ? `${graph.source.tool} · ${scan}` : undefined}
-      >
-        <span aria-hidden="true">▪</span>{' '}
-        {graph ? (
-          <>
-            {/* Visible: hora corta (HH:MMZ). Para lectores/verificación: el scan_timestamp completo. */}
-            <span aria-hidden="true">{t('ecosystem.panel.scan_chip', { defaultValue: 'c0der · barrido {{time}} · {{projects}} proyectos · {{edges}} aristas', time: shortUtc(scan), projects, edges })}</span>
-            <span className="sr-only">{t('ecosystem.panel.scan_chip', { defaultValue: 'c0der · barrido {{time}} · {{projects}} proyectos · {{edges}} aristas', time: scan, projects, edges })}</span>
-            {` · ${statusText}`}
-          </>
-        ) : (
-          `c0der · ${statusText}`
-        )}
-      </span>
 
       <time className="uvd-panel__clock" dateTime={new Date().toISOString()} aria-label={t('ecosystem.panel.clock_aria', 'Reloj UTC')} data-clock="">
         {clock}
