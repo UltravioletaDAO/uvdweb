@@ -460,8 +460,10 @@ desempate), después el video (puede ser lo único que vean). Cada paso lleva su
 - Netlify: https://www.netlify.com/blog/compete-openai-webmcp-challenge/
 - Site tools de ChatGPT desktop: https://learn.chatgpt.com/docs/webmcp
 - Repo del sitio: https://github.com/UltravioletaDAO/uvdweb
-- `https://openai.com/webmcp-challenge/` → **403 vía WebFetch, no consultada directamente**; su
-  contenido se corroboró por Devpost y el foro de OpenAI.
+- `https://openai.com/webmcp-challenge/` → **no se usó como fuente**: devolvió 403 vía WebFetch
+  durante la investigación (con `curl` + User-Agent de navegador sí da 200 `[VERIFICADO]`, o sea que
+  el 403 era anti-bot, no una página caída). Su contenido se corroboró igual por Devpost y el foro
+  de OpenAI, que son la fuente autoritativa.
 - X / Twitter (@OpenAIDevs, @ChromiumDev) → **no consultada** (exige login).
 
 **Internas**
