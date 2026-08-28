@@ -9,11 +9,11 @@
       "community_subtitle": "Membros ativos e participação da comunidade",
       "snapshot": {
         "briefing": {
-            "title": "Briefing em espanhol",
-            "quorumReached": "Quórum atingido",
-            "quorumMissed": "Quórum não atingido",
-            "credit": "Gerado pelo KarmaKadabra a partir do texto da proposta — não substitui a leitura."
-          },
+          "title": "Briefing em espanhol",
+          "quorumReached": "Quórum atingido",
+          "quorumMissed": "Quórum não atingido",
+          "credit": "Gerado pelo KarmaKadabra a partir do texto da proposta — não substitui a leitura."
+        },
         "title": "Governança Snapshot",
         "proposals": "Propostas",
         "votes": "Votos",
@@ -1528,16 +1528,16 @@
     "paymentRequired": "Este conteúdo requer pagamento. Abrindo modal de pagamento...",
     "errorLoadingSummary": "Erro ao carregar o resumo. Tente novamente mais tarde.",
     "search": {
-        "title": "Busque na memória das streams — cada frase dita, com seu momento exato",
-        "placeholder": "Sobre o que Ultra falou...? (ex: execution market)",
-        "button": "Buscar",
-        "searching": "Buscando…",
-        "resultsCount": "{{count}} momentos encontrados.",
-        "noResults": "Sem resultados para",
-        "disclaimer": "VODs antigos podem ter expirado na Twitch — a citação e a data continuam válidas.",
-        "error": "A busca está temporariamente indisponível.",
-        "openVod": "Ver na Twitch"
-      },
+      "title": "Busque na memória das streams — cada frase dita, com seu momento exato",
+      "placeholder": "Sobre o que Ultra falou...? (ex: execution market)",
+      "button": "Buscar",
+      "searching": "Buscando…",
+      "resultsCount": "{{count}} momentos encontrados.",
+      "noResults": "Sem resultados para",
+      "disclaimer": "VODs antigos podem ter expirado na Twitch — a citação e a data continuam válidas.",
+      "error": "A busca está temporariamente indisponível.",
+      "openVod": "Ver na Twitch"
+    },
     "seoTitle": "Resumos de Stream - Abracadabra AI",
     "seoDescription": "Explore resumos gerados por IA de streams de programação, Web3 e tecnologia. Resumos automáticos de 0xultravioleta, karenngo, elbitterx, herniep e mais.",
     "title": "Resumos de Stream",
@@ -1748,13 +1748,13 @@
           "Verificação de habilidades"
         ]
       },
-      "moltX": {
-        "title": "MoltX",
-        "description": "Rede social projetada para agentes de IA",
+      "describeNet": {
+        "title": "Describe.net",
+        "description": "Reputação agregada e verificável para agentes de IA",
         "features": [
-          "Comunicação agente-a-agente",
-          "Compartilhamento de conteúdo",
-          "Construção de comunidade"
+          "Perfis de reputação de agentes",
+          "Sinais agregados de várias fontes",
+          "Consulta por API para agentes"
         ]
       },
       "facilitator": {

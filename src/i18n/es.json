@@ -107,11 +107,11 @@
       "community_subtitle": "Miembros activos y participación de la comunidad",
       "snapshot": {
         "briefing": {
-            "title": "Briefing en español",
-            "quorumReached": "Quórum alcanzado",
-            "quorumMissed": "Quórum no alcanzado",
-            "credit": "Generado por KarmaKadabra a partir del texto de la propuesta — no sustituye leerla."
-          },
+          "title": "Briefing en español",
+          "quorumReached": "Quórum alcanzado",
+          "quorumMissed": "Quórum no alcanzado",
+          "credit": "Generado por KarmaKadabra a partir del texto de la propuesta — no sustituye leerla."
+        },
         "title": "Snapshot Governance",
         "proposals": "Propuestas",
         "votes": "Votos",
@@ -917,7 +917,7 @@
     "approving_tokens": "Aprobando tokens UVD...",
     "processing_swap": "Procesando transacción de swap...",
     "approval_submitted": "Aprobación enviada",
-    "swap_submitted": "Swap enviado", 
+    "swap_submitted": "Swap enviado",
     "approval_pending": "Esperando confirmación de aprobación...",
     "swap_pending": "Esperando confirmación de swap...",
     "approval_confirmed": "¡Aprobación confirmada!",
@@ -2085,16 +2085,16 @@
     "paymentRequired": "Este contenido requiere pago. Abriendo modal de pago...",
     "errorLoadingSummary": "Error cargando el resumen. Intenta de nuevo más tarde.",
     "search": {
-        "title": "Busca en la memoria de los streams — cada frase dicha, con su momento exacto",
-        "placeholder": "¿De qué habló Ultra...? (ej: execution market)",
-        "button": "Buscar",
-        "searching": "Buscando…",
-        "resultsCount": "{{count}} momentos encontrados.",
-        "noResults": "Sin resultados para",
-        "disclaimer": "Los VODs viejos pueden haber expirado en Twitch — la cita y la fecha siguen valiendo.",
-        "error": "La búsqueda no está disponible en este momento.",
-        "openVod": "Ver en Twitch"
-      },
+      "title": "Busca en la memoria de los streams — cada frase dicha, con su momento exacto",
+      "placeholder": "¿De qué habló Ultra...? (ej: execution market)",
+      "button": "Buscar",
+      "searching": "Buscando…",
+      "resultsCount": "{{count}} momentos encontrados.",
+      "noResults": "Sin resultados para",
+      "disclaimer": "Los VODs viejos pueden haber expirado en Twitch — la cita y la fecha siguen valiendo.",
+      "error": "La búsqueda no está disponible en este momento.",
+      "openVod": "Ver en Twitch"
+    },
     "seoTitle": "Resúmenes de Streams - Abracadabra AI",
     "seoDescription": "Explora resúmenes generados por IA de streams de programación, Web3 y tecnología. Resúmenes automáticos de 0xultravioleta, karenngo, elbitterx, herniep y más.",
     "title": "Resúmenes de Streams",
@@ -2334,22 +2334,38 @@
       "executionMarket": {
         "title": "Execution Market",
         "description": "Mercado bidireccional para colaboración en tareas humano-IA",
-        "features": ["Autenticación de wallet ERC-8128", "Reputación on-chain", "Pagos cross-chain"]
+        "features": [
+          "Autenticación de wallet ERC-8128",
+          "Reputación on-chain",
+          "Pagos cross-chain"
+        ]
       },
       "karmaCadabra": {
         "title": "KarmaCadabra",
         "description": "Sistema de reputación e identidad para la economía de agentes",
-        "features": ["Identidad cross-plataforma", "Credenciales verificables", "Verificación de habilidades"]
+        "features": [
+          "Identidad cross-plataforma",
+          "Credenciales verificables",
+          "Verificación de habilidades"
+        ]
       },
-      "moltX": {
-        "title": "MoltX",
-        "description": "Red social diseñada para agentes de IA",
-        "features": ["Comunicación agente-a-agente", "Compartir contenido", "Construcción de comunidad"]
+      "describeNet": {
+        "title": "Describe.net",
+        "description": "Reputación agregada y verificable para agentes de IA",
+        "features": [
+          "Perfiles de reputación de agentes",
+          "Señales agregadas de múltiples fuentes",
+          "Consulta por API para agentes"
+        ]
       },
       "facilitator": {
         "title": "Facilitador x402",
         "description": "Infraestructura de pagos sin gas para agentes autónomos",
-        "features": ["Cero tarifas de gas", "Soporte cross-chain", "Liquidación instantánea"]
+        "features": [
+          "Cero tarifas de gas",
+          "Soporte cross-chain",
+          "Liquidación instantánea"
+        ]
       }
     },
     "getStarted": {

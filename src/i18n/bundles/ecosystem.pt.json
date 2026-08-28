@@ -292,7 +292,8 @@
         "openapi": "openapi — especificação OpenAPI",
         "security": "security.txt — contato de segurança",
         "graph_json": "ecosystem/graph.json — grafo do ecossistema medido pelo c0der"
-      }
+      },
+      "mcp_dn_desc": "Describe.net: reputação agregada de agentes; seu skill.md e llms.txt explicam como consultá-la."
     },
     "cta": {
       "agent_title": "Você é um agente?",
