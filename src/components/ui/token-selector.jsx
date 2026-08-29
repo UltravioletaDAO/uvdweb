@@ -15,6 +15,7 @@ export const TokenImage = ({ token, className }) => {
       case 'UVD':
         return 'https://ultravioletadao.xyz/logo_uvd.svg';
       case 'USDC':
+      case 'USDC.e':
         return 'https://cryptologos.cc/logos/usd-coin-usdc-logo.svg';
       default:
         return '';
@@ -28,6 +29,7 @@ export const TokenImage = ({ token, className }) => {
       case 'UVD':
         return 'from-ultraviolet to-ultraviolet-light';
       case 'USDC':
+      case 'USDC.e':
         return 'from-blue-500 to-blue-400';
       default:
         return 'from-gray-500 to-gray-700';
@@ -60,10 +62,38 @@ export const TokenImage = ({ token, className }) => {
   );
 };
 
+// Un balance que no se pudo leer se pinta `—`, nunca 0: un cero mentiroso es peor que
+// no mostrar nada (DISENO 4.2).
+const formatBalance = (value, status) => {
+  if (status === 'error') return '—';
+  if (value === null || value === undefined || value === '') {
+    return status === 'loading' ? '…' : '—';
+  }
+  const parsed = parseFloat(value);
+  if (!Number.isFinite(parsed)) return '—';
+  // Un balance chiquito pero real no se redondea a "0.000000": eso se lee como cero.
+  if (parsed !== 0 && Math.abs(parsed) < 0.000001) return parsed.toExponential(2);
+  return parsed.toFixed(6);
+};
+
+// Sin precio no se inventa `$0.00`: simplemente no se muestra la linea.
+export const formatUsd = (value) => {
+  if (typeof value !== 'number' || !Number.isFinite(value)) return null;
+  if (value === 0) return '$0.00';
+  if (Math.abs(value) < 0.01) return '<$0.01';
+  return `$${value.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`;
+};
+
 export const TokenSelector = ({
   token,
   amount,
   balance,
+  balanceStatus = 'idle',
+  balanceUsd = null,
+  balanceTitle,
+  amountUsd = null,
+  tokenBalances = null,
+  optionBadges = null,
   onAmountChange,
   onMaxClick,
   onPercentageClick,
@@ -73,6 +103,7 @@ export const TokenSelector = ({
   showQuickButtons = true,
   readOnly = false,
   isLoading = false,
+  maxTitle,
   className
 }) => {
   const { t } = useTranslation();
@@ -118,9 +149,22 @@ export const TokenSelector = ({
           <span className="text-muted-foreground font-medium">{label}</span>
           <div className="flex items-center gap-2">
             <span className="text-muted-foreground">{t('swap.balance')}:</span>
-            <span className="text-foreground font-semibold">
-              {parseFloat(balance || 0).toFixed(6)}
+            <span
+              className="text-foreground font-semibold"
+              title={balanceTitle}
+              data-testid={`balance-${token}`}
+            >
+              {formatBalance(balance, balanceStatus)}
             </span>
+            {formatUsd(balanceUsd) && (
+              <span
+                className="text-muted-foreground"
+                title={t('swap.usd_estimate', 'Estimated value in USD')}
+                data-testid={`balance-usd-${token}`}
+              >
+                ≈ {formatUsd(balanceUsd)}
+              </span>
+            )}
           </div>
         </div>
 
@@ -150,18 +194,28 @@ export const TokenSelector = ({
                 <span className="text-sm text-muted-foreground">{t('swap.updating')}…</span>
               </div>
             ) : (
-              <input
-                type="number"
-                placeholder="0.0"
-                value={amount}
-                onChange={(e) => onAmountChange?.(e.target.value)}
-                readOnly={readOnly}
-                className={cn(
-                  "w-full text-3xl font-bold bg-transparent border-none outline-none",
-                  "text-foreground placeholder:text-muted-foreground/50",
-                  readOnly && "cursor-default"
+              <>
+                <input
+                  type="number"
+                  placeholder="0.0"
+                  value={amount}
+                  onChange={(e) => onAmountChange?.(e.target.value)}
+                  readOnly={readOnly}
+                  className={cn(
+                    "w-full text-3xl font-bold bg-transparent border-none outline-none",
+                    "text-foreground placeholder:text-muted-foreground/50",
+                    readOnly && "cursor-default"
+                  )}
+                />
+                {formatUsd(amountUsd) && (
+                  <span
+                    className="block text-xs text-muted-foreground mt-1"
+                    data-testid={`amount-usd-${token}`}
+                  >
+                    {'≈'} {formatUsd(amountUsd)}
+                  </span>
                 )}
-              />
+              </>
             )}
           </div>
 
@@ -169,6 +223,7 @@ export const TokenSelector = ({
           <div className="relative">
             <button
               onClick={() => options.length > 1 && setShowDropdown(!showDropdown)}
+              data-testid={`token-trigger-${token}`}
               className={cn(
                 "flex items-center gap-3 px-4 py-2 rounded-lg border transition-colors",
                 "bg-[#181326] border-ultraviolet/40 shadow-md shadow-black/40",
@@ -205,10 +260,11 @@ export const TokenSelector = ({
                           onTokenSelect?.(option);
                           setShowDropdown(false);
                         }}
+                        data-testid={`option-${option}`}
                         className={cn(
                           "flex items-center gap-3 w-full px-3 py-2.5 rounded-lg text-left transition-colors",
-                          token === option 
-                            ? "bg-ultraviolet/30 text-white" 
+                          token === option
+                            ? "bg-ultraviolet/30 text-white"
                             : "hover:bg-[#181326] text-foreground"
                         )}
                       >
@@ -216,7 +272,27 @@ export const TokenSelector = ({
                           token={option}
                           className="w-6 h-6 rounded-full"
                         />
-                        <span className="font-medium">{option}</span>
+                        <span className="flex flex-col min-w-0">
+                          <span className="font-medium flex items-center gap-1.5">
+                            {option}
+                            {optionBadges?.[option] && (
+                              <span className="px-1.5 py-0.5 rounded text-[10px] uppercase tracking-wide bg-ultraviolet/20 text-ultraviolet">
+                                {optionBadges[option]}
+                              </span>
+                            )}
+                          </span>
+                          {tokenBalances?.[option] && (
+                            <span
+                              className="text-[11px] text-muted-foreground"
+                              data-testid={`option-balance-${option}`}
+                            >
+                              {formatBalance(tokenBalances[option].value, tokenBalances[option].status)}
+                              {formatUsd(tokenBalances[option].usd)
+                                ? ` · ${'≈'} ${formatUsd(tokenBalances[option].usd)}`
+                                : ''}
+                            </span>
+                          )}
+                        </span>
                       </button>
                     ))}
                   </div>
@@ -249,6 +325,7 @@ export const TokenSelector = ({
             </button>
             <button
               onClick={onMaxClick}
+              title={maxTitle}
               className="px-3 py-1.5 text-xs font-medium rounded-md bg-gradient-to-r from-ultraviolet to-ultraviolet-light hover:shadow-lg hover:shadow-ultraviolet/25 text-white transition-all"
             >
               MAX
