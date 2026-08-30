@@ -86,12 +86,6 @@ const routes = [
     lastmod: new Date().toISOString()
   },
   {
-    path: '/services',
-    priority: 0.8,
-    changefreq: 'monthly',
-    lastmod: new Date().toISOString()
-  },
-  {
     path: '/nfts',
     priority: 0.7,
     changefreq: 'weekly',

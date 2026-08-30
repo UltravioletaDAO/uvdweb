@@ -18,9 +18,6 @@ Allow: /links
 Allow: /safestats
 Allow: /wheel
 Allow: /events
-Allow: /services
-Allow: /services#karma-hello
-Allow: /services#abracadabra
 Allow: /nfts
 Allow: /stream-summaries
 Allow: /stream-summaries/*

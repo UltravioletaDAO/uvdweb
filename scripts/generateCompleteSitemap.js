@@ -20,7 +20,6 @@ const staticRoutes = [
   { path: '/safestats', priority: 0.7, changefreq: 'daily' },
   { path: '/wheel', priority: 0.6, changefreq: 'weekly' },
   { path: '/events', priority: 0.8, changefreq: 'weekly' },
-  { path: '/services', priority: 0.8, changefreq: 'monthly' },
   { path: '/stream-summaries', priority: 0.9, changefreq: 'daily' }, // NEW - High priority for fresh content
   { path: '/experiments', priority: 0.8, changefreq: 'monthly' }, // NEW - Community experiments
   { path: '/nfts', priority: 0.7, changefreq: 'weekly' }, // NEW
@@ -71,19 +70,6 @@ function generateImageTags(path) {
       '      <image:loc>https://ultravioletadao.xyz/images/echoes-nft-collection.jpg</image:loc>',
       '      <image:title>Echoes NFT Collection</image:title>',
       '      <image:caption>80 unique NFTs with 2x Chat-to-Earn rewards</image:caption>',
-      '    </image:image>'
-    );
-  } else if (path === '/services') {
-    images.push(
-      '    <image:image>',
-      '      <image:loc>https://ultravioletadao.xyz/images/karma-hello-dashboard.jpg</image:loc>',
-      '      <image:title>Karma Hello Chat-to-Earn</image:title>',
-      '      <image:caption>Revolutionary AI-powered chat rewards system</image:caption>',
-      '    </image:image>',
-      '    <image:image>',
-      '      <image:loc>https://ultravioletadao.xyz/images/abracadabra-dashboard.jpg</image:loc>',
-      '      <image:title>Abracadabra Stream Intelligence</image:title>',
-      '      <image:caption>AI-powered stream content analysis platform</image:caption>',
       '    </image:image>'
     );
   }
