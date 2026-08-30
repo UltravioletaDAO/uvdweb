@@ -75,13 +75,6 @@ const HamburgerMenu = () => {
       description: t('navigation.descriptions.metrics'),
     },
     {
-      name: t('navigation.services'),
-      icon: PlayCircleIcon,
-      path: "/services",
-      isExternal: false,
-      description: t('navigation.descriptions.services'),
-    },
-    {
       name: t('navigation.streamSummaries'),
       icon: DocumentTextIcon,
       path: "/stream-summaries",

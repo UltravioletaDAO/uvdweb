@@ -18,7 +18,6 @@ const Breadcrumbs = ({ customItems = [] }) => {
   const getLabel = (segment) => {
     const labelMap = {
       'about': t('navigation.about'),
-      'services': t('navigation.services'),
       'token': t('navigation.token'),
       'metrics': t('navigation.metrics'),
       'snapshot': t('navigation.governance'),
