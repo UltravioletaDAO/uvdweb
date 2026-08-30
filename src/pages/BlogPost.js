@@ -55,6 +55,20 @@ function BlogPost() {
             if (item.type === 'image') {
               return <img key={index} src={item.src} alt={item.alt} className=" mb-10"/>;
             }
+            if (item.type === 'link') {
+              return (
+                <p className="mb-6" key={index}>
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-violet-400 underline underline-offset-2 hover:text-violet-300 focus:outline focus:outline-2 focus:outline-purple-300"
+                  >
+                    {item.label || item.href}
+                  </a>
+                </p>
+              );
+            }
             if (typeof item === 'string') {
               return <p className="mb-6" key={index}>{item} </p>;
             }
