@@ -33,7 +33,6 @@ const UvdWheel = lazy(() => import("./pages/UvdWheelPage"));
 const TwitchCallback = lazy(() => import('./pages/TwitchCallback'));
 const SafeStats = lazy(() => import("./pages/SafeStats"));
 const MetricsDashboard = lazy(() => import("./pages/MetricsDashboard"));
-const ServicesPage = lazy(() => import("./pages/ServicesPage"));
 const NFTPage = lazy(() => import("./pages/NFTPage"));
 const StreamSummaries = lazy(() => import("./pages/StreamSummaries"));
 const Events = lazy(() => import("./pages/Events"));
@@ -80,7 +79,8 @@ function AppRoutes() {
           <Route path="/twitch-callback" element={<TwitchCallback />} />
           <Route path="/safestats" element={<SafeStats />} />
           <Route path="/metrics" element={<MetricsDashboard />} />
-          <Route path="/services" element={<ServicesPage />} />
+          {/* Productos y Servicios absorbido por Ecosystem (seccion #productos); el 301 real vive en amplify.tf */}
+          <Route path="/services" element={<Navigate to="/ecosystem#productos" replace />} />
           <Route path="/nfts" element={<NFTPage />} />
           <Route path="/stream-summaries" element={<StreamSummaries />} />
           <Route path="/events" element={<Events />} />

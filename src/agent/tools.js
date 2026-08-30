@@ -27,7 +27,7 @@ const SECTIONS = {
   'stream-summaries': '/stream-summaries',
   token: '/token',
   metrics: '/metrics',
-  services: '/services',
+  services: '/ecosystem#productos',
   facilitator: '/facilitator',
   ecosystem: '/ecosystem',
   agents: '/ecosystem#agentes',

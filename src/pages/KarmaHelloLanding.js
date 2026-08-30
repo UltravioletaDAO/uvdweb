@@ -87,6 +87,11 @@ const KarmaHelloLanding = () => {
         "name": "Karma Hello - Revolutionary Chat-to-Earn Platform",
         "applicationCategory": "CommunicationApplication",
         "operatingSystem": "Web Browser",
+        "sameAs": [
+          "https://twitch.tv/0xultravioleta",
+          "https://x.com/karmahelloapp",
+          "https://github.com/UltravioletaDAO/karma-hello"
+        ],
         "offers": {
           "@type": "Offer",
           "price": "0",
@@ -190,7 +195,7 @@ const KarmaHelloLanding = () => {
                 </a>
 
                 <Link
-                  to="/services#karma-hello"
+                  to="/ecosystem#productos"
                   className="px-8 py-4 bg-gray-800 rounded-lg font-semibold text-lg hover:bg-gray-700 transition-all inline-flex items-center justify-center gap-2"
                 >
                   {t('karmaHello.hero.ctaSecondary')}
