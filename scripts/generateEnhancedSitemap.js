@@ -130,16 +130,6 @@ const routes = [
     ]
   },
   {
-    path: '/services',
-    priority: 0.9,
-    changefreq: 'monthly',
-    lastmod: new Date().toISOString(),
-    images: [
-      { loc: '/karma-hello.jpg', title: 'Karma Hello', caption: 'Chat-to-Earn Twitch Bot' },
-      { loc: '/abracadabra.jpg', title: 'Abracadabra', caption: 'AI Stream Intelligence Platform' }
-    ]
-  },
-  {
     path: '/nfts',
     priority: 0.8,
     changefreq: 'weekly',
@@ -340,8 +330,6 @@ const generateImageSitemap = () => {
     { page: '/', loc: '/og-image.png', title: 'UltraVioleta DAO OG Image', caption: 'UltraVioleta DAO - Leading Web3 DAO in Latin America' },
     { page: '/token', loc: '/uvd.png', title: 'UVD Token Logo', caption: 'UVD governance token logo' },
     { page: '/', loc: '/logo_uvd.svg', title: 'UVD Vector Logo', caption: 'UVD token vector logo' },
-    { page: '/services', loc: '/karma-hello-dashboard.jpg', title: 'Karma Hello Dashboard', caption: 'Karma Hello Chat-to-Earn bot dashboard' },
-    { page: '/services', loc: '/abracadabra-dashboard.jpg', title: 'Abracadabra Dashboard', caption: 'Abracadabra stream intelligence dashboard' },
     { page: '/nfts', loc: '/echoes-collection.jpg', title: 'Echoes NFT Collection', caption: '80 unique NFT artworks with rewards multiplier' },
     { page: '/events', loc: '/ultra-evento.jpg', title: 'Ultra Evento 2025', caption: 'Web3 Summit in Medellín, Colombia' },
   ];

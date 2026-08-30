@@ -1,12 +1,13 @@
 // EcosystemProducts — sección 01 `#productos` de /ecosystem. El bloque consolidado de productos
 // (antes vivía dentro de ForAgents como data-agents-products) sube aquí con heading propio:
 // Facilitator destacado (el riel, glow en reposo) → pilares (EM / MeshRelay / Describe.net) →
-// KarmaKadabra (el observatorio del enjambre, con chips de tools MCP).
+// KarmaKadabra (el observatorio del enjambre, con chips de tools MCP) → comunidad (Karma Hello,
+// Abracadabra).
 // Cards parejas patrón MeshRelay: favicon real (ProductIcon, fallback lucide) + nombre + 1 línea
 // + links. Color por capa (LAYER_COLORS) solo en el punto del chip, nunca como color de texto.
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Users, Zap, Link as LinkIcon, ExternalLink, Cpu, Radio, Package, Copy, Check } from 'lucide-react';
+import { Users, Zap, Link as LinkIcon, ExternalLink, Cpu, Radio, Package, Copy, Check, MessageCircle, Sparkles } from 'lucide-react';
 import ProductIcon from '../ProductIcon';
 import { LAYER_COLORS } from '../../../services/ecosystem/graph';
 import { KK_TOOLS } from '../../../services/ecosystem/kkMcp';
@@ -22,6 +23,10 @@ const PRODUCTS = [
   { id: 'mr', name: 'MeshRelay', layer: 'pillar', icon: Radio, descKey: 'ecosystem.agents.mcp_mr_desc', descFallback: 'MeshRelay: IRC para agentes; su skill.md explica como conectarse y que canales existen.', links: [{ label: 'meshrelay.xyz', href: 'https://meshrelay.xyz' }, { label: 'meshrelay.xyz/skill.md', href: 'https://meshrelay.xyz/skill.md' }, { label: 'meshrelay.xyz/llms.txt', href: 'https://meshrelay.xyz/llms.txt' }] },
   { id: 'dn', name: 'Describe.net', layer: 'pillar', icon: Users, descKey: 'agentDiscovery.integrationPoints.describeNet.description', descFallback: 'Reputacion agregada y verificable para agentes de IA.', links: [{ label: 'describe.net', href: 'https://describe.net' }, { label: 'describe.net/skill.md', href: 'https://describe.net/skill.md' }, { label: 'describe.net/llms.txt', href: 'https://describe.net/llms.txt' }] },
   { id: 'kk', name: 'KarmaKadabra', layer: 'swarm', icon: Cpu, descKey: 'ecosystem.agents.mcp_kk_desc', descFallback: 'MCP hosteado de KarmaKadabra: KPIs, agentes, trades y snapshot del mercado por JSON-RPC - el observatorio del enjambre.', links: [{ label: 'karmakadabra.ultravioletadao.xyz', href: KK_URL }, { label: 'karmakadabra.ultravioletadao.xyz/mcp', href: KK_MCP }], tools: KK_TOOLS },
+  // Capa community: los dos productos que siguen vivos tras retirarse /services (decisión del
+  // fundador 2026-08-29). Sin asset de marca en public/ecosystem/brand/ → fallback lucide en ProductIcon.
+  { id: 'karma-hello', name: 'Karma Hello', layer: 'community', icon: MessageCircle, descKey: 'ecosystem.products.karmahello_desc', descFallback: 'Bot de Twitch que recompensa mensajes de calidad con UVD: la IA puntúa cada mensaje, la escala Fibonacci reparte, los holders de Echoes cobran x2 y cada mensaje quema 1 UVD.', links: [{ label: '/karma-hello', href: '/karma-hello' }, { label: 'twitch.tv/0xultravioleta', href: 'https://twitch.tv/0xultravioleta' }, { label: 'github.com/UltravioletaDAO/karma-hello', href: 'https://github.com/UltravioletaDAO/karma-hello' }] },
+  { id: 'abracadabra', name: 'Abracadabra', layer: 'community', icon: Sparkles, descKey: 'ecosystem.products.abracadabra_desc', descFallback: 'Convierte cada stream en texto buscable: transcribe, resume y publica. Su salida pública son los resúmenes de stream del sitio.', links: [{ label: '/stream-summaries', href: '/stream-summaries' }] },
 ];
 
 const isExternal = (href) => /^https?:\/\//.test(href);

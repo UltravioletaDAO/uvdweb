@@ -76,7 +76,6 @@ Machine-readable catalog: https://ultravioletadao.xyz/.well-known/mcp/server-car
 - Apply: https://ultravioletadao.xyz/aplicar
 - Ecosystem (live map of DAO products; for agents: https://ultravioletadao.xyz/ecosystem#agentes): https://ultravioletadao.xyz/ecosystem
 - x402 facilitator: https://ultravioletadao.xyz/facilitator
-- Services: https://ultravioletadao.xyz/services
 - Token: https://ultravioletadao.xyz/token
 - Governance: https://ultravioletadao.xyz/snapshot
 - Delegations: https://ultravioletadao.xyz/delegations

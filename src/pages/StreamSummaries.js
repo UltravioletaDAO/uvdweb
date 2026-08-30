@@ -114,8 +114,8 @@ function StreamSummaries() {
           {
             '@type': 'ListItem',
             position: 2,
-            name: 'Products & Services',
-            item: 'https://ultravioletadao.xyz/services'
+            name: 'Ecosistema',
+            item: 'https://ultravioletadao.xyz/ecosystem'
           },
           {
             '@type': 'ListItem',
@@ -212,7 +212,7 @@ function StreamSummaries() {
     const serviceSchema = {
       '@context': 'https://schema.org',
       '@type': 'Service',
-      '@id': 'https://ultravioletadao.xyz/services#abracadabra',
+      '@id': 'https://ultravioletadao.xyz/stream-summaries#abracadabra',
       name: 'Abracadabra Stream Intelligence',
       description: 'AI-powered stream content analysis with semantic search and automated summaries',
       provider: {
@@ -405,7 +405,7 @@ function StreamSummaries() {
                 </span>
               </div>
               <Link
-                to="/services#abracadabra"
+                to="/ecosystem#productos"
                 className="text-violet-400 hover:text-violet-300 text-sm font-medium whitespace-nowrap transition-colors flex items-center gap-1"
                 aria-label={t('streamSummaries.aria.learnMore')}
               >

@@ -290,7 +290,7 @@ const SEO = ({
     inLanguage: ['es', 'en', 'pt']
   } : null;
 
-  const facilitatorJsonLd = (pathname === '/facilitator' || pathname === '/services') ? {
+  const facilitatorJsonLd = pathname === '/facilitator' ? {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     '@id': 'https://ultravioletadao.xyz/facilitator#x402',
@@ -347,138 +347,6 @@ const SEO = ({
       '@type': 'Organization',
       name: 'UltraVioleta DAO Development Team'
     }
-  } : null;
-
-  const servicesJsonLd = pathname === '/services' ? {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    '@id': `${siteUrl}/services`,
-    name: 'Web3 Infrastructure Services: x402 Facilitator, AI Stream Intelligence & Chat-to-Earn Platforms',
-    description: 'Revolutionary Web3 services including x402 Facilitator for gasless AI agent payments, Karma Hello Chat-to-Earn rewards, and Abracadabra Stream Intelligence',
-    numberOfItems: 3,
-    itemListElement: [
-      {
-        '@type': 'SoftwareApplication',
-        '@id': `${siteUrl}/services#karma-hello`,
-        position: 1,
-        name: 'Karma Hello Chat-to-Earn Bot',
-        applicationCategory: 'CommunicationApplication',
-        operatingSystem: 'Web Browser',
-        description: 'Revolutionary Twitch bot with 18+ AI agents rewarding quality chat participation with UVD cryptocurrency tokens on Avalanche blockchain',
-        offers: {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'USD',
-          availability: 'https://schema.org/InStock'
-        },
-        featureList: [
-          '18+ specialized AI agents (GPT-4, Claude 3, Ollama)',
-          'Fibonacci-based reward distribution system',
-          'Machine Learning anti-farming protection',
-          'Automatic token burning mechanics',
-          'Echoes NFT holder 2x rewards multiplier',
-          'Social media boost integrations',
-          'Real-time chat quality evaluation',
-          'Multi-language support (ES, EN, PT, FR)',
-          'Twitch authentication integration',
-          'Daily reward limits and cooldowns',
-          'Community leaderboard system',
-          'API for custom integrations',
-          'Discord notification system',
-          'Transparent reward tracking',
-          'Anti-spam filtering',
-          'Contextual response generation',
-          'Sentiment analysis scoring',
-          'Token economics dashboard'
-        ],
-        screenshot: `${siteUrl}/images/karma-hello-dashboard.jpg`,
-        datePublished: '2024-06-01',
-        softwareVersion: '2.0',
-        author: {
-          '@type': 'Organization',
-          name: 'UltraVioleta DAO'
-        }
-      },
-      {
-        '@type': 'SoftwareApplication',
-        '@id': `${siteUrl}/services#abracadabra`,
-        position: 2,
-        name: 'Abracadabra Stream Intelligence Platform',
-        applicationCategory: 'AnalyticsApplication',
-        operatingSystem: 'Web Browser',
-        description: 'AI-powered stream content analysis platform with semantic search, knowledge graphs, and automated content generation using GPT-4o and Cognee framework',
-        offers: {
-          '@type': 'Offer',
-          availability: 'https://schema.org/PreOrder',
-          priceSpecification: {
-            '@type': 'PriceSpecification',
-            price: '0',
-            priceCurrency: 'USD'
-          }
-        },
-        featureList: [
-          'GPT-4o multimodal stream analysis',
-          'Cognee framework integration',
-          'Semantic search across video content',
-          'Knowledge graph generation',
-          'Temporal search capabilities',
-          'Automated blog post generation',
-          'Social media content creation',
-          'Key moments extraction',
-          'Sentiment analysis tracking',
-          'Topic clustering and categorization',
-          'Real-time transcription',
-          'Multi-language translation',
-          'Custom content templates',
-          'API access for developers',
-          'Export to multiple formats'
-        ],
-        screenshot: `${siteUrl}/images/abracadabra-dashboard.jpg`,
-        datePublished: '2025-01-15',
-        softwareVersion: '1.0-beta',
-        author: {
-          '@type': 'Organization',
-          name: 'UltraVioleta DAO'
-        }
-      },
-      {
-        '@type': 'SoftwareApplication',
-        '@id': `${siteUrl}/services#x402-facilitator`,
-        position: 3,
-        name: 'x402 Facilitator - Gasless Payments for AI Agents',
-        applicationCategory: 'FinanceApplication',
-        operatingSystem: 'Web Browser, API',
-        description: 'Revolutionary gasless payment infrastructure enabling AI agents to transact autonomously without gas fees using x402 protocol with EIP-3009 meta-transactions on multiple blockchain networks',
-        offers: {
-          '@type': 'Offer',
-          price: '0',
-          priceCurrency: 'USD',
-          availability: 'https://schema.org/InStock'
-        },
-        featureList: [
-          'Zero gas fees - Agents never need AVAX or ETH',
-          'EIP-3009 meta-transactions implementation',
-          '8 networks supported (4 mainnets + 4 testnets)',
-          'Avalanche, Base, Celo, HyperEVM support',
-          '100% trustless with EIP-712 signatures',
-          'Instant settlement in ~2-3 seconds',
-          'x402 protocol for stateless HTTP payments',
-          'transferWithAuthorization execution',
-          'RESTful API with full documentation',
-          'No custody - direct peer-to-peer',
-          'Mainnet: 0x103040545AC5031A11E8C03dd11324C7333a13C7',
-          'Testnet: 0x34033041a5944B8F10f8E4D8496Bfb84f1A293A8'
-        ],
-        screenshot: `${siteUrl}/images/x402-facilitator.png`,
-        datePublished: '2025-10-26',
-        softwareVersion: '1.0.0',
-        author: {
-          '@type': 'Organization',
-          name: 'UltraVioleta DAO'
-        },
-        url: 'https://facilitator.ultravioletadao.xyz/'
-      }
-    ]
   } : null;
 
   const nftJsonLd = (pathname === '/nfts' || pathname === '/nft') ? {
@@ -635,7 +503,6 @@ const SEO = ({
     eventJsonLd,
     cryptoJsonLd,
     facilitatorJsonLd,
-    servicesJsonLd,
     nftJsonLd,
     eventsJsonLd,
     customJsonLd
