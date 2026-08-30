@@ -179,6 +179,8 @@
     "products": {
       "title": "Productos",
       "sdk_desc": "El mismo riel, en tu código: pagos x402 sin gas en TypeScript y Python. Es lo que usan los demás productos del stack.",
+      "karmahello_desc": "Bot de Twitch que recompensa mensajes de calidad con UVD: la IA puntúa cada mensaje, la escala Fibonacci reparte, los holders de Echoes cobran x2 y cada mensaje quema 1 UVD.",
+      "abracadabra_desc": "Convierte cada stream en texto buscable: transcribe, resume y publica. Su salida pública son los resúmenes de stream del sitio.",
       "copy": "Copiar",
       "copied": "Copiado"
     },
