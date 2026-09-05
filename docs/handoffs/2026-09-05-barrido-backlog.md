@@ -205,6 +205,35 @@ usándolo. **El build listó ese único error, o sea que mis módulos sí compil
    al 2026-09-21** por el Judging Period. Hoy es 2026-09-05: **estamos adentro de la ventana.**
    Ver la advertencia de abajo antes de mergear.
 
+## Este PR NO tiene CI, y no es por un push que falte
+
+**Dicho explícito para que nadie lo mergee a ciegas: el PR #126 no corrió ni un solo check.**
+
+No es el caso conocido de "la CI no se dispara al abrir el PR sobre una rama ya pusheada, pero un
+push nuevo sí". Acá **ningún push la dispara**: `.github/workflows/frontend-ci.yml` escucha en
+`pull_request: branches: [main]` y `push: [develop, main]`. Un PR contra `develop` y un push a una
+rama de feature quedan los dos fuera del disparador.
+
+`$ gh pr checks 126` → `no checks reported on the '0xultravioleta/uw-backlog' branch`
+
+**La evidencia de este PR soy yo, y está pegada en el cuerpo del PR y acá arriba**: los dos tests
+discriminantes corridos en rojo y en verde, la suite completa en 88 tests, y ESLint en exit 0 sobre
+los 6 archivos. El único gate que no pude cerrar localmente es el build, por `prismjs` ausente del
+`node_modules` symlinkeado del worktree — preexistente, idéntico en `main`, y resuelto por el
+`npm ci` de la CI.
+
+### Y el hallazgo que salió de preguntar esto
+
+Si la CI sólo escucha `pull_request` sobre `main`, **todo lo que entra a `develop` entra sin
+verificar**. Medido sobre los últimos 20 PR mergeados: **los 9 PR de feature apuntan a `develop`** y
+los 11 restantes son promociones `develop` a `main`. O sea **el 100% del trabajo de feature se
+mergea sin compuerta**; la CI recién mira en la promoción, ya con varios features encima, y cuando
+ese batch sale rojo hay que bisectar entre N cambios.
+
+Quedó como **fila P1 nueva en `BACKLOG.md`** (2026-09-05). **No lo arreglé en este PR a propósito**:
+cambiar el disparador de la CI es infraestructura del repo y mezclarlo con dos arreglos de producto
+volvería este PR dos cambios disfrazados de uno.
+
 ## Advertencia sobre el merge
 
 `.github/workflows/frontend-ci.yml` corre en `pull_request: branches: [main]` y en
@@ -224,7 +253,11 @@ riesgo el Judging Period — pero **la decisión de mergear durante el congelami
 3. **Necesitan a Saul:** los 3 P0 vencidos del hackathon (y antes que nada, **decidir si el hackathon
    sigue vivo — la fecha límite pasó el 2026-09-03**), el registry MCP (write público), el bump de
    snapshot.js (voto con wallet real), traducir el README, D-07 en Amplify y el CSP enforce.
-4. **El PR queda listo para revisar pero NO lo mergeé.** Suite en verde (88 tests); el build local
+4. **PR #126 abierto contra `develop`, listo para revisar pero NO mergeado — y SIN CI**: ningún push
+   la dispara, el workflow sólo escucha PR contra `main`. La evidencia son los tests locales en rojo
+   y en verde, pegados en el cuerpo del PR. De paso salió una fila P1 nueva: el 100% del trabajo de
+   feature entra a `develop` sin compuerta (9 de 9 PR de feature en los últimos 20).
+5. **El resto del estado de gates:** Suite en verde (88 tests); el build local
    falla sólo por `prismjs` ausente del `node_modules` symlinkeado del worktree — preexistente,
    idéntico en `main`, y la CI lo instala con `npm ci`. **Ojo: el congelamiento de deploys a prod
    está activo hasta el 2026-09-21.**
