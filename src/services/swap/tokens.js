@@ -22,7 +22,7 @@ export const TOKENS = {
   UVD: {
     symbol: 'UVD',
     address: '0x4Ffe7e01832243e03668E090706F17726c26d6B2',
-    decimals: 18,
+    decimals: 6,
     native: false,
     priceKey: 'UVD',
     label: 'UVD',
