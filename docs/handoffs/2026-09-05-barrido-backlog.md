@@ -234,6 +234,16 @@ Quedó como **fila P1 nueva en `BACKLOG.md`** (2026-09-05). **No lo arreglé en 
 cambiar el disparador de la CI es infraestructura del repo y mezclarlo con dos arreglos de producto
 volvería este PR dos cambios disfrazados de uno.
 
+## El PR muestra 28 commits, pero míos son 5
+
+`develop` quedó **23 commits atrás de `main`** tras el merge del PR #125, y **no tiene ningún commit
+propio** que `main` no tenga (`git log origin/main..origin/develop` → 0). Mi rama salió de `main`,
+así que el PR arrastra esos 23 ya-mergeados además de mis 5 (`243c6bd`, `3c11d77`, `1779a90`,
+`6ca0308`, `d4297d5`).
+
+**Consecuencia:** mergear este PR también sincroniza `develop` con `main`. No es destructivo, pero
+conviene saberlo antes de apretar el botón. Anotado también como comentario en el PR.
+
 ## Advertencia sobre el merge
 
 `.github/workflows/frontend-ci.yml` corre en `pull_request: branches: [main]` y en
