@@ -10,8 +10,12 @@ name: Frontend CI
 on:
   push:
     branches: [develop, main]
+  # Base branches, no head. develop es la rama de INTEGRACIÓN: la mitad de los PR
+  # entran ahí (6 de los últimos 12) y hasta ahora `gh pr checks` respondía
+  # "no checks reported" — la compuerta llegaba recién en el push post-merge,
+  # o sea después de romper. Listar develop acá la adelanta al PR.
   pull_request:
-    branches: [main]
+    branches: [develop, main]
 
 jobs:
   quality-gates:
