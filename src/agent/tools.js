@@ -8,6 +8,10 @@
 import streamSummariesService, { PaymentRequiredError } from '../services/streamSummaries';
 import { getTokenData } from '../services/metrics/Token/TokenMetricsService';
 import { getSafeInfo, getSafeBalances } from '../services/metrics/funds/safeService';
+import { getCourses } from '../services/courses/Courses';
+import { posts } from '../posts/posts';
+import contributorsData from '../data/topContributors.json';
+import { NFT_COLLECTIONS } from '../data/nftCollections';
 import { buildEcosystemTools } from './ecosystemTools';
 
 const SITE_URL = 'https://ultravioletadao.xyz';
@@ -32,6 +36,7 @@ const SECTIONS = {
   ecosystem: '/ecosystem',
   agents: '/ecosystem#agentes',
   events: '/events',
+  blog: '/blog',
   nfts: '/nfts',
   links: '/links',
   courses: '/courses',
@@ -223,7 +228,9 @@ export function buildTools({ navigate, i18n }) {
             agent_discovery: `${SITE_URL}/ecosystem#agentes`,
             facilitator: 'https://facilitator.ultravioletadao.xyz',
             github: 'https://github.com/ultravioletadao',
-            discord: 'https://discord.gg/ultravioletadao'
+            discord: 'https://discord.gg/ultravioletadao',
+            twitter: 'https://twitter.com/UltravioletaDAO',
+            arena: 'https://arena.social/UltravioletaDAO'
           }
         };
       }
@@ -462,6 +469,152 @@ export function buildTools({ navigate, i18n }) {
           return { error: 'treasury_unavailable', message: errorMessage(err) };
         }
       }
+    },
+    {
+      name: 'list_blog_posts',
+      description:
+        'List the articles published on the UltravioletaDAO blog (/blog). Returns slug, title, ' +
+        'summary, date, author, reading time and categories. Use get_blog_post with a slug to ' +
+        'read the full article.',
+      inputSchema: {
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          limit: { type: 'integer', minimum: 1, maximum: 10, default: 5, description: 'Max posts to return (1-10)' }
+        }
+      },
+      annotations: { readOnlyHint: true, idempotentHint: true },
+      execute: async ({ limit } = {}) => {
+        const take = clampLimit(limit);
+        return {
+          total: posts.length,
+          posts: posts.slice(0, take).map((post) => ({
+            slug: post.slug,
+            title: clip(post.title, 120),
+            summary: clip(post.description, 200),
+            date: post.date,
+            author: post.author,
+            reading_minutes: post.readingTime,
+            categories: post.categories,
+            url: `${SITE_URL}/blog/${post.slug}`
+          }))
+        };
+      }
+    },
+    {
+      name: 'get_blog_post',
+      description:
+        'Read one article of the UltravioletaDAO blog by its slug. Returns the body text (clipped) ' +
+        'and any links the article points to. Get valid slugs from list_blog_posts.',
+      inputSchema: {
+        type: 'object',
+        required: ['slug'],
+        additionalProperties: false,
+        properties: { slug: { type: 'string', description: 'Article slug, e.g. ecos-del-ayer' } }
+      },
+      annotations: { readOnlyHint: true, idempotentHint: true },
+      execute: async ({ slug } = {}) => {
+        const post = posts.find((p) => p.slug === slug);
+        if (!post) return { error: 'unknown_slug', allowed: posts.map((p) => p.slug) };
+        // content mezcla párrafos (string) y bloques de link ({ type: 'link', href, label }).
+        const paragraphs = post.content.filter((block) => typeof block === 'string');
+        const links = post.content
+          .filter((block) => block && typeof block === 'object' && block.href)
+          .map((block) => ({ label: clip(block.label, 80), href: block.href }));
+        return {
+          slug: post.slug,
+          title: clip(post.title, 120),
+          date: post.date,
+          author: post.author,
+          reading_minutes: post.readingTime,
+          tags: post.tags,
+          // 800 deja margen bajo el techo de 1500 chars de Chrome aunque el post traiga varios links.
+          body: clip(paragraphs.join('\n\n'), 800),
+          links,
+          url: `${SITE_URL}/blog/${post.slug}`
+        };
+      }
+    },
+    {
+      name: 'list_courses',
+      description:
+        'List the free Web3 courses and tutorials UltravioletaDAO publishes for the Latin American ' +
+        'community (/courses). Returns title, summary, category and the link to watch each one.',
+      inputSchema: {
+        type: 'object',
+        additionalProperties: false,
+        properties: {
+          limit: { type: 'integer', minimum: 1, maximum: 10, default: 10, description: 'Max courses to return (1-10)' }
+        }
+      },
+      annotations: { readOnlyHint: true, idempotentHint: true },
+      execute: async ({ limit } = {}) => {
+        try {
+          const courses = await getCourses();
+          const list = Array.isArray(courses) ? courses : [];
+          return {
+            total: list.length,
+            courses: list.slice(0, clampLimit(limit, 10)).map((course) => ({
+              title: clip(course.title, 100),
+              summary: clip(course.description, 160),
+              categories: course.category,
+              link: course.link
+            })),
+            url: `${SITE_URL}/courses`
+          };
+        } catch (err) {
+          return { error: 'courses_unavailable', message: errorMessage(err) };
+        }
+      }
+    },
+    {
+      name: 'list_contributors',
+      description:
+        'List the people and agents who build UltravioletaDAO (/contributors), with their roles, ' +
+        'what they contribute and their public profiles. Also reports how many contributor slots ' +
+        'are still open for the community.',
+      inputSchema: { type: 'object', additionalProperties: false, properties: {} },
+      annotations: { readOnlyHint: true, idempotentHint: true },
+      execute: async () => {
+        const all = contributorsData.topContributors || [];
+        // Los slots "TBD" son plazas abiertas, no personas: se cuentan, no se listan.
+        const active = all.filter((person) => person.featured);
+        return {
+          // Tope de 6 y contribuciones cortas: la lista crece con la comunidad y la salida
+          // tiene que seguir cabiendo en los 1500 chars por tool.
+          contributors: active.slice(0, 6).map((person) => ({
+            name: person.name,
+            roles: person.roles,
+            contributions: clip(person.contributions, 100),
+            links: person.links
+          })),
+          listed: Math.min(active.length, 6),
+          open_slots: all.length - active.length,
+          // Solo los nombres: el JSON de roles trae clases de CSS e iconos que al agente no le sirven.
+          all_roles: (contributorsData.roles || []).map((role) => role.name),
+          url: `${SITE_URL}/contributors`
+        };
+      }
+    },
+    {
+      name: 'get_nft_collections',
+      description:
+        'Get the NFT collections of UltravioletaDAO (/nfts): supply, chain, contract address and ' +
+        'where to trade them. Echoes is the DAO collection on Avalanche.',
+      inputSchema: { type: 'object', additionalProperties: false, properties: {} },
+      annotations: { readOnlyHint: true, idempotentHint: true },
+      execute: async () => ({
+        collections: Object.entries(NFT_COLLECTIONS).map(([id, collection]) => ({
+          id,
+          name: collection.name,
+          chain: collection.chain,
+          total_supply: collection.totalSupply ?? null,
+          contract: collection.contract ?? null,
+          marketplace: collection.marketplaceUrl,
+          stats: collection.stats
+        })),
+        url: `${SITE_URL}/nfts`
+      })
     },
     {
       name: 'set_language',

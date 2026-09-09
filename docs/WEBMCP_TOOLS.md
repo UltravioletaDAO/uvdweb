@@ -10,10 +10,43 @@
   (`<meta http-equiv="origin-trial">`, match subdomains). Cualquier visitante con Chrome/Edge
   estable expone `document.modelContext` con las tools del sitio — sin flags.
   **Vence 2026-11-16 (Chrome 156)** — renovar en developer.chrome.com/origintrials (avisa por email).
-- **19 tools imperativas** registradas en todas las páginas + **2 forms declarativos**
+- **24 tools imperativas** registradas en todas las páginas + **2 forms declarativos**
   (`stream_search_form` en `/stream-summaries`, `apply_dao_membership_form` en `/aplicar`, paso 3).
 - Fuente de las tools: `src/agent/tools.js` + `src/agent/ecosystemTools.js` (única fábrica,
   compartida con la ventana "agent@uvd" de `/ecosystem`).
+
+## Tools de contenido (2026-09-09)
+
+El directorio de webmcp.com escaneó el sitio el 2026-09-09 y lo calificó **B "Solid"** con las 19
+tools de entonces. Su rúbrica pesa 60% usabilidad juzgada por un agente ("comprehensive coverage"
+del recorrido), 20% páginas con tools y 20% higiene de nombres y schemas. El 40% mecánico ya estaba;
+el gap era que páginas enteras del sitio no tenían ninguna tool. Estas cinco cierran las que
+muestran datos reales:
+
+| Tool | Página | Fuente de datos (única, la misma que renderiza) |
+|---|---|---|
+| `list_blog_posts` | `/blog` | `src/posts/posts.js` |
+| `get_blog_post` | `/blog/:slug` | `src/posts/posts.js` |
+| `list_courses` | `/courses` | `services/courses/Courses.js` → `/db/courses.json` |
+| `list_contributors` | `/contributors` | `src/data/topContributors.json` |
+| `get_nft_collections` | `/nfts` | `src/data/nftCollections.js` (nuevo, compartido con NFTPage) |
+
+`navigate_to` suma la sección `blog`.
+
+**Qué se dejó afuera a propósito**, porque exponer una tool sin datos vivos detrás es peor que no
+tenerla (la lección de `list_open_bounties`): `/status`, `/purge` y `/wheel` por decisión de
+producto; `/bounties` porque su backend no existe (404) y la página está gateada por
+`REACT_APP_BOUNTIES_ENABLED`; `/events` porque es el recap del ultraevento 2025, sin nada accionable
+hoy; `/delegations`, `/about`, `/experiments` y `/links` porque son informativas y ya las cubren
+`get_dao_info` y `list_ecosystem_products`.
+
+Verificación: `tests/webmcp-content-tools.playwright.js` levanta el build, inyecta el shim de
+`document.modelContext`, ejecuta cada tool y exige datos reales, error estructurado en slug
+inválido y salida ≤ 1500 chars. **19/19 PASS el 2026-09-09** contra `build/` servido en :3311, con
+la suite `tests/ecosystem/agent-routing.playwright.js` también en verde (24 tools únicas).
+
+Presupuesto medido por tool: `list_blog_posts` 455 · `get_blog_post` 1175 · `list_courses` 686 ·
+`list_contributors` 687 · `get_nft_collections` 587 chars.
 
 ## Resultados por tool (producción, 2026-08-28)
 

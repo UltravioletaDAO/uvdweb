@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import SEOEnhanced from '../components/SEOEnhanced';
 import OptimizedNFTCard from '../components/OptimizedNFTCard';
 import { useNFTCache } from '../hooks/useNFTCache';
+import { NFT_COLLECTIONS } from '../data/nftCollections';
 
 const NFTPage = () => {
   const { t } = useTranslation();
@@ -12,27 +13,11 @@ const NFTPage = () => {
   const [loading, setLoading] = useState(true);
   const { getCachedUrl, preloadImages, markAsLoaded } = useNFTCache();
 
+  // El dato duro vive en data/nftCollections.js (compartido con las tools WebMCP);
+  // acá solo se le suma la descripción traducida.
   const collections = {
-    echoes: {
-      name: 'Echoes by Ultravioleta DAO',
-      description: t('nft.echoes.description'),
-      totalSupply: 89,
-      chain: 'Avalanche',
-      contract: '0x6d08557830959b3441d269145b32dab93206b3d2',
-      marketplaceUrl: 'https://salvor.io/collections/0x6d08557830959b3441d269145b32dab93206b3d2',
-      stats: {
-        uniqueOwners: 52,
-        listed: 1,
-        royalty: '5%'
-      }
-    },
-    vulvas: {
-      name: 'Vulvas de Vulvas, Penes de Penes y Baretos de Baret',
-      description: t('nft.vulvas.description'),
-      chain: 'Ethereum',
-      marketplaceUrl: 'https://opensea.io/collection/vulvas-de-vulvas-penes-de-penes-y-baretos-de-baret',
-      stats: {}
-    }
+    echoes: { ...NFT_COLLECTIONS.echoes, description: t('nft.echoes.description') },
+    vulvas: { ...NFT_COLLECTIONS.vulvas, description: t('nft.vulvas.description') }
   };
 
   useEffect(() => {

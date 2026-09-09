@@ -46,3 +46,4 @@
 | 2026-08-26 | Índice de búsqueda del stream: automatizar refresh (EventBridge → ecs:RunTask) | Hoy manual; corrido 2026-08-26 (402 streams). Diseño en todo.md | P2 | Open |
 | 2026-08-26 | tests/: crear suite mínima de jest (hoy 0 tests en src/) | "craco test" sale con "No tests found" | P3 | Open |
 | 2026-07-21 | Cron de briefings de gobernanza | Sin proposals nuevas desde 2026-07-01; cuando haya, regenerar briefings.json (manual hoy) | P2 | Open |
+| 2026-09-09 | webmcp.com: confirmar el listado y subir la nota de B a A | Scan del 2026-09-09 desde el form "Register site" (email ultravioletadao@gmail.com): 19 tools, 6 páginas, grade B "Solid". `GET /api/v1/lookup?host=ultravioletadao.xyz` todavía da `supported:false` — reverificar en 24-48h. Rúbrica: usabilidad 60% / cobertura 20% (páginas con tools) / calidad 20%. Se puede rescanear cuando queramos | P2 | Open |

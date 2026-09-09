@@ -277,7 +277,9 @@ async function main() {
     const names = await page.evaluate(() => Array.from(new Set((window.__reg || []).map((t) => t.name))));
     const missingPrev = PREVIOUS_TOOLS.filter((n) => !names.includes(n));
     const missingNew = NEW_TOOLS.filter((n) => !names.includes(n));
-    check('(c) 19 tools registradas (11 previas + 8 nuevas)', names.length === 19 && !missingPrev.length && !missingNew.length,
+    // El total crece cuando se suman tools de otras páginas (blog, cursos, contributors, NFTs):
+    // acá interesa que las 11 previas + 8 del ecosistema sigan registradas, no el total exacto.
+    check('(c) 11 tools previas + 8 del ecosistema registradas', names.length >= 19 && !missingPrev.length && !missingNew.length,
       { count: names.length, missingPrev, missingNew });
 
     const map = await runTool(page, 'get_ecosystem_map', { limit: 3 });
