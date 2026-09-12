@@ -1,0 +1,44 @@
+// Generado por Terraform desde infra/terraform/edge/functions/viewer-response.js.tftpl
+// CloudFront Function (viewer-response, runtime cloudfront-js-2.0).
+//
+// En las páginas (HTML o Markdown) agrega `Vary: Accept` para que ningún caché intermedio
+// le entregue HTML a quien pidió Markdown ni al revés. En las respuestas negociadas a
+// Markdown fija el charset y publica `x-markdown-tokens` (estimación hecha al aplicar).
+
+var TOKENS = ${tokens};
+
+function withAccept(vary) {
+  if (!vary) return 'Accept';
+  var parts = vary.split(',');
+  for (var i = 0; i < parts.length; i++) {
+    if (parts[i].replace(/^\s+|\s+$/g, '').toLowerCase() === 'accept') return vary;
+  }
+  return vary + ', Accept';
+}
+
+function handler(event) {
+  var request = event.request;
+  var response = event.response;
+  var headers = response.headers;
+  var ctype = headers['content-type'] ? headers['content-type'].value.toLowerCase() : '';
+  var isHtml = ctype.indexOf('text/html') === 0;
+  var isMarkdown = ctype.indexOf('text/markdown') === 0;
+
+  if (isHtml || isMarkdown) {
+    headers['vary'] = { value: withAccept(headers['vary'] ? headers['vary'].value : '') };
+  }
+
+  if (isMarkdown) {
+    if (ctype.indexOf('charset') === -1) {
+      headers['content-type'] = { value: 'text/markdown; charset=utf-8' };
+    }
+    var negotiated = request.headers['x-uvd-markdown'];
+    var key = negotiated ? negotiated.value : request.uri;
+    var estimate = TOKENS[key];
+    if (estimate) {
+      headers['x-markdown-tokens'] = { value: String(estimate) };
+    }
+  }
+
+  return response;
+}
