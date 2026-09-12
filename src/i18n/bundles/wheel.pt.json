@@ -51,7 +51,8 @@
         "username_placeholder": "Usuário (opcional)",
         "button": "Adicionar",
         "wallet_required": "A wallet é obrigatória",
-        "duplicate": "Essa wallet já está na lista"
+        "duplicate": "Essa wallet já está na lista",
+        "swapped": "A wallet estava no campo de usuário; os campos foram trocados"
       },
       "list": {
         "title": "Participantes e Resultados",

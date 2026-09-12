@@ -28,6 +28,7 @@ import {
   buildSafeOrigin,
   sumPayout,
 } from '../utils/wheelAirdrop';
+import { normalizeParticipantInput } from '../utils/wheelParticipants';
 
 // ABI mínimo para interactuar con tokens ERC20
 const ERC20_ABI = [
@@ -922,7 +923,8 @@ const UvdWheelPage = () => {
   // ─── Participantes (W-10) ───
   const addParticipant = () => {
     if (busy) return;
-    const wallet = newParticipant.wallet.trim();
+    // Recorta espacios y corrige el caso más común: el usuario escrito en el campo de la wallet
+    const { wallet, username, swapped } = normalizeParticipantInput(newParticipant, isValidEthereumAddress);
     if (!wallet) {
       showToast.warning(t('wheel.participants.add.wallet_required'));
       return;
@@ -936,8 +938,11 @@ const UvdWheelPage = () => {
       showToast.warning(t('wheel.participants.add.duplicate', 'Esa wallet ya está en la lista'));
       return;
     }
+    if (swapped) {
+      showToast.info(t('wheel.participants.add.swapped', 'La wallet venía en el campo de usuario; se intercambiaron los campos'));
+    }
 
-    setParticipants((prev) => [...prev, { key: makeId(), wallet, username: newParticipant.username.trim() }]);
+    setParticipants((prev) => [...prev, { key: makeId(), wallet, username }]);
     setNewParticipant({ wallet: '', username: '' });
   };
 
@@ -1791,7 +1796,7 @@ const UvdWheelPage = () => {
                   {/* Panel de inputs para nuevo participante */}
                   <div className="mb-4">
                     <h3 className={headingClass}>{t('wheel.participants.add.title')}</h3>
-                    <label htmlFor="wheel-new-wallet" className="sr-only">{t('wheel.participants.add.wallet_placeholder')}</label>
+                    <label htmlFor="wheel-new-wallet" className="block text-xs font-semibold text-text-secondary mb-1">{t('wheel.participants.add.wallet_placeholder')}</label>
                     <input
                       id="wheel-new-wallet"
                       type="text"
@@ -1803,7 +1808,7 @@ const UvdWheelPage = () => {
                       autoComplete="off"
                       spellCheck={false}
                     />
-                    <label htmlFor="wheel-new-username" className="sr-only">{t('wheel.participants.add.username_placeholder')}</label>
+                    <label htmlFor="wheel-new-username" className="block text-xs font-semibold text-text-secondary mb-1">{t('wheel.participants.add.username_placeholder')}</label>
                     <input
                       id="wheel-new-username"
                       type="text"
