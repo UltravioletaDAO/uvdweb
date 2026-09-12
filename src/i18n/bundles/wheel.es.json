@@ -52,7 +52,8 @@
         "button": "Agregar",
         "wallet_required": "La wallet es obligatoria",
         "duplicate": "Esa wallet ya está en la lista",
-        "swapped": "La wallet venía en el campo de usuario; se intercambiaron los campos"
+        "swapped": "La wallet venía en el campo de usuario; se intercambiaron los campos",
+        "checksum_mismatch": "Wallet con mayúsculas alteradas: el checksum EIP-55 no coincide. Pégala tal cual sale de la wallet o toda en minúsculas"
       },
       "list": {
         "title": "Participantes y Resultados",

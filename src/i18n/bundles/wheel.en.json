@@ -52,7 +52,8 @@
         "button": "Add",
         "wallet_required": "Wallet is required",
         "duplicate": "That wallet is already on the list",
-        "swapped": "The wallet was in the username field; the fields were swapped"
+        "swapped": "The wallet was in the username field; the fields were swapped",
+        "checksum_mismatch": "Wallet with altered capitalization: the EIP-55 checksum does not match. Paste it exactly as the wallet shows it, or all lowercase"
       },
       "list": {
         "title": "Participants and Results",
