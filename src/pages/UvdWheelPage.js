@@ -1306,11 +1306,14 @@ const UvdWheelPage = () => {
       const batchRows = buildPayoutRows(batch, payoutMultiplier);
       const transactions = buildSafeTransferTransactions(batchRows, token, tokenDecimals);
 
+      // MetaMask entrega la cuenta en minúsculas; el Transaction Service exige checksum EIP-55
+      const sender = ethers.utils.getAddress(walletAddress);
+
       // El SDK de Safe se carga solo aquí para no engordar la carga inicial de la ruleta
       const { default: Safe } = await import('@safe-global/protocol-kit');
       const protocolKit = await Safe.init({
         provider: window.ethereum,
-        signer: walletAddress,
+        signer: sender,
         safeAddress: SAFE_ADDRESS,
       });
 
@@ -1326,7 +1329,7 @@ const UvdWheelPage = () => {
         safeAddress: SAFE_ADDRESS,
         safeTransactionData: safeTransaction.data,
         safeTxHash,
-        senderAddress: walletAddress,
+        senderAddress: sender,
         senderSignature: signature.data,
         origin: buildSafeOrigin({
           url: `${window.location.origin}/wheel`,
@@ -1796,6 +1799,18 @@ const UvdWheelPage = () => {
                   {/* Panel de inputs para nuevo participante */}
                   <div className="mb-4">
                     <h3 className={headingClass}>{t('wheel.participants.add.title')}</h3>
+                    {/* Usuario arriba y wallet abajo: es el orden en que se dictan en vivo */}
+                    <label htmlFor="wheel-new-username" className="block text-xs font-semibold text-text-secondary mb-1">{t('wheel.participants.add.username_placeholder')}</label>
+                    <input
+                      id="wheel-new-username"
+                      type="text"
+                      value={newParticipant.username}
+                      onChange={(e) => setNewParticipant({ ...newParticipant, username: e.target.value })}
+                      onKeyDown={handleParticipantKeyDown}
+                      className={`${inputClass} mb-2`}
+                      placeholder={t('wheel.participants.add.username_placeholder')}
+                      autoComplete="off"
+                    />
                     <label htmlFor="wheel-new-wallet" className="block text-xs font-semibold text-text-secondary mb-1">{t('wheel.participants.add.wallet_placeholder')}</label>
                     <input
                       id="wheel-new-wallet"
@@ -1807,17 +1822,6 @@ const UvdWheelPage = () => {
                       placeholder={t('wheel.participants.add.wallet_placeholder')}
                       autoComplete="off"
                       spellCheck={false}
-                    />
-                    <label htmlFor="wheel-new-username" className="block text-xs font-semibold text-text-secondary mb-1">{t('wheel.participants.add.username_placeholder')}</label>
-                    <input
-                      id="wheel-new-username"
-                      type="text"
-                      value={newParticipant.username}
-                      onChange={(e) => setNewParticipant({ ...newParticipant, username: e.target.value })}
-                      onKeyDown={handleParticipantKeyDown}
-                      className={`${inputClass} mb-2`}
-                      placeholder={t('wheel.participants.add.username_placeholder')}
-                      autoComplete="off"
                     />
                     <button
                       type="button"

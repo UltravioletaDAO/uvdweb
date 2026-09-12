@@ -1,4 +1,6 @@
 // Service for interacting with SAFE API
+import { getAddress } from '@ethersproject/address';
+
 // Dominio canónico del Transaction Service (el viejo safe-transaction-avalanche.safe.global
 // redirige aquí con 308). Sin API key aplica el límite público: 2 rps y 5.000 llamadas al mes.
 const SAFE_TX_SERVICE_BASE = 'https://api.safe.global/tx-service/avax/api';
@@ -64,7 +66,8 @@ export const proposeSafeTransaction = async ({
     body: JSON.stringify({
       ...safeTransactionData,
       contractTransactionHash: safeTxHash,
-      sender: senderAddress,
+      // El servicio rechaza (422 "not checksumed") direcciones en minúsculas como las entrega MetaMask
+      sender: getAddress(senderAddress),
       signature: senderSignature,
       origin,
     }),
