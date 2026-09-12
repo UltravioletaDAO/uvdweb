@@ -1,5 +1,85 @@
 // Service for interacting with SAFE API
-const SAFE_API_BASE_URL = 'https://safe-transaction-avalanche.safe.global/api/v1';
+// Dominio canónico del Transaction Service (el viejo safe-transaction-avalanche.safe.global
+// redirige aquí con 308). Sin API key aplica el límite público: 2 rps y 5.000 llamadas al mes.
+const SAFE_TX_SERVICE_BASE = 'https://api.safe.global/tx-service/avax/api';
+const SAFE_API_BASE_URL = `${SAFE_TX_SERVICE_BASE}/v1`;
+
+const JSON_HEADERS = {
+  'Accept': 'application/json',
+  'Content-Type': 'application/json',
+};
+
+/**
+ * Next nonce for a new proposal: one past the highest pending (unexecuted) transaction,
+ * or the on-chain nonce when the queue is empty. Same rule as SafeApiKit.getNextNonce.
+ * Using the on-chain nonce directly would collide with proposals already waiting in the queue.
+ * @param {string} safeAddress - The address of the Safe
+ * @returns {Promise<number>} - The nonce to use for the next proposal
+ */
+export const getSafeNextNonce = async (safeAddress) => {
+  const infoResponse = await fetch(`${SAFE_API_BASE_URL}/safes/${safeAddress}/`, { headers: JSON_HEADERS });
+  if (!infoResponse.ok) {
+    throw new Error(`Safe API error: ${infoResponse.status}`);
+  }
+  const currentNonce = Number((await infoResponse.json()).nonce);
+
+  const pendingResponse = await fetch(
+    `${SAFE_TX_SERVICE_BASE}/v2/safes/${safeAddress}/multisig-transactions/?executed=false&nonce__gte=${currentNonce}&limit=100`,
+    { headers: JSON_HEADERS }
+  );
+  if (!pendingResponse.ok) {
+    throw new Error(`Safe API error: ${pendingResponse.status}`);
+  }
+  const pending = (await pendingResponse.json()).results || [];
+  if (pending.length === 0) {
+    return currentNonce;
+  }
+  const maxPendingNonce = pending.reduce((acc, tx) => Math.max(acc, Number(tx.nonce)), currentNonce);
+  return maxPendingNonce + 1;
+};
+
+/**
+ * Proposes a signed Safe transaction to the Transaction Service queue (same body SafeApiKit sends).
+ * The other owners confirm it in the Safe UI as usual.
+ * @param {Object} params
+ * @param {string} params.safeAddress
+ * @param {Object} params.safeTransactionData - safeTransaction.data from Protocol Kit
+ * @param {string} params.safeTxHash
+ * @param {string} params.senderAddress - the owner that signed
+ * @param {string} params.senderSignature - signature.data from Protocol Kit
+ * @param {string} [params.origin] - JSON string shown as the transaction origin in the Safe UI
+ * @returns {Promise<void>}
+ */
+export const proposeSafeTransaction = async ({
+  safeAddress,
+  safeTransactionData,
+  safeTxHash,
+  senderAddress,
+  senderSignature,
+  origin,
+}) => {
+  const response = await fetch(`${SAFE_TX_SERVICE_BASE}/v2/safes/${safeAddress}/multisig-transactions/`, {
+    method: 'POST',
+    headers: JSON_HEADERS,
+    body: JSON.stringify({
+      ...safeTransactionData,
+      contractTransactionHash: safeTxHash,
+      sender: senderAddress,
+      signature: senderSignature,
+      origin,
+    }),
+  });
+
+  if (!response.ok) {
+    let detail = '';
+    try {
+      detail = JSON.stringify(await response.json());
+    } catch (e) {
+      detail = '';
+    }
+    throw new Error(`Safe API error ${response.status}${detail ? `: ${detail}` : ''}`);
+  }
+};
 
 /**
  * Fetches multisig transactions for a specific Safe

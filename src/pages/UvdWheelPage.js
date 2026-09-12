@@ -20,6 +20,14 @@ import {
   SpeakerXMarkIcon,
   ShareIcon,
 } from '@heroicons/react/24/outline';
+import { getSafeOwners, getSafeNextNonce, proposeSafeTransaction } from '../services/safe/safeService';
+import {
+  buildPayoutRows,
+  buildCsvContent,
+  buildSafeTransferTransactions,
+  buildSafeOrigin,
+  sumPayout,
+} from '../utils/wheelAirdrop';
 
 // ABI mínimo para interactuar con tokens ERC20
 const ERC20_ABI = [
@@ -36,6 +44,10 @@ const AIRDROP_ABI = [
 
 // Dirección del contrato de Airdrop en Avalanche C-Chain
 const AIRDROP_CONTRACT_ADDRESS = "0x23E5c4Dee08e1Ff9b3338e3729E83b8aA6d30342";
+
+// Multisig de la DAO en Avalanche: de aquí salen los premios cuando se proponen al Safe
+const SAFE_ADDRESS = "0x52110a2Cc8B6bBf846101265edAAe34E753f3389";
+const SAFE_QUEUE_URL = `https://app.safe.global/transactions/queue?safe=avax:${SAFE_ADDRESS}`;
 
 // Configuración de la red Avalanche C-Chain
 const AVALANCHE_NETWORK = {
@@ -212,7 +224,12 @@ const UvdWheelPage = () => {
   const [muted, setMuted] = useState(readStoredMuted);
   const [audioBroken, setAudioBroken] = useState(false);
   const [includePaidInExport, setIncludePaidInExport] = useState(false);
-  const [pendingConfirm, setPendingConfirm] = useState(null); // 'send' | 'new-session' | null
+  const [pendingConfirm, setPendingConfirm] = useState(null); // 'send' | 'propose' | 'new-session' | null
+  // Multiplicador del día (x5, x10) sobre los premios pendientes: CSV, airdrop directo y propuesta al Safe
+  const [payoutMultiplier, setPayoutMultiplier] = useState(1);
+  const [isSafeOwner, setIsSafeOwner] = useState(null); // null = verificando, true/false = respuesta del Safe
+  const [isProposingToSafe, setIsProposingToSafe] = useState(false);
+  const [lastSafeTxHash, setLastSafeTxHash] = useState(null);
 
   // Referencias: intervalo de Twitch, guard de carga en vuelo (W-07), listas frescas para callbacks (W-05)
   const checkIntervalRef = useRef(null);
@@ -256,10 +273,12 @@ const UvdWheelPage = () => {
   // ─── Premios pendientes vs pagados (W-02) ───
   const pendingRewards = useMemo(() => completedParticipants.filter((p) => !p.paid), [completedParticipants]);
   const paidRewards = useMemo(() => completedParticipants.filter((p) => p.paid), [completedParticipants]);
+  // Filas de pago con el multiplicador del día: CSV, airdrop directo y propuesta al Safe salen de aquí
+  const payoutRows = useMemo(() => buildPayoutRows(pendingRewards, payoutMultiplier), [pendingRewards, payoutMultiplier]);
   const pendingTotal = useMemo(() => {
-    const total = pendingRewards.reduce((sum, p) => sum + Number(p.result), 0);
+    const total = sumPayout(payoutRows);
     return Number.isFinite(total) ? Number(total.toFixed(6)) : 0;
-  }, [pendingRewards]);
+  }, [payoutRows]);
   const pendingTotalUnits = useMemo(() => {
     try {
       return ethers.utils.parseUnits(pendingTotal.toString(), tokenDecimals);
@@ -838,11 +857,8 @@ const UvdWheelPage = () => {
   // ─── Exportar / copiar (W-02: por defecto solo pendientes de pago) ───
   const rowsForExport = includePaidInExport ? completedParticipants : pendingRewards;
 
-  const generateCSVContent = (rows) => {
-    const header = 'token_type,token_address,receiver,amount,id';
-    const content = rows.map((result) => `erc20,${token},${result.wallet},${result.result}`).join(',\n');
-    return `${header}\n${content},`;
-  };
+  // Formato CSV Airdrop, con el multiplicador del día aplicado
+  const generateCSVContent = (rows) => buildCsvContent(buildPayoutRows(rows, payoutMultiplier), token);
 
   const ensureExportRows = () => {
     if (rowsForExport.length > 0) return true;
@@ -1195,8 +1211,9 @@ const UvdWheelPage = () => {
     let recipients;
     let amounts;
     try {
-      recipients = batch.map((p) => p.wallet);
-      amounts = batch.map((p) => ethers.utils.parseUnits(String(p.result), tokenDecimals));
+      const batchRows = buildPayoutRows(batch, payoutMultiplier);
+      recipients = batchRows.map((r) => r.wallet);
+      amounts = batchRows.map((r) => ethers.utils.parseUnits(r.amount, tokenDecimals));
     } catch (error) {
       console.error('Invalid reward amounts:', error);
       showToast.error(t('wheel.wallet.invalid_state'));
@@ -1258,6 +1275,81 @@ const UvdWheelPage = () => {
     }
   };
 
+  // Proponer el airdrop pendiente en la multifirma: un transfer por ganador, firmado por la wallet
+  // conectada (que debe ser owner) y encolado en el Transaction Service. Los demás firmantes
+  // confirman en Safe como siempre. Es lo mismo que produce la app CSV Airdrop.
+  const proposeToSafe = async () => {
+    if (!window.ethereum || !walletAddress || !isAddress(token)) {
+      showToast.error(t('wheel.wallet.invalid_state'));
+      return;
+    }
+    if (!isSafeOwner) {
+      showToast.error(t('wheel.results.safe.not_owner'));
+      return;
+    }
+    const batch = pendingRewards;
+    if (batch.length === 0) {
+      showToast.info(t('wheel.wallet.nothing_pending', 'Todos los premios ya fueron pagados'));
+      return;
+    }
+
+    try {
+      setIsProposingToSafe(true);
+      setPendingConfirm(null);
+      if (!(await ensureAvalanche())) return;
+
+      const batchRows = buildPayoutRows(batch, payoutMultiplier);
+      const transactions = buildSafeTransferTransactions(batchRows, token, tokenDecimals);
+
+      // El SDK de Safe se carga solo aquí para no engordar la carga inicial de la ruleta
+      const { default: Safe } = await import('@safe-global/protocol-kit');
+      const protocolKit = await Safe.init({
+        provider: window.ethereum,
+        signer: walletAddress,
+        safeAddress: SAFE_ADDRESS,
+      });
+
+      // Nonce siguiente al último pendiente en cola: el on-chain ya está tomado por propuestas en espera
+      const nonce = await getSafeNextNonce(SAFE_ADDRESS);
+      const safeTransaction = await protocolKit.createTransaction({ transactions, options: { nonce } });
+      const safeTxHash = await protocolKit.getTransactionHash(safeTransaction);
+
+      showToast.info(t('wheel.results.safe.sign_prompt'));
+      const signature = await protocolKit.signHash(safeTxHash);
+
+      await proposeSafeTransaction({
+        safeAddress: SAFE_ADDRESS,
+        safeTransactionData: safeTransaction.data,
+        safeTxHash,
+        senderAddress: walletAddress,
+        senderSignature: signature.data,
+        origin: buildSafeOrigin({
+          url: `${window.location.origin}/wheel`,
+          multiplier: payoutMultiplier,
+          winners: batchRows.length,
+        }),
+      });
+
+      // Quedan marcados como pagados vía Safe: no se vuelven a proponer ni a enviar desde la EOA
+      const proposedIds = new Set(batch.map((p) => p.id));
+      setCompletedParticipants((prev) =>
+        prev.map((p) => (proposedIds.has(p.id) ? { ...p, paid: true, safeTxHash } : p))
+      );
+      setLastSafeTxHash(safeTxHash);
+      showToast.success(t('wheel.results.safe.success', { nonce, count: batchRows.length }));
+    } catch (error) {
+      console.error('Error proposing to Safe:', error);
+      const rejected = error.code === 4001 || String(error.message || '').toLowerCase().includes('rejected');
+      if (rejected) {
+        showToast.info(t('wheel.wallet.user_rejected'));
+      } else {
+        showToast.error(`${t('wheel.results.safe.error')}: ${error.message || ''}`);
+      }
+    } finally {
+      setIsProposingToSafe(false);
+    }
+  };
+
   // Reiniciar la sesión (W-17): borra el historial local; lo pagado ya quedó on-chain
   const startNewSession = () => {
     setCompletedParticipants([]);
@@ -1286,6 +1378,28 @@ const UvdWheelPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [walletAddress, token, pendingKey]);
+
+  // Saber si la wallet conectada es firmante del Safe (habilita "Proponer en el Safe")
+  useEffect(() => {
+    if (!walletAddress) {
+      setIsSafeOwner(null);
+      return undefined;
+    }
+    let cancelled = false;
+    setIsSafeOwner(null);
+    getSafeOwners(SAFE_ADDRESS)
+      .then((owners) => {
+        if (!cancelled) {
+          setIsSafeOwner(owners.some((owner) => owner.toLowerCase() === walletAddress.toLowerCase()));
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setIsSafeOwner(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [walletAddress]);
 
   // Escuchar cambios de cuenta/red; al montar solo se LEE la cuenta (eth_accounts), sin popups (W-14)
   useEffect(() => {
@@ -1866,12 +1980,14 @@ const UvdWheelPage = () => {
                                           )}
                                           {completed.paid ? (
                                             <a
-                                              href={completed.txHash ? txUrl(completed.txHash) : undefined}
+                                              href={completed.safeTxHash ? SAFE_QUEUE_URL : completed.txHash ? txUrl(completed.txHash) : undefined}
                                               target="_blank"
                                               rel="noopener noreferrer"
                                               className="inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-ultraviolet/30 text-ultraviolet-light border border-ultraviolet/50 hover:bg-ultraviolet/50"
                                             >
-                                              {t('wheel.participants.list.paid', 'Pagado')} ✓
+                                              {completed.safeTxHash
+                                                ? t('wheel.results.safe.queued')
+                                                : `${t('wheel.participants.list.paid', 'Pagado')} ✓`}
                                             </a>
                                           ) : (
                                             <span className="text-[10px] text-text-secondary">
@@ -1903,6 +2019,36 @@ const UvdWheelPage = () => {
                           />
                           {t('wheel.results.export.include_paid', 'Incluir ya pagados')} ({paidRewards.length})
                         </label>
+                        {/* Multiplicador del día: aplica al CSV, al airdrop directo y a la propuesta al Safe */}
+                        <div className="flex flex-wrap items-center gap-2 text-sm text-text-secondary">
+                          <label htmlFor="payout-multiplier" className="font-semibold text-text-primary">
+                            {t('wheel.results.multiplier.label')}
+                          </label>
+                          <input
+                            id="payout-multiplier"
+                            type="number"
+                            min="1"
+                            step="1"
+                            value={payoutMultiplier}
+                            onChange={(e) => setPayoutMultiplier(e.target.value)}
+                            className="w-20 bg-background border border-ultraviolet-darker/40 rounded px-2 py-1 text-text-primary"
+                          />
+                          {[1, 5, 10].map((m) => (
+                            <button
+                              key={m}
+                              type="button"
+                              onClick={() => setPayoutMultiplier(m)}
+                              className={`px-2 py-1 rounded text-xs font-semibold border transition-colors ${
+                                Number(payoutMultiplier) === m
+                                  ? 'bg-ultraviolet text-white border-ultraviolet'
+                                  : 'bg-background text-text-primary border-ultraviolet-darker/40 hover:bg-ultraviolet-darker/30'
+                              }`}
+                            >
+                              x{m}
+                            </button>
+                          ))}
+                          <span className="text-xs">{t('wheel.results.multiplier.hint')}</span>
+                        </div>
                         <div className="flex gap-2">
                           <button
                             type="button"
@@ -1918,6 +2064,79 @@ const UvdWheelPage = () => {
                           >
                             {t('wheel.results.export.button')}
                           </button>
+                        </div>
+
+                        {/* Proponer el airdrop pendiente en la multifirma (queda en la cola del Safe) */}
+                        <div className="mt-2 p-4 bg-background border border-ultraviolet-darker/40 rounded-lg">
+                          <h4 className="text-lg font-semibold text-text-primary mb-1">
+                            {t('wheel.results.safe.title')}
+                          </h4>
+                          <p className="text-sm text-text-secondary mb-2">
+                            {t('wheel.results.safe.description')}
+                          </p>
+                          <p className="text-sm text-text-secondary mb-3">
+                            <span className="font-semibold text-text-primary">{t('wheel.wallet.pending_rewards', 'Pendiente de pago')}:</span> {pendingTotal} {tokenSymbol} · {t('wheel.results.safe.transfers_count', { count: pendingRewards.length })}
+                          </p>
+                          {!walletAddress ? (
+                            <button type="button" onClick={connectWallet} className={`w-full ${primaryButtonClass}`}>
+                              {t('wheel.wallet.connect_button')}
+                            </button>
+                          ) : (
+                            <div className="flex flex-col gap-2">
+                              {isSafeOwner === null && (
+                                <p className="text-xs text-text-secondary">{t('wheel.results.safe.checking_owner')}</p>
+                              )}
+                              {isSafeOwner === false && (
+                                <p className="text-sm text-red-400">{t('wheel.results.safe.not_owner')}</p>
+                              )}
+                              {pendingConfirm === 'propose' ? (
+                                <div className="rounded border border-ultraviolet/60 bg-ultraviolet-darker/30 p-3 text-sm text-text-primary">
+                                  <p className="mb-2">
+                                    {t('wheel.results.safe.confirm', {
+                                      total: pendingTotal,
+                                      symbol: tokenSymbol,
+                                      count: pendingRewards.length,
+                                    })}
+                                  </p>
+                                  <div className="flex gap-2">
+                                    <button type="button" onClick={proposeToSafe} className={`flex-1 ${primaryButtonClass}`}>
+                                      {t('wheel.results.safe.confirm_button')}
+                                    </button>
+                                    <button
+                                      type="button"
+                                      onClick={() => setPendingConfirm(null)}
+                                      className="flex-1 bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded transition-colors"
+                                    >
+                                      {t('common.cancel')}
+                                    </button>
+                                  </div>
+                                </div>
+                              ) : (
+                                <button
+                                  type="button"
+                                  onClick={() => setPendingConfirm('propose')}
+                                  disabled={isProposingToSafe || isSending || pendingRewards.length === 0 || isSafeOwner !== true}
+                                  className={`w-full ${primaryButtonClass}`}
+                                >
+                                  {isProposingToSafe
+                                    ? t('wheel.results.safe.proposing')
+                                    : pendingRewards.length === 0
+                                      ? t('wheel.wallet.nothing_pending', 'Todos los premios ya fueron pagados')
+                                      : `${t('wheel.results.safe.propose_button')} (${pendingRewards.length})`}
+                                </button>
+                              )}
+                              {lastSafeTxHash && (
+                                <a
+                                  href={SAFE_QUEUE_URL}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-full text-center bg-gray-600 hover:bg-gray-500 text-white font-bold py-2 px-4 rounded transition-colors"
+                                >
+                                  {t('wheel.results.safe.view_queue')}
+                                </a>
+                              )}
+                            </div>
+                          )}
                         </div>
 
                         {/* Sección para enviar premios directamente */}
