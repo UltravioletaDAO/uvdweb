@@ -127,7 +127,9 @@ Plataforma de aplicación y gestión para UltraVioleta DAO, la élite de Web3 en
   - Rueda de premios/decisiones con segmentos personalizables
   - Sistema de gestión de participantes
   - Resultados basados en probabilidad
-  - Funcionalidad de exportación de resultados
+  - Funcionalidad de exportación de resultados (CSV en el formato de la app CSV Airdrop de Safe)
+  - Multiplicador del día (x5, x10) que aplica a la vez al CSV, al airdrop directo y a la propuesta al Safe
+  - Botón "Proponer en el Safe": con una wallet firmante conectada, deja el airdrop en la cola de la multifirma de la DAO (un `transfer` por ganador, firmado con Safe Protocol Kit y enviado al Transaction Service sin API key); los demás firmantes confirman en Safe
   - Integración con Twitch para recompensas
   - Verificación opcional de billeteras contra base de datos (configurable con `REACT_APP_WHEEL_VERIFY_WALLET`)
 

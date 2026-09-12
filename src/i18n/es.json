@@ -781,6 +781,23 @@
         "button": "Copiar resultados",
         "error": "Error al copiar los resultados"
       },
+      "multiplier": {
+        "label": "Multiplicador del día",
+        "hint": "Aplica al CSV, al airdrop directo y a la propuesta al Safe"
+      },
+      "safe": {
+        "title": "Proponer en la multifirma",
+        "description": "Crea la transacción en la cola del Safe de la DAO con un transfer por ganador, igual que CSV Airdrop. Los demás firmantes la confirman en Safe.",
+        "transfers_count": "{{count}} transferencias",
+        "propose_button": "Proponer en el Safe",
+        "proposing": "Proponiendo...",
+        "checking_owner": "Verificando si la wallet es firmante...",
+        "not_owner": "La wallet conectada no es firmante del Safe",
+        "sign_prompt": "Firma el hash de la transacción en tu wallet",
+        "success": "Transacción propuesta en el Safe con nonce {{nonce}} ({{count}} transferencias)",
+        "error": "Error al proponer la transacción en el Safe",
+        "view_queue": "Ver la cola del Safe"
+      },
       "send": {
         "button": "Enviar premios"
       }

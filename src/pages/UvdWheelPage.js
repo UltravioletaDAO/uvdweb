@@ -9,6 +9,14 @@ import { ethers } from 'ethers';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { PlayCircleIcon, CurrencyDollarIcon, SparklesIcon } from '@heroicons/react/24/outline';
+import { getSafeOwners, getSafeNextNonce, proposeSafeTransaction } from '../services/safe/safeService';
+import {
+  buildPayoutRows,
+  buildCsvContent,
+  buildSafeTransferTransactions,
+  buildSafeOrigin,
+  sumPayout,
+} from '../utils/wheelAirdrop';
 
 // ABI mínimo para interactuar con tokens ERC20
 const ERC20_ABI = [
@@ -25,6 +33,10 @@ const AIRDROP_ABI = [
 
 // Dirección del contrato de Airdrop en Avalanche C-Chain
 const AIRDROP_CONTRACT_ADDRESS = "0x23E5c4Dee08e1Ff9b3338e3729E83b8aA6d30342";
+
+// Multisig de la DAO en Avalanche: de aquí salen los premios cuando se proponen al Safe
+const SAFE_ADDRESS = "0x52110a2Cc8B6bBf846101265edAAe34E753f3389";
+const SAFE_QUEUE_URL = `https://app.safe.global/transactions/queue?safe=avax:${SAFE_ADDRESS}`;
 
 // Configuración de la red Avalanche C-Chain
 const AVALANCHE_NETWORK = {
@@ -131,6 +143,11 @@ const UvdWheelPage = () => {
   const [spinWasDoubled, setSpinWasDoubled] = useState(false);
   const [lastWinnerUsername, setLastWinnerUsername] = useState('');
   const [lastWinnerWallet, setLastWinnerWallet] = useState('');
+  // Multiplicador del día (x5, x10) sobre todos los premios: CSV, airdrop directo y propuesta al Safe
+  const [payoutMultiplier, setPayoutMultiplier] = useState(1);
+  const [isSafeOwner, setIsSafeOwner] = useState(null); // null = verificando, true/false = respuesta del Safe
+  const [isProposingToSafe, setIsProposingToSafe] = useState(false);
+  const [lastSafeTxHash, setLastSafeTxHash] = useState(null);
 
   // Referencia para mantener el intervalo de verificación
   const checkIntervalRef = useRef(null);
@@ -764,15 +781,10 @@ const UvdWheelPage = () => {
     setCurrentParticipantIndex(0);
   };
 
-  // Función para generar el contenido del CSV
-  const generateCSVContent = () => {
-    const header = 'token_type,token_address,receiver,amount,id';
-    // Usar completedParticipants para incluir todos los resultados históricos
-    const content = completedParticipants.map(result => 
-      `erc20,${token},${result.wallet},${result.result}`
-    ).join(',\n');
-    return `${header}\n${content},`;
-  };
+  // Función para generar el contenido del CSV (formato CSV Airdrop, con el multiplicador del día aplicado).
+  // Usa completedParticipants para incluir todos los resultados históricos.
+  const generateCSVContent = () =>
+    buildCsvContent(buildPayoutRows(completedParticipants, payoutMultiplier), token);
 
   // Exportar resultados a CSV
   const exportToCSV = () => {
@@ -1103,8 +1115,11 @@ const UvdWheelPage = () => {
       const signer = provider.getSigner();
       const tokenContract = new ethers.Contract(token, ERC20_ABI, signer);
       
-      // Aprobar el contrato para gastar tokens (aprobar solo lo necesario)
-      const amounts = ethers.utils.parseUnits(completedParticipants.reduce((sum, p) => sum + Number(p.result), 0).toString(), tokenDecimals);
+      // Aprobar el contrato para gastar tokens (aprobar solo lo necesario, con el multiplicador del día)
+      const amounts = ethers.utils.parseUnits(
+        sumPayout(buildPayoutRows(completedParticipants, payoutMultiplier)).toString(),
+        tokenDecimals
+      );
       const tx = await tokenContract.approve(
         AIRDROP_CONTRACT_ADDRESS, 
         amounts
@@ -1146,10 +1161,11 @@ const UvdWheelPage = () => {
       const signer = provider.getSigner();
       const airdropContract = new ethers.Contract(AIRDROP_CONTRACT_ADDRESS, AIRDROP_ABI, signer);
       
-      // Preparar los arrays para el airdrop
-      const recipients = completedParticipants.map(p => p.wallet);
-      const amounts = completedParticipants.map(p => 
-        ethers.utils.parseUnits(p.result, tokenDecimals)
+      // Preparar los arrays para el airdrop (con el multiplicador del día aplicado)
+      const payoutRows = buildPayoutRows(completedParticipants, payoutMultiplier);
+      const recipients = payoutRows.map(p => p.wallet);
+      const amounts = payoutRows.map(p =>
+        ethers.utils.parseUnits(p.amount, tokenDecimals)
       );
       
       // Mostrar notificación de transacción pendiente
@@ -1176,6 +1192,72 @@ const UvdWheelPage = () => {
     }
   };
 
+  // Proponer el airdrop en la multifirma: un transfer por ganador, firmado por la wallet
+  // conectada (que debe ser owner) y encolado en el Transaction Service. Los demás firmantes
+  // confirman en Safe como siempre. Es lo mismo que produce la app CSV Airdrop.
+  const proposeToSafe = async () => {
+    if (!window.ethereum || !walletAddress || !isAddress(token) || completedParticipants.length === 0) {
+      showToast.error(t('wheel.wallet.invalid_state'));
+      return;
+    }
+    if (!isSafeOwner) {
+      showToast.error(t('wheel.results.safe.not_owner'));
+      return;
+    }
+
+    try {
+      setIsProposingToSafe(true);
+
+      const onAvalanche = await switchToAvalancheNetwork();
+      if (onAvalanche === false) return;
+
+      const payoutRows = buildPayoutRows(completedParticipants, payoutMultiplier);
+      const transactions = buildSafeTransferTransactions(payoutRows, token, tokenDecimals);
+
+      // El SDK de Safe se carga solo aquí para no engordar la carga inicial de la ruleta
+      const { default: Safe } = await import('@safe-global/protocol-kit');
+      const protocolKit = await Safe.init({
+        provider: window.ethereum,
+        signer: walletAddress,
+        safeAddress: SAFE_ADDRESS,
+      });
+
+      // Nonce siguiente al último pendiente en cola: el on-chain ya está tomado por propuestas en espera
+      const nonce = await getSafeNextNonce(SAFE_ADDRESS);
+      const safeTransaction = await protocolKit.createTransaction({ transactions, options: { nonce } });
+      const safeTxHash = await protocolKit.getTransactionHash(safeTransaction);
+
+      showToast.info(t('wheel.results.safe.sign_prompt'));
+      const signature = await protocolKit.signHash(safeTxHash);
+
+      await proposeSafeTransaction({
+        safeAddress: SAFE_ADDRESS,
+        safeTransactionData: safeTransaction.data,
+        safeTxHash,
+        senderAddress: walletAddress,
+        senderSignature: signature.data,
+        origin: buildSafeOrigin({
+          url: `${window.location.origin}/wheel`,
+          multiplier: payoutMultiplier,
+          winners: payoutRows.length,
+        }),
+      });
+
+      setLastSafeTxHash(safeTxHash);
+      showToast.success(t('wheel.results.safe.success', { nonce, count: payoutRows.length }));
+    } catch (error) {
+      console.error('Error proposing to Safe:', error);
+      const rejected = error.code === 4001 || String(error.message || '').toLowerCase().includes('rejected');
+      if (rejected) {
+        showToast.info(t('wheel.wallet.user_rejected'));
+      } else {
+        showToast.error(`${t('wheel.results.safe.error')}: ${error.message || ''}`);
+      }
+    } finally {
+      setIsProposingToSafe(false);
+    }
+  };
+
   // Formatear el balance para mostrarlo
   const formatBalance = (balance) => {
     if (!balance) return "0";
@@ -1196,6 +1278,28 @@ const UvdWheelPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [walletAddress, token]);
+
+  // Saber si la wallet conectada es firmante del Safe (habilita "Proponer en el Safe")
+  useEffect(() => {
+    if (!walletAddress) {
+      setIsSafeOwner(null);
+      return undefined;
+    }
+    let cancelled = false;
+    setIsSafeOwner(null);
+    getSafeOwners(SAFE_ADDRESS)
+      .then((owners) => {
+        if (!cancelled) {
+          setIsSafeOwner(owners.some((owner) => owner.toLowerCase() === walletAddress.toLowerCase()));
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setIsSafeOwner(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [walletAddress]);
 
   // Escuchar cambios de cuenta
   useEffect(() => {
@@ -1242,6 +1346,10 @@ const UvdWheelPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Total con el multiplicador del día: es lo que muestran y envían todas las vías de pago
+  const totalPayout = sumPayout(buildPayoutRows(completedParticipants, payoutMultiplier));
+  const tokenSymbol = token === defaultToken ? 'UVD' : '';
 
   return (
     <>
@@ -1678,9 +1786,38 @@ const UvdWheelPage = () => {
                       </div>
                     )}
 
-                    {/* Botones de exportar y copiar */}
+                    {/* Multiplicador del día, botones de exportar/copiar y propuesta al Safe */}
                     {(participantResults.length > 0 || completedParticipants.length > 0) && (
                       <div className="flex flex-col gap-2 mt-4">
+                        <div className="flex flex-wrap items-center gap-2">
+                          <label htmlFor="payout-multiplier" className="text-sm font-semibold text-gray-700">
+                            {t('wheel.results.multiplier.label')}
+                          </label>
+                          <input
+                            id="payout-multiplier"
+                            type="number"
+                            min="1"
+                            step="1"
+                            value={payoutMultiplier}
+                            onChange={(e) => setPayoutMultiplier(e.target.value)}
+                            className="w-20 border border-gray-300 rounded px-2 py-1 text-sm"
+                          />
+                          {[1, 5, 10].map((m) => (
+                            <button
+                              key={m}
+                              type="button"
+                              onClick={() => setPayoutMultiplier(m)}
+                              className={`px-2 py-1 rounded text-xs font-semibold border transition-colors ${
+                                Number(payoutMultiplier) === m
+                                  ? 'bg-purple-600 text-white border-purple-600'
+                                  : 'bg-white text-purple-700 border-purple-300 hover:bg-purple-50'
+                              }`}
+                            >
+                              x{m}
+                            </button>
+                          ))}
+                          <span className="text-xs text-gray-500">{t('wheel.results.multiplier.hint')}</span>
+                        </div>
                         <div className="flex gap-2">
                           <button
                             onClick={copyToClipboard}
@@ -1695,7 +1832,57 @@ const UvdWheelPage = () => {
                             {t('wheel.results.export.button')}
                           </button>
                         </div>
-                        
+
+                        {/* Proponer el airdrop en la multifirma (queda en la cola del Safe) */}
+                        <div className="mt-2 p-4 bg-indigo-50 rounded-lg border border-indigo-200">
+                          <h4 className="text-lg font-semibold text-indigo-800 mb-1">
+                            {t('wheel.results.safe.title')}
+                          </h4>
+                          <p className="text-sm text-gray-700 mb-2">
+                            {t('wheel.results.safe.description')}
+                          </p>
+                          <p className="text-sm text-gray-700 mb-3">
+                            <span className="font-semibold">{t('wheel.wallet.total_rewards')}:</span> {totalPayout} {tokenSymbol} · {t('wheel.results.safe.transfers_count', { count: completedParticipants.length })}
+                          </p>
+                          {!walletAddress ? (
+                            <button
+                              onClick={connectWallet}
+                              className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded transition-colors"
+                            >
+                              {t('wheel.wallet.connect_button')}
+                            </button>
+                          ) : (
+                            <div className="flex flex-col gap-2">
+                              {isSafeOwner === null && (
+                                <p className="text-xs text-gray-500">{t('wheel.results.safe.checking_owner')}</p>
+                              )}
+                              {isSafeOwner === false && (
+                                <p className="text-sm text-red-600">{t('wheel.results.safe.not_owner')}</p>
+                              )}
+                              <button
+                                onClick={proposeToSafe}
+                                disabled={isProposingToSafe || completedParticipants.length === 0 || isSafeOwner !== true}
+                                className={`w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded transition-colors
+                                  ${(isProposingToSafe || completedParticipants.length === 0 || isSafeOwner !== true) ? 'opacity-50 cursor-not-allowed' : ''}`}
+                              >
+                                {isProposingToSafe
+                                  ? t('wheel.results.safe.proposing')
+                                  : t('wheel.results.safe.propose_button')}
+                              </button>
+                              {lastSafeTxHash && (
+                                <a
+                                  href={SAFE_QUEUE_URL}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="w-full text-center bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded transition-colors"
+                                >
+                                  {t('wheel.results.safe.view_queue')}
+                                </a>
+                              )}
+                            </div>
+                          )}
+                        </div>
+
                         {/* Sección para enviar premios directamente */}
                         <div className="mt-2 p-4 bg-purple-50 rounded-lg border border-purple-200">
                           <h4 className="text-lg font-semibold text-purple-800 mb-2">
@@ -1714,7 +1901,7 @@ const UvdWheelPage = () => {
                                 </p>
                               )}
                               <p className="text-sm text-gray-700">
-                                  <span className="font-semibold">{t('wheel.wallet.total_rewards')}:</span> {completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} {token === defaultToken ? 'UVD' : ''}
+                                  <span className="font-semibold">{t('wheel.wallet.total_rewards')}:</span> {totalPayout} {tokenSymbol}
                                 </p>
                             </div>
                           ) : (
@@ -1745,8 +1932,8 @@ const UvdWheelPage = () => {
                                       ${(isApproving || isSending || completedParticipants.length === 0) ? 'opacity-50 cursor-not-allowed' : ''}`}
                                   >
                                     {isApproving 
-                                      ? `${t('wheel.wallet.approving')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVD' : ''} ...` 
-                                      : `${t('wheel.wallet.approve_button')} ${completedParticipants.reduce((sum, p) => sum + Number(p.result), 0)} ${token === defaultToken ? 'UVD' : ''}`}
+                                      ? `${t('wheel.wallet.approving')} ${totalPayout} ${tokenSymbol} ...` 
+                                      : `${t('wheel.wallet.approve_button')} ${totalPayout} ${tokenSymbol}`}
                                   </button>
                                 )}
                                 
