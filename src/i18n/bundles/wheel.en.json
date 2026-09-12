@@ -51,7 +51,8 @@
         "username_placeholder": "Username (optional)",
         "button": "Add",
         "wallet_required": "Wallet is required",
-        "duplicate": "That wallet is already on the list"
+        "duplicate": "That wallet is already on the list",
+        "swapped": "The wallet was in the username field; the fields were swapped"
       },
       "list": {
         "title": "Participants and Results",
@@ -84,6 +85,26 @@
         "button": "Copy results",
         "error": "Error copying results",
         "success": "Results copied"
+      },
+      "multiplier": {
+        "label": "Today's multiplier",
+        "hint": "Applies to the CSV, the direct airdrop and the Safe proposal"
+      },
+      "safe": {
+        "title": "Propose in the multisig",
+        "description": "Creates the transaction in the DAO Safe queue with one transfer per pending winner, just like CSV Airdrop. The other signers confirm it in Safe.",
+        "transfers_count": "{{count}} transfers",
+        "propose_button": "Propose in Safe",
+        "confirm": "Propose {{total}} {{symbol}} to {{count}} recipients in Safe",
+        "confirm_button": "Confirm proposal",
+        "proposing": "Proposing...",
+        "checking_owner": "Checking whether the wallet is a signer...",
+        "not_owner": "The connected wallet is not a Safe signer",
+        "sign_prompt": "Sign the transaction hash in your wallet",
+        "success": "Transaction proposed in Safe with nonce {{nonce}} ({{count}} transfers)",
+        "error": "Error proposing the transaction in Safe",
+        "queued": "Queued in Safe",
+        "view_queue": "View the Safe queue"
       },
       "send": {
         "button": "Send rewards"

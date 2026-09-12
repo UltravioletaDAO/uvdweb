@@ -51,7 +51,8 @@
         "username_placeholder": "Nom d'utilisateur (optionnel)",
         "button": "Ajouter",
         "wallet_required": "Le wallet est requis",
-        "duplicate": "Ce wallet est déjà dans la liste"
+        "duplicate": "Ce wallet est déjà dans la liste",
+        "swapped": "Le wallet était dans le champ utilisateur ; les champs ont été échangés"
       },
       "list": {
         "title": "Participants et Résultats",
@@ -84,6 +85,26 @@
         "button": "Copier les résultats",
         "error": "Erreur lors de la copie des résultats",
         "success": "Résultats copiés"
+      },
+      "multiplier": {
+        "label": "Multiplicateur du jour",
+        "hint": "S'applique au CSV, à l'airdrop direct et à la proposition Safe"
+      },
+      "safe": {
+        "title": "Proposer dans le multisig",
+        "description": "Crée la transaction dans la file du Safe de la DAO avec un transfert par gagnant en attente, comme CSV Airdrop. Les autres signataires la confirment dans Safe.",
+        "transfers_count": "{{count}} transferts",
+        "propose_button": "Proposer dans Safe",
+        "confirm": "Proposer {{total}} {{symbol}} à {{count}} destinataires dans Safe",
+        "confirm_button": "Confirmer la proposition",
+        "proposing": "Proposition en cours...",
+        "checking_owner": "Vérification que le portefeuille est signataire...",
+        "not_owner": "Le portefeuille connecté n'est pas signataire du Safe",
+        "sign_prompt": "Signez le hash de la transaction dans votre portefeuille",
+        "success": "Transaction proposée dans Safe avec le nonce {{nonce}} ({{count}} transferts)",
+        "error": "Erreur lors de la proposition de la transaction dans Safe",
+        "queued": "Dans la file du Safe",
+        "view_queue": "Voir la file du Safe"
       },
       "send": {
         "button": "Envoyer les prix"

@@ -51,7 +51,8 @@
         "username_placeholder": "Usuário (opcional)",
         "button": "Adicionar",
         "wallet_required": "A wallet é obrigatória",
-        "duplicate": "Essa wallet já está na lista"
+        "duplicate": "Essa wallet já está na lista",
+        "swapped": "A wallet estava no campo de usuário; os campos foram trocados"
       },
       "list": {
         "title": "Participantes e Resultados",
@@ -84,6 +85,26 @@
         "button": "Copiar resultados",
         "error": "Erro ao copiar os resultados",
         "success": "Resultados copiados"
+      },
+      "multiplier": {
+        "label": "Multiplicador do dia",
+        "hint": "Aplica ao CSV, ao airdrop direto e à proposta no Safe"
+      },
+      "safe": {
+        "title": "Propor na multisig",
+        "description": "Cria a transação na fila do Safe da DAO com uma transferência por vencedor pendente, igual ao CSV Airdrop. Os demais signatários confirmam no Safe.",
+        "transfers_count": "{{count}} transferências",
+        "propose_button": "Propor no Safe",
+        "confirm": "Propor {{total}} {{symbol}} para {{count}} destinatários no Safe",
+        "confirm_button": "Confirmar proposta",
+        "proposing": "Propondo...",
+        "checking_owner": "Verificando se a carteira é signatária...",
+        "not_owner": "A carteira conectada não é signatária do Safe",
+        "sign_prompt": "Assine o hash da transação na sua carteira",
+        "success": "Transação proposta no Safe com nonce {{nonce}} ({{count}} transferências)",
+        "error": "Erro ao propor a transação no Safe",
+        "queued": "Na fila do Safe",
+        "view_queue": "Ver a fila do Safe"
       },
       "send": {
         "button": "Enviar prêmios"

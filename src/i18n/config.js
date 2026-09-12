@@ -1,6 +1,6 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from 'i18next-browser-languagedetector';
+import { createLanguageDetector, DETECTION_OPTIONS, SUPPORTED_LNGS } from './langDetector';
 
 import { loadI18nBundle } from './loadBundle';
 
@@ -10,7 +10,7 @@ import fr from './fr.json';
 import pt from './pt.json';
 
 i18n
-  .use(LanguageDetector)
+  .use(createLanguageDetector())
   .use(initReactI18next)
   .init({
     resources: {
@@ -20,7 +20,8 @@ i18n
       pt: { translation: pt }
     },
     fallbackLng: 'es',
-    supportedLngs: ['es', 'en', 'pt', 'fr'],
+    supportedLngs: SUPPORTED_LNGS,
+    detection: DETECTION_OPTIONS,
     nonExplicitSupportedLngs: true,
     interpolation: {
       escapeValue: false
