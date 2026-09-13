@@ -54,24 +54,36 @@ aplica al apex. Quedan dos caminos:
 2. **Ticket a AWS Support** para que muevan el apex sin caída (el TXT `_ultravioletadao.xyz`
    que crea este módulo es la prueba de propiedad que piden). Tarda días.
 
-Camino 1, en orden y sin pausas entre pasos:
+Camino 1, en orden y sin pausas entre pasos. **El orden importa y se midió mal la primera
+vez (2026-09-12):** CloudFront rechaza `UpdateDistribution` con el alias mientras el DNS
+del alias apunte a OTRA distribución (`CNAMEAlreadyExists: ... incorrectly configured DNS
+record that points to another CloudFront distribution`). Primero el DNS al borde, después
+el alias; al revés, cada reintento falla igual y la ventana se alarga.
 
 ```bash
 # 0. La distribución del borde ya está desplegada y probada (sección anterior).
-# 1. Amplify suelta apex y www; conserva dev (branch develop).
+# 1. Amplify suelta apex y www; conserva dev (branch develop). Deja de servir el apex
+#    en segundos (TLS falla): aquí empieza la ventana.
 aws amplify update-domain-association --app-id dhck0d8f8ypxv --domain-name ultravioletadao.xyz \
   --region us-east-2 --sub-domain-settings prefix=dev,branchName=develop
-# 2. El borde toma los alias y el DNS apunta al borde (un solo apply).
+# 2. DNS al borde PRIMERO (sin alias todavía).
 cd infra/terraform/edge
+terraform apply -var attach_aliases=false -var dns_target=edge
+# 3. Alias al borde. CloudFront tarda ~1 min en ver el DNS nuevo: reintentar cada 20 s
+#    mientras devuelva CNAMEAlreadyExists. El deploy del alias toma ~3 min; ahí cierra la ventana.
 terraform apply -var attach_aliases=true -var dns_target=edge
-# 3. Verificar.
+# 4. Verificar.
 curl -sI -H "Accept: text/markdown" https://ultravioletadao.xyz/ | grep -i -E "content-type|x-markdown-tokens"
 curl -sI https://www.ultravioletadao.xyz/wheel | grep -i -E "^HTTP|location"   # 301 al apex
 curl -sI https://dev.ultravioletadao.xyz/ | grep -i "^HTTP"                     # sigue en Amplify
 ```
 
-Después del cutover, `attach_aliases=true` y `dns_target=edge` pasan a ser los valores por
-defecto en `variables.tf` para que un apply sin variables no deshaga nada.
+**Ventana medida el 2026-09-12:** apex caído de 20:50:54 a ~21:16:30 (unos 26 min). Con el
+orden correcto habrían sido ~5 min: 20 de esos minutos fueron reintentos del paso 3 hecho
+antes del paso 2. `dev` no se cayó.
+
+Después del cutover, `attach_aliases=true` y `dns_target=edge` son los valores por defecto
+en `variables.tf` para que un apply sin variables no deshaga nada.
 
 ## Reversa
 

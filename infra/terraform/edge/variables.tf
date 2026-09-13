@@ -23,9 +23,9 @@ variable "amplify_cdn_domain" {
 }
 
 variable "dns_target" {
-  description = "A dónde apunta el dominio de marca: `amplify` (como estaba) o `edge` (el borde de este módulo). Cambiarlo es el cutover; volverlo es la reversa."
+  description = "A dónde apunta el dominio de marca: `amplify` (como estaba antes del 2026-09-12) o `edge` (el borde de este módulo). Cambiarlo es el cutover; volverlo es la reversa."
   type        = string
-  default     = "amplify"
+  default     = "edge"
 
   validation {
     condition     = contains(["amplify", "edge"], var.dns_target)
@@ -34,9 +34,9 @@ variable "dns_target" {
 }
 
 variable "attach_aliases" {
-  description = "Si la distribución lleva los alias apex y www. Nace en false porque CloudFront solo permite un alias por distribución en todo AWS y hoy los tiene Amplify; se pone en true en el cutover, después de mover los alias con associate-alias (ver infra/AGENTIC_FASE4.md)."
+  description = "Si la distribución lleva los alias apex y www. Nació en false porque CloudFront solo permite un alias por distribución en todo AWS y los tenía Amplify; desde el cutover del 2026-09-12 es true (ver infra/AGENTIC_FASE4.md). En false, el borde suelta los alias (reversa)."
   type        = bool
-  default     = false
+  default     = true
 }
 
 variable "markdown_routes" {
