@@ -33,7 +33,8 @@
       "description": "Revolutionary cross-chain payment infrastructure enabling AI agents to transact without gas fees using x402 protocol and EIP-3009 meta-transactions",
       "button": "Launch Facilitator",
       "stats": {
-        "networks": "8 Networks",
+        "networks": "{{count}} Networks",
+        "networksUnknown": "Multi-network",
         "gasless": "$0 Gas Fees",
         "settlement": "~2s Settlement",
         "trustless": "100% Trustless"
@@ -1570,7 +1571,7 @@
       },
       "multichain": {
         "title": "Multi-Network Support",
-        "description": "Live on 4 mainnets (Avalanche, Base, Celo, HyperEVM) and 4 testnets for maximum flexibility."
+        "description": "Mainnets and testnets across several chain families. The facilitator publishes the live list at GET /supported."
       },
       "instant": {
         "title": "Instant Settlement",

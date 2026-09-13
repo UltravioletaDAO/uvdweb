@@ -312,7 +312,7 @@ const SEO = ({
       'x402 protocol implementation for stateless payments',
       'HTTP-based payment requests',
       'RESTful API with /health, /supported, /verify, /settle endpoints',
-      'Multi-network: 4 mainnets + 4 testnets',
+      'Multi-network: mainnets and testnets listed live at GET /supported',
       'No custody - direct peer-to-peer transactions',
       'Autonomous agent economy enablement'
     ],

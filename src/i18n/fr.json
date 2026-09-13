@@ -196,7 +196,8 @@
       "description": "Infrastructure de paiement cross-chain révolutionnaire permettant aux agents IA de transacter sans frais de gas grâce au protocole x402 et aux méta-transactions EIP-3009",
       "button": "Lancer le Facilitateur",
       "stats": {
-        "networks": "8 Réseaux",
+        "networks": "{{count}} Réseaux",
+        "networksUnknown": "Multi-réseau",
         "gasless": "0 $ de frais de gas",
         "settlement": "Règlement ~2s",
         "trustless": "100% Trustless"
@@ -1678,7 +1679,7 @@
       },
       "multichain": {
         "title": "Support multi-réseau",
-        "description": "Actif sur 4 mainnets (Avalanche, Base, Celo, HyperEVM) et 4 testnets pour une flexibilité maximale."
+        "description": "Mainnets et testnets de plusieurs familles de blockchains. Le facilitateur publie la liste à jour sur GET /supported."
       },
       "instant": {
         "title": "Règlement instantané",
