@@ -70,7 +70,7 @@ curl -sI https://ultravioletadao.xyz/.well-known/api-catalog | grep -i '^link' |
 ## Para c0der
 
 La comparación del catálogo vivo contra `config/ecosystem.toml` le toca a c0der. El script de abajo ya
-se corrió desde `c0der/master-4` el 2026-09-14 a las 00:56Z contra el `services.json` local: los 13
+se corrió desde la raíz de c0der el 2026-09-14 a las 00:56Z contra el `services.json` local: los 13
 nodos quedan decididos, los 7 anchors están vivos según `destino_codigos_vivos` de
 `config/agentic-sites.toml` y el resultado es `DIVERGE`, exit 1, porque producción todavía sirve el
 catálogo viejo. Después del deploy tiene que dar `OK` y exit 0.
