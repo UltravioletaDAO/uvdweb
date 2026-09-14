@@ -147,10 +147,11 @@
         {
           "href": "https://meshrelay.xyz/auth.md",
           "type": "text/markdown",
-          "title": "auth.md: ERC-8128 signature for the read-only tier, API key issued out of band for the full surface",
+          "title": "auth.md: ERC-8128 signature for the read-only tier, API key issued out of band for the full surface, x402 payment on paid endpoints",
           "auth-scheme": [
             "erc-8128",
-            "api-key"
+            "api-key",
+            "x402"
           ],
           "price-model": [
             "x402-per-call"
