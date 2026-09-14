@@ -32,6 +32,8 @@ const isHttpsUrl = (value) => {
   }
 };
 const sorted = (list) => [...list].sort();
+// Atributos destino de RFC 8288 que RFC 9264 §4.2.4.1 serializa como string (hreflang no se usa).
+const REGISTERED_ATTRIBUTES = ['href', 'type', 'title'];
 
 describe('archivo de datos del api-catalog', () => {
   it('dice de qué archivo y de qué commit de c0der salió', () => {
@@ -79,15 +81,17 @@ describe('forma de RFC 9264 (application/linkset+json)', () => {
           expect(targets.length).toBeGreaterThan(0);
           targets.forEach((link) => {
             expect(isHttpsUrl(link.href)).toBe(true);
-            Object.entries(link).forEach(([attribute, value]) => {
-              if (['href', 'type', 'title'].includes(attribute)) {
-                expect(typeof value).toBe('string');
-              } else {
-                // Atributos de extensión (RFC 9264 §4.2.4.3): siempre array de strings.
+            const attributes = Object.entries(link);
+            attributes
+              .filter(([attribute]) => REGISTERED_ATTRIBUTES.includes(attribute))
+              .forEach(([, value]) => expect(typeof value).toBe('string'));
+            // Atributos de extensión (RFC 9264 §4.2.4.3): siempre array de strings.
+            attributes
+              .filter(([attribute]) => !REGISTERED_ATTRIBUTES.includes(attribute))
+              .forEach(([, value]) => {
                 expect(Array.isArray(value)).toBe(true);
-                value.forEach((v) => expect(typeof v).toBe('string'));
-              }
-            });
+                expect(value.every((v) => typeof v === 'string')).toBe(true);
+              });
           });
         });
     });
