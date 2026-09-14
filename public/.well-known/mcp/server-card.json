@@ -412,6 +412,6 @@
     "supported": "https://facilitator.ultravioletadao.xyz/supported",
     "verify": "https://facilitator.ultravioletadao.xyz/verify",
     "settle": "https://facilitator.ultravioletadao.xyz/settle",
-    "description": "x402 v1 gasless micropayments (scheme \"exact\", EIP-3009). Verify/settle are plain HTTP endpoints of the facilitator, not MCP tools; the get_facilitator_networks tool reads the live network list. This MCP server never charges for anything."
+    "description": "x402 gasless stablecoin payments through the UltravioletaDAO facilitator. Verify and settle are HTTP endpoints of the facilitator (the URLs above) and also tools of its own MCP server, x402_verify and x402_settle, declared with the rest of its tools in its server card https://facilitator.ultravioletadao.xyz/.well-known/mcp/server-card.json. This MCP server does not proxy them: its get_facilitator_networks tool reads the live network list from /supported, and it never charges for anything."
   }
 }

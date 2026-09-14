@@ -33,7 +33,8 @@
       "description": "Infraestructura revolucionaria de pagos cross-chain que permite a los agentes IA transaccionar sin tarifas de gas usando el protocolo x402 y meta-transacciones EIP-3009",
       "button": "Lanzar Facilitador",
       "stats": {
-        "networks": "8 Redes",
+        "networks": "{{count}} Redes",
+        "networksUnknown": "Multi-red",
         "gasless": "$0 Tarifas Gas",
         "settlement": "~2s Liquidación",
         "trustless": "100% Trustless"
@@ -798,7 +799,7 @@
       },
       "multichain": {
         "title": "Soporte Multi-Red",
-        "description": "Activo en 4 mainnets (Avalanche, Base, Celo, HyperEVM) y 4 testnets para máxima flexibilidad."
+        "description": "Mainnets y testnets de varias familias de blockchains. El facilitador publica la lista viva en GET /supported."
       },
       "instant": {
         "title": "Liquidación Instantánea",
