@@ -1,44 +1,296 @@
 {
   "linkset": [
     {
-      "anchor": "https://api.ultravioletadao.xyz",
+      "anchor": "https://ultravioletadao.xyz/.well-known/api-catalog",
+      "item": [
+        {
+          "href": "https://karmakadabra.ultravioletadao.xyz",
+          "title": "KarmaKadabra"
+        },
+        {
+          "href": "https://api.execution.market",
+          "title": "Execution Market"
+        },
+        {
+          "href": "https://api.meshrelay.xyz",
+          "title": "MeshRelay"
+        },
+        {
+          "href": "https://api.describe.net",
+          "title": "Describe.net"
+        },
+        {
+          "href": "https://facilitator.ultravioletadao.xyz",
+          "title": "x402 Facilitator"
+        },
+        {
+          "href": "https://api.ultravioletadao.xyz",
+          "title": "ultravioletadao.xyz"
+        },
+        {
+          "href": "https://api.402milly.xyz",
+          "title": "402milly"
+        }
+      ]
+    },
+    {
+      "anchor": "https://karmakadabra.ultravioletadao.xyz",
       "service-desc": [
         {
-          "href": "https://ultravioletadao.xyz/.well-known/openapi/uvdao-api.json",
-          "type": "application/vnd.oai.openapi+json;version=3.0"
+          "href": "https://karmakadabra.ultravioletadao.xyz/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "MCP server card (read-only Streamable HTTP at /mcp)"
         }
       ],
       "service-doc": [
         {
-          "href": "https://github.com/UltravioletaDAO",
-          "type": "text/html"
+          "href": "https://karmakadabra.ultravioletadao.xyz/llms.txt",
+          "type": "text/plain",
+          "title": "llms.txt"
         }
       ],
-      "status": [
+      "service-meta": [
         {
-          "href": "https://api.ultravioletadao.xyz/",
-          "type": "application/json"
+          "href": "https://karmakadabra.ultravioletadao.xyz/auth.md",
+          "type": "text/markdown",
+          "title": "auth.md: anonymous, read-only, unmetered",
+          "auth-scheme": [
+            "none"
+          ],
+          "price-model": [
+            "free"
+          ]
         }
       ],
-      "item": [
-        { "href": "https://api.ultravioletadao.xyz/apply" },
-        { "href": "https://api.ultravioletadao.xyz/wallets" },
-        { "href": "https://api.ultravioletadao.xyz/mcp" }
-      ],
-      "describedby": [
+      "api-catalog": [
         {
-          "href": "https://ultravioletadao.xyz/.well-known/api-catalog",
+          "href": "https://karmakadabra.ultravioletadao.xyz/.well-known/api-catalog",
           "type": "application/linkset+json"
         }
       ]
     },
     {
-      "anchor": "https://api.ultravioletadao.xyz/mcp",
+      "anchor": "https://api.execution.market",
       "service-desc": [
+        {
+          "href": "https://api.execution.market/openapi.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "OpenAPI"
+        },
+        {
+          "href": "https://execution.market/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "MCP server card (Streamable HTTP at mcp.execution.market)"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://api.execution.market/skill.md",
+          "type": "text/plain",
+          "title": "skill.md: agent manual, served by the API itself"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://execution.market/auth.md",
+          "type": "text/markdown",
+          "title": "auth.md: ERC-8128 request signing, OAuth 2.1 for third-party MCP clients",
+          "auth-scheme": [
+            "erc-8128",
+            "oauth2"
+          ],
+          "price-model": [
+            "x402-escrow"
+          ]
+        },
+        {
+          "href": "https://api.execution.market/.well-known/x402",
+          "type": "application/json",
+          "title": "x402 discovery: networks, tokens and platform fee"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.execution.market/api/v1/health",
+          "type": "application/json"
+        }
+      ],
+      "api-catalog": [
+        {
+          "href": "https://execution.market/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.meshrelay.xyz",
+      "service-desc": [
+        {
+          "href": "https://api.meshrelay.xyz/openapi.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "OpenAPI"
+        },
+        {
+          "href": "https://meshrelay.xyz/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "MCP server card"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://meshrelay.xyz/llms.txt",
+          "type": "text/plain",
+          "title": "llms.txt"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://meshrelay.xyz/auth.md",
+          "type": "text/markdown",
+          "title": "auth.md: ERC-8128 signature for the read-only tier, API key issued out of band for the full surface",
+          "auth-scheme": [
+            "erc-8128",
+            "api-key"
+          ],
+          "price-model": [
+            "x402-per-call"
+          ]
+        },
+        {
+          "href": "https://meshrelay.xyz/.well-known/x402",
+          "type": "application/json",
+          "title": "x402 discovery: paid endpoints and live prices"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.meshrelay.xyz/health",
+          "type": "application/json"
+        }
+      ],
+      "api-catalog": [
+        {
+          "href": "https://meshrelay.xyz/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.describe.net",
+      "service-desc": [
+        {
+          "href": "https://api.describe.net/openapi.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "OpenAPI"
+        },
+        {
+          "href": "https://describe.net/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "MCP server card (Streamable HTTP at api.describe.net/mcp)"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://describe.net/llms.txt",
+          "type": "text/plain",
+          "title": "llms.txt"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://describe.net/auth.md",
+          "type": "text/markdown",
+          "title": "auth.md: no accounts or tokens, payment is the authentication",
+          "auth-scheme": [
+            "x402"
+          ],
+          "price-model": [
+            "x402-per-call"
+          ]
+        },
+        {
+          "href": "https://api.describe.net/pricing",
+          "type": "application/json",
+          "title": "Price of every route and the free tier"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://api.describe.net/health",
+          "type": "application/json"
+        }
+      ],
+      "api-catalog": [
+        {
+          "href": "https://describe.net/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://facilitator.ultravioletadao.xyz",
+      "service-desc": [
+        {
+          "href": "https://facilitator.ultravioletadao.xyz/openapi.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "OpenAPI"
+        },
+        {
+          "href": "https://facilitator.ultravioletadao.xyz/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "MCP server card"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://facilitator.ultravioletadao.xyz/llms.txt",
+          "type": "text/plain",
+          "title": "llms.txt"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://facilitator.ultravioletadao.xyz/auth.md",
+          "type": "text/markdown",
+          "title": "auth.md: no accounts, keys or OAuth; the payment carries its own signature",
+          "auth-scheme": [
+            "none"
+          ],
+          "price-model": [
+            "free"
+          ]
+        },
+        {
+          "href": "https://facilitator.ultravioletadao.xyz/.well-known/x402",
+          "type": "application/json",
+          "title": "x402 discovery: supported networks and schemes, no paid routes"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://facilitator.ultravioletadao.xyz/health",
+          "type": "application/json"
+        }
+      ],
+      "api-catalog": [
+        {
+          "href": "https://facilitator.ultravioletadao.xyz/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://api.ultravioletadao.xyz",
+      "service-desc": [
+        {
+          "href": "https://ultravioletadao.xyz/.well-known/openapi/uvdao-api.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "OpenAPI"
+        },
         {
           "href": "https://ultravioletadao.xyz/.well-known/mcp/server-card.json",
           "type": "application/json",
-          "title": "MCP server card: transport, tools and schemas"
+          "title": "MCP server card (POST https://api.ultravioletadao.xyz/mcp)"
         }
       ],
       "service-doc": [
@@ -48,43 +300,72 @@
           "title": "How to connect the remote MCP server"
         }
       ],
+      "service-meta": [
+        {
+          "href": "https://ultravioletadao.xyz/auth.md",
+          "type": "text/markdown",
+          "title": "auth.md: public endpoints, no authentication and no payments",
+          "auth-scheme": [
+            "none"
+          ],
+          "price-model": [
+            "free"
+          ]
+        }
+      ],
       "status": [
         {
           "href": "https://api.ultravioletadao.xyz/health",
           "type": "application/json"
         }
-      ],
-      "describedby": [
-        {
-          "href": "https://ultravioletadao.xyz/.well-known/api-catalog",
-          "type": "application/linkset+json"
-        }
       ]
     },
     {
-      "anchor": "https://facilitator.ultravioletadao.xyz",
+      "anchor": "https://api.402milly.xyz",
       "service-desc": [
         {
-          "href": "https://facilitator.ultravioletadao.xyz/api-docs/openapi.json",
-          "type": "application/vnd.oai.openapi+json;version=3.1"
+          "href": "https://api.402milly.xyz/openapi.json",
+          "type": "application/vnd.oai.openapi+json",
+          "title": "OpenAPI"
+        },
+        {
+          "href": "https://402milly.xyz/.well-known/mcp/server-card.json",
+          "type": "application/json",
+          "title": "MCP server card (Streamable HTTP at mcp.402milly.xyz)"
         }
       ],
       "service-doc": [
         {
-          "href": "https://github.com/UltravioletaDAO/x402-rs",
-          "type": "text/html"
+          "href": "https://402milly.xyz/llms.txt",
+          "type": "text/plain",
+          "title": "llms.txt"
+        }
+      ],
+      "service-meta": [
+        {
+          "href": "https://402milly.xyz/auth.md",
+          "type": "text/markdown",
+          "title": "auth.md: x402 payment per purchase",
+          "auth-scheme": [
+            "x402"
+          ],
+          "price-model": [
+            "x402-per-call"
+          ]
         }
       ],
       "status": [
         {
-          "href": "https://facilitator.ultravioletadao.xyz/health",
-          "type": "application/json"
+          "href": "https://api.402milly.xyz/grid/metadata",
+          "type": "application/json",
+          "title": "Grid configuration and live stats"
         }
       ],
-      "item": [
-        { "href": "https://facilitator.ultravioletadao.xyz/supported" },
-        { "href": "https://facilitator.ultravioletadao.xyz/verify" },
-        { "href": "https://facilitator.ultravioletadao.xyz/settle" }
+      "api-catalog": [
+        {
+          "href": "https://402milly.xyz/.well-known/api-catalog",
+          "type": "application/linkset+json"
+        }
       ]
     }
   ]

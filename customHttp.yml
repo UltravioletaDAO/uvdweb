@@ -21,7 +21,7 @@ customHeaders:
   - pattern: '/.well-known/api-catalog'
     headers:
       - key: 'Content-Type'
-        value: 'application/linkset+json'
+        value: 'application/linkset+json; profile="https://www.rfc-editor.org/info/rfc9727"'
   - pattern: '/.well-known/**'
     headers:
       - key: 'Access-Control-Allow-Origin'
