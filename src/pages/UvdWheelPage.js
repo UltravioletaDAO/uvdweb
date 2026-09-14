@@ -28,7 +28,7 @@ import {
   buildSafeOrigin,
   sumPayout,
 } from '../utils/wheelAirdrop';
-import { normalizeParticipantInput } from '../utils/wheelParticipants';
+import { cleanWalletInput, describeInvalidAddress, normalizeParticipantInput } from '../utils/wheelParticipants';
 
 // ABI mínimo para interactuar con tokens ERC20
 const ERC20_ABI = [
@@ -527,7 +527,8 @@ const UvdWheelPage = () => {
 
       for (const redemption of data.data) {
         if (knownRedemptions.has(redemption.id)) continue;
-        const wallet = (redemption.user_input || '').trim();
+        // Misma limpieza que el formulario manual: espacios e invisibles del copy-paste
+        const wallet = cleanWalletInput(redemption.user_input);
 
         if (!isValidEthereumAddress(wallet)) {
           invalidRedemptions.push(redemption);
@@ -929,8 +930,14 @@ const UvdWheelPage = () => {
       showToast.warning(t('wheel.participants.add.wallet_required'));
       return;
     }
-    if (!isValidEthereumAddress(wallet)) {
-      showToast.error(t('wheel.twitch.invalid_wallet'));
+    const invalidReason = describeInvalidAddress(wallet, isValidEthereumAddress);
+    if (invalidReason) {
+      // Decir qué corregir: un checksum alterado (mayúsculas cambiadas) no se ve a simple vista
+      showToast.error(
+        invalidReason === 'checksum'
+          ? t('wheel.participants.add.checksum_mismatch', 'Wallet con mayúsculas alteradas: el checksum EIP-55 no coincide. Pégala tal cual sale de la wallet o toda en minúsculas')
+          : t('wheel.twitch.invalid_wallet')
+      );
       return;
     }
     const duplicate = participantsRef.current.some((p) => p.wallet.toLowerCase() === wallet.toLowerCase());

@@ -1,0 +1,4 @@
+edge.tfplan
+.terraform/
+*.tfstate*
+.terraform.lock.hcl

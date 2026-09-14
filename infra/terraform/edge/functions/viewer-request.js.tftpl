@@ -1,0 +1,62 @@
+// Generado por Terraform desde infra/terraform/edge/functions/viewer-request.js.tftpl
+// CloudFront Function (viewer-request, runtime cloudfront-js-2.0).
+//
+// 1. www.<dominio> -> https://<dominio> (301), como hacía la regla de Amplify.
+// 2. Markdown for Agents: si el cliente pide `Accept: text/markdown` y la ruta es una
+//    página (no un asset), se reescribe al .md que la representa. El HTML sigue siendo
+//    el default para navegadores. Se marca la request para que la función de respuesta
+//    sepa qué se negoció.
+
+var APEX = '${domain}';
+var ROUTES = ${routes};
+var FALLBACK = '${fallback}';
+
+function querystring(qs) {
+  var parts = [];
+  for (var key in qs) {
+    var entry = qs[key];
+    if (entry.multiValue) {
+      for (var i = 0; i < entry.multiValue.length; i++) {
+        parts.push(key + '=' + entry.multiValue[i].value);
+      }
+    } else {
+      parts.push(key + '=' + entry.value);
+    }
+  }
+  return parts.length ? '?' + parts.join('&') : '';
+}
+
+function isPage(uri) {
+  if (uri === '/') return true;
+  var last = uri.substring(uri.lastIndexOf('/') + 1);
+  if (last.indexOf('.') === -1) return true;
+  return last.length > 5 && last.substring(last.length - 5) === '.html';
+}
+
+function handler(event) {
+  var request = event.request;
+  var headers = request.headers;
+  var host = headers.host ? headers.host.value : '';
+
+  if (host === 'www.' + APEX) {
+    return {
+      statusCode: 301,
+      statusDescription: 'Moved Permanently',
+      headers: {
+        location: { value: 'https://' + APEX + request.uri + querystring(request.querystring) }
+      }
+    };
+  }
+
+  var accept = headers.accept ? headers.accept.value.toLowerCase() : '';
+  var wantsMarkdown = accept.indexOf('text/markdown') !== -1;
+  var readOnly = request.method === 'GET' || request.method === 'HEAD';
+
+  if (wantsMarkdown && readOnly && isPage(request.uri)) {
+    var target = ROUTES[request.uri] || FALLBACK;
+    request.uri = target;
+    headers['x-uvd-markdown'] = { value: target };
+  }
+
+  return request;
+}

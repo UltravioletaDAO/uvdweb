@@ -15,10 +15,24 @@ import {
   CurrencyDollarIcon
 } from '@heroicons/react/24/outline';
 import SEO from '../components/SEO';
+import useLiveMetric from '../hooks/useLiveMetric';
+import { ENDPOINTS } from '../services/ecosystem/endpoints';
+import { countFacilitatorNetworks } from '../services/facilitator/supportedNetworks';
 
 const FacilitatorPage = () => {
   const { t } = useTranslation();
   const [copiedAddress, setCopiedAddress] = useState(null);
+
+  // La cifra de redes sale de GET /supported (redes distintas, no kinds). Mientras no hay
+  // respuesta, o si el facilitador no contesta, el chip muestra el texto sin cifra.
+  const { value: networkCount } = useLiveMetric({
+    url: ENDPOINTS.facilitator_supported.url,
+    cacheKey: 'facilitator_network_count',
+    select: (json) => countFacilitatorNetworks(json && json.kinds),
+  });
+  const networksHighlight = networkCount
+    ? t('features.facilitator.stats.networks', { count: networkCount })
+    : t('features.facilitator.stats.networksUnknown');
 
   const mainnetAddress = '0x103040545AC5031A11E8C03dd11324C7333a13C7';
   const testnetAddress = '0x34033041a5944B8F10f8E4D8496Bfb84f1A293A8';
@@ -47,7 +61,7 @@ const FacilitatorPage = () => {
       icon: GlobeAmericasIcon,
       title: t('facilitatorPage.features.multichain.title'),
       description: t('facilitatorPage.features.multichain.description'),
-      highlight: '8 Networks'
+      highlight: networksHighlight
     },
     {
       icon: ClockIcon,
@@ -101,7 +115,7 @@ const FacilitatorPage = () => {
       'x402 protocol implementation',
       'Stateless HTTP payments',
       'RESTful API endpoints',
-      'Multi-network support (4 mainnets + 4 testnets)'
+      networkCount ? `Multi-network support (${networkCount} networks)` : 'Multi-network support'
     ],
     offers: {
       '@type': 'Offer',

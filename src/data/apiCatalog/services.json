@@ -1,0 +1,174 @@
+{
+  "$comment": "Fuente única del api-catalog de la DAO (RFC 9727). Se edita ESTE archivo y se corre `node scripts/generateApiCatalog.js`: public/.well-known/api-catalog y su copia .json se generan, no se tocan a mano. Cada servicio es un nodo de config/ecosystem.toml de c0der con url viva, con el anchor apuntando DIRECTO a su backend. Auth y precio se leyeron de la superficie pública de cada producto (auth.md, oauth-protected-resource, /.well-known/x402); el precio exacto vive en esas superficies y en el 402 en vivo, nunca acá.",
+  "source": {
+    "repo": "c0der",
+    "file": "config/ecosystem.toml",
+    "commit": "c631f268ea8fb362a145d37094eab890d46913f2",
+    "copied_at": "2026-09-14"
+  },
+  "catalog": "https://ultravioletadao.xyz/.well-known/api-catalog",
+  "services": [
+    {
+      "node": "karmakadabra",
+      "name": "KarmaKadabra",
+      "anchor": "https://karmakadabra.ultravioletadao.xyz",
+      "service_desc": [
+        { "href": "https://karmakadabra.ultravioletadao.xyz/.well-known/mcp/server-card.json", "type": "application/json", "title": "MCP server card (read-only Streamable HTTP at /mcp)" }
+      ],
+      "service_doc": [
+        { "href": "https://karmakadabra.ultravioletadao.xyz/llms.txt", "type": "text/plain", "title": "llms.txt" }
+      ],
+      "auth": {
+        "schemes": ["none"],
+        "doc": { "href": "https://karmakadabra.ultravioletadao.xyz/auth.md", "type": "text/markdown", "title": "auth.md: anonymous, read-only, unmetered" }
+      },
+      "price": { "model": "free" },
+      "api_catalog": { "href": "https://karmakadabra.ultravioletadao.xyz/.well-known/api-catalog" }
+    },
+    {
+      "node": "execution-market",
+      "name": "Execution Market",
+      "anchor": "https://api.execution.market",
+      "service_desc": [
+        { "href": "https://api.execution.market/openapi.json", "type": "application/vnd.oai.openapi+json", "title": "OpenAPI" },
+        { "href": "https://execution.market/.well-known/mcp/server-card.json", "type": "application/json", "title": "MCP server card (Streamable HTTP at mcp.execution.market)" }
+      ],
+      "service_doc": [
+        { "href": "https://api.execution.market/skill.md", "type": "text/plain", "title": "skill.md: agent manual, served by the API itself" }
+      ],
+      "status": [
+        { "href": "https://api.execution.market/api/v1/health", "type": "application/json" }
+      ],
+      "auth": {
+        "schemes": ["erc-8128", "oauth2"],
+        "doc": { "href": "https://execution.market/auth.md", "type": "text/markdown", "title": "auth.md: ERC-8128 request signing, OAuth 2.1 for third-party MCP clients" }
+      },
+      "price": {
+        "model": "x402-escrow",
+        "doc": { "href": "https://api.execution.market/.well-known/x402", "type": "application/json", "title": "x402 discovery: networks, tokens and platform fee" }
+      },
+      "api_catalog": { "href": "https://execution.market/.well-known/api-catalog" }
+    },
+    {
+      "node": "meshrelay",
+      "name": "MeshRelay",
+      "anchor": "https://api.meshrelay.xyz",
+      "service_desc": [
+        { "href": "https://api.meshrelay.xyz/openapi.json", "type": "application/vnd.oai.openapi+json", "title": "OpenAPI" },
+        { "href": "https://meshrelay.xyz/.well-known/mcp/server-card.json", "type": "application/json", "title": "MCP server card" }
+      ],
+      "service_doc": [
+        { "href": "https://meshrelay.xyz/llms.txt", "type": "text/plain", "title": "llms.txt" }
+      ],
+      "status": [
+        { "href": "https://api.meshrelay.xyz/health", "type": "application/json" }
+      ],
+      "auth": {
+        "schemes": ["erc-8128", "api-key"],
+        "doc": { "href": "https://meshrelay.xyz/auth.md", "type": "text/markdown", "title": "auth.md: ERC-8128 signature for the read-only tier, API key issued out of band for the full surface" }
+      },
+      "price": {
+        "model": "x402-per-call",
+        "doc": { "href": "https://meshrelay.xyz/.well-known/x402", "type": "application/json", "title": "x402 discovery: paid endpoints and live prices" }
+      },
+      "api_catalog": { "href": "https://meshrelay.xyz/.well-known/api-catalog" }
+    },
+    {
+      "node": "describe-net",
+      "name": "Describe.net",
+      "anchor": "https://api.describe.net",
+      "service_desc": [
+        { "href": "https://api.describe.net/openapi.json", "type": "application/vnd.oai.openapi+json", "title": "OpenAPI" },
+        { "href": "https://describe.net/.well-known/mcp/server-card.json", "type": "application/json", "title": "MCP server card (Streamable HTTP at api.describe.net/mcp)" }
+      ],
+      "service_doc": [
+        { "href": "https://describe.net/llms.txt", "type": "text/plain", "title": "llms.txt" }
+      ],
+      "status": [
+        { "href": "https://api.describe.net/health", "type": "application/json" }
+      ],
+      "auth": {
+        "schemes": ["x402"],
+        "doc": { "href": "https://describe.net/auth.md", "type": "text/markdown", "title": "auth.md: no accounts or tokens, payment is the authentication" }
+      },
+      "price": {
+        "model": "x402-per-call",
+        "doc": { "href": "https://api.describe.net/pricing", "type": "application/json", "title": "Price of every route and the free tier" }
+      },
+      "api_catalog": { "href": "https://describe.net/.well-known/api-catalog" }
+    },
+    {
+      "node": "facilitator",
+      "name": "x402 Facilitator",
+      "anchor": "https://facilitator.ultravioletadao.xyz",
+      "service_desc": [
+        { "href": "https://facilitator.ultravioletadao.xyz/openapi.json", "type": "application/vnd.oai.openapi+json", "title": "OpenAPI" },
+        { "href": "https://facilitator.ultravioletadao.xyz/.well-known/mcp/server-card.json", "type": "application/json", "title": "MCP server card" }
+      ],
+      "service_doc": [
+        { "href": "https://facilitator.ultravioletadao.xyz/llms.txt", "type": "text/plain", "title": "llms.txt" }
+      ],
+      "status": [
+        { "href": "https://facilitator.ultravioletadao.xyz/health", "type": "application/json" }
+      ],
+      "auth": {
+        "schemes": ["none"],
+        "doc": { "href": "https://facilitator.ultravioletadao.xyz/auth.md", "type": "text/markdown", "title": "auth.md: no accounts, keys or OAuth; the payment carries its own signature" }
+      },
+      "price": {
+        "model": "free",
+        "doc": { "href": "https://facilitator.ultravioletadao.xyz/.well-known/x402", "type": "application/json", "title": "x402 discovery: supported networks and schemes, no paid routes" }
+      },
+      "api_catalog": { "href": "https://facilitator.ultravioletadao.xyz/.well-known/api-catalog" }
+    },
+    {
+      "node": "ultravioletadao",
+      "name": "ultravioletadao.xyz",
+      "anchor": "https://api.ultravioletadao.xyz",
+      "service_desc": [
+        { "href": "https://ultravioletadao.xyz/.well-known/openapi/uvdao-api.json", "type": "application/vnd.oai.openapi+json", "title": "OpenAPI" },
+        { "href": "https://ultravioletadao.xyz/.well-known/mcp/server-card.json", "type": "application/json", "title": "MCP server card (POST https://api.ultravioletadao.xyz/mcp)" }
+      ],
+      "service_doc": [
+        { "href": "https://ultravioletadao.xyz/llms-full.txt", "type": "text/plain", "title": "How to connect the remote MCP server" }
+      ],
+      "status": [
+        { "href": "https://api.ultravioletadao.xyz/health", "type": "application/json" }
+      ],
+      "auth": {
+        "schemes": ["none"],
+        "doc": { "href": "https://ultravioletadao.xyz/auth.md", "type": "text/markdown", "title": "auth.md: public endpoints, no authentication and no payments" }
+      },
+      "price": { "model": "free" }
+    },
+    {
+      "node": "402milly",
+      "name": "402milly",
+      "anchor": "https://api.402milly.xyz",
+      "service_desc": [
+        { "href": "https://api.402milly.xyz/openapi.json", "type": "application/vnd.oai.openapi+json", "title": "OpenAPI" },
+        { "href": "https://402milly.xyz/.well-known/mcp/server-card.json", "type": "application/json", "title": "MCP server card (Streamable HTTP at mcp.402milly.xyz)" }
+      ],
+      "service_doc": [
+        { "href": "https://402milly.xyz/llms.txt", "type": "text/plain", "title": "llms.txt" }
+      ],
+      "status": [
+        { "href": "https://api.402milly.xyz/grid/metadata", "type": "application/json", "title": "Grid configuration and live stats" }
+      ],
+      "auth": {
+        "schemes": ["x402"],
+        "doc": { "href": "https://402milly.xyz/auth.md", "type": "text/markdown", "title": "auth.md: x402 payment per purchase" }
+      },
+      "price": { "model": "x402-per-call" },
+      "api_catalog": { "href": "https://402milly.xyz/.well-known/api-catalog" }
+    }
+  ],
+  "excluded": [
+    { "node": "x402-sdk", "reason": "Su url en ecosystem.toml es la página del paquete en PyPI: es una librería, no un servicio HTTP con anchor." },
+    { "node": "abracadabra", "reason": "Su url en ecosystem.toml es una ruta de este sitio (https://ultravioletadao.xyz/stream-summaries), no una API propia." },
+    { "node": "karma-hello", "reason": "Sin url en ecosystem.toml (status beta)." },
+    { "node": "tarotof", "reason": "Sin url en ecosystem.toml (status beta)." },
+    { "node": "faro", "reason": "Sin url en ecosystem.toml (status beta)." },
+    { "node": "enclaveops", "reason": "Sin url en ecosystem.toml (status beta)." }
+  ]
+}
