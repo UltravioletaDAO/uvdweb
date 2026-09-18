@@ -166,6 +166,8 @@
       "load": "Charger depuis Twitch",
       "loading": "Chargement des récompenses...",
       "load_error": "Erreur lors du chargement des récompenses Twitch",
+      "channel_mismatch": "Vous êtes connecté en tant que {{login}}, mais la roue lit les points de chaîne de {{channel}}. Twitch ne l'autorise qu'avec le compte de la chaîne : être éditeur ou modérateur ne suffit pas. Connectez-vous en tant que {{channel}}.",
+      "switch_account": "Se connecter avec le compte de la chaîne",
       "auth_error": "Erreur d'authentification. Veuillez vous reconnecter",
       "complete_error": "Erreur lors de la finalisation de la récompense",
       "no_rewards": "Aucune récompense en attente à charger",
