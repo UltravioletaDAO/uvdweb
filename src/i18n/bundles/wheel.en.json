@@ -166,6 +166,8 @@
       "load": "Load from Twitch",
       "loading": "Loading rewards...",
       "load_error": "Error loading Twitch rewards",
+      "channel_mismatch": "You are connected as {{login}}, but the wheel reads the channel points of {{channel}}. Twitch only allows that with the channel's own account — editor and moderator are not enough. Connect as {{channel}}.",
+      "switch_account": "Connect with the channel account",
       "auth_error": "Authentication error. Please connect again",
       "complete_error": "Error completing reward",
       "no_rewards": "No pending rewards to load",
