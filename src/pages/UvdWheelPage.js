@@ -72,6 +72,14 @@ const STREAM_URL = 'https://twitch.tv/0xultravioleta';
 const TWITCH_CLIENT_ID = process.env.REACT_APP_TWITCH_CLIENT_ID;
 const API_URL = process.env.REACT_APP_API_URL || 'https://api.ultravioletadao.xyz';
 
+// Canal cuyos puntos lee la ruleta. Definido en un solo lugar: antes era implícito
+// ("el dueño del token"), y conectarse con otra cuenta apuntaba la ruleta al canal
+// equivocado —incluida la creación de la recompensa allá— con un error que no decía nada.
+// La API de channel points de Twitch es del broadcaster: `broadcaster_id` DEBE ser el mismo
+// usuario del token; no existe scope de editor ni de moderador.
+// Ref: dev.twitch.tv/docs/api/reference — Get Custom Reward, error 401.
+const TWITCH_CHANNEL = (process.env.REACT_APP_TWITCH_CHANNEL || '0xultravioleta').trim().toLowerCase();
+
 // Persistencia local de la sesión del stream (W-17) y del mute (W-23)
 const SESSION_STORAGE_KEY = 'uvd-wheel-session';
 const MUTED_STORAGE_KEY = 'uvd-wheel-muted';
@@ -145,6 +153,17 @@ class TwitchAuthError extends Error {
   }
 }
 
+// El token es válido, pero es de otra cuenta que la del canal: Twitch no deja leer los
+// puntos de canal de un tercero ni siendo editor o moderador. No es un token vencido,
+// así que no se desconecta la sesión: se dice qué cuenta hace falta.
+class TwitchChannelError extends Error {
+  constructor(login) {
+    super('twitch_channel_mismatch');
+    this.name = 'TwitchChannelError';
+    this.login = login;
+  }
+}
+
 // Confeti ligero en CSS (W-23); no se renderiza con prefers-reduced-motion
 const CONFETTI_COLORS = ['#6a00ff', '#9146FF', '#ffffff', '#FFAC33', '#7c1fff'];
 const Confetti = ({ burstKey }) => {
@@ -207,6 +226,8 @@ const UvdWheelPage = () => {
   const [twitchAccessToken, setTwitchAccessToken] = useState(readStoredTwitchToken);
   const [twitchLogin, setTwitchLogin] = useState('');
   const [twitchExpiresIn, setTwitchExpiresIn] = useState(null);
+  // Login conectado cuando no es el del canal: aviso persistente, un toast se va y no explica nada
+  const [twitchChannelMismatch, setTwitchChannelMismatch] = useState(null);
   const [isProcessingResult, setIsProcessingResult] = useState(false);
   const [isSpinning, setIsSpinning] = useState(false);
   const [walletAddress, setWalletAddress] = useState(null);
@@ -368,6 +389,7 @@ const UvdWheelPage = () => {
     setTwitchAccessToken(null);
     setTwitchLogin('');
     setTwitchExpiresIn(null);
+    setTwitchChannelMismatch(null);
     setAutoUpdateTwitch(false);
   }, []);
 
@@ -418,10 +440,17 @@ const UvdWheelPage = () => {
     if (broadcasterIdRef.current) return broadcasterIdRef.current;
     const userResponse = await twitchFetch('https://api.twitch.tv/helix/users', { signal });
     const userData = await userResponse.json();
-    if (!userData.data || !userData.data[0]) {
+    const user = userData.data && userData.data[0];
+    if (!user) {
       throw new TwitchAuthError();
     }
-    broadcasterIdRef.current = userData.data[0].id;
+    // El dueño del token tiene que ser el canal: con otra cuenta, Twitch responde 401
+    // ("broadcaster_id debe coincidir con el usuario del token") o —peor— responde 200
+    // sobre el canal equivocado y la ruleta crearía la recompensa allá.
+    if (TWITCH_CHANNEL && String(user.login || '').toLowerCase() !== TWITCH_CHANNEL) {
+      throw new TwitchChannelError(user.login || '');
+    }
+    broadcasterIdRef.current = user.id;
     return broadcasterIdRef.current;
   };
 
@@ -448,6 +477,7 @@ const UvdWheelPage = () => {
   const loadTwitchRewards = async () => {
     if (loadingRef.current || !twitchTokenRef.current) return;
     loadingRef.current = true;
+    setTwitchChannelMismatch(null);
     setIsLoadingTwitch(true);
     const controller = new AbortController();
     abortRef.current = controller;
@@ -462,7 +492,13 @@ const UvdWheelPage = () => {
         { signal }
       );
       if (!rewardsResponse.ok) {
-        throw new Error('error_fetching_rewards');
+        // Sin el motivo de Twitch el toast era un callejón sin salida: se guarda para mostrarlo
+        const errorData = await rewardsResponse.json().catch(() => ({}));
+        console.error('Error fetching rewards:', rewardsResponse.status, errorData);
+        const rewardsError = new Error('error_fetching_rewards');
+        rewardsError.status = rewardsResponse.status;
+        rewardsError.detail = errorData.message || '';
+        throw rewardsError;
       }
       const rewardsData = await rewardsResponse.json();
 
@@ -628,10 +664,19 @@ const UvdWheelPage = () => {
       console.error('Error loading Twitch rewards:', error);
       if (error instanceof TwitchAuthError) {
         handleTwitchAuthError();
+      } else if (error instanceof TwitchChannelError) {
+        setTwitchChannelMismatch(error.login);
+        showToast.error(
+          t('wheel.twitch.channel_mismatch', {
+            login: error.login,
+            channel: TWITCH_CHANNEL,
+          })
+        );
       } else if (error.message === 'error_fetching_redemptions') {
         showToast.error(t('wheel.twitch.redemption_error'));
       } else {
-        showToast.error(t('wheel.twitch.load_error'));
+        const reason = [error.status, error.detail].filter(Boolean).join(' · ');
+        showToast.error(reason ? `${t('wheel.twitch.load_error')} (${reason})` : t('wheel.twitch.load_error'));
       }
     } finally {
       loadingRef.current = false;
@@ -1874,6 +1919,27 @@ const UvdWheelPage = () => {
                               {t('wheel.twitch.connected_as', 'Conectado como {{login}}', { login: twitchLogin })}
                               {twitchHours ? ` · ${t('wheel.twitch.expires_in', 'sesión válida ~{{hours}} h', { hours: twitchHours })}` : ''}
                             </p>
+                          )}
+                          {/* Cuenta equivocada: Twitch no deja leer puntos de canal ajenos (ni editor ni mod) */}
+                          {twitchChannelMismatch && (
+                            <div
+                              role="alert"
+                              className="text-xs text-amber-200 bg-amber-900/30 border border-amber-500/40 rounded p-2"
+                            >
+                              <p>
+                                {t('wheel.twitch.channel_mismatch', {
+                                  login: twitchChannelMismatch,
+                                  channel: TWITCH_CHANNEL,
+                                })}
+                              </p>
+                              <button
+                                type="button"
+                                onClick={disconnectTwitch}
+                                className="mt-2 underline hover:text-amber-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-amber-400 rounded"
+                              >
+                                {t('wheel.twitch.switch_account', 'Conectar con la cuenta del canal')}
+                              </button>
+                            </div>
                           )}
                           <div className="flex items-center justify-between bg-background-input p-2 rounded">
                             <span id="wheel-auto-update-label" className="text-sm font-medium text-text-primary">

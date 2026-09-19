@@ -128,6 +128,8 @@
       "load": "Cargar de Twitch",
       "loading": "Cargando recompensas...",
       "load_error": "Error al cargar las recompensas de Twitch",
+      "channel_mismatch": "Estás conectado como {{login}}, pero la ruleta lee los puntos de canal de {{channel}}. Twitch solo lo permite con la cuenta del canal: ser editor o moderador no alcanza. Conéctate como {{channel}}.",
+      "switch_account": "Conectar con la cuenta del canal",
       "auth_error": "Error de autenticación. Por favor, conéctate de nuevo",
       "complete_error": "Error al completar la recompensa",
       "no_rewards": "No hay recompensas pendientes por cargar",
