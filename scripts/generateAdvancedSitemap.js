@@ -122,6 +122,12 @@ const routes = [
     lastmod: new Date().toISOString()
   },
   {
+    path: '/terms',
+    priority: 0.3,
+    changefreq: 'yearly',
+    lastmod: new Date().toISOString()
+  },
+  {
     path: '/delegations',
     priority: 0.5,
     changefreq: 'monthly',
