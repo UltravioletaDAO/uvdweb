@@ -1925,5 +1925,47 @@
         "answer": "Les récompenses vont de 10 946 à 832 040 jetons UVD par message de qualité. Avec les multiplicateurs (2x pour les détenteurs de NFT, jusqu'à 5x selon l'influence Twitter), les participants actifs peuvent gagner entre 100 000 et 5 000 000 de jetons UVD par jour."
       }
     }
+  },
+  "terms": {
+    "seoTitle": "Conditions du Service",
+    "seoDescription": "Conditions du service d'Ultravioleta DAO LLC : qui opère, à quoi elles s'appliquent (y compris Emporium), service fourni en l'état, limitation de responsabilité, usage acceptable, loi applicable et contact.",
+    "title": "Conditions du Service",
+    "version_label": "Version",
+    "effective_label": "En vigueur depuis",
+    "sections": {
+      "operator": {
+        "title": "Qui opère ces services",
+        "body": "Ces services sont opérés par {{entity}}, une société enregistrée dans l'État du Wyoming, États-Unis, domiciliée au {{address}}, {{cityStateZip}}, {{country}}. Dans ces conditions, « nous » désigne cette entité et « vous », la personne qui utilise les services."
+      },
+      "scope": {
+        "title": "À quoi elles s'appliquent",
+        "body": "Elles s'appliquent aux sites, applications et services d'Ultravioleta DAO, y compris Emporium. Emporium est un annuaire : les commerces publient une fiche et les agents demandent des devis. Emporium ne déplace pas d'argent, ne conserve ni fonds ni clés et n'est pas partie à l'accord entre le client et le commerce : le paiement se fait directement entre eux, et ce qu'ils conviennent dans un devis relève de la responsabilité de ces deux parties."
+      },
+      "asIs": {
+        "title": "Le service est fourni en l'état",
+        "body": "Les services sont fournis « en l'état » et « selon disponibilité », sans garantie d'aucune sorte, expresse ou implicite, y compris celles de qualité marchande, d'adéquation à un usage particulier et d'absence de contrefaçon. Nous ne garantissons pas qu'ils soient toujours disponibles ni exempts d'erreurs, ni que les informations publiées par des tiers — par exemple la fiche d'un commerce ou le contenu d'un devis — soient exactes, à jour ou complètes."
+      },
+      "liability": {
+        "title": "Limitation de responsabilité",
+        "body": "Dans la mesure permise par la loi, {{entity}} n'est pas responsable des dommages indirects, accessoires, spéciaux, punitifs ni consécutifs, ni du manque à gagner, de la perte de données ou de la perte de fonds résultant de l'usage des services. Notre responsabilité totale cumulée n'excédera pas le montant que vous nous avez payé pour le service concerné au cours des douze (12) mois précédant le fait à l'origine de la réclamation."
+      },
+      "acceptableUse": {
+        "title": "Usage acceptable",
+        "body": "N'utilisez pas les services pour des activités illégales, de la fraude, de l'usurpation d'identité, du spam, ni pour publier des informations fausses ou qui ne vous appartiennent pas. N'essayez pas de compromettre, de surcharger ni d'extraire abusivement des données de notre infrastructure. Nous pouvons suspendre l'accès ou retirer une publication qui enfreint ces règles."
+      },
+      "law": {
+        "title": "Loi applicable et juridiction",
+        "body": "Ces conditions sont régies par les lois de l'État du Wyoming, États-Unis, sans donner effet à ses règles de conflit de lois. Tout litige sera soumis aux tribunaux compétents de l'État du Wyoming, États-Unis."
+      },
+      "contact": {
+        "title": "Réclamations et contact",
+        "body": "Écrivez à l'adresse de contact de la DAO en indiquant le service, la date et ce qui s'est passé. C'est le canal officiel pour les réclamations, les avis et les questions sur ces conditions."
+      },
+      "changes": {
+        "title": "Modifications de ces conditions",
+        "body": "Nous pouvons mettre à jour ces conditions. Chaque mise à jour porte un identifiant de version et une date d'entrée en vigueur, tous deux visibles en haut de cette page. Nous publierons la nouvelle version ici avant son entrée en vigueur ; si vous continuez à utiliser les services après cette date, nous considérons que vous acceptez la version en vigueur."
+      }
+    },
+    "languages_note": "Cette page est publiée en plusieurs langues. En cas de divergence entre les versions, la version espagnole prévaut."
   }
 }

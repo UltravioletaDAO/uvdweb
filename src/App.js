@@ -43,6 +43,7 @@ const Ecosystem = lazy(() => import("./pages/Ecosystem"));
 const Purge = lazy(() => import("./pages/Purge"));
 const KarmaHelloLanding = lazy(() => import("./pages/KarmaHelloLanding"));
 const Delegations = lazy(() => import("./pages/Delegations"));
+const Terms = lazy(() => import("./pages/Terms"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -96,6 +97,7 @@ function AppRoutes() {
           <Route path="/purge" element={<Purge />} />
           <Route path="/karma-hello" element={<KarmaHelloLanding />} />
           <Route path="/delegations" element={<Delegations />} />
+          <Route path="/terms" element={<Terms />} />
         </Routes>
       </Suspense>
     </ErrorBoundary>

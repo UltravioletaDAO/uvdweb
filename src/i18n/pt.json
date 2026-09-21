@@ -1925,5 +1925,47 @@
         "answer": "As recompensas vão de 10.946 a 832.040 tokens UVD por mensagem de qualidade. Com multiplicadores (2x para holders de NFT, até 5x por influência no Twitter), participantes ativos podem ganhar entre 100.000 e 5.000.000 de tokens UVD por dia."
       }
     }
+  },
+  "terms": {
+    "seoTitle": "Termos do Serviço",
+    "seoDescription": "Termos do serviço da Ultravioleta DAO LLC: quem opera, a que se aplicam (incluindo o Emporium), serviço sem garantia, limitação de responsabilidade, uso aceitável, lei aplicável e contato.",
+    "title": "Termos do Serviço",
+    "version_label": "Versão",
+    "effective_label": "Em vigor desde",
+    "sections": {
+      "operator": {
+        "title": "Quem opera estes serviços",
+        "body": "Estes serviços são operados pela {{entity}}, uma sociedade registrada no estado de Wyoming, Estados Unidos, com domicílio em {{address}}, {{cityStateZip}}, {{country}}. Nestes termos, «nós» se refere a essa entidade e «você», a quem usa os serviços."
+      },
+      "scope": {
+        "title": "A que se aplicam",
+        "body": "Aplicam-se aos sites, aplicativos e serviços da Ultravioleta DAO, incluindo o Emporium. O Emporium é um diretório: os negócios publicam uma ficha e os agentes pedem cotações. O Emporium não movimenta dinheiro, não custodia fundos nem chaves e não é parte do acordo entre o cliente e o negócio: o pagamento é direto entre eles, e o que combinarem em uma cotação é responsabilidade dessas duas partes."
+      },
+      "asIs": {
+        "title": "O serviço é oferecido no estado em que se encontra",
+        "body": "Os serviços são oferecidos «no estado em que se encontram» e «conforme disponibilidade», sem garantia de qualquer tipo, expressa ou implícita, incluídas as de comercialização, adequação a uma finalidade específica e não violação. Não garantimos que estejam sempre disponíveis nem livres de erros, nem que a informação publicada por terceiros — por exemplo, a ficha de um negócio ou o conteúdo de uma cotação — seja exata, vigente ou completa."
+      },
+      "liability": {
+        "title": "Limitação de responsabilidade",
+        "body": "Na medida em que a lei permitir, a {{entity}} não responde por danos indiretos, incidentais, especiais, punitivos nem consequentes, nem por lucros cessantes, perda de dados ou perda de fundos decorrentes do uso dos serviços. Nossa responsabilidade total acumulada não excederá o valor que você nos tenha pago pelo serviço em questão durante os doze (12) meses anteriores ao fato que originou a reclamação."
+      },
+      "acceptableUse": {
+        "title": "Uso aceitável",
+        "body": "Não use os serviços para atividades ilegais, fraude, falsidade de identidade, spam nem para publicar informação falsa ou que não lhe pertence. Não tente violar, sobrecarregar nem extrair dados de forma abusiva da nossa infraestrutura. Podemos suspender o acesso ou retirar uma publicação que descumpra estas regras."
+      },
+      "law": {
+        "title": "Lei aplicável e jurisdição",
+        "body": "Estes termos são regidos pelas leis do estado de Wyoming, Estados Unidos, sem dar efeito às suas normas sobre conflito de leis. Qualquer disputa será submetida aos tribunais competentes do estado de Wyoming, Estados Unidos."
+      },
+      "contact": {
+        "title": "Reclamações e contato",
+        "body": "Escreva para o e-mail de contato da DAO e indique o serviço, a data e o que aconteceu. Esse é o canal oficial para reclamações, avisos e consultas sobre estes termos."
+      },
+      "changes": {
+        "title": "Mudanças nestes termos",
+        "body": "Podemos atualizar estes termos. Cada atualização leva um identificador de versão e uma data de vigência, ambos visíveis no topo desta página. Publicaremos a nova versão aqui antes de entrar em vigor; se você continuar usando os serviços depois dessa data, entendemos que aceita a versão vigente."
+      }
+    },
+    "languages_note": "Esta página é publicada em vários idiomas. Em caso de divergência entre as versões, prevalece a versão em espanhol."
   }
 }
