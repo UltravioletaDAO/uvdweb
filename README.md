@@ -2,6 +2,45 @@
 
 Plataforma de aplicación y gestión para UltraVioleta DAO, la élite de Web3 en Latinoamérica.
 
+## 📜 Términos del Servicio — /terms (Septiembre 2026)
+
+Página de términos mínimos de la casa, en los 4 idiomas del sitio. La publica
+`src/pages/Terms.js` y la sirve la ruta `/terms`; hasta ahora esa URL caía en el
+catch-all del sitio y devolvía la portada.
+
+### 📌 Versión de los términos
+- **Versión vigente**: `v1-2026-09`, vigente desde `2026-09-21`.
+- **Fuente única**: las constantes `TERMS_VERSION` y `TERMS_EFFECTIVE_DATE` de
+  `src/pages/Terms.js`. No se tipean en los diccionarios i18n: un test lo impide.
+- **Legible por máquina**: la versión sale en tres lugares del HTML —
+  `<meta name="terms-version">`, `<meta name="terms-effective-date">` y el atributo
+  `data-terms-version` del contenedor de la página. Otros servicios de la casa
+  (Emporium) leen esa versión para arrancar.
+- **Para publicar una versión nueva**: cambiar las dos constantes y el texto del
+  bloque `terms` en `src/i18n/{es,en,pt,fr}.json`. El resto (SEO, sitemap, pie) ya
+  apunta solo.
+
+### 🧱 Contenido y forma
+- Secciones: quién opera, alcance (incluido Emporium), servicio tal cual,
+  limitación de responsabilidad, uso aceptable, ley aplicable (Wyoming, EE.UU.),
+  reclamos y contacto, y cambios a los términos.
+- La entidad, el domicilio y el correo de contacto **no se re-tipean**: se
+  interpolan desde las claves `footer.*` que ya publica el pie del sitio y el
+  JSON-LD de la portada.
+- Layout, tipografía y componentes copiados de `src/pages/Delegations.js` (la
+  página de texto que el sitio ya tenía). No se diseñó nada nuevo.
+
+### 🔍 Descubrimiento
+- Enlace en el pie, junto al aviso de copyright.
+- `/terms` agregado a `scripts/generateSitemap.js`, a
+  `scripts/generateAdvancedSitemap.js` y a `public/robots.txt`.
+- Título, descripción y canonical propios vía el componente `SEO`.
+
+### 🧪 Test
+`src/pages/__tests__/terms.test.js` monta la página en español y en inglés y
+verifica la versión, la entidad publicada, la mención a Emporium y que no quede
+ninguna interpolación sin resolver.
+
 ## 📦 Productos y Servicios (Diciembre 2024)
 
 ### 🛍️ Nueva Página de Productos y Servicios
