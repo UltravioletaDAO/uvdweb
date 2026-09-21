@@ -1935,11 +1935,15 @@
     "sections": {
       "operator": {
         "title": "Quién opera estos servicios",
-        "body": "Estos servicios los opera {{entity}}, una sociedad registrada en el estado de Wyoming, Estados Unidos, con domicilio en {{address}}, {{cityStateZip}}, {{country}}. En estos términos, «nosotros» se refiere a esa entidad y «usted», a quien usa los servicios."
+        "body": "Estos servicios los opera {{entity}}, una sociedad registrada en el estado de Wyoming, Estados Unidos, con domicilio en {{address}}, {{cityStateZip}}, {{country}} En estos términos, «nosotros» se refiere a esa entidad y «usted», a quien usa los servicios."
       },
       "scope": {
         "title": "A qué aplican",
-        "body": "Aplican a los sitios, aplicaciones y servicios de Ultravioleta DAO, incluido Emporium. Emporium es un directorio: los negocios publican una ficha y los agentes piden cotizaciones. Emporium no mueve dinero, no custodia fondos ni llaves, y no es parte del trato entre el cliente y el negocio: el pago es directo entre ellos, y lo que acuerden en una cotización es responsabilidad de esas dos partes."
+        "body": "Aplican a los sitios, aplicaciones y servicios de Ultravioleta DAO, incluido Emporium. Emporium es un directorio: los negocios publican una ficha y los agentes piden cotizaciones. Emporium no mueve dinero, no custodia fondos ni llaves, y no es parte del trato entre el cliente y el negocio: el pago es directo entre ellos, y lo que acuerden en una cotización es responsabilidad de esas dos partes. No custodiamos fondos ni llaves privadas de nadie: usted conserva el control de su billetera en todo momento. Los pagos y las transacciones se liquidan por rieles de terceros (redes blockchain y proveedores externos) que no operamos."
+      },
+      "acceptance": {
+        "title": "Aceptación y terminación",
+        "body": "Al usar los servicios usted acepta estos términos; si no está de acuerdo, no los use. Puede dejar de usarlos cuando quiera, y nosotros podemos suspenderlos, modificarlos o darlos de baja, en todo o en parte, con o sin aviso. Las secciones sobre garantías, limitación de responsabilidad y ley aplicable siguen vigentes después de que usted deje de usar los servicios."
       },
       "asIs": {
         "title": "El servicio se ofrece tal cual",

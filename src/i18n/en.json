@@ -1939,7 +1939,11 @@
       },
       "scope": {
         "title": "What they cover",
-        "body": "They cover the sites, applications and services of Ultravioleta DAO, including Emporium. Emporium is a directory: businesses publish a listing and agents request quotes. Emporium does not move money, does not custody funds or keys, and is not a party to the deal between the client and the business: payment is direct between them, and whatever they agree in a quote is the responsibility of those two parties."
+        "body": "They cover the sites, applications and services of Ultravioleta DAO, including Emporium. Emporium is a directory: businesses publish a listing and agents request quotes. Emporium does not move money, does not custody funds or keys, and is not a party to the deal between the client and the business: payment is direct between them, and whatever they agree in a quote is the responsibility of those two parties. We do not custody anyone's funds or private keys: you keep control of your wallet at all times. Payments and transactions settle over third-party rails (blockchain networks and external providers) that we do not operate."
+      },
+      "acceptance": {
+        "title": "Acceptance and termination",
+        "body": "By using the services you accept these terms; if you do not agree, do not use them. You may stop using them whenever you want, and we may suspend, modify or discontinue them, in whole or in part, with or without notice. The sections on warranties, limitation of liability and governing law survive after you stop using the services."
       },
       "asIs": {
         "title": "The service is provided as is",

@@ -15,6 +15,7 @@ export const TERMS_EFFECTIVE_DATE = '2026-09-21';
 const SECTIONS = [
   'operator',
   'scope',
+  'acceptance',
   'asIs',
   'liability',
   'acceptableUse',

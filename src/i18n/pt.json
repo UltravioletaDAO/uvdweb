@@ -1939,7 +1939,11 @@
       },
       "scope": {
         "title": "A que se aplicam",
-        "body": "Aplicam-se aos sites, aplicativos e serviços da Ultravioleta DAO, incluindo o Emporium. O Emporium é um diretório: os negócios publicam uma ficha e os agentes pedem cotações. O Emporium não movimenta dinheiro, não custodia fundos nem chaves e não é parte do acordo entre o cliente e o negócio: o pagamento é direto entre eles, e o que combinarem em uma cotação é responsabilidade dessas duas partes."
+        "body": "Aplicam-se aos sites, aplicativos e serviços da Ultravioleta DAO, incluindo o Emporium. O Emporium é um diretório: os negócios publicam uma ficha e os agentes pedem cotações. O Emporium não movimenta dinheiro, não custodia fundos nem chaves e não é parte do acordo entre o cliente e o negócio: o pagamento é direto entre eles, e o que combinarem em uma cotação é responsabilidade dessas duas partes. Não custodiamos fundos nem chaves privadas de ninguém: você mantém o controle da sua carteira o tempo todo. Os pagamentos e as transações são liquidados por trilhos de terceiros (redes blockchain e provedores externos) que não operamos."
+      },
+      "acceptance": {
+        "title": "Aceitação e rescisão",
+        "body": "Ao usar os serviços você aceita estes termos; se não concordar, não os use. Você pode parar de usá-los quando quiser, e nós podemos suspendê-los, modificá-los ou descontinuá-los, no todo ou em parte, com ou sem aviso. As seções sobre garantias, limitação de responsabilidade e lei aplicável continuam vigentes depois que você parar de usar os serviços."
       },
       "asIs": {
         "title": "O serviço é oferecido no estado em que se encontra",

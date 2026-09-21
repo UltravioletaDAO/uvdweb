@@ -1939,7 +1939,11 @@
       },
       "scope": {
         "title": "À quoi elles s'appliquent",
-        "body": "Elles s'appliquent aux sites, applications et services d'Ultravioleta DAO, y compris Emporium. Emporium est un annuaire : les commerces publient une fiche et les agents demandent des devis. Emporium ne déplace pas d'argent, ne conserve ni fonds ni clés et n'est pas partie à l'accord entre le client et le commerce : le paiement se fait directement entre eux, et ce qu'ils conviennent dans un devis relève de la responsabilité de ces deux parties."
+        "body": "Elles s'appliquent aux sites, applications et services d'Ultravioleta DAO, y compris Emporium. Emporium est un annuaire : les commerces publient une fiche et les agents demandent des devis. Emporium ne déplace pas d'argent, ne conserve ni fonds ni clés et n'est pas partie à l'accord entre le client et le commerce : le paiement se fait directement entre eux, et ce qu'ils conviennent dans un devis relève de la responsabilité de ces deux parties. Nous ne conservons les fonds ni les clés privées de personne : vous gardez le contrôle de votre portefeuille à tout moment. Les paiements et les transactions sont réglés sur des rails de tiers (réseaux blockchain et prestataires externes) que nous n'exploitons pas."
+      },
+      "acceptance": {
+        "title": "Acceptation et résiliation",
+        "body": "En utilisant les services, vous acceptez ces conditions ; si vous n'êtes pas d'accord, ne les utilisez pas. Vous pouvez cesser de les utiliser quand vous voulez, et nous pouvons les suspendre, les modifier ou les interrompre, en tout ou en partie, avec ou sans préavis. Les sections sur les garanties, la limitation de responsabilité et la loi applicable restent en vigueur après que vous avez cessé d'utiliser les services."
       },
       "asIs": {
         "title": "Le service est fourni en l'état",
