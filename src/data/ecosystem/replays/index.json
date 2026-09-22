@@ -12,11 +12,11 @@
       }
     },
     "facilitator_supported": {
-      "recorded_at": "2026-08-27T12:58:21.662Z",
+      "recorded_at": "2026-09-22T03:25:39.586Z",
       "cmd": "curl -s https://facilitator.ultravioletadao.xyz/supported | jq .",
       "url": "https://facilitator.ultravioletadao.xyz/supported",
       "status": 200,
-      "lines": 1423
+      "lines": 2669
     },
     "meshrelay_stats": {
       "recorded_at": "2026-08-27T12:58:21.865Z",
