@@ -1925,5 +1925,51 @@
         "answer": "Las recompensas van de 10.946 a 832.040 tokens UVD por mensaje de calidad. Con multiplicadores (2x para holders de NFT, hasta 5x por influencia en Twitter), los participantes activos pueden ganar entre 100.000 y 5.000.000 de tokens UVD al día."
       }
     }
+  },
+  "terms": {
+    "seoTitle": "Términos del Servicio",
+    "seoDescription": "Términos del servicio de Ultravioleta DAO LLC: quién opera, a qué aplican (incluido Emporium), servicio sin garantía, limitación de responsabilidad, uso aceptable, ley aplicable y contacto.",
+    "title": "Términos del Servicio",
+    "version_label": "Versión",
+    "effective_label": "Vigente desde",
+    "sections": {
+      "operator": {
+        "title": "Quién opera estos servicios",
+        "body": "Estos servicios los opera {{entity}}, una sociedad registrada en el estado de Wyoming, Estados Unidos, con domicilio en {{address}}, {{cityStateZip}}, {{country}} En estos términos, «nosotros» se refiere a esa entidad y «usted», a quien usa los servicios."
+      },
+      "scope": {
+        "title": "A qué aplican",
+        "body": "Aplican a los sitios, aplicaciones y servicios de Ultravioleta DAO, incluido Emporium. Emporium es un directorio: los negocios publican una ficha y los agentes piden cotizaciones. Emporium no mueve dinero, no custodia fondos ni llaves, y no es parte del trato entre el cliente y el negocio: el pago es directo entre ellos, y lo que acuerden en una cotización es responsabilidad de esas dos partes. No custodiamos fondos ni llaves privadas de nadie: usted conserva el control de su billetera en todo momento. Los pagos y las transacciones se liquidan por rieles de terceros (redes blockchain y proveedores externos) que no operamos."
+      },
+      "acceptance": {
+        "title": "Aceptación y terminación",
+        "body": "Al usar los servicios usted acepta estos términos; si no está de acuerdo, no los use. Puede dejar de usarlos cuando quiera, y nosotros podemos suspenderlos, modificarlos o darlos de baja, en todo o en parte, con o sin aviso. Las secciones sobre garantías, limitación de responsabilidad y ley aplicable siguen vigentes después de que usted deje de usar los servicios."
+      },
+      "asIs": {
+        "title": "El servicio se ofrece tal cual",
+        "body": "Los servicios se ofrecen «tal cual» y «según disponibilidad», sin garantía de ningún tipo, expresa o implícita, incluidas las de comerciabilidad, idoneidad para un fin determinado y no infracción. No garantizamos que estén siempre disponibles ni libres de errores, ni que la información publicada por terceros —por ejemplo, la ficha de un negocio o el contenido de una cotización— sea exacta, vigente o completa."
+      },
+      "liability": {
+        "title": "Limitación de responsabilidad",
+        "body": "En la medida en que la ley lo permita, {{entity}} no responde por daños indirectos, incidentales, especiales, punitivos ni consecuentes, ni por lucro cesante, pérdida de datos o pérdida de fondos derivados del uso de los servicios. Nuestra responsabilidad total acumulada no excederá el monto que usted nos haya pagado por el servicio en cuestión durante los doce (12) meses anteriores al hecho que originó el reclamo."
+      },
+      "acceptableUse": {
+        "title": "Uso aceptable",
+        "body": "No use los servicios para actividades ilegales, fraude, suplantación de identidad, spam ni para publicar información falsa o que no le pertenece. No intente vulnerar, sobrecargar ni extraer datos de forma abusiva de nuestra infraestructura. Podemos suspender el acceso o retirar una publicación que incumpla estas reglas."
+      },
+      "law": {
+        "title": "Ley aplicable y jurisdicción",
+        "body": "Estos términos se rigen por las leyes del estado de Wyoming, Estados Unidos, sin dar efecto a sus normas sobre conflicto de leyes. Cualquier disputa se someterá a los tribunales competentes del estado de Wyoming, Estados Unidos."
+      },
+      "contact": {
+        "title": "Reclamos y contacto",
+        "body": "Escríbanos al correo de contacto de la DAO e indique el servicio, la fecha y qué ocurrió. Ese es el canal oficial para reclamos, avisos y consultas sobre estos términos."
+      },
+      "changes": {
+        "title": "Cambios a estos términos",
+        "body": "Podemos actualizar estos términos. Cada actualización lleva un identificador de versión y una fecha de vigencia, ambos visibles arriba de esta página. Publicaremos la nueva versión aquí antes de que entre en vigor; si sigue usando los servicios después de esa fecha, entendemos que acepta la versión vigente."
+      }
+    },
+    "languages_note": "Esta página está publicada en varios idiomas. En caso de discrepancia entre versiones, prevalece la versión en español."
   }
 }

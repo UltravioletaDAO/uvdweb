@@ -20,6 +20,7 @@ Allow: /wheel
 Allow: /events
 Allow: /nfts
 Allow: /stream-summaries
+Allow: /terms
 Allow: /stream-summaries/*
 Allow: /.well-known/
 Disallow: /api/

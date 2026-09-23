@@ -2,6 +2,62 @@
 
 Plataforma de aplicación y gestión para UltraVioleta DAO, la élite de Web3 en Latinoamérica.
 
+## 📜 Términos del Servicio — /terms (Septiembre 2026)
+
+Página de términos mínimos de la casa, en los 4 idiomas del sitio. La publica
+`src/pages/Terms.js` y la sirve la ruta `/terms`; hasta ahora esa URL caía en el
+catch-all (`<Route path="*" element={<NotFound />} />`) y devolvía un 404 con un
+enlace a la portada.
+
+### 📌 Versión de los términos
+- **Versión vigente**: `v1-2026-09`, vigente desde `2026-09-21`.
+- **Fuente única**: las constantes `TERMS_VERSION` y `TERMS_EFFECTIVE_DATE` de
+  `src/pages/Terms.js`. No se tipean en los diccionarios i18n: un test lo impide.
+- **Legible por máquina, con JavaScript**: la versión sale en tres lugares del HTML —
+  `<meta name="terms-version">`, `<meta name="terms-effective-date">` y el atributo
+  `data-terms-version` del contenedor de la página.
+- **Legible por máquina, sin JavaScript**: los tres de arriba los inyecta Helmet en
+  el navegador, así que un `curl` a `/terms` recibe el shell de la SPA. Para eso está
+  **`public/terms/version.json`**, estático: `{"version", "effective", "url"}`. Es lo
+  que otro servicio de la casa (Emporium) puede leer directo para saber qué versión
+  hay publicada.
+- **Para publicar una versión nueva**: cambiar las dos constantes, el texto del
+  bloque `terms` en `src/i18n/{es,en,pt,fr}.json` y `public/terms/version.json`. Un
+  test compara ese archivo contra las constantes, así que no se puede subir uno y
+  olvidar el otro. El resto (SEO, sitemap, pie) ya apunta solo.
+
+### 🧱 Contenido y forma
+- Secciones: quién opera, alcance (incluido Emporium), aceptación y terminación,
+  servicio tal cual, limitación de responsabilidad, uso aceptable, ley aplicable
+  (Wyoming, EE.UU.), reclamos y contacto, y cambios a los términos.
+- El «no custodiamos fondos ni llaves» está redactado **con el sujeto en la casa**,
+  no solo en Emporium: el sitio conecta billeteras en `/safestats`, `/wheel`,
+  `/token`, `/snapshot`, `/facilitator` y el swap.
+- La entidad, el domicilio y el correo de contacto **no se re-tipean**: se
+  interpolan desde las claves `footer.*` que ya publica el pie del sitio y el
+  JSON-LD de la portada.
+- Layout, tipografía y componentes copiados de `src/pages/Delegations.js` (la
+  página de texto que el sitio ya tenía). No se diseñó nada nuevo.
+
+### 🔍 Descubrimiento
+- Enlace en el pie, junto al aviso de copyright.
+- `/terms` agregado a `scripts/generateSitemap.js`, a
+  `scripts/generateAdvancedSitemap.js` y a `public/robots.txt`.
+- Título, descripción y canonical propios vía el componente `SEO`.
+
+### 🧪 Test
+`src/pages/__tests__/terms.test.js` monta la página en español y en inglés y
+verifica la versión, la entidad publicada, la mención a Emporium y que no quede
+ninguna interpolación sin resolver. Además monta **la tabla de rutas real**
+(`src/AppRoutes.js`) para comprobar que `/terms` gana y no cae en el 404, con un
+control negativo sobre una ruta inventada, y compara `public/terms/version.json`
+contra las constantes de la página.
+
+La tabla de rutas se movió de `App.js` a `src/AppRoutes.js`: dentro de `App.js`
+venía pegada a los providers (thirdweb, wallet, react-query), y un test del routing
+tenía que arrastrar toda esa cadena para preguntar qué sirve una URL. `App.js`
+sigue montando exactamente lo mismo.
+
 ## 📦 Productos y Servicios (Diciembre 2024)
 
 ### 🛍️ Nueva Página de Productos y Servicios

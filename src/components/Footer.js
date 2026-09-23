@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
@@ -96,16 +97,13 @@ const Footer = () => {
           <p className="text-xs text-gray-400">
             © {currentYear} {t('footer.legal_entity')}. {t('footer.all_rights_reserved')}.
           </p>
-          {/* Privacy and Terms links temporarily hidden
+          {/* Solo Términos: la página de privacidad todavía no existe y su enlace
+              caería en el catch-all del sitio. */}
           <div className="flex items-center gap-6 text-xs text-gray-400">
-            <Link to="/privacy" className="transition-colors duration-200 hover:text-purple-200">
-              {t('footer.legal_links.privacy')}
-            </Link>
             <Link to="/terms" className="transition-colors duration-200 hover:text-purple-200">
               {t('footer.legal_links.terms')}
             </Link>
           </div>
-          */}
         </div>
       </div>
     </footer>

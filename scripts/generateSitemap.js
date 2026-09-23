@@ -23,6 +23,7 @@ const staticRoutes = [
   { path: '/safestats', priority: 0.6, changefreq: 'daily' },
   { path: '/stream-summaries', priority: 0.6, changefreq: 'weekly' },
   { path: '/wheel', priority: 0.5, changefreq: 'weekly' },
+  { path: '/terms', priority: 0.3, changefreq: 'yearly' }, // Terminos del servicio (v1-2026-09)
 ];
 
 function generateAlternateLinks(path) {

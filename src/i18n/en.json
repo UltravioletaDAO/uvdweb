@@ -1925,5 +1925,51 @@
         "answer": "Earnings range from 10,946 to 832,040 UVD tokens per quality message. With multipliers (2x for NFT holders, up to 5x for Twitter influence), active participants can earn 100,000-5,000,000 UVD tokens daily."
       }
     }
+  },
+  "terms": {
+    "seoTitle": "Terms of Service",
+    "seoDescription": "Ultravioleta DAO LLC terms of service: who operates the services, what they cover (including Emporium), service provided as is, limitation of liability, acceptable use, governing law and contact.",
+    "title": "Terms of Service",
+    "version_label": "Version",
+    "effective_label": "Effective from",
+    "sections": {
+      "operator": {
+        "title": "Who operates these services",
+        "body": "These services are operated by {{entity}}, a company registered in the state of Wyoming, United States, with address at {{address}}, {{cityStateZip}}, {{country}}. In these terms, \"we\" means that entity and \"you\" means whoever uses the services."
+      },
+      "scope": {
+        "title": "What they cover",
+        "body": "They cover the sites, applications and services of Ultravioleta DAO, including Emporium. Emporium is a directory: businesses publish a listing and agents request quotes. Emporium does not move money, does not custody funds or keys, and is not a party to the deal between the client and the business: payment is direct between them, and whatever they agree in a quote is the responsibility of those two parties. We do not custody anyone's funds or private keys: you keep control of your wallet at all times. Payments and transactions settle over third-party rails (blockchain networks and external providers) that we do not operate."
+      },
+      "acceptance": {
+        "title": "Acceptance and termination",
+        "body": "By using the services you accept these terms; if you do not agree, do not use them. You may stop using them whenever you want, and we may suspend, modify or discontinue them, in whole or in part, with or without notice. The sections on warranties, limitation of liability and governing law survive after you stop using the services."
+      },
+      "asIs": {
+        "title": "The service is provided as is",
+        "body": "The services are provided \"as is\" and \"as available\", without warranty of any kind, express or implied, including those of merchantability, fitness for a particular purpose and non-infringement. We do not warrant that they will always be available or error free, nor that information published by third parties — for example a business listing or the content of a quote — is accurate, current or complete."
+      },
+      "liability": {
+        "title": "Limitation of liability",
+        "body": "To the extent permitted by law, {{entity}} is not liable for indirect, incidental, special, punitive or consequential damages, nor for lost profits, loss of data or loss of funds arising from use of the services. Our total aggregate liability will not exceed the amount you have paid us for the service in question during the twelve (12) months before the event giving rise to the claim."
+      },
+      "acceptableUse": {
+        "title": "Acceptable use",
+        "body": "Do not use the services for illegal activity, fraud, impersonation, spam, or to publish false information or information that is not yours. Do not attempt to breach, overload or abusively scrape our infrastructure. We may suspend access or take down a publication that breaks these rules."
+      },
+      "law": {
+        "title": "Governing law and jurisdiction",
+        "body": "These terms are governed by the laws of the state of Wyoming, United States, without giving effect to its conflict of laws rules. Any dispute will be submitted to the competent courts of the state of Wyoming, United States."
+      },
+      "contact": {
+        "title": "Claims and contact",
+        "body": "Write to the DAO contact address and state the service, the date and what happened. That is the official channel for claims, notices and questions about these terms."
+      },
+      "changes": {
+        "title": "Changes to these terms",
+        "body": "We may update these terms. Each update carries a version identifier and an effective date, both shown at the top of this page. We will publish the new version here before it takes effect; if you keep using the services after that date, we understand that you accept the version in force."
+      }
+    },
+    "languages_note": "This page is published in several languages. If the versions differ, the Spanish version prevails."
   }
 }
