@@ -7,13 +7,20 @@ segments with relative start/end times). Segment start_time maps 1:1 to the
 Twitch VOD timeline, so search results can deep-link to
 https://www.twitch.tv/videos/<vodId>?t=XhYmZs without any clock calibration.
 
-Usage:
+Always a full rebuild: 428 streams / 610k segments / 1.07 GB of JSON take 16 s
+on the streamer's machine (measured 2026-09-23), so incremental isn't worth it.
+
+The automatic refresh (scripts/refresh_stream_search.py, hourly scheduled task)
+imports build() from here. Manual usage (backup path, docs/STREAM_SEARCH.md):
   python3 scripts/build_stream_search_index.py \
       --corpus /mnt/z/ultravioleta/ai/cursor/abracadabra/streamers/0xultravioleta \
       --out /tmp/stream-search/search.db
 
 Upload the result to S3 (the search Lambda downloads it at cold start):
   aws s3 cp /tmp/stream-search/search.db s3://ultravioletadao/stream-search/search.db
+
+GET /stats on the search API returns the `meta` table as-is: built_at (UTC),
+streams, segments, last_stream_date, failed and refresh (auto|manual).
 """
 import argparse
 import json
@@ -127,37 +134,31 @@ def parse_whisper(data, min_chars, max_span=25.0, max_chars=240):
                 yield c_start, c_end, joined
 
 
-def main():
-    ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--corpus", required=True,
-                    help="streamers/<streamer> root with YYYYMMDD/<vodId>/ dirs")
-    ap.add_argument("--out", required=True, help="output .db path")
-    ap.add_argument("--min-chars", type=int, default=8,
-                    help="skip segments shorter than this many characters")
-    args = ap.parse_args()
+def build(corpus, out, min_chars=8, refresh="manual", log=print):
+    """Full rebuild of `out` from `corpus`. Returns the meta written to the db."""
+    streamer = os.path.basename(os.path.normpath(corpus))
+    os.makedirs(os.path.dirname(os.path.abspath(out)), exist_ok=True)
+    if os.path.exists(out):
+        os.remove(out)
 
-    streamer = os.path.basename(os.path.normpath(args.corpus))
-    os.makedirs(os.path.dirname(os.path.abspath(args.out)), exist_ok=True)
-    if os.path.exists(args.out):
-        os.remove(args.out)
-
-    db = sqlite3.connect(args.out)
+    db = sqlite3.connect(out)
     db.executescript(SCHEMA)
 
     total_streams = total_segs = failed = 0
+    last_stream_date = ""
     t0 = time.time()
-    for date_dir, vod_id, vod_dir, tj, kind in iter_transcripts(args.corpus):
+    for date_dir, vod_id, vod_dir, tj, kind in iter_transcripts(corpus):
         try:
             with open(tj, encoding="utf-8", errors="replace") as fh:
                 data = json.load(fh)
         except (json.JSONDecodeError, OSError) as exc:
-            print(f"  ! {date_dir}/{vod_id}: unreadable ({exc})", file=sys.stderr)
+            log(f"  ! {date_dir}/{vod_id}: unreadable ({exc})")
             failed += 1
             continue
 
         parser = parse_aws if kind == "aws" else parse_whisper
         rows = [(vod_id, start, end, text)
-                for start, end, text in parser(data, args.min_chars)]
+                for start, end, text in parser(data, min_chars)]
 
         db.execute(
             "INSERT OR REPLACE INTO streams VALUES (?,?,?,?,?)",
@@ -169,21 +170,46 @@ def main():
         )
         total_streams += 1
         total_segs += len(rows)
+        last_stream_date = max(last_stream_date, date_dir)
         if total_streams % 25 == 0:
-            print(f"  {total_streams} streams, {total_segs} segments...")
+            log(f"  {total_streams} streams, {total_segs} segments...")
 
-    print("Building FTS index...")
+    log("Building FTS index...")
     db.execute("INSERT INTO seg_fts(seg_fts) VALUES('rebuild')")
+    # Extra meta rows are safe: the Lambda's /stats returns the whole table and
+    # search only reads streams/segments/seg_fts.
     db.execute("INSERT INTO meta VALUES ('built_at', datetime('now'))")
-    db.execute("INSERT INTO meta VALUES ('streams', ?)", (str(total_streams),))
-    db.execute("INSERT INTO meta VALUES ('segments', ?)", (str(total_segs),))
+    db.executemany("INSERT INTO meta VALUES (?, ?)", [
+        ("streams", str(total_streams)),
+        ("segments", str(total_segs)),
+        ("last_stream_date", last_stream_date),
+        ("failed", str(failed)),
+        ("refresh", refresh),
+    ])
     db.commit()
+    meta = dict(db.execute("SELECT key, value FROM meta"))
     db.execute("VACUUM")
     db.close()
 
-    size_mb = os.path.getsize(args.out) / 1e6
-    print(f"OK: {total_streams} streams, {total_segs} segments, {failed} failed, "
-          f"{size_mb:.1f} MB, {time.time() - t0:.0f}s -> {args.out}")
+    size_mb = os.path.getsize(out) / 1e6
+    log(f"OK: {total_streams} streams, {total_segs} segments, {failed} failed, "
+        f"{size_mb:.1f} MB, {time.time() - t0:.0f}s -> {out}")
+    return meta
+
+
+def main():
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--corpus", required=True,
+                    help="streamers/<streamer> root with YYYYMMDD/<vodId>/ dirs")
+    ap.add_argument("--out", required=True, help="output .db path")
+    ap.add_argument("--min-chars", type=int, default=8,
+                    help="skip segments shorter than this many characters")
+    args = ap.parse_args()
+
+    def log(msg):
+        print(msg, file=sys.stderr if msg.startswith("  !") else sys.stdout)
+
+    build(args.corpus, args.out, args.min_chars, refresh="manual", log=log)
 
 
 if __name__ == "__main__":
