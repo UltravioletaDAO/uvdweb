@@ -1,29 +1,43 @@
 # Handoff — la memoria de los streams se reindexa sola
 
-**Fecha:** 2026-09-23 · **Rama:** `c0der/memoria-auto` → PR a `main` · **Encargo:** c0der, decisión del
-dueño del 2026-09-23T02:44:14Z ("Automático (Recomendado)"), que deroga el "manual por ahora" del
-2026-07-21 (`f8e2df0`).
+**Fecha:** 2026-09-23 · **Rama:** `c0der/memoria-auto` → PR #138 a `main` · **Encargo:** c0der,
+decisión del dueño del 2026-09-23T02:44:14Z ("Automático (Recomendado)"), que deroga el "manual por
+ahora" del 2026-07-21 (`f8e2df0`). Ronda 2: guardas de publicación, validación del db y privilegio
+mínimo.
 
 ## Qué quedó
 
 - `scripts/refresh_stream_search.py`: el refresh automático. Cada corrida saca la huella de las
   transcripciones (tamaño + mtime de cada una, más el código del builder). Si nada cambió y la última
-  publicación tiene menos de 24 h, termina ahí. Si no, reconstruye el índice completo, se niega a
-  publicar si faltan más de 2 streams respecto de lo publicado, lo sube a
-  `s3://ultravioletadao/stream-search/search.db`, fuerza el cold start de la Lambda y comprueba que
-  `GET /stats` muestre el `built_at` nuevo. Deja estado y log en `%LOCALAPPDATA%\uvd-stream-search`.
-- `scripts/install_stream_search_task.ps1`: registra la tarea `uvd-stream-search-refresh`. Corre cada
-  60 min con pythonw, oculta, con `StartWhenAvailable` e `IgnoreNew`, el mismo patrón que la
-  `c0der-drift-refresh` que ya anda en esa máquina. Antes de registrar comprueba python, boto3, FTS5 y las
-  credenciales AWS. Tiene `-DryRun` y `-Uninstall`.
-- `scripts/build_stream_search_index.py`: `main()` pasa a ser `build()`, que se puede importar. Mismo
-  esquema: la Lambda no cambió. Suma tres filas a `meta`, que `/stats` devuelve tal cual:
-  `last_stream_date`, `failed` y `refresh` (`auto`/`manual`).
-- `tests/stream-search/test_refresh_stream_search.py`: 16 tests con corpus sintético y publicador falso.
-  Uno corre el handler real de la Lambda contra el db construido (`/stats`, búsqueda con deep link y
-  columnas del esquema). Verdes en la Mac (Python 3.14) y en Windows (Python 3.11.4).
-- `docs/STREAM_SEARCH.md`: la sección de refresh describe el mecanismo automático y el manual queda
-  como respaldo. También `todo.md` (el ítem 2 del cron queda hecho) y `README.md`.
+  publicación tiene menos de 24 h, termina ahí. Si no, reconstruye el índice completo y lo revisa
+  antes de publicar; si pasa, lo sube a `s3://ultravioletadao/stream-search/search.db`, fuerza el cold
+  start de la Lambda y comprueba que `GET /stats` muestre el `built_at` nuevo. Deja estado y log en
+  `%LOCALAPPDATA%\uvd-stream-search`.
+- **Guardas (ronda 2).** Se niega a publicar (`refused`, exit 1) en estos casos:
+  - el índice nuevo tiene 0 streams o 0 segmentos;
+  - quedó más de 2 streams por debajo de `max_streams`, el máximo publicado alguna vez (el piso no
+    baja de a 2 por corrida);
+  - perdió más del 10 % de los segmentos de la última publicación (`--max-segment-drop`);
+  - el db no pasa `validate_db`: `integrity_check`, el conteo de `segments` contra `meta`, y la
+    consulta de búsqueda de la propia Lambda (`MATCH '"de"'` con los JOIN) devuelve cero filas;
+  - no hay línea base (ni `state.json` ni `/stats`) y no se pasó `--force`.
+
+  Un `--force` publica sin línea base y deja lo publicado como piso nuevo.
+- **Privilegio mínimo (ronda 2).** El script acepta `--profile` y el instalador `-AwsProfile`, que usa
+  ese perfil también en el preflight. La política mínima está en `docs/STREAM_SEARCH.md`, sin número de
+  cuenta.
+- `scripts/install_stream_search_task.ps1`: registra la tarea `uvd-stream-search-refresh`, que corre
+  cada 60 min con pythonw, oculta, con `StartWhenAvailable` e `IgnoreNew`. Antes de registrar comprueba
+  python, boto3, FTS5 y que las credenciales lleguen a la Lambda. Tiene `-DryRun` y `-Uninstall`.
+- `scripts/build_stream_search_index.py`: `build()` se puede importar. Mismo esquema: la Lambda no
+  cambió. `meta` suma `last_stream_date`, `failed` y `refresh` (`auto`/`manual`), que `/stats` devuelve
+  solas.
+- `tests/stream-search/test_refresh_stream_search.py`: **28 tests**, con corpus sintético y publicador
+  falso. Cubren los casos de la ronda 2: segmentos que colapsan, caída de segmentos por encima y por
+  debajo del umbral, trinquete de streams, primera corrida sin línea base con y sin `--force`, db
+  corrupto, db que no coincide con `meta`, FTS vacío y perfil. Además corren el handler real de la
+  Lambda contra el db construido, y un test mantiene la consulta de `validate_db` idéntica a la de la
+  Lambda. Verdes en la Mac (Python 3.14) y en la máquina del streamer (Python 3.11 / sqlite 3.42).
 
 ## Lo medido (solo lectura; horas en UTC)
 
@@ -31,80 +45,44 @@ dueño del 2026-09-23T02:44:14Z ("Automático (Recomendado)"), que deroga el "ma
 |---|---|---|
 | 03:00Z | `GET /stats` vivo | `{"built_at": "2026-08-26 23:24:42", "streams": "402", "segments": "543774"}` |
 | 03:00Z | `s3://ultravioletadao/stream-search/search.db` | 74.719.232 B, 2026-08-26 23:27Z (versionado del bucket activo, medido 03:14Z) |
-| 03:01Z | Corpus por `ssh win` | 388 carpetas de fecha (20240903 → 20260922), 429 VODs, todos con transcripción y `processing_status.json` |
-| 03:01Z | Señal de fin de AbraKadabra | `processing_status.json` por VOD. `transcription_whisper.done` + timestamp cuando escribe `transcripcion_whisper.json`, unas 2 h después de bajar el audio. No hay un paso de "pipeline terminado"; el último es `vault_rendered`. El `.lock` queda aunque termine, así que no sirve de señal |
-| 03:01–03:02Z | Cómo corre AbraKadabra | En tandas, a mano: no tiene tarea programada. El 18-sep procesó en un día 13 VODs, los del 07 al 18-sep |
-| 03:01–03:02Z | ¿Transcripciones en S3? | **No.** `s3://0xultravioleta/0xultravioleta/<vod>/` tiene 440 mp3 (el audio que se manda a transcribir) y 280 JSON de AWS Transcribe, el último del 2026-01-14. Desde ahí transcribe Whisper en local. Los resúmenes sí se suben (`stream-summaries/`), pero no traen frases con timestamp |
-| 03:02Z | Qué hay en Windows | `C:\Python311` (3.11.4, sqlite 3.42 con FTS5, boto3 1.34.0) con `pythonw.exe` al lado, AWS CLI v2, WSL, pwsh 7.5.5 |
-| 03:02–03:03Z | Checkout de uvdweb en Windows | En `develop`, 5 commits atrás y con archivos sin trackear. Por eso la tarea no apunta ahí |
+| 03:01Z | Corpus | 388 carpetas de fecha (20240903 → 20260922), 429 VODs, todos con transcripción y `processing_status.json` |
+| 03:01Z | Señal de fin de AbraKadabra | `processing_status.json` por VOD. `transcription_whisper.done` + timestamp cuando escribe la transcripción, unas 2 h después de bajar el audio. No hay un paso de "pipeline terminado" |
+| 03:01–03:02Z | Cómo corre AbraKadabra | En tandas, a mano. El 18-sep procesó en un día 13 VODs, los del 07 al 18-sep |
+| 03:01–03:02Z | ¿Transcripciones en la nube? | No desde ene-2026: Whisper transcribe en local y no sube nada. Los resúmenes sí se suben, pero no traen frases con timestamp |
 | 03:03Z | VODs del corpus que no están en el índice vivo | 27: **26 streams del 20260826 al 20260922** y uno corrupto de 2025 que nunca estuvo |
-| 03:03Z | Build completo en memoria, Python 3.11 de Windows | 428 streams, 610.081 segmentos, 1 fallido, 1.069 MB de JSON: **16 s** (14 s de lectura y parseo, 1 s de FTS) |
-| 03:04–03:07Z | Lambda `uvd-stream-search` | description `index 2026-08-26`, 1024 MB, `/tmp` de 512 MB |
-| 03:04–03:07Z | Permisos del usuario IAM de Windows (`iam simulate-principal-policy`) | `s3:PutObject`/`GetObject` en `ultravioletadao/stream-search/search.db`: allowed. `lambda:UpdateFunctionConfiguration`/`GetFunctionConfiguration` en `uvd-stream-search`: allowed |
-| 03:12Z | Dry-run del refresh con el corpus real, en `%TEMP%`, borrado al terminar | 20 s. 428 streams / 610.081 segmentos / 1 fallido / 80,8 MB. La frase de control aparece (abajo) |
+| 03:03Z | Build completo en memoria, en la máquina del streamer | 428 streams, 610.081 segmentos, 1 fallido, 1.069 MB de JSON: **16 s** (14 s de lectura y parseo, 1 s de FTS) |
+| 03:04–03:07Z | Credenciales de publicación de esa máquina | Alcanzan para subir el índice y reiniciar la Lambda (verificado sin escribir) |
+| 03:12Z | Dry-run del refresh con el corpus real, en una carpeta temporal borrada al terminar | 20 s. 428 / 610.081 / 1 fallido / 80,8 MB. La frase de control aparece |
+| 03:35Z | Ídem con las guardas de la ronda 2 | 19 s. Línea base de `/stats` 402 / 543.774. `validate_db` OK en 0,3 s |
 
 ## Qué mecanismo y por qué
 
-- **(a) en la nube: descartada.** El corpus no está en S3 (ver la fila de S3). Para que corriera en la nube,
-  AbraKadabra tendría que empezar a subir las transcripciones, y eso es otro repo y otra decisión.
-- **Paso al final del pipeline de AbraKadabra: descartado.** Obliga a tocar otro repo. Además el
-  pipeline corre en tandas y puede fallar después de transcribir (vault, telegram), lo que dejaría el
-  índice atrás sin que nadie se entere.
-- **Elegida: tarea horaria en Windows con detección de cambios.** Sin tocar AbraKadabra, un stream entra
-  al índice como mucho una hora después de que su transcripción aparece. Una vez al día se republica
-  aunque no haya nada nuevo, para que `built_at` sirva de latido.
-- **Incremental: no.** El build completo tarda 16 s (20 s con la escritura a disco y el VACUUM), y la
-  subida y el cold start tardan más que eso. Incremental agregaría estado sin ahorrar nada que se note.
-- **Frescura: `/stats` ya daba `built_at` y `streams`,** así que la Lambda no se tocó. Las tres filas
-  nuevas de `meta` salen solas por `/stats`.
+- **En la nube: descartada.** El corpus no está en ningún bucket. Para correr en la nube, AbraKadabra
+  tendría que empezar a subir las transcripciones, y eso es otro repo y otra decisión.
+- **Paso al final del pipeline de AbraKadabra: descartado.** Obliga a tocar otro repo. El pipeline
+  corre en tandas y puede fallar después de transcribir, lo que dejaría el índice atrás en silencio.
+- **Elegida: tarea horaria en la máquina del streamer, con detección de cambios.** Un stream entra al
+  índice como mucho una hora después de que aparece su transcripción. Una vez al día se republica igual,
+  así que `built_at` sirve de latido.
+- **Incremental: no.** El build completo tarda 16 s; subirlo y el cold start tardan más que eso.
+- **Frescura:** `/stats` ya daba `built_at` y `streams`, así que la Lambda no se tocó.
 
 ## Para c0der
 
-Todo desde la Mac, en una copia de uvdweb en esta rama (o en `main` después del merge). Las rutas
-relativas de `ssh win` y `scp win:` salen del home del usuario en Windows, y `AppData/Local` es
-`%LOCALAPPDATA%`.
+c0der lo instala en la máquina del streamer. El paso a paso exacto, con comandos, está en su copia
+privada (sin commitear). El procedimiento:
 
-### 1. Copiar e instalar en modo prueba
-
-```zsh
-ssh win 'New-Item -ItemType Directory -Force AppData/Local/uvd-stream-search | Out-Null'
-scp scripts/build_stream_search_index.py scripts/refresh_stream_search.py scripts/install_stream_search_task.ps1 win:AppData/Local/uvd-stream-search/
-ssh win 'pwsh -NoProfile -ExecutionPolicy Bypass -File AppData/Local/uvd-stream-search/install_stream_search_task.ps1 -DryRun'
-# esperado: "python, boto3, FTS5 y credenciales AWS: OK", el resumen de la tarea y "DryRun: no se registro nada."
-```
-
-### 2. Primera corrida: pone al día los 26 streams atrasados
-
-```zsh
-ssh win 'C:\Python311\python.exe AppData/Local/uvd-stream-search/refresh_stream_search.py --dry-run'
-# esperado (~20 s): "dry run, not published: 428 streams (published: 402), 610081 segments, last stream 20260922, 1 failed"
-ssh win 'C:\Python311\python.exe AppData/Local/uvd-stream-search/refresh_stream_search.py'
-# esperado: "rebuilding: first run" -> "OK: 428 streams, 610081 segments, 1 failed, 80.8 MB"
-#           -> "uploaded s3://ultravioletadao/stream-search/search.db"
-#           -> "lambda uvd-stream-search reloaded: index <built_at> auto (428 streams)"
-#           -> "verified: /stats built_at=<built_at> streams=428"   (exit 0)
-```
-
-Si en esos minutos AbraKadabra termina otro stream, los números suben en uno. El umbral de "faltan
-streams" solo mira hacia abajo.
-
-### 3. Registrar la tarea y comprobar que corre sola
-
-```zsh
-ssh win 'pwsh -NoProfile -ExecutionPolicy Bypass -File AppData/Local/uvd-stream-search/install_stream_search_task.ps1'
-ssh win 'Start-ScheduledTask -TaskName uvd-stream-search-refresh'
-# ~30 s despues:
-ssh win 'Get-ScheduledTaskInfo -TaskName uvd-stream-search-refresh | Format-List LastRunTime, LastTaskResult, NextRunTime'
-# esperado: LastTaskResult 0
-ssh win 'Get-Content AppData/Local/uvd-stream-search/refresh.log -Tail 3'
-# esperado, ultima linea: "unchanged: 429 transcripts, published 2026-09-23T..Z"
-ssh win 'Get-Content AppData/Local/uvd-stream-search/state.json'
-# esperado: "last_result": "published" o "unchanged", "streams": 428, "verified": true
-```
-
-La tarea corre con la sesión del usuario iniciada (InteractiveToken), igual que `c0der-drift-refresh`.
-
-### 4. Sonda de cierre
+1. **Copiar** `build_stream_search_index.py`, `refresh_stream_search.py` e
+   `install_stream_search_task.ps1` a `%LOCALAPPDATA%\uvd-stream-search` y correr el instalador con
+   `-DryRun`. Esperado: `python, boto3, FTS5 y credenciales AWS: OK`. Opcional (decide el dueño): crear
+   el perfil de privilegio mínimo de `docs/STREAM_SEARCH.md` y pasarlo con `-AwsProfile`.
+2. **Primera corrida (pone al día los 26 atrasados)**: `refresh_stream_search.py --dry-run` (esperado:
+   `428 streams (baseline: 402), 610081 segments (baseline: 543774)`) y después sin `--dry-run`.
+   Esperado: `uploaded`, `lambda uvd-stream-search reloaded` y `verified: /stats built_at=… streams=428`.
+3. **Registrar la tarea** y comprobarla: trigger con repetición `PT1H`, principal Interactive/Limited,
+   `LastTaskResult 0`, y una línea `unchanged` en el log. La tarea corre con la sesión de escritorio
+   del usuario iniciada.
+4. **Sonda de cierre** (API pública):
 
 ```zsh
 curl -s https://pbs5xr8wye.execute-api.us-east-1.amazonaws.com/stats
@@ -117,16 +95,13 @@ curl -s -G https://pbs5xr8wye.execute-api.us-east-1.amazonaws.com/ \
 # antes (03:00Z, indice vivo): "count": 0. Contra el indice nuevo en el dry-run (03:12Z): count 1, 0h15m11s.
 ```
 
-### 5. Vigilancia
+### Vigilancia
 
-- **Rojo:** `built_at` de `/stats` con más de 3 días (72 h). Con la tarea viva nunca pasa de ~25 h,
-  porque republica cada día aunque no haya streams nuevos.
-- **Atraso** aunque `built_at` esté fresco: el `fecha_stream` más nuevo de `0xultravioleta` en
-  `https://ultravioletadao.s3.us-east-1.amazonaws.com/stream-summaries/index_es.json` es mayor que
-  `last_stream_date` en dos chequeos seguidos separados por 2 h o más. Hay una ventana normal de hasta
-  una hora entre el resumen y el índice.
-- `failed` hoy es 1 (el stream corrupto del punto 6). Si sube, hay transcripciones nuevas que no se
-  pudieron leer, y el log dice cuáles.
+- **Rojo:** `built_at` de `/stats` con más de 3 días. Con la tarea viva nunca pasa de ~25 h.
+- **Atraso** aunque `built_at` esté fresco: el `fecha_stream` más nuevo de `0xultravioleta` en el
+  índice público de resúmenes es mayor que `last_stream_date` en dos chequeos seguidos separados por
+  2 h o más.
+- `failed` hoy es 1 (el stream corrupto). Si sube, hay transcripciones nuevas que no se pudieron leer.
 
 ```python
 import datetime as dt, json, urllib.request
@@ -139,42 +114,29 @@ print("rojo" if age_h > 72 else "verde", f"built_at hace {age_h:.0f} h", s["stre
       "| buscador", s.get("last_stream_date"), "resumenes", newest, "| failed", s.get("failed"))
 ```
 
-### 6. Opcional: recuperar el stream corrupto (decide el dueño: escribe en el corpus de AbraKadabra)
+### Stream corrupto (opcional, decide el dueño)
 
-`20250624/2494789870` tiene un `transcripcion_whisper.json` truncado (`Expecting value: line 4 column 5
-(char 85428)`) y nunca estuvo en el índice. Su transcripción de AWS está entera en S3: 777
-`audio_segments`, que dan 680 segmentos con el parser del builder (medido). El usuario de Windows
-tiene `s3:GetObject` sobre ella. Como el builder prefiere `transcripcion.json`, basta con copiarla con
-ese nombre para que la próxima corrida la indexe (cambia la huella) y `failed` baje a 0:
-
-```zsh
-ssh win 'aws s3 cp s3://0xultravioleta/0xultravioleta/2494789870/Transcripcion_0xultravioleta_audio_2494789870.json Z:/ultravioleta/ai/cursor/abracadabra/streamers/0xultravioleta/20250624/2494789870/transcripcion.json'
-```
+`20250624/2494789870` tiene la transcripción Whisper truncada y nunca estuvo en el índice. Existe una
+transcripción de AWS Transcribe de ese stream que el builder lee (680 segmentos, medido). Poniéndola
+como `transcripcion.json` en la carpeta del VOD, la próxima corrida la indexa y `failed` baja a 0.
 
 ### Rollback
 
-```zsh
-ssh win 'pwsh -NoProfile -ExecutionPolicy Bypass -File AppData/Local/uvd-stream-search/install_stream_search_task.ps1 -Uninstall'
-# indice anterior (bucket versionado): version del 2026-08-26 = ll5QakSVl1yFU__SIRNP_muzGusoPIiZ
-aws s3api copy-object --bucket ultravioletadao --key stream-search/search.db \
-  --copy-source 'ultravioletadao/stream-search/search.db?versionId=ll5QakSVl1yFU__SIRNP_muzGusoPIiZ'
-aws lambda update-function-configuration --region us-east-1 --function-name uvd-stream-search --description "index rollback $(date +%F)"
-```
+Quitar la tarea con `install_stream_search_task.ps1 -Uninstall`. El bucket del índice tiene versionado:
+se restaura la versión del 2026-08-26 de `stream-search/search.db` y se fuerza el cold start. Después,
+`/stats` vuelve a decir `built_at 2026-08-26 23:24:42`.
 
 ## Supuestos (todos reversibles)
 
-- Cada 60 min: `-IntervalMinutes` del instalador.
-- Republicación diaria: `--max-age-hours 24` del script. Para cambiarla, agregarlo a los argumentos de la
-  tarea.
-- Se niega a publicar si faltan más de 2 streams: `--max-drop 2`. En la primera corrida compara contra
-  los 402 del `/stats` vivo.
-- Los archivos viven en `%LOCALAPPDATA%\uvd-stream-search` y no en el checkout de Windows, que está en
-  `develop` y atrasado. Para actualizar, se vuelven a copiar con el `scp` del punto 1. Un builder nuevo
-  republica solo en la próxima corrida.
+- Cada 60 min (`-IntervalMinutes`) y republicación diaria (`--max-age-hours 24`).
+- Umbrales: `--max-drop 2` contra `max_streams`, y `--max-segment-drop 0.10` contra los segmentos de la
+  última publicación. La primera corrida compara contra el `/stats` vivo.
+- Los archivos viven en `%LOCALAPPDATA%\uvd-stream-search`, no en un checkout, así que no dependen de la
+  rama que tenga uno. Un builder nuevo republica solo en la próxima corrida.
 
 ## Qué no hice
 
-- No instalé nada en Windows, no escribí en S3 y no toqué la Lambda. En Windows hice solo lecturas por
-  ssh y una corrida de verificación (tests + `--dry-run`) en una carpeta de `%TEMP%` que se borró al
-  terminar.
+- No instalé nada en la máquina del streamer, no escribí en S3 y no toqué la Lambda. Allá hice solo
+  lecturas y corridas de verificación en carpetas temporales. Todas quedaron borradas: la de la ronda 2
+  quedó bloqueada por una conexión sqlite de mi script de prueba y la borré después.
 - No toqué AbraKadabra.

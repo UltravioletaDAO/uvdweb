@@ -11,8 +11,12 @@ locally, so the refresh has to run next to the corpus. Each run:
   2. If the fingerprint matches the last publish and that publish is younger
      than --max-age-hours (24), stops: nothing to do.
   3. Otherwise rebuilds the whole index (16 s for 428 streams, measured
-     2026-09-23, so no incremental mode), refuses to publish if streams went
-     missing, uploads it to s3://ultravioletadao/stream-search/search.db, forces
+     2026-09-23, so no incremental mode) and checks it before publishing:
+     no more than --max-drop streams below the most ever published, no more
+     than --max-segment-drop (10%) of the segments lost, and the db must pass
+     integrity_check and answer the Lambda's own search query. Without a
+     baseline (no state.json and no GET /stats) it refuses unless --force.
+     Then it uploads it to s3://ultravioletadao/stream-search/search.db, forces
      a cold start of the uvd-stream-search Lambda and checks that GET /stats
      shows the new built_at.
 
@@ -27,7 +31,9 @@ last published copy).
 Usage:
   python refresh_stream_search.py --dry-run   # build + checks, no S3, no Lambda
   python refresh_stream_search.py             # what the scheduled task runs
-  python refresh_stream_search.py --force     # rebuild and publish now
+  python refresh_stream_search.py --force     # rebuild and publish now; its counts
+                                              # become the new baseline
+  python refresh_stream_search.py --profile uvd-stream-search   # least-privilege AWS profile
 
 Exit codes: 0 published, unchanged or dry run; 1 error or refused to publish;
 2 published but /stats did not show the new built_at.
@@ -39,6 +45,7 @@ import json
 import logging
 import logging.handlers
 import os
+import sqlite3
 import sys
 import time
 import urllib.request
@@ -49,6 +56,19 @@ import build_stream_search_index as builder  # noqa: E402
 DEFAULT_CORPUS = "Z:/ultravioleta/ai/cursor/abracadabra/streamers/0xultravioleta"
 DEFAULT_STATS_URL = "https://pbs5xr8wye.execute-api.us-east-1.amazonaws.com/stats"
 LOCK_STALE_S = 30 * 60
+# The search Lambda's query (infra/stream-search/lambda_function.py), run against
+# the new db before publishing; a test keeps both copies identical.
+LAMBDA_SEARCH_SQL = """
+        SELECT s.vod_id, st.stream_date, st.title, s.start_time,
+               snippet(seg_fts, 0, '<mark>', '</mark>', '…', 24) AS snip
+        FROM seg_fts
+        JOIN segments s ON s.id = seg_fts.rowid
+        JOIN streams  st ON st.vod_id = s.vod_id
+        WHERE seg_fts MATCH ?
+        ORDER BY bm25(seg_fts)
+        LIMIT ?
+        """
+VALIDATE_PROBE = '"de"'  # the most common word in Spanish: any real index has it
 
 log = logging.getLogger("stream-search-refresh")
 
@@ -115,14 +135,63 @@ def decide(state, fingerprint, transcripts, now, max_age_hours, force):
     return None
 
 
-def check_counts(meta, baseline, max_drop):
+def as_int(value):
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return 0
+
+
+def baselines(state, stats_url, fetch):
+    """(streams, segments) the new index is compared against. Streams is the
+    most ever published (max_streams), so the floor cannot sink --max-drop
+    streams per run; segments is the last publish. First run: live GET /stats."""
+    streams = as_int(state.get("max_streams") or state.get("streams"))
+    segments = as_int(state.get("segments"))
+    if (not streams or not segments) and stats_url:
+        live = fetch(stats_url) or {}
+        streams = streams or as_int(live.get("streams"))
+        segments = segments or as_int(live.get("segments"))
+    return streams, segments
+
+
+def check_counts(meta, baseline_streams, baseline_segments, max_drop, max_segment_drop):
     """Why the new index must not replace the published one, or None."""
-    streams = int(meta.get("streams") or 0)
+    streams = as_int(meta.get("streams"))
+    segments = as_int(meta.get("segments"))
     if streams == 0:
         return "the new index has 0 streams"
-    if baseline and streams < baseline - max_drop:
-        return (f"the new index has {streams} streams and the published one {baseline} "
+    if segments == 0:
+        return "the new index has 0 segments"
+    if baseline_streams and streams < baseline_streams - max_drop:
+        return (f"the new index has {streams} streams and the baseline {baseline_streams} "
                 f"(more than {max_drop} missing)")
+    if baseline_segments and segments < baseline_segments * (1 - max_segment_drop):
+        return (f"the new index has {segments} segments and the baseline {baseline_segments} "
+                f"(more than {max_segment_drop:.0%} lost)")
+    return None
+
+
+def validate_db(path, meta):
+    """Why the built db must not be published, or None. Read-only, the way the
+    Lambda opens it."""
+    uri = "file:" + urllib.request.pathname2url(os.path.abspath(path)) + "?mode=ro"
+    try:
+        conn = sqlite3.connect(uri, uri=True)
+        try:
+            integrity = [row[0] for row in conn.execute("PRAGMA integrity_check")]
+            if integrity != ["ok"]:
+                return f"integrity_check: {'; '.join(integrity[:3])}"
+            segments = conn.execute("SELECT count(*) FROM segments").fetchone()[0]
+            if segments != as_int(meta.get("segments")):
+                return f"segments table has {segments} rows, meta says {meta.get('segments')}"
+            hits = conn.execute(LAMBDA_SEARCH_SQL, (VALIDATE_PROBE, 1)).fetchall()
+            if not hits:
+                return f"the Lambda's search query finds nothing for {VALIDATE_PROBE}"
+        finally:
+            conn.close()
+    except sqlite3.Error as exc:
+        return f"db unreadable: {exc}"
     return None
 
 
@@ -141,12 +210,13 @@ class AwsPublisher:
     sends the next invocations to new execution environments, which download
     search.db again at cold start."""
 
-    def __init__(self, bucket, key, function, region):
+    def __init__(self, bucket, key, function, region, profile=None):
         import boto3  # only needed when publishing
 
+        session = boto3.Session(profile_name=profile or None, region_name=region)
         self.bucket, self.key, self.function = bucket, key, function
-        self.s3 = boto3.client("s3", region_name=region)
-        self.lam = boto3.client("lambda", region_name=region)
+        self.s3 = session.client("s3")
+        self.lam = session.client("lambda")
 
     def publish(self, db_path, meta):
         self.s3.upload_file(db_path, self.bucket, self.key)
@@ -213,18 +283,23 @@ def run(args, publisher_factory, fetch=fetch_stats, now=utcnow, sleep=time.sleep
         log.exception("build failed")
         return finish("error", 1, f"build failed: {exc}")
 
-    baseline = int(state.get("streams") or 0)
-    if not baseline and args.stats_url:
-        baseline = int((fetch(args.stats_url) or {}).get("streams") or 0)
-    problem = check_counts(meta, baseline, args.max_drop)
+    base_streams, base_segments = baselines(state, args.stats_url, fetch)
+    if not base_streams and not args.force:
+        problem = ("no baseline (nothing published from here yet and GET /stats failed): "
+                   "run once with --force")
+    else:
+        problem = (check_counts(meta, base_streams, base_segments, args.max_drop,
+                                args.max_segment_drop)
+                   or validate_db(new_db, meta))
     if problem:
         log.error("not publishing: %s", problem)
         return finish("refused", 1, problem)
 
     if args.dry_run:
-        log.info("dry run, not published: %s streams (published: %s), %s segments, "
-                 "last stream %s, %s failed -> %s", meta["streams"], baseline or "?",
-                 meta["segments"], meta["last_stream_date"], meta["failed"], new_db)
+        log.info("dry run, not published: %s streams (baseline: %s), %s segments "
+                 "(baseline: %s), last stream %s, %s failed -> %s", meta["streams"],
+                 base_streams or "?", meta["segments"], base_segments or "?",
+                 meta["last_stream_date"], meta["failed"], new_db)
         return 0
 
     try:
@@ -239,6 +314,9 @@ def run(args, publisher_factory, fetch=fetch_stats, now=utcnow, sleep=time.sleep
         built_at=meta["built_at"], streams=int(meta["streams"]),
         segments=int(meta["segments"]), last_stream_date=meta["last_stream_date"],
         failed=int(meta["failed"]),
+        # --force is the operator saying this index is right: it resets the floor.
+        max_streams=int(meta["streams"]) if args.force
+        else max(base_streams, int(meta["streams"])),
     )
     if not args.stats_url:
         return finish("published", 0)
@@ -292,11 +370,20 @@ def parse_args(argv=None):
     ap.add_argument("--max-age-hours", type=float, default=24,
                     help="republish even without changes after this many hours")
     ap.add_argument("--max-drop", type=int, default=2,
-                    help="refuse to publish when more streams than this went missing")
+                    help="refuse to publish with more than this many streams below the "
+                         "most ever published")
+    ap.add_argument("--max-segment-drop", type=float, default=0.10,
+                    help="refuse to publish when this fraction of the segments of the last "
+                         "publish went missing")
+    ap.add_argument("--profile", default=os.environ.get("STREAM_SEARCH_AWS_PROFILE"),
+                    help="AWS profile to publish with (least privilege: see "
+                         "docs/STREAM_SEARCH.md); default credential chain if unset")
     ap.add_argument("--min-chars", type=int, default=8)
     ap.add_argument("--dry-run", action="store_true",
                     help="build and check, but do not touch S3, the Lambda or state.json")
-    ap.add_argument("--force", action="store_true", help="rebuild and publish now")
+    ap.add_argument("--force", action="store_true",
+                    help="rebuild and publish now, even without a baseline; the published "
+                         "counts become the new baseline")
     return ap.parse_args(argv)
 
 
@@ -308,7 +395,8 @@ def main(argv=None):
         log.info("another refresh is running (%s), skipping", lock)
         return 0
     try:
-        return run(args, lambda: AwsPublisher(args.bucket, args.key, args.function, args.region))
+        return run(args, lambda: AwsPublisher(args.bucket, args.key, args.function,
+                                              args.region, args.profile))
     except Exception:
         log.exception("refresh failed")
         return 1

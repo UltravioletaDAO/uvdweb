@@ -12,6 +12,7 @@ import importlib.util
 import json
 import logging
 import os
+import re
 import shutil
 import sqlite3
 import sys
@@ -28,13 +29,14 @@ import refresh_stream_search as refresh  # noqa: E402
 T0 = dt.datetime(2026, 9, 23, 4, 0, tzinfo=dt.timezone.utc)
 
 
-def make_stream(corpus, date, vod, kind="whisper", n=3):
+def make_stream(corpus, date, vod, kind="whisper", n=3, text_key="text"):
     vod_dir = os.path.join(corpus, date, vod)
     os.makedirs(vod_dir, exist_ok=True)
     if kind == "whisper":
         name = "transcripcion_whisper.json"
         data = {"segments": [{"start": i * 10.0, "end": i * 10.0 + 5,
-                              "text": f"frase numero {i} del stream {vod}"} for i in range(n)]}
+                              text_key: f"frase numero {i} de la charla del stream {vod}"}
+                             for i in range(n)]}
     else:
         name = "transcripcion.json"
         data = {"results": {"audio_segments": [
@@ -67,7 +69,8 @@ class RefreshTest(unittest.TestCase):
         make_stream(self.corpus, "20260910", "2870548351")
         make_stream(self.corpus, "20260922", "2881205107")
         self.publisher = FakePublisher()
-        self.live = {}  # what GET /stats answers
+        # What GET /stats answers: the index published before the first run.
+        self.live = {"built_at": "2026-08-26 23:24:42", "streams": "3", "segments": "9"}
 
     def tearDown(self):
         shutil.rmtree(self.tmp, ignore_errors=True)
@@ -158,6 +161,115 @@ class RefreshTest(unittest.TestCase):
         self.assertEqual(self.publisher.calls, [])
         self.assertIn("402", self.state()["last_error"])
 
+    def test_refuses_first_run_without_baseline(self):
+        self.live = {}  # GET /stats down and no state.json
+        self.assertEqual(self.run_refresh(lambda_serves_new=False), 1)
+        self.assertEqual(self.publisher.calls, [])
+        self.assertEqual(self.state()["last_result"], "refused")
+        self.assertIn("--force", self.state()["last_error"])
+
+    def test_force_publishes_first_run_without_baseline(self):
+        self.live = {}
+        self.assertEqual(self.run_refresh("--force"), 0)
+        self.assertEqual(len(self.publisher.calls), 1)
+        self.assertEqual(self.state()["max_streams"], 3)
+
+    def test_refuses_when_segments_collapse(self):
+        self.run_refresh()
+        # Same streams, but a Whisper format change leaves every segment without text.
+        for date, vod in (("20260910", "2870548351"), ("20260922", "2881205107")):
+            make_stream(self.corpus, date, vod, text_key="texto")
+        shutil.rmtree(os.path.join(self.corpus, "20260825"))
+        make_stream(self.corpus, "20260825", "2856217000", text_key="texto")
+        self.assertEqual(self.run_refresh(now=T0 + dt.timedelta(hours=1)), 1)
+        self.assertEqual(len(self.publisher.calls), 1)
+        self.assertEqual(self.state()["last_error"], "the new index has 0 segments")
+
+    def test_refuses_when_segments_drop_over_threshold(self):
+        make_stream(self.corpus, "20260910", "2870548351", n=10)
+        self.run_refresh()  # 3 + 10 + 3 = 16 segments
+        make_stream(self.corpus, "20260910", "2870548351", n=8)  # 14 < 16 * 0.9
+        self.assertEqual(self.run_refresh(now=T0 + dt.timedelta(hours=1)), 1)
+        self.assertEqual(len(self.publisher.calls), 1)
+        self.assertIn("segments", self.state()["last_error"])
+        self.assertEqual(self.state()["segments"], 16)
+
+    def test_segment_drop_within_threshold_publishes(self):
+        make_stream(self.corpus, "20260910", "2870548351", n=20)
+        self.run_refresh()  # 26 segments
+        make_stream(self.corpus, "20260910", "2870548351", n=18)  # 24 >= 26 * 0.9
+        self.assertEqual(self.run_refresh(now=T0 + dt.timedelta(hours=1)), 0)
+        self.assertEqual(len(self.publisher.calls), 2)
+
+    def test_floor_is_the_most_streams_ever_published(self):
+        for i in range(2):
+            make_stream(self.corpus, f"2026090{i + 1}", f"28600000{i}")
+        self.run_refresh()  # 5 streams
+        # Lose 2 streams (allowed) while the rest grow, so segments do not drop.
+        for date in ("20260901", "20260902"):
+            shutil.rmtree(os.path.join(self.corpus, date))
+        make_stream(self.corpus, "20260910", "2870548351", n=30)
+        self.assertEqual(self.run_refresh(now=T0 + dt.timedelta(hours=1)), 0)
+        self.assertEqual(self.state()["max_streams"], 5)
+        # Another one: 2 streams is within 2 of the last publish (3) but not of 5.
+        shutil.rmtree(os.path.join(self.corpus, "20260922"))
+        make_stream(self.corpus, "20260910", "2870548351", n=40)
+        self.assertEqual(self.run_refresh(now=T0 + dt.timedelta(hours=2)), 1)
+        self.assertIn("baseline 5", self.state()["last_error"])
+        self.assertEqual(len(self.publisher.calls), 2)
+
+    def test_validate_accepts_a_built_db(self):
+        db = os.path.join(self.tmp, "ok.db")
+        meta = builder.build(self.corpus, db, log=lambda msg: None)
+        self.assertIsNone(refresh.validate_db(db, meta))
+
+    def test_validate_rejects_corrupt_db(self):
+        db = os.path.join(self.tmp, "corrupt.db")
+        meta = builder.build(self.corpus, db, log=lambda msg: None)
+        with open(db, "r+b") as fh:  # keep the header, trash the pages after it
+            fh.seek(1024)
+            fh.write(b"\xff" * (os.path.getsize(db) - 1024))
+        self.assertIsNotNone(refresh.validate_db(db, meta))
+        self.assertIsNotNone(refresh.validate_db(os.path.join(self.tmp, "missing.db"), meta))
+
+    def test_validate_rejects_db_that_disagrees_with_meta(self):
+        db = os.path.join(self.tmp, "short.db")
+        meta = builder.build(self.corpus, db, log=lambda msg: None)
+        self.assertIn("meta says", refresh.validate_db(db, dict(meta, segments="99")))
+
+    def test_validate_rejects_db_the_lambda_query_cannot_search(self):
+        db = os.path.join(self.tmp, "nofts.db")
+        meta = builder.build(self.corpus, db, log=lambda msg: None)
+        conn = sqlite3.connect(db)
+        conn.execute("INSERT INTO seg_fts(seg_fts) VALUES('delete-all')")
+        conn.commit()
+        conn.close()
+        self.assertIn("finds nothing", refresh.validate_db(db, meta))
+
+    def test_profile_reaches_the_boto3_session(self):
+        seen = {}
+
+        class Session:
+            def __init__(self, profile_name=None, region_name=None):
+                seen.update(profile=profile_name, region=region_name)
+
+            def client(self, name):
+                return types.SimpleNamespace(name=name)
+
+        fake = types.ModuleType("boto3")
+        fake.Session = Session
+        real = sys.modules.get("boto3")
+        sys.modules["boto3"] = fake
+        try:
+            args = self.args("--profile", "uvd-stream-search")
+            refresh.AwsPublisher(args.bucket, args.key, args.function, args.region, args.profile)
+        finally:
+            if real is None:
+                del sys.modules["boto3"]
+            else:
+                sys.modules["boto3"] = real
+        self.assertEqual(seen, {"profile": "uvd-stream-search", "region": "us-east-1"})
+
     def test_missing_corpus_is_an_error(self):
         shutil.rmtree(self.corpus)
         self.assertEqual(self.run_refresh(), 1)
@@ -241,6 +353,12 @@ class LambdaCompatTest(unittest.TestCase):
         self.assertGreaterEqual(body["count"], 1)
         hit = next(r for r in body["results"] if r["start_time"] == 420.0)
         self.assertEqual(hit["url"], "https://www.twitch.tv/videos/2870548351?t=0h7m0s")
+
+    def test_validation_runs_the_lambdas_own_query(self):
+        with open(os.path.join(REPO, "infra", "stream-search", "lambda_function.py"),
+                  encoding="utf-8") as fh:
+            lambda_sql = re.search(r'"""(\s*SELECT.*?)"""', fh.read(), re.S).group(1)
+        self.assertEqual(" ".join(lambda_sql.split()), " ".join(refresh.LAMBDA_SEARCH_SQL.split()))
 
     def test_schema_the_lambda_reads_is_unchanged(self):
         conn = sqlite3.connect(self.db)

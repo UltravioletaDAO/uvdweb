@@ -12,7 +12,11 @@
 # ningun checkout. Estado (state.json), log (refresh.log) y la ultima copia
 # publicada (search.db) quedan en %LOCALAPPDATA%\uvd-stream-search.
 #
-# Instalar:                 .\install_stream_search_task.ps1
+# Publicar con un perfil AWS de privilegio minimo (s3:PutObject sobre el indice y
+# lambda:Update/GetFunctionConfiguration sobre uvd-stream-search, ver
+# docs/STREAM_SEARCH.md) en vez de las credenciales por defecto: -AwsProfile <nombre>.
+#
+# Instalar:                 .\install_stream_search_task.ps1 [-AwsProfile <perfil>]
 # Ver que hara sin hacerlo: .\install_stream_search_task.ps1 -DryRun
 # Quitar:                   .\install_stream_search_task.ps1 -Uninstall
 
@@ -21,6 +25,8 @@ param(
     [int]$IntervalMinutes = 60,
     [string]$TaskName = 'uvd-stream-search-refresh',
     [string]$Corpus = 'Z:\ultravioleta\ai\cursor\abracadabra\streamers\0xultravioleta',
+    [ValidatePattern('^[A-Za-z0-9_.-]*$')]
+    [string]$AwsProfile = '',
     [switch]$DryRun,
     [switch]$Uninstall
 )
@@ -54,13 +60,17 @@ if (-not (Test-Path $pythonw)) {
 }
 
 # Bajo pythonw un import roto o unas credenciales faltantes fallan en silencio:
-# se comprueban aca, con el mismo python, antes de registrar nada.
-& $python -c "import boto3, sqlite3; sqlite3.connect(':memory:').execute('create virtual table t using fts5(x)'); boto3.client('sts').get_caller_identity(); print('python, boto3, FTS5 y credenciales AWS: OK')"
+# se comprueban aca, con el mismo python y el mismo perfil, antes de registrar
+# nada. GetFunctionConfiguration es parte de la politica minima: si el perfil no
+# llega a la Lambda, falla aca y no a la hora.
+$profileExpr = if ($AwsProfile) { "'$AwsProfile'" } else { 'None' }
+& $python -c "import boto3, sqlite3; sqlite3.connect(':memory:').execute('create virtual table t using fts5(x)'); boto3.Session(profile_name=$profileExpr, region_name='us-east-1').client('lambda').get_function_configuration(FunctionName='uvd-stream-search'); print('python, boto3, FTS5 y credenciales AWS: OK')"
 if ($LASTEXITCODE -ne 0) {
-    throw "El python de la tarea ($python) no tiene boto3, FTS5 o credenciales AWS."
+    throw "El python de la tarea ($python) no tiene boto3 o FTS5, o las credenciales no alcanzan la Lambda uvd-stream-search."
 }
 
 $arguments = "`"$refresh`" --corpus `"$Corpus`""
+if ($AwsProfile) { $arguments += " --profile $AwsProfile" }
 
 Write-Host ''
 Write-Host 'Tarea a registrar' -ForegroundColor Cyan
@@ -68,6 +78,7 @@ Write-Host "  Nombre    : $TaskName"
 Write-Host "  Ejecuta   : $pythonw $arguments"
 Write-Host "  Cada      : $IntervalMinutes minutos, indefinidamente (primera en 2 minutos)"
 Write-Host "  Publica en: s3://ultravioletadao/stream-search/search.db + reinicio de la Lambda uvd-stream-search"
+Write-Host "  Perfil AWS: $(if ($AwsProfile) { $AwsProfile } else { '(credenciales por defecto)' })"
 Write-Host "  Estado/log: $stateDir"
 Write-Host "  Usuario   : $env:USERNAME (sin privilegios elevados)"
 Write-Host ''

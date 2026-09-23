@@ -347,6 +347,9 @@ Para contribuir al proyecto:
   del streamer (`scripts/install_stream_search_task.ps1`). Si AbraKadabra dejó una transcripción nueva,
   reconstruye el índice completo (16 s para 428 streams), lo sube a S3 y reinicia la Lambda. Una vez
   al día lo republica igual, para que `built_at` sirva de latido.
+- **Guardas**: no publica si el índice nuevo pierde más de 2 streams contra el máximo publicado o más
+  del 10 % de los segmentos, ni si el db no pasa `integrity_check` y la misma consulta de la Lambda.
+  Publica con un perfil AWS de privilegio mínimo (`--profile` / `-AwsProfile`).
 - **Señal de frescura**: `GET /stats` suma `last_stream_date`, `failed` y `refresh` (`auto`/`manual`) a
   `built_at`/`streams`/`segments`, sin tocar la Lambda. Más de 3 días sin moverse `built_at` = rojo.
 - **Tests**: `python3 -m unittest discover -s tests/stream-search -v`. Detalle en `docs/STREAM_SEARCH.md`.
