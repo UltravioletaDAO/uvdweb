@@ -14,10 +14,13 @@ Automatizar el refresh de las dos fuentes vivas que hoy se corren A MANO:
 1. **uv-watch + briefings de gobernanza** (`/snapshot`): `karmakadabra/scripts/kk/uv_watch.py`
    actualiza `vault/knowledge/uvd/` por hash; los briefings en español se regeneran cuando hay
    proposal nueva y se suben a `s3://ultravioletadao/governance/briefings.json`.
-2. **Índice de búsqueda del stream** (`/stream-summaries`): `scripts/build_stream_search_index.py`
-   + upload a `s3://ultravioletadao/stream-search/search.db` (ver `docs/STREAM_SEARCH.md`).
+2. ~~**Índice de búsqueda del stream** (`/stream-summaries`)~~ ✅ AUTOMÁTICO desde 2026-09-23
+   (decisión del dueño: "Automático"). Tarea programada `uvd-stream-search-refresh` en la máquina
+   del streamer: reindexa cuando AbraKadabra deja una transcripción nueva y una vez al día. Ver
+   `docs/STREAM_SEARCH.md`. El diseño EventBridge → ECS de abajo no aplica a este índice: el corpus
+   no está en S3 (las transcripciones Whisper viven solo en esa máquina).
 
-Diseño del cron cuando se decida: EventBridge → ecs:RunTask one-shot clonando
+Diseño del cron cuando se decida (queda para el punto 1): EventBridge → ecs:RunTask one-shot clonando
 `karmakadabra/terraform/selfimprove/` (stack propio `terraform/uv-knowledge/`, IAM mínimo).
 Relación: fila "Ultravioleta Intelligence Engine" en `karmakadabra/docs/planning/BACKLOG.md`
 y plan `karmakadabra/plans/ULTRAVIOLETA_INTELLIGENCE_ENGINE_MASTER_PLAN.md` (Pilar A, gate A1).

@@ -340,6 +340,17 @@ Para contribuir al proyecto:
 
 ## 📝 Cambios Recientes
 
+### La memoria de los streams se reindexa sola (2026-09-23)
+- **Antes**: el índice de búsqueda de `/stream-summaries` (y de la tool WebMCP `search_stream_memory`)
+  se reconstruía a mano; el 23-sep llevaba 26 streams de atraso (último refresh: 26-ago, 402 streams).
+- **Ahora**: `scripts/refresh_stream_search.py` corre cada hora como tarea programada en la máquina
+  del streamer (`scripts/install_stream_search_task.ps1`). Si AbraKadabra dejó una transcripción nueva,
+  reconstruye el índice completo (16 s para 428 streams), lo sube a S3 y reinicia la Lambda. Una vez
+  al día lo republica igual, para que `built_at` sirva de latido.
+- **Señal de frescura**: `GET /stats` suma `last_stream_date`, `failed` y `refresh` (`auto`/`manual`) a
+  `built_at`/`streams`/`segments`, sin tocar la Lambda. Más de 3 días sin moverse `built_at` = rojo.
+- **Tests**: `python3 -m unittest discover -s tests/stream-search -v`. Detalle en `docs/STREAM_SEARCH.md`.
+
 ### Text-to-Speech con ElevenLabs - Optimización y Cache (2025-08-10)
 - **Agregado**: Sistema de caché inteligente para audio TTS
   - Cache en IndexedDB del navegador para almacenar audio generado
