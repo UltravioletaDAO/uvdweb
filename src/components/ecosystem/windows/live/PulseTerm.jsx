@@ -14,6 +14,7 @@ import Terminal from '../../desk/Terminal';
 import SourceChip from '../../desk/SourceChip';
 import useLiveMetric from '../../../../hooks/useLiveMetric';
 import { ENDPOINTS, loadSnapshot } from '../../../../services/ecosystem/endpoints';
+import { listFacilitatorNetworks } from '../../../../services/facilitator/supportedNetworks';
 import replayIndex from '../../../../data/ecosystem/replays/index.json';
 import { EV, on } from '../../../../services/ecosystem/bus';
 import { LIVE_META } from './index';
@@ -200,10 +201,9 @@ export function EndpointTerm({ windowId, title, sourceLabel, blocks, status, fet
 
 // Selects a nivel de módulo: identidad estable (ver useEndpointMetric).
 const selectHealth = (j) => (j && typeof j.status === 'string' ? { status: j.status } : null);
-const selectSupported = (j) => {
+export const selectSupported = (j) => {
   if (!j || !Array.isArray(j.kinds)) return null;
-  const networks = new Set(j.kinds.map((k) => k && k.network).filter(Boolean));
-  return { kinds: j.kinds.length, networks: networks.size };
+  return { kinds: j.kinds.length, networks: listFacilitatorNetworks(j.kinds).length };
 };
 const selectMesh = (j) => (j && typeof j === 'object' && typeof j.users === 'number' ? j : null);
 const selectSearch = (j) => (j && typeof j === 'object' && !Array.isArray(j) ? j : null);

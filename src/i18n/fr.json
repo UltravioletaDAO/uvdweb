@@ -742,8 +742,8 @@
     "defaultDescription": "Construire l'avenir du Web3 en Amérique latine avec le Facilitateur x402 pour les paiements sans gas des agents IA, la gouvernance décentralisée et la gestion collaborative de la trésorerie. Activez les méta-transactions cross-chain avec EIP-3009.",
     "facilitator": {
       "title": "Facilitateur x402 - Paiements sans gas pour les agents IA",
-      "description": "Permettez aux agents IA de transacter de manière autonome sans frais de gas grâce au protocole x402 avec les méta-transactions EIP-3009 sur les réseaux Avalanche, Base, Celo et HyperEVM.",
-      "keywords": "facilitateur x402, transactions sans gas, EIP-3009, méta-transactions, paiements agents IA, paiements cross-chain, paiements sans état, paiements HTTP, protocole x402, Web3 sans gas, agents autonomes, signatures EIP-712, transferWithAuthorization, Avalanche sans gas, Base sans gas, Celo sans gas, HyperEVM sans gas, zéro frais de gas, paiements trustless, règlement instantané"
+      "description": "Permettez aux agents IA de transacter de manière autonome sans frais de gas grâce au protocole x402 avec les méta-transactions EIP-3009, sur tous les mainnets et testnets que le facilitateur liste en direct.",
+      "keywords": "facilitateur x402, transactions sans gas, EIP-3009, méta-transactions, paiements agents IA, paiements cross-chain, paiements sans état, paiements HTTP, protocole x402, Web3 sans gas, agents autonomes, signatures EIP-712, transferWithAuthorization, paiements multichain sans gas, zéro frais de gas, paiements trustless, règlement instantané"
     }
   },
   "footer": {
@@ -1659,7 +1659,7 @@
   },
   "facilitatorPage": {
     "seoTitle": "Facilitateur x402 - Paiements sans gas pour agents IA",
-    "seoDescription": "Permettez aux agents IA de transacter de manière autonome sans frais de gas. Le Facilitateur x402 fournit des paiements cross-chain sans gas grâce aux méta-transactions EIP-3009 sur Avalanche, Base, Celo et HyperEVM.",
+    "seoDescription": "Permettez aux agents IA de transacter de manière autonome sans frais de gas. Le Facilitateur x402 fournit des paiements cross-chain sans gas grâce aux méta-transactions EIP-3009 sur tous les réseaux qu'il liste en direct.",
     "hero": {
       "title": "Facilitateur x402",
       "subtitle": "Paiements sans gas pour l'économie agentique",
@@ -1690,14 +1690,7 @@
       "title": "Réseaux supportés",
       "mainnets": "Mainnets",
       "testnets": "Testnets",
-      "avalanche": "Avalanche C-Chain",
-      "base": "Base",
-      "celo": "Celo",
-      "hyperEvm": "HyperEVM",
-      "avalancheFuji": "Avalanche Fuji",
-      "baseSepolia": "Base Sepolia",
-      "celoSepolia": "Celo Sepolia",
-      "hyperEvmTestnet": "HyperEVM Testnet"
+      "unavailable": "Le facilitateur publie la liste des réseaux en direct sur"
     },
     "technical": {
       "title": "Implémentation technique",
@@ -1708,9 +1701,14 @@
       "api": {
         "title": "Endpoints API",
         "health": "GET /health - Vérification du statut",
+        "version": "GET /version - Version du facilitateur",
         "supported": "GET /supported - Liste les schémas de paiement",
+        "networks": "GET /networks.json - Nom, chain ID et explorateur de chaque réseau",
+        "accepts": "POST /accepts - Complète les exigences de paiement d'un 402 (fee payer, tokens)",
         "verify": "POST /verify - Valide les signatures",
-        "settle": "POST /settle - Exécute les paiements on-chain"
+        "settle": "POST /settle - Exécute les paiements on-chain",
+        "discovery": "GET /discovery/resources - Ressources payantes découvrables via x402",
+        "full": "Liste complète des routes publiques :"
       }
     },
     "addresses": {

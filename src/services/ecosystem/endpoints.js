@@ -8,14 +8,16 @@
 // índice compacto de replays (index.json, ~2 KB gz): los cuerpos pesados (supported, mensajes,
 // certificados, markdown) se cargan bajo demanda con loadSnapshot(key) en su propio chunk.
 import replayIndex from '../../data/ecosystem/replays/index.json';
+import { listFacilitatorNetworks, networksFromNetworksJson } from '../facilitator/supportedNetworks';
 
 const SEARCH_API = process.env.REACT_APP_STREAM_SEARCH_API || null;
 
 const CORS_VERIFIED_AT = '2026-08-27';
 
+// Redes distintas, no cadenas `network`: /supported nombra cada red en v1 y en CAIP-2.
 const selectSupported = (j) => ({
   kinds: Array.isArray(j.kinds) ? j.kinds.length : 0,
-  networks: Array.isArray(j.kinds) ? new Set(j.kinds.map((k) => k.network)).size : 0,
+  networks: listFacilitatorNetworks(j.kinds).length,
 });
 
 // Cada entrada: { product, url|urlFor, method, cors:'live'|'prod-only', corsVerifiedAt, pollMs,
@@ -38,6 +40,18 @@ const DEFS = {
     pollMs: 300000,
     select: selectSupported,
     snapshotKey: 'facilitator_supported',
+  },
+  // Presentación de cada red servida (displayName, chainId, testnet), filas = /supported.
+  // Solo en vivo: no hay replay grabado; quien lo muestra cae a /supported (vivo y su replay).
+  facilitator_networks: {
+    product: 'facilitator',
+    url: 'https://facilitator.ultravioletadao.xyz/networks.json',
+    method: 'GET',
+    cors: 'live',
+    corsVerifiedAt: '2026-09-29',
+    pollMs: 0,
+    select: networksFromNetworksJson,
+    snapshotKey: 'facilitator_networks',
   },
   meshrelay_stats: {
     product: 'meshrelay',
