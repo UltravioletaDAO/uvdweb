@@ -16,8 +16,21 @@ import {
 } from '@heroicons/react/24/outline';
 import SEO from '../components/SEO';
 import useLiveMetric from '../hooks/useLiveMetric';
+import useFacilitatorNetworks from '../hooks/useFacilitatorNetworks';
 import { ENDPOINTS } from '../services/ecosystem/endpoints';
 import { countFacilitatorNetworks } from '../services/facilitator/supportedNetworks';
+
+// Logos por familia de red (el prefijo del id: "base-sepolia" → base). Hoy la tarjeta no los pinta.
+const NETWORK_LOGOS = {
+  avalanche: '/networks/avalanche.svg',
+  base: '/networks/base.svg',
+  celo: '/networks/celo.svg',
+  hyperevm: '/networks/hyper.svg',
+};
+const GENERIC_NETWORK_LOGO = null;
+const logoFor = (id) => NETWORK_LOGOS[String(id).split('-')[0]] || GENERIC_NETWORK_LOGO;
+
+const byName = (a, b) => a.name.localeCompare(b.name);
 
 const FacilitatorPage = () => {
   const { t } = useTranslation();
@@ -71,27 +84,28 @@ const FacilitatorPage = () => {
     }
   ];
 
-  const networks = {
-    mainnets: [
-      { name: t('facilitatorPage.networks.avalanche'), logo: '/networks/avalanche.svg', chainId: 43114 },
-      { name: t('facilitatorPage.networks.base'), logo: '/networks/base.svg', chainId: 8453 },
-      { name: t('facilitatorPage.networks.celo'), logo: '/networks/celo.svg', chainId: 42220 },
-      { name: t('facilitatorPage.networks.hyperEvm'), logo: '/networks/hyper.svg', chainId: 998 }
-    ],
-    testnets: [
-      { name: t('facilitatorPage.networks.avalancheFuji'), logo: '/networks/avalanche.svg', chainId: 43113 },
-      { name: t('facilitatorPage.networks.baseSepolia'), logo: '/networks/base.svg', chainId: 84532 },
-      { name: t('facilitatorPage.networks.celoSepolia'), logo: '/networks/celo.svg', chainId: 44787 },
-      { name: t('facilitatorPage.networks.hyperEvmTestnet'), logo: '/networks/hyper.svg', chainId: 998 }
-    ]
-  };
+  // Las redes salen de lo que publica el facilitador (/networks.json, o /supported agrupado por
+  // red, o su replay); el chain id es el de esos datos. Sin datos, la sección queda sin lista.
+  const { networks: servedNetworks, source: networksSource } = useFacilitatorNetworks();
+  const networks = servedNetworks
+    ? {
+        mainnets: servedNetworks.filter((n) => !n.testnet).map((n) => ({ ...n, logo: logoFor(n.id) })).sort(byName),
+        testnets: servedNetworks.filter((n) => n.testnet).map((n) => ({ ...n, logo: logoFor(n.id) })).sort(byName)
+      }
+    : null;
 
+  // Rutas públicas principales; la lista completa la publica el facilitador (api-catalog, llms.txt).
   const apiEndpoints = [
     { method: 'GET', path: '/health', description: t('facilitatorPage.technical.api.health') },
+    { method: 'GET', path: '/version', description: t('facilitatorPage.technical.api.version') },
     { method: 'GET', path: '/supported', description: t('facilitatorPage.technical.api.supported') },
+    { method: 'GET', path: '/networks.json', description: t('facilitatorPage.technical.api.networks') },
+    { method: 'POST', path: '/accepts', description: t('facilitatorPage.technical.api.accepts') },
     { method: 'POST', path: '/verify', description: t('facilitatorPage.technical.api.verify') },
-    { method: 'POST', path: '/settle', description: t('facilitatorPage.technical.api.settle') }
+    { method: 'POST', path: '/settle', description: t('facilitatorPage.technical.api.settle') },
+    { method: 'GET', path: '/discovery/resources', description: t('facilitatorPage.technical.api.discovery') }
   ];
+  const apiCatalogPaths = ['/.well-known/api-catalog', '/llms.txt'];
 
   // Schema markup for x402 Facilitator
   const facilitatorSchema = {
@@ -108,7 +122,7 @@ const FacilitatorPage = () => {
     featureList: [
       'Gasless transactions for AI agents',
       'EIP-3009 meta-transactions',
-      'Cross-chain payments (Avalanche, Base, Celo, HyperEVM)',
+      'Cross-chain payments',
       'EIP-712 signature verification',
       'Trustless payment execution',
       'Instant settlement (~2-3 seconds)',
@@ -145,7 +159,7 @@ const FacilitatorPage = () => {
       <SEO
         title={t('facilitatorPage.seoTitle')}
         description={t('facilitatorPage.seoDescription')}
-        keywords="x402 facilitator, gasless transactions, EIP-3009, meta-transactions, AI agent payments, cross-chain payments, stateless payments, HTTP payments, x402 protocol, gasless Web3, web4, agentic economy, autonomous agents, ERC-8004, EIP-712 signatures, transferWithAuthorization, Avalanche gasless, Base gasless, Celo gasless, HyperEVM gasless, zero gas fees, trustless payments, instant settlement, UltraVioleta DAO, Web3 infrastructure, Latin America blockchain"
+        keywords="x402 facilitator, gasless transactions, EIP-3009, meta-transactions, AI agent payments, cross-chain payments, stateless payments, HTTP payments, x402 protocol, gasless Web3, web4, agentic economy, autonomous agents, ERC-8004, EIP-712 signatures, transferWithAuthorization, multichain gasless payments, zero gas fees, trustless payments, instant settlement, UltraVioleta DAO, Web3 infrastructure, Latin America blockchain"
         customJsonLd={facilitatorSchema}
       />
 
@@ -236,53 +250,71 @@ const FacilitatorPage = () => {
         </section>
 
         {/* Networks Section */}
-        <section className="py-20 px-4">
+        <section className="py-20 px-4" data-networks-source={networksSource || 'none'}>
           <div className="container mx-auto">
             <h2 className="text-3xl md:text-4xl font-bold text-center text-text-primary mb-12">
               {t('facilitatorPage.networks.title')}
             </h2>
 
-            <div className="grid md:grid-cols-2 gap-8">
-              {/* Mainnets */}
-              <div className="p-6 rounded-xl bg-background-card border border-border">
-                <h3 className="text-xl font-semibold text-text-primary mb-6 flex items-center gap-2">
-                  <CubeTransparentIcon className="w-6 h-6 text-green-500" />
-                  {t('facilitatorPage.networks.mainnets')}
-                </h3>
-                <div className="space-y-3">
-                  {networks.mainnets.map((network, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between p-3 rounded-lg bg-background hover:bg-background/50
-                        transition-colors duration-200"
-                    >
-                      <span className="text-text-primary font-medium">{network.name}</span>
-                      <span className="text-xs text-text-secondary">Chain ID: {network.chainId}</span>
-                    </div>
-                  ))}
+            {networks ? (
+              <div className="grid md:grid-cols-2 gap-8">
+                {/* Mainnets */}
+                <div className="p-6 rounded-xl bg-background-card border border-border">
+                  <h3 className="text-xl font-semibold text-text-primary mb-6 flex items-center gap-2">
+                    <CubeTransparentIcon className="w-6 h-6 text-green-500" />
+                    {t('facilitatorPage.networks.mainnets')}
+                  </h3>
+                  <div className="space-y-3" data-network-list="mainnets">
+                    {networks.mainnets.map((network) => (
+                      <div
+                        key={network.id}
+                        className="flex items-center justify-between p-3 rounded-lg bg-background hover:bg-background/50
+                          transition-colors duration-200"
+                      >
+                        <span className="text-text-primary font-medium">{network.name}</span>
+                        {network.chainId !== null ? (
+                          <span className="text-xs text-text-secondary">Chain ID: {network.chainId}</span>
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
 
-              {/* Testnets */}
-              <div className="p-6 rounded-xl bg-background-card border border-border">
-                <h3 className="text-xl font-semibold text-text-primary mb-6 flex items-center gap-2">
-                  <CubeTransparentIcon className="w-6 h-6 text-yellow-500" />
-                  {t('facilitatorPage.networks.testnets')}
-                </h3>
-                <div className="space-y-3">
-                  {networks.testnets.map((network, index) => (
-                    <div
-                      key={index}
-                      className="flex items-center justify-between p-3 rounded-lg bg-background hover:bg-background/50
-                        transition-colors duration-200"
-                    >
-                      <span className="text-text-primary font-medium">{network.name}</span>
-                      <span className="text-xs text-text-secondary">Chain ID: {network.chainId}</span>
-                    </div>
-                  ))}
+                {/* Testnets */}
+                <div className="p-6 rounded-xl bg-background-card border border-border">
+                  <h3 className="text-xl font-semibold text-text-primary mb-6 flex items-center gap-2">
+                    <CubeTransparentIcon className="w-6 h-6 text-yellow-500" />
+                    {t('facilitatorPage.networks.testnets')}
+                  </h3>
+                  <div className="space-y-3" data-network-list="testnets">
+                    {networks.testnets.map((network) => (
+                      <div
+                        key={network.id}
+                        className="flex items-center justify-between p-3 rounded-lg bg-background hover:bg-background/50
+                          transition-colors duration-200"
+                      >
+                        <span className="text-text-primary font-medium">{network.name}</span>
+                        {network.chainId !== null ? (
+                          <span className="text-xs text-text-secondary">Chain ID: {network.chainId}</span>
+                        ) : null}
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
+            ) : (
+              <p className="text-center text-text-secondary">
+                {t('facilitatorPage.networks.unavailable')}{' '}
+                <a
+                  href={new URL('/networks', facilitatorUrl).href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-ultraviolet hover:underline"
+                >
+                  {new URL('/networks', facilitatorUrl).host}/networks
+                </a>
+              </p>
+            )}
           </div>
         </section>
 
@@ -341,6 +373,22 @@ const FacilitatorPage = () => {
                     </div>
                   ))}
                 </div>
+                <p className="text-xs text-text-secondary mt-4">
+                  {t('facilitatorPage.technical.api.full')}{' '}
+                  {apiCatalogPaths.map((path, index) => (
+                    <React.Fragment key={path}>
+                      {index > 0 ? ' · ' : null}
+                      <a
+                        href={new URL(path, facilitatorUrl).href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-mono text-ultraviolet hover:underline"
+                      >
+                        {path}
+                      </a>
+                    </React.Fragment>
+                  ))}
+                </p>
               </div>
             </div>
 

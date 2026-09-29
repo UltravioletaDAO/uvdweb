@@ -8,6 +8,7 @@
 import streamSummariesService, { PaymentRequiredError } from '../services/streamSummaries';
 import { getTokenData } from '../services/metrics/Token/TokenMetricsService';
 import { getSafeInfo, getSafeBalances } from '../services/metrics/funds/safeService';
+import { listFacilitatorNetworks } from '../services/facilitator/supportedNetworks';
 import { buildEcosystemTools } from './ecosystemTools';
 
 const SITE_URL = 'https://ultravioletadao.xyz';
@@ -62,9 +63,6 @@ const langParam = (lang, i18n) => {
 };
 
 const errorMessage = (err) => clip(err?.message || String(err), 160);
-
-// Hostnames de testnet en /supported del facilitador (sepolia, fuji, amoy, devnet, testnet)
-const isTestnet = (network) => /sepolia|testnet|devnet|fuji|amoy/i.test(network);
 
 // Corre el índice del servicio con un idioma puntual sin dejar el singleton en otro idioma
 // que el que usa la página /stream-summaries.
@@ -181,10 +179,10 @@ export function buildTools({ navigate, i18n }) {
             if (kind.extra?.feePayer) out.feePayer = kind.extra.feePayer;
             return out;
           }
-          // /supported repite cada red como nombre y como CAIP-2 (eip155:43114); listamos los nombres
-          const names = [...new Set(kinds.map((k) => String(k.network)))]
-            .filter((n) => !n.includes(':'))
-            .filter((n) => include_testnets || !isTestnet(n))
+          // Una entrada por red: el nombre v1, o el CAIP-2 si la red no tiene (Hedera nativa)
+          const names = listFacilitatorNetworks(kinds)
+            .filter((n) => include_testnets || !n.testnet)
+            .map((n) => n.name)
             .sort();
           return { count: names.length, networks: names };
         } catch (err) {

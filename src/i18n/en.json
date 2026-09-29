@@ -3,8 +3,8 @@
     "defaultDescription": "Building the future of Web3 in Latin America with x402 Facilitator for gasless AI agent payments, decentralized governance, and collaborative treasury management. Enable cross-chain meta-transactions with EIP-3009.",
     "facilitator": {
       "title": "x402 Facilitator - Gasless Payments for AI Agents",
-      "description": "Enable AI agents to transact autonomously without gas fees using x402 protocol with EIP-3009 meta-transactions on Avalanche, Base, Celo, and HyperEVM networks.",
-      "keywords": "x402 facilitator, gasless transactions, EIP-3009, meta-transactions, AI agent payments, cross-chain payments, stateless payments, HTTP payments, x402 protocol, gasless Web3, autonomous agents, EIP-712 signatures, transferWithAuthorization, Avalanche gasless, Base gasless, Celo gasless, HyperEVM gasless, zero gas fees, trustless payments, instant settlement"
+      "description": "Enable AI agents to transact autonomously without gas fees using the x402 protocol with EIP-3009 meta-transactions, on every mainnet and testnet the facilitator lists live.",
+      "keywords": "x402 facilitator, gasless transactions, EIP-3009, meta-transactions, AI agent payments, cross-chain payments, stateless payments, HTTP payments, x402 protocol, gasless Web3, autonomous agents, EIP-712 signatures, transferWithAuthorization, multichain gasless payments, zero gas fees, trustless payments, instant settlement"
     }
   },
   "nav": {
@@ -1551,7 +1551,7 @@
   },
   "facilitatorPage": {
     "seoTitle": "x402 Facilitator - Gasless Payments for AI Agents",
-    "seoDescription": "Enable AI agents to transact autonomously without gas fees. x402 Facilitator provides gasless cross-chain payments using EIP-3009 meta-transactions on Avalanche, Base, Celo, and HyperEVM.",
+    "seoDescription": "Enable AI agents to transact autonomously without gas fees. x402 Facilitator provides gasless cross-chain payments using EIP-3009 meta-transactions on every network it lists live.",
     "hero": {
       "title": "x402 Facilitator",
       "subtitle": "Gasless Payments for the Agentic Economy",
@@ -1582,14 +1582,7 @@
       "title": "Supported Networks",
       "mainnets": "Mainnets",
       "testnets": "Testnets",
-      "avalanche": "Avalanche C-Chain",
-      "base": "Base",
-      "celo": "Celo",
-      "hyperEvm": "HyperEVM",
-      "avalancheFuji": "Avalanche Fuji",
-      "baseSepolia": "Base Sepolia",
-      "celoSepolia": "Celo Sepolia",
-      "hyperEvmTestnet": "HyperEVM Testnet"
+      "unavailable": "The facilitator publishes its live list of networks at"
     },
     "technical": {
       "title": "Technical Implementation",
@@ -1600,9 +1593,14 @@
       "api": {
         "title": "API Endpoints",
         "health": "GET /health - Status verification",
+        "version": "GET /version - Facilitator version",
         "supported": "GET /supported - Lists payment schemes",
+        "networks": "GET /networks.json - Name, chain ID and explorer of each network",
+        "accepts": "POST /accepts - Completes a 402's payment requirements (fee payer, tokens)",
         "verify": "POST /verify - Validates signatures",
-        "settle": "POST /settle - Executes on-chain payments"
+        "settle": "POST /settle - Executes on-chain payments",
+        "discovery": "GET /discovery/resources - Paid resources discoverable through x402",
+        "full": "Full list of public routes:"
       }
     },
     "addresses": {
