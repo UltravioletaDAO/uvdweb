@@ -11,6 +11,11 @@
  * Cada `cmd` es ejecutable tal cual (curl + jq/head). Node >= 20, fetch nativo, sin deps.
  *
  * Uso:  node scripts/ecosystem/record-replays.js
+ *       node scripts/ecosystem/record-replays.js --only facilitator_supported[,otra_clave]
+ *   Con --only se regraban SOLO esas claves y el index.json conserva las demás entradas tal
+ *   cual (y su generated_at, que sigue fechando la última grabación completa): refrescar la
+ *   replay del facilitador no tiene por qué reescribir mensajes de MeshRelay ni KPIs de KK.
+ *   Si una clave pedida falla o no existe, sale en 1 sin escribir nada.
  * Reglas del repo: aborta si algún archivo final contiene 0x[0-9a-fA-F]{64} (los hashes de tx se
  * truncan a 10 chars ANTES del escaneo y se cuentan en `redactions.hex64`); las rutas locales
  * (letra de unidad, UNC, dao/ ai/ code/) se reemplazan por "[ruta omitida]" y se cuentan.
@@ -209,17 +214,33 @@ function scanForbidden(serialized, label) {
   HEX64.lastIndex = 0;
 }
 
+function parseOnly(argv) {
+  const i = argv.indexOf('--only');
+  if (i === -1) return null;
+  const keys = (argv[i + 1] || '').split(',').map((k) => k.trim()).filter(Boolean);
+  if (!keys.length) throw new Error('--only necesita al menos una clave');
+  const unknown = keys.filter((k) => !TARGETS.some((t) => t.key === k));
+  if (unknown.length) throw new Error(`--only: claves desconocidas: ${unknown.join(', ')}`);
+  return keys;
+}
+
 async function main() {
   fs.mkdirSync(OUT_DIR, { recursive: true });
+  const only = parseOnly(process.argv.slice(2));
   const failures = [];
   const written = [];
-  const index = { generated_at: new Date().toISOString(), entries: {} };
-  for (const t of TARGETS) {
+  const indexPath = path.join(OUT_DIR, 'index.json');
+  const index = only
+    ? JSON.parse(fs.readFileSync(indexPath, 'utf8'))
+    : { generated_at: new Date().toISOString(), entries: {} };
+  const pending = [];
+  for (const t of only ? TARGETS.filter((x) => only.includes(x.key)) : TARGETS) {
     try {
       const entry = await record(t);
       const serialized = `${JSON.stringify(entry, null, 2)}\n`;
       scanForbidden(serialized, t.key);
-      fs.writeFileSync(path.join(OUT_DIR, `${t.key}.json`), serialized);
+      if (only) pending.push([t.key, serialized]);
+      else fs.writeFileSync(path.join(OUT_DIR, `${t.key}.json`), serialized);
       const summary = { recorded_at: entry.recorded_at, cmd: entry.cmd, url: entry.url, status: entry.status, lines: entry.stdout.length };
       if (entry.json !== undefined && JSON.stringify(entry.json).length <= INLINE_MAX) summary.json = entry.json;
       if (entry.headers) summary.headers = entry.headers;
@@ -229,14 +250,20 @@ async function main() {
       failures.push(`${t.key}: ${e && e.message}`);
     }
   }
+  if (only && failures.length) {
+    for (const f of failures) process.stderr.write(`fallo ${f}\n`);
+    process.stderr.write('ERROR: --only no escribe nada si una clave pedida falla\n');
+    process.exit(1);
+  }
   const indexSerialized = `${JSON.stringify(index, null, 2)}\n`;
   scanForbidden(indexSerialized, 'index');
-  fs.writeFileSync(path.join(OUT_DIR, 'index.json'), indexSerialized);
-  if (!SEARCH_API) failures.push('search_stats: REACT_APP_STREAM_SEARCH_API no definida — omitido');
+  for (const [key, serialized] of pending) fs.writeFileSync(path.join(OUT_DIR, `${key}.json`), serialized);
+  fs.writeFileSync(indexPath, indexSerialized);
+  if (!SEARCH_API && !only) failures.push('search_stats: REACT_APP_STREAM_SEARCH_API no definida — omitido');
   for (const w of written) process.stdout.write(`ok   ${w}\n`);
   for (const f of failures) process.stdout.write(`skip ${f}\n`);
   process.stdout.write(`\n${written.length} archivos + index.json en ${path.relative(ROOT, OUT_DIR)}\n`);
-  if (written.length < 12) {
+  if (!only && written.length < 12) {
     process.stderr.write('ERROR: menos de 12 replays grabados\n');
     process.exit(1);
   }

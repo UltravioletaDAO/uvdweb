@@ -1,30 +1,20 @@
 // FacSupportedTerm — ventana `fac_supported`: `curl -s https://facilitator.ultravioletadao.xyz/supported`
-// (ACAO * verificado). El conteo se hace EN EL NAVEGADOR sobre la respuesta (kinds y redes únicas) y
-// se etiqueta así; luego las primeras 8 redes mainnet con la misma regla isTestnet de src/agent/tools.js.
+// (ACAO * verificado). El conteo se hace EN EL NAVEGADOR sobre la respuesta (kinds y redes distintas) y
+// se etiqueta así; luego las primeras 8 redes mainnet, con la regla de src/services/facilitator/supportedNetworks.js.
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { EndpointTerm } from './PulseTerm';
 import { LIVE_META } from './index';
+import { listFacilitatorNetworks } from '../../../../services/facilitator/supportedNetworks';
 
 export const meta = LIVE_META.fac_supported;
 
-// Misma regla que tools.js:67 (hostnames de testnet en /supported: sepolia, fuji, amoy, devnet, testnet).
-export const isTestnet = (network) => /sepolia|testnet|devnet|fuji|amoy/i.test(network);
-
 const MAINNETS_SHOWN = 8;
 
-const selectSupported = (j) => {
+export const selectSupported = (j) => {
   if (!j || !Array.isArray(j.kinds)) return null;
-  const networks = [];
-  const seen = new Set();
-  j.kinds.forEach((k) => {
-    const n = k && typeof k.network === 'string' ? k.network : null;
-    if (n && !seen.has(n)) {
-      seen.add(n);
-      networks.push(n);
-    }
-  });
-  const mainnets = networks.filter((n) => !isTestnet(n));
+  const networks = listFacilitatorNetworks(j.kinds);
+  const mainnets = networks.filter((n) => !n.testnet).map((n) => n.name);
   const schemes = [...new Set(j.kinds.map((k) => k && k.scheme).filter(Boolean))];
   return { kinds: j.kinds.length, networks: networks.length, mainnets, schemes };
 };
