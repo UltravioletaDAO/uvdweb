@@ -3,7 +3,7 @@
   "info": {
     "title": "UltravioletaDAO API",
     "version": "1.1.0",
-    "description": "Public API of UltravioletaDAO at https://api.ultravioletadao.xyz (one AWS Lambda behind API Gateway). Every operation listed here is deployed; nothing here charges (no x402, no payments). Every route except POST /mcp needs the DAO database, and answers 500 with an `error` while the database is unreachable. The agent manual, with flows and expected errors by operationId, is https://ultravioletadao.xyz/skill.md. Also published at https://ultravioletadao.xyz/.well-known/openapi/uvdao-api.json (same bytes).",
+    "description": "Public API of UltravioletaDAO at https://api.ultravioletadao.xyz (one AWS Lambda behind API Gateway). Every operation listed here is deployed; nothing here charges (no x402, no payments). Routes that read or write member data answer 500 with an `error` when the database fails. The agent manual, with flows and expected errors by operationId, is https://ultravioletadao.xyz/skill.md. Also published at https://ultravioletadao.xyz/.well-known/openapi/uvdao-api.json (same bytes).",
     "contact": { "name": "UltravioletaDAO", "url": "https://ultravioletadao.xyz", "email": "ultravioletadao@gmail.com" },
     "license": { "name": "MIT", "url": "https://github.com/UltravioletaDAO/uvdweb/blob/main/LICENSE" }
   },
@@ -48,11 +48,11 @@
     "/health": {
       "get": {
         "summary": "Health check",
-        "description": "Answers 200 once the function is connected to the database (it pings it when it connects) and 500 when it cannot connect.",
+        "description": "Answers 200 when the service responds.",
         "operationId": "getHealth",
         "responses": {
           "200": {
-            "description": "Service and database are up",
+            "description": "The service responds",
             "content": {
               "application/json": {
                 "schema": {
@@ -150,7 +150,7 @@
     "/wallets": {
       "post": {
         "summary": "Register a viewer wallet for the stream wheel",
-        "description": "Only the streamer can call it: it requires the Twitch user token of an authorized broadcaster, issued to the wheel's Twitch application. Not usable by an autonomous agent.",
+        "description": "Only the streamer can call it: it requires the Twitch user token of an authorized streamer. Not usable by an autonomous agent.",
         "operationId": "registerWallet",
         "security": [{ "twitchBroadcaster": [] }],
         "requestBody": {
@@ -174,9 +174,9 @@
           "201": { "description": "Wallet registered", "content": { "application/json": { "schema": { "type": "object", "properties": { "message": { "type": "string" }, "id": { "type": "string" } } } } } },
           "400": { "description": "Body is not JSON, username or wallet missing, wallet malformed, the wallet belongs to another user, or the user already has a different wallet","content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
           "401": { "description": "Missing, invalid or expired Twitch token", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
-          "403": { "description": "The token is not from the wheel's Twitch application or not from an authorized streamer", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
+          "403": { "description": "The token does not belong to an authorized streamer","content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } },
           "500": { "$ref": "#/components/responses/ServerError" },
-          "503": { "description": "Twitch could not validate the token; retry", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+          "503": { "description": "Network error while validating the token with Twitch; retry","content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
         }
       }
     },
@@ -195,12 +195,12 @@
         },
         "responses": {
           "200": {
-            "description": "JSON-RPC response; JSON-RPC errors (unknown method, invalid params, tool failure) also travel with 200",
+            "description": "JSON-RPC response. Two kinds of failure travel with HTTP 200, so check both: (1) a JSON-RPC `error`: -32601 unknown method, -32602 tools/call without params.name, -32600 a JSON body that is not a request object, -32603 internal error; (2) a tools/call `result` with `isError: true`: unknown tool, invalid arguments, or the tool failed or was refused (for example apply_failed_429 when apply_dao_membership hits a 429), with the detail as JSON in result.content[0].text.",
             "content": { "application/json": { "schema": { "$ref": "#/components/schemas/JsonRpcResponse" } } }
           },
           "202": { "description": "Notification accepted (no body)" },
           "400": {
-            "description": "Body is not JSON, or a batch (JSON-RPC batching left the MCP spec in 2025-06-18)",
+            "description": "Body empty or not JSON (-32700), or a batch (-32600; JSON-RPC batching left the MCP spec in 2025-06-18)",
             "content": { "application/json": { "schema": { "$ref": "#/components/schemas/JsonRpcResponse" } } }
           }
         }
@@ -212,7 +212,7 @@
       "twitchBroadcaster": {
         "type": "http",
         "scheme": "bearer",
-        "description": "Twitch user access token of an authorized broadcaster, issued to the wheel's Twitch application (validated against id.twitch.tv)."
+        "description": "Twitch user access token of an authorized streamer (validated against id.twitch.tv)."
       }
     },
     "responses": {
@@ -260,7 +260,23 @@
         "properties": {
           "jsonrpc": { "type": "string", "enum": ["2.0"] },
           "id": { "oneOf": [{ "type": "string" }, { "type": "integer" }], "nullable": true },
-          "result": { "type": "object" },
+          "result": {
+            "type": "object",
+            "description": "For tools/call: the tool output in content[0].text and isError true when the tool did not succeed",
+            "properties": {
+              "content": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "type": { "type": "string", "enum": ["text"] },
+                    "text": { "type": "string" }
+                  }
+                }
+              },
+              "isError": { "type": "boolean" }
+            }
+          },
           "error": {
             "type": "object",
             "properties": {

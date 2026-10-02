@@ -34,7 +34,9 @@ explicitly confirmed it.
 1. `applyMembership`: `POST https://api.ultravioletadao.xyz/apply` with a JSON body. `email` is
    required and is the only field the server validates; `fullName`, `twitter`, `telegram`,
    `twitch`, `walletAddress`, `story`, `purpose` and `references` are optional.
-   Through MCP it is the `apply_dao_membership` tool, which writes through this same route.
+   Through MCP it is the `apply_dao_membership` tool, which writes through this same route. If the
+   route refuses the application, the tool still answers HTTP 200: read `result.isError` (see
+   "Errors to expect") before telling the person it was sent.
 2. `getApplicationStatus`: `GET https://api.ultravioletadao.xyz/apply/status/{email}` (URL-encode
    the email) answers only the status of the latest application and its dates.
 
@@ -61,8 +63,9 @@ Step-by-step skill for this flow: https://ultravioletadao.xyz/.well-known/agent-
 | Status | Where | What it means and what to do |
 |---|---|---|
 | 400 | `applyMembership`, `getApplicationStatus` | Missing or invalid email. Fix the input; do not retry as is. |
-| 400 | `mcpJsonRpc` | The body is not JSON, or it is a JSON-RPC batch (not supported). Send one request per POST. |
-| 200 with `error` | `mcpJsonRpc` | A JSON-RPC error (unknown method, invalid params, tool failure) travels with HTTP 200: read `error.code` and `error.message`. |
+| 400 | `mcpJsonRpc` | The body is empty or not JSON (-32700), or it is a JSON-RPC batch (-32600, not supported). Send one request per POST. |
+| 200 with `error` | `mcpJsonRpc` | A JSON-RPC error: -32601 unknown method, -32602 `tools/call` without `params.name`, -32600 a JSON body that is not a request object, -32603 internal error. Read `error.code` and `error.message`. |
+| 200 with `result.isError: true` | `mcpJsonRpc` (`tools/call`) | The call reached the tool and it did not succeed: unknown tool (`unknown_tool`), invalid arguments (`invalid_arguments`), the tool failed (`tool_failed`) or was refused (for example `apply_failed_429`: that email already applied in the last 24 hours). The detail is the JSON in `result.content[0].text`. The JSON-RPC response carries no `error` member in this case, so always check `isError`. |
 | 202 | `mcpJsonRpc` | A notification was accepted; there is no body. |
 | 404 | `getApplicationStatus` | No application with that email. |
 | 404 | any other path | The route does not exist. |

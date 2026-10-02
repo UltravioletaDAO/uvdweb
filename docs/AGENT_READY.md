@@ -74,12 +74,31 @@ session, no payments" y no lista ninguna ruta paga, y el único cobro x402 que h
 sufficient"). Un `/.well-known/x402` sin rutas pagas no contesta nada que un agente necesite. Se
 mide con `--profile api`. `auth.md` se sigue publicando porque explica qué es público.
 
+**`oauth-protected-resource`: pasa, pero sin verdad.** El check solo pide que el archivo exista y
+sea JSON, y existe desde antes de este cambio. Lo que no existe es lo que anuncia: los tres
+documentos OAuth (`public/.well-known/oauth-protected-resource.json`,
+`oauth-authorization-server.json` y `openid-configuration.json`, más las copias sin extensión de
+dos de ellos) declaran `authorization_endpoint` (`/auth/authorize`), `token_endpoint`
+(`/auth/token`) y `jwks_uri` (`/.well-known/jwks.json`), y ninguno tiene handler en `uvd-backend`
+(`origin/main` `589463b`). `auth.md` y `skill.md` ya le dicen al agente que es un servidor
+planeado y que no intente el flujo. Este cambio no los toca: la decisión es del dueño y está en
+`docs/planning/BACKLOG.md` (fila del 2026-10-02):
+
+- **Despublicarlos:** borrar los documentos, sus copias, sus reglas 200 en
+  `uvd-backend/environments/prod/amplify.tf`, el `rel="oauth-protected-resource"` del `Link` de
+  `customHttp.yml` y la sección OAuth de `auth.md`, y excluir el check por registro (también es
+  `applies_to = "api"`, igual que las dos filas A2A).
+- **Mantenerlos** como están, sabiendo que este PASS no describe un servidor que exista.
+
+Mientras no se decida, el "PASS en todo" que se espera abajo incluye este PASS sin verdad.
+
 ## Verificar después del deploy
 
 ```bash
 # El de c0der: el perfil que aplica a este sitio, sin escanear rankings.
 python agent_ready.py --url https://ultravioletadao.xyz --profile api
-# Esperado: PASS en todo salvo agent-card y agent-json-legacy (excluidos arriba).
+# Esperado: PASS en todo salvo agent-card y agent-json-legacy (excluidos arriba);
+# oauth-protected-resource da PASS sin verdad hasta que se decida (ver arriba).
 
 # A mano, las cuatro superficies tocadas:
 curl -s -o /dev/null -w '%{http_code} %{content_type}\n' https://ultravioletadao.xyz/openapi.json   # 200 application/json

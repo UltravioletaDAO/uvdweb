@@ -62,8 +62,31 @@ const contentTypeOverrides = () => {
   return overrides;
 };
 const escapeRegExp = (text) => text.replace(/[.+?^${}()|[\]\\]/g, '\\$&');
-const globToRegExp = (glob) =>
-  new RegExp(`^${glob.split('**').map((part) => part.split('*').map(escapeRegExp).join('[^/]*')).join('.*')}$`);
+// `*` es un segmento y `**` cruza segmentos; `/**/` y un `/**` final también valen por cero
+// segmentos, como en minimatch: `/**/*.md` aplica a `/skill.md`.
+const globToRegExp = (glob) => {
+  let source = '';
+  let i = 0;
+  while (i < glob.length) {
+    if (glob.startsWith('/**/', i)) {
+      source += '/(?:.*/)?';
+      i += 4;
+    } else if (glob.startsWith('/**', i) && i + 3 === glob.length) {
+      source += '(?:/.*)?';
+      i += 3;
+    } else if (glob.startsWith('**', i)) {
+      source += '.*';
+      i += 2;
+    } else if (glob[i] === '*') {
+      source += '[^/]*';
+      i += 1;
+    } else {
+      source += escapeRegExp(glob[i]);
+      i += 1;
+    }
+  }
+  return new RegExp(`^${source}$`);
+};
 
 // El viewer-request del borde (infra/terraform/edge), con las variables que le inyecta Terraform
 // (los defaults de variables.tf; markdown_routes solo trae "/").
@@ -142,13 +165,22 @@ describe('MCP server card: el endpoint se encuentra y es el mismo en todas las s
     expect(generator).toMatch(/transport:\s*\{\s*type:\s*'streamable-http',\s*endpoint:\s*ENDPOINT,/);
   });
 
+  // Toda mención del host y la ruta del endpoint, con cualquier esquema (o ninguno), mayúsculas o
+  // sufijo, se lee hasta un delimitador real (espacio, paréntesis, corchetes, comillas, backtick,
+  // <>); la puntuación con que termina una oración no es parte de la URL. Cada una tiene que ser
+  // exactamente el endpoint: `…/MCP`, `…/mcp.json`, `…/mcp2` o `http://…/mcp` son rojo.
+  const endpointMentions = (text) => {
+    const target = ENDPOINT.replace(/^https?:\/\//i, '').toLowerCase();
+    return (text.match(/[^\s()[\]<>"'`]+/g) || [])
+      .map((token) => token.replace(/^[^a-z0-9]+/i, '').replace(/[.,;:!?*]+$/, ''))
+      .filter((token) => token.toLowerCase().replace(/^[a-z][a-z0-9+.-]*:\/\//, '').startsWith(target));
+  };
+
   it('llms.txt, auth.md, skill.md y openapi.json anuncian el mismo endpoint', () => {
-    // Cada URL que empieza por el endpoint se lee entera: `…/mcp2` o `…/mcp/v2` no cuentan como `…/mcp`.
-    const announced = new RegExp(`${escapeRegExp(ENDPOINT)}[\\w/-]*`, 'g');
     ['public/llms.txt', 'public/auth.md', 'public/skill.md'].forEach((rel) => {
-      const urls = read(rel).match(announced) || [];
-      expect(urls.length).toBeGreaterThan(0);
-      urls.forEach((url) => expect(`${rel}: ${url}`).toBe(`${rel}: ${ENDPOINT}`));
+      const mentions = endpointMentions(read(rel));
+      expect(mentions.length).toBeGreaterThan(0);
+      mentions.forEach((url) => expect(`${rel}: ${url}`).toBe(`${rel}: ${ENDPOINT}`));
     });
     const api = JSON.parse(read('public/openapi.json'));
     expect(`${api.servers[0].url}/mcp`).toBe(ENDPOINT);
@@ -238,6 +270,16 @@ describe('OpenAPI de api.ultravioletadao.xyz', () => {
   it('skill.md nombra cada operationId (el manual apunta a las operaciones)', () => {
     const manual = read('public/skill.md');
     operations.forEach(({ id }) => expect(manual).toContain(`\`${id}\``));
+  });
+
+  // Un tools/call que falla o que la ruta rechaza (apply_failed_429) vuelve con HTTP 200 y
+  // `result.isError: true`, sin `error` JSON-RPC (uvd-backend mcp.js, callTool). Un agente que solo
+  // mire `error` da por enviada una aplicación rechazada.
+  it('skill.md y el OpenAPI dicen que el fallo de una tool llega en result.isError', () => {
+    expect(read('public/skill.md')).toMatch(/`result\.isError: true`/);
+    expect(read('public/skill.md')).toContain('result.content[0].text');
+    expect(api.paths['/mcp'].post.responses['200'].description).toContain('isError');
+    expect(field(api, 'components.schemas.JsonRpcResponse.properties.result.properties.isError.type')).toBe('boolean');
   });
 });
 
