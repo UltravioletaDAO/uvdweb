@@ -38,16 +38,17 @@ const ENDPOINT = 'https://api.ultravioletadao.xyz/mcp';
       license: 'MIT',
     },
     instructions: init.instructions,
-    transport: [
-      {
-        type: 'streamable-http',
-        url: ENDPOINT,
-        methods: ['POST'],
-        protocolVersions: ['2025-06-18', '2025-03-26', '2024-11-05'],
-        'x-note':
-          'Direct JSON responses (no SSE channel): GET returns 405 with Allow: POST, OPTIONS. Stateless — the server issues no mcp-session-id. CORS is open to the ultravioletadao.xyz origins; any server-side MCP client (claude.ai connectors, Claude Desktop, Cursor) can connect without restriction.',
-      },
-    ],
+    // Un objeto con `endpoint`, la forma de la spec que leen los scanners (y la de los MCP
+    // hermanos, execution-market y meshrelay). Como array con `url` adentro, el check
+    // mcp-endpoint-live de agent-ready no encontraba el endpoint.
+    transport: {
+      type: 'streamable-http',
+      endpoint: ENDPOINT,
+      methods: ['POST'],
+      protocolVersions: ['2025-06-18', '2025-03-26', '2024-11-05'],
+      'x-note':
+        'Direct JSON responses (no SSE channel): GET returns 405 with Allow: POST, OPTIONS. Stateless — the server issues no mcp-session-id. CORS is open to the ultravioletadao.xyz origins; any server-side MCP client (claude.ai connectors, Claude Desktop, Cursor) can connect without restriction.',
+    },
     capabilities: { tools: true, resources: false, prompts: false, sampling: false },
     auth: {
       type: 'none',

@@ -1,5 +1,4 @@
 {
-  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
   "version": "0.2.0",
   "updated": "2026-08-27T00:00:00Z",
   "provider": {
