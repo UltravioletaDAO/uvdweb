@@ -143,7 +143,13 @@ describe('MCP server card: el endpoint se encuentra y es el mismo en todas las s
   });
 
   it('llms.txt, auth.md, skill.md y openapi.json anuncian el mismo endpoint', () => {
-    ['public/llms.txt', 'public/auth.md', 'public/skill.md'].forEach((rel) => expect(read(rel)).toContain(ENDPOINT));
+    // Cada URL que empieza por el endpoint se lee entera: `…/mcp2` o `…/mcp/v2` no cuentan como `…/mcp`.
+    const announced = new RegExp(`${escapeRegExp(ENDPOINT)}[\\w/-]*`, 'g');
+    ['public/llms.txt', 'public/auth.md', 'public/skill.md'].forEach((rel) => {
+      const urls = read(rel).match(announced) || [];
+      expect(urls.length).toBeGreaterThan(0);
+      urls.forEach((url) => expect(`${rel}: ${url}`).toBe(`${rel}: ${ENDPOINT}`));
+    });
     const api = JSON.parse(read('public/openapi.json'));
     expect(`${api.servers[0].url}/mcp`).toBe(ENDPOINT);
     expect(api.paths['/mcp'].post).toBeDefined();
@@ -158,7 +164,18 @@ describe('ningún JSON de /.well-known declara un $schema sin verificar', () => 
       const full = path.join(dir, entry.name);
       return entry.isDirectory() ? walk(full) : [full];
     });
-  const jsonFiles = walk(path.join(PUBLIC, '.well-known'))
+  const wellKnown = walk(path.join(PUBLIC, '.well-known'));
+
+  // agent-ready marca FAIL un .well-known que no parsea (un BOM alcanza); el recorrido de abajo los
+  // saltaría en silencio, así que cada .json tiene que parsear acá.
+  it.each(wellKnown.filter((full) => full.endsWith('.json')).map((full) => path.relative(ROOT, full)))(
+    '%s parsea como JSON',
+    (rel) => {
+      expect(() => JSON.parse(fs.readFileSync(path.join(ROOT, rel), 'utf8'))).not.toThrow();
+    }
+  );
+
+  const jsonFiles = wellKnown
     .map((full) => {
       try {
         return [path.relative(ROOT, full), JSON.parse(fs.readFileSync(full, 'utf8'))];
@@ -181,8 +198,13 @@ describe('ningún JSON de /.well-known declara un $schema sin verificar', () => 
 
 describe('OpenAPI de api.ultravioletadao.xyz', () => {
   const api = JSON.parse(read('public/openapi.json'));
-  const operations = Object.entries(api.paths).flatMap(([route, methods]) =>
-    Object.entries(methods).map(([method, op]) => ({ key: `${method.toUpperCase()} ${route}`, id: op.operationId })));
+  // Solo los métodos HTTP de cada path item son operaciones (OpenAPI 3.0 §4.7.9); `parameters` o
+  // `summary` a nivel de ruta no lo son.
+  const HTTP_METHODS = ['get', 'put', 'post', 'delete', 'options', 'head', 'patch', 'trace'];
+  const operations = Object.entries(api.paths).flatMap(([route, item]) =>
+    Object.entries(item)
+      .filter(([method]) => HTTP_METHODS.includes(method))
+      .map(([method, op]) => ({ key: `${method.toUpperCase()} ${route}`, id: op.operationId })));
 
   // operationIds publicados: un agente escribió código contra ellos. Uno nuevo se agrega acá;
   // cambiar o borrar uno de estos rompe a ese agente y tiene que doler.
