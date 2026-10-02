@@ -396,6 +396,18 @@ Para contribuir al proyecto:
 
 ## 📝 Cambios Recientes
 
+### Superficies para agentes: agent-ready (2026-10-02)
+- **Antes**: agent-ready (la herramienta de c0der) medía 65 % en ultravioletadao.xyz: faltaban
+  `/openapi.json` y `/skill.md`, la MCP server card escondía su endpoint (array con `url`) y el
+  índice de agent-skills declaraba un `$schema` en un host que no resuelve.
+- **Ahora**: `public/openapi.json` describe `api.ultravioletadao.xyz` contra el código del backend
+  (copia idéntica en `/.well-known/openapi/uvdao-api.json`), `public/skill.md` es el manual para
+  agentes (flujos, operaciones por `operationId`, errores), la card publica `transport.endpoint` y el
+  `$schema` muerto se fue. A2A y x402 no se publican: no hay servidor A2A y el dominio no cobra.
+- **Tests**: `src/agent/__tests__/agentReadySurfaces.test.js` ata cada ruta a su content-type, a que
+  la regla SPA de Amplify no la reescriba a `index.html` y a que el borde no la cambie por Markdown.
+  Detalle, pasos de deploy y exclusiones en `docs/AGENT_READY.md`.
+
 ### La memoria de los streams se reindexa sola (2026-09-23)
 - **Antes**: el índice de búsqueda de `/stream-summaries` (y de la tool WebMCP `search_stream_memory`)
   se reconstruía a mano; el 23-sep llevaba 26 streams de atraso (último refresh: 26-ago, 402 streams).

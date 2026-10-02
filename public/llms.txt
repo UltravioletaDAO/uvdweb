@@ -24,6 +24,8 @@
 - Links: https://ultravioletadao.xyz/links
 
 ## Agent discovery
+- Agent manual (flows, operations by operationId, expected errors): https://ultravioletadao.xyz/skill.md
+- OpenAPI of https://api.ultravioletadao.xyz: https://ultravioletadao.xyz/openapi.json
 - API catalog (RFC 9727): https://ultravioletadao.xyz/.well-known/api-catalog
 - Remote MCP server (Streamable HTTP, JSON-RPC 2.0, no auth): https://api.ultravioletadao.xyz/mcp
 - MCP server card (endpoint + the 13 tools it serves): https://ultravioletadao.xyz/.well-known/mcp/server-card.json
