@@ -1,0 +1,3 @@
+# Las plantillas de las CloudFront Functions se despliegan byte a byte: siempre LF, también
+# en un checkout de Windows con core.autocrlf (ver infra/terraform/edge/functions.tf).
+infra/terraform/edge/functions/*.tftpl text eol=lf
