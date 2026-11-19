@@ -128,11 +128,17 @@ estuvo), por eso ese paso es CLI.
   estado `prod/terraform.tfstate`), que los tiene en su propio estado. Por eso
   `cert_validation` lleva `allow_overwrite = false` (si el registro ya existía, el apply
   falla en vez de adoptarlo) y `prevent_destroy` (quitar un nombre del certificado borraría
-  el CNAME y el otro certificado dejaría de renovarse sin aviso). Antes de quitar un nombre,
-  sacar su registro del estado (bloque `removed` con `destroy = false`, o
-  `terraform state rm`). Ese mismo estado de uvd-backend tiene también el A del apex y el
-  CNAME de `www`, todavía apuntando a la distribución de Amplify: ver la fila del drift de
-  `cloudfront-agents` en `docs/planning/BACKLOG.md` antes de aplicar allá.
+  el CNAME y el otro certificado dejaría de renovarse sin aviso). Para quitar un nombre,
+  antes del apply se saca su registro del estado:
+  `terraform state rm 'aws_route53_record.cert_validation["<nombre>"]'` (en Windows
+  PowerShell 5.1 las comillas dobles van escapadas, `[\"<nombre>\"]`; en `pwsh` 7 y en
+  bash, tal cual). Un bloque `removed` no sirve para un nombre: no acepta claves de
+  instancia (`terraform validate`: «Resource instance keys not allowed»). `removed { from =
+  aws_route53_record.cert_validation lifecycle { destroy = false } }` solo vale si se borra
+  de la config el bloque `resource` entero (con el bloque todavía ahí, el plan falla:
+  «Removed resource still exists»). Ese mismo estado de uvd-backend tiene también el A del
+  apex y el CNAME de `www`, todavía apuntando a la distribución de Amplify: ver la fila del
+  drift de `cloudfront-agents` en `docs/planning/BACKLOG.md` antes de aplicar allá.
 - **Tests del borde:** `terraform init -backend=false && terraform test` en
   `infra/terraform/edge` (sin AWS, con un provider simulado) y
   `src/infra/__tests__/edgeTerraform.test.js` (jest, corre en el CI).

@@ -43,8 +43,14 @@ resource "aws_route53_record" "cert_validation" {
   #   («already exists») en vez de adoptarlo en silencio. Para adoptarlo a propósito, primero
   #   ver qué certificados lo usan (aws acm describe-certificate) y después terraform import.
   # - prevent_destroy: quitar un nombre del certificado, cambiar el dominio o un destroy
-  #   borrarían el CNAME, y el otro certificado dejaría de renovarse sin aviso. Antes de eso,
-  #   sacar el registro del estado (bloque `removed` con destroy = false, o terraform state rm).
+  #   borrarían el CNAME, y el otro certificado dejaría de renovarse sin aviso. Antes del
+  #   apply, sacar del estado el registro de cada nombre que sale:
+  #     terraform state rm 'aws_route53_record.cert_validation["<nombre>"]'
+  #   (en Windows PowerShell 5.1 las comillas dobles van escapadas: [\"<nombre>\"]).
+  #   Un bloque `removed` no sirve para un nombre: no acepta claves de instancia (validate:
+  #   «Resource instance keys not allowed»). Un `removed` de aws_route53_record.cert_validation
+  #   con destroy = false solo vale si se borra de la config este bloque resource entero (con
+  #   el bloque todavía ahí, el plan falla: «Removed resource still exists»).
   allow_overwrite = false
   zone_id         = data.aws_route53_zone.brand.zone_id
   name            = each.value.name
