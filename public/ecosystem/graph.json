@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-11-19T09:35:41+00:00",
+  "generated_at": "2026-11-19T14:24:37+00:00",
   "source": {
     "tool": "c0der",
-    "scan_timestamp": "2026-11-19T09:35:15+00:00",
+    "scan_timestamp": "2026-11-19T14:24:19+00:00",
     "projects_scanned": 103
   },
   "nodes": [
@@ -23,7 +23,7 @@
         "three.js",
         "observatory"
       ],
-      "degree": 19
+      "degree": 17
     },
     {
       "id": "emporium",
@@ -40,7 +40,7 @@
         "agents",
         "yellow-pages"
       ],
-      "degree": 12
+      "degree": 0
     },
     {
       "id": "execution-market",
@@ -57,7 +57,7 @@
         "mcp",
         "agents"
       ],
-      "degree": 18
+      "degree": 17
     },
     {
       "id": "meshrelay",
@@ -74,7 +74,7 @@
         "websocket",
         "multibrain"
       ],
-      "degree": 17
+      "degree": 16
     },
     {
       "id": "describe-net",
@@ -90,7 +90,7 @@
         "agents",
         "skills"
       ],
-      "degree": 16
+      "degree": 15
     },
     {
       "id": "facilitator",
@@ -107,7 +107,7 @@
         "rust",
         "multichain"
       ],
-      "degree": 20
+      "degree": 18
     },
     {
       "id": "x402-sdk",
@@ -141,7 +141,7 @@
         "react",
         "i18n"
       ],
-      "degree": 14
+      "degree": 13
     },
     {
       "id": "abracadabra",
@@ -158,7 +158,7 @@
         "knowledge-graph",
         "summaries"
       ],
-      "degree": 14
+      "degree": 13
     },
     {
       "id": "karma-hello",
@@ -175,7 +175,7 @@
         "uvd",
         "bot"
       ],
-      "degree": 19
+      "degree": 17
     },
     {
       "id": "402milly",
@@ -191,7 +191,7 @@
         "marketplace",
         "multichain"
       ],
-      "degree": 11
+      "degree": 10
     },
     {
       "id": "tarotof",
@@ -260,14 +260,6 @@
     {
       "source": "abracadabra",
       "target": "describe-net",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "abracadabra",
-      "target": "emporium",
       "type": "api_call",
       "protocol": null,
       "evidence_count": 12,
@@ -351,62 +343,6 @@
       "type": "api_call",
       "protocol": null,
       "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "emporium",
-      "target": "402milly",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "emporium",
-      "target": "describe-net",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "emporium",
-      "target": "execution-market",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "emporium",
-      "target": "karma-hello",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 1,
-      "planned": false
-    },
-    {
-      "source": "emporium",
-      "target": "karmakadabra",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "emporium",
-      "target": "meshrelay",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "emporium",
-      "target": "ultravioletadao",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 2,
       "planned": false
     },
     {
@@ -499,14 +435,6 @@
     },
     {
       "source": "facilitator",
-      "target": "emporium",
-      "type": "api_call",
-      "protocol": "x402",
-      "evidence_count": 4,
-      "planned": false
-    },
-    {
-      "source": "facilitator",
       "target": "execution-market",
       "type": "api_call",
       "protocol": "x402",
@@ -571,14 +499,6 @@
     },
     {
       "source": "karma-hello",
-      "target": "emporium",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 3,
-      "planned": false
-    },
-    {
-      "source": "karma-hello",
       "target": "execution-market",
       "type": "api_call",
       "protocol": null,
@@ -636,14 +556,6 @@
     {
       "source": "karmakadabra",
       "target": "describe-net",
-      "type": "api_call",
-      "protocol": null,
-      "evidence_count": 12,
-      "planned": false
-    },
-    {
-      "source": "karmakadabra",
-      "target": "emporium",
       "type": "api_call",
       "protocol": null,
       "evidence_count": 12,
@@ -919,14 +831,6 @@
       "type": "facilitator",
       "protocol": "x402",
       "evidence_count": 5,
-      "planned": false
-    },
-    {
-      "source": "emporium",
-      "target": "facilitator",
-      "type": "facilitator",
-      "protocol": "x402",
-      "evidence_count": 12,
       "planned": false
     },
     {
