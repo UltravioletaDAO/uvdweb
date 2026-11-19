@@ -33,13 +33,28 @@ resource "aws_route53_record" "cert_validation" {
     }
   }
 
-  # ACM da el mismo CNAME para el mismo dominio en la misma cuenta: si ya existe, es idéntico.
-  allow_overwrite = true
+  # ACM entrega el MISMO CNAME de validación para el mismo nombre en toda la cuenta, en
+  # cualquier región. Si el registro ya existe, no es «idéntico y por eso nuestro»: es de otro
+  # certificado vigente que lo necesita para renovarse. Medido el 2026-11-19: los dos
+  # registros de este módulo (apex y www) validan también el certificado de la pila `agents`
+  # de uvd-backend (environments/prod/cloudfront-agents.tf), que los tiene en su propio estado.
+  #
+  # - allow_overwrite = false: si el registro ya existía fuera de este estado, el apply falla
+  #   («already exists») en vez de adoptarlo en silencio. Para adoptarlo a propósito, primero
+  #   ver qué certificados lo usan (aws acm describe-certificate) y después terraform import.
+  # - prevent_destroy: quitar un nombre del certificado, cambiar el dominio o un destroy
+  #   borrarían el CNAME, y el otro certificado dejaría de renovarse sin aviso. Antes de eso,
+  #   sacar el registro del estado (bloque `removed` con destroy = false, o terraform state rm).
+  allow_overwrite = false
   zone_id         = data.aws_route53_zone.brand.zone_id
   name            = each.value.name
   type            = each.value.type
   ttl             = 60
   records         = [each.value.record]
+
+  lifecycle {
+    prevent_destroy = true
+  }
 }
 
 resource "aws_acm_certificate_validation" "edge" {

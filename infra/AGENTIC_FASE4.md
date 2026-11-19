@@ -105,3 +105,34 @@ estuvo), por eso ese paso es CLI.
 - **`dev.ultravioletadao.xyz` no negocia**: sigue apuntando a Amplify. Es deliberado.
 - El scanner de isitagentready.com solo mira la raíz; el fallback a `/index.md` en las
   demás páginas es para que un agente nunca reciba el `index.html` vacío de la SPA.
+- **La función `viewer-response` no corre cuando el origen responde 400 o más.** CloudFront
+  entrega el error sin pasar por ella. Medido el 2026-11-19: los 404 de Amplify
+  (`/no-existe.png`, `/no-existe.md`) salen `text/html` y sin `Vary: Accept`, que la función
+  le pone a todo `text/html`. Hoy no hace falta moverlo: los 4xx solo salen en rutas con
+  extensión, que la función de petición no reescribe, así que la respuesta no depende de
+  `Accept`; las páginas sin extensión responden 200 (el fallback de la SPA o `/index.md`).
+  Lo que haya que servir en un 4xx (un 404 en Markdown, por ejemplo) va en la función de
+  petición, que puede contestar sin ir al origen. Así lo resolvió el borde del CV.
+- **El fin de línea del checkout cambia el código desplegado.** Un checkout de Windows con
+  `core.autocrlf` trae las plantillas de `functions/` en CRLF y, sin normalizar, el mismo
+  commit despliega bytes distintos desde Windows que desde la Mac (y `terraform plan` muestra
+  las funciones «a modificar» sin que nadie las toque). Medido el 2026-11-19: las plantillas
+  en CRLF en un checkout de Windows y las funciones vivas en LF. `functions.tf` normaliza con
+  `replace(templatefile(...), "\r\n", "\n")` y `.gitattributes` fija `eol=lf` para
+  `functions/*.tftpl`. Un clon de Windows anterior a esa regla conserva el CRLF hasta volver
+  a sacar las plantillas (borrarlas y `git checkout -- <ruta>`); el `replace` cubre ese caso.
+- **`allow_overwrite` en la validación de ACM adopta un CNAME ajeno.** ACM entrega el mismo
+  CNAME de validación para el mismo nombre en toda la cuenta y en cualquier región. Medido el
+  2026-11-19: los dos registros de validación de este módulo (apex y `www`) validan también
+  el certificado de la pila `agents` de uvd-backend (`environments/prod/cloudfront-agents.tf`,
+  estado `prod/terraform.tfstate`), que los tiene en su propio estado. Por eso
+  `cert_validation` lleva `allow_overwrite = false` (si el registro ya existía, el apply
+  falla en vez de adoptarlo) y `prevent_destroy` (quitar un nombre del certificado borraría
+  el CNAME y el otro certificado dejaría de renovarse sin aviso). Antes de quitar un nombre,
+  sacar su registro del estado (bloque `removed` con `destroy = false`, o
+  `terraform state rm`). Ese mismo estado de uvd-backend tiene también el A del apex y el
+  CNAME de `www`, todavía apuntando a la distribución de Amplify: ver la fila del drift de
+  `cloudfront-agents` en `docs/planning/BACKLOG.md` antes de aplicar allá.
+- **Tests del borde:** `terraform init -backend=false && terraform test` en
+  `infra/terraform/edge` (sin AWS, con un provider simulado) y
+  `src/infra/__tests__/edgeTerraform.test.js` (jest, corre en el CI).
