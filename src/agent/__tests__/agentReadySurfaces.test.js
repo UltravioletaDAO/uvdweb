@@ -221,10 +221,11 @@ describe('ningún JSON de /.well-known declara un $schema sin verificar', () => 
     expect(jsonFiles.length).toBeGreaterThan(5);
   });
 
+  // Un JSON sin $schema no tiene nada que verificar: el centinela lo deja pasar sin un expect condicional.
+  const SIN_SCHEMA = Symbol('sin $schema');
   it.each(jsonFiles.map(([rel, doc]) => [rel, doc]))('%s', (_rel, doc) => {
-    if (doc && typeof doc === 'object' && '$schema' in doc) {
-      expect(VERIFIED_SCHEMAS).toContain(doc.$schema);
-    }
+    const declarado = doc && typeof doc === 'object' && '$schema' in doc ? doc.$schema : SIN_SCHEMA;
+    expect([SIN_SCHEMA, ...VERIFIED_SCHEMAS]).toContain(declarado);
   });
 });
 

@@ -53,6 +53,7 @@ const mount = async (routes) => {
   container = document.createElement('div');
   document.body.appendChild(container);
   root = createRoot(container);
+  // eslint-disable-next-line testing-library/no-unnecessary-act -- acá no hay Testing Library: es react-dom/client y act() sí hace falta.
   await act(async () => {
     root.render(
       <HelmetProvider>
