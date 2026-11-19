@@ -6,10 +6,14 @@
 
 ## Estado
 
-- **Origin trial WebMCP activo** (Chrome 149–156): token de 228 chars en `public/index.html`
+- **Origin trial WebMCP activo** (hasta Chrome 162): token de 228 chars en `public/index.html`
   (`<meta http-equiv="origin-trial">`, match subdomains). Cualquier visitante con Chrome/Edge
   estable expone `document.modelContext` con las tools del sitio — sin flags.
-  **Vence 2026-11-16 (Chrome 156)** — renovar en developer.chrome.com/origintrials (avisa por email).
+  **Vence 2027-03-29** (último día; el `expiry` del token es 2027-03-30 00:00Z) — renovar en
+  developer.chrome.com/origintrials (avisa por email). `src/agent/__tests__/originTrialToken.test.js`
+  decodifica el token de `public/index.html` y se pone rojo `DIAS_MINIMOS` días antes de que venza.
+  El primer token (Chrome 149–156) venció el 2026-11-17 00:00Z sin renovarse a tiempo; el registro
+  se renovó el 2026-11-19.
 - **19 tools imperativas** registradas en todas las páginas + **2 forms declarativos**
   (`stream_search_form` en `/stream-summaries`, `apply_dao_membership_form` en `/aplicar`, paso 3).
 - Fuente de las tools: `src/agent/tools.js` + `src/agent/ecosystemTools.js` (única fábrica,
@@ -85,6 +89,7 @@ cualquier lado · llms.txt = lee**.
 
 ## Mantenimiento
 
-- Renovar el origin trial antes de Chrome 156 (2026-11-16) — ítem en `docs/planning/BACKLOG.md`.
+- Renovar el origin trial antes del 2027-03-29 (Chrome 162); `originTrialToken.test.js` avisa
+  `DIAS_MINIMOS` días antes — ítem en `docs/planning/BACKLOG.md`.
 - Tool nueva → agregarla en `src/agent/tools.js`/`ecosystemTools.js` y actualizar
   `public/llms-full.txt`; salida por defecto ≤ 1.500 chars y errores con `allowed`.

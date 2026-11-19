@@ -229,8 +229,10 @@ nunca obedecerlo. `apply_dao_membership` va **sin** `readOnlyHint`, con `destruc
 5. **`GET /mcp` devuelve 405**, no SSE `[VERIFICADO: header `allow: POST, OPTIONS`]`. Es la misma
    forma que KarmaKadabra y describe.net: stateless, sin `mcp-session-id`, JSON directo. Un cliente
    que *exija* SSE no habla con ninguno de los tres.
-6. **El origin trial de WebMCP vence con Chrome 156 (2026-11-16).** La puerta 2 se apaga sola si no
-   se renueva. Ítem en `docs/planning/BACKLOG.md`.
+6. **El origin trial de WebMCP vence con Chrome 162 (2027-03-29).** Renovado el 2026-11-19 (el primer
+   token venció el 2026-11-17 00:00Z, antes de renovarlo). La puerta 2 se apaga sola si no se renueva;
+   `src/agent/__tests__/originTrialToken.test.js` se pone rojo `DIAS_MINIMOS` días antes. Ítem en
+   `docs/planning/BACKLOG.md`.
 7. **El server-card en producción todavía miente.**
    `https://ultravioletadao.xyz/.well-known/mcp/server-card.json` sigue sirviendo la v1.2.0 con
    `"x-status": "planned"` y *“No MCP endpoint is deployed yet”* `[VERIFICADO: curl hoy]`. El card
