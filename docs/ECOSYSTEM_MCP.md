@@ -275,8 +275,9 @@ de la casa: copiarla en todo MCP nuevo del ecosistema.**
 5. **Tres `.well-known` del ecosistema sirven HTML con 200** en vez de 404 (incluido el del propio
    sitio, por el rewrite de la SPA): un barrido automático de descubrimiento da falsos positivos.
    Arreglo de rewrite, no de MCP.
-6. **El origin trial de WebMCP vence con Chrome 156 (2026-11-16).** La capa in-browser se apaga sola
-   si no se renueva.
+6. **El origin trial de WebMCP vence con Chrome 162 (2027-03-29).** Renovado el 2026-11-19 (el primer
+   token venció el 2026-11-17 00:00Z). La capa in-browser se apaga sola si no se renueva;
+   `src/agent/__tests__/originTrialToken.test.js` se pone rojo `DIAS_MINIMOS` días antes.
 
 ---
 
